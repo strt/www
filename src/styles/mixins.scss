@@ -1,0 +1,142 @@
+@mixin reset-element {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  appearance: none;
+}
+
+@mixin reset-button {
+  @include reset-element;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1em;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin reset-input {
+  @include reset-element;
+  line-height: 1em;
+
+  &:focus {
+    outline: none;
+  }
+
+  @at-root textarea#{&} {
+    resize: vertical;
+  }
+
+  &[type='search'] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+}
+
+@function getBreakpoint($value, $dir) {
+  $breakpoint: if($dir == 'down', $value - 1, $value);
+
+  @return $breakpoint;
+}
+
+@mixin breakpoint($value) {
+  $bp: nth($value, 1);
+  $dir: if(length($value) > 1, nth($value, 2), up);
+  $media-query: if($dir == 'down', max-width, min-width);
+
+  @if type-of($bp) == 'number' and unit($bp) == 'px' {
+    @media only screen and (#{$media-query}: $bp) {
+      @content;
+    }
+  }
+  @else if map-has-key($tweakpoints, $bp) {
+    @media only screen and (#{$media-query}: getBreakpoint(map-get($tweakpoints, $bp), $dir)) {
+      @content;
+    }
+  }
+  @else if map-has-key($breakpoints, $bp) {
+    @media only screen and (#{$media-query}: getBreakpoint(map-get($breakpoints, $bp), $dir)) {
+      @content;
+    }
+  }
+  @else {
+    @error 'Invalid argument "#{$value}". Argument must be a number or match key in $tweakpoints or $breakpoints.';
+  }
+}
+
+@mixin column($value: $grid-columns) {
+  $val: nth($value, 1);
+  $columnWidth: if(length($value) > 2, 100 / nth($value, 3), $grid-columns-width);
+
+  @extend .grid__column;
+
+  @if unitless($val) {
+    width: #{$columnWidth * $val + %};
+  }
+  @else if type-of($val) == 'number' and unit($val) == '%' {
+    width: $val;
+  }
+  @else {
+    @error 'Invalid argument "#{$value}".';
+  }
+}
+
+@mixin column-offset($value: 1) {
+  $val: nth($value, 1);
+  $columnWidth: if(length($value) > 2, 100 / nth($value, 3), $grid-columns-width);
+  margin-left: #{$columnWidth * $val + %};
+}
+
+@mixin grid-gutter($map) {
+  @each $breakpoint, $value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      padding-right: map-get($map, $breakpoint);
+      padding-left: map-get($map, $breakpoint);
+    }
+  }
+}
+
+@mixin column-generate {
+  @for $i from 1 through $grid-columns {
+    &-#{$i} {
+      width: #{$i * $grid-columns-width + %};
+    }
+  }
+}
+
+@mixin grid-collapse {
+  @each $breakpoint, $value in $breakpoints {
+    @include breakpoint($breakpoint) {
+      $offset: (map-get($grid-gutter, $breakpoint) + map-get($grid-column-gutter, $breakpoint));
+      margin-right: -$offset;
+      margin-left: -$offset;
+      width: calc(#{$grid-width} + #{$offset * 2});
+    }
+  }
+}
+
+@mixin aspect-ratio($x, $y) {
+  $padding: #{($y / $x) * 100 + %};
+  position: relative;
+  padding-top: $padding;
+  width: 100%;
+
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

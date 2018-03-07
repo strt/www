@@ -1,0 +1,53 @@
+.grid {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  width: $grid-width;
+  max-width: $grid-max-width;
+  margin-right: auto;
+  margin-left: auto;
+
+  &__column {
+    width: 100%;
+
+    &.-noPad {
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    @each $breakpoint, $value in $breakpoints {
+      &.-#{$breakpoint} {
+        @include breakpoint($breakpoint) {
+          @include column-generate;
+        }
+      }
+    }
+  }
+
+  &.-center {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+  }
+
+  &.-stretch {
+    align-items: stretch;
+  }
+
+  &.-fluid {
+    max-width: none;
+  }
+
+  &.-pad {
+    @include grid-gutter($grid-gutter);
+
+    & > .grid__column {
+      @include grid-gutter($grid-column-gutter);
+    }
+  }
+
+  &.-collapse {
+    @include grid-collapse;
+  }
+}

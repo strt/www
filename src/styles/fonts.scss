@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'StrategDIN';
+  src: url('../assets/fonts/strategdin-bold.woff2') format('woff2'),
+    url('../assets/fonts/strategdin-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'StrategDIN';
+  src: url('../assets/fonts/strategdin-medium.woff2') format('woff2'),
+    url('../assets/fonts/strategdin-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: 'StrategDIN';
+  src: url('../assets/fonts/strategdin-regular.woff2') format('woff2'),
+    url('../assets/fonts/strategdin-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}

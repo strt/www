@@ -1,0 +1,52 @@
+.root {
+  
+}
+
+.list {
+  display: flex;
+}
+
+.item {
+  margin: 0 16px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.link {
+  display: block;
+  position: relative;
+  z-index: 2;
+  padding: 4px 0;
+  overflow: hidden;
+  font-size: 1.6rem;
+  line-height: 1.2em;
+  font-weight: 500;
+  text-decoration: none;
+  color: map-get($colors, gray900);
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+    transform-origin: right center;
+    transform: scaleX(0);
+    transition: transform $animation-duration-default map-get($easings, easeOutSine);
+  }
+
+  &[aria-current='true'],
+  &:hover,
+  &:focus {
+    outline: none;
+
+    &::before {
+      transform-origin: left center;
+      transform: none;
+    }
+  }
+}

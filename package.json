@@ -1,0 +1,70 @@
+{
+  "name": "strateg",
+  "description": "strateg.se website",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Alexander Nanberg <alexander.nanberg@strateg.se>",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "start": "serve -s public"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "gatsby": "^1.9.225",
+    "gatsby-link": "^1.6.38",
+    "gatsby-plugin-catch-links": "^1.0.19",
+    "gatsby-plugin-react-helmet": "^2.0.6",
+    "gatsby-plugin-react-next": "^1.0.10",
+    "gatsby-plugin-sass": "^1.0.18",
+    "gatsby-source-filesystem": "^1.5.26",
+    "gatsby-transformer-remark": "^1.7.36",
+    "react-helmet": "^5.2.0",
+    "reset-css": "^2.2.1",
+    "serve": "^6.5.2",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "prettier": "^1.11.1"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+      "react",
+      "prettier"
+    ],
+    "env": {
+      "browser": true
+    },
+    "settings": {
+      "import/core-modules": [
+        "react",
+        "prop-types",
+        "config",
+        "raw-loader"
+      ]
+    },
+    "globals": {
+      "graphql": true
+    },
+    "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "import/prefer-default-export": 0,
+      "react/jsx-filename-extension": 0,
+      "react/prop-types": 0,
+      "jsx-a11y/anchor-is-valid": 0,
+      "jsx-a11y/media-has-caption": 0
+    }
+  }
+}

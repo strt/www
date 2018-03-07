@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-width: 320px;
+  cursor: default;
+  font-family: $font-family;
+
+  &::after {
+    display: none;
+
+    @each $breakpoint, $value in $breakpoints {
+      @include breakpoint($breakpoint) {
+        content: '#{$breakpoint}';
+      }
+    }
+  }
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  height: auto;
+  max-width: 100%;
+}
+
+:focus {
+  outline: dotted thin;
+}
+
+:hover,
+:active {
+  outline: 0;
+}
+
+::selection {
+  color: white;
+  background-color: black;
+}
+
+#___gatsby {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 12px;
+}

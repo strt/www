@@ -1,0 +1,66 @@
+.root {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 400px;
+  overflow: hidden;
+  background-color: map-get($colors, gray300);
+  color: white;
+  text-decoration: none;
+  padding: 24px 44px 32px;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 400ms map-get($easings, easeOutSine);
+}
+
+.overlay {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  // background-color: #005a96;
+  background-image: linear-gradient(to bottom left, transparent, black);
+  opacity: 0;
+  transition: opacity 600ms map-get($easings, easeOutCubic);
+
+  .root:hover & {
+    opacity: 1;
+  }
+}
+
+.content {
+  transition: transform 320ms map-get($colors, easeOutCubic);
+
+  .root:hover & {
+    transition-delay: 120ms;
+    transform: translateY(-64px);
+  }
+}
+
+.subtitle {
+  margin-bottom: 12px;
+  transition: transform 400ms map-get($easings, easeOutCubic);
+
+  &::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 16px;
+    height: 1px;
+    background-color: currentColor;
+  }
+}
