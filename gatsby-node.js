@@ -14,9 +14,6 @@ exports.createPages = async ({ boundActionCreators, graphql }) => {
             fields {
               slug
             }
-            frontmatter {
-              path
-            }
           }
         }
       }

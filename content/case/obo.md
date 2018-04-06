@@ -1,9 +1,9 @@
 ---
-date: "2018-01-12T12:00:00.165Z"
+date: "2018-04-06T15:25:24+02:00"
 title: "ÖBO"
 excerpt: "Lägenheter med plats för det som är du"
+image: ""
 tags: ["Print"]
-image: /images/obo-case.jpg
 ---
 
 # ÖBO – Honulugatan

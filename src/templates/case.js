@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 export default function Template({ data }) {
   const { markdownRemark: post } = data
   console.log(post)
+
   return (
     <div>
       <Helmet title={post.frontmatter.title} />
@@ -25,8 +26,7 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        path
+        date
         title
         excerpt
         image

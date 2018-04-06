@@ -1,5 +1,5 @@
 ---
-date: '2018-04-06T15:25:24+02:00'
+date: "2018-04-06T15:25:24+02:00"
 title: "Garageportexperten"
 excerpt: "Enad röst tack vare kommunikativ plattform"
 image: ""

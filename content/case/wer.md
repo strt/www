@@ -1,8 +1,8 @@
 ---
-date: "2017-12-22T12:00:00.165Z"
+date: "2018-04-06T15:25:24+02:00"
 title: "Wer"
 excerpt: "Wer ger mer än kunderna visste"
-image: "/images/wer-case.jpg"
+image: ""
 tags: ["Webb", "Print"]
 ---
 
