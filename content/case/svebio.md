@@ -3,7 +3,7 @@ date: "2018-04-06T15:25:24+02:00"
 title: "Svebio"
 excerpt: "Tre webbplatser - en smart lösning"
 tags: ["Webb", "Print"]
-image: ""
+image: "/images/uploads/svebio-case.jpg"
 ---
 
 # Garageportexperten

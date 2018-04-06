@@ -2,7 +2,7 @@
 date: "2018-04-06T15:25:24+02:00"
 title: "Wer"
 excerpt: "Wer ger mer än kunderna visste"
-image: ""
+image: "/images/uploads/wer-case.jpg"
 tags: ["Webb", "Print"]
 ---
 

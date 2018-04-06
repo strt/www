@@ -2,7 +2,7 @@
 date: "2018-04-06T15:25:24+02:00"
 title: "Garageportexperten"
 excerpt: "Enad röst tack vare kommunikativ plattform"
-image: ""
+image: "/images/uploads/gara-case.jpg"
 tags: ["Webb", "Print"]
 ---
 # Garageportexperten
