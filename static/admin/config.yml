@@ -16,8 +16,8 @@ collections:
       - { name: "date", label: "Publish date", widget: "datetime" }
       - { name: "title", label: "Title", widget: "string" }
       - { name: "excerpt", label: "Excerpt", widget: "text" }
-      - { name: "image", label: "Featured image", widget: "image" }
-      - { name: "tags", label: "Tags", widget: "list" }
+      - { name: "image", label: "Featured image", widget: "image", required: false }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
       - { name: "body", label: "Body",  widget: "markdown" }
 
   - name: "articles"
@@ -29,5 +29,5 @@ collections:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "excerpt", label: "Excerpt", widget: "text" }
       - { name: "date", label: "Publish date", widget: "datetime" }
-      - { name: "tags", label: "Tags", widget: "list", default: ["tagg"] }
+      - { name: "tags", label: "Tags", widget: "list", required: false }
       - { name: "body", label: "Body", widget: "markdown" }
