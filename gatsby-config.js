@@ -36,5 +36,6 @@ module.exports = {
         includePaths: [path.join(__dirname, 'src')],
       },
     },
+    'gatsby-plugin-netlify-cms',
   ],
 }

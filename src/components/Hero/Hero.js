@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { v4 } from 'uuid'
 import style from './hero.module.scss'
 
 const Hero = ({
@@ -11,7 +10,9 @@ const Hero = ({
 
     {video && (
       <video loop muted autoPlay className={style.background} poster={image || ''}>
-        {video.sources.map(source => <source key={v4()} src={source.url} type={source.type} />)}
+        {video.sources.map(source => (
+          <source key={source.type} src={source.url} type={source.type} />
+        ))}
         <source />
       </video>
     )}

@@ -1,0 +1,35 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "prettier"
+  ],
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "import/core-modules": [
+      "react",
+      "prop-types",
+      "config",
+      "raw-loader",
+      "netlify-cms",
+      "netlify-identity-widget"
+    ]
+  },
+  "globals": {
+    "graphql": true
+  },
+  "rules": {
+    "semi": [
+      "error",
+      "never"
+    ],
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/media-has-caption": 0
+  }
+}
