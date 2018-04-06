@@ -7,11 +7,27 @@ public_folder: "/images/uploads"
 publish_mode: editorial_workflow
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: case
+    label: Case
+    folder: "../content/case"
     create: true
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: date }
-      - { name: title, label: Title }
+      - { name: "path", label: "Path", widget: "text" }
+      - { name: "date", label: "Publish date", widget: "datetime" }
+      - { name: "title", label: "Title", widget: "text" }
+      - { name: "excerpt", label: "Excerpt", widget: "text" }
+      - { name: "image", label: "Thumbnail", widget: "image" }
+      - { name: "tags", label: "Tags", widget: "list" }
+      - { name: "body", label: "Body",  widget: "markdown" }
+
+  - name: "articles"
+    label: "Articles"
+    folder: "../content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Excerpt", name: "description", widget: "text"}
+      - {label: "Publish date", name: "date", widget: "datetime"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
