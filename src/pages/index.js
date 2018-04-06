@@ -9,7 +9,7 @@ export default ({ data }) => {
     ...node.frontmatter,
     title: node.frontmatter.excerpt,
     subtitle: node.frontmatter.title,
-    link: node.frontmatter.path,
+    link: node.fields.slug,
   }))
 
   return (
@@ -46,10 +46,11 @@ export const query = graphql`
       edges {
         node {
           id
+          fields {
+            slug
+          }
           frontmatter {
-            path
             title
-            path
             excerpt
             date
             image

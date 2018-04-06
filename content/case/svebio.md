@@ -1,10 +1,9 @@
 ---
-path: "/case/wer"
 date: "2017-12-22T12:00:00.165Z"
-title: "Wer"
-excerpt: "Wer ger mer än kunderna visste"
-image: "/images/wer-case.jpg"
-categories: ["Webb", "Print"]
+title: "Svebio"
+excerpt: "Tre webbplatser - en smart lösning"
+image: "/images/svebio-case.jpg"
+tags: ["Webb", "Print"]
 ---
 
 # Garageportexperten

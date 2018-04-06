@@ -21,8 +21,8 @@ export default function Template({ data }) {
 }
 
 export const pageQuery = graphql`
-  query CaseByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query CaseByPath($id: String!) {
+    markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

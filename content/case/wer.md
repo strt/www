@@ -1,10 +1,9 @@
 ---
-path: "/case/garageportexperten"
 date: "2017-12-22T12:00:00.165Z"
-title: "Garageportexperten"
-excerpt: "Enad röst tack vare kommunikativ plattform"
-image: "/images/gara-case.jpg"
-categories: ["Webb", "Print"]
+title: "Wer"
+excerpt: "Wer ger mer än kunderna visste"
+image: "/images/wer-case.jpg"
+tags: ["Webb", "Print"]
 ---
 
 # Garageportexperten
