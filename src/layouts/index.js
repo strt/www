@@ -7,16 +7,14 @@ import Footer from '../components/Footer'
 
 const TemplateWrapper = ({ children }) => (
   <Fragment>
-    <Helmet
-      titleTemplate="%s – Strateg"
-      meta={[
-        {
-          name: 'description',
-          content:
-            'Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang.',
-        },
-      ]}
-    />
+    <Helmet titleTemplate="%s – Strateg">
+      {/* TODO: Remove before release */}
+      <meta name="robots" content="noindex" />
+      <meta
+        name="description"
+        content="Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang."
+      />
+    </Helmet>
     <Header />
     <main>{children()}</main>
     <Footer />
