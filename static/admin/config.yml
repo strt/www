@@ -14,7 +14,7 @@ collections:
     fields:
       - { name: "title", label: "Title", widget: "string" }
       - { name: "excerpt", label: "Excerpt", widget: "text" }
-      - { name: "date", label: "Publish date", widget: "datetime" }
+      - { name: "date", label: "Publish date", widget: "datetime", format: "Y-MM-DDThh:mm:ssZ" }
       - { name: "image", label: "Featured image", widget: "image", required: false }
       - { name: "tags", label: "Tags", widget: "list", required: false }
       - { name: "body", label: "Body",  widget: "markdown" }
