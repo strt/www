@@ -17,7 +17,9 @@ export default function Header() {
   return (
     <StyledHeader>
       <Grid justifyContent="space-between" alignItems="center">
-        <Logo />
+        <GatsbyLink to="/">
+          <Logo />
+        </GatsbyLink>
         <div>
           <NavLink as={GatsbyLink} to="/">
             Hem
