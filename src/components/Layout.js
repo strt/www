@@ -2,6 +2,7 @@ import React from 'react'
 import SeoAndMeta from './SeoAndMeta'
 import { GlobalStyle } from '../style'
 import Header from './Header'
+import '../assets/fonts/circular.css'
 
 export default function Layout({ children, title, description, meta }) {
   return (

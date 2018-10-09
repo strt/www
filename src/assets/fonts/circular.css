@@ -1,0 +1,67 @@
+/*
+ * Legal Disclaimer
+ *
+ * These Fonts are licensed only for use on these domains and their subdomains:
+ * strateg.se
+ *
+ * It is illegal to download or use them on other websites.
+ *
+ * While the @font-face statements below may be modified by the client, this
+ * disclaimer may not be removed.
+ *
+ * Lineto.com, 2018
+ */
+
+@font-face {
+  font-family: "Circular";
+  font-display: fallback;
+  src: url("./circular-black.woff2") format("woff2"),
+       url("./circular-black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Circular";
+  font-display: fallback;
+  src: url("./circular-bold.woff2") format("woff2"),
+       url("./circular-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Circular";
+  font-display: fallback;
+  src: url("./circular-bolditalic.woff2") format("woff2"),
+       url("./circular-bolditalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Circular";
+  font-display: fallback;
+  src: url("./circular-book.woff2") format("woff2"),
+       url("./circular-book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Circular";
+  font-display: fallback;
+  src: url("./circular-bookitalic.woff2") format("woff2"),
+       url("./circular-bookitalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Circular";
+  font-display: fallback;
+  src: url("./circular-medium.woff2") format("woff2"),
+       url("./circular-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}

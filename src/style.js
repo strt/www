@@ -1,15 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
 import { reset } from 'styled-reset'
-import circularBookWoff from './assets/fonts/circular-book.woff'
-import circularBookWoff2 from './assets/fonts/circular-book.woff2'
-import circularBookItalicWoff from './assets/fonts/circular-bookitalic.woff'
-import circularBookItalicWoff2 from './assets/fonts/circular-bookitalic.woff2'
-import circularBoldWoff from './assets/fonts/circular-bold.woff'
-import circularBoldWoff2 from './assets/fonts/circular-bold.woff2'
-import circularBoldItalicWoff from './assets/fonts/circular-bolditalic.woff'
-import circularBoldItalicWoff2 from './assets/fonts/circular-bolditalic.woff2'
-import circularBlackWoff from './assets/fonts/circular-black.woff'
-import circularBlackWoff2 from './assets/fonts/circular-black.woff2'
 
 export const space = [
   '0',
@@ -47,79 +37,9 @@ export const easings = {
   easeOutBack: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
 }
 
-function fontFace({
-  woff,
-  woff2,
-  fontFamily: name,
-  fontWeight = 'normal',
-  fontStyle = 'normal',
-}) {
-  return `
-    @font-face {
-      font-family: ${name};
-      font-weight: ${fontWeight};
-      font-style: ${fontStyle};
-      font-display: fallback;
-      src: url(${woff2}) format("woff2"), url(${woff}) format("woff");
-    }
-  `
-}
-
 export const GlobalStyle = createGlobalStyle`
-  ${reset};
+  ${reset}
 
-  /*
-  * Legal Disclaimer
-  *
-  * These Fonts are licensed only for use on these domains and their subdomains:
-  * strateg.se
-  *
-  * It is illegal to download or use them on other websites.
-  *
-  * While the @font-face statements below may be modified by the client, this
-  * disclaimer may not be removed.
-  *
-  * Lineto.com, 2018
-  */
-
-  ${fontFace({
-    fontFamily: 'Circular',
-    fontWeight: 400,
-    woff: circularBookWoff,
-    woff2: circularBookWoff2,
-  })}
-
-  ${fontFace({
-    fontFamily: 'Circular',
-    fontWeight: 400,
-    fontStyle: 'italic',
-    woff: circularBookItalicWoff,
-    woff2: circularBookItalicWoff2,
-  })}
-
-  ${fontFace({
-    fontFamily: 'Circular',
-    fontWeight: 800,
-    woff: circularBoldWoff,
-    woff2: circularBoldWoff2,
-  })}
-
-  ${fontFace({
-    fontFamily: 'Circular',
-    fontWeight: 700,
-    fontStyle: 'italic',
-    woff: circularBoldItalicWoff,
-    woff2: circularBoldItalicWoff2,
-  })}
-
-  ${fontFace({
-    fontFamily: 'Circular',
-    fontWeight: 900,
-    fontStyle: 'normal',
-    woff: circularBlackWoff,
-    woff2: circularBlackWoff2,
-  })}
- 
   html {
     font-size: 10px;
     font-family: ${fontFamily.sansSerif};
