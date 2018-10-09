@@ -1,5 +1,6 @@
 ---
 date: "2018-04-06T15:25:24+02:00"
+client: "Wer"
 title: "Wer"
 excerpt: "Wer ger mer än kunderna visste"
 image: "/images/uploads/wer-case.jpg"

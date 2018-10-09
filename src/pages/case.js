@@ -8,10 +8,13 @@ import Link from '../components/Link'
 export default function Case({ data }) {
   const cases = data.allMarkdownRemark.edges.map(({ node }) => ({
     ...node,
-    title: node.frontmatter.excerpt,
+    title: node.frontmatter.title,
+    client: node.frontmatter.client,
     subtitle: node.frontmatter.title,
     link: node.fields.slug,
   }))
+
+  console.log(cases)
 
   return (
     <Layout title="Case">
@@ -22,7 +25,7 @@ export default function Case({ data }) {
           {cases.map(i => (
             <Text key={i.link}>
               <Link as={GatsbyLink} to={i.link}>
-                {i.title}
+                {i.client} – {i.title}
               </Link>
             </Text>
           ))}
@@ -42,6 +45,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
+            client
             title
             excerpt
             date
