@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link as GatsbyLink, graphql } from 'gatsby'
 import RehypeReact from 'rehype-react'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
+import Link from '../components/Link'
 import { Text, Excerpt, H1, H2 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 
@@ -15,11 +16,10 @@ const renderAst = new RehypeReact({
   },
 }).Compiler
 
-export default function Template({ data }) {
-  const { markdownRemark: post } = data
-  console.log(post)
-  const next = null
-
+export default function Template({
+  data: { markdownRemark: post },
+  pageContext: { next },
+}) {
   return (
     <Layout title={post.title}>
       <Helmet title={post.frontmatter.title} />
@@ -29,11 +29,12 @@ export default function Template({ data }) {
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
           {renderAst(post.htmlAst)}
           {next && (
-            <li>
-              <Link to={next.fields.slug} rel="next">
-                {next.fields.title} →
+            <>
+              <Text>Nästa case</Text>
+              <Link as={GatsbyLink} to={next.fields.slug} rel="next">
+                → {next.frontmatter.title}
               </Link>
-            </li>
+            </>
           )}
         </Column>
       </Grid>

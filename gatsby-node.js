@@ -7,12 +7,20 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const allMarkdown = await graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allMarkdownRemark(
+        limit: 1000
+        sort: { order: DESC, fields: [frontmatter___date] }
+      ) {
         edges {
           node {
-            id
             fields {
               slug
+            }
+            frontmatter {
+              title
+              client
+              date
+              tags
             }
           }
         }
@@ -22,17 +30,32 @@ exports.createPages = async ({ actions, graphql }) => {
 
   if (allMarkdown.errors) {
     console.error(allMarkdown.errors)
-
     throw Error(allMarkdown.errors)
   }
 
-  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const { edges } = allMarkdown.data.allMarkdownRemark
+
+  // Case
+  const cases = edges.filter((edge) => {
+    const { slug } = edge.node.fields
+
+    if (slug.includes('/case/')) {
+      return true
+    }
+
+    return false
+  })
+
+  cases.forEach(({ node }, index) => {
+    const next =
+      index === cases.length - 1 ? cases[0].node : cases[index + 1].node
+
     createPage({
       path: node.fields.slug,
       component: caseTemplate,
       context: {
-        id: node.id,
         slug: node.fields.slug,
+        next,
       },
     })
   })
