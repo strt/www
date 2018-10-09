@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import RehypeReact from 'rehype-react'
-import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import { Text, Excerpt, H1, H2 } from '../components/Text'
@@ -21,8 +20,7 @@ export default function Template({
   pageContext: { next },
 }) {
   return (
-    <Layout title={post.title}>
-      <Helmet title={post.frontmatter.title} />
+    <Layout title={post.frontmatter.title}>
       <Grid>
         <Column>
           <H1>{post.frontmatter.title}</H1>
