@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
+import { colors } from '../style'
 
 const Svg = styled(BaseSvg)`
   width: 188px;
   height: auto;
+  color: ${colors.black};
 `
 
 export default function Logo() {
