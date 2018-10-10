@@ -4,6 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
   const caseTemplate = resolve('src/templates/case.js')
+  const articleTemplate = resolve('src/templates/article.js')
 
   const allMarkdown = await graphql(`
     {
@@ -45,6 +46,25 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: node.fields.slug,
       component: caseTemplate,
+      context: {
+        slug: node.fields.slug,
+        next,
+      },
+    })
+  })
+
+  // News
+  const articles = edges.filter(({ node }) =>
+    node.fields.slug.includes('/aktuellt/'),
+  )
+
+  articles.forEach(({ node }, index) => {
+    const { node: next } =
+      index === articles.length - 1 ? articles[0] : articles[index + 1]
+
+    createPage({
+      path: node.fields.slug,
+      component: articleTemplate,
       context: {
         slug: node.fields.slug,
         next,
