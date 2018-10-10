@@ -1,5 +1,7 @@
 # strateg
 
+> Currently under construction...
+
 ## Contributing
 
 Install dependencies
