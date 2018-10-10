@@ -24,7 +24,8 @@ export default function Template({
   data: { markdownRemark: post },
   pageContext: { next },
 }) {
-  const contact = post.frontmatter.contact.frontmatter
+  const contact =
+    post.frontmatter.contact && post.frontmatter.contact.frontmatter
 
   return (
     <Layout title={post.frontmatter.title} hideFooter>
@@ -49,7 +50,7 @@ export default function Template({
         <Column>
           {renderAst(post.htmlAst)}
 
-          {contact.contact_id && (
+          {contact && (
             <>
               <H3>Vill du veta mer?</H3>
               <Text>
