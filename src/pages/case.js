@@ -14,8 +14,6 @@ export default function Case({ data }) {
     link: node.fields.slug,
   }))
 
-  console.log(cases)
-
   return (
     <Layout title="Case">
       <Grid>
