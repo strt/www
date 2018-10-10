@@ -19,6 +19,12 @@ export const fontFamily = {
   primary: 'Circular, Helvetica, sans-serif',
 }
 
+export const breakpoint = {
+  small: '(min-width: 720px)',
+  medium: '(min-width: 960px)',
+  large: '(min-width: 1440px)',
+}
+
 export const colors = {
   black: '#0b101e',
   gray500: '#85888e',
