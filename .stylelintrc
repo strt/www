@@ -1,11 +1,6 @@
 {
-  "processors": [
-    "stylelint-processor-styled-components"
-  ],
-  "extends": [
-    "stylelint-config-strateg",
-    "stylelint-config-styled-components"
-  ],
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": ["stylelint-config-strateg", "stylelint-config-styled-components"],
   "rules": {
     "declaration-empty-line-before": null,
     "comment-empty-line-before": null,

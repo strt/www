@@ -1,32 +1,42 @@
 backend:
   name: git-gateway
 
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
+media_folder: 'static/images/uploads'
+public_folder: '/images/uploads'
 
 publish_mode: editorial_workflow
 
 collections:
   - name: case
     label: Case
-    folder: "/content/case"
+    folder: '/content/case'
     create: true
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "excerpt", label: "Excerpt", widget: "text" }
-      - { name: "date", label: "Publish date", widget: "datetime", format: "Y-MM-DDThh:mm:ssZ" }
-      - { name: "image", label: "Featured image", widget: "image", required: false }
-      - { name: "tags", label: "Tags", widget: "list", required: false }
-      - { name: "body", label: "Body",  widget: "markdown" }
+      - { name: 'title', label: 'Title', widget: 'string' }
+      - { name: 'excerpt', label: 'Excerpt', widget: 'text' }
+      - {
+          name: 'date',
+          label: 'Publish date',
+          widget: 'datetime',
+          format: 'Y-MM-DDThh:mm:ssZ',
+        }
+      - {
+          name: 'image',
+          label: 'Featured image',
+          widget: 'image',
+          required: false,
+        }
+      - { name: 'tags', label: 'Tags', widget: 'list', required: false }
+      - { name: 'body', label: 'Body', widget: 'markdown' }
 
-  - name: "articles"
-    label: "Articles"
-    folder: "/content/articles"
+  - name: 'articles'
+    label: 'Articles'
+    folder: '/content/articles'
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "excerpt", label: "Excerpt", widget: "text" }
-      - { name: "date", label: "Publish date", widget: "datetime" }
-      - { name: "tags", label: "Tags", widget: "list", required: false }
-      - { name: "body", label: "Body", widget: "markdown" }
+      - { name: 'title', label: 'Title', widget: 'string' }
+      - { name: 'excerpt', label: 'Excerpt', widget: 'text' }
+      - { name: 'date', label: 'Publish date', widget: 'datetime' }
+      - { name: 'tags', label: 'Tags', widget: 'list', required: false }
+      - { name: 'body', label: 'Body', widget: 'markdown' }
