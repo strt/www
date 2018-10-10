@@ -20,9 +20,9 @@ export const fontFamily = {
 }
 
 export const breakpoint = {
-  small: '(min-width: 720px)',
-  medium: '(min-width: 960px)',
-  large: '(min-width: 1440px)',
+  small: '(min-width: 72rem)',
+  medium: '(min-width: 96rem)',
+  large: '(min-width: 144remx)',
 }
 
 export const colors = {
