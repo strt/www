@@ -69,6 +69,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
+export function pxToFluid(px, base = 15.2) {
+  return `${px / base}vw`
+}
+
 function style({ prop, cssProperty }) {
   const css = cssProperty || prop
 
@@ -85,14 +89,13 @@ function style({ prop, cssProperty }) {
 }
 
 export const textColor = style({
-  prop: 'color',
-  key: 'colors',
+  prop: 'textColor',
+  cssProperty: 'color',
 })
 
 export const bgColor = style({
   prop: 'bg',
   cssProperty: 'backgroundColor',
-  key: 'colors',
 })
 
 export const textAlign = style({
