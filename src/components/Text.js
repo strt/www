@@ -29,10 +29,26 @@ export const H1 = styled.h1`
   line-height: 1.25em;
 `
 
-export const H2 = styled.h1`
+export const H2 = styled.h2`
+  ${text};
+  margin-bottom: 0.25em;
+  font-size: 2.631vw; // 40px
+  font-weight: 900;
+  line-height: 1.25em;
+`
+
+export const H3 = styled.h3`
   ${text};
   margin-bottom: 0.25em;
   font-size: 2.105vw; // 32px
   font-weight: 700;
+  line-height: 1.25em;
+`
+
+export const H4 = styled.h4`
+  ${text};
+  margin-bottom: 0.25em;
+  font-size: 1.578vw; // 24px
+  font-weight: 500;
   line-height: 1.25em;
 `
