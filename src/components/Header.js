@@ -11,6 +11,10 @@ const StyledHeader = styled.header`
 
 const NavLink = styled(Link)`
   margin: 0 0.8rem;
+
+  &[aria-current] {
+    text-decoration: line-through;
+  }
 `
 
 export default function Header() {
