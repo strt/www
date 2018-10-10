@@ -7,6 +7,6 @@ image: /images/uploads/obo-case.jpg
 tags: ['Print']
 ---
 
-# ÖBO – Honulugatan
+## Honulugatan
 
 Du som gillar dansk design, schysta uteställen eller morgon­­yoga – välkommen hem!
