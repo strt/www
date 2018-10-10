@@ -35,18 +35,18 @@ export default function Case({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/case/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
-          id
           fields {
             slug
           }
           frontmatter {
             client
             title
-            excerpt
-            date
             image
           }
         }
