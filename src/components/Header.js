@@ -10,7 +10,7 @@ const StyledHeader = styled.header`
 `
 
 const NavLink = styled(Link)`
-  margin: 0 0.8rem;
+  margin: 0 1.2rem;
 
   &[aria-current] {
     text-decoration: line-through;
