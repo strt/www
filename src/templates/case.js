@@ -43,7 +43,7 @@ export default function Template({
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Column>
       </Grid>
-      <Img src={post.frontmatter.image} alt="" />
+      {post.frontmatter.image && <Img src={post.frontmatter.image} alt="" />}
       <Grid>
         <Column>
           {renderAst(post.htmlAst)}
