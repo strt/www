@@ -9,7 +9,7 @@ export default function SeoAndMeta({ title, description, children }) {
         query {
           site {
             siteMetadata {
-              title
+              name
             }
           }
         }
@@ -19,7 +19,7 @@ export default function SeoAndMeta({ title, description, children }) {
         <Helmet
           htmlAttributes={{ lang: 'sv' }}
           titleTemplate="%s • Strateg"
-          defaultTitle={siteMetadata.title}
+          defaultTitle={siteMetadata.name}
         >
           {title && <title>{title}</title>}
           {description && <meta name="description" content={description} />}
