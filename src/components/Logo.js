@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
-import { colors } from '../style'
+import { colors, pxToFluid } from '../style'
 
 const Svg = styled(BaseSvg)`
-  width: 188px;
+  width: ${pxToFluid(188)};
   height: auto;
   color: ${colors.black};
 `
