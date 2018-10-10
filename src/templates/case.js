@@ -32,13 +32,11 @@ export default function Template({
       <Grid>
         <Column>
           <Text>{post.frontmatter.client}</Text>
-          <ul style={{ display: 'flex' }}>
+          <Text>
             {post.frontmatter.tags.map(tag => (
-              <li key={tag}>
-                <Text>{tag}</Text>
-              </li>
+              <span key={tag}>{tag}, </span>
             ))}
-          </ul>
+          </Text>
         </Column>
         <Column>
           <H1>{post.frontmatter.title}</H1>
