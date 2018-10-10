@@ -4,6 +4,10 @@ module.exports = {
     author: 'Strateg Marknadsföring',
     siteUrl: 'https://strateg.netlify.com',
   },
+  mapping: {
+    'MarkdownRemark.frontmatter.contact':
+      'MarkdownRemark.frontmatter.contact_id',
+  },
   plugins: [
     'gatsby-plugin-sitemap',
     'gatsby-plugin-subfont',

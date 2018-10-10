@@ -36,19 +36,11 @@ exports.createPages = async ({ actions, graphql }) => {
   const { edges } = allMarkdown.data.allMarkdownRemark
 
   // Case
-  const cases = edges.filter((edge) => {
-    const { slug } = edge.node.fields
-
-    if (slug.includes('/case/')) {
-      return true
-    }
-
-    return false
-  })
+  const cases = edges.filter(({ node }) => node.fields.slug.includes('/case/'))
 
   cases.forEach(({ node }, index) => {
-    const next =
-      index === cases.length - 1 ? cases[0].node : cases[index + 1].node
+    const { node: next } =
+      index === cases.length - 1 ? cases[0] : cases[index + 1]
 
     createPage({
       path: node.fields.slug,

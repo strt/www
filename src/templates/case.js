@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import RehypeReact from 'rehype-react'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
-import { Text, Excerpt, H1, H2 } from '../components/Text'
+import { Text, Excerpt, H1, H2, H3 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 
 const renderAst = new RehypeReact({
@@ -24,6 +24,8 @@ export default function Template({
   data: { markdownRemark: post },
   pageContext: { next },
 }) {
+  const contact = post.frontmatter.contact.frontmatter
+
   return (
     <Layout title={post.frontmatter.title} hideFooter>
       <Grid>
@@ -31,7 +33,7 @@ export default function Template({
           <Text>{post.frontmatter.client}</Text>
           <ul style={{ display: 'flex' }}>
             {post.frontmatter.tags.map(tag => (
-              <li>
+              <li key={tag}>
                 <Text>{tag}</Text>
               </li>
             ))}
@@ -46,6 +48,18 @@ export default function Template({
       <Grid>
         <Column>
           {renderAst(post.htmlAst)}
+
+          {contact.contact_id && (
+            <>
+              <H3>Vill du veta mer?</H3>
+              <Text>
+                Kontakta {contact.contact_id}, {contact.role}. <br />
+                <a href="mailto">{contact.email}</a> <br />
+                <a href="phone">{contact.phone}</a>
+              </Text>
+            </>
+          )}
+
           {next && (
             <>
               <Text>Nästa case</Text>
@@ -71,6 +85,14 @@ export const pageQuery = graphql`
         excerpt
         tags
         image
+        contact {
+          frontmatter {
+            contact_id
+            role
+            email
+            phone
+          }
+        }
       }
     }
   }
