@@ -10,7 +10,6 @@ import { Grid, Column } from '../components/Grid'
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components: {
-    h1: H1,
     h2: H2,
     p: Text,
   },

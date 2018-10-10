@@ -32,20 +32,12 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   ${text};
   margin-bottom: 0.25em;
-  font-size: ${pxToFluid(40)};
-  font-weight: 900;
-  line-height: 1.25em;
-`
-
-export const H3 = styled.h3`
-  ${text};
-  margin-bottom: 0.25em;
   font-size: ${pxToFluid(32)};
   font-weight: 700;
   line-height: 1.25em;
 `
 
-export const H4 = styled.h4`
+export const H3 = styled.h3`
   ${text};
   margin-bottom: 0.25em;
   font-size: ${pxToFluid(24)};
