@@ -53,8 +53,8 @@ export default function Template({
               <H3>Vill du veta mer?</H3>
               <Text>
                 Kontakta {contact.contact_id}, {contact.role}. <br />
-                <a href="mailto">{contact.email}</a> <br />
-                <a href="phone">{contact.phone}</a>
+                <a href={`mailto:${contact.email}`}>{contact.email}</a> <br />
+                <a href={`tel:${contact.phone}`}>{contact.phone}</a>
               </Text>
             </>
           )}
