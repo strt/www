@@ -18,7 +18,7 @@ export default function SeoAndMeta({ title, description, children }) {
       {({ site: { siteMetadata } }) => (
         <Helmet
           htmlAttributes={{ lang: 'sv' }}
-          titleTemplate="%s – Strateg"
+          titleTemplate="%s • Strateg"
           defaultTitle={siteMetadata.title}
         >
           {title && <title>{title}</title>}
