@@ -4,6 +4,11 @@ import { colors, fontFamily, breakpoint, pxToFluid } from '../style'
 const text = css`
   color: ${colors.black};
   font-family: ${fontFamily.primary};
+
+  a {
+    color: inherit;
+    font: inherit;
+  }
 `
 
 export const Text = styled.p`
