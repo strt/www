@@ -29,23 +29,29 @@ export default function Template({
 
   return (
     <Layout title={post.frontmatter.title} hideFooter>
-      <Grid>
-        <Column>
-          <Text>{post.frontmatter.client}</Text>
+      <Grid justifyContent="space-between">
+        <Column w="auto">
+          <Text>
+            <b>{post.frontmatter.client}</b>
+          </Text>
+        </Column>
+        <Column w="auto">
           <Text>
             {post.frontmatter.tags.map(tag => (
               <span key={tag}>{tag}, </span>
             ))}
           </Text>
         </Column>
-        <Column>
+      </Grid>
+      <Grid>
+        <Column tablet="8">
           <H1>{post.frontmatter.title}</H1>
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Column>
       </Grid>
       {post.frontmatter.image && <Img src={post.frontmatter.image} alt="" />}
       <Grid>
-        <Column>
+        <Column tablet="8">
           {renderAst(post.htmlAst)}
 
           {contact && (

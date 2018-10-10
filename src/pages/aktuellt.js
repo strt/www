@@ -14,7 +14,7 @@ export default function News({ data }) {
   return (
     <Layout title="Aktuellt">
       <Grid>
-        <Column>
+        <Column tablet="8">
           <H1>Det senaste från Strateg</H1>
           <Excerpt>
             Vad händer på Strateg? Vad händer i vår omvärld? Här hittar du både

@@ -7,7 +7,7 @@ export default function Career() {
   return (
     <Layout title="Bli en av oss">
       <Grid>
-        <Column>
+        <Column tablet="8">
           <H1>Det bästa med att jobba på Strateg.</H1>
           <Excerpt>
             Fina förmåner och utvecklingsmöjligheter i all ära, här på Strateg

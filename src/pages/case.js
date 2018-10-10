@@ -17,7 +17,7 @@ export default function Case({ data }) {
   return (
     <Layout title="Case">
       <Grid>
-        <Column>
+        <Column tablet="8">
           <H1>En rubrik för case.</H1>
           <Excerpt>Vi gillar det vi gör.</Excerpt>
           {cases.map(i => (

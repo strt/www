@@ -21,7 +21,7 @@ export default function Index({ data }) {
       description="Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang."
     >
       <Grid>
-        <Column medium="6">
+        <Column tablet="8">
           <H1>
             Vi är en kommunikationsbyrå designing and building beautiful digital
             products, brands, and experiences.

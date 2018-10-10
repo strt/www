@@ -28,14 +28,15 @@ export default function Footer() {
       {({ site: { siteMetadata } }) => (
         <footer>
           <Grid>
-            <Column>
+            <Column tablet="1" />
+            <Column tablet="3">
               <Text>
                 {siteMetadata.name} <br />
                 {siteMetadata.adress} <br />
                 {siteMetadata.zipcode} {siteMetadata.city}
               </Text>
             </Column>
-            <Column>
+            <Column tablet="3">
               <Text>
                 <a href={`mailto:${siteMetadata.email}`}>
                   {siteMetadata.email}
@@ -44,7 +45,7 @@ export default function Footer() {
                 <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
               </Text>
             </Column>
-            <Column>
+            <Column tablet="3">
               <Text>
                 <a
                   href={siteMetadata.instagram}

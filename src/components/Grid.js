@@ -1,11 +1,16 @@
 import styled from 'styled-components'
-import { justifyContent, justifyItems, alignItems, flexWrap } from '../style'
+import {
+  breakpoint,
+  justifyContent,
+  justifyItems,
+  alignItems,
+  flexWrap,
+} from '../style'
 
 export const Grid = styled.div(
   {
     display: 'flex',
     flexWrap: 'wrap',
-    // maxWidth: '1408px',
     marginRight: 'auto',
     marginLeft: 'auto',
     paddingRight: '4vw',
@@ -17,6 +22,9 @@ export const Grid = styled.div(
   justifyContent,
 )
 
-export const Column = styled.div`
-  width: 66.666%;
-`
+export const Column = styled.div(({ tablet, w }) => ({
+  width: w || '100%',
+  [`@media ${breakpoint.medium}`]: {
+    width: tablet ? `${(100 / 12) * Number(tablet)}%` : undefined,
+  },
+}))

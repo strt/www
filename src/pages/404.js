@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <Layout title="404">
       <Grid>
-        <Column>
+        <Column tablet="8">
           <H1>404 – Sidan hittades inte.</H1>
         </Column>
       </Grid>

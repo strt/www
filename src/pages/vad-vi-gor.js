@@ -7,7 +7,7 @@ export default function About() {
   return (
     <Layout title="Vad vi gör">
       <Grid>
-        <Column>
+        <Column tablet="8">
           <H1>Vad vi gör</H1>
         </Column>
       </Grid>

@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <Layout title="Kontakt">
       <Grid>
-        <Column>
+        <Column tablet="8">
           <H1>Kontakt är det bästa vi vet.</H1>
           <Excerpt>
             Välkommen till Strateg. Till det stora, svarta huset. Lätt att

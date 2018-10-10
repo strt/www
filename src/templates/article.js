@@ -26,28 +26,30 @@ export default function Template({
 }) {
   return (
     <Layout title={post.frontmatter.title} hideFooter>
-      <Grid>
-        <Column>
-          <Text as="time">{post.frontmatter.date}</Text>
-          <H1>{post.frontmatter.title}</H1>
-          <Excerpt>{post.frontmatter.excerpt}</Excerpt>
-        </Column>
-      </Grid>
-      {post.frontmatter.image && <Img src={post.frontmatter.image} alt="" />}
-      <Grid>
-        <Column>
-          {renderAst(post.htmlAst)}
+      <article>
+        <Grid>
+          <Column tablet="8">
+            <Text as="time">{post.frontmatter.date}</Text>
+            <H1>{post.frontmatter.title}</H1>
+            <Excerpt>{post.frontmatter.excerpt}</Excerpt>
+          </Column>
+        </Grid>
+        {post.frontmatter.image && <Img src={post.frontmatter.image} alt="" />}
+        <Grid>
+          <Column tablet="8">
+            {renderAst(post.htmlAst)}
 
-          {next && (
-            <>
-              <Text>Nästa artikel</Text>
-              <Link as={GatsbyLink} to={next.fields.slug} rel="next">
-                → {next.frontmatter.title}
-              </Link>
-            </>
-          )}
-        </Column>
-      </Grid>
+            {next && (
+              <>
+                <Text>Nästa artikel</Text>
+                <Link as={GatsbyLink} to={next.fields.slug} rel="next">
+                  → {next.frontmatter.title}
+                </Link>
+              </>
+            )}
+          </Column>
+        </Grid>
+      </article>
     </Layout>
   )
 }
