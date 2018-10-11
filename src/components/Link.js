@@ -5,9 +5,10 @@ import { colors, fontFamily, pxToFluid } from '../style'
 
 const A = styled.a`
   font-size: ${pxToFluid(20)};
+  font-family: ${fontFamily.primary};
+  font-weight: 500;
   text-decoration: underline;
   color: ${colors.blue500};
-  font-family: ${fontFamily.primary};
 `
 
 export default function Link(props) {
