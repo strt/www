@@ -19,7 +19,7 @@ export const fontFamily = {
   primary: 'Circular, Helvetica, sans-serif',
 }
 
-export const breakpoint = {
+export const breakpoints = {
   small: '(min-width: 72rem)',
   medium: '(min-width: 96rem)',
   large: '(min-width: 144remx)',
@@ -74,6 +74,8 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${colors.red500};
   }
 `
+
+export const createMediaQuery = n => `@media screen and (min-width: ${n})`
 
 export function pxToFluid(px, base = 15.2) {
   return `${px / base}vw`

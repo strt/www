@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import {
-  breakpoint,
+  breakpoints,
   justifyContent,
   justifyItems,
   alignItems,
@@ -24,7 +24,7 @@ export const Grid = styled.div(
 
 export const Column = styled.div(({ tablet, w }) => ({
   width: w || '100%',
-  [`@media ${breakpoint.medium}`]: {
+  [`@media ${breakpoints.medium}`]: {
     width: tablet ? `${(100 / 12) * Number(tablet)}%` : undefined,
   },
 }))

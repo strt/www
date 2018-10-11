@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { colors, fontFamily, breakpoint, pxToFluid } from '../style'
+import { colors, fontFamily, breakpoints, pxToFluid } from '../style'
 
 const text = css`
   color: ${colors.black};
@@ -33,7 +33,7 @@ export const H1 = styled.h1`
   font-weight: 900;
   line-height: 1.25em;
 
-  @media ${breakpoint.medium} {
+  @media ${breakpoints.medium} {
     font-size: ${pxToFluid(56)};
   }
 `
@@ -48,8 +48,8 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
   ${text};
-  margin-bottom: 0.25em;
+  margin-bottom: 0.666em;
   font-size: ${pxToFluid(24)};
   font-weight: 500;
-  line-height: 1.25em;
+  line-height: 1.67em;
 `
