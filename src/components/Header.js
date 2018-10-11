@@ -4,13 +4,15 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid } from './Grid'
 import Logo from './Logo'
 import Link from './Link'
+import { colors } from '../style'
 
 const StyledHeader = styled.header`
   padding: 5.6rem 0;
 `
 
 const NavLink = styled(Link)`
-  margin: 0 1.2rem;
+  margin: 0 1.315vw;
+  color: ${colors.red500};
 
   &[aria-current] {
     text-decoration: line-through;
