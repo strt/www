@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
-import styled from 'styled-components'
 import RehypeReact from 'rehype-react'
 import Layout from '../components/Layout'
 import Link from '../components/Link'
 import { Text, Excerpt, H1, H2, H3 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import Cover from '../components/Cover'
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
@@ -14,11 +14,6 @@ const renderAst = new RehypeReact({
     p: Text,
   },
 }).Compiler
-
-const Img = styled.img`
-  width: 100%;
-  margin-bottom: 2.894vw;
-`
 
 export default function Template({
   data: { markdownRemark: post },
@@ -53,7 +48,11 @@ export default function Template({
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Column>
       </Grid>
-      {post.frontmatter.image && <Img src={post.frontmatter.image} alt="" />}
+      {post.frontmatter.image && (
+        <Cover>
+          <img src={post.frontmatter.image} alt="" />
+        </Cover>
+      )}
       <Grid>
         <Column tablet="8">
           {renderAst(post.htmlAst)}
