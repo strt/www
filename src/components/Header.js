@@ -7,12 +7,16 @@ import Link from './Link'
 import { colors } from '../style'
 
 const StyledHeader = styled.header`
-  padding: 5.6rem 0;
+  padding: 3.684vw 0;
 `
 
 const NavLink = styled(Link)`
-  margin: 0 1.315vw;
+  margin-right: 2.631vw;
   color: ${colors.red500};
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &[aria-current] {
     text-decoration: line-through;
