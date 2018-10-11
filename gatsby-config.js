@@ -1,3 +1,6 @@
+/* eslint-disable-next-line import/no-extraneous-dependencies */
+const proxy = require('http-proxy-middleware')
+
 module.exports = {
   siteMetadata: {
     name: 'Strateg Marknadsföring',
@@ -48,4 +51,15 @@ module.exports = {
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify-cms',
   ],
+  developMiddleware: (app) => {
+    app.use(
+      '/.netlify/functions/',
+      proxy({
+        target: 'http://localhost:9000',
+        pathRewrite: {
+          '/.netlify/functions/': '',
+        },
+      }),
+    )
+  },
 }

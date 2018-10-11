@@ -5,9 +5,11 @@ node_modules
 
 # Build
 public
+lambda/dist
 .cache
 
 # Misc
 .DS_Store
 .vscode
 *.orig
+.env
