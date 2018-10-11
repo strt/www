@@ -1,10 +1,10 @@
 ---
 date: '2018-04-06T15:25:24+02:00'
 client: 'Wer'
-title: 'Wer'
-excerpt: 'Wer ger mer än kunderna visste'
+title: 'Wer ger mer än kunderna visste.'
+excerpt: null
 image: '/images/uploads/wer-case.jpg'
-tags: ['Webb', 'Print']
+tags: ['Digitalt', 'Print']
 ---
 
 ## Så ser vi ut

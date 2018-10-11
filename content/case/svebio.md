@@ -1,10 +1,10 @@
 ---
 date: '2018-04-06T15:25:24+02:00'
 client: 'Svebio'
-title: 'Svebio'
-excerpt: 'Tre webbplatser - en smart lösning'
+title: 'Tre webbplatser - en smart lösning.'
+excerpt: null
 image: '/images/uploads/svebio-case.jpg'
-tags: ['Webb', 'Print']
+tags: ['Digitalt']
 ---
 
 ## Så ser vi ut

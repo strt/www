@@ -1,10 +1,10 @@
 ---
 date: '2018-04-06T15:25:24+02:00'
 client: 'Garageportexperten'
-title: 'Garageportexperten'
-excerpt: 'Enad röst tack vare kommunikativ plattform'
+title: 'Enad röst tack vare kommunikativ plattform.'
+excerpt: null
 image: '/images/uploads/gara-case.jpg'
-tags: ['Webb', 'Print']
+tags: ['Digitalt', 'Print']
 ---
 
 ## Så ser vi ut
