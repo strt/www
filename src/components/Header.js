@@ -20,29 +20,17 @@ const NavLink = styled(Link)`
 export default function Header() {
   return (
     <StyledHeader>
-      <Grid justifyContent="space-between" alignItems="center">
+      <Grid justifyContent="space-between">
         <GatsbyLink to="/">
           <Logo />
         </GatsbyLink>
         <div>
-          <NavLink as={GatsbyLink} to="/">
-            Hem
-          </NavLink>
-          <NavLink as={GatsbyLink} to="/case">
-            Case
-          </NavLink>
-          <NavLink as={GatsbyLink} to="/vad-vi-gor">
-            Vad vi gör
-          </NavLink>
-          <NavLink as={GatsbyLink} to="/bli-en-av-oss">
-            Bli en av oss
-          </NavLink>
-          <NavLink as={GatsbyLink} to="/aktuellt">
-            Aktuellt
-          </NavLink>
-          <NavLink as={GatsbyLink} to="/kontakt">
-            Kontakt
-          </NavLink>
+          <NavLink to="/">Hem</NavLink>
+          <NavLink to="/case">Case</NavLink>
+          <NavLink to="/vad-vi-gor">Vad vi gör</NavLink>
+          <NavLink to="/bli-en-av-oss">Bli en av oss</NavLink>
+          <NavLink to="/aktuellt">Aktuellt</NavLink>
+          <NavLink to="/kontakt">Kontakt</NavLink>
         </div>
       </Grid>
     </StyledHeader>
