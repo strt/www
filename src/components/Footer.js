@@ -1,7 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
+
+const StyledFooter = styled.footer`
+  padding: 12rem 0;
+`
 
 export default function Footer() {
   return (
@@ -26,9 +31,8 @@ export default function Footer() {
       `}
     >
       {({ site: { siteMetadata } }) => (
-        <footer>
-          <Grid>
-            <Column tablet="1" />
+        <StyledFooter>
+          <Grid justifyContent="center">
             <Column tablet="3">
               <Text>
                 {siteMetadata.name} <br />
@@ -45,7 +49,7 @@ export default function Footer() {
                 <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
               </Text>
             </Column>
-            <Column tablet="3">
+            <Column tablet="4">
               <Text>
                 <a
                   href={siteMetadata.instagram}
@@ -82,7 +86,7 @@ export default function Footer() {
               </Text>
             </Column>
           </Grid>
-        </footer>
+        </StyledFooter>
       )}
     </StaticQuery>
   )
