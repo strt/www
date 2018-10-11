@@ -7,7 +7,7 @@ const text = css`
 
   a {
     color: inherit;
-    font: inherit;
+    font-size: inherit;
   }
 `
 
