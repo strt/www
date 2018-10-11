@@ -27,7 +27,6 @@ export default function Header() {
           <Logo />
         </GatsbyLink>
         <div>
-          <NavLink to="/">Hem</NavLink>
           <NavLink to="/case">Case</NavLink>
           <NavLink to="/vad-vi-gor">Vad vi gör</NavLink>
           <NavLink to="/bli-en-av-oss">Bli en av oss</NavLink>
