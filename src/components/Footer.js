@@ -32,7 +32,7 @@ export default function Footer() {
     >
       {({ site: { siteMetadata } }) => (
         <StyledFooter>
-          <Grid justifyContent="center">
+          <Grid>
             <Column tablet="3">
               <Text>
                 {siteMetadata.name} <br />
@@ -49,7 +49,7 @@ export default function Footer() {
                 <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
               </Text>
             </Column>
-            <Column tablet="4">
+            <Column tablet="3">
               <Text>
                 <a
                   href={siteMetadata.instagram}
