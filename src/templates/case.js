@@ -37,8 +37,12 @@ export default function Template({
         </Column>
         <Column w="auto">
           <Text>
-            {post.frontmatter.tags.map(tag => (
-              <span key={tag}>{tag}, </span>
+            —{' '}
+            {post.frontmatter.tags.map((tag, index) => (
+              <span key={tag}>
+                <a href="/">{tag}</a>
+                {index !== post.frontmatter.tags.length - 1 && ', '}
+              </span>
             ))}
           </Text>
         </Column>
