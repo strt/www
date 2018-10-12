@@ -6,6 +6,7 @@ import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
 import Link from '../components/Link'
+import InstagramGrid from '../components/InstagramGrid'
 
 export default function Index({ data }) {
   return (
@@ -63,7 +64,15 @@ export default function Index({ data }) {
                 </Link>
               </Text>
             ))}
-            <Link to="/case">Fler inlägg</Link>
+            <Link to="/aktuellt">Fler inlägg</Link>
+          </Column>
+        </Grid>
+      </Section>
+      <Section>
+        <Grid justifyContent="center">
+          <Column tablet="10">
+            <H2>Instagram</H2>
+            <InstagramGrid />
           </Column>
         </Grid>
       </Section>
