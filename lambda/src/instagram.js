@@ -15,9 +15,11 @@ exports.handler = function instagram(event, context, callback) {
         },
         body: JSON.stringify(
           posts.map(i => ({
+            id: i.id,
             link: i.link,
             images: i.images,
             videos: i.videos,
+            caption: i.caption.text,
           })),
         ),
       })
