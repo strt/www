@@ -5,9 +5,10 @@ import { GlobalStyle } from '../style'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
+import '../utils/iconLibrary'
 import '../assets/fonts/circular.css'
 
-const Wrapper = styled.div`
+const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -21,7 +22,7 @@ export default function Layout({
   hideFooter,
 }) {
   return (
-    <Wrapper>
+    <PageWrapper>
       <GlobalStyle />
       <Header />
       <SeoAndMeta title={title} description={description}>
@@ -29,6 +30,6 @@ export default function Layout({
       </SeoAndMeta>
       <Main>{children}</Main>
       {!hideFooter && <Footer />}
-    </Wrapper>
+    </PageWrapper>
   )
 }

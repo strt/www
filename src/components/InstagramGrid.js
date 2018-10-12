@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Link from './Link'
 import Fetch from './Fetch'
+import Icon from './Icon'
 import { colors } from '../style'
 
 const Grid = styled.div`
@@ -28,10 +29,16 @@ const Box = styled.div`
 
   & a {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     background-color: ${colors.blue500};
+
+    & svg {
+      margin-bottom: 0.5em;
+      font-size: 1.2em;
+    }
   }
 
   &:nth-child(1) {
@@ -41,25 +48,25 @@ const Box = styled.div`
 
   &:nth-child(2) {
     grid-column: 3;
-    grid-row: 2 / 8;
+    grid-row: 2 / 4;
   }
 
   &:nth-child(3) {
-    grid-row: 3 / 13;
+    grid-row: 3 / 5;
   }
 
   &:nth-child(4) {
-    grid-row: 3 / 13;
+    grid-row: 3 / 5;
   }
 
   &:nth-child(5) {
     grid-column: 4;
-    grid-row: 6 / 16;
+    grid-row: 3 / 5;
   }
 
   &:nth-child(6) {
     grid-column: 3;
-    grid-row: 8 / 18;
+    grid-row: 4 / 6;
   }
 `
 
@@ -105,6 +112,7 @@ function Posts({ posts = placeholderItems }) {
               target="_blank"
               rel="noopener noreferrer"
             >
+              <Icon name={['fab', 'instagram']} />
               <span>Följ enstrateg</span>
             </Link>
           )}
