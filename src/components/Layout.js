@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import SeoAndMeta from './SeoAndMeta'
+import Meta from './Meta'
 import { GlobalStyle } from '../style'
 import Header from './Header'
 import Main from './Main'
@@ -23,11 +23,11 @@ export default function Layout({
 }) {
   return (
     <PageWrapper>
+      <Meta title={title} description={description}>
+        {meta}
+      </Meta>
       <GlobalStyle />
       <Header />
-      <SeoAndMeta title={title} description={description}>
-        {meta}
-      </SeoAndMeta>
       <Main>{children}</Main>
       {!hideFooter && <Footer />}
     </PageWrapper>
