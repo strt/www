@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
+import { colors } from '../style'
 
 const StyledFooter = styled.footer`
-  padding: 12rem 0;
+  padding: 8rem 0 12.8rem;
+  background-color: ${colors.gray100};
 `
 
 export default function Footer() {
