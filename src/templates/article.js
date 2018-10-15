@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link as GatsbyLink, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import RehypeReact from 'rehype-react'
 import Layout from '../components/Layout'
-import Link from '../components/Link'
 import { Text, Excerpt, H1, H2 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
@@ -15,12 +14,9 @@ const renderAst = new RehypeReact({
   },
 }).Compiler
 
-export default function Template({
-  data: { markdownRemark: post },
-  pageContext: { next },
-}) {
+export default function Template({ data: { markdownRemark: post } }) {
   return (
-    <Layout title={post.frontmatter.title} hideFooter>
+    <Layout title={post.frontmatter.title}>
       <article>
         <Grid>
           <Column tablet="8">
@@ -35,18 +31,7 @@ export default function Template({
           </Cover>
         )}
         <Grid>
-          <Column tablet="8">
-            {renderAst(post.htmlAst)}
-
-            {next && (
-              <>
-                <Text>Nästa artikel</Text>
-                <Link as={GatsbyLink} to={next.fields.slug} rel="next">
-                  → {next.frontmatter.title}
-                </Link>
-              </>
-            )}
-          </Column>
+          <Column tablet="8">{renderAst(post.htmlAst)}</Column>
         </Grid>
       </article>
     </Layout>
