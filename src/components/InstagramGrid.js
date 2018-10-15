@@ -77,21 +77,30 @@ function Posts({ posts = placeholderItems }) {
     <Grid>
       {posts.map(post => (
         <Box key={post.id}>
-          {post.videos && (
-            <video
-              src={post.videos.standard_resolution.url}
-              autoPlay
-              muted
-              loop
-            />
-          )}
-          {!post.videos &&
-            post.images && (
-              <img
-                src={post.images.standard_resolution.url}
-                alt={post.caption}
-              />
-            )}
+          {(() => {
+            if (post.videos) {
+              return (
+                <video
+                  src={post.videos.standard_resolution.url}
+                  poster={post.images.standard_resolution.url}
+                  autoPlay
+                  muted
+                  loop
+                />
+              )
+            }
+
+            if (post.images) {
+              return (
+                <img
+                  src={post.images.standard_resolution.url}
+                  alt={post.caption}
+                />
+              )
+            }
+
+            return null
+          })()}
         </Box>
       ))}
       <Box>
