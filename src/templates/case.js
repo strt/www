@@ -25,12 +25,12 @@ export default function Template({
   return (
     <Layout title={post.frontmatter.title} hideFooter>
       <Grid justifyContent="space-between">
-        <Column w="auto">
+        <Column width="auto">
           <Text>
             <b>{post.frontmatter.client}</b>
           </Text>
         </Column>
-        <Column w="auto">
+        <Column width="auto">
           <Text>
             —{' '}
             {post.frontmatter.tags.map((tag, index) => (

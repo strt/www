@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 import {
-  breakpoints,
   justifyContent,
   justifyItems,
   alignItems,
   flexWrap,
+  order,
+  breakpoints,
+  getWidth,
+  createMediaQuery,
 } from '../style'
+import { Tag } from '../utils/tag'
 
 export const Grid = styled.div(
   {
@@ -22,9 +26,15 @@ export const Grid = styled.div(
   justifyContent,
 )
 
-export const Column = styled.div(({ tablet, w }) => ({
-  width: w || '100%',
-  [`@media ${breakpoints.medium}`]: {
-    width: tablet ? `${(100 / 12) * Number(tablet)}%` : undefined,
-  },
-}))
+export const Column = styled(Tag)(
+  props => ({
+    width: getWidth(props.width) || '100%',
+    [createMediaQuery(breakpoints.medium)]: {
+      width: getWidth(props.tablet),
+    },
+    [createMediaQuery(breakpoints.large)]: {
+      width: getWidth(props.desktop),
+    },
+  }),
+  order,
+)
