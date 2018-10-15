@@ -13,4 +13,3 @@ lambda/dist
 .vscode
 *.orig
 .env
-.npmrc
