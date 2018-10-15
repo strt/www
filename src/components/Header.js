@@ -30,13 +30,13 @@ export default function Header() {
         <GatsbyLink to="/">
           <Logo />
         </GatsbyLink>
-        <div>
+        <nav>
           <NavLink to="/case">Case</NavLink>
           <NavLink to="/vad-vi-gor">Vad vi gör</NavLink>
           <NavLink to="/bli-en-av-oss">Bli en av oss</NavLink>
           <NavLink to="/aktuellt">Aktuellt</NavLink>
           <NavLink to="/kontakt">Kontakt</NavLink>
-        </div>
+        </nav>
       </Grid>
     </StyledHeader>
   )
