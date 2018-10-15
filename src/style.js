@@ -20,14 +20,15 @@ export const fontFamily = {
 }
 
 export const breakpoints = {
-  small: '(min-width: 52rem)',
+  small: '(min-width: 42rem)',
   medium: '(min-width: 64rem)',
-  large: '(min-width: 96remx)',
+  large: '(min-width: 96rem)',
 }
 
 export const colors = {
   black: '#0b101e',
   gray500: '#85888e',
+  gray100: '#f5f6f6',
   red500: '#fa344e',
   blue500: '#2e4fd4',
 }
@@ -75,85 +76,133 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
-export const createMediaQuery = n => `@media screen and (min-width: ${n})`
-
-export function pxToFluid(px, base = 15.2) {
-  return `${px / base}vw`
+export function createMediaQuery(n) {
+  return `@media screen and ${n}`
 }
 
-function style({ prop, cssProperty }) {
+const mediaQueries = [null, ...Object.values(breakpoints).map(createMediaQuery)]
+
+function noop(n) {
+  return n
+}
+
+export function getWidth(value) {
+  if (value == null) {
+    return null
+  }
+
+  if (!Number.isNaN(Number(value))) {
+    return `${(100 / 12) * Number(value)}%`
+  }
+
+  return value
+}
+
+export function pxToFluid(px, base = 15.2) {
+  return `${px / base}vw` /* investigate using css variables for the base */
+}
+
+export function getStyleProperty(prop, value, transformValue = noop) {
+  if (value == null) {
+    return null
+  }
+
+  return {
+    [prop]: transformValue(value),
+  }
+}
+
+function createStyle({ prop, cssProperty, transformValue }) {
   const css = cssProperty || prop
 
   function fn(props) {
     const value = props[css]
-    if (value == null) return null
-
-    return {
-      [css]: value,
+    if (value == null) {
+      return null
     }
+
+    if (!Array.isArray(value)) {
+      return getStyleProperty(css, value, transformValue)
+    }
+
+    return mediaQueries.reduce((acc, mediaQuery, i) => {
+      if (!mediaQuery) {
+        return getStyleProperty(css, value[i], transformValue) || {}
+      }
+
+      const rule = getStyleProperty(css, value[i], transformValue)
+
+      if (!rule) {
+        return acc
+      }
+
+      acc[mediaQuery] = rule
+
+      return acc
+    }, {})
   }
 
   return fn
 }
 
-export const textColor = style({
+export const textColor = createStyle({
   prop: 'textColor',
   cssProperty: 'color',
 })
 
-export const bgColor = style({
+export const bgColor = createStyle({
   prop: 'bg',
   cssProperty: 'backgroundColor',
 })
 
-export const textAlign = style({
+export const textAlign = createStyle({
   prop: 'textAlign',
 })
 
-export const display = style({
+export const display = createStyle({
   prop: 'display',
 })
 
-export const alignItems = style({
+export const alignItems = createStyle({
   prop: 'alignItems',
 })
 
-export const alignContent = style({
+export const alignContent = createStyle({
   prop: 'alignContent',
 })
 
-export const justifyItems = style({
+export const justifyItems = createStyle({
   prop: 'justifyItems',
 })
 
-export const justifyContent = style({
+export const justifyContent = createStyle({
   prop: 'justifyContent',
 })
 
-export const flexWrap = style({
+export const flexWrap = createStyle({
   prop: 'flexWrap',
 })
 
-export const flexBasis = style({
+export const flexBasis = createStyle({
   prop: 'flexBasis',
 })
 
-export const flexDirection = style({
+export const flexDirection = createStyle({
   prop: 'flexDirection',
 })
 
-export const flex = style({
+export const flex = createStyle({
   prop: 'flex',
 })
 
-export const justifySelf = style({
+export const justifySelf = createStyle({
   prop: 'justifySelf',
 })
 
-export const alignSelf = style({
+export const alignSelf = createStyle({
   prop: 'alignSelf',
 })
 
-export const order = style({
+export const order = createStyle({
   prop: 'order',
 })
