@@ -2,7 +2,14 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
-export default function Meta({ title, description, children }) {
+export default function Meta({
+  title,
+  description,
+  image,
+  url,
+  isArticle,
+  children,
+}) {
   return (
     <StaticQuery
       query={graphql`
@@ -18,13 +25,30 @@ export default function Meta({ title, description, children }) {
       {({ site: { siteMetadata } }) => (
         <Helmet
           htmlAttributes={{ lang: 'sv' }}
+          title={title}
           titleTemplate="%s • Strateg"
           defaultTitle={siteMetadata.name}
         >
-          {title && <title>{title}</title>}
-          {description && <meta name="description" content={description} />}
           {/* TODO: Remove before release */}
           <meta name="robots" content="noindex, nofollow" />
+
+          {description && <meta name="description" content={description} />}
+
+          {/* OpenGraph tags */}
+          <meta property="og:url" content={url} />
+          <meta property="og:site_name" content={siteMetadata.name} />
+          <meta
+            property="og:type"
+            content={isArticle ? 'article' : 'website'}
+          />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content={image} />
+          <meta property="fb:app_id" content={siteMetadata.facebook_app_id} />
+
+          {/* Twitter Card tags */}
+          <meta name="twitter:card" content="summary_large_image" />
+
           {children}
         </Helmet>
       )}
