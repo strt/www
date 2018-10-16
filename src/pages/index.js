@@ -34,7 +34,7 @@ export default function Index({ data }) {
               dimmhöljd och jäst söka rännil göras, sjö vemod för när smultron
               nya gör plats vid stig är strand.
             </Excerpt>
-            <Link to="/vad-vi-gor">Se vad vi gör</Link>
+            <Link to="/vad-vi-gor/">Se vad vi gör</Link>
           </Column>
         </Grid>
       </Section>
@@ -49,7 +49,7 @@ export default function Index({ data }) {
                 </Link>
               </Text>
             ))}
-            <Link to="/case">Fler case</Link>
+            <Link to="/case/">Fler case</Link>
           </Column>
         </Grid>
       </Section>
@@ -64,14 +64,13 @@ export default function Index({ data }) {
                 </Link>
               </Text>
             ))}
-            <Link to="/aktuellt">Fler inlägg</Link>
+            <Link to="/aktuellt/">Fler inlägg</Link>
           </Column>
         </Grid>
       </Section>
       <Section>
         <Grid justifyContent="center">
           <Column tablet="10">
-            <H2>Instagram</H2>
             <InstagramGrid />
           </Column>
         </Grid>
