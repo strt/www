@@ -4,13 +4,14 @@ const proxy = require('http-proxy-middleware')
 module.exports = {
   siteMetadata: {
     name: 'Strateg Marknadsföring',
-    siteUrl: 'https://strateg.netlify.com',
+    siteUrl: 'https://beta.strateg.se',
     adress: 'Slöjdgatan 39',
     zipcode: '703 83',
     city: 'Örebro',
     email: 'hej@strateg.se',
     phone: '019-673 44 00',
     facebook: 'https://www.facebook.com/strategmarknadsforing/',
+    facebook_app_id: '',
     instagram: 'https://www.instagram.com/enstrateg/',
     linkedin: 'https://www.linkedin.com/company/strateg-marknadsf-ring-ab',
     github: 'https://github.com/strt',
