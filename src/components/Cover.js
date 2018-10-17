@@ -1,13 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '../style'
+import { colors, breakpoints } from '../style'
 
 const CoverWrapper = styled.div`
   position: relative;
   height: 0;
   width: 100%;
-  padding-top: 56.25%;
+  padding-top: 100%;
   background-color: ${colors.black};
+
+  @media screen and ${breakpoints.medium} {
+    padding-top: 56.25%;
+  }
 
   canvas,
   video,

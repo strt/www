@@ -4,21 +4,41 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid } from './Grid'
 import Logo from './Logo'
 import Link from './Link'
-import { colors } from '../style'
+import { colors, breakpoints } from '../style'
 
 const StyledHeader = styled.header`
-  padding: 3.684vw 0;
+  padding: ${40 / 6.4}vw 0;
+
+  @media screen and ${breakpoints.small} {
+    padding: ${34 / 7.68}vw 0;
+  }
+
+  @media screen and ${breakpoints.medium} {
+    padding: ${56 / 15.2}vw 0;
+  }
 `
 
-const NavLink = styled(Link)`
-  margin-right: 2.631vw;
+function BaseNavLink(props) {
+  return (
+    <Link
+      getProps={({ isPartiallyCurrent }) =>
+        isPartiallyCurrent ? { 'data-active': true } : null
+      }
+      {...props}
+    />
+  )
+}
+
+const NavLink = styled(BaseNavLink)`
+  margin-right: ${40 / 15.2}vw;
   color: ${colors.red500};
 
   &:last-child {
     margin-right: 0;
   }
 
-  &[aria-current] {
+  &[aria-current],
+  &[data-active] {
     text-decoration: line-through;
   }
 `

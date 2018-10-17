@@ -1,14 +1,18 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
-import { colors, fontFamily, pxToFluid } from '../style'
+import { colors, fontFamily, fluidType, breakpoints } from '../style'
 
 const A = styled.a`
-  font-size: ${pxToFluid(20)};
-  font-family: ${fontFamily.primary};
-  font-weight: 500;
+  font-size: ${fluidType({ min: 14, max: 18 })};
+  font-family: ${fontFamily};
+  font-weight: ${props => (props.thin ? 400 : 500)};
   text-decoration: underline;
-  color: ${colors.blue500};
+  color: ${props => props.textColor || colors.blue500};
+
+  @media screen and ${breakpoints.medium} {
+    font-size: ${20 / 15.2}vw;
+  }
 `
 
 export default function Link(props) {

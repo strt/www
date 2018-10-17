@@ -1,12 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
-import { colors, pxToFluid } from '../style'
+import { colors, breakpoints } from '../style'
 
 const Svg = styled(BaseSvg)`
-  width: ${pxToFluid(188)};
+  width: ${164 / 7.68}vw;
+  min-width: 112px;
   height: auto;
   color: ${colors.black};
+
+  @media screen and ${breakpoints.medium} {
+    width: ${188 / 15.2}vw;
+  }
 `
 
 export default function Logo() {

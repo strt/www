@@ -1,55 +1,37 @@
 import { createGlobalStyle } from 'styled-components'
 import { reset } from 'styled-reset'
 
-export const space = [
-  '0',
-  '0.4rem',
-  '0.8rem',
-  '1.2rem',
-  '1.6rem',
-  '2.4rem',
-  '3.2rem',
-  '4rem',
-  '4.8rem',
-  '5.6rem',
-  '6.4rem',
-]
-
-export const fontFamily = {
-  primary: 'Circular, Helvetica, sans-serif',
-}
-
-export const breakpoints = {
-  small: '(min-width: 42rem)',
-  medium: '(min-width: 64rem)',
-  large: '(min-width: 96rem)',
-}
+export const fontFamily = 'Circular, Helvetica, sans-serif'
 
 export const colors = {
   black: '#0b101e',
   gray500: '#85888e',
   gray100: '#f5f6f6',
-  red500: '#fa344e',
   blue500: '#2e4fd4',
+  red500: '#fa344e',
+  pink500: '#fdbab8',
+}
+
+export const breakpoints = {
+  small: '(min-width: 640px)',
+  medium: '(min-width: 768px)',
+  large: '(min-width: 1024px)',
 }
 
 export const easings = {
   easeOutQuad: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-  easeOutCubic: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
   easeOutQuart: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
-  easeOutQuint: 'cubic-bezier(0.23, 1, 0.32, 1)',
   easeOutSine: 'cubic-bezier(0.39, 0.575, 0.565, 1)',
-  easeOutExpo: 'cubic-bezier(0.19, 1, 0.22, 1)',
-  easeOutCirc: 'cubic-bezier(0.075, 0.82, 0.165, 1)',
-  easeOutBack: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
 }
 
-export const GlobalStyle = createGlobalStyle`
-  ${reset}
+export const spacings = [0, 4, 8, 12, 16, 24, 32, 40, 48, 56, 72, 96, 120, 184]
 
-  html {
+export const GlobalStyle = createGlobalStyle`
+  ${reset};
+
+  :root {
     font-size: 10px;
-    font-family: ${fontFamily.sansSerif};
+    font-family: ${fontFamily};
   }
 
   body {
@@ -61,6 +43,11 @@ export const GlobalStyle = createGlobalStyle`
   b,
   strong {
     font-weight: 700;
+  }
+
+  i,
+  em {
+    font-style: italic;
   }
 
   img {
@@ -76,33 +63,17 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
-export function createMediaQuery(n) {
-  return `@media screen and ${n}`
+function noop(i) {
+  return i
 }
 
-const mediaQueries = [null, ...Object.values(breakpoints).map(createMediaQuery)]
-
-function noop(n) {
-  return n
+export function mediaQuery(breakpoint) {
+  return `@media screen and ${breakpoint}`
 }
 
-export function getWidth(value) {
-  if (value == null) {
-    return null
-  }
+const mediaQueries = [null, ...Object.values(breakpoints).map(mediaQuery)]
 
-  if (!Number.isNaN(Number(value))) {
-    return `${(100 / 12) * Number(value)}%`
-  }
-
-  return value
-}
-
-export function pxToFluid(px, base = 15.2) {
-  return `${px / base}vw` /* investigate using css variables for the base */
-}
-
-export function getStyleProperty(prop, value, transformValue = noop) {
+export function getStyleDeclaration(prop, value, transformValue = noop) {
   if (value == null) {
     return null
   }
@@ -112,37 +83,51 @@ export function getStyleProperty(prop, value, transformValue = noop) {
   }
 }
 
+export function getResponsiveStyle(cssProperty, values, transformValue) {
+  return mediaQueries.reduce((acc, curr, i) => {
+    const rule = getStyleDeclaration(cssProperty, values[i], transformValue)
+
+    if (!curr) {
+      return rule || {}
+    }
+
+    if (rule) {
+      acc[curr] = rule
+    }
+
+    return acc
+  }, {})
+}
+
 function createStyle({ prop, cssProperty, transformValue }) {
   const css = cssProperty || prop
 
   function fn(props) {
-    const value = props[css]
+    const value = props[prop]
     if (value == null) {
       return null
     }
 
     if (!Array.isArray(value)) {
-      return getStyleProperty(css, value, transformValue)
+      return getStyleDeclaration(css, value, transformValue)
     }
 
-    return mediaQueries.reduce((acc, mediaQuery, i) => {
-      if (!mediaQuery) {
-        return getStyleProperty(css, value[i], transformValue) || {}
-      }
-
-      const rule = getStyleProperty(css, value[i], transformValue)
-
-      if (!rule) {
-        return acc
-      }
-
-      acc[mediaQuery] = rule
-
-      return acc
-    }, {})
+    return getResponsiveStyle(css, value, transformValue)
   }
 
   return fn
+}
+
+export function fluid(px, base = 15.2) {
+  return `${px / base}vw`
+}
+
+export function fluidType({ min, max, viewportMin = 320, viewportMax = 728 }) {
+  return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / (${viewportMax} - ${viewportMin})));`
+}
+
+export function getSpace(i) {
+  return fluid(spacings[i])
 }
 
 export const textColor = createStyle({
@@ -157,10 +142,6 @@ export const bgColor = createStyle({
 
 export const textAlign = createStyle({
   prop: 'textAlign',
-})
-
-export const display = createStyle({
-  prop: 'display',
 })
 
 export const alignItems = createStyle({
@@ -189,10 +170,6 @@ export const flexBasis = createStyle({
 
 export const flexDirection = createStyle({
   prop: 'flexDirection',
-})
-
-export const flex = createStyle({
-  prop: 'flex',
 })
 
 export const justifySelf = createStyle({

@@ -3,11 +3,20 @@ import styled from 'styled-components'
 import { StaticQuery, graphql } from 'gatsby'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
-import { colors } from '../style'
+import Link from './Link'
+import { colors, breakpoints } from '../style'
 
 const StyledFooter = styled.footer`
-  padding: 8rem 0 12.8rem;
+  padding: ${148 / 15.2}vw 0;
   background-color: ${colors.gray100};
+
+  ${Column}:last-child ${Text}:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and ${breakpoints.medium} {
+    padding: ${80 / 15.2}vw 0 ${128 / 15.2}vw;
+  }
 `
 
 export default function Footer() {
@@ -44,46 +53,64 @@ export default function Footer() {
             </Column>
             <Column tablet="3">
               <Text>
-                <a href={`mailto:${siteMetadata.email}`}>
+                <Link
+                  textColor={colors.black}
+                  thin
+                  href={`mailto:${siteMetadata.email}`}
+                >
                   {siteMetadata.email}
-                </a>
+                </Link>
                 <br />
-                <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
+                <Link
+                  textColor={colors.black}
+                  thin
+                  href={`tel:${siteMetadata.phone}`}
+                >
+                  {siteMetadata.phone}
+                </Link>
               </Text>
             </Column>
             <Column tablet="3">
               <Text>
-                <a
+                <Link
+                  textColor={colors.black}
+                  thin
                   href={siteMetadata.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Instagram
-                </a>
+                </Link>
                 <br />
-                <a
+                <Link
+                  textColor={colors.black}
+                  thin
                   href={siteMetadata.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Facebook
-                </a>
+                </Link>
                 <br />
-                <a
+                <Link
+                  textColor={colors.black}
+                  thin
                   href={siteMetadata.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   LinkedIn
-                </a>
+                </Link>
                 <br />
-                <a
+                <Link
+                  textColor={colors.black}
+                  thin
                   href={siteMetadata.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
-                </a>
+                </Link>
                 <br />
               </Text>
             </Column>
