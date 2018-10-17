@@ -6,7 +6,7 @@
   "author": "Alexander Nanberg <alexander.nanberg@strateg.se>",
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
-    "dev:client": "gatsby develop",
+    "dev:client": "gatsby develop -H 0.0.0.0",
     "dev:lambda": "netlify-lambda serve lambda/src -c lambda/webpack.config.js",
     "build": "npm-run-all --parallel build:*",
     "build:client": "gatsby build",
