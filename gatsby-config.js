@@ -8,7 +8,7 @@ module.exports = {
     adress: 'Slöjdgatan 39',
     zipcode: '703 83',
     city: 'Örebro',
-    email: 'hej@strateg.se',
+    email: 'info@strateg.se',
     phone: '019-673 44 00',
     facebook: 'https://www.facebook.com/strategmarknadsforing/',
     facebook_app_id: '',
