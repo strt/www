@@ -15,7 +15,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:scripts": "eslint src/**/*.js",
     "lint:styles": "stylelint src/**/*.js",
-    "format": "prettier-eslint --write",
+    "format": "prettier-eslint --write src/**/*.js",
     "env": "export $(cat .env | xargs)"
   },
   "husky": {
