@@ -13,9 +13,9 @@
     "build:lambda": "netlify-lambda build lambda/src",
     "start": "gatsby serve",
     "lint": "npm-run-all --parallel lint:*",
-    "lint:scripts": "eslint src/**/*.js",
-    "lint:styles": "stylelint src/**/*.js",
-    "format": "prettier-eslint --write src/**/*.js",
+    "lint:scripts": "eslint \"src/**/*.js\"",
+    "lint:styles": "stylelint \"src/**/*.js\"",
+    "format": "prettier-eslint --write \"src/**/*.js\"",
     "env": "export $(cat .env | xargs)"
   },
   "husky": {
