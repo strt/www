@@ -1,5 +1,12 @@
 import styled, { css } from 'styled-components'
-import { colors, fontFamily, breakpoints, fluidType, textAlign } from '../style'
+import {
+  colors,
+  fontFamily,
+  breakpoints,
+  fluidType,
+  textAlign,
+  space,
+} from '../style'
 
 const textStyle = css(
   props => ({
@@ -7,13 +14,14 @@ const textStyle = css(
     color: props.textColor || colors.black,
   }),
   textAlign,
+  space,
 )
 
 export const Text = styled.p`
-  ${textStyle};
   margin-bottom: 2em;
   font-size: ${fluidType({ min: 14, max: 18 })};
   line-height: 1.6em;
+  ${textStyle};
 
   @media ${breakpoints.medium} {
     font-size: ${20 / 15.2}vw;
@@ -21,11 +29,11 @@ export const Text = styled.p`
 `
 
 export const Excerpt = styled.p`
-  ${textStyle};
   margin-bottom: 2em;
   font-size: ${fluidType({ min: 16, max: 20 })};
   font-weight: 500;
   line-height: 1.6em;
+  ${textStyle};
 
   @media ${breakpoints.medium} {
     font-size: ${24 / 15.2}vw;
@@ -33,11 +41,11 @@ export const Excerpt = styled.p`
 `
 
 export const H1 = styled.h1`
-  ${textStyle};
   margin-bottom: 0.28em;
   font-size: ${fluidType({ min: 26, max: 44 })};
   font-weight: 900;
   line-height: 1.25em;
+  ${textStyle};
 
   @media ${breakpoints.medium} {
     font-size: ${56 / 15.2}vw;
@@ -45,11 +53,11 @@ export const H1 = styled.h1`
 `
 
 export const H2 = styled.h2`
-  ${textStyle};
   margin-bottom: 0.25em;
   font-size: ${fluidType({ min: 22, max: 28 })};
   font-weight: 700;
   line-height: 1.25em;
+  ${textStyle};
 
   @media ${breakpoints.medium} {
     font-size: ${32 / 15.2}vw;
@@ -57,11 +65,11 @@ export const H2 = styled.h2`
 `
 
 export const H3 = styled.h3`
-  ${textStyle};
   margin-bottom: 0.666em;
   font-size: ${fluidType({ min: 18, max: 24 })};
   font-weight: 500;
-  line-height: 1.67em;
+  line-height: 1.25em;
+  ${textStyle};
 
   @media ${breakpoints.medium} {
     font-size: ${24 / 15.2}vw;
