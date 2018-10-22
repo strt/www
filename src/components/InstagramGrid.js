@@ -8,7 +8,7 @@ import { colors, breakpoints } from '../style'
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   @media screen and ${breakpoints.medium} {
     grid-template-columns: repeat(4, 1fr);
@@ -37,7 +37,7 @@ const Box = styled.div`
     align-items: center;
     justify-content: center;
     color: white;
-    background-color: ${colors.blue500};
+    background-color: ${colors.blue};
 
     & svg {
       margin-bottom: 0.5em;
@@ -46,28 +46,47 @@ const Box = styled.div`
   }
 
   &:nth-child(1) {
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 1 / 3;
+
+    @media ${breakpoints.medium} {
+      grid-column: 2;
+      grid-row: 1 / 3;
+    }
   }
 
   &:nth-child(2) {
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 2 / 4;
+
+    @media ${breakpoints.medium} {
+      grid-column: 3;
+      grid-row: 2 / 4;
+    }
   }
 
   &:nth-child(3) {
+    grid-column: 1;
     grid-row: 3 / 5;
+
+    @media ${breakpoints.medium} {
+      grid-column: 1;
+    }
   }
 
   &:nth-child(4) {
-    grid-row: 3 / 5;
+    grid-row: 4 / 6;
+
+    @media ${breakpoints.medium} {
+      grid-row: 3 / 5;
+    }
   }
 
   &:nth-child(5) {
-    grid-column: 3;
-    grid-row: 4 / 6;
+    grid-column: 1;
+    grid-row: 5 / 7;
 
-    @media screen and ${breakpoints.medium} {
+    @media ${breakpoints.medium} {
       grid-column: 4;
       grid-row: 3 / 5;
     }
@@ -75,9 +94,9 @@ const Box = styled.div`
 
   &:nth-child(6) {
     grid-column: 2;
-    grid-row: 5 / 8;
+    grid-row: 6 / 8;
 
-    @media screen and ${breakpoints.medium} {
+    @media ${breakpoints.medium} {
       grid-column: 3;
       grid-row: 4 / 6;
     }
