@@ -9,7 +9,7 @@ import Link from '../components/Link'
 import Card from '../components/Card'
 import Div from '../components/Div'
 import InstagramGrid from '../components/InstagramGrid'
-import { colors } from '../style'
+import { colors, breakpoints } from '../style'
 
 export default function Index({ data }) {
   return (
@@ -55,7 +55,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.gray100} pt="0" pb="10">
+      <Section bg={colors.ice} pt="0" pb="10">
         <Div halfTopBg="white" mb="4">
           <Grid>
             <Column>
@@ -81,21 +81,32 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section pt="5" pb="10">
-        <Grid justifyContent="center">
-          <Column tablet="10">
-            <InstagramGrid />
-          </Column>
-        </Grid>
-      </Section>
-      <Section bg={colors.black} pt={[4, 8, 9]} pb={[6, 3, 9]}>
-        <Grid>
-          <Column>
-            <H1 as="h2" textColor="white">
-              Kontakt är det bästa vi vet
-            </H1>
-          </Column>
-        </Grid>
+      <Section bg={colors.pinkPeach} pt="0" mt="18">
+        <Div
+          halfTopBg="white"
+          css={{
+            '&::before': {
+              height: '64%',
+              [`@media ${breakpoints.medium}`]: { height: `${(3 / 5) * 100}%` },
+            },
+          }}
+        >
+          <Grid justifyContent="center">
+            <Column tablet="10">
+              <InstagramGrid />
+            </Column>
+          </Grid>
+        </Div>
+        <Div pt="18" pb="14">
+          <Grid>
+            <Column>
+              <H1 as="h2">Kontakt är det bästa vi vet</H1>
+              <H2 as={Link} to="/">
+                Vad vill du prata om?
+              </H2>
+            </Column>
+          </Grid>
+        </Div>
       </Section>
     </Layout>
   )
