@@ -24,14 +24,19 @@ export const easings = {
   easeOutSine: 'cubic-bezier(0.39, 0.575, 0.565, 1)',
 }
 
-export const spacings = [0, 4, 8, 12, 16, 24, 32, 40, 48, 56, 72, 96, 120, 184]
-
 export const GlobalStyle = createGlobalStyle`
   ${reset};
 
-  :root {
+  html {
+    box-sizing: border-box;
     font-size: 10px;
     font-family: ${fontFamily};
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
   }
 
   body {
@@ -63,8 +68,59 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 
+export function fluidType({ min, max, viewportMin = 320, viewportMax = 728 }) {
+  return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / (${viewportMax} - ${viewportMin})));`
+}
+
+export function ratio({ x = 16, y = 9 }) {
+  return {
+    position: 'relative',
+    '&::before': {
+      content: "''",
+      display: 'inline-block',
+      paddingBottom: `${(y / x) * 100}%`,
+    },
+    '*': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    },
+  }
+}
+
+/**
+ * This is a modified version of styled-system.
+ * MIT License: https://github.com/jxnblk/styled-system/blob/master/LICENSE.md
+ */
+
+// Utils
 function noop(i) {
   return i
+}
+
+function isNumeric(num) {
+  return !Number.isNaN(Number(num))
+}
+
+function merge(a, b) {
+  return Object.assign(
+    {},
+    a,
+    b,
+    Object.keys(b || {}).reduce(
+      (obj, key) =>
+        Object.assign(obj, {
+          [key]:
+            a[key] !== null && typeof a[key] === 'object'
+              ? merge(a[key], b[key])
+              : b[key],
+        }),
+      {},
+    ),
+  )
 }
 
 export function mediaQuery(breakpoint) {
@@ -84,24 +140,22 @@ export function getStyleDeclaration(prop, value, transformValue = noop) {
 }
 
 export function getResponsiveStyle(cssProperty, values, transformValue) {
-  return mediaQueries.reduce((acc, curr, i) => {
+  return mediaQueries.reduce((acc, media, i) => {
     const rule = getStyleDeclaration(cssProperty, values[i], transformValue)
 
-    if (!curr) {
+    if (!media) {
       return rule || {}
     }
 
     if (rule) {
-      acc[curr] = rule
+      acc[media] = rule
     }
 
     return acc
   }, {})
 }
 
-function createStyle({ prop, cssProperty, transformValue }) {
-  const css = cssProperty || prop
-
+function createStyle({ prop, cssProperty = prop, transformValue }) {
   function fn(props) {
     const value = props[prop]
     if (value == null) {
@@ -109,35 +163,100 @@ function createStyle({ prop, cssProperty, transformValue }) {
     }
 
     if (!Array.isArray(value)) {
-      return getStyleDeclaration(css, value, transformValue)
+      return getStyleDeclaration(cssProperty, value, transformValue)
     }
 
-    return getResponsiveStyle(css, value, transformValue)
+    return getResponsiveStyle(cssProperty, value, transformValue)
   }
 
   return fn
 }
 
-export function fluid(px, base = 15.2) {
-  return `${px / base}vw`
+// Space
+const REG = /^[mp][trblxy]?$/
+const properties = {
+  m: 'margin',
+  p: 'padding',
+}
+const directions = {
+  t: 'Top',
+  r: 'Right',
+  b: 'Bottom',
+  l: 'Left',
+  x: ['Left', 'Right'],
+  y: ['Top', 'Bottom'],
 }
 
-export function fluidType({ min, max, viewportMin = 320, viewportMax = 728 }) {
-  return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / (${viewportMax} - ${viewportMin})));`
+function getSpaceProperties(key) {
+  const [a, b] = key.split('')
+  const property = properties[a]
+  const direction = directions[b] || ''
+  return Array.isArray(direction)
+    ? direction.map(dir => property + dir)
+    : [property + direction]
 }
 
-export function getSpace(i) {
-  return fluid(spacings[i])
+function getSpaceValue(n) {
+  if (!isNumeric(n)) {
+    return n
+  }
+
+  const value = (Number(n) * 8) / 15.2
+
+  return `${value}vw`
 }
 
-export const textColor = createStyle({
-  prop: 'textColor',
-  cssProperty: 'color',
-})
+export function space(props) {
+  const keys = Object.keys(props)
+    .filter(key => REG.test(key))
+    .sort()
+
+  return keys
+    .map((key) => {
+      const value = props[key]
+      const cssProperties = getSpaceProperties(key)
+
+      const style = n =>
+        n != null
+          ? cssProperties.reduce(
+              (a, prop) => ({
+                ...a,
+                [prop]: getSpaceValue(n),
+              }),
+              {},
+            )
+          : null
+
+      if (!Array.isArray(value)) {
+        return style(value)
+      }
+
+      return value.reduce((acc, val, i) => {
+        const media = mediaQueries[i]
+        const rule = style(val)
+
+        if (!media) {
+          return rule || {}
+        }
+
+        if (rule) {
+          acc[media] = rule
+        }
+
+        return acc
+      }, {})
+    })
+    .reduce(merge, {})
+}
 
 export const bgColor = createStyle({
   prop: 'bg',
   cssProperty: 'backgroundColor',
+})
+
+export const textColor = createStyle({
+  prop: 'textColor',
+  cssProperty: 'color',
 })
 
 export const textAlign = createStyle({
