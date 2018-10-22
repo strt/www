@@ -1,10 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
+import { bgColor, space } from '../style'
 
-const SectionWrapper = styled.div`
-  padding: 3.684vw 0;
-`
+const Section = styled.div(space, bgColor)
 
-export default function Section(props) {
-  return <SectionWrapper {...props} />
-}
+export default Section
