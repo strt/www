@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
-import { Grid } from './Grid'
+import { Grid, Column } from './Grid'
 import Logo from './Logo'
 import Link from './Link'
 import { colors, breakpoints } from '../style'
@@ -47,16 +47,20 @@ export default function Header() {
   return (
     <StyledHeader>
       <Grid justifyContent="space-between">
-        <GatsbyLink to="/">
-          <Logo />
-        </GatsbyLink>
-        <nav>
-          <NavLink to="/case">Case</NavLink>
-          <NavLink to="/vad-vi-gor">Vad vi gör</NavLink>
-          <NavLink to="/bli-en-av-oss">Bli en av oss</NavLink>
-          <NavLink to="/aktuellt">Aktuellt</NavLink>
-          <NavLink to="/kontakt">Kontakt</NavLink>
-        </nav>
+        <Column width="auto">
+          <GatsbyLink to="/">
+            <Logo />
+          </GatsbyLink>
+        </Column>
+        <Column width="auto">
+          <nav>
+            <NavLink to="/case">Case</NavLink>
+            <NavLink to="/vad-vi-gor">Vad vi gör</NavLink>
+            <NavLink to="/bli-en-av-oss">Bli en av oss</NavLink>
+            <NavLink to="/aktuellt">Aktuellt</NavLink>
+            <NavLink to="/kontakt">Kontakt</NavLink>
+          </nav>
+        </Column>
       </Grid>
     </StyledHeader>
   )
