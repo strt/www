@@ -4,12 +4,12 @@ import { reset } from 'styled-reset'
 export const fontFamily = 'Circular, Helvetica, sans-serif'
 
 export const colors = {
-  black: '#0b101e',
-  gray500: '#85888e',
-  gray100: '#f5f6f6',
-  blue500: '#2e4fd4',
-  red500: '#fa344e',
-  pink500: '#fdbab8',
+  dark: '#0b101e',
+  steel: '#6d7078',
+  ice: '#f5f6f6',
+  blue: '#2e4fd4',
+  watermelonRed: '#fa344e',
+  pinkPeach: '#fdbab8',
 }
 
 export const breakpoints = {
@@ -64,9 +64,13 @@ export const GlobalStyle = createGlobalStyle`
 
   ::selection {
     color: white;
-    background-color: ${colors.red500};
+    background-color: ${colors.watermelonRed};
   }
 `
+
+export function mediaQuery(breakpoint) {
+  return `@media screen and ${breakpoint}`
+}
 
 export function fluidType({ min, max, viewportMin = 320, viewportMax = 728 }) {
   return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / (${viewportMax} - ${viewportMin})));`
@@ -121,10 +125,6 @@ function merge(a, b) {
       {},
     ),
   )
-}
-
-export function mediaQuery(breakpoint) {
-  return `@media screen and ${breakpoint}`
 }
 
 const mediaQueries = [null, ...Object.values(breakpoints).map(mediaQuery)]

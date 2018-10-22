@@ -7,7 +7,7 @@ const CoverWrapper = styled.div`
   height: 0;
   width: 100%;
   padding-top: 100%;
-  background-color: ${colors.black};
+  background-color: ${colors.dark};
 
   @media screen and ${breakpoints.medium} {
     padding-top: 56.25%;

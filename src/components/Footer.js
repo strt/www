@@ -8,7 +8,7 @@ import { colors, breakpoints } from '../style'
 
 const StyledFooter = styled.footer`
   padding: ${148 / 15.2}vw 0;
-  background-color: ${colors.gray100};
+  background-color: ${colors.ice};
 
   ${Column}:last-child ${Text}:last-child {
     margin-bottom: 0;
@@ -54,7 +54,7 @@ export default function Footer() {
             <Column tablet="3">
               <Text>
                 <Link
-                  textColor={colors.black}
+                  textColor={colors.dark}
                   thin
                   href={`mailto:${siteMetadata.email}`}
                 >
@@ -62,7 +62,7 @@ export default function Footer() {
                 </Link>
                 <br />
                 <Link
-                  textColor={colors.black}
+                  textColor={colors.dark}
                   thin
                   href={`tel:${siteMetadata.phone}`}
                 >
@@ -73,7 +73,7 @@ export default function Footer() {
             <Column tablet="3">
               <Text>
                 <Link
-                  textColor={colors.black}
+                  textColor={colors.dark}
                   thin
                   href={siteMetadata.instagram}
                   target="_blank"
@@ -83,7 +83,7 @@ export default function Footer() {
                 </Link>
                 <br />
                 <Link
-                  textColor={colors.black}
+                  textColor={colors.dark}
                   thin
                   href={siteMetadata.facebook}
                   target="_blank"
@@ -93,7 +93,7 @@ export default function Footer() {
                 </Link>
                 <br />
                 <Link
-                  textColor={colors.black}
+                  textColor={colors.dark}
                   thin
                   href={siteMetadata.linkedin}
                   target="_blank"
@@ -103,7 +103,7 @@ export default function Footer() {
                 </Link>
                 <br />
                 <Link
-                  textColor={colors.black}
+                  textColor={colors.dark}
                   thin
                   href={siteMetadata.github}
                   target="_blank"

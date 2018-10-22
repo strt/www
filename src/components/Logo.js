@@ -7,7 +7,7 @@ const Svg = styled(BaseSvg)`
   width: ${164 / 7.68}vw;
   min-width: 112px;
   height: auto;
-  color: ${colors.black};
+  color: ${colors.dark};
 
   @media screen and ${breakpoints.medium} {
     width: ${188 / 15.2}vw;

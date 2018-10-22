@@ -31,7 +31,7 @@ function BaseNavLink(props) {
 
 const NavLink = styled(BaseNavLink)`
   margin-right: ${40 / 15.2}vw;
-  color: ${colors.red500};
+  color: ${colors.watermelonRed};
 
   &:last-child {
     margin-right: 0;

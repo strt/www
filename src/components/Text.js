@@ -11,7 +11,7 @@ import {
 const textStyle = css(
   props => ({
     fontFamily,
-    color: props.textColor || colors.black,
+    color: props.textColor || colors.dark,
   }),
   textAlign,
   space,

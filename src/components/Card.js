@@ -35,7 +35,7 @@ const Content = styled.div`
 const ImageWrapper = styled.div`
   ${ratio({ x: 4, y: 3 })};
   width: ${(100 / 12) * 4}%;
-  background-color: ${colors.gray500};
+  background-color: ${colors.steel};
 
   @media ${breakpoints.medium} {
     width: 50%;
@@ -49,7 +49,7 @@ export default function Card({ url, title, date, image }) {
     <Link to={url}>
       <Article>
         <Content>
-          <Text as="time" datetime={date} textColor={colors.gray500} mb="2">
+          <Text as="time" datetime={date} textColor={colors.steel} mb="2">
             {formattedDate}
           </Text>
           <H3>{title}</H3>
