@@ -4,11 +4,15 @@ import styled from 'styled-components'
 import Link from './Link'
 import Fetch from './Fetch'
 import Icon from './Icon'
-import { colors } from '../style'
+import { colors, breakpoints } from '../style'
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+
+  @media screen and ${breakpoints.medium} {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `
 
 const Box = styled.div`
@@ -60,13 +64,23 @@ const Box = styled.div`
   }
 
   &:nth-child(5) {
-    grid-column: 4;
-    grid-row: 3 / 5;
+    grid-column: 3;
+    grid-row: 4 / 6;
+
+    @media screen and ${breakpoints.medium} {
+      grid-column: 4;
+      grid-row: 3 / 5;
+    }
   }
 
   &:nth-child(6) {
-    grid-column: 3;
-    grid-row: 4 / 6;
+    grid-column: 2;
+    grid-row: 5 / 8;
+
+    @media screen and ${breakpoints.medium} {
+      grid-column: 3;
+      grid-row: 4 / 6;
+    }
   }
 `
 
