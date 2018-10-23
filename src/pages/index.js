@@ -1,12 +1,13 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import { H1, H2, Text, Excerpt } from '../components/Text'
+import { H1, H2 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
 import Link from '../components/Link'
 import Card from '../components/Card'
+import Tile from '../components/Tile'
 import Div from '../components/Div'
 import InstagramGrid from '../components/InstagramGrid'
 import { colors, breakpoints } from '../style'
@@ -27,31 +28,22 @@ export default function Index({ data }) {
         </Grid>
       </Section>
       <Cover />
-      <Section py="16">
+      <Section py="15">
         <Grid>
-          <Column tablet="8">
-            <Excerpt>
-              Äng kan helt själv vi faktor om, icke annan vemod vi ser, samma
-              björnbär i rännil mot. Både oss sin erfarenheter tid enligt
-              dimmhöljd och jäst söka rännil göras, sjö vemod för när smultron
-              nya gör plats vid stig är strand.
-            </Excerpt>
-            <Link to="/vad-vi-gor/">Se vad vi gör</Link>
-          </Column>
-        </Grid>
-      </Section>
-      <Section py="8">
-        <Grid>
+          {data.cases.edges.map(({ node }) => (
+            <Column key={node.fields.slug} tablet="6">
+              <Tile
+                url={node.fields.slug}
+                title={node.frontmatter.client}
+                image={node.frontmatter.image}
+                tags={node.frontmatter.tags}
+              />
+            </Column>
+          ))}
           <Column>
-            <H2>Case</H2>
-            {data.cases.edges.map(({ node }) => (
-              <Text key={node.fields.slug}>
-                <Link to={node.fields.slug}>
-                  {node.frontmatter.client} – {node.frontmatter.title}
-                </Link>
-              </Text>
-            ))}
-            <Link to="/case/">Fler case</Link>
+            <Div mt="3">
+              <Link to="/case/">Fler case</Link>
+            </Div>
           </Column>
         </Grid>
       </Section>
@@ -125,7 +117,6 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            title
             client
             tags
             image
