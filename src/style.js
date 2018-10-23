@@ -82,16 +82,20 @@ export function ratio({ x = 16, y = 9 }) {
     '&::before': {
       content: "''",
       display: 'inline-block',
+      height: 0,
       paddingBottom: `${(y / x) * 100}%`,
     },
-    '*': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-    },
+  }
+}
+
+export function cover() {
+  return {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   }
 }
 
