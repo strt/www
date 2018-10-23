@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Link from './Link'
 import Fetch from './Fetch'
 import Icon from './Icon'
-import { colors, breakpoints } from '../style'
+import { colors, breakpoints, cover } from '../style'
 
 const Grid = styled.div`
   display: grid;
@@ -22,13 +22,7 @@ const Box = styled.div`
   background-image: linear-gradient(to top left, black, gray);
 
   & > * {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    ${cover()};
   }
 
   & a {
