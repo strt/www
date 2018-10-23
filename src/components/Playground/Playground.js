@@ -42,6 +42,7 @@ export default class Playground extends React.Component {
         pixelRatio: 'auto',
         width: rect.width,
         height: rect.height,
+        background: 'transparent',
         wireframes: false,
       },
     })
@@ -127,6 +128,11 @@ export default class Playground extends React.Component {
     World.add(world, mouseConstraint)
 
     render.mouse = mouse
+
+    Render.lookAt(render, {
+      min: { x: 0, y: 0 },
+      max: { x: 1440, y: 700 },
+    })
   }
 
   render() {
