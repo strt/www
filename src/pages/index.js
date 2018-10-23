@@ -9,6 +9,7 @@ import Link from '../components/Link'
 import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
+import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
 import { colors, breakpoints } from '../style'
 
@@ -18,7 +19,7 @@ export default function Index({ data }) {
       title="Kommunikationsbyrån som gör skillnad"
       description="Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang."
     >
-      <Section py="14">
+      <Section pt="8" pb="18">
         <Grid>
           <Column tablet="8">
             <H1>
@@ -27,7 +28,9 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Cover />
+      <Cover>
+        <Playground />
+      </Cover>
       <Section py={[6, 15]}>
         <Grid>
           {data.cases.edges.map(({ node }) => (

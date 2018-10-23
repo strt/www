@@ -7,6 +7,7 @@ const CoverWrapper = styled.div`
   height: 0;
   width: 100%;
   padding-top: 100%;
+  overflow: hidden;
   background-color: ${colors.dark};
 
   @media screen and ${breakpoints.medium} {
