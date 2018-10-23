@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
-import { colors, fontFamily, fluidType, breakpoints } from '../style'
+import { colors, fontFamily, fluidRange, breakpoints } from '../style'
 
 const A = styled.a`
-  font-size: ${fluidType({ min: 14, max: 18 })};
+  font-size: ${fluidRange({ min: 14, max: 18 })};
   font-family: ${fontFamily};
   font-weight: ${props => (props.thin ? 400 : 500)};
   text-decoration: underline;

@@ -72,7 +72,7 @@ export function mediaQuery(breakpoint) {
   return `@media screen and ${breakpoint}`
 }
 
-export function fluidType({ min, max, viewportMin = 320, viewportMax = 728 }) {
+export function fluidRange({ min, max, viewportMin = 320, viewportMax = 728 }) {
   return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / (${viewportMax} - ${viewportMin})));`
 }
 
@@ -200,12 +200,13 @@ function getSpaceProperties(key) {
     : [property + direction]
 }
 
-function getSpaceValue(n) {
+function getSpaceValue(n, i) {
   if (!isNumeric(n)) {
     return n
   }
 
-  const value = (Number(n) * 8) / 15.2
+  const scale = i === 0 ? 3.75 : 15.2
+  const value = (Number(n) * 8) / scale
 
   return `${value}vw`
 }
@@ -220,12 +221,12 @@ export function space(props) {
       const value = props[key]
       const cssProperties = getSpaceProperties(key)
 
-      const style = n =>
+      const style = (n, i) =>
         n != null
           ? cssProperties.reduce(
               (a, prop) => ({
                 ...a,
-                [prop]: getSpaceValue(n),
+                [prop]: getSpaceValue(n, i),
               }),
               {},
             )
@@ -237,7 +238,7 @@ export function space(props) {
 
       return value.reduce((acc, val, i) => {
         const media = mediaQueries[i]
-        const rule = style(val)
+        const rule = style(val, i)
 
         if (!media) {
           return rule || {}
