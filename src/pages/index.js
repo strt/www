@@ -28,10 +28,10 @@ export default function Index({ data }) {
         </Grid>
       </Section>
       <Cover />
-      <Section py="15">
+      <Section py={[6, 15]}>
         <Grid>
           {data.cases.edges.map(({ node }) => (
-            <Column key={node.fields.slug} tablet="6">
+            <Column key={node.id} tablet="6">
               <Tile
                 url={node.fields.slug}
                 title={node.frontmatter.client}
@@ -41,14 +41,14 @@ export default function Index({ data }) {
             </Column>
           ))}
           <Column>
-            <Div mt="3">
+            <Div mt={[3, 3]}>
               <Link to="/case/">Fler case</Link>
             </Div>
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.ice} pt="0" pb="10">
-        <Div halfTopBg="white" mb="4">
+      <Section bg={colors.ice} pt="0" pb={[5, 10]}>
+        <Div halfTopBg="white" mb={[2, 4]}>
           <Grid>
             <Column>
               <H2>Aktuellt</H2>
@@ -57,7 +57,7 @@ export default function Index({ data }) {
         </Div>
         <Grid>
           {data.articles.edges.map(({ node }) => (
-            <Column tablet="6">
+            <Column key={node.id} tablet="6">
               <Card
                 date={node.frontmatter.date}
                 title={node.frontmatter.title}
@@ -67,13 +67,13 @@ export default function Index({ data }) {
             </Column>
           ))}
           <Column>
-            <Div mt="3">
+            <Div mt={[3, 3]}>
               <Link to="/aktuellt/">Fler inlägg</Link>
             </Div>
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.pinkPeach} pt="0" mt="18">
+      <Section bg={colors.pinkPeach} pt="0" mt={[8, 18]}>
         <Div
           halfTopBg="white"
           css={{
@@ -89,7 +89,7 @@ export default function Index({ data }) {
             </Column>
           </Grid>
         </Div>
-        <Div pt="18" pb="14">
+        <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>
             <Column>
               <H1 as="h2">Kontakt är det bästa vi vet</H1>
@@ -113,6 +113,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           fields {
             slug
           }
@@ -131,6 +132,7 @@ export const query = graphql`
     ) {
       edges {
         node {
+          id
           fields {
             slug
           }

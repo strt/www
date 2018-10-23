@@ -6,19 +6,24 @@ import dayjs from '../utils/date'
 import { colors, ratio, breakpoints, cover } from '../style'
 
 const Link = styled(GatsbyLink)`
+  display: block;
   text-decoration: none;
 `
 
 const Article = styled.article`
   display: flex;
-  margin-bottom: ${32 / 15.2}vw;
+  margin-bottom: ${12 / 3.75}vw;
+
+  @media ${breakpoints.medium} {
+    margin-bottom: ${32 / 15.2}vw;
+  }
 `
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: ${24 / 15.2}vw;
+  padding: ${12 / 3.75}vw;
   width: ${(100 / 12) * 8}%;
   background-color: white;
 
@@ -28,6 +33,7 @@ const Content = styled.div`
   }
 
   @media ${breakpoints.medium} {
+    padding: ${24 / 15.2}vw;
     width: 50%;
   }
 `
@@ -53,7 +59,7 @@ export default function Card({ url, title, date, image }) {
     <Link to={url}>
       <Article>
         <Content>
-          <Text as="time" datetime={date} textColor={colors.steel} mb="2">
+          <Text as="time" dateTime={date} textColor={colors.steel} mb="2">
             {formattedDate}
           </Text>
           <H3>{title}</H3>
