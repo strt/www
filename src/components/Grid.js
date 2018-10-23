@@ -30,8 +30,8 @@ export const Grid = styled.div(
     flexWrap: 'wrap',
     marginRight: 'auto',
     marginLeft: 'auto',
-    paddingRight: '3vw',
-    paddingLeft: '3vw',
+    paddingRight: `${40 / 15.2}vw`,
+    paddingLeft: `${40 / 15.2}vw`,
   },
   alignItems,
   flexWrap,
@@ -42,8 +42,8 @@ export const Grid = styled.div(
 export const Column = styled(Tag)(
   props => ({
     width: getWidth(props.width) || '100%',
-    paddingRight: '1vw',
-    paddingLeft: '1vw',
+    paddingRight: `${16 / 15.2}vw`,
+    paddingLeft: `${16 / 15.2}vw`,
     [mediaQuery(breakpoints.medium)]: {
       width: getWidth(props.tablet),
     },
