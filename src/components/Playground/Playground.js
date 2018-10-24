@@ -64,11 +64,19 @@ export default class Playground extends React.Component {
     this.createPlayground()
   }
 
+  componentWillUnmount() {
+    this.destroyPlayground()
+  }
+
   createPlayground() {
     const engine = Engine.create()
     const runner = Runner.create()
     const { world } = engine
     const rect = this.canvas.current.getBoundingClientRect()
+
+    this.runner = runner
+    this.world = world
+    this.engine = engine
 
     const render = Render.create({
       canvas: this.canvas.current,
@@ -85,6 +93,7 @@ export default class Playground extends React.Component {
     Render.run(render)
     Runner.run(runner, engine)
 
+    // Add letter glyphs
     letters.forEach(({ x, y, glyph, angle = 0 }) => {
       const body = Bodies.polygon(x, y, 8, 180, {
         frictionAir: Common.random(0, 0.08),
@@ -110,13 +119,8 @@ export default class Playground extends React.Component {
       World.add(world, [body, constraint])
     })
 
+    // Add mouse constraint
     const mouse = Mouse.create(render.canvas)
-
-    // Remove events to prevent scrolling from beeing hijacked
-    mouse.element.removeEventListener('mousewheel', mouse.mousewheel)
-    mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel)
-    mouse.element.removeEventListener('touchmove', mouse.mousemove)
-
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
       constraint: {
@@ -131,15 +135,20 @@ export default class Playground extends React.Component {
 
     render.mouse = mouse
 
+    // Remove events to prevent scrolling from beeing hijacked
+    mouse.element.removeEventListener('mousewheel', mouse.mousewheel)
+    mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+    mouse.element.removeEventListener('touchmove', mouse.mousemove)
+
+    // Randomize gravity
     function randomizeGravity() {
       world.gravity.x = (Math.random() < 0.5 ? -1 : 1) / 50
       world.gravity.y = (Math.random() < 0.5 ? -1 : 1) / 50
     }
-
     randomizeGravity()
+    this.gravityInterval = setInterval(randomizeGravity, 5000)
 
-    setInterval(randomizeGravity, 5000)
-
+    // Fit scene into viewport
     Render.lookAt(render, {
       min: { x: 0, y: 0 },
       max: { x: 1440, y: 810 },
@@ -147,6 +156,13 @@ export default class Playground extends React.Component {
 
     // Reset style to remove the fixed height/width (breaks responsiveness)
     this.canvas.current.style = {}
+  }
+
+  destroyPlayground() {
+    Render.stop(this.render)
+    World.clear(this.engine.world)
+    Engine.clear(this.engine)
+    clearInterval(this.gravityInterval)
   }
 
   render() {
