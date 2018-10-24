@@ -5,6 +5,7 @@ import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import Link from './Link'
 import { colors, breakpoints } from '../style'
+import routes from '../routes'
 
 const StyledFooter = styled.footer`
   padding: ${148 / 15.2}vw 0;
@@ -112,6 +113,17 @@ export default function Footer() {
                   GitHub
                 </Link>
                 <br />
+              </Text>
+            </Column>
+            <Column tablet="3">
+              <Text as="ul">
+                {routes.map(route => (
+                  <li key={route.link}>
+                    <Link to={route.link} textColor={colors.dark} thin>
+                      {route.title}
+                    </Link>
+                  </li>
+                ))}
               </Text>
             </Column>
           </Grid>
