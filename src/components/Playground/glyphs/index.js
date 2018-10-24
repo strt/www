@@ -1,0 +1,6 @@
+export { default as sGlyph } from './s.svg'
+export { default as tGlyph } from './t.svg'
+export { default as rGlyph } from './r.svg'
+export { default as aGlyph } from './a.svg'
+export { default as eGlyph } from './e.svg'
+export { default as gGlyph } from './g.svg'

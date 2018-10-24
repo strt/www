@@ -10,38 +10,73 @@ import {
   Mouse,
   MouseConstraint,
 } from 'matter-js'
-import sGlyph from './glyphs/s.svg'
-import tGlyph from './glyphs/t.svg'
-import rGlyph from './glyphs/r.svg'
-import aGlyph from './glyphs/a.svg'
-import eGlyph from './glyphs/e.svg'
-import gGlyph from './glyphs/g.svg'
+import { sGlyph, tGlyph, rGlyph, aGlyph, eGlyph, gGlyph } from './glyphs'
+
+const letters = [
+  {
+    x: 112,
+    y: 200,
+    angle: -0.2,
+    glyph: sGlyph,
+  },
+  {
+    x: 240,
+    y: 640,
+    angle: -0.2,
+    glyph: tGlyph,
+  },
+  {
+    x: 500,
+    y: 180,
+    angle: 0.4,
+    glyph: rGlyph,
+  },
+  {
+    x: 660,
+    y: 600,
+    angle: -0.5,
+    glyph: aGlyph,
+  },
+  {
+    x: 900,
+    y: 300,
+    angle: 0.1,
+    glyph: tGlyph,
+  },
+  {
+    x: 1140,
+    y: 640,
+    angle: 0.1,
+    glyph: eGlyph,
+  },
+  {
+    x: 1280,
+    y: 140,
+    angle: 0.4,
+    glyph: gGlyph,
+  },
+]
 
 export default class Playground extends React.Component {
   canvas = React.createRef()
 
   componentDidMount() {
+    this.createPlayground()
+  }
+
+  createPlayground() {
     const engine = Engine.create()
     const runner = Runner.create()
     const { world } = engine
-
-    function updateGravity() {
-      world.gravity.x = (Math.random() < 0.5 ? -1 : 1) / 20
-      world.gravity.y = (Math.random() < 0.5 ? -1 : 1) / 20
-    }
-
-    updateGravity()
-    setInterval(updateGravity, 5000)
-
     const rect = this.canvas.current.getBoundingClientRect()
 
     const render = Render.create({
       canvas: this.canvas.current,
       engine,
       options: {
-        pixelRatio: 'auto',
         width: rect.width,
         height: rect.height,
+        pixelRatio: 'auto',
         background: 'transparent',
         wireframes: false,
       },
@@ -50,57 +85,23 @@ export default class Playground extends React.Component {
     Render.run(render)
     Runner.run(runner, engine)
 
-    const letters = [
-      {
-        x: 64,
-        y: 160,
-        glyph: sGlyph,
-      },
-      {
-        x: 260,
-        y: 600,
-        glyph: tGlyph,
-      },
-      {
-        x: 500,
-        y: 180,
-        glyph: rGlyph,
-      },
-      {
-        x: 660,
-        y: 600,
-        glyph: aGlyph,
-      },
-      {
-        x: 900,
-        y: 200,
-        glyph: tGlyph,
-      },
-      {
-        x: 1140,
-        y: 640,
-        glyph: eGlyph,
-      },
-      {
-        x: 1280,
-        y: 140,
-        glyph: gGlyph,
-      },
-    ]
-
-    letters.forEach(({ x, y, glyph }) => {
+    letters.forEach(({ x, y, glyph, angle = 0 }) => {
       const body = Bodies.polygon(x, y, 8, 180, {
-        frictionAir: Math.random() * 0.05,
+        frictionAir: Common.random(0, 0.08),
+        angle,
+        render: {
+          sprite: {
+            texture: glyph,
+          },
+        },
       })
-
-      body.render.sprite.texture = glyph
 
       const constraint = Constraint.create({
         pointA: { x, y },
-        pointB: { x: -(Common.random() * 20), y: -(Common.random() * 20) },
+        pointB: { x: -Common.random(0, 20), y: -Common.random(0, 20) },
         bodyB: body,
-        stiffness: Common.random() / 1000,
-        dampning: Common.random() / 10,
+        stiffness: Common.random(0.00005, 0.0001),
+        dampning: Common.random(0, 0.05),
         render: {
           visible: false,
         },
@@ -111,9 +112,10 @@ export default class Playground extends React.Component {
 
     const mouse = Mouse.create(render.canvas)
 
-    // Remove scroll events to prevent scrolling from beeing hijacked
+    // Remove events to prevent scrolling from beeing hijacked
     mouse.element.removeEventListener('mousewheel', mouse.mousewheel)
     mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+    mouse.element.removeEventListener('touchmove', mouse.mousemove)
 
     const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
@@ -129,10 +131,22 @@ export default class Playground extends React.Component {
 
     render.mouse = mouse
 
+    function randomizeGravity() {
+      world.gravity.x = (Math.random() < 0.5 ? -1 : 1) / 50
+      world.gravity.y = (Math.random() < 0.5 ? -1 : 1) / 50
+    }
+
+    randomizeGravity()
+
+    setInterval(randomizeGravity, 5000)
+
     Render.lookAt(render, {
       min: { x: 0, y: 0 },
-      max: { x: 1440, y: 700 },
+      max: { x: 1440, y: 810 },
     })
+
+    // Reset style to remove the fixed height/width (breaks responsiveness)
+    this.canvas.current.style = {}
   }
 
   render() {
