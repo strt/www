@@ -76,7 +76,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.pinkPeach} pt="0" mt={[8, 18]}>
+      <Section bg={colors.dark} pt="0" mt={[8, 18]}>
         <Div
           halfTopBg="white"
           css={{
@@ -95,8 +95,10 @@ export default function Index({ data }) {
         <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>
             <Column>
-              <H1 as="h2">Kontakt är det bästa vi vet</H1>
-              <H2 as={Link} to="/">
+              <H1 as="h2" textColor="white">
+                Kontakt är det bästa vi vet
+              </H1>
+              <H2 as={Link} to="/" textColor="white">
                 Vad vill du prata om?
               </H2>
             </Column>
