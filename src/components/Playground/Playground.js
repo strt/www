@@ -141,12 +141,8 @@ export default class Playground extends React.Component {
     mouse.element.removeEventListener('touchmove', mouse.mousemove)
 
     // Randomize gravity
-    function randomizeGravity() {
-      world.gravity.x = (Math.random() < 0.5 ? -1 : 1) / 50
-      world.gravity.y = (Math.random() < 0.5 ? -1 : 1) / 50
-    }
-    randomizeGravity()
-    this.gravityInterval = setInterval(randomizeGravity, 5000)
+    this.updateGravity()
+    this.gravityInterval = setInterval(this.updateGravity, 5000)
 
     // Fit scene into viewport
     Render.lookAt(render, {
@@ -156,16 +152,53 @@ export default class Playground extends React.Component {
 
     // Reset style to remove the fixed height/width (breaks responsiveness)
     this.canvas.current.style = {}
+
+    // Add gyro support
+    window.addEventListener('deviceorientation', this.handleDeviceOrientation)
   }
 
   destroyPlayground() {
     Render.stop(this.render)
     World.clear(this.engine.world)
     Engine.clear(this.engine)
-    clearInterval(this.gravityInterval)
+
+    if (this.gravityInterval) {
+      clearInterval(this.gravityInterval)
+    }
+
+    window.removeEventListener(
+      'deviceorientation',
+      this.handleDeviceOrientation,
+    )
+  }
+
+  updateGravity = ({
+    engine = this.engine,
+    x = (Math.random() < 0.5 ? -1 : 1) / 50,
+    y = (Math.random() < 0.5 ? -1 : 1) / 50,
+  } = {}) => {
+    /* eslint-disable no-param-reassign */
+    engine.world.gravity.x = x
+    engine.world.gravity.y = y
+    /* eslint-enable no-param-reassign */
+  }
+
+  handleDeviceOrientation = (event) => {
+    const gravity = {}
+
+    if (this.gravityInterval) {
+      clearInterval(this.gravityInterval)
+    }
+
+    gravity.x = Common.clamp(event.gamma, -90, 90) / 180
+    gravity.y = Common.clamp(event.beta, -90, 90) / 180
+
+    this.updateGravity({ ...gravity })
+
+    console.log(gravity)
   }
 
   render() {
-    return <canvas ref={this.canvas} />
+    return <canvas ref={this.canvas} on />
   }
 }
