@@ -3,7 +3,7 @@ const proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    name: 'Strateg Marknadsföring',
+    name: 'Strateg',
     siteUrl: 'https://beta.strateg.se',
     adress: 'Slöjdgatan 39',
     zipcode: '703 83',
