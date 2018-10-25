@@ -33,13 +33,13 @@ const Media = styled.img`
   z-index: -1;
 `
 
-export default function Tile({ title, image, url }) {
+export default function Tile({ title, image, url, tags }) {
   return (
     <Link to={url}>
       <Wrapper>
         <Content>
           <H3 textColor="white">{title}</H3>
-          <Text textColor="white">– Identitet</Text>
+          <Text textColor="white">— {tags.join(', ')}</Text>
         </Content>
         <Media src={image} alt="" />
       </Wrapper>
