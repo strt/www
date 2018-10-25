@@ -5,6 +5,7 @@ import {
   alignItems,
   flexWrap,
   order,
+  space,
   alignSelf,
   justifySelf,
   breakpoints,
@@ -24,7 +25,7 @@ function getWidth(value) {
   return value
 }
 
-export const Grid = styled.div(
+export const Grid = styled(Tag)(
   {
     display: 'flex',
     flexWrap: 'wrap',
@@ -33,6 +34,7 @@ export const Grid = styled.div(
     paddingRight: `${40 / 15.2}vw`,
     paddingLeft: `${40 / 15.2}vw`,
   },
+  space,
   alignItems,
   flexWrap,
   justifyItems,
@@ -51,6 +53,7 @@ export const Column = styled(Tag)(
       width: getWidth(props.desktop),
     },
   }),
+  space,
   order,
   alignSelf,
   justifySelf,
