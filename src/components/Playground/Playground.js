@@ -190,8 +190,8 @@ export default class Playground extends React.Component {
       clearInterval(this.gravityInterval)
     }
 
-    gravity.x = Common.clamp(event.gamma, -90, 90) / 180
-    gravity.y = Common.clamp(event.beta, -90, 90) / 180
+    gravity.x = Common.clamp(event.gamma, -90, 90) / 90
+    gravity.y = Common.clamp(event.beta, -90, 90) / 90
 
     this.updateGravity({ ...gravity })
 
