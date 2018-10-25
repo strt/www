@@ -26,7 +26,7 @@ export default function Meta({
         <Helmet
           htmlAttributes={{ lang: 'sv' }}
           title={title}
-          titleTemplate="%s • Strateg"
+          titleTemplate="%s – Strateg"
           defaultTitle={siteMetadata.name}
         >
           {/* TODO: Remove before release */}
