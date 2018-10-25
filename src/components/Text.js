@@ -75,3 +75,17 @@ export const H3 = styled.h3`
     font-size: ${24 / 15.2}vw;
   }
 `
+
+export const H6 = styled.h3`
+  margin-bottom: 0.666em;
+  font-size: ${fluidRange({ min: 11, max: 15 })};
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  line-height: 1.25em;
+  ${textStyle};
+
+  @media ${breakpoints.medium} {
+    font-size: ${14 / 15.2}vw;
+  }
+`
