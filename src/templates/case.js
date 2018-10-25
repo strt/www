@@ -1,11 +1,14 @@
 import React from 'react'
-import { Link as GatsbyLink, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import RehypeReact from 'rehype-react'
 import Layout from '../components/Layout'
+import Section from '../components/Section'
 import Link from '../components/Link'
-import { Text, Excerpt, H1, H2, H3 } from '../components/Text'
+import { Text, Excerpt, H1, H2, H3, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
+import Icon from '../components/Icon'
+import { colors } from '../style'
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
@@ -53,31 +56,51 @@ export default function Template({
           <img src={post.frontmatter.image} alt="" />
         </Cover>
       )}
-      <Grid>
-        <Column tablet="8">
-          {renderAst(post.htmlAst)}
+      <Section py={[2, 5]}>
+        <Grid>
+          <Column tablet="8">
+            {renderAst(post.htmlAst)}
 
-          {contact && (
-            <>
-              <H3>Vill du veta mer?</H3>
-              <Text>
-                Kontakta {contact.contact_id}, {contact.role}. <br />
-                <a href={`mailto:${contact.email}`}>{contact.email}</a> <br />
-                <a href={`tel:${contact.phone}`}>{contact.phone}</a>
-              </Text>
-            </>
-          )}
-
-          {next && (
-            <>
-              <Text>Nästa case</Text>
-              <Link as={GatsbyLink} to={next.fields.slug} rel="next">
-                → {next.frontmatter.title}
-              </Link>
-            </>
-          )}
-        </Column>
-      </Grid>
+            {contact && (
+              <>
+                <H3>Vill du veta mer?</H3>
+                <Text>
+                  Kontakta {contact.contact_id}, {contact.role}. <br />
+                  <Link
+                    href={`mailto:${contact.email}`}
+                    textColor={colors.dark}
+                    thin
+                  >
+                    {contact.email}
+                  </Link>
+                  <br />
+                  <Link
+                    href={`tel:${contact.phone}`}
+                    textColor={colors.dark}
+                    thin
+                  >
+                    {contact.phone}
+                  </Link>
+                </Text>
+              </>
+            )}
+          </Column>
+        </Grid>
+      </Section>
+      {next && (
+        <Section as="section" bg={colors.dark} py={[7, 7]}>
+          <Grid>
+            <Column>
+              <H6 textColor="white" mb={[7, 7]}>
+                Nästa case <Icon name={['fal', 'long-arrow-down']} />
+              </H6>
+              <H1 as={Link} to={next.fields.slug} rel="next" textColor="white">
+                {next.frontmatter.client}
+              </H1>
+            </Column>
+          </Grid>
+        </Section>
+      )}
     </Layout>
   )
 }
