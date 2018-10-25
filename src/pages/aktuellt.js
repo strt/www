@@ -1,16 +1,13 @@
 import React from 'react'
-import { Link as GatsbyLink, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Link from '../components/Link'
-import { Text, Excerpt, H1 } from '../components/Text'
+import Card from '../components/Card'
+import Section from '../components/Section'
+import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import { colors } from '../style'
 
 export default function News({ data }) {
-  const articles = data.allMarkdownRemark.edges.map(({ node }) => ({
-    title: node.frontmatter.title,
-    link: node.fields.slug,
-  }))
-
   return (
     <Layout title="Aktuellt">
       <Grid>
@@ -22,33 +19,41 @@ export default function News({ data }) {
             samtid. Stort och smått. Självklart och oväntat. Saker som berör
             oss, helt enkelt – och förhoppningsvis även dig.
           </Excerpt>
-          {articles.map(i => (
-            <Text key={i.link}>
-              <Link as={GatsbyLink} to={i.link}>
-                {i.title}
-              </Link>
-            </Text>
-          ))}
         </Column>
       </Grid>
+      <Section bg={colors.ice} py={[5, 8]}>
+        <Grid>
+          {data.articles.edges.map(({ node }) => (
+            <Column key={node.id} tablet="6">
+              <Card
+                date={node.frontmatter.date}
+                title={node.frontmatter.title}
+                url={node.fields.slug}
+                image={node.frontmatter.image}
+              />
+            </Column>
+          ))}
+        </Grid>
+      </Section>
     </Layout>
   )
 }
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
+    articles: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/aktuellt/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
+          id
           fields {
             slug
           }
           frontmatter {
-            client
             title
+            date
             image
           }
         }
