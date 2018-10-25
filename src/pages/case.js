@@ -1,52 +1,53 @@
 import React from 'react'
-import { graphql, Link as GatsbyLink } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import { Text, Excerpt, H1 } from '../components/Text'
+import Section from '../components/Section'
+import Tile from '../components/Tile'
+import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import Link from '../components/Link'
 
 export default function Case({ data }) {
-  const cases = data.allMarkdownRemark.edges.map(({ node }) => ({
-    ...node,
-    title: node.frontmatter.title,
-    client: node.frontmatter.client,
-    subtitle: node.frontmatter.title,
-    link: node.fields.slug,
-  }))
-
   return (
     <Layout title="Case">
       <Grid>
         <Column tablet="8">
           <H1>En rubrik för case.</H1>
           <Excerpt>Vi gillar det vi gör.</Excerpt>
-          {cases.map(i => (
-            <Text key={i.link}>
-              <Link as={GatsbyLink} to={i.link}>
-                {i.client} – {i.title}
-              </Link>
-            </Text>
-          ))}
         </Column>
       </Grid>
+      <Section pt="3" pb="8">
+        <Grid>
+          {data.cases.edges.map(({ node }) => (
+            <Column key={node.id} tablet="6">
+              <Tile
+                url={node.fields.slug}
+                title={node.frontmatter.client}
+                image={node.frontmatter.image}
+                tags={node.frontmatter.tags}
+              />
+            </Column>
+          ))}
+        </Grid>
+      </Section>
     </Layout>
   )
 }
 
 export const query = graphql`
   query {
-    allMarkdownRemark(
+    cases: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/case/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
+          id
           fields {
             slug
           }
           frontmatter {
             client
-            title
+            tags
             image
           }
         }
