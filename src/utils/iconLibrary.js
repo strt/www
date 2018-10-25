@@ -3,7 +3,7 @@ import {
   faLongArrowDown,
   faLongArrowUp,
   faLongArrowRight,
-} from '@fortawesome/pro-regular-svg-icons'
+} from '@fortawesome/pro-light-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 config.autoAddCss = false
