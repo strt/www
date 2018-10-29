@@ -4,19 +4,17 @@ import { StaticQuery, graphql } from 'gatsby'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import Link from './Link'
-import { colors, breakpoints } from '../style'
+import Icon from './Icon'
+import Section from './Section'
+import { ScrollButton } from './Button'
 import routes from '../routes'
+import { colors, breakpoints, fluidRange } from '../style'
 
-const StyledFooter = styled.footer`
-  padding: ${148 / 15.2}vw 0;
-  background-color: ${colors.ice};
+const CopyrightText = styled(Text)`
+  font-size: ${fluidRange(9, 12)};
 
-  ${Column}:last-child ${Text}:last-child {
-    margin-bottom: 0;
-  }
-
-  @media screen and ${breakpoints.medium} {
-    padding: ${80 / 15.2}vw 0 ${128 / 15.2}vw;
+  @media ${breakpoints.medium} {
+    font-size: ${12 / 15.2}vw;
   }
 `
 
@@ -43,7 +41,7 @@ export default function Footer() {
       `}
     >
       {({ site: { siteMetadata } }) => (
-        <StyledFooter>
+        <Section as="footer" bg={colors.ice} py={[4, 7]}>
           <Grid>
             <Column tablet="3">
               <Text>
@@ -127,7 +125,27 @@ export default function Footer() {
               </Text>
             </Column>
           </Grid>
-        </StyledFooter>
+          <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
+            <Column width="auto">
+              <CopyrightText as="small">
+                © 2018 Strateg Marknadsföring
+              </CopyrightText>
+            </Column>
+            <Column width="auto">
+              <ScrollButton
+                onClick={(event) => {
+                  event.preventDefault()
+                  window.scroll({
+                    top: 0,
+                    behavior: 'smooth',
+                  })
+                }}
+              >
+                <Icon name={['fal', 'long-arrow-up']} />
+              </ScrollButton>
+            </Column>
+          </Grid>
+        </Section>
       )}
     </StaticQuery>
   )
