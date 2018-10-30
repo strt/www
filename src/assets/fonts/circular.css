@@ -33,28 +33,10 @@
 @font-face {
   font-family: "Circular";
   font-display: fallback;
-  src: url("./circular-bolditalic.woff2") format("woff2"),
-       url("./circular-bolditalic.woff") format("woff");
-  font-weight: 700;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Circular";
-  font-display: fallback;
   src: url("./circular-book.woff2") format("woff2"),
        url("./circular-book.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-}
-
-@font-face {
-  font-family: "Circular";
-  font-display: fallback;
-  src: url("./circular-bookitalic.woff2") format("woff2"),
-       url("./circular-bookitalic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
 }
 
 @font-face {

@@ -1,5 +1,21 @@
-const { resolve } = require('path')
+const { resolve, join } = require('path')
+const { execSync } = require('child_process')
 const { createFilePath } = require('gatsby-source-filesystem')
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//   actions.setWebpackConfig({
+//     plugins: [new BundleAnalyzerPlugin()],
+//   })
+// }
+
+// Inlined version of subfont
+// (https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-subfont)
+exports.onPostBuild = ({ store }) => {
+  const root = join(store.getState().program.directory, `public`)
+
+  execSync(`npx subfont -i --no-recursive --inline-css --root ${root}`)
+}
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
@@ -30,7 +46,6 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
 
   if (allMarkdown.errors) {
-    console.error(allMarkdown.errors)
     throw Error(allMarkdown.errors)
   }
 

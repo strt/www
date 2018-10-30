@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-subfont',
+    // 'gatsby-plugin-subfont', Enable again once it's less buggy
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
