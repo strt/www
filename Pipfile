@@ -1,0 +1,4 @@
+[packages]
+fonttools = '>3.0.0'
+brotli = '>1.0.0'
+zopfli = '>1.0.0'
