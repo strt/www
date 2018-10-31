@@ -6,7 +6,7 @@ import { Text } from './Text'
 import Link from './Link'
 import Icon from './Icon'
 import Section from './Section'
-import { ScrollButton } from './Button'
+import { IconButton } from './Button'
 import routes from '../routes'
 import { colors, breakpoints, fluidRange } from '../style'
 
@@ -132,7 +132,8 @@ export default function Footer() {
               </CopyrightText>
             </Column>
             <Column width="auto">
-              <ScrollButton
+              <IconButton
+                aria-label="Skrolla till toppen"
                 onClick={(event) => {
                   event.preventDefault()
                   window.scroll({
@@ -142,7 +143,7 @@ export default function Footer() {
                 }}
               >
                 <Icon name={['fal', 'long-arrow-up']} />
-              </ScrollButton>
+              </IconButton>
             </Column>
           </Grid>
         </Section>

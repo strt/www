@@ -8,6 +8,7 @@ import Section from '../components/Section'
 import Link from '../components/Link'
 import Card from '../components/Card'
 import Tile from '../components/Tile'
+import { IconButton } from '../components/Button'
 import Div from '../components/Div'
 import Icon from '../components/Icon'
 import Playground from '../components/Playground'
@@ -31,7 +32,18 @@ export default function Index({ data }) {
         </Grid>
         <Grid justifyContent="flex-end" mt={[4, 10]}>
           <Column width="auto">
-            <Icon name={['fal', 'long-arrow-down']} style={{ fontSize: 32 }} />
+            <IconButton
+              aria-label="Skrolla till nästa section"
+              onClick={(event) => {
+                event.preventDefault()
+                window.scroll({
+                  top: 0,
+                  behavior: 'smooth',
+                })
+              }}
+            >
+              <Icon name={['fal', 'long-arrow-down']} />
+            </IconButton>
           </Column>
         </Grid>
       </Section>

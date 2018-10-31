@@ -5,7 +5,7 @@ export default function Button() {
   return null
 }
 
-export const ScrollButton = styled.button`
+export const IconButton = styled.button`
   appearance: none;
   padding: 0;
   margin: 0;
