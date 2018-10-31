@@ -10,6 +10,7 @@ export const Svg = styled.svg`
   overflow: visible;
   font-size: inherit;
   fill: currentColor;
+  pointer-events: none;
 
   &:not(:root) {
     overflow: visible;
