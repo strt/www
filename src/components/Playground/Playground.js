@@ -194,11 +194,9 @@ export default class Playground extends React.Component {
     gravity.y = Common.clamp(event.beta, -90, 90) / 90
 
     this.updateGravity({ ...gravity })
-
-    console.log(gravity)
   }
 
   render() {
-    return <canvas ref={this.canvas} on />
+    return <canvas ref={this.canvas} />
   }
 }
