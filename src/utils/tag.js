@@ -1,6 +1,6 @@
 import React from 'react'
 
-const defaultBlacklist = ['textAlign', 'tablet', 'width']
+const defaultBlacklist = ['textAlign', 'width']
 
 export function omit(obj, keys) {
   return Object.entries(obj).reduce((acc, [key, value]) => {
@@ -19,9 +19,3 @@ export const Tag = React.forwardRef(
       ...omit(props, blacklist),
     }),
 )
-
-export function createTag(Component) {
-  return function Element(props) {
-    return React.createElement(Tag, { ...props, as: Component })
-  }
-}
