@@ -44,14 +44,18 @@ const NavLink = styled(BaseNavLink)`
   }
 `
 
+const LogoLink = styled(GatsbyLink)`
+  display: block;
+`
+
 export default function Header() {
   return (
     <StyledHeader>
       <Grid justifyContent="space-between">
         <Column width="auto">
-          <GatsbyLink to="/">
+          <LogoLink to="/">
             <Logo />
-          </GatsbyLink>
+          </LogoLink>
         </Column>
         <Column width="auto">
           <nav>
