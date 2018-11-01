@@ -69,29 +69,24 @@ export default class Playground extends React.Component {
   }
 
   createPlayground() {
-    const engine = Engine.create()
-    const runner = Runner.create()
-    const { world } = engine
+    this.engine = Engine.create()
+    this.runner = Runner.create()
+    this.world = this.engine.world
+
     const rect = this.canvas.current.getBoundingClientRect()
 
-    this.runner = runner
-    this.world = world
-    this.engine = engine
-
-    const render = Render.create({
+    this.renderer = Render.create({
       canvas: this.canvas.current,
-      engine,
+      engine: this.engine,
       options: {
         width: rect.width,
         height: rect.height,
-        pixelRatio: 'auto',
+        // Disable until https://github.com/liabru/matter-js/pull/687 is merged
+        // pixelRatio: 'auto',
         background: 'transparent',
         wireframes: false,
       },
     })
-
-    Render.run(render)
-    Runner.run(runner, engine)
 
     // Add letter glyphs
     letters.forEach(({ x, y, glyph, angle = 0 }) => {
@@ -116,12 +111,26 @@ export default class Playground extends React.Component {
         },
       })
 
-      World.add(world, [body, constraint])
+      World.add(this.world, [body, constraint])
     })
 
+    const circle = Bodies.circle(500, 300, 50)
+    const constraint = Constraint.create({
+      pointA: { x: 500, y: 300 },
+      pointB: { x: -Common.random(0, 20), y: -Common.random(0, 20) },
+      bodyB: circle,
+      stiffness: Common.random(0.00005, 0.0001),
+      dampning: Common.random(0, 0.05),
+      render: {
+        visible: false,
+      },
+    })
+
+    World.add(this.world, [circle, constraint])
+
     // Add mouse constraint
-    const mouse = Mouse.create(render.canvas)
-    const mouseConstraint = MouseConstraint.create(engine, {
+    const mouse = Mouse.create(this.renderer.canvas)
+    const mouseConstraint = MouseConstraint.create(this.engine, {
       mouse,
       constraint: {
         angularStiffness: 0,
@@ -131,21 +140,24 @@ export default class Playground extends React.Component {
       },
     })
 
-    World.add(world, mouseConstraint)
-
-    render.mouse = mouse
+    World.add(this.world, mouseConstraint)
 
     // Remove events to prevent scrolling from beeing hijacked
     mouse.element.removeEventListener('mousewheel', mouse.mousewheel)
     mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel)
     mouse.element.removeEventListener('touchmove', mouse.mousemove)
+    mouse.element.removeEventListener('touchstart', mouse.mousedown)
+    mouse.element.removeEventListener('touchend', mouse.mouseup)
+
+    // Keep the mouse in sync with rendering
+    this.renderer.mouse = mouse
 
     // Randomize gravity
     this.updateGravity()
     this.gravityInterval = setInterval(this.updateGravity, 5000)
 
     // Fit scene into viewport
-    Render.lookAt(render, {
+    Render.lookAt(this.renderer, {
       min: { x: 0, y: 0 },
       max: { x: 1440, y: 810 },
     })
@@ -155,6 +167,19 @@ export default class Playground extends React.Component {
 
     // Add gyro support
     window.addEventListener('deviceorientation', this.handleDeviceOrientation)
+
+    // Handle resize
+    window.addEventListener('resize', this.resizeCanvas)
+
+    // Events.on(this.engine, 'beforeUpdate', () => {
+    //   console.log(mouse.position, mouse.absolute)
+    //   // circle.position = mouse.position
+    //   // MouseConstraint.update(mouseConstraint, allBodies)
+    // })
+
+    // Start
+    Render.run(this.renderer)
+    Runner.run(this.runner, this.engine)
   }
 
   destroyPlayground() {
@@ -170,6 +195,8 @@ export default class Playground extends React.Component {
       'deviceorientation',
       this.handleDeviceOrientation,
     )
+
+    window.removeEventListener('resize', this.resizeCanvas)
   }
 
   updateGravity = ({
@@ -181,6 +208,20 @@ export default class Playground extends React.Component {
     engine.world.gravity.x = x
     engine.world.gravity.y = y
     /* eslint-enable no-param-reassign */
+  }
+
+  resizeCanvas = () => {
+    const { canvas } = this.renderer
+    const { width, height } = canvas.parentElement.getBoundingClientRect()
+
+    this.renderer.options.height = height
+    this.renderer.options.width = width
+    Render.setPixelRatio(this.renderer, this.renderer.options.pixelRatio)
+    Render.lookAt(this.renderer, {
+      min: { x: 0, y: 0 },
+      max: { x: 1440, y: 810 },
+    })
+    canvas.style = {}
   }
 
   handleDeviceOrientation = (event) => {
