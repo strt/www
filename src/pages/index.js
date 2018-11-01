@@ -8,9 +8,8 @@ import Section from '../components/Section'
 import Link from '../components/Link'
 import Card from '../components/Card'
 import Tile from '../components/Tile'
-import { IconButton } from '../components/Button'
 import Div from '../components/Div'
-import Icon from '../components/Icon'
+import Hero from '../components/Hero'
 import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
 import { colors, breakpoints } from '../style'
@@ -21,33 +20,13 @@ export default function Index({ data }) {
       title="Kommunikationsbyrån som gör skillnad"
       description="Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang."
     >
-      <Section pt="8" pb={[3, 7]}>
-        <Grid>
-          <Column tablet="8">
-            <H1>
-              Vi tar ditt varumärke längre. Och vi gör det med ovanligt mycket
-              hjärta och engagemang.
-            </H1>
-          </Column>
-        </Grid>
-        <Grid justifyContent="flex-end" mt={[4, 10]}>
-          <Column width="auto">
-            <IconButton
-              aria-label="Skrolla till nästa section"
-              onClick={(event) => {
-                event.preventDefault()
-                window.scroll({
-                  top: 0,
-                  behavior: 'smooth',
-                })
-              }}
-            >
-              <Icon name={['fal', 'long-arrow-down']} />
-            </IconButton>
-          </Column>
-        </Grid>
-      </Section>
-      <Cover>
+      <Hero scrollButtonElement="#playground" pt={8}>
+        <H1>
+          Vi tar ditt varumärke längre. Och vi gör det med ovanligt mycket
+          hjärta och engagemang.
+        </H1>
+      </Hero>
+      <Cover id="playground">
         <Playground />
       </Cover>
       <Section py={[6, 15]}>
