@@ -1,22 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import RehypeReact from 'rehype-react'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Link from '../components/Link'
-import { Text, Excerpt, H1, H2, H3, H6 } from '../components/Text'
+import { Text, Excerpt, H1, H3, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
 import { colors } from '../style'
-
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components: {
-    h2: H2,
-    p: Text,
-  },
-}).Compiler
+import renderAst from '../utils/renderAst'
 
 export default function Template({
   data: { markdownRemark: post },

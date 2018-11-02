@@ -1,18 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import RehypeReact from 'rehype-react'
 import Layout from '../components/Layout'
-import { Text, Excerpt, H1, H2 } from '../components/Text'
+import { Text, Excerpt, H1 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
-
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components: {
-    h2: H2,
-    p: Text,
-  },
-}).Compiler
+import renderAst from '../utils/renderAst'
 
 export default function Template({ data: { markdownRemark: post } }) {
   return (
