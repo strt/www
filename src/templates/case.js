@@ -66,21 +66,9 @@ export default function Template({
                 <H3>Vill du veta mer?</H3>
                 <Text>
                   Kontakta {contact.contact_id}, {contact.role}. <br />
-                  <Link
-                    href={`mailto:${contact.email}`}
-                    textColor={colors.dark}
-                    thin
-                  >
-                    {contact.email}
-                  </Link>
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
                   <br />
-                  <Link
-                    href={`tel:${contact.phone}`}
-                    textColor={colors.dark}
-                    thin
-                  >
-                    {contact.phone}
-                  </Link>
+                  <a href={`tel:${contact.phone}`}>{contact.phone}</a>
                 </Text>
               </>
             )}

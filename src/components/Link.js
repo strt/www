@@ -1,9 +1,7 @@
-import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import { colors, fontFamily, fluidRange, breakpoints } from '../style'
 
-const A = styled.a`
+const Link = styled.a`
   font-size: ${fluidRange({ min: 14, max: 18 })};
   font-family: ${fontFamily};
   font-weight: ${props => (props.thin ? 400 : 500)};
@@ -15,6 +13,4 @@ const A = styled.a`
   }
 `
 
-export default function Link(props) {
-  return <A as={props.to ? GatsbyLink : undefined} {...props} />
-}
+export default Link

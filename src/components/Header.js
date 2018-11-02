@@ -22,6 +22,7 @@ const StyledHeader = styled.header`
 function BaseNavLink(props) {
   return (
     <Link
+      as={GatsbyLink}
       getProps={({ isPartiallyCurrent }) =>
         isPartiallyCurrent ? { 'data-active': true } : null
       }

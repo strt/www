@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
-import Link from './Link'
 import Icon from './Icon'
 import Section from './Section'
 import { IconButton } from './Button'
@@ -52,64 +51,46 @@ export default function Footer() {
             </Column>
             <Column tablet="3">
               <Text>
-                <Link
-                  textColor={colors.dark}
-                  thin
-                  href={`mailto:${siteMetadata.email}`}
-                >
+                <a href={`mailto:${siteMetadata.email}`}>
                   {siteMetadata.email}
-                </Link>
+                </a>
                 <br />
-                <Link
-                  textColor={colors.dark}
-                  thin
-                  href={`tel:${siteMetadata.phone}`}
-                >
-                  {siteMetadata.phone}
-                </Link>
+                <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
               </Text>
             </Column>
             <Column tablet="3">
               <Text>
-                <Link
-                  textColor={colors.dark}
-                  thin
+                <a
                   href={siteMetadata.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Instagram
-                </Link>
+                </a>
                 <br />
-                <Link
-                  textColor={colors.dark}
-                  thin
+                <a
                   href={siteMetadata.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Facebook
-                </Link>
+                </a>
                 <br />
-                <Link
-                  textColor={colors.dark}
-                  thin
+                <a
                   href={siteMetadata.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   LinkedIn
-                </Link>
+                </a>
                 <br />
-                <Link
-                  textColor={colors.dark}
-                  thin
+                <a
                   href={siteMetadata.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
-                </Link>
+                </a>
                 <br />
               </Text>
             </Column>
@@ -117,9 +98,7 @@ export default function Footer() {
               <Text as="ul">
                 {routes.map(route => (
                   <li key={route.link}>
-                    <Link to={route.link} textColor={colors.dark} thin>
-                      {route.title}
-                    </Link>
+                    <Link to={route.link}>{route.title}</Link>
                   </li>
                 ))}
               </Text>

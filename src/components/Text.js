@@ -26,6 +26,11 @@ export const Text = styled.p`
   @media ${breakpoints.medium} {
     font-size: ${20 / 15.2}vw;
   }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
 `
 
 export const Excerpt = styled.p`
