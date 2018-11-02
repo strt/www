@@ -11,7 +11,7 @@ import {
   breakpoints,
   mediaQuery,
 } from '../style'
-import { Tag } from '../utils/tag'
+import { CleanTag } from './CleanTag'
 
 function getWidth(value) {
   if (value == null) {
@@ -25,7 +25,7 @@ function getWidth(value) {
   return value
 }
 
-export const Grid = styled(Tag)(
+export const Grid = styled(CleanTag)(
   {
     display: 'flex',
     flexWrap: 'wrap',
@@ -41,7 +41,9 @@ export const Grid = styled(Tag)(
   justifyContent,
 )
 
-export const Column = styled(Tag)(
+Grid.displayName = 'Grid'
+
+export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
     paddingRight: `${16 / 15.2}vw`,
