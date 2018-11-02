@@ -11,6 +11,7 @@ import {
   MouseConstraint,
 } from 'matter-js'
 import { sGlyph, tGlyph, rGlyph, aGlyph, eGlyph, gGlyph } from './glyphs'
+import { colors } from '../../style'
 
 const letters = [
   {
@@ -114,7 +115,9 @@ export default class Playground extends React.Component {
       World.add(this.world, [body, constraint])
     })
 
-    const circle = Bodies.circle(500, 300, 50)
+    const circle = Bodies.circle(500, 300, 50, {
+      render: { fillStyle: colors.watermelonRed },
+    })
     const constraint = Constraint.create({
       pointA: { x: 500, y: 300 },
       pointB: { x: -Common.random(0, 20), y: -Common.random(0, 20) },
