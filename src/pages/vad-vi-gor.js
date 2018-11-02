@@ -1,16 +1,14 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import Hero from '../components/Hero'
 import { H1 } from '../components/Text'
-import { Grid, Column } from '../components/Grid'
 
 export default function About() {
   return (
     <Layout title="Vad vi gör">
-      <Grid>
-        <Column tablet="8">
-          <H1>Vad vi gör</H1>
-        </Column>
-      </Grid>
+      <Hero>
+        <H1>Vad vi gör</H1>
+      </Hero>
     </Layout>
   )
 }

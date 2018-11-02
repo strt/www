@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
 import { H1, Excerpt } from '../components/Text'
@@ -9,12 +10,10 @@ import { Grid, Column } from '../components/Grid'
 export default function Case({ data }) {
   return (
     <Layout title="Case">
-      <Grid>
-        <Column tablet="8">
-          <H1>En rubrik för case.</H1>
-          <Excerpt>Vi gillar det vi gör.</Excerpt>
-        </Column>
-      </Grid>
+      <Hero>
+        <H1>En rubrik för case.</H1>
+        <Excerpt>Vi gillar det vi gör.</Excerpt>
+      </Hero>
       <Section pt="3" pb="8">
         <Grid>
           {data.cases.edges.map(({ node }) => (
