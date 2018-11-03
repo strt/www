@@ -10,7 +10,7 @@ import routes from '../routes'
 import { colors, breakpoints, fluidRange } from '../style'
 
 const CopyrightText = styled(Text)`
-  font-size: ${fluidRange(9, 12)};
+  font-size: ${fluidRange({ min: 10, max: 14 })};
 
   @media ${breakpoints.medium} {
     font-size: ${12 / 15.2}vw;

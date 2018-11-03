@@ -46,7 +46,7 @@ export default function Icon({ name: iconArgs, ...rest }) {
   const iconLookup = findIconDefinition(normalizeIconArgs(iconArgs))
 
   if (!iconLookup) {
-    console.warn('Could not find icon', iconArgs)
+    console.warn(`Could not find icon "${iconArgs}"`)
     return null
   }
 

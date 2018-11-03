@@ -4,8 +4,53 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
 import Link from './Link'
+import Icon from './Icon'
+import { IconButton } from './Button'
+import Toggle from './Toggle'
 import { colors, breakpoints } from '../style'
 import routes from '../routes'
+import { Nav, NavLink } from './Nav'
+
+export default function Header() {
+  return (
+    <StyledHeader>
+      <Grid justifyContent="space-between">
+        <Column width="auto">
+          <LogoLink to="/">
+            <Logo />
+          </LogoLink>
+        </Column>
+        <Column width="auto">
+          <Toggle>
+            {({ on, toggle }) => (
+              <>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <Link
+                  as="button"
+                  type="button"
+                  textColor={colors.watermelonRed}
+                  onClick={toggle}
+                >
+                  meny.
+                </Link>
+                <Nav hidden={!on}>
+                  <IconButton type="button" onClick={toggle} textColor="white">
+                    <Icon name={['fal', 'times']} />{' '}
+                  </IconButton>
+                  {routes.map(route => (
+                    <NavLink key={route.link} to={route.link}>
+                      {route.title}
+                    </NavLink>
+                  ))}
+                </Nav>
+              </>
+            )}
+          </Toggle>
+        </Column>
+      </Grid>
+    </StyledHeader>
+  )
+}
 
 const StyledHeader = styled.header`
   padding: ${40 / 6.4}vw 0;
@@ -19,55 +64,6 @@ const StyledHeader = styled.header`
   }
 `
 
-function BaseNavLink(props) {
-  return (
-    <Link
-      as={GatsbyLink}
-      getProps={({ isPartiallyCurrent }) =>
-        isPartiallyCurrent ? { 'data-active': true } : null
-      }
-      {...props}
-    />
-  )
-}
-
-const NavLink = styled(BaseNavLink)`
-  margin-right: ${40 / 15.2}vw;
-  color: ${colors.watermelonRed};
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &[aria-current],
-  &[data-active] {
-    text-decoration: line-through;
-  }
-`
-
 const LogoLink = styled(GatsbyLink)`
   display: block;
 `
-
-export default function Header() {
-  return (
-    <StyledHeader>
-      <Grid justifyContent="space-between">
-        <Column width="auto">
-          <LogoLink to="/">
-            <Logo />
-          </LogoLink>
-        </Column>
-        <Column width="auto">
-          <nav>
-            {routes.map(route => (
-              <NavLink key={route.link} to={route.link}>
-                {route.title}
-              </NavLink>
-            ))}
-          </nav>
-        </Column>
-      </Grid>
-    </StyledHeader>
-  )
-}

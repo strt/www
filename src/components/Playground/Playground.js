@@ -115,7 +115,7 @@ export default class Playground extends React.Component {
       World.add(this.world, [body, constraint])
     })
 
-    const circle = Bodies.circle(500, 300, 50, {
+    const circle = Bodies.circle(640, 240, 50, {
       render: { fillStyle: colors.watermelonRed },
     })
     const constraint = Constraint.create({
