@@ -29,7 +29,7 @@ const Content = styled.div`
 `
 
 const Media = styled.img`
-  ${cover()};
+  ${cover()}
   z-index: -1;
 `
 

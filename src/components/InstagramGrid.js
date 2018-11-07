@@ -22,7 +22,7 @@ const Box = styled.div`
   background-image: linear-gradient(to top left, black, gray);
 
   & > * {
-    ${cover()};
+    ${cover()}
   }
 
   & a {

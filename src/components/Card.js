@@ -39,7 +39,7 @@ const Content = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  ${ratio({ x: 4, y: 3 })};
+  ${ratio({ x: 4, y: 3 })}
   width: ${(100 / 12) * 4}%;
   background-color: ${colors.steel};
 
@@ -48,7 +48,7 @@ const ImageWrapper = styled.div`
   }
 
   * {
-    ${cover()};
+    ${cover()}
   }
 `
 

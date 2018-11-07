@@ -12,10 +12,12 @@
     "build:client": "gatsby build",
     "build:lambda": "netlify-lambda build lambda/src",
     "start": "gatsby serve",
-    "lint": "npm-run-all --parallel lint:*",
+    "lint": "npm-run-all --continue-on-error --parallel lint:*",
     "lint:scripts": "eslint \"src/**/*.js\"",
     "lint:styles": "stylelint \"src/**/*.js\"",
-    "format": "prettier-eslint --write \"src/**/*.js\"",
+    "format": "npm-run-all --continue-on-error --parallel format:*",
+    "format:code": "prettier-eslint --write \"src/**/*.js\"",
+    "format:other": "prettier --write \"**/*.{md,html,yaml,yml}\"",
     "env": "export $(cat .env | xargs)"
   },
   "husky": {
@@ -28,6 +30,10 @@
       "eslint",
       "stylelint",
       "prettier-eslint --write",
+      "git add"
+    ],
+    "*.{md,html,yaml,yml}": [
+      "prettier --write",
       "git add"
     ]
   },

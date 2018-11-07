@@ -13,37 +13,37 @@
  */
 
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   font-display: fallback;
-  src: url("./circular-black.woff2") format("woff2"),
-       url("./circular-black.woff") format("woff");
+  src: url('./circular-black.woff2') format('woff2'),
+    url('./circular-black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   font-display: fallback;
-  src: url("./circular-bold.woff2") format("woff2"),
-       url("./circular-bold.woff") format("woff");
+  src: url('./circular-bold.woff2') format('woff2'),
+    url('./circular-bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   font-display: fallback;
-  src: url("./circular-book.woff2") format("woff2"),
-       url("./circular-book.woff") format("woff");
+  src: url('./circular-book.woff2') format('woff2'),
+    url('./circular-book.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Circular";
+  font-family: 'Circular';
   font-display: fallback;
-  src: url("./circular-medium.woff2") format("woff2"),
-       url("./circular-medium.woff") format("woff");
+  src: url('./circular-medium.woff2') format('woff2'),
+    url('./circular-medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
