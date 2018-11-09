@@ -11,8 +11,12 @@ export default function Case({ data }) {
   return (
     <Layout title="Case">
       <Hero>
-        <H1>En rubrik för case.</H1>
-        <Excerpt>Vi gillar det vi gör.</Excerpt>
+        <H1>Vi gillar det vi gör.</H1>
+        <Excerpt>
+          Det här är resultatet av analyser, breifer, strategier, manus,
+          Slack-konversationer, postit-lappar, hackathon, kaffekoppar, skisser …
+          Ja, du fattar. Det här är case som visar vad vi gör.
+        </Excerpt>
       </Hero>
       <Section pt="3" pb="8">
         <Grid>
