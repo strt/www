@@ -1,8 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 import Section from './Section'
 import { IconButton } from './Button'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
+
+const StyledHero = styled(Section)`
+  ${/* sc-selector */ Column} *:last-child {
+    margin-bottom: 0;
+  }
+`
 
 export default function Hero({
   children,
@@ -11,7 +18,7 @@ export default function Hero({
   scrollButtonElement,
 }) {
   return (
-    <Section pt={pt} pb={pb}>
+    <StyledHero pt={pt} pb={pb}>
       <Grid>
         <Column tablet="8">{children}</Column>
       </Grid>
@@ -38,6 +45,6 @@ export default function Hero({
           </Column>
         </Grid>
       )}
-    </Section>
+    </StyledHero>
   )
 }
