@@ -31,7 +31,7 @@ collections:
 
   - name: 'articles'
     label: 'Articles'
-    folder: '/content/articles'
+    folder: '/content/aktuellt'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
