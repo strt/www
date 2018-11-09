@@ -47,7 +47,7 @@ export const Excerpt = styled.p`
 
 export const H1 = styled.h1`
   margin-bottom: 0.28em;
-  font-size: ${fluidRange({ min: 30, max: 44 })};
+  font-size: ${fluidRange({ min: 32, max: 48 })};
   font-weight: 900;
   line-height: 1.25em;
   ${textStyle};
@@ -59,7 +59,7 @@ export const H1 = styled.h1`
 
 export const H2 = styled.h2`
   margin-bottom: 0.25em;
-  font-size: ${fluidRange({ min: 22, max: 28 })};
+  font-size: ${fluidRange({ min: 24, max: 28 })};
   font-weight: 700;
   line-height: 1.25em;
   ${textStyle};
@@ -78,6 +78,18 @@ export const H3 = styled.h3`
 
   @media ${breakpoints.medium} {
     font-size: ${24 / 15.2}vw;
+  }
+`
+
+export const H4 = styled.h3`
+  margin-bottom: 0.666em;
+  font-size: ${fluidRange({ min: 14, max: 18 })};
+  font-weight: 700;
+  line-height: 1.25em;
+  ${textStyle};
+
+  @media ${breakpoints.medium} {
+    font-size: ${20 / 15.2}vw;
   }
 `
 
