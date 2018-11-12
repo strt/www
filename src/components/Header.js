@@ -7,7 +7,7 @@ import Link from './Link'
 import Icon from './Icon'
 import { IconButton } from './Button'
 import Toggle from './Toggle'
-import { colors, breakpoints } from '../style'
+import { colors, breakpoints, fluidRange } from '../style'
 import routes from '../routes'
 import { Nav, NavLink } from './Nav'
 
@@ -53,7 +53,7 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
-  padding: ${40 / 6.4}vw 0;
+  padding: ${fluidRange({ min: 24, max: 32 })} 0;
 
   @media screen and ${breakpoints.small} {
     padding: ${34 / 7.68}vw 0;
