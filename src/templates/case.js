@@ -2,11 +2,13 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
+import Hero from '../components/Hero'
 import Link from '../components/Link'
-import { Text, Excerpt, H1, H3, H6 } from '../components/Text'
+import { Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
+import Tags from '../components/Tags'
 import { colors } from '../style'
 import renderAst from '../utils/renderAst'
 
@@ -19,36 +21,28 @@ export default function Template({
 
   return (
     <Layout title={post.frontmatter.title} hideFooter>
-      <Grid justifyContent="space-between">
+      <Grid
+        justifyContent="space-between"
+        alignItems="center"
+        flexWrap="nowrap"
+      >
         <Column width="auto">
-          <Text>
-            <b>{post.frontmatter.client}</b>
-          </Text>
+          <H4 mb="0">{post.frontmatter.client}</H4>
         </Column>
         <Column width="auto">
-          <Text>
-            —{' '}
-            {post.frontmatter.tags.map((tag, index) => (
-              <span key={tag}>
-                <a href="/">{tag}</a>
-                {index !== post.frontmatter.tags.length - 1 && ', '}
-              </span>
-            ))}
-          </Text>
+          <Tags items={post.frontmatter.tags} />
         </Column>
       </Grid>
-      <Grid>
-        <Column tablet="8">
-          <H1>{post.frontmatter.title}</H1>
-          <Excerpt>{post.frontmatter.excerpt}</Excerpt>
-        </Column>
-      </Grid>
+      <Hero pt={[2, 7]} pb={[5, 7]}>
+        <H1>{post.frontmatter.title}</H1>
+        <Excerpt>{post.frontmatter.excerpt}</Excerpt>
+      </Hero>
       {post.frontmatter.image && (
         <Cover>
           <img src={post.frontmatter.image} alt="" />
         </Cover>
       )}
-      <Section py={[2, 5]}>
+      <Section py={[5, 7]}>
         <Grid>
           <Column tablet="8">
             {renderAst(post.htmlAst)}
@@ -71,7 +65,7 @@ export default function Template({
         <Section as="section" bg={colors.dark} py={[7, 7]}>
           <Grid>
             <Column>
-              <H6 textColor="white" mb={[7, 7]}>
+              <H6 textColor="white" mb={[3, 7]}>
                 Nästa case <Icon name={['fal', 'long-arrow-down']} />
               </H6>
               <H1 as={Link} to={next.fields.slug} rel="next" textColor="white">
