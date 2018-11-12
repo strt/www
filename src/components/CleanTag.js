@@ -10,6 +10,7 @@ export const defaultBlacklist = [
   'desktop',
   'justifyContent',
   'alignItems',
+  'flexWrap',
   'textAlign',
 ]
 
