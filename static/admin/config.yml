@@ -14,6 +14,7 @@ collections:
     fields:
       - { name: 'title', label: 'Title', widget: 'string' }
       - { name: 'excerpt', label: 'Excerpt', widget: 'text' }
+      - { name: 'client', label: 'Kund', widget: 'string' }
       - {
           name: 'date',
           label: 'Publish date',
