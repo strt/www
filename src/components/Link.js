@@ -5,7 +5,7 @@ const Link = styled.a`
   border: none;
   padding: 0;
   margin: 0;
-  font-size: ${fluidRange({ min: 14, max: 18 })};
+  font-size: ${props => props.fontSize || fluidRange({ min: 14, max: 18 })};
   font-family: ${fontFamily};
   font-weight: ${props => (props.thin ? 400 : 500)};
   text-decoration: underline;
