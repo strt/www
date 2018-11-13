@@ -10,7 +10,15 @@ export default function Tags({ items, linked = true, ...rest }) {
       <TagList>
         {items.map(item => (
           <li key={item}>
-            {linked ? <TagLink href="/">{item}</TagLink> : item}
+            {linked ? (
+              <TagLink
+                href={`/case?filter=${encodeURIComponent(item.toLowerCase())}`}
+              >
+                {item}
+              </TagLink>
+            ) : (
+              item
+            )}
           </li>
         ))}
       </TagList>

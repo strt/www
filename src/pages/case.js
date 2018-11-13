@@ -1,13 +1,63 @@
 import React from 'react'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import queryString from 'query-string'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
+import Div from '../components/Div'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
+import Link from '../components/Link'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import { breakpoints, fluidRange } from '../style'
 
-export default function Case({ data }) {
+function filterCases(items, filter) {
+  return items.filter(({ node }) =>
+    node.frontmatter.tags.some(
+      i => !filter || i.toLowerCase() === filter.toLowerCase(),
+    ),
+  )
+}
+
+const Filter = styled(Div)`
+  display: flex;
+  flex-wrap: wrap;
+
+  ${Link} {
+    margin-bottom: ${fluidRange({ min: 12, max: 24 })};
+
+    &:not(:last-child) {
+      margin-right: ${fluidRange({ min: 16, max: 32 })};
+    }
+
+    @media ${breakpoints.medium} {
+      margin-bottom: ${40 / 15.2}vw;
+
+      &:not(:last-child) {
+        margin-right: ${48 / 15.2}vw;
+      }
+    }
+  }
+`
+
+export default function Case({ data, location, navigate }) {
+  const cases = filterCases(
+    data.cases.edges,
+    queryString.parse(location.search).filter,
+  )
+  const tags = data.cases.edges
+    .reduce((acc, { node }) => {
+      node.frontmatter.tags.forEach((tag) => {
+        if (acc.indexOf(tag) === -1) {
+          acc.push(tag)
+        }
+      })
+
+      return acc
+    }, [])
+    .sort()
+
   return (
     <Layout title="Case">
       <Hero>
@@ -17,10 +67,36 @@ export default function Case({ data }) {
           Slack-konversationer, postit-lappar, hackathon, kaffekoppar, skisser …
           Ja, du fattar. Det här är case som visar vad vi gör.
         </Excerpt>
+        <Filter>
+          <Link
+            href={location.pathname}
+            onClick={(e) => {
+              e.preventDefault()
+              navigate(location.pathname, { replace: true })
+            }}
+          >
+            Alla projekt
+          </Link>
+          {tags.map(tag => (
+            <Link
+              key={tag}
+              href={`${location.pathname}?filter=${encodeURIComponent(
+                tag.toLowerCase(),
+              )}`}
+              onClick={(e) => {
+                const { target } = e
+                e.preventDefault()
+                navigate(target.pathname + target.search, { replace: true })
+              }}
+            >
+              {tag}
+            </Link>
+          ))}
+        </Filter>
       </Hero>
-      <Section pt="3" pb="8">
+      <Section pb="8">
         <Grid>
-          {data.cases.edges.map(({ node }) => (
+          {cases.map(({ node }) => (
             <Column key={node.id} tablet="6">
               <Tile
                 url={node.fields.slug}
