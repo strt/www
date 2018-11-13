@@ -1,12 +1,21 @@
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
+import { IconButton } from './Button'
+import Link from './Link'
 import { colors, easings, breakpoints, fluidRange } from '../style'
 
+export const NavButton = styled(Link)`
+  @media ${breakpoints.medium} {
+    display: none;
+  }
+`
+
 export const NavLink = styled(GatsbyLink)`
-  margin-right: ${40 / 15.2}vw;
   display: inline-block;
-  font-size: 4.8rem;
-  font-weight: 900;
+  margin-bottom: ${fluidRange({ min: 8, max: 12 })};
+  font-size: ${fluidRange({ min: 36, max: 48 })};
+  line-height: 1.2777777778em;
+  font-weight: 700;
   text-decoration: none;
   color: white;
 
@@ -16,14 +25,27 @@ export const NavLink = styled(GatsbyLink)`
 
   &[aria-current],
   &[data-active] {
-    background-color: ${colors.pinkPeach};
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(${fluidRange({ min: 24, max: 32 })});
   }
 
   @media ${breakpoints.medium} {
+    margin-bottom: 0;
+    margin-right: ${40 / 15.2}vw;
     font-size: ${20 / 15.2}vw;
     font-weight: 500;
+    line-height: normal;
     text-decoration: underline;
     color: ${colors.watermelonRed};
+
+    &[aria-current],
+    &[data-active] {
+      transform: none;
+    }
+
+    &[href='/'] {
+      display: none;
+    }
   }
 `
 
@@ -34,18 +56,30 @@ export const Nav = styled.nav`
   right: 0;
   left: 0;
   bottom: 0;
-  padding: ${fluidRange({ min: 16, max: 24 })};
+  padding: ${fluidRange({ min: 48, max: 56 })};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   background-color: ${colors.watermelonRed};
   transform: none;
-  transition: transform 400ms ${easings.easeOutSine};
+  transition: transform 320ms ${easings.easeOutSine};
 
   &[hidden] {
     display: flex;
     transform: translateY(-100%);
+  }
+
+  ${IconButton} {
+    position: absolute;
+    top: ${fluidRange({ min: 24, max: 32 })};
+    right: ${fluidRange({ min: 24, max: 32 })};
+    font-size: ${fluidRange({ min: 32, max: 40 })};
+    color: white;
+
+    @media ${breakpoints.medium} {
+      display: none;
+    }
   }
 
   @media ${breakpoints.medium} {

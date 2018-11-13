@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
-import Link from './Link'
 import Icon from './Icon'
 import { IconButton } from './Button'
 import Toggle from './Toggle'
+import MediaQuery from './MediaQuery'
 import { colors, breakpoints, fluidRange } from '../style'
 import routes from '../routes'
-import { Nav, NavLink } from './Nav'
+import { Nav, NavLink, NavButton } from './Nav'
 
 export default function Header() {
   return (
@@ -21,31 +21,40 @@ export default function Header() {
           </LogoLink>
         </Column>
         <Column width="auto">
-          <Toggle>
-            {({ on, toggle }) => (
-              <>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <Link
-                  as="button"
-                  type="button"
-                  textColor={colors.watermelonRed}
-                  onClick={toggle}
-                >
-                  meny.
-                </Link>
-                <Nav hidden={!on}>
-                  <IconButton type="button" onClick={toggle} textColor="white">
-                    <Icon name={['fal', 'times']} />{' '}
-                  </IconButton>
-                  {routes.map(route => (
-                    <NavLink key={route.link} to={route.link}>
-                      {route.title}
-                    </NavLink>
-                  ))}
-                </Nav>
-              </>
+          <MediaQuery>
+            {queries => (
+              <Toggle>
+                {({ on, toggle }) => (
+                  <>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <NavButton
+                      as="button"
+                      type="button"
+                      textColor={colors.watermelonRed}
+                      onClick={toggle}
+                    >
+                      meny.
+                    </NavButton>
+                    <Nav hidden={!queries.medium ? !on : undefined}>
+                      <IconButton
+                        type="button"
+                        onClick={toggle}
+                        textColor="white"
+                      >
+                        <Icon name={['fal', 'times']} />
+                      </IconButton>
+                      <NavLink to="/">Hem</NavLink>
+                      {routes.map(route => (
+                        <NavLink key={route.link} to={route.link}>
+                          {route.title}
+                        </NavLink>
+                      ))}
+                    </Nav>
+                  </>
+                )}
+              </Toggle>
             )}
-          </Toggle>
+          </MediaQuery>
         </Column>
       </Grid>
     </StyledHeader>
