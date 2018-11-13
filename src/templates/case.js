@@ -44,21 +44,19 @@ export default function Template({
       )}
       <Section py={[5, 7]}>
         <Grid>
-          <Column tablet="8">
-            {renderAst(post.htmlAst)}
+          {renderAst(post.htmlAst)}
 
-            {contact && (
-              <>
-                <H3>Vill du veta mer?</H3>
-                <Text>
-                  Kontakta {contact.contact_id}, {contact.role}. <br />
-                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
-                  <br />
-                  <a href={`tel:${contact.phone}`}>{contact.phone}</a>
-                </Text>
-              </>
-            )}
-          </Column>
+          {contact && (
+            <Column tablet="8">
+              <H3>Vill du veta mer?</H3>
+              <Text>
+                Kontakta {contact.contact_id}, {contact.role}. <br />
+                <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                <br />
+                <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+              </Text>
+            </Column>
+          )}
         </Grid>
       </Section>
       {next && (
