@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { colors, fontFamily, fluidRange, breakpoints } from '../style'
+import { colors, fontFamily, fluidRange, breakpoints, vw } from '../style'
 
 const Link = styled.a`
   border: none;
   padding: 0;
   margin: 0;
-  font-size: ${props => props.fontSize || fluidRange({ min: 14, max: 18 })};
+  font-size: ${props => props.fontSize || fluidRange({ min: 16, max: 20 })};
   font-family: ${fontFamily};
   font-weight: ${props => (props.thin ? 400 : 500)};
   text-decoration: underline;
@@ -13,7 +13,7 @@ const Link = styled.a`
   background: none;
 
   @media screen and ${breakpoints.medium} {
-    font-size: ${20 / 15.2}vw;
+    font-size: ${vw(20)};
   }
 `
 

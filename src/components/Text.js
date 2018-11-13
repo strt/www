@@ -6,6 +6,7 @@ import {
   fluidRange,
   textAlign,
   space,
+  vw,
 } from '../style'
 
 const textStyle = css(
@@ -24,7 +25,7 @@ export const Text = styled.p`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${20 / 15.2}vw;
+    font-size: ${vw(20)};
   }
 
   a {
@@ -41,7 +42,7 @@ export const Excerpt = styled.p`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${24 / 15.2}vw;
+    font-size: ${vw(24)};
   }
 `
 
@@ -53,7 +54,7 @@ export const H1 = styled.h1`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${56 / 15.2}vw;
+    font-size: ${vw(56)};
   }
 `
 
@@ -65,7 +66,7 @@ export const H2 = styled.h2`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${32 / 15.2}vw;
+    font-size: ${vw(32)};
   }
 `
 
@@ -77,7 +78,7 @@ export const H3 = styled.h3`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${24 / 15.2}vw;
+    font-size: ${vw(24)};
   }
 `
 
@@ -89,7 +90,7 @@ export const H4 = styled.h3`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${20 / 15.2}vw;
+    font-size: ${vw(20)};
   }
 `
 
@@ -103,6 +104,6 @@ export const H6 = styled.h3`
   ${textStyle};
 
   @media ${breakpoints.medium} {
-    font-size: ${14 / 15.2}vw;
+    font-size: ${vw(14)};
   }
 `

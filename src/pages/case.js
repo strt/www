@@ -10,7 +10,7 @@ import Tile from '../components/Tile'
 import Link from '../components/Link'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints, fluidRange } from '../style'
+import { breakpoints, fluidRange, vw } from '../style'
 
 function filterCases(items, filter) {
   return items.filter(({ node }) =>
@@ -32,10 +32,10 @@ const Filter = styled(Div)`
     }
 
     @media ${breakpoints.medium} {
-      margin-bottom: ${32 / 15.2}vw;
+      margin-bottom: ${vw(32)};
 
       &:not(:last-child) {
-        margin-right: ${48 / 15.2}vw;
+        margin-right: ${vw(48)};
       }
     }
   }

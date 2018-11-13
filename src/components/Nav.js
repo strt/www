@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { IconButton } from './Button'
 import Link from './Link'
-import { colors, easings, breakpoints, fluidRange } from '../style'
+import { colors, easings, breakpoints, fluidRange, vw } from '../style'
 
 export const NavButton = styled(Link)`
   @media ${breakpoints.medium} {
@@ -31,8 +31,8 @@ export const NavLink = styled(GatsbyLink)`
 
   @media ${breakpoints.medium} {
     margin-bottom: 0;
-    margin-right: ${40 / 15.2}vw;
-    font-size: ${20 / 15.2}vw;
+    margin-right: ${vw(40)};
+    font-size: ${vw(20)};
     font-weight: 500;
     line-height: normal;
     text-decoration: underline;

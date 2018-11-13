@@ -11,6 +11,7 @@ import {
   breakpoints,
   mediaQuery,
   fluidRange,
+  vw,
 } from '../style'
 import { CleanTag } from './CleanTag'
 
@@ -35,8 +36,8 @@ export const Grid = styled(CleanTag)(
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
     [`@media ${breakpoints.medium}`]: {
-      paddingRight: `${40 / 15.2}vw`,
-      paddingLeft: `${40 / 15.2}vw`,
+      paddingRight: `${vw(40)}`,
+      paddingLeft: `${vw(40)}`,
     },
   },
   space,
@@ -53,9 +54,9 @@ export const Column = styled(CleanTag)(
     paddingLeft: fluidRange({ min: 8, max: 12 }),
     marginBottom: props.bottomGap ? fluidRange({ min: 16, max: 24 }) : null,
     [mediaQuery(breakpoints.medium)]: {
-      paddingRight: `${16 / 15.2}vw`,
-      paddingLeft: `${16 / 15.2}vw`,
-      marginBottom: props.bottomGap ? `${32 / 15.2}vw` : null,
+      paddingRight: `${vw(16)}`,
+      paddingLeft: `${vw(16)}`,
+      marginBottom: props.bottomGap ? `${vw(32)}` : null,
       width: getWidth(props.tablet),
     },
     [mediaQuery(breakpoints.large)]: {

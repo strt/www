@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
-import { cover, breakpoints } from '../style'
+import { cover, breakpoints, vw } from '../style'
 
 const Link = styled(GatsbyLink)`
   display: flex;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   min-height: ${280 / 3.75}vw;
 
   @media ${breakpoints.medium} {
-    min-height: ${480 / 15.2}vw;
+    min-height: ${vw(480)};
   }
 `
 
@@ -25,7 +25,7 @@ const Content = styled.div`
   background-image: linear-gradient(black, transparent);
 
   @media ${breakpoints.medium} {
-    padding: ${40 / 15.2}vw;
+    padding: ${vw(40)};
   }
 `
 

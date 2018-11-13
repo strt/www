@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
-import { colors, breakpoints, fluidRange } from '../style'
+import { colors, breakpoints, fluidRange, vw } from '../style'
 
 export default function Tags({ items, linked = true, ...rest }) {
   return (
@@ -29,9 +29,9 @@ export default function Tags({ items, linked = true, ...rest }) {
 function tagsWrapperModifiers(props) {
   if (props.variant === 'small') {
     return {
-      fontSize: fluidRange({ min: 10, max: 14 }),
+      fontSize: fluidRange({ min: 11, max: 14 }),
       [`@media ${breakpoints.medium}`]: {
-        fontSize: `${14 / 15.2}vw`,
+        fontSize: `${vw(14)}`,
       },
     }
   }
@@ -39,7 +39,7 @@ function tagsWrapperModifiers(props) {
   return {
     fontSize: fluidRange({ min: 14, max: 18 }),
     [`@media ${breakpoints.medium}`]: {
-      fontSize: `${18 / 15.2}vw`,
+      fontSize: `${vw(18)}`,
     },
   }
 }

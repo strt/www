@@ -99,6 +99,10 @@ export function cover() {
   }
 }
 
+export function vw(n) {
+  return `${n / 15.2}vw`
+}
+
 /**
  * This is a modified version of styled-system.
  * MIT License: https://github.com/jxnblk/styled-system/blob/master/LICENSE.md

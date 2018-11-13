@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import { H3, Text } from './Text'
 import dayjs from '../utils/date'
-import { colors, ratio, breakpoints, cover } from '../style'
+import { colors, ratio, breakpoints, cover, vw } from '../style'
 
 const Link = styled(GatsbyLink)`
   display: block;
@@ -28,7 +28,7 @@ const Content = styled.div`
   }
 
   @media ${breakpoints.medium} {
-    padding: ${24 / 15.2}vw;
+    padding: ${vw(24)};
     width: 50%;
   }
 `

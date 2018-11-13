@@ -6,13 +6,13 @@ import { Text } from './Text'
 import Section from './Section'
 import { ScrollToTopButton } from './Button'
 import routes from '../routes'
-import { colors, breakpoints, fluidRange } from '../style'
+import { colors, breakpoints, fluidRange, vw } from '../style'
 
 const CopyrightText = styled(Text)`
   font-size: ${fluidRange({ min: 10, max: 14 })};
 
   @media ${breakpoints.medium} {
-    font-size: ${12 / 15.2}vw;
+    font-size: ${vw(12)};
   }
 `
 
