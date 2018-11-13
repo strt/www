@@ -15,7 +15,7 @@ import {
 } from '../style'
 import { CleanTag } from './CleanTag'
 
-function getWidth(value) {
+export function getWidth(value) {
   if (value == null) {
     return null
   }

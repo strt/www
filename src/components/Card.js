@@ -3,7 +3,8 @@ import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import { H3, Text } from './Text'
 import dayjs from '../utils/date'
-import { colors, ratio, breakpoints, cover, vw } from '../style'
+import { colors, ratio, breakpoints, cover, fluidRange, vw } from '../style'
+import { getWidth } from './Grid'
 
 const Link = styled(GatsbyLink)`
   display: block;
@@ -18,8 +19,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: ${12 / 3.75}vw;
-  width: ${(100 / 12) * 8}%;
+  padding: ${fluidRange({ min: 16, max: 24 })};
+  width: ${getWidth(8)};
   background-color: white;
 
   h3 {
@@ -29,17 +30,17 @@ const Content = styled.div`
 
   @media ${breakpoints.medium} {
     padding: ${vw(24)};
-    width: 50%;
+    width: ${getWidth(6)};
   }
 `
 
 const ImageWrapper = styled.div`
   ${ratio({ x: 4, y: 3 })}
-  width: ${(100 / 12) * 4}%;
+  width: ${getWidth(4)};
   background-color: ${colors.steel};
 
   @media ${breakpoints.medium} {
-    width: 50%;
+    width: ${getWidth(6)};
   }
 
   * {
