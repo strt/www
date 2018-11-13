@@ -1,13 +1,13 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Hero from '../components/Hero'
-import Link from '../components/Link'
 import { Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
+import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import { colors } from '../style'
 import renderAst from '../utils/renderAst'
@@ -23,7 +23,7 @@ export default function Template({
     <Layout title={post.frontmatter.title} hideFooter>
       <Grid
         justifyContent="space-between"
-        alignItems="center"
+        alignItems={['flex-start', 'center']}
         flexWrap="nowrap"
       >
         <Column width="auto">
@@ -47,7 +47,7 @@ export default function Template({
           {renderAst(post.htmlAst)}
 
           {contact && (
-            <Column tablet="8">
+            <Column tablet="8" mt={[3, 5]}>
               <H3>Vill du veta mer?</H3>
               <Text>
                 Kontakta {contact.contact_id}, {contact.role}. <br />
@@ -60,15 +60,25 @@ export default function Template({
         </Grid>
       </Section>
       {next && (
-        <Section as="section" bg={colors.dark} py={[7, 7]}>
+        <Section as="footer" bg={colors.dark} py={[7, 7]}>
           <Grid>
             <Column>
               <H6 textColor="white" mb={[3, 7]}>
                 Nästa case <Icon name={['fal', 'long-arrow-down']} />
               </H6>
-              <H1 as={Link} to={next.fields.slug} rel="next" textColor="white">
+              <H1
+                as={GatsbyLink}
+                to={next.fields.slug}
+                rel="next"
+                textColor="white"
+              >
                 {next.frontmatter.client}
               </H1>
+            </Column>
+          </Grid>
+          <Grid justifyContent="flex-end" mt={[7, 4]}>
+            <Column width="auto">
+              <ScrollToTopButton textColor="white" />
             </Column>
           </Grid>
         </Section>
