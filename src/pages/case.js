@@ -32,7 +32,7 @@ const Filter = styled(Div)`
     }
 
     @media ${breakpoints.medium} {
-      margin-bottom: ${40 / 15.2}vw;
+      margin-bottom: ${32 / 15.2}vw;
 
       &:not(:last-child) {
         margin-right: ${48 / 15.2}vw;
@@ -94,10 +94,10 @@ export default function Case({ data, location, navigate }) {
           ))}
         </Filter>
       </Hero>
-      <Section pb="8">
+      <Section pb={[10, 20]}>
         <Grid>
           {cases.map(({ node }) => (
-            <Column key={node.id} tablet="6">
+            <Column key={node.id} tablet="6" bottomGap>
               <Tile
                 url={node.fields.slug}
                 title={node.frontmatter.client}

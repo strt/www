@@ -6,16 +6,16 @@ import Tags from './Tags'
 import { cover, breakpoints } from '../style'
 
 const Link = styled(GatsbyLink)`
+  display: flex;
   text-decoration: none;
 `
 
 const Wrapper = styled.div`
   position: relative;
+  flex-grow: 1;
   min-height: ${280 / 3.75}vw;
-  margin-bottom: ${12 / 3.75}vw;
 
   @media ${breakpoints.medium} {
-    margin-bottom: ${32 / 15.2}vw;
     min-height: ${480 / 15.2}vw;
   }
 `

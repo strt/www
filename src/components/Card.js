@@ -12,11 +12,6 @@ const Link = styled(GatsbyLink)`
 
 const Article = styled.article`
   display: flex;
-  margin-bottom: ${12 / 3.75}vw;
-
-  @media ${breakpoints.medium} {
-    margin-bottom: ${32 / 15.2}vw;
-  }
 `
 
 const Content = styled.div`

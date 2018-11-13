@@ -24,7 +24,7 @@ export default function News({ data }) {
       <Section bg={colors.ice} py={[5, 8]}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
-            <Column key={node.id} tablet="6">
+            <Column key={node.id} tablet="6" bottomGap>
               <Card
                 date={node.frontmatter.date}
                 title={node.frontmatter.title}

@@ -10,6 +10,7 @@ import {
   justifySelf,
   breakpoints,
   mediaQuery,
+  fluidRange,
 } from '../style'
 import { CleanTag } from './CleanTag'
 
@@ -31,8 +32,12 @@ export const Grid = styled(CleanTag)(
     flexWrap: 'wrap',
     marginRight: 'auto',
     marginLeft: 'auto',
-    paddingRight: `${40 / 15.2}vw`,
-    paddingLeft: `${40 / 15.2}vw`,
+    paddingRight: fluidRange({ min: 8, max: 12 }),
+    paddingLeft: fluidRange({ min: 8, max: 12 }),
+    [`@media ${breakpoints.medium}`]: {
+      paddingRight: `${40 / 15.2}vw`,
+      paddingLeft: `${40 / 15.2}vw`,
+    },
   },
   space,
   alignItems,
@@ -41,14 +46,16 @@ export const Grid = styled(CleanTag)(
   justifyContent,
 )
 
-Grid.displayName = 'Grid'
-
 export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
-    paddingRight: `${16 / 15.2}vw`,
-    paddingLeft: `${16 / 15.2}vw`,
+    paddingRight: fluidRange({ min: 8, max: 12 }),
+    paddingLeft: fluidRange({ min: 8, max: 12 }),
+    marginBottom: props.bottomGap ? fluidRange({ min: 16, max: 24 }) : null,
     [mediaQuery(breakpoints.medium)]: {
+      paddingRight: `${16 / 15.2}vw`,
+      paddingLeft: `${16 / 15.2}vw`,
+      marginBottom: props.bottomGap ? `${32 / 15.2}vw` : null,
       width: getWidth(props.tablet),
     },
     [mediaQuery(breakpoints.large)]: {
