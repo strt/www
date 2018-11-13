@@ -6,7 +6,7 @@ import Icon from './Icon'
 import { Grid, Column } from './Grid'
 
 const StyledHero = styled(Section)`
-  ${/* sc-selector */ Column} *:last-child {
+  ${/* sc-selector */ Column} > *:last-child {
     margin-bottom: 0;
   }
 `
