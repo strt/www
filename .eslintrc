@@ -1,3 +1,6 @@
 {
-  "extends": "strateg"
+  "extends": "strateg",
+  "rules": {
+    "jsx-a11y/anchor-is-valid": "off"
+  }
 }
