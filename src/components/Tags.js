@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import Link from './Link'
 import { colors, breakpoints, fluidRange } from '../style'
 
-export default function Tags({ items }) {
+export default function Tags({ items, linked = true, ...rest }) {
   return (
-    <TagsWrapper>
+    <TagsWrapper {...rest}>
       <Hyphen />
       <TagList>
         {items.map(item => (
           <li key={item}>
-            <TagLink href="/">{item}</TagLink>
+            {linked ? <TagLink href="/">{item}</TagLink> : item}
           </li>
         ))}
       </TagList>
@@ -18,15 +18,30 @@ export default function Tags({ items }) {
   )
 }
 
+function tagsWrapperModifiers(props) {
+  if (props.variant === 'small') {
+    return {
+      fontSize: fluidRange({ min: 10, max: 14 }),
+      [`@media ${breakpoints.medium}`]: {
+        fontSize: `${14 / 15.2}vw`,
+      },
+    }
+  }
+
+  return {
+    fontSize: fluidRange({ min: 14, max: 18 }),
+    [`@media ${breakpoints.medium}`]: {
+      fontSize: `${18 / 15.2}vw`,
+    },
+  }
+}
+
 const TagsWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  font-size: ${fluidRange({ min: 14, max: 18 })};
   line-height: 1.3em;
-
-  @media ${breakpoints.medium} {
-    font-size: ${18 / 15.2}vw;
-  }
+  ${tagsWrapperModifiers}
+  color: ${props => props.textColor || colors.dark};
 `
 
 const TagList = styled.ul`
@@ -52,5 +67,5 @@ const Hyphen = styled.span`
 const TagLink = styled(Link).attrs({
   fontSize: 'inherit',
   thin: true,
-  textColor: colors.dark,
+  textColor: 'inherit',
 })({})

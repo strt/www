@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
-import { H3, Text } from './Text'
+import { H3 } from './Text'
+import Tags from './Tags'
 import { cover, breakpoints } from '../style'
 
 const Link = styled(GatsbyLink)`
@@ -38,8 +39,10 @@ export default function Tile({ title, image, url, tags }) {
     <Link to={url}>
       <Wrapper>
         <Content>
-          <H3 textColor="white">{title}</H3>
-          <Text textColor="white">— {tags.join(', ')}</Text>
+          <H3 textColor="white" mb={[1 / 2, 1 / 2]}>
+            {title}
+          </H3>
+          <Tags items={tags} textColor="white" linked={false} variant="small" />
         </Content>
         <Media src={image} alt="" />
       </Wrapper>
