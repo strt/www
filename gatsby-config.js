@@ -45,7 +45,7 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: [],
+        plugins: ['gatsby-remark-unwrap-images'],
       },
     },
     'gatsby-plugin-netlify',
