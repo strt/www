@@ -13,7 +13,7 @@ export default function News({ data }) {
   return (
     <Layout title="Aktuellt">
       <Hero>
-        <H1>Det senaste från Strateg</H1>
+        <H1>Det senaste från Strateg.</H1>
         <Excerpt>
           Vad händer på Strateg? Vad händer i vår omvärld? Här hittar du både
           nyheter och våra egna reflektioner kring spännande fenomen i vår
