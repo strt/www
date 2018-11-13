@@ -22,9 +22,7 @@ export default function Template({ data: { markdownRemark: post } }) {
             <img src={post.frontmatter.image} alt="" />
           </Cover>
         )}
-        <Grid>
-          <Column tablet="8">{renderAst(post.htmlAst)}</Column>
-        </Grid>
+        <Grid>{renderAst(post.htmlAst)}</Grid>
       </article>
     </Layout>
   )
