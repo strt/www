@@ -7,7 +7,7 @@ import Icon from './Icon'
 import { IconButton } from './Button'
 import Toggle from './Toggle'
 import MediaQuery from './MediaQuery'
-import { colors, breakpoints, fluidRange } from '../style'
+import { colors, breakpoints, fluidRange, vw } from '../style'
 import routes from '../routes'
 import { Nav, NavLink, NavButton } from './Nav'
 
@@ -69,7 +69,7 @@ const StyledHeader = styled.header`
   }
 
   @media screen and ${breakpoints.medium} {
-    padding: ${56 / 15.2}vw 0;
+    padding: ${vw(56)} 0;
   }
 `
 
