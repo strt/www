@@ -12,6 +12,7 @@ export const defaultBlacklist = [
   'alignItems',
   'flexWrap',
   'textAlign',
+  'bottomGap',
 ]
 
 export function omitInvalidProps(props, keys = defaultBlacklist) {
