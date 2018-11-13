@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
-import Icon from './Icon'
 import Section from './Section'
-import { IconButton } from './Button'
+import { ScrollToTopButton } from './Button'
 import routes from '../routes'
 import { colors, breakpoints, fluidRange } from '../style'
 
@@ -111,18 +110,7 @@ export default function Footer() {
               </CopyrightText>
             </Column>
             <Column width="auto">
-              <IconButton
-                aria-label="Skrolla till toppen"
-                onClick={(event) => {
-                  event.preventDefault()
-                  window.scroll({
-                    top: 0,
-                    behavior: 'smooth',
-                  })
-                }}
-              >
-                <Icon name={['fal', 'long-arrow-up']} />
-              </IconButton>
+              <ScrollToTopButton />
             </Column>
           </Grid>
         </Section>

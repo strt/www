@@ -1,4 +1,6 @@
+import React from 'react'
 import styled from 'styled-components'
+import Icon from './Icon'
 import { colors, fluidRange, breakpoints } from '../style'
 
 export default function Button() {
@@ -12,7 +14,7 @@ export const IconButton = styled.button`
   border: none;
   font-size: ${fluidRange({ min: 20, max: 26 })};
   line-height: 1em;
-  color: ${colors.dark};
+  color: ${props => props.textColor || colors.dark};
   background: none;
 
   @media ${breakpoints.medium} {
@@ -23,3 +25,21 @@ export const IconButton = styled.button`
     outline: none;
   }
 `
+
+export function ScrollToTopButton(props) {
+  return (
+    <IconButton
+      aria-label="Skrolla till toppen"
+      onClick={(event) => {
+        event.preventDefault()
+        window.scroll({
+          top: 0,
+          behavior: 'smooth',
+        })
+      }}
+      {...props}
+    >
+      <Icon name={['fal', 'long-arrow-up']} />
+    </IconButton>
+  )
+}
