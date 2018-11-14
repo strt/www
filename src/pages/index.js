@@ -1,5 +1,6 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link as GatsbyLink } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { H1, H2 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
@@ -12,7 +13,54 @@ import Div from '../components/Div'
 import Hero from '../components/Hero'
 import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
-import { colors, breakpoints } from '../style'
+import { colors, breakpoints, vw, fluidRange } from '../style'
+
+const CaseGrid = styled.div`
+  display: grid;
+  grid-gap: ${fluidRange({ min: 16, max: 24 })};
+  grid-template-columns: 1fr;
+
+  @media ${breakpoints.medium} {
+    grid-gap: ${32 / 15.2}vw;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  > * {
+    @media ${breakpoints.medium} {
+      grid-row: span 2;
+    }
+  }
+
+  > *:nth-child(2) {
+    @media ${breakpoints.medium} {
+      grid-column: 2;
+    }
+  }
+
+  > *:nth-child(3) {
+    grid-column: 1;
+  }
+
+  > *:nth-child(4) {
+    grid-row: 2;
+  }
+
+  > *:nth-child(1),
+  > *:nth-child(4),
+  > *:nth-child(5) {
+    @media ${breakpoints.medium} {
+      grid-row: span 5;
+      min-height: ${vw(752)};
+    }
+  }
+
+  > *:nth-child(5) {
+    @media ${breakpoints.medium} {
+      grid-column: 1 / 3;
+    }
+  }
+`
 
 export default function Index({ data }) {
   return (
@@ -29,21 +77,27 @@ export default function Index({ data }) {
       <Cover id="playground">
         <Playground />
       </Cover>
-      <Section py={[6, 15]}>
+      <Section py={[8, 15]}>
         <Grid>
-          {data.cases.edges.map(({ node }) => (
-            <Column key={node.id} tablet="6">
-              <Tile
-                url={node.fields.slug}
-                title={node.frontmatter.client}
-                image={node.frontmatter.image}
-                tags={node.frontmatter.tags}
-              />
-            </Column>
-          ))}
           <Column>
-            <Div mt={[3, 3]}>
-              <Link to="/case/">Fler case</Link>
+            <CaseGrid>
+              {data.cases.edges.map(({ node }) => (
+                <Tile
+                  key={node.id}
+                  url={node.fields.slug}
+                  title={node.frontmatter.client}
+                  image={node.frontmatter.image}
+                  tags={node.frontmatter.tags}
+                  mb="0"
+                />
+              ))}
+            </CaseGrid>
+          </Column>
+          <Column>
+            <Div mt={[3, 6]}>
+              <Link as={GatsbyLink} to="/case/">
+                Fler case
+              </Link>
             </Div>
           </Column>
         </Grid>
@@ -58,7 +112,7 @@ export default function Index({ data }) {
         </Div>
         <Grid>
           {data.articles.edges.map(({ node }) => (
-            <Column key={node.id} tablet="6">
+            <Column key={node.id} tablet="6" bottomGap>
               <Card
                 date={node.frontmatter.date}
                 title={node.frontmatter.title}
@@ -68,8 +122,10 @@ export default function Index({ data }) {
             </Column>
           ))}
           <Column>
-            <Div mt={[3, 3]}>
-              <Link to="/aktuellt/">Fler inlägg</Link>
+            <Div mt={[3, 2]}>
+              <Link as={GatsbyLink} to="/aktuellt/">
+                Fler inlägg
+              </Link>
             </Div>
           </Column>
         </Grid>
