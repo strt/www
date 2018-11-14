@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
 import { reset } from 'styled-reset'
 
 export const fontFamily = 'Circular, Helvetica, sans-serif'
@@ -67,6 +67,20 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${colors.watermelonRed};
   }
 `
+
+export const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
+
+export const animations = {
+  fadeIn,
+}
 
 export function mediaQuery(breakpoint) {
   return `@media screen and ${breakpoint}`

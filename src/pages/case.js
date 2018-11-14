@@ -10,7 +10,7 @@ import Tile from '../components/Tile'
 import Link from '../components/Link'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints, fluidRange, vw } from '../style'
+import { breakpoints, fluidRange, vw, easings, animations } from '../style'
 
 function filterCases(items, filter) {
   return items.filter(({ node }) =>
@@ -18,6 +18,10 @@ function filterCases(items, filter) {
       i => !filter || i.toLowerCase() === filter.toLowerCase(),
     ),
   )
+}
+
+function getTagLink(tag) {
+  return `?filter=${encodeURIComponent(tag.toLowerCase())}`
 }
 
 const Filter = styled(Div)`
@@ -41,75 +45,83 @@ const Filter = styled(Div)`
   }
 `
 
-export default function Case({ data, location, navigate }) {
-  const cases = filterCases(
-    data.cases.edges,
-    queryString.parse(location.search).filter,
-  )
-  const tags = data.cases.edges
-    .reduce((acc, { node }) => {
-      node.frontmatter.tags.forEach((tag) => {
-        if (acc.indexOf(tag) === -1) {
-          acc.push(tag)
-        }
-      })
+const Animation = styled.div`
+  animation: ${animations.fadeIn} 1s 200ms ${easings.easeOutSine} both;
+`
 
-      return acc
-    }, [])
-    .sort()
+export default class Case extends React.Component {
+  state = {
+    filter: queryString.parse(this.props.location.search).filter || null,
+  }
 
-  return (
-    <Layout title="Case">
-      <Hero>
-        <H1>Vi gillar det vi gör.</H1>
-        <Excerpt>
-          Det här är resultatet av analyser, breifer, strategier, manus,
-          Slack-konversationer, postit-lappar, hackathon, kaffekoppar, skisser …
-          Ja, du fattar. Det här är case som visar vad vi gör.
-        </Excerpt>
-        <Filter>
-          <Link
-            href={location.pathname}
-            onClick={(e) => {
-              e.preventDefault()
-              navigate(location.pathname, { replace: true })
-            }}
-          >
-            Alla projekt
-          </Link>
-          {tags.map(tag => (
-            <Link
-              key={tag}
-              href={`${location.pathname}?filter=${encodeURIComponent(
-                tag.toLowerCase(),
-              )}`}
-              onClick={(e) => {
-                const { target } = e
-                e.preventDefault()
-                navigate(target.pathname + target.search, { replace: true })
-              }}
-            >
-              {tag}
+  onTagClick = (event) => {
+    event.preventDefault()
+    const { target } = event
+    const { filter } = queryString.parse(target.search)
+    this.setState({ filter })
+    window.history.replaceState({}, null, target.pathname + target.search)
+  }
+
+  render() {
+    const { data, location } = this.props
+    const { filter } = this.state
+
+    const cases = filterCases(data.cases.edges, filter)
+    const tags = data.cases.edges
+      .reduce((acc, { node }) => {
+        node.frontmatter.tags.forEach((tag) => {
+          if (acc.indexOf(tag) === -1) {
+            acc.push(tag)
+          }
+        })
+
+        return acc
+      }, [])
+      .sort()
+
+    return (
+      <Layout title="Case">
+        <Hero>
+          <H1>Vi gillar det vi gör.</H1>
+          <Excerpt>
+            Det här är resultatet av analyser, breifer, strategier, manus,
+            Slack-konversationer, postit-lappar, hackathon, kaffekoppar, skisser
+            … Ja, du fattar. Det här är case som visar vad vi gör.
+          </Excerpt>
+          <Filter>
+            <Link href={location.pathname} onClick={this.onTagClick}>
+              Alla projekt
             </Link>
-          ))}
-        </Filter>
-      </Hero>
-      <Section pb={[10, 20]}>
-        <Grid>
-          {cases.map(({ node }) => (
-            <Column key={node.id} tablet="6" bottomGap>
-              <Tile
-                url={node.fields.slug}
-                title={node.frontmatter.client}
-                image={node.frontmatter.image}
-                tags={node.frontmatter.tags}
-              />
-            </Column>
-          ))}
-        </Grid>
-      </Section>
-    </Layout>
-  )
+            {tags.map(tag => (
+              <Link
+                key={tag}
+                href={getTagLink(tag.toLowerCase())}
+                onClick={this.onTagClick}
+              >
+                {tag}
+              </Link>
+            ))}
+          </Filter>
+        </Hero>
+        <Animation key={filter}>
+          <Section pb={[10, 20]}>
+            <Grid>
+              {cases.map(({ node }) => (
+                <Column key={node.id} tablet="6" bottomGap>
+                  <Tile
+                    url={node.fields.slug}
+                    title={node.frontmatter.client}
+                    image={node.frontmatter.image}
+                    tags={node.frontmatter.tags}
+                  />
+                </Column>
+              ))}
+            </Grid>
+          </Section>
+        </Animation>
+      </Layout>
+    )
+  }
 }
 
 export const query = graphql`
