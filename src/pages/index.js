@@ -152,7 +152,7 @@ export default function Index({ data }) {
               <H1 as="h2" textColor="white">
                 Kontakt är det bästa vi vet
               </H1>
-              <H2 as={Link} to="/" textColor="white">
+              <H2 as={Link} href="/" textColor="white">
                 Vad vill du prata om?
               </H2>
             </Column>

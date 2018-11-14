@@ -35,16 +35,20 @@ export default function Meta({
           {description && <meta name="description" content={description} />}
 
           {/* OpenGraph tags */}
-          <meta property="og:url" content={url} />
+          {url && <meta property="og:url" content={url} />}
           <meta property="og:site_name" content={siteMetadata.name} />
           <meta
             property="og:type"
             content={isArticle ? 'article' : 'website'}
           />
           <meta property="og:title" content={title} />
-          <meta property="og:description" content={description} />
-          <meta property="og:image" content={image} />
-          <meta property="fb:app_id" content={siteMetadata.facebook_app_id} />
+          {description && (
+            <meta property="og:description" content={description} />
+          )}
+          {image && <meta property="og:image" content={image} />}
+          {siteMetadata.facebook_app_id && (
+            <meta property="fb:app_id" content={siteMetadata.facebook_app_id} />
+          )}
 
           {/* Twitter Card tags */}
           <meta name="twitter:card" content="summary_large_image" />

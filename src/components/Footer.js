@@ -54,7 +54,9 @@ export default function Footer() {
                   {siteMetadata.email}
                 </a>
                 <br />
-                <a href={`tel:${siteMetadata.phone}`}>{siteMetadata.phone}</a>
+                <a href={`tel:${siteMetadata.phone.replace(/\s/g, '')}`}>
+                  {siteMetadata.phone}
+                </a>
               </Text>
             </Column>
             <Column tablet="3">
