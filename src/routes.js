@@ -1,22 +1,27 @@
 const routes = [
   {
-    link: '/case',
+    id: 'case',
+    link: '/case/',
     title: 'Case',
   },
   {
-    link: '/vad-vi-gor',
+    id: 'about',
+    link: '/vad-vi-gor/',
     title: 'Vad vi gör',
   },
   {
-    link: '/bli-en-av-oss',
+    id: 'career',
+    link: '/bli-en-av-oss/',
     title: 'Bli en av oss',
   },
   {
-    link: '/aktuellt',
+    id: 'news',
+    link: '/aktuellt/',
     title: 'Aktuellt',
   },
   {
-    link: '/kontakt',
+    id: 'contact',
+    link: '/kontakt/',
     title: 'Kontakt',
   },
 ]

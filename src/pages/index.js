@@ -14,53 +14,12 @@ import Hero from '../components/Hero'
 import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
 import { colors, breakpoints, vw, fluidRange } from '../style'
+import pageRoutes from '../routes'
 
-const CaseGrid = styled.div`
-  display: grid;
-  grid-gap: ${fluidRange({ min: 16, max: 24 })};
-  grid-template-columns: 1fr;
-
-  @media ${breakpoints.medium} {
-    grid-gap: ${32 / 15.2}vw;
-    grid-auto-flow: row dense;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  > * {
-    @media ${breakpoints.medium} {
-      grid-row: span 2;
-    }
-  }
-
-  > *:nth-child(2) {
-    @media ${breakpoints.medium} {
-      grid-column: 2;
-    }
-  }
-
-  > *:nth-child(3) {
-    grid-column: 1;
-  }
-
-  > *:nth-child(4) {
-    grid-row: 2;
-  }
-
-  > *:nth-child(1),
-  > *:nth-child(4),
-  > *:nth-child(5) {
-    @media ${breakpoints.medium} {
-      grid-row: span 5;
-      min-height: ${vw(752)};
-    }
-  }
-
-  > *:nth-child(5) {
-    @media ${breakpoints.medium} {
-      grid-column: 1 / 3;
-    }
-  }
-`
+const routes = pageRoutes.reduce((acc, i) => {
+  acc[i.id] = i.link
+  return acc
+}, {})
 
 export default function Index({ data }) {
   return (
@@ -95,7 +54,7 @@ export default function Index({ data }) {
           </Column>
           <Column>
             <Div mt={[3, 6]}>
-              <Link as={GatsbyLink} to="/case/">
+              <Link as={GatsbyLink} to={routes.case}>
                 Fler case
               </Link>
             </Div>
@@ -123,7 +82,7 @@ export default function Index({ data }) {
           ))}
           <Column>
             <Div mt={[3, 2]}>
-              <Link as={GatsbyLink} to="/aktuellt/">
+              <Link as={GatsbyLink} to={routes.news}>
                 Fler inlägg
               </Link>
             </Div>
@@ -202,6 +161,53 @@ export const query = graphql`
           }
         }
       }
+    }
+  }
+`
+
+const CaseGrid = styled.div`
+  display: grid;
+  grid-gap: ${fluidRange({ min: 16, max: 24 })};
+  grid-template-columns: 1fr;
+
+  @media ${breakpoints.medium} {
+    grid-gap: ${32 / 15.2}vw;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  > * {
+    @media ${breakpoints.medium} {
+      grid-row: span 2;
+    }
+  }
+
+  > *:nth-child(2) {
+    @media ${breakpoints.medium} {
+      grid-column: 2;
+    }
+  }
+
+  > *:nth-child(3) {
+    grid-column: 1;
+  }
+
+  > *:nth-child(4) {
+    grid-row: 2;
+  }
+
+  > *:nth-child(1),
+  > *:nth-child(4),
+  > *:nth-child(5) {
+    @media ${breakpoints.medium} {
+      grid-row: span 5;
+      min-height: ${vw(752)};
+    }
+  }
+
+  > *:nth-child(5) {
+    @media ${breakpoints.medium} {
+      grid-column: 1 / 3;
     }
   }
 `
