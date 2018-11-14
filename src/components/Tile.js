@@ -10,7 +10,7 @@ const Link = styled(GatsbyLink)`
   text-decoration: none;
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   position: relative;
   flex-grow: 1;
   min-height: ${fluidRange({ min: 280, max: 320 })};

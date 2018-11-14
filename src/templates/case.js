@@ -21,68 +21,70 @@ export default function Template({
 
   return (
     <Layout title={post.frontmatter.title} hideFooter>
-      <Grid
-        justifyContent="space-between"
-        alignItems={['flex-start', 'center']}
-        flexWrap="nowrap"
-      >
-        <Column width="auto">
-          <H4 mb="0">{post.frontmatter.client}</H4>
-        </Column>
-        <Column width="auto">
-          <Tags items={post.frontmatter.tags} />
-        </Column>
-      </Grid>
-      <Hero pt={[2, 7]} pb={[5, 7]}>
-        <H1>{post.frontmatter.title}</H1>
-        <Excerpt>{post.frontmatter.excerpt}</Excerpt>
-      </Hero>
-      {post.frontmatter.image && (
-        <Cover>
-          <img src={post.frontmatter.image} alt="" />
-        </Cover>
-      )}
-      <Section py={[5, 7]}>
-        <Grid>
-          {renderAst(post.htmlAst)}
-
-          {contact && (
-            <Column tablet="8" mt={[3, 5]}>
-              <H3>Vill du veta mer?</H3>
-              <Text>
-                Kontakta {contact.contact_id}, {contact.role}. <br />
-                <a href={`mailto:${contact.email}`}>{contact.email}</a>
-                <br />
-                <a href={`tel:${contact.phone}`}>{contact.phone}</a>
-              </Text>
-            </Column>
-          )}
+      <article>
+        <Grid
+          justifyContent="space-between"
+          alignItems={['flex-start', 'center']}
+          flexWrap="nowrap"
+        >
+          <Column width="auto">
+            <H4 mb="0">{post.frontmatter.client}</H4>
+          </Column>
+          <Column width="auto">
+            <Tags items={post.frontmatter.tags} />
+          </Column>
         </Grid>
-      </Section>
-      {next && (
-        <Section as="footer" bg={colors.dark} py={[7, 7]}>
+        <Hero pt={[2, 7]} pb={[5, 7]}>
+          <H1>{post.frontmatter.title}</H1>
+          <Excerpt>{post.frontmatter.excerpt}</Excerpt>
+        </Hero>
+        {post.frontmatter.image && (
+          <Cover>
+            <img src={post.frontmatter.image} alt="" />
+          </Cover>
+        )}
+        <Section py={[5, 7]}>
           <Grid>
-            <Column>
-              <H6 textColor="white" mb={[3, 7]}>
-                Nästa case <Icon name={['fal', 'long-arrow-down']} />
-              </H6>
-              <H1
-                as={GatsbyLink}
-                to={next.fields.slug}
-                rel="next"
-                textColor="white"
-              >
-                {next.frontmatter.client}
-              </H1>
-            </Column>
-          </Grid>
-          <Grid justifyContent="flex-end" mt={[7, 4]}>
-            <Column width="auto">
-              <ScrollToTopButton textColor="white" />
-            </Column>
+            {renderAst(post.htmlAst)}
+
+            {contact && (
+              <Column tablet="8" mt={[3, 5]}>
+                <H3>Vill du veta mer?</H3>
+                <Text>
+                  Kontakta {contact.contact_id}, {contact.role}. <br />
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  <br />
+                  <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+                </Text>
+              </Column>
+            )}
           </Grid>
         </Section>
-      )}
+        {next && (
+          <Section as="footer" bg={colors.dark} py={[7, 7]}>
+            <Grid>
+              <Column>
+                <H6 textColor="white" mb={[3, 7]}>
+                  Nästa case <Icon name={['fal', 'long-arrow-down']} />
+                </H6>
+                <H1
+                  as={GatsbyLink}
+                  to={next.fields.slug}
+                  rel="next"
+                  textColor="white"
+                >
+                  {next.frontmatter.client}
+                </H1>
+              </Column>
+            </Grid>
+            <Grid justifyContent="flex-end" mt={[7, 4]}>
+              <Column width="auto">
+                <ScrollToTopButton textColor="white" />
+              </Column>
+            </Grid>
+          </Section>
+        )}
+      </article>
     </Layout>
   )
 }
