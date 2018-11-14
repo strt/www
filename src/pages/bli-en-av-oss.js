@@ -81,6 +81,7 @@ export default function Career() {
           </Column>
         </Grid>
       </Section>
+      <InstagramGrid halfTopBg={colors.dark} mb={[8, 19]} />
       <Div
         halfTopBg={colors.dark}
         mb={[8, 19]}
@@ -92,9 +93,7 @@ export default function Career() {
         }}
       >
         <Grid justifyContent="center">
-          <Column tablet="10">
-            <InstagramGrid />
-          </Column>
+          <Column tablet="10" />
         </Grid>
       </Div>
     </Layout>

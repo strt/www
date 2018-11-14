@@ -90,21 +90,7 @@ export default function Index({ data }) {
         </Grid>
       </Section>
       <Section bg={colors.dark} pt="0" mt={[8, 18]}>
-        <Div
-          halfTopBg="white"
-          css={{
-            '&::before': {
-              height: '64%',
-              [`@media ${breakpoints.medium}`]: { height: `${(3 / 5) * 100}%` },
-            },
-          }}
-        >
-          <Grid justifyContent="center">
-            <Column tablet="10">
-              <InstagramGrid />
-            </Column>
-          </Grid>
-        </Div>
+        <InstagramGrid />
         <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>
             <Column>

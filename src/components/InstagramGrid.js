@@ -2,11 +2,98 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Link from './Link'
+import Div from './Div'
+import { Grid, Column } from './Grid'
 import Fetch from './Fetch'
 import Icon from './Icon'
 import { colors, breakpoints, cover } from '../style'
 
-const Grid = styled.div`
+const placeholderItems = Array.from(Array(5)).map((v, i) => ({ id: i }))
+
+function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
+  return (
+    <Wrapper halfTopBg={halfTopBg} {...props}>
+      <Grid justifyContent="center">
+        <Column tablet="10">
+          <ImageGrid>
+            {posts.map(post => (
+              <Box key={post.id}>
+                {(() => {
+                  if (post.videos) {
+                    return (
+                      <video
+                        src={post.videos.standard_resolution.url}
+                        poster={post.images.standard_resolution.url}
+                        autoPlay
+                        muted
+                        loop
+                      />
+                    )
+                  }
+
+                  if (post.images) {
+                    return (
+                      <img
+                        src={post.images.standard_resolution.url}
+                        alt={post.caption}
+                      />
+                    )
+                  }
+
+                  return null
+                })()}
+              </Box>
+            ))}
+            <Box>
+              <StaticQuery
+                query={graphql`
+                  query {
+                    site {
+                      siteMetadata {
+                        instagram
+                      }
+                    }
+                  }
+                `}
+              >
+                {({ site: { siteMetadata } }) => (
+                  <Link
+                    href={siteMetadata.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon name={['fab', 'instagram']} />
+                    <span>Följ enstrateg</span>
+                  </Link>
+                )}
+              </StaticQuery>
+            </Box>
+          </ImageGrid>
+        </Column>
+      </Grid>
+    </Wrapper>
+  )
+}
+
+export default function InstagramGrid(props) {
+  return (
+    <Fetch url="/.netlify/functions/instagram">
+      {({ data }) => <Posts posts={data} {...props} />}
+    </Fetch>
+  )
+}
+
+const Wrapper = styled(Div)`
+  &::before {
+    height: 64%;
+
+    @media ${breakpoints.medium} {
+      height: ${(3 / 5) * 100}%;
+    }
+  }
+`
+
+const ImageGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
@@ -96,72 +183,3 @@ const Box = styled.div`
     }
   }
 `
-
-const placeholderItems = Array.from(Array(5)).map((v, i) => ({ id: i }))
-
-function Posts({ posts = placeholderItems }) {
-  return (
-    <Grid>
-      {posts.map(post => (
-        <Box key={post.id}>
-          {(() => {
-            if (post.videos) {
-              return (
-                <video
-                  src={post.videos.standard_resolution.url}
-                  poster={post.images.standard_resolution.url}
-                  autoPlay
-                  muted
-                  loop
-                />
-              )
-            }
-
-            if (post.images) {
-              return (
-                <img
-                  src={post.images.standard_resolution.url}
-                  alt={post.caption}
-                />
-              )
-            }
-
-            return null
-          })()}
-        </Box>
-      ))}
-      <Box>
-        <StaticQuery
-          query={graphql`
-            query {
-              site {
-                siteMetadata {
-                  instagram
-                }
-              }
-            }
-          `}
-        >
-          {({ site: { siteMetadata } }) => (
-            <Link
-              href={siteMetadata.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon name={['fab', 'instagram']} />
-              <span>Följ enstrateg</span>
-            </Link>
-          )}
-        </StaticQuery>
-      </Box>
-    </Grid>
-  )
-}
-
-export default function InstagramGrid() {
-  return (
-    <Fetch url="/.netlify/functions/instagram">
-      {({ data }) => <Posts posts={data} />}
-    </Fetch>
-  )
-}
