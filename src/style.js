@@ -87,7 +87,8 @@ export function mediaQuery(breakpoint) {
 }
 
 export function fluidRange({ min, max, viewportMin = 320, viewportMax = 728 }) {
-  return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / (${viewportMax} - ${viewportMin})))`
+  return `calc(${min}px + (${max} - ${min}) * ((100vw - ${viewportMin}px) / ${viewportMax -
+    viewportMin}))`
 }
 
 export function ratio({ x = 16, y = 9 }) {
