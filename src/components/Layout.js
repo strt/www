@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Meta from './Meta'
 import { GlobalStyle } from '../style'
+import Meta from './Meta'
 import SkipNavLink from './SkipNav'
 import Header from './Header'
-import Main from './Main'
 import Footer from './Footer'
 import '../utils/iconLibrary'
 import '../assets/fonts/circular.css'
@@ -13,6 +12,10 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+`
+
+const Main = styled.main`
+  flex-grow: 1;
 `
 
 export default function Layout({
@@ -24,13 +27,13 @@ export default function Layout({
 }) {
   return (
     <PageWrapper>
+      <GlobalStyle />
       <Meta title={title} description={description}>
         {meta}
       </Meta>
-      <GlobalStyle />
       <SkipNavLink />
       <Header />
-      <Main>{children}</Main>
+      <Main id="main-content">{children}</Main>
       {!hideFooter && <Footer />}
     </PageWrapper>
   )
