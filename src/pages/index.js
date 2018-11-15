@@ -38,21 +38,19 @@ export default function Index({ data }) {
         <Playground />
       </Cover>
       <Section py={[8, 15]}>
+        <CaseGrid>
+          {data.cases.edges.map(({ node }) => (
+            <Tile
+              key={node.id}
+              url={node.fields.slug}
+              title={node.frontmatter.client}
+              image={node.frontmatter.image}
+              tags={node.frontmatter.tags}
+              mb="0"
+            />
+          ))}
+        </CaseGrid>
         <Grid>
-          <Column>
-            <CaseGrid>
-              {data.cases.edges.map(({ node }) => (
-                <Tile
-                  key={node.id}
-                  url={node.fields.slug}
-                  title={node.frontmatter.client}
-                  image={node.frontmatter.image}
-                  tags={node.frontmatter.tags}
-                  mb="0"
-                />
-              ))}
-            </CaseGrid>
-          </Column>
           <Column>
             <Div mt={[3, 6]}>
               <Link as={GatsbyLink} to={routes.case}>
@@ -162,31 +160,15 @@ export const query = graphql`
 `
 
 const CaseGrid = styled(CssGrid)`
-  grid-template-columns: 1fr;
-
   @media ${breakpoints.medium} {
     grid-auto-flow: row dense;
-    grid-template-columns: repeat(2, 1fr);
   }
 
   > * {
     @media ${breakpoints.medium} {
       grid-row: span 2;
+      grid-column: grid-start / span 6;
     }
-  }
-
-  > *:nth-child(2) {
-    @media ${breakpoints.medium} {
-      grid-column: 2;
-    }
-  }
-
-  > *:nth-child(3) {
-    grid-column: 1;
-  }
-
-  > *:nth-child(4) {
-    grid-row: 2;
   }
 
   > *:nth-child(1),
@@ -198,7 +180,19 @@ const CaseGrid = styled(CssGrid)`
     }
   }
 
+  > *:nth-child(2) {
+    @media ${breakpoints.medium} {
+      grid-column-start: col-end 6;
+    }
+  }
+
+  > *:nth-child(4) {
+    @media ${breakpoints.medium} {
+      grid-column-start: col-end 6;
+    }
+  }
+
   > *:nth-child(5) {
-    grid-column: 1 / -1;
+    grid-column: grid;
   }
 `
