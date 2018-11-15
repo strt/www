@@ -20,7 +20,9 @@ export default function Career() {
           individually.
         </H1>
       </Hero>
-      <Cover id="cover" />
+      <Cover id="cover">
+        <img src="/images/uploads/news-space.jpg" alt="" />
+      </Cover>
       <Section py="7">
         <Grid>
           <Column>
