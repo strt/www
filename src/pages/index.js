@@ -13,6 +13,7 @@ import Div from '../components/Div'
 import Hero from '../components/Hero'
 import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
+import BoxSection from '../components/BoxSection'
 import { colors, breakpoints, vw, fluidRange } from '../style'
 import pageRoutes from '../routes'
 
@@ -89,7 +90,16 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 18]}>
+      <Section pt={[15, 25]}>
+        <BoxSection
+          backgroundImage="/images/uploads/news-astronaut.jpg"
+          title="Vill du längta till måndag? "
+          excerpt="Bra! Just nu letar vi efter dig som är copywriter, utvecklare eller kundansvarig. Och som vill ha en helt ny, otippad favoritdag."
+          link={{ text: 'Bli en av oss', href: routes.career }}
+          boxBg={colors.pinkPeach}
+        />
+      </Section>
+      <Section bg={colors.dark} pt="0" mt={[8, 25]}>
         <InstagramGrid />
         <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>

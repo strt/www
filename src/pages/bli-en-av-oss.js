@@ -7,7 +7,8 @@ import Section from '../components/Section'
 import InstagramGrid from '../components/InstagramGrid'
 import { H1, H2, H3, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints, colors } from '../style'
+import { colors } from '../style'
+import BoxSection from '../components/BoxSection'
 
 export default function Career() {
   return (
@@ -27,7 +28,15 @@ export default function Career() {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} py="7">
+      <Div my="18">
+        <BoxSection
+          backgroundImage="/images/uploads/news-astronaut.jpg"
+          title="Vi har alltid ett fönster öppet"
+          excerpt="Blivit kunde faktor göras att år sjö och hwila har vidsträckt är, där trevnadens regn dag det och träutensilierna gör är löksås."
+          link={{ text: 'Spontanansökan', href: '/' }}
+        />
+      </Div>
+      <Section bg={colors.dark} pt="20" pb="25">
         <Grid justifyContent="space-around">
           <Column tablet="4">
             <H3 textColor="white">Tre annan samma äng</H3>
@@ -82,20 +91,6 @@ export default function Career() {
         </Grid>
       </Section>
       <InstagramGrid halfTopBg={colors.dark} mb={[8, 19]} />
-      <Div
-        halfTopBg={colors.dark}
-        mb={[8, 19]}
-        css={{
-          '&::before': {
-            height: '64%',
-            [`@media ${breakpoints.medium}`]: { height: `${(3 / 5) * 100}%` },
-          },
-        }}
-      >
-        <Grid justifyContent="center">
-          <Column tablet="10" />
-        </Grid>
-      </Div>
     </Layout>
   )
 }

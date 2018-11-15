@@ -68,3 +68,22 @@ export const Column = styled(CleanTag)(
   alignSelf,
   justifySelf,
 )
+
+export const CssGrid = styled.div`
+  display: grid;
+  grid-gap: ${fluidRange({ min: 16, max: 24 })};
+  grid-template-columns:
+    [full-start] 0 [grid-start] repeat(12, [col-start] 1fr [col-end])
+    [grid-end] 0 [full-end];
+
+  @media ${breakpoints.medium} {
+    grid-gap: ${vw(32)};
+    grid-template-columns:
+      [full-start] ${vw(24)} [grid-start] repeat(12, [col-start] 1fr [col-end])
+      [grid-end] ${vw(24)} [full-end];
+  }
+
+  > * {
+    grid-column: grid;
+  }
+`
