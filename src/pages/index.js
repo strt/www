@@ -3,7 +3,7 @@ import { graphql, Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { H1, H2 } from '../components/Text'
-import { Grid, Column } from '../components/Grid'
+import { Grid, CssGrid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -14,7 +14,7 @@ import Hero from '../components/Hero'
 import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
-import { colors, breakpoints, vw, fluidRange } from '../style'
+import { colors, breakpoints, vw } from '../style'
 import pageRoutes from '../routes'
 
 const routes = pageRoutes.reduce((acc, i) => {
@@ -161,13 +161,10 @@ export const query = graphql`
   }
 `
 
-const CaseGrid = styled.div`
-  display: grid;
-  grid-gap: ${fluidRange({ min: 16, max: 24 })};
+const CaseGrid = styled(CssGrid)`
   grid-template-columns: 1fr;
 
   @media ${breakpoints.medium} {
-    grid-gap: ${32 / 15.2}vw;
     grid-auto-flow: row dense;
     grid-template-columns: repeat(2, 1fr);
   }
@@ -202,8 +199,6 @@ const CaseGrid = styled.div`
   }
 
   > *:nth-child(5) {
-    @media ${breakpoints.medium} {
-      grid-column: 1 / 3;
-    }
+    grid-column: 1 / -1;
   }
 `

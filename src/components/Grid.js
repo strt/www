@@ -82,8 +82,4 @@ export const CssGrid = styled.div`
       [full-start] ${vw(24)} [grid-start] repeat(12, [col-start] 1fr [col-end])
       [grid-end] ${vw(24)} [full-end];
   }
-
-  > * {
-    grid-column: grid;
-  }
 `
