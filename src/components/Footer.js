@@ -108,7 +108,16 @@ export default function Footer() {
           <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
             <Column width="auto">
               <CopyrightText as="small">
-                © 2018 Strateg Marknadsföring
+                © 2018 <br />
+                Strateg Marknadsföring <br />
+                En del av{' '}
+                <a
+                  href="//diplomatgruppen.se/sv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Diplomatgruppen
+                </a>
               </CopyrightText>
             </Column>
             <Column width="auto">
