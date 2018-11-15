@@ -22,12 +22,16 @@ function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
                   if (post.videos) {
                     return (
                       <video
-                        src={post.videos.standard_resolution.url}
                         poster={post.images.standard_resolution.url}
                         autoPlay
                         muted
                         loop
-                      />
+                      >
+                        <source
+                          type="video/mp4"
+                          src={post.videos.standard_resolution.url}
+                        />
+                      </video>
                     )
                   }
 
