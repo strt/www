@@ -180,12 +180,7 @@ const CaseGrid = styled(CssGrid)`
     }
   }
 
-  > *:nth-child(2) {
-    @media ${breakpoints.medium} {
-      grid-column-start: col-end 6;
-    }
-  }
-
+  > *:nth-child(2),
   > *:nth-child(4) {
     @media ${breakpoints.medium} {
       grid-column-start: col-end 6;
