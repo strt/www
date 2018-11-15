@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Meta from './Meta'
 import { GlobalStyle } from '../style'
+import SkipNavLink from './SkipNav'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer'
@@ -27,6 +28,7 @@ export default function Layout({
         {meta}
       </Meta>
       <GlobalStyle />
+      <SkipNavLink />
       <Header />
       <Main>{children}</Main>
       {!hideFooter && <Footer />}
