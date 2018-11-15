@@ -115,7 +115,7 @@ export default class Playground extends React.Component {
     })
 
     const circle = Bodies.circle(700, 240, 45, {
-      render: { sprite: { texture: play, xScale: 0.96, yScale: 0.96 } },
+      render: { sprite: { texture: play } },
     })
     const constraint = Constraint.create({
       pointA: { x: 640, y: 300 },
