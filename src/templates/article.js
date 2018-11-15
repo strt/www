@@ -17,7 +17,9 @@ export default function Template({ data: { markdownRemark: post } }) {
       <article>
         <Grid>
           <Column width="auto">
-            <H4 as="time">{formattedDate}</H4>
+            <H4 as="time" dateTime={post.frontmatter.date}>
+              {formattedDate}
+            </H4>
           </Column>
         </Grid>
         <Hero pt={[2, 7]}>
