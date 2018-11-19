@@ -1,10 +1,12 @@
 backend:
   name: git-gateway
 
-media_folder: 'static/images/uploads'
-public_folder: '/images/uploads'
-
 publish_mode: editorial_workflow
+media_folder: 'content/media/uploads'
+
+editor:
+  # Maybe enable this later if we add a custom preview
+  preview: false
 
 collections:
   - name: case
