@@ -3,7 +3,7 @@ date: '2018-08-06T15:25:24+02:00'
 client: 'ÖBO'
 title: 'Lägenheter med plats för det som är du.'
 excerpt: null
-image: /images/uploads/obo-case.jpg
+image: /media/uploads/case-obo.jpg
 tags: ['Kampanj', 'Digitalt', 'Print']
 ---
 

@@ -90,7 +90,7 @@ export default function Index({ data }) {
       </Section>
       <Section pt={[15, 25]}>
         <BoxSection
-          backgroundImage="/images/uploads/news-astronaut.jpg"
+          backgroundImage={data.careerImage.childImageSharp.fluid}
           title="Vill du längta till måndag? "
           excerpt="Bra! Just nu letar vi efter dig som är copywriter, utvecklare eller kundansvarig. Och som vill ha en helt ny, otippad favoritdag."
           link={{ text: 'Bli en av oss', href: routes.career }}
@@ -132,7 +132,16 @@ export const query = graphql`
           frontmatter {
             client
             tags
-            image
+            image {
+              childImageSharp {
+                fluid(
+                  quality: 80
+                  srcSetBreakpoints: [365, 520, 724, 960, 1200, 1440]
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
@@ -151,8 +160,29 @@ export const query = graphql`
           frontmatter {
             title
             date
-            image
+            image {
+              childImageSharp {
+                fluid(
+                  maxWidth: 520
+                  quality: 80
+                  srcSetBreakpoints: [112, 320, 480]
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
+        }
+      }
+    }
+    careerImage: file(relativePath: { eq: "bli-en-av-oss.jpg" }) {
+      childImageSharp {
+        fluid(
+          maxWidth: 1440
+          quality: 80
+          srcSetBreakpoints: [365, 520, 880, 1200, 1440]
+        ) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

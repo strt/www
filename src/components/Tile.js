@@ -3,7 +3,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
-import { cover, breakpoints, fluidRange, vw } from '../style'
+import { cover, breakpoints, fluidRange, vw, colors } from '../style'
 
 const Link = styled(GatsbyLink)`
   display: flex;
@@ -32,6 +32,7 @@ const Content = styled.div`
 const Media = styled.img`
   ${cover()}
   z-index: -1;
+  background-color: ${colors.steel};
 `
 
 export default function Tile({ title, image, url, tags }) {
@@ -44,7 +45,14 @@ export default function Tile({ title, image, url, tags }) {
           </H3>
           <Tags items={tags} textColor="white" linked={false} variant="small" />
         </Content>
-        <Media src={image} alt="" />
+        {image && (
+          <Media
+            srcSet={image.childImageSharp.fluid.srcSet}
+            sizes={image.childImageSharp.fluid.sizes}
+            src={image.childImageSharp.fluid.src}
+            alt=""
+          />
+        )}
       </Wrapper>
     </Link>
   )

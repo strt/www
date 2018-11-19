@@ -139,7 +139,13 @@ export const query = graphql`
           frontmatter {
             client
             tags
-            image
+            image {
+              childImageSharp {
+                fluid(maxWidth: 700) {
+                  src
+                }
+              }
+            }
           }
         }
       }

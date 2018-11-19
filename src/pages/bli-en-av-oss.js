@@ -32,7 +32,7 @@ export default function Career() {
       </Section>
       <Div my="18">
         <BoxSection
-          backgroundImage="/images/uploads/news-astronaut.jpg"
+          backgroundImage={null}
           title="Vi har alltid ett fönster öppet"
           excerpt="Blivit kunde faktor göras att år sjö och hwila har vidsträckt är, där trevnadens regn dag det och träutensilierna gör är löksås."
           link={{ text: 'Spontanansökan', href: '/' }}

@@ -3,7 +3,7 @@ date: '2018-04-06T15:25:24+02:00'
 client: 'Wer'
 title: 'Wer ger mer än kunderna visste.'
 excerpt: null
-image: '/images/uploads/wer-case.jpg'
+image: '/media/uploads/case-wer.jpg'
 tags: ['Digitalt', 'Print']
 ---
 

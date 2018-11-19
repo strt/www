@@ -61,7 +61,14 @@ export default function Card({ url, title, date, image }) {
           <H3>{title}</H3>
         </Content>
         <ImageWrapper>
-          <img src={image} alt="" />
+          {image && (
+            <img
+              srcSet={image.childImageSharp.fluid.srcSet}
+              sizes={image.childImageSharp.fluid.sizes}
+              src={image}
+              alt=""
+            />
+          )}
         </ImageWrapper>
       </Article>
     </Link>

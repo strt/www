@@ -21,16 +21,11 @@ module.exports = {
       'MarkdownRemark.frontmatter.contact_id',
   },
   plugins: [
-    'gatsby-plugin-sitemap',
-    // 'gatsby-plugin-subfont', Enable again once it's less buggy
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages',
+        path: `${__dirname}/content/media/`,
+        name: 'media',
       },
     },
     {
@@ -45,9 +40,29 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: ['gatsby-remark-unwrap-images'],
+        plugins: [
+          {
+            resolve: 'gatsby-remark-relative-images',
+            options: {
+              name: 'media',
+            },
+          },
+          'gatsby-remark-unwrap-images',
+          // {
+          //   resolve: `gatsby-remark-images`,
+          //   options: {
+          //     maxWidth: 1240,
+          //     backgroundColor: `#cccccc`,
+          //   },
+          // },
+        ],
       },
     },
+    'gatsby-plugin-sitemap',
+    // 'gatsby-plugin-subfont', Enable again once it's less buggy
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify-cms',

@@ -40,7 +40,12 @@ export default function Template({
         </Hero>
         {post.frontmatter.image && (
           <Cover>
-            <img src={post.frontmatter.image} alt="" />
+            <img
+              srcSet={post.frontmatter.image.childImageSharp.fluid.src}
+              sizes={post.frontmatter.image.childImageSharp.fluid.sizes}
+              src={post.frontmatter.image.childImageSharp.fluid.src}
+              alt=""
+            />
           </Cover>
         )}
         <Section py={[5, 7]}>
@@ -99,7 +104,13 @@ export const pageQuery = graphql`
         client
         excerpt
         tags
-        image
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1440) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         contact {
           frontmatter {
             contact_id

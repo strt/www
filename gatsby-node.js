@@ -1,6 +1,8 @@
 const { resolve, join } = require('path')
 const { execSync } = require('child_process')
 const { createFilePath } = require('gatsby-source-filesystem')
+const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // exports.onCreateWebpackConfig = ({ actions }) => {
@@ -90,9 +92,11 @@ exports.createPages = async ({ actions, graphql }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
+  fmImagesToRelative(node)
 
   if (node.internal.type === 'MarkdownRemark') {
     const value = createFilePath({ node, getNode })
+
     createNodeField({
       name: 'slug',
       node,

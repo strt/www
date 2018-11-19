@@ -1,9 +1,9 @@
 ---
-date: '2018-10-06T15:25:24+02:00'
-client: 'Garageportexperten'
-title: 'Enad röst tack vare kommunikativ plattform.'
+date: '2018-04-08T15:25:24+02:00'
+client: 'Epiroc'
+title: 'Epiroc.'
 excerpt: null
-image: '/media/uploads/case-gara.jpg'
+image: /media/uploads/case-atlas.jpg
 tags: ['Digitalt', 'Print']
 ---
 

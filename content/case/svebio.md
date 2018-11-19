@@ -1,9 +1,9 @@
 ---
-date: '2018-04-06T15:25:24+02:00'
+date: '2018-08-07T15:25:24+02:00'
 client: 'Svebio'
 title: 'Tre webbplatser - en smart lösning.'
 excerpt: null
-image: '/images/uploads/svebio-case.jpg'
+image: '/media/uploads/case-svebio.jpg'
 tags: ['Digitalt']
 ---
 

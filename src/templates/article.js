@@ -47,7 +47,13 @@ export const pageQuery = graphql`
         date
         title
         excerpt
-        image
+        image {
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              src
+            }
+          }
+        }
       }
     }
   }

@@ -8,6 +8,7 @@ import { breakpoints, colors, fluidRange, vw } from '../style'
 const Background = styled.figure`
   grid-column: full-start/col-end 12;
   grid-row: 1/3;
+  background-color: ${colors.steel};
 
   img {
     width: 100%;
@@ -43,7 +44,14 @@ export default function BoxSection({
   return (
     <CssGrid>
       <Background>
-        <img src={backgroundImage} alt="" />
+        {backgroundImage && (
+          <img
+            srcSet={backgroundImage.srcSet}
+            sizes={backgroundImage.sizes}
+            src={backgroundImage.src}
+            alt=""
+          />
+        )}
       </Background>
       <Box bg={boxBg}>
         <H2 mb={[2, 4]}>{title}</H2>

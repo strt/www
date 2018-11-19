@@ -55,6 +55,8 @@
     "gatsby-plugin-sitemap": "^2.0.1",
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-plugin-subfont": "^1.0.1",
+    "gatsby-remark-images": "^2.0.6",
+    "gatsby-remark-relative-images": "^0.2.0",
     "gatsby-remark-unwrap-images": "^1.0.1",
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-remark": "^2.1.6",
