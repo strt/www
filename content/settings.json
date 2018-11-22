@@ -1,3 +1,16 @@
 {
-  "title": "Strateg"
+  "title": "Strateg",
+  "contact": {
+    "address": "Slöjdgatan 39",
+    "zipcode": "703 83",
+    "city": "Örebro",
+    "email": "info@strateg.se",
+    "phone": "019-673 44 00"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/strategmarknadsforing/",
+    "instagram": "https://www.instagram.com/enstrateg/",
+    "linkedin": "https://www.linkedin.com/company/strateg-marknadsf-ring-ab",
+    "github": "https://github.com/strt"
+  }
 }
