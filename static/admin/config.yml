@@ -4,15 +4,13 @@ backend:
 publish_mode: editorial_workflow
 media_folder: 'content/media/uploads'
 
-editor:
-  # Maybe enable this later if we add a custom preview
-  preview: false
-
 collections:
   - name: case
     label: Case
     folder: '/content/case'
     create: true
+    editor:
+      preview: false
     fields:
       - { name: 'title', label: 'Title', widget: 'string' }
       - { name: 'excerpt', label: 'Excerpt', widget: 'text' }
@@ -36,6 +34,8 @@ collections:
     label: 'Articles'
     folder: '/content/aktuellt'
     create: true
+    editor:
+      preview: false
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - { name: 'title', label: 'Title', widget: 'string' }
@@ -43,3 +43,38 @@ collections:
       - { name: 'date', label: 'Publish date', widget: 'datetime' }
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
+
+  - name: 'settings'
+    label: 'Settings'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: 'general'
+        label: 'Site Settings'
+        file: 'content/settings.json'
+        description: 'General Site Settings'
+        fields:
+          - { label: 'Global title', name: 'title', widget: 'string' }
+          - label: 'Contact details'
+            name: 'contact'
+            widget: 'object'
+            fields:
+              - { label: 'Address', name: 'address', widget: 'string' }
+              - { label: 'Zipcode', name: 'zipcode', widget: 'string' }
+              - { label: 'City', name: 'city', widget: 'string' }
+              - { label: 'Email', name: 'email', widget: 'string' }
+              - { label: 'Phone', name: 'phone', widget: 'string' }
+          - label: 'Social'
+            name: 'social'
+            widget: 'object'
+            fields:
+              - { label: 'Facebook', name: 'facebook', widget: 'string' }
+              - {
+                  label: 'Facebook App ID',
+                  name: 'facebook_id',
+                  widget: 'string',
+                }
+              - { label: 'Instagram', name: 'instagram', widget: 'string' }
+              - { label: 'LinkedIn', name: 'linkedin', widget: 'string' }
+              - { label: 'GitHub', name: 'github', widget: 'string' }
