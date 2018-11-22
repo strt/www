@@ -1,5 +1,5 @@
 {
-  "title": "Strateg",
+  "name": "Strateg",
   "contact": {
     "address": "Slöjdgatan 39",
     "zipcode": "703 83",
@@ -9,6 +9,7 @@
   },
   "social": {
     "facebook": "https://www.facebook.com/strategmarknadsforing/",
+    "facebook_app_id": "",
     "instagram": "https://www.instagram.com/enstrateg/",
     "linkedin": "https://www.linkedin.com/company/strateg-marknadsf-ring-ab",
     "github": "https://github.com/strt"

@@ -52,17 +52,19 @@ function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
               <StaticQuery
                 query={graphql`
                   query {
-                    site {
-                      siteMetadata {
-                        instagram
+                    file(relativePath: { eq: "settings.json" }) {
+                      siteSettings: childContentJson {
+                        social {
+                          instagram
+                        }
                       }
                     }
                   }
                 `}
               >
-                {({ site: { siteMetadata } }) => (
+                {({ file: { siteSettings } }) => (
                   <Link
-                    href={siteMetadata.instagram}
+                    href={siteSettings.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

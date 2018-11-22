@@ -14,20 +14,23 @@ export default function Meta({
     <StaticQuery
       query={graphql`
         query {
-          site {
-            siteMetadata {
+          file(relativePath: { eq: "settings.json" }) {
+            siteSettings: childContentJson {
               name
+              social {
+                facebook_app_id
+              }
             }
           }
         }
       `}
     >
-      {({ site: { siteMetadata } }) => (
+      {({ file: { siteSettings } }) => (
         <Helmet
           htmlAttributes={{ lang: 'sv' }}
           title={title}
           titleTemplate="%s – Strateg"
-          defaultTitle={siteMetadata.name}
+          defaultTitle={siteSettings.name}
         >
           {/* TODO: Remove before release */}
           <meta name="robots" content="noindex, nofollow" />
@@ -36,7 +39,7 @@ export default function Meta({
 
           {/* OpenGraph tags */}
           {url && <meta property="og:url" content={url} />}
-          <meta property="og:site_name" content={siteMetadata.name} />
+          <meta property="og:site_name" content={siteSettings.name} />
           <meta
             property="og:type"
             content={isArticle ? 'article' : 'website'}
@@ -46,8 +49,11 @@ export default function Meta({
             <meta property="og:description" content={description} />
           )}
           {image && <meta property="og:image" content={image} />}
-          {siteMetadata.facebook_app_id && (
-            <meta property="fb:app_id" content={siteMetadata.facebook_app_id} />
+          {siteSettings.social.facebook_app_id && (
+            <meta
+              property="fb:app_id"
+              content={siteSettings.social.facebook_app_id}
+            />
           )}
 
           {/* Twitter Card tags */}

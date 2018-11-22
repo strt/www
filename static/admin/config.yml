@@ -55,7 +55,7 @@ collections:
         file: 'content/settings.json'
         description: 'General Site Settings'
         fields:
-          - { label: 'Global title', name: 'title', widget: 'string' }
+          - { label: 'Site name', name: 'name', widget: 'string' }
           - label: 'Contact details'
             name: 'contact'
             widget: 'object'
@@ -72,7 +72,7 @@ collections:
               - { label: 'Facebook', name: 'facebook', widget: 'string' }
               - {
                   label: 'Facebook App ID',
-                  name: 'facebook_id',
+                  name: 'facebook_app_id',
                   widget: 'string',
                 }
               - { label: 'Instagram', name: 'instagram', widget: 'string' }

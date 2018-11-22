@@ -3,18 +3,7 @@ const proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    name: 'Strateg',
     siteUrl: 'https://beta.strateg.se',
-    adress: 'Slöjdgatan 39',
-    zipcode: '703 83',
-    city: 'Örebro',
-    email: 'info@strateg.se',
-    phone: '019-673 44 00',
-    facebook: 'https://www.facebook.com/strategmarknadsforing/',
-    facebook_app_id: '',
-    instagram: 'https://www.instagram.com/enstrateg/',
-    linkedin: 'https://www.linkedin.com/company/strateg-marknadsf-ring-ab',
-    github: 'https://github.com/strt',
   },
   mapping: {
     'MarkdownRemark.frontmatter.contact':
@@ -37,6 +26,7 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-transformer-json',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

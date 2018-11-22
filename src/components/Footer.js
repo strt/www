@@ -21,48 +21,63 @@ export default function Footer() {
     <StaticQuery
       query={graphql`
         query {
-          site {
-            siteMetadata {
+          file(relativePath: { eq: "settings.json" }) {
+            siteSettings: childContentJson {
               name
-              adress
-              zipcode
-              city
-              email
-              phone
-              facebook
-              instagram
-              linkedin
-              github
+              contact {
+                address
+                zipcode
+                city
+                email
+                phone
+              }
+              social {
+                facebook
+                instagram
+                linkedin
+                github
+              }
             }
           }
         }
       `}
     >
-      {({ site: { siteMetadata } }) => (
+      {({ file: { siteSettings } }) => (
         <Section as="footer" bg={colors.ice} py={[4, 7]}>
           <Grid>
             <Column tablet="3">
               <Text>
-                {siteMetadata.name} <br />
-                {siteMetadata.adress} <br />
-                {siteMetadata.zipcode} {siteMetadata.city}
+                {siteSettings.name} <br />
+                {siteSettings.contact.address} <br />
+                {siteSettings.contact.zipcode} {siteSettings.contact.city}
               </Text>
             </Column>
             <Column tablet="3">
               <Text>
-                <a href={`mailto:${siteMetadata.email}`}>
-                  {siteMetadata.email}
-                </a>
-                <br />
-                <a href={`tel:${siteMetadata.phone.replace(/\s/g, '')}`}>
-                  {siteMetadata.phone}
-                </a>
+                {siteSettings.contact.email && (
+                  <>
+                    <a href={`mailto:${siteSettings.contact.email}`}>
+                      {siteSettings.contact.email}
+                    </a>
+                    <br />
+                  </>
+                )}
+                {siteSettings.contact.phone && (
+                  <a
+                    href={`tel:${siteSettings.contact.phone.replace(
+                      /\s/g,
+                      '',
+                    )}`}
+                  >
+                    {siteSettings.contact.phone}
+                  </a>
+                )}
               </Text>
             </Column>
             <Column tablet="3">
               <Text>
                 <a
-                  href={siteMetadata.instagram}
+                  href={siteSettings.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -70,7 +85,7 @@ export default function Footer() {
                 </a>
                 <br />
                 <a
-                  href={siteMetadata.facebook}
+                  href={siteSettings.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -78,7 +93,7 @@ export default function Footer() {
                 </a>
                 <br />
                 <a
-                  href={siteMetadata.linkedin}
+                  href={siteSettings.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -86,7 +101,7 @@ export default function Footer() {
                 </a>
                 <br />
                 <a
-                  href={siteMetadata.github}
+                  href={siteSettings.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
