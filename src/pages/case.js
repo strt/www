@@ -46,7 +46,7 @@ const Filter = styled(Div)`
 `
 
 const Animation = styled.div`
-  animation: ${animations.fadeIn} 1s 200ms ${easings.easeOutSine} both;
+  animation: ${animations.fadeIn} 220ms 120ms ${easings.easeOutSine} both;
 `
 
 export default class Case extends React.Component {
