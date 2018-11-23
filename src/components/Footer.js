@@ -46,14 +46,14 @@ export default function Footer() {
         <Section as="footer" bg={colors.ice} py={[4, 7]}>
           <Grid>
             <Column tablet="3">
-              <Text>
+              <Text as="address">
                 {siteSettings.name} <br />
                 {siteSettings.contact.address} <br />
                 {siteSettings.contact.zipcode} {siteSettings.contact.city}
               </Text>
             </Column>
             <Column tablet="3">
-              <Text>
+              <Text as="address">
                 {siteSettings.contact.email && (
                   <>
                     <a href={`mailto:${siteSettings.contact.email}`}>
