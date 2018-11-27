@@ -11,6 +11,7 @@ image: /media/uploads/case-arbesko.jpg
 category: ''
 tags:
   - Identitet
+  - Digitalt
 ---
 
 ## Äkta. Nära. Hantverk. Stolthet.
