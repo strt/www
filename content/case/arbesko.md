@@ -8,8 +8,9 @@ excerpt: >-
 client: Arbesko
 date: '2018-10-09T15:25:24+02:00'
 image: /media/uploads/case-arbesko.jpg
-category: Foo
-tags: []
+category: ''
+tags:
+  - Identitet
 ---
 
 ## Äkta. Nära. Hantverk. Stolthet.
