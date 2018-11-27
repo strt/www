@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
@@ -11,11 +11,12 @@ import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
-import Playground from '../components/Playground'
 import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
 import { colors, breakpoints, vw } from '../style'
 import pageRoutes from '../routes'
+
+const Playground = React.lazy(() => import('../components/Playground'))
 
 const routes = pageRoutes.reduce((acc, i) => {
   acc[i.id] = i.link
@@ -35,7 +36,9 @@ export default function Index({ data }) {
         </H1>
       </Hero>
       <Cover id="playground">
-        <Playground />
+        <Suspense fallback={null}>
+          <Playground />
+        </Suspense>
       </Cover>
       <Section py={[8, 15]}>
         <CaseGrid>
