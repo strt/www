@@ -2,6 +2,7 @@ import React from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { H3, Text } from './Text'
+import Image from './Image'
 import dayjs from '../utils/date'
 import { colors, ratio, breakpoints, cover, fluidRange, vw } from '../style'
 import { getWidth } from './Grid'
@@ -61,14 +62,7 @@ export default function Card({ url, title, date, image }) {
           <H3>{title}</H3>
         </Content>
         <ImageWrapper>
-          {image && (
-            <img
-              srcSet={image.childImageSharp.fluid.srcSet}
-              sizes={image.childImageSharp.fluid.sizes}
-              src={image}
-              alt=""
-            />
-          )}
+          {image && <Image fluid={image.childImageSharp.fluid} alt="" />}
         </ImageWrapper>
       </Article>
     </Link>

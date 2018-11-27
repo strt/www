@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
+import Image from './Image'
 import { H2, Text } from './Text'
 import { CssGrid } from './Grid'
 import { breakpoints, colors, fluidRange, vw } from '../style'
@@ -44,14 +45,7 @@ export default function BoxSection({
   return (
     <CssGrid>
       <Background>
-        {backgroundImage && (
-          <img
-            srcSet={backgroundImage.srcSet}
-            sizes={backgroundImage.sizes}
-            src={backgroundImage.src}
-            alt=""
-          />
-        )}
+        {backgroundImage && <Image fluid={backgroundImage} alt="" />}
       </Background>
       <Box bg={boxBg}>
         <H2 mb={[2, 4]}>{title}</H2>

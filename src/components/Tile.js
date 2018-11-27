@@ -3,6 +3,7 @@ import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
+import Image from './Image'
 import { cover, breakpoints, fluidRange, vw, colors } from '../style'
 
 const Link = styled(GatsbyLink)`
@@ -29,7 +30,7 @@ const Content = styled.div`
   }
 `
 
-const Media = styled.img`
+const Media = styled(Image)`
   ${cover()}
   z-index: -1;
   background-color: ${colors.steel};
@@ -45,14 +46,7 @@ export default function Tile({ title, image, url, tags }) {
           </H3>
           <Tags items={tags} textColor="white" linked={false} variant="small" />
         </Content>
-        {image && (
-          <Media
-            srcSet={image.childImageSharp.fluid.srcSet}
-            sizes={image.childImageSharp.fluid.sizes}
-            src={image.childImageSharp.fluid.src}
-            alt=""
-          />
-        )}
+        {image && <Media fluid={image.childImageSharp.fluid} alt="" />}
       </Wrapper>
     </Link>
   )

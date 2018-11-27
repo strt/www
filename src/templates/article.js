@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
+import Image from '../components/Image'
 import Section from '../components/Section'
 import { H1, H4, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
@@ -28,7 +29,10 @@ export default function Template({ data: { markdownRemark: post } }) {
         </Hero>
         {post.frontmatter.image && (
           <Cover>
-            <img src={post.frontmatter.image} alt="" />
+            <Image
+              fluid={post.frontmatter.image.childImageSharp.fluid}
+              alt=""
+            />
           </Cover>
         )}
         <Section py="7">
@@ -49,9 +53,7 @@ export const pageQuery = graphql`
         excerpt
         image {
           childImageSharp {
-            fluid(maxWidth: 700) {
-              src
-            }
+            ...HeroImage
           }
         }
       }

@@ -7,6 +7,7 @@ import { Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
+import Image from '../components/Image'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import { colors } from '../style'
@@ -40,10 +41,8 @@ export default function Template({
         </Hero>
         {post.frontmatter.image && (
           <Cover>
-            <img
-              srcSet={post.frontmatter.image.childImageSharp.fluid.src}
-              sizes={post.frontmatter.image.childImageSharp.fluid.sizes}
-              src={post.frontmatter.image.childImageSharp.fluid.src}
+            <Image
+              fluid={post.frontmatter.image.childImageSharp.fluid}
               alt=""
             />
           </Cover>
@@ -106,9 +105,7 @@ export const pageQuery = graphql`
         tags
         image {
           childImageSharp {
-            fluid(maxWidth: 1440) {
-              ...GatsbyImageSharpFluid
-            }
+            ...HeroImage
           }
         }
         contact {
