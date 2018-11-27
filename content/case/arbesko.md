@@ -8,10 +8,7 @@ excerpt: >-
 client: Arbesko
 date: '2018-10-09T15:25:24+02:00'
 image: /media/uploads/case-arbesko.jpg
-tags:
-  - Digitalt
-  - Identitet
-  - Varumärkesarbete
+tags: []
 ---
 
 ## Äkta. Nära. Hantverk. Stolthet.
