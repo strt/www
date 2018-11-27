@@ -40,6 +40,7 @@ export default function Header() {
                         type="button"
                         onClick={toggle}
                         textColor="white"
+                        aria-label="Stäng meny"
                       >
                         <Icon name={['fal', 'times']} />
                       </IconButton>
