@@ -56,9 +56,7 @@ export const query = graphql`
             date
             image {
               childImageSharp {
-                fluid(maxWidth: 700) {
-                  src
-                }
+                ...CardImage
               }
             }
           }

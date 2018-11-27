@@ -134,12 +134,7 @@ export const query = graphql`
             tags
             image {
               childImageSharp {
-                fluid(
-                  quality: 80
-                  srcSetBreakpoints: [365, 520, 724, 960, 1200, 1440]
-                ) {
-                  ...GatsbyImageSharpFluid
-                }
+                ...TileImage
               }
             }
           }
@@ -162,13 +157,7 @@ export const query = graphql`
             date
             image {
               childImageSharp {
-                fluid(
-                  maxWidth: 520
-                  quality: 80
-                  srcSetBreakpoints: [112, 320, 480]
-                ) {
-                  ...GatsbyImageSharpFluid
-                }
+                ...CardImage
               }
             }
           }

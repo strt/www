@@ -141,9 +141,7 @@ export const query = graphql`
             tags
             image {
               childImageSharp {
-                fluid(maxWidth: 700) {
-                  src
-                }
+                ...TileImage
               }
             }
           }
