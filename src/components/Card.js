@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { H3, Text } from './Text'
 import dayjs from '../utils/date'
@@ -74,3 +74,11 @@ export default function Card({ url, title, date, image }) {
     </Link>
   )
 }
+
+export const query = graphql`
+  fragment CardImage on ImageSharp {
+    fluid(maxWidth: 520, quality: 80, srcSetBreakpoints: [112, 320, 480]) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+`

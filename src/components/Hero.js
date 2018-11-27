@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Section from './Section'
 import { IconButton } from './Button'
@@ -48,3 +49,11 @@ export default function Hero({
     </StyledHero>
   )
 }
+
+export const query = graphql`
+  fragment HeroImage on ImageSharp {
+    fluid(maxWidth: 1440) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+`

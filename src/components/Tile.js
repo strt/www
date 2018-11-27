@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
@@ -57,3 +57,11 @@ export default function Tile({ title, image, url, tags }) {
     </Link>
   )
 }
+
+export const query = graphql`
+  fragment TileImage on ImageSharp {
+    fluid(quality: 80, srcSetBreakpoints: [365, 520, 724, 960, 1200, 1440]) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+`
