@@ -2,6 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Link from './Link'
+import Image from './Image'
 import Div from './Div'
 import { Grid, Column } from './Grid'
 import Fetch from './Fetch'
@@ -37,7 +38,7 @@ function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
 
                   if (post.images) {
                     return (
-                      <img
+                      <Image
                         src={post.images.standard_resolution.url}
                         alt={post.caption}
                       />
@@ -111,6 +112,7 @@ const ImageGrid = styled.div`
 const Box = styled.div`
   position: relative;
   height: 0;
+  overflow: hidden;
   padding-top: 100%;
   background-image: linear-gradient(to top left, black, gray);
 
