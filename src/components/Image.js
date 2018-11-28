@@ -33,7 +33,7 @@ class Image extends React.Component {
 
   render() {
     // const { status } = this.state
-    const { src, fluid, ...props } = this.props
+    const { src, sizes, alt = '', fluid, ...props } = this.props
 
     if (typeof src === 'string') {
       return <img src={src} alt="" {...props} />
@@ -41,10 +41,10 @@ class Image extends React.Component {
 
     return (
       <img
-        srcSet={fluid.src}
-        sizes={fluid.sizes}
+        srcSet={fluid.srcSet}
+        sizes={sizes || fluid.sizes}
         src={fluid.src}
-        alt=""
+        alt={alt}
         {...props}
       />
     )
