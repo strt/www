@@ -11,6 +11,7 @@ import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
+import NoSSR from '../components/NoSSR'
 import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
 import { colors, breakpoints, vw } from '../style'
@@ -36,9 +37,11 @@ export default function Index({ data }) {
         </H1>
       </Hero>
       <Cover id="playground">
-        <Suspense fallback={null}>
-          <Playground />
-        </Suspense>
+        <NoSSR>
+          <Suspense fallback={null}>
+            <Playground />
+          </Suspense>
+        </NoSSR>
       </Cover>
       <Section py={[8, 15]}>
         <CaseGrid>
