@@ -54,7 +54,11 @@ export default function Tile({ title, image, url, tags }) {
 
 export const query = graphql`
   fragment TileImage on ImageSharp {
-    fluid(quality: 80, srcSetBreakpoints: [365, 520, 724, 960, 1200, 1440]) {
+    fluid(
+      quality: 80
+      maxWidth: 1440
+      srcSetBreakpoints: [365, 520, 724, 960, 1200, 1440]
+    ) {
       ...GatsbyImageSharpFluid
     }
   }
