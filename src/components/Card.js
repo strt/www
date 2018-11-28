@@ -35,7 +35,7 @@ const Content = styled.div`
   }
 `
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled.figure`
   ${ratio({ x: 4, y: 3 })}
   width: ${getWidth(4)};
   background-color: ${colors.steel};
@@ -62,7 +62,13 @@ export default function Card({ url, title, date, image }) {
           <H3>{title}</H3>
         </Content>
         <ImageWrapper>
-          {image && <Image fluid={image.childImageSharp.fluid} alt="" />}
+          {image && (
+            <Image
+              fluid={image.childImageSharp.fluid}
+              sizes="(min-width: 768px) 20vw, 30vw"
+              alt=""
+            />
+          )}
         </ImageWrapper>
       </Article>
     </Link>
@@ -71,7 +77,7 @@ export default function Card({ url, title, date, image }) {
 
 export const query = graphql`
   fragment CardImage on ImageSharp {
-    fluid(maxWidth: 520, quality: 80, srcSetBreakpoints: [112, 320, 480]) {
+    fluid(quality: 80, srcSetBreakpoints: [200, 340, 420]) {
       ...GatsbyImageSharpFluid
     }
   }
