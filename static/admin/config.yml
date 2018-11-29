@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
 
+display_url: https://beta.strateg.se
 publish_mode: editorial_workflow
 media_folder: 'content/media/uploads'
 
@@ -14,7 +15,7 @@ collections:
     fields:
       - { name: 'title', label: 'Title', widget: 'string' }
       - { name: 'excerpt', label: 'Excerpt', widget: 'text' }
-      - { name: 'client', label: 'Kund', widget: 'string' }
+      - { name: 'client', label: 'Client', widget: 'string' }
       - {
           name: 'date',
           label: 'Publish date',
@@ -32,6 +33,7 @@ collections:
 
   - name: 'articles'
     label: 'Articles'
+    label_singular: 'Article'
     folder: '/content/aktuellt'
     create: true
     editor:
@@ -52,6 +54,7 @@ collections:
     files:
       - name: 'general'
         label: 'Site Settings'
+        label_singular: 'Site setting'
         file: 'content/settings.json'
         description: 'General Site Settings'
         fields:
