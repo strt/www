@@ -4,6 +4,10 @@ import Link from './Link'
 import { colors, breakpoints, fluidRange, vw } from '../style'
 
 export default function Tags({ items, linked = true, ...rest }) {
+  if (!items || !items.length) {
+    return null
+  }
+
   return (
     <TagsWrapper {...rest}>
       <Hyphen />
