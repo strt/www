@@ -151,7 +151,7 @@ export const query = graphql`
     }
     employees: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/employees/" } }
-      sort: { fields: [frontmatter___first_name] }
+      sort: { fields: [frontmatter___first_name, frontmatter___last_name] }
     ) {
       edges {
         node {
