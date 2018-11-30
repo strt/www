@@ -66,6 +66,8 @@ export default class Case extends React.Component {
     const { data, location } = this.props
     const { filter } = this.state
 
+    console.log(filter)
+
     const cases = filterCases(data.cases.edges, filter)
     const tags = data.cases.edges
       .reduce((acc, { node }) => {
@@ -89,7 +91,11 @@ export default class Case extends React.Component {
             … Ja, du fattar. Det här är case som visar vad vi gör.
           </Excerpt>
           <Filter>
-            <Link href={location.pathname} onClick={this.onTagClick}>
+            <Link
+              href={location.pathname}
+              onClick={this.onTagClick}
+              aria-current={!filter ? true : undefined}
+            >
               Alla projekt
             </Link>
             {tags.map(tag => (
@@ -97,6 +103,11 @@ export default class Case extends React.Component {
                 key={tag}
                 href={getTagLink(tag.toLowerCase())}
                 onClick={this.onTagClick}
+                aria-current={
+                  filter && filter.includes(tag.toLowerCase())
+                    ? true
+                    : undefined
+                }
               >
                 {tag}
               </Link>

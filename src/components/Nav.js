@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { IconButton } from './Button'
@@ -10,7 +11,15 @@ export const NavButton = styled(Link)`
   }
 `
 
-export const NavLink = styled(GatsbyLink)`
+function getProps({ isPartiallyCurrent }) {
+  return isPartiallyCurrent ? { 'data-active': true } : null
+}
+
+export function NavLink(props) {
+  return <StyledNavLink getProps={getProps} {...props} />
+}
+
+export const StyledNavLink = styled(GatsbyLink)`
   display: inline-block;
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
   font-size: ${fluidRange({ min: 36, max: 48 })};
@@ -41,6 +50,7 @@ export const NavLink = styled(GatsbyLink)`
     &[aria-current],
     &[data-active] {
       transform: none;
+      text-decoration: none;
     }
 
     &[href='/'] {

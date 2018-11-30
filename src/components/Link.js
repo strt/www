@@ -15,6 +15,10 @@ const Link = styled.a`
   @media screen and ${breakpoints.medium} {
     font-size: ${vw(20)};
   }
+
+  &[aria-current] {
+    text-decoration: none;
+  }
 `
 
 export default Link
