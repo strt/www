@@ -29,6 +29,15 @@ collections:
           required: false,
         }
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
+      - {
+          name: 'contact_relation',
+          label: 'Contact',
+          widget: 'relation',
+          collection: 'employees',
+          valueField: 'email',
+          searchFields: ['first_name', 'last_name'],
+          displayFields: ['first_name', 'last_name'],
+        }
       - { name: 'body', label: 'Body', widget: 'markdown' }
 
   - name: 'articles'
@@ -45,6 +54,20 @@ collections:
       - { name: 'date', label: 'Publish date', widget: 'datetime' }
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
+
+  - name: 'employees'
+    label: 'Employees'
+    label_singular: 'Employee'
+    folder: '/content/employees'
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { name: 'first_name', label: 'First name', widget: 'string' }
+      - { name: 'last_name', label: 'Last name', widget: 'string' }
+      - { name: 'role', label: 'Role', widget: 'string' }
+      - { name: 'email', label: 'Email', widget: 'string' }
+      - { name: 'phone', label: 'Phone', widget: 'string' }
 
   - name: 'settings'
     label: 'Settings'
