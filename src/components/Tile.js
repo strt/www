@@ -46,7 +46,7 @@ const Media = styled.figure`
     height: 100%;
     background-color: ${props => props.bg};
     opacity: 0;
-    transition: opacity 200ms ${easings.easeOutSine};
+    transition: opacity 320ms ${easings.easeOutSine};
   }
 
   ${Article}:hover &,
