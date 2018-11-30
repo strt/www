@@ -1,11 +1,22 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
+import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
 import { H1, Excerpt, Text } from '../components/Text'
 import { formatPhone } from '../utils'
+import { breakpoints, fluidRange, vw, colors } from '../style'
+
+const RoleText = styled(Text).attrs({ textColor: colors.steel })`
+  font-size: ${fluidRange({ min: 14, max: 16 })};
+
+  @media ${breakpoints.medium} {
+    font-size: ${vw(16)};
+  }
+`
 
 export default function Contact({ data }) {
   const siteSettings = data.siteSettings.childContentJson
@@ -85,6 +96,20 @@ export default function Contact({ data }) {
               fornamn.efternamn[a]strateg.se
             </Text>
           </Column>
+          {data.employees.edges.map(({ node }) => (
+            <Column key={node.id} width="6" tablet="3" bottomGap>
+              {node.frontmatter.image && (
+                <Image
+                  fluid={node.frontmatter.image.childImageSharp.fluid}
+                  sizes="(min-width: 768px) 24vw, 48vw"
+                />
+              )}
+              <Text mt={[1, 1]} mb="0">
+                {node.frontmatter.first_name} {node.frontmatter.last_name}
+              </Text>
+              <RoleText mb="0">{node.frontmatter.role}</RoleText>
+            </Column>
+          ))}
         </Grid>
       </Section>
     </Layout>
@@ -121,6 +146,32 @@ export const query = graphql`
         first_name
         email
         phone
+      }
+    }
+    employees: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/employees/" } }
+      sort: { fields: [frontmatter___first_name] }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            first_name
+            last_name
+            role
+            image {
+              childImageSharp {
+                fluid(
+                  quality: 80
+                  maxWidth: 520
+                  srcSetBreakpoints: [162, 328, 420]
+                ) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
