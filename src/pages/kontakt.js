@@ -89,7 +89,7 @@ export default function Contact({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section mb={[6, 16]}>
+      <Section pb={[10, 20]}>
         <Grid>
           <Column>
             <Text>

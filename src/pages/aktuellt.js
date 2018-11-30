@@ -20,7 +20,7 @@ export default function News({ data }) {
           smått. Självklart och oväntat. Haka på.
         </Excerpt>
       </Hero>
-      <Section bg={colors.ice} pt={[5, 8]} pb={[10, 16]}>
+      <Section bg={colors.ice} pt={[5, 8]} pb={[10, 20]}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} tablet="6" bottomGap>
