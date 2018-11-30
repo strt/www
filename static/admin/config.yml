@@ -59,6 +59,7 @@ collections:
     label: 'Employees'
     label_singular: 'Employee'
     folder: '/content/employees'
+    identifier_field: 'email'
     create: true
     editor:
       preview: false
