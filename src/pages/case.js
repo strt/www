@@ -113,6 +113,7 @@ export default class Case extends React.Component {
                     title={node.frontmatter.client}
                     image={node.frontmatter.image}
                     tags={node.frontmatter.tags}
+                    bg={node.frontmatter.color}
                   />
                 </Column>
               ))}
@@ -139,6 +140,7 @@ export const query = graphql`
           frontmatter {
             client
             tags
+            color
             image {
               childImageSharp {
                 ...TileImage

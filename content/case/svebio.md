@@ -5,6 +5,7 @@ title: 'Tre webbplatser - en smart lösning.'
 excerpt: null
 image: '/media/uploads/case-svebio.jpg'
 tags: ['Digitalt']
+color: '#76c900'
 ---
 
 ## Så ser vi ut

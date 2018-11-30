@@ -4,14 +4,14 @@ import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
 import Image from './Image'
-import { cover, breakpoints, fluidRange, vw, colors } from '../style'
+import { cover, breakpoints, fluidRange, vw, colors, easings } from '../style'
 
 const Link = styled(GatsbyLink)`
   display: flex;
   text-decoration: none;
 `
 
-const Wrapper = styled.article`
+const Article = styled.article`
   position: relative;
   flex-grow: 1;
   min-height: ${fluidRange({ min: 280, max: 320 })};
@@ -22,47 +22,67 @@ const Wrapper = styled.article`
 `
 
 const Content = styled.div`
+  position: relative;
+  z-index: 2;
   padding: ${fluidRange({ min: 16, max: 24 })};
-  background-image: linear-gradient(
-    to bottom,
-    black 0%,
-    rgba(0, 0, 0, 0.738) 19%,
-    rgba(0, 0, 0, 0.541) 34%,
-    rgba(0, 0, 0, 0.382) 47%,
-    rgba(0, 0, 0, 0.278) 56.5%,
-    rgba(0, 0, 0, 0.194) 65%,
-    rgba(0, 0, 0, 0.126) 73%,
-    rgba(0, 0, 0, 0.075) 80.2%,
-    rgba(0, 0, 0, 0.042) 86.1%,
-    rgba(0, 0, 0, 0.021) 91%,
-    rgba(0, 0, 0, 0.008) 95.2%,
-    rgba(0, 0, 0, 0.002) 98.2%,
-    transparent 100%
-  );
 
   @media ${breakpoints.medium} {
     padding: ${vw(40)};
   }
 `
 
-const Media = styled(Image)`
+const Media = styled.figure`
   ${cover()}
-  z-index: -1;
-  background-color: ${colors.steel};
+  z-index: 1;
+  background-color: ${props => props.bg};
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.bg};
+    opacity: 0;
+    transition: opacity 200ms ${easings.easeOutSine};
+  }
+
+  ${Article}:hover &,
+  &:hover {
+    &::before {
+      opacity: 0.8;
+    }
+
+    & img {
+      filter: grayscale(1);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
-export default function Tile({ title, image, url, tags }) {
+export default function Tile({ title, image, url, tags, bg = colors.steel }) {
   return (
     <Link to={url}>
-      <Wrapper>
+      <Article>
         <Content>
           <H3 textColor="white" mb={[1 / 2, 1 / 2]}>
             {title}
           </H3>
           <Tags items={tags} textColor="white" linked={false} variant="small" />
         </Content>
-        {image && <Media fluid={image.childImageSharp.fluid} alt="" />}
-      </Wrapper>
+        {image && (
+          <Media bg={bg}>
+            <Image fluid={image.childImageSharp.fluid} alt="" />
+          </Media>
+        )}
+      </Article>
     </Link>
   )
 }

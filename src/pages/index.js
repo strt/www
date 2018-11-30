@@ -52,6 +52,7 @@ export default function Index({ data }) {
               title={node.frontmatter.client}
               image={node.frontmatter.image}
               tags={node.frontmatter.tags}
+              bg={node.frontmatter.color}
               mb="0"
             />
           ))}
@@ -138,6 +139,7 @@ export const query = graphql`
           frontmatter {
             client
             tags
+            color
             image {
               childImageSharp {
                 ...TileImage

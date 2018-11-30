@@ -5,6 +5,7 @@ title: 'Epiroc.'
 excerpt: null
 image: /media/uploads/case-atlas.jpg
 tags: ['Digitalt', 'Print']
+color: '#55C3D7'
 ---
 
 ## Så ser vi ut

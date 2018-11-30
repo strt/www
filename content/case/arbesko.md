@@ -15,6 +15,7 @@ tags:
   - Print
   - Varumärkesarbete
   - Video
+color: '#1d1d1d'
 contact_relation: 'hans.tedsjo@strateg.se'
 ---
 

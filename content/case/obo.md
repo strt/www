@@ -5,6 +5,7 @@ title: 'Lägenheter med plats för det som är du.'
 excerpt: null
 image: /media/uploads/case-obo.jpg
 tags: ['Kampanj', 'Digitalt', 'Print']
+color: '#cb123b'
 ---
 
 ## Honulugatan

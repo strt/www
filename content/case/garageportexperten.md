@@ -5,6 +5,7 @@ title: 'Enad röst tack vare kommunikativ plattform.'
 excerpt: null
 image: '/media/uploads/case-gara.jpg'
 tags: ['Digitalt', 'Print']
+color: '#ffed3f'
 ---
 
 ## Så ser vi ut
