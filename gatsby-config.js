@@ -6,8 +6,8 @@ module.exports = {
     siteUrl: 'https://beta.strateg.se',
   },
   mapping: {
-    'MarkdownRemark.frontmatter.contact':
-      'MarkdownRemark.frontmatter.contact_id',
+    'MarkdownRemark.frontmatter.contact_relation':
+      'MarkdownRemark.frontmatter.email',
   },
   plugins: [
     {

@@ -18,7 +18,8 @@ export default function Template({
   pageContext: { next },
 }) {
   const contact =
-    post.frontmatter.contact && post.frontmatter.contact.frontmatter
+    post.frontmatter.contact_relation &&
+    post.frontmatter.contact_relation.frontmatter
 
   return (
     <Layout title={post.frontmatter.title} hideFooter>
@@ -55,7 +56,8 @@ export default function Template({
               <Column tablet="8" mt={[3, 5]}>
                 <H3>Vill du veta mer?</H3>
                 <Text>
-                  Kontakta {contact.contact_id}, {contact.role}. <br />
+                  Kontakta {contact.first_name} {contact.last_name},{' '}
+                  {contact.role}. <br />
                   <a href={`mailto:${contact.email}`}>{contact.email}</a>
                   <br />
                   <a href={`tel:${contact.phone}`}>{contact.phone}</a>
@@ -108,9 +110,10 @@ export const pageQuery = graphql`
             ...HeroImage
           }
         }
-        contact {
+        contact_relation {
           frontmatter {
-            contact_id
+            first_name
+            last_name
             role
             email
             phone

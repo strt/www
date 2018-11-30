@@ -15,7 +15,7 @@ tags:
   - Print
   - Varumärkesarbete
   - Video
-contact: 'Hans Tedsjö'
+contact_relation: 'hans.tedsjo@strateg.se'
 ---
 
 ## Äkta. Nära. Hantverk. Stolthet.
