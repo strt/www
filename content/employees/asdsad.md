@@ -2,7 +2,7 @@
 first_name: asd
 last_name: dsd
 role: sad
-email: asdsad
+email: alexander.nanberg@strateg.se
 phone: asdsad
 ---
 
