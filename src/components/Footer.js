@@ -7,6 +7,7 @@ import Section from './Section'
 import { ScrollToTopButton } from './Button'
 import routes from '../routes'
 import { colors, breakpoints, fluidRange, vw } from '../style'
+import { formatPhone } from '../utils'
 
 const CopyrightText = styled(Text)`
   font-size: ${fluidRange({ min: 10, max: 14 })};
@@ -63,12 +64,7 @@ export default function Footer() {
                   </>
                 )}
                 {siteSettings.contact.phone && (
-                  <a
-                    href={`tel:${siteSettings.contact.phone.replace(
-                      /\s/g,
-                      '',
-                    )}`}
-                  >
+                  <a href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
                     {siteSettings.contact.phone}
                   </a>
                 )}
@@ -124,7 +120,7 @@ export default function Footer() {
             <Column width="auto">
               <CopyrightText as="small">
                 © 2018 <br />
-                Strateg Marknadsföring <br />
+                {siteSettings.name} <br />
                 En del av{' '}
                 <a
                   href="//diplomatgruppen.se/sv"
