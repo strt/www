@@ -11,7 +11,8 @@ import { formatPhone } from '../utils'
 import { breakpoints, fluidRange, vw, colors } from '../style'
 
 const RoleText = styled(Text).attrs({ textColor: colors.steel })`
-  font-size: ${fluidRange({ min: 14, max: 16 })};
+  font-size: ${fluidRange({ min: 11, max: 14 })};
+  line-height: 1.2em;
 
   @media ${breakpoints.medium} {
     font-size: ${vw(16)};
@@ -88,7 +89,7 @@ export default function Contact({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section>
+      <Section mb={[6, 16]}>
         <Grid>
           <Column>
             <Text>
