@@ -50,6 +50,7 @@ export const StyledNavLink = styled(GatsbyLink)`
     &[aria-current],
     &[data-active] {
       transform: none;
+      text-indent: 0;
       text-decoration: none;
     }
 
