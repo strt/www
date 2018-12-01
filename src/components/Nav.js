@@ -11,8 +11,8 @@ export const NavButton = styled(Link)`
   }
 `
 
-function getProps({ isPartiallyCurrent }) {
-  return isPartiallyCurrent ? { 'data-active': true } : null
+function getProps({ href, isPartiallyCurrent }) {
+  return isPartiallyCurrent && href !== '/' ? { 'data-active': true } : null
 }
 
 export function NavLink(props) {
@@ -34,8 +34,8 @@ export const StyledNavLink = styled(GatsbyLink)`
 
   &[aria-current],
   &[data-active] {
+    text-indent: ${fluidRange({ min: 24, max: 32 })};
     background-color: rgba(255, 255, 255, 0.2);
-    transform: translateX(${fluidRange({ min: 24, max: 32 })});
   }
 
   @media ${breakpoints.medium} {
