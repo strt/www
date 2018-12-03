@@ -69,6 +69,7 @@ export default function Card({ url, title, date, image }) {
             <Image
               fluid={image.childImageSharp.fluid}
               sizes="(min-width: 768px) 20vw, 30vw"
+              aspectRatio="auto"
               alt=""
             />
           )}

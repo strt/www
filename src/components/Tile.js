@@ -63,7 +63,6 @@ const Media = styled.div`
 
   ${ImageWrapper} {
     height: 100%;
-    padding-bottom: 0;
   }
 
   img {
@@ -85,7 +84,11 @@ export default function Tile({ title, image, url, tags, bg = colors.steel }) {
         </Content>
         {image && (
           <Media bg={bg}>
-            <Image fluid={image.childImageSharp.fluid} alt="" />
+            <Image
+              fluid={image.childImageSharp.fluid}
+              alt=""
+              aspectRatio="auto"
+            />
           </Media>
         )}
       </Article>
