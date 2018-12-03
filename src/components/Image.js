@@ -3,14 +3,14 @@ import styled from 'styled-components'
 import { noop } from '../utils'
 import { easings, cover } from '../style'
 
-const cache = new Map()
+const cache = new Set()
 function isInCache(props) {
   if (!props.fluid) return false
   const { src } = props.fluid
   if (cache.has(src)) {
     return true
   }
-  cache.set(src, true)
+  cache.add(src)
   return false
 }
 
