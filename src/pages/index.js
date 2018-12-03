@@ -25,16 +25,15 @@ const routes = pageRoutes.reduce((acc, i) => {
 }, {})
 
 export default function Index({ data }) {
+  const { title } = data.page.frontmatter
+
   return (
     <Layout
       title="Kommunikationsbyrån som gör skillnad"
       description="Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang."
     >
       <Hero scrollButtonElement="#playground" pt={8}>
-        <H1>
-          Vi tar ditt varumärke längre. Och vi gör det med ovanligt mycket
-          hjärta och engagemang.
-        </H1>
+        <H1>{title}</H1>
       </Hero>
       <Cover id="playground">
         <NoSSR>
@@ -125,9 +124,15 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query {
+    page: markdownRemark(fileAbsolutePath: { regex: "/pages/index/" }) {
+      frontmatter {
+        title
+        excerpt
+      }
+    }
     cases: allMarkdownRemark(
       limit: 5
-      filter: { fileAbsolutePath: { regex: "/case/" } }
+      filter: { fileAbsolutePath: { regex: "/content/case/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
@@ -151,7 +156,7 @@ export const query = graphql`
     }
     articles: allMarkdownRemark(
       limit: 4
-      filter: { fileAbsolutePath: { regex: "/aktuellt/" } }
+      filter: { fileAbsolutePath: { regex: "/content/aktuellt/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

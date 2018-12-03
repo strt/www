@@ -70,6 +70,19 @@ collections:
       - { name: 'email', label: 'Email', widget: 'string' }
       - { name: 'phone', label: 'Phone', widget: 'string' }
 
+  - name: 'pages'
+    label: 'Pages'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: 'contact'
+        label: 'Contact'
+        file: 'content/pages/contact.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+
   - name: 'settings'
     label: 'Settings'
     delete: false

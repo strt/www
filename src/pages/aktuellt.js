@@ -10,15 +10,13 @@ import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
 
 export default function News({ data }) {
+  const { title, excerpt } = data.page.frontmatter
+
   return (
     <Layout title="Aktuellt">
       <Hero>
-        <H1>Nytt från Strateg.</H1>
-        <Excerpt>
-          Vi gillar att dela med oss. Av riktigt-bra-att-ha-kunskap, guidning i
-          kommunikationsdjungeln och sånt som händer här på Strateg. Stort och
-          smått. Självklart och oväntat. Haka på.
-        </Excerpt>
+        <H1>{title}</H1>
+        <Excerpt>{excerpt}</Excerpt>
       </Hero>
       <Section bg={colors.ice} pt={[5, 8]} pb={[10, 20]}>
         <Grid>
@@ -40,8 +38,14 @@ export default function News({ data }) {
 
 export const query = graphql`
   query {
+    page: markdownRemark(fileAbsolutePath: { regex: "/pages/aktuellt/" }) {
+      frontmatter {
+        title
+        excerpt
+      }
+    }
     articles: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/aktuellt/" } }
+      filter: { fileAbsolutePath: { regex: "/content/aktuellt/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

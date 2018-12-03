@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Div from '../components/Div'
@@ -10,15 +11,13 @@ import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
 import BoxSection from '../components/BoxSection'
 
-export default function Career() {
+export default function Career({ data }) {
+  const { title } = data.page.frontmatter
+
   return (
     <Layout title="Bli en av oss">
       <Hero scrollButtonElement="#cover">
-        <H1>
-          Vi vill vara ett jämställt team that delivers inspiring work and takes
-          satisfaction from it varje dag, while growing collectively and
-          individually.
-        </H1>
+        <H1>{title}</H1>
       </Hero>
       <Cover id="cover">
         <img src="/images/uploads/news-space.jpg" alt="" />
@@ -96,3 +95,14 @@ export default function Career() {
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    page: markdownRemark(fileAbsolutePath: { regex: "/pages/bli-en-av-oss/" }) {
+      frontmatter {
+        title
+        excerpt
+      }
+    }
+  }
+`

@@ -65,8 +65,7 @@ export default class Case extends React.Component {
   render() {
     const { data, location } = this.props
     const { filter } = this.state
-
-    console.log(filter)
+    const { title, excerpt } = data.page.frontmatter
 
     const cases = filterCases(data.cases.edges, filter)
     const tags = data.cases.edges
@@ -84,12 +83,8 @@ export default class Case extends React.Component {
     return (
       <Layout title="Case">
         <Hero>
-          <H1>Vi gillar det vi gör.</H1>
-          <Excerpt>
-            Det här är resultatet av analyser, breifer, strategier, manus,
-            Slack-konversationer, postit-lappar, hackathon, kaffekoppar, skisser
-            … Ja, du fattar. Det här är case som visar vad vi gör.
-          </Excerpt>
+          <H1>{title}</H1>
+          <Excerpt>{excerpt}</Excerpt>
           <Filter>
             <Link
               href={location.pathname}
@@ -138,8 +133,14 @@ export default class Case extends React.Component {
 
 export const query = graphql`
   query {
+    page: markdownRemark(fileAbsolutePath: { regex: "/pages/case/" }) {
+      frontmatter {
+        title
+        excerpt
+      }
+    }
     cases: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/case/" } }
+      filter: { fileAbsolutePath: { regex: "/content/case/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

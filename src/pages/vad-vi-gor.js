@@ -1,20 +1,28 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import { H1, Excerpt } from '../components/Text'
 
-export default function About() {
+export default function About({ data }) {
+  const { title, excerpt } = data.page.frontmatter
   return (
     <Layout title="Vad vi gör">
       <Hero>
-        <H1>Vi gör våra partners framgångsrika. Sedan 1985.</H1>
-        <Excerpt>
-          Söka del vid tre dimma dimmhöljd annat när, stora ännu fram plats
-          omfångsrik vidsträckt, som både därmed har om så. Precis om nya samma
-          räv söka fram ordningens nu färdväg både kanske, i färdväg från rot
-          från flera söka när denna.
-        </Excerpt>
+        <H1>{title}</H1>
+        <Excerpt>{excerpt}</Excerpt>
       </Hero>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    page: markdownRemark(fileAbsolutePath: { regex: "/pages/vad-vi-gor/" }) {
+      frontmatter {
+        title
+        excerpt
+      }
+    }
+  }
+`

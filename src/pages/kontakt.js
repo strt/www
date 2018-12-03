@@ -21,15 +21,13 @@ const RoleText = styled(Text).attrs({ textColor: colors.steel })`
 
 export default function Contact({ data }) {
   const siteSettings = data.siteSettings.childContentJson
+  const { title, excerpt } = data.page.frontmatter
 
   return (
-    <Layout title="Kontakt">
+    <Layout title="Kontakt" description={excerpt}>
       <Hero>
-        <H1>Här är vi. Allihop.</H1>
-        <Excerpt>
-          Vill du jobba med oss? Hos oss? Snacka om japansk kultur,
-          skrattgaranti eller världens bästa låt? Här finns någon för alla.
-        </Excerpt>
+        <H1>{title}</H1>
+        <Excerpt>{excerpt}</Excerpt>
       </Hero>
       <Section mb={[4, 7]}>
         <Grid>
@@ -119,6 +117,12 @@ export default function Contact({ data }) {
 
 export const query = graphql`
   query {
+    page: markdownRemark(fileAbsolutePath: { regex: "/pages/kontakt/" }) {
+      frontmatter {
+        title
+        excerpt
+      }
+    }
     siteSettings: file(relativePath: { eq: "settings.json" }) {
       childContentJson {
         name
