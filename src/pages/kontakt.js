@@ -100,7 +100,7 @@ export default function Contact({ data }) {
               {node.frontmatter.image && (
                 <Image
                   fluid={node.frontmatter.image.childImageSharp.fluid}
-                  sizes="(min-width: 768px) 24vw, 48vw"
+                  sizes="(min-width: 768px) 24vw, 46vw"
                 />
               )}
               <Text mt={[1, 1]} mb="0">
@@ -169,7 +169,7 @@ export const query = graphql`
                 fluid(
                   quality: 80
                   maxWidth: 520
-                  srcSetBreakpoints: [162, 328, 420]
+                  srcSetBreakpoints: [175, 328, 420]
                 ) {
                   ...GatsbyImageSharpFluid
                 }

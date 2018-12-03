@@ -35,9 +35,10 @@ const Content = styled.div`
   }
 `
 
-const ImageWrapper = styled.figure`
+const ImageWrapper = styled.div`
   ${ratio({ x: 4, y: 3 })}
   width: ${getWidth(4)};
+  overflow: hidden;
   background-color: ${colors.steel};
 
   @media ${breakpoints.medium} {

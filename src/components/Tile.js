@@ -3,7 +3,7 @@ import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
-import Image from './Image'
+import Image, { ImageWrapper } from './Image'
 import { cover, breakpoints, fluidRange, vw, colors, easings } from '../style'
 
 const Link = styled(GatsbyLink)`
@@ -31,9 +31,10 @@ const Content = styled.div`
   }
 `
 
-const Media = styled.figure`
+const Media = styled.div`
   ${cover()}
   z-index: 1;
+  overflow: hidden;
   background-color: ${props => props.bg};
 
   &::before {
@@ -58,6 +59,11 @@ const Media = styled.figure`
     & img {
       filter: grayscale(1);
     }
+  }
+
+  ${ImageWrapper} {
+    height: 100%;
+    padding-bottom: 0;
   }
 
   img {

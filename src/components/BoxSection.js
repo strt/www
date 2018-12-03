@@ -6,7 +6,7 @@ import { H2, Text } from './Text'
 import { CssGrid } from './Grid'
 import { breakpoints, colors, fluidRange, vw } from '../style'
 
-const Background = styled.figure`
+const Background = styled.div`
   grid-column: full-start/col-end 12;
   grid-row: 1/3;
   background-color: ${colors.steel};
@@ -23,6 +23,8 @@ const Background = styled.figure`
 `
 
 const Box = styled.div`
+  position: relative;
+  z-index: 2;
   padding: ${fluidRange({ min: 24, max: 32 })};
   background-color: ${props => props.bg || colors.ice};
   grid-column: col-start 2 / col-end 12;
