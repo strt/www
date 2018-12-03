@@ -41,7 +41,7 @@ export default function Template({
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Hero>
         {post.frontmatter.image && (
-          <Cover>
+          <Cover bg={post.frontmatter.color}>
             <Image
               fluid={post.frontmatter.image.childImageSharp.fluid}
               alt=""
@@ -105,6 +105,7 @@ export const pageQuery = graphql`
         client
         excerpt
         tags
+        color
         image {
           childImageSharp {
             ...HeroImage

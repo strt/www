@@ -8,7 +8,7 @@ const CoverWrapper = styled.div`
   width: 100%;
   padding-top: 100%;
   overflow: hidden;
-  background-color: ${colors.dark};
+  background-color: ${props => props.bg || colors.dark};
 
   @media screen and ${breakpoints.medium} {
     padding-top: 56.25%;
@@ -17,6 +17,7 @@ const CoverWrapper = styled.div`
   canvas,
   video,
   iframe,
+  figure,
   img {
     position: absolute;
     top: 0;
