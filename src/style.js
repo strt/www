@@ -19,6 +19,14 @@ export const breakpoints = {
 }
 
 export const easings = {
+  easeInCubic: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
+  easeInOutCubic: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+  easeInOutQuad: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+  easeInOutQuart: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+  easeInOutSine: 'cubic-bezier(0.39, 0.575, 0.565, 1)',
+  easeInQuad: 'cubic-bezier(0.55, 0.085, 0.68, 0.53)',
+  easeInQuart: 'cubic-bezier(0.895, 0.03, 0.685, 0.22)',
+  easeInSine: 'cubic-bezier(0.47, 0, 0.745, 0.715)',
   easeOutQuad: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
   easeOutQuart: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
   easeOutSine: 'cubic-bezier(0.39, 0.575, 0.565, 1)',
