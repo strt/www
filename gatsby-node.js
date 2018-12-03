@@ -3,9 +3,8 @@ const { execSync } = require('child_process')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-
 // exports.onCreateWebpackConfig = ({ actions }) => {
+//   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 //   actions.setWebpackConfig({
 //     plugins: [new BundleAnalyzerPlugin()],
 //   })
@@ -34,12 +33,11 @@ exports.createPages = async ({ actions, graphql }) => {
           node {
             fields {
               slug
+              redirect
             }
             frontmatter {
               title
               client
-              date
-              tags
             }
           }
         }
@@ -54,8 +52,9 @@ exports.createPages = async ({ actions, graphql }) => {
   const { edges } = allMarkdown.data.allMarkdownRemark
 
   // Case
-  const cases = edges.filter(({ node }) => node.fields.slug.includes('/case/'))
-
+  const cases = edges.filter(({ node }) =>
+    node.fields.slug.startsWith('/case/'),
+  )
   cases.forEach(({ node }, index) => {
     const { node: next } =
       index === cases.length - 1 ? cases[0] : cases[index + 1]
@@ -72,9 +71,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
   // News
   const articles = edges.filter(({ node }) =>
-    node.fields.slug.includes('/aktuellt/'),
+    node.fields.slug.startsWith('/aktuellt/'),
   )
-
   articles.forEach(({ node }, index) => {
     const { node: next } =
       index === articles.length - 1 ? articles[0] : articles[index + 1]
@@ -88,6 +86,28 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
+
+  // Redirects
+  edges.forEach((edge) => {
+    const { redirect } = edge.node.fields
+    if (redirect) {
+      console.log('redirect')
+    }
+  })
+}
+
+function buildRedirectString(permalink, redirectFrom) {
+  if (!permalink || !permalink.endsWith('.html')) {
+    return redirectFrom ? JSON.stringify(redirectFrom) : ''
+  }
+
+  const basePath = permalink.slice(0, -'.html'.length)
+  let redirects = [basePath, `${basePath}/`]
+  if (Array.isArray(redirectFrom)) {
+    redirects = redirects.concat(redirectFrom)
+  }
+
+  return JSON.stringify(redirects)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -95,12 +115,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node)
 
   if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({ node, getNode })
+    const { redirect_from } = node.frontmatter // eslint-disable-line camelcase
+    const slug = createFilePath({ node, getNode })
 
     createNodeField({
-      name: 'slug',
       node,
-      value,
+      name: 'slug',
+      value: slug,
+    })
+
+    createNodeField({
+      node,
+      name: 'redirect',
+      value: buildRedirectString(slug, redirect_from),
     })
   }
 }

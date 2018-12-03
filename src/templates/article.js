@@ -11,18 +11,21 @@ import renderAst from '../utils/renderAst'
 import dayjs from '../utils/date'
 
 export default function Template({ data: { markdownRemark: post } }) {
-  const formattedDate = dayjs(post.frontmatter.date).format('D MMM YYYY')
+  const { date } = post.frontmatter
+  const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
 
   return (
     <Layout title={post.frontmatter.title}>
       <article>
-        <Grid>
-          <Column width="auto">
-            <H4 as="time" dateTime={post.frontmatter.date}>
-              {formattedDate}
-            </H4>
-          </Column>
-        </Grid>
+        {date && (
+          <Grid>
+            <Column width="auto">
+              <H4 as="time" dateTime={date}>
+                {formattedDate}
+              </H4>
+            </Column>
+          </Grid>
+        )}
         <Hero pt={[2, 7]}>
           <H1>{post.frontmatter.title}</H1>
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>

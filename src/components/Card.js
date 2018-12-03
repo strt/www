@@ -50,15 +50,17 @@ const ImageWrapper = styled.figure`
 `
 
 export default function Card({ url, title, date, image }) {
-  const formattedDate = dayjs(date).format('D MMM YYYY')
+  const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
 
   return (
     <Link to={url}>
       <Article>
         <Content>
-          <Text as="time" dateTime={date} textColor={colors.steel} mb="2">
-            {formattedDate}
-          </Text>
+          {date && (
+            <Text as="time" dateTime={date} textColor={colors.steel} mb="2">
+              {formattedDate}
+            </Text>
+          )}
           <H3>{title}</H3>
         </Content>
         <ImageWrapper>
