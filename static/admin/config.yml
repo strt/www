@@ -76,9 +76,33 @@ collections:
     editor:
       preview: false
     files:
+      - name: 'index'
+        label: 'Start'
+        file: 'content/pages/index.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+      - name: 'about'
+        label: 'About'
+        file: 'content/pages/vad-vi-gor.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+      - name: 'career'
+        label: 'Career'
+        file: 'content/pages/bli-en-av-oss.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+      - name: 'news'
+        label: 'News'
+        file: 'content/pages/aktuellt.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
       - name: 'contact'
         label: 'Contact'
-        file: 'content/pages/contact.md'
+        file: 'content/pages/kontakt.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
