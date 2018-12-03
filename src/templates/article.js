@@ -56,7 +56,7 @@ export const pageQuery = graphql`
         excerpt
         image {
           childImageSharp {
-            ...HeroImage
+            ...CoverImage
           }
         }
       }

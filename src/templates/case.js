@@ -108,7 +108,7 @@ export const pageQuery = graphql`
         color
         image {
           childImageSharp {
-            ...HeroImage
+            ...CoverImage
           }
         }
         contact_relation {

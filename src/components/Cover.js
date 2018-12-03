@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { colors, breakpoints } from '../style'
 
@@ -31,3 +32,11 @@ const CoverWrapper = styled.div`
 export default function Cover(props) {
   return <CoverWrapper {...props} />
 }
+
+export const query = graphql`
+  fragment CoverImage on ImageSharp {
+    fluid(maxWidth: 1440) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+`
