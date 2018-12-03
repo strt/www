@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import Div from '../components/Div'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
+import Image from '../components/Image'
 import InstagramGrid from '../components/InstagramGrid'
 import { H1, H2, H3, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
@@ -20,7 +21,7 @@ export default function Career({ data }) {
         <H1>{title}</H1>
       </Hero>
       <Cover id="cover">
-        <img src="/images/uploads/news-space.jpg" alt="" />
+        <Image fluid={data.coverImage.childImageSharp.fluid} alt="" />
       </Cover>
       <Section py="7">
         <Grid>
@@ -102,6 +103,11 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
+      }
+    }
+    coverImage: file(relativePath: { eq: "uploads/news-space.jpg" }) {
+      childImageSharp {
+        ...CoverImage
       }
     }
   }
