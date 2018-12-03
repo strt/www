@@ -15,22 +15,24 @@ function isInCache(props) {
 }
 
 let io
-const listeners = []
+const listeners = new Map()
 function getIntersectionObserver() {
   if (
     typeof io === `undefined` &&
     typeof window !== `undefined` &&
-    window.IntersectionObserver
+    'IntersectionObserver' in window
   ) {
     io = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          listeners.forEach(([element, cb]) => {
-            if (element === entry.target) {
-              if (entry.isIntersecting || entry.intersectionRatio > 0) {
-                io.unobserve(element)
-                cb()
-              }
+          listeners.forEach((cb, element) => {
+            if (
+              element === entry.target &&
+              (entry.isIntersecting || entry.intersectionRatio > 0)
+            ) {
+              io.unobserve(element)
+              listeners.delete(element)
+              cb()
             }
           })
         })
@@ -43,17 +45,23 @@ function getIntersectionObserver() {
 }
 
 function observeIntersections(el, cb) {
-  getIntersectionObserver().observe(el)
-  listeners.push([el, cb])
+  const observer = getIntersectionObserver()
+
+  if (observer) {
+    getIntersectionObserver().observe(el)
+    listeners.set(el, cb)
+  } else {
+    cb()
+  }
 }
 
-function normalizeProps({ fluid: image, sizes, ...props }) {
+function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
   if (image) {
     return {
       src: image.src,
       srcSet: image.srcSet,
       sizes: sizes || image.sizes,
-      aspectRatio: image.aspectRatio,
+      aspectRatio: aspectRatio !== 'auto' ? image.aspectRatio : undefined,
       base64: image.base64,
       ...props,
     }
@@ -69,7 +77,8 @@ export const ImageWrapper = styled.figure`
   position: relative;
   overflow: hidden;
   height: 0;
-  padding-bottom: ${props => `${100 / (props.aspectRatio || 2)}%`};
+  padding-bottom: ${props =>
+    props.aspectRatio ? `${100 / props.aspectRatio}%` : null};
 
   img {
     max-width: auto;
@@ -96,17 +105,25 @@ class Image extends React.Component {
     isSeenBefore: isInCache(this.props),
   }
 
-  onLoad = () => {
-    this.setState({ isLoaded: true })
-    this.props.onLoad()
-  }
+  imageRef = React.createRef()
 
-  handleRef = (node) => {
+  componentDidMount() {
+    const { current: node } = this.imageRef
+
     if (node) {
       observeIntersections(node, () => {
         this.setState({ isVisible: true })
       })
     }
+  }
+
+  componentWillUnmount() {
+    listeners.delete(this.imageRef.current)
+  }
+
+  onLoad = () => {
+    this.setState({ isLoaded: true })
+    this.props.onLoad()
   }
 
   render() {
@@ -125,7 +142,7 @@ class Image extends React.Component {
     return (
       <ImageWrapper
         aspectRatio={aspectRatio}
-        ref={this.handleRef}
+        ref={this.imageRef}
         key={`${JSON.stringify(srcSet)}`}
       >
         {base64 && (
