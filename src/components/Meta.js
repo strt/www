@@ -37,8 +37,6 @@ export default function Meta({
 
           {description && <meta name="description" content={description} />}
 
-          <link rel="icon" href="/favicon.gif" />
-
           {/* OpenGraph tags */}
           {url && <meta property="og:url" content={url} />}
           <meta property="og:site_name" content={siteSettings.name} />
