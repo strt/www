@@ -162,6 +162,16 @@ class Image extends React.Component {
             {...props}
           />
         )}
+        <noscript>
+          <img
+            alt={alt}
+            srcSet={srcSet}
+            sizes={sizes}
+            src={src}
+            {...props}
+            style={{ position: 'relative', zIndex: 3 }}
+          />
+        </noscript>
       </ImageWrapper>
     )
   }
