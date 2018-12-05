@@ -38,13 +38,7 @@ module.exports = {
             },
           },
           'gatsby-remark-unwrap-images',
-          // {
-          //   resolve: `gatsby-remark-images`,
-          //   options: {
-          //     maxWidth: 1240,
-          //     backgroundColor: `#cccccc`,
-          //   },
-          // },
+          'gatsby-remark-image-component',
         ],
       },
     },
