@@ -99,7 +99,7 @@ export default function Tile({ title, image, url, tags, bg = colors.steel }) {
 export const query = graphql`
   fragment TileImage on ImageSharp {
     fluid(
-      quality: 80
+      quality: 70
       maxWidth: 1440
       srcSetBreakpoints: [365, 520, 724, 960, 1200, 1440]
     ) {

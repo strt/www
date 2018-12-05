@@ -38,6 +38,7 @@ async function generateImages({
     file: imageNode,
     args: {
       maxWidth: 1440,
+      quality: 70,
       ...options,
     },
     reporter,
