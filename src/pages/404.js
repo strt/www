@@ -19,7 +19,7 @@ export default function NotFound() {
         </Link>
       </Hero>
       <Cover>
-        <Suspense>
+        <Suspense fallback={null}>
           <Playground />
         </Suspense>
       </Cover>
