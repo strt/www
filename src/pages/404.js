@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -19,7 +19,9 @@ export default function NotFound() {
         </Link>
       </Hero>
       <Cover>
-        <Playground />
+        <Suspense>
+          <Playground />
+        </Suspense>
       </Cover>
     </Layout>
   )
