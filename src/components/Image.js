@@ -105,10 +105,10 @@ class Image extends React.Component {
     isSeenBefore: isInCache(this.props),
   }
 
-  imageRef = React.createRef()
+  wrapperRef = React.createRef()
 
   componentDidMount() {
-    const { current: node } = this.imageRef
+    const { current: node } = this.wrapperRef
 
     if (node) {
       observeIntersections(node, () => {
@@ -118,7 +118,7 @@ class Image extends React.Component {
   }
 
   componentWillUnmount() {
-    listeners.delete(this.imageRef.current)
+    listeners.delete(this.wrapperRef.current)
   }
 
   onLoad = () => {
@@ -142,7 +142,7 @@ class Image extends React.Component {
     return (
       <ImageWrapper
         aspectRatio={aspectRatio}
-        ref={this.imageRef}
+        ref={this.wrapperRef}
         key={`${JSON.stringify(srcSet)}`}
       >
         {base64 && (
