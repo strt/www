@@ -97,6 +97,7 @@ export const PlaceholderImage = styled.img`
   filter: blur(30px);
   transform: scale(1.2);
   z-index: 2;
+  opacity: ${props => (props.fadeIn ? 0 : 1)};
   transition: opacity 400ms ${easings.easeInSine};
 `
 
@@ -154,11 +155,7 @@ class LazyImage extends React.Component {
         key={`${JSON.stringify(srcSet)}`}
       >
         {base64 && (
-          <PlaceholderImage
-            src={base64}
-            alt=""
-            css={{ opacity: isLoaded || isCached ? 0 : 1 }}
-          />
+          <PlaceholderImage src={base64} alt="" fadeIn={isLoaded || isCached} />
         )}
         {isVisible && (
           <img
