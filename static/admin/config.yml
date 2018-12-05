@@ -28,7 +28,21 @@ collections:
           widget: 'image',
           required: false,
         }
-      - { name: 'tags', label: 'Tags', widget: 'list', required: false }
+      - {
+          name: 'tags',
+          label: 'Tags',
+          widget: 'select',
+          multiple: true,
+          required: false,
+          options: [
+              Digitalt
+              Identitet,
+              Kampanj,
+              Print,
+              Varumärkesarbete,
+              Video,
+            ],
+        }
       - {
           name: 'contact_relation',
           label: 'Contact',
