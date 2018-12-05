@@ -2,7 +2,7 @@
 date: '2018-10-09T15:25:24+02:00'
 title: 'Analyze this – vad innebär valresultatet egentligen?'
 excerpt: 'Kaffemaskinerna här på Strateg fick jobba lite extra dagen efter valet – många av oss hade suttit uppe kvällen innan och följt valvakan. Men vad innebär valresultatet egentligen? Och vad händer nu? Det här behöver analyseras.'
-image: '/media/uploads/news-astronaut.jpg'
+image: '/media/uploads/news-valresultatet.jpg'
 ---
 
 Vi hade det på känn. Aldrig tidigare har det parlamentariska läget i Sverige varit så utmanande; det visade alla prognoser innan valet. Det kändes som ett riktigt bra tillfälle att anordna ett Mötesplats Strateg, så vi bjöd in våra kunder till ett lunchseminarium ett par dagar efter valet, i hopp om att vi tillsammans skulle kunna räta ut en del frågetecken.

@@ -23,7 +23,7 @@ contact_relation: 'hans.tedsjo@strateg.se'
 
 Arbesko har en historia som verkligen är värd att berätta. Det som startade 1839 med en av Sveriges första partiskomakare är idag ett marknadsledande företag som omsätter cirka 190 miljoner per år – och som tillverkar skydds- och yrkesskor av högsta kvalitet i Sveriges idag enda skofabrik. Så istället för att se ut som konkurrenterna, är det den unika berättelsen och det genuina hantverket som nu lyfts fram.
 
-![](/media/uploads/case-arbesko.jpg)
+![](/media/uploads/case-arbesko-2.png)
 
 ## Oxelösund och Umeå
 
