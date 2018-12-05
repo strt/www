@@ -2,8 +2,11 @@ import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
+import Cover from '../components/Cover'
 import { H1, Excerpt } from '../components/Text'
 import Link from '../components/Link'
+
+const Playground = React.lazy(() => import('../components/Playground'))
 
 export default function NotFound() {
   return (
@@ -15,6 +18,9 @@ export default function NotFound() {
           Gå till startsidan
         </Link>
       </Hero>
+      <Cover>
+        <Playground />
+      </Cover>
     </Layout>
   )
 }
