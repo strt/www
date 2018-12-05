@@ -3,6 +3,23 @@ import styled from 'styled-components'
 import { noop } from '../utils'
 import { easings, cover } from '../style'
 
+const cache = new Set()
+
+function isImageCached(props) {
+  if (!props.fluid) return false
+  const { src } = props.fluid
+  if (cache.has(src)) {
+    return true
+  }
+  return false
+}
+
+function addImageToCache(props) {
+  if (props.fluid) {
+    cache.add(props.fluid.src)
+  }
+}
+
 let io
 const listeners = new Map()
 function getIntersectionObserver() {
@@ -62,15 +79,6 @@ function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
   }
 }
 
-function isImageCached(props) {
-  if (typeof window === `undefined`) return false
-  const { src } = normalizeProps(props)
-  const image = new Image()
-  image.src = src
-
-  return image.complete
-}
-
 export const ImageWrapper = styled.figure`
   position: relative;
   overflow: hidden;
@@ -120,7 +128,9 @@ class LazyImage extends React.Component {
   }
 
   onLoad = () => {
-    this.setState({ isLoaded: true })
+    this.setState({ isLoaded: true }, () => {
+      addImageToCache(this.props)
+    })
     this.props.onLoad()
   }
 
@@ -147,7 +157,7 @@ class LazyImage extends React.Component {
           <PlaceholderImage
             src={base64}
             alt=""
-            css={{ opacity: !isLoaded && !isCached ? 1 : 0 }}
+            css={{ opacity: isLoaded || isCached ? 0 : 1 }}
           />
         )}
         {isVisible && (
