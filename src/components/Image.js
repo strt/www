@@ -4,14 +4,20 @@ import { noop } from '../utils'
 import { easings, cover } from '../style'
 
 const cache = new Set()
-function isInCache(props) {
+
+function isCached(props) {
   if (!props.fluid) return false
   const { src } = props.fluid
   if (cache.has(src)) {
     return true
   }
-  cache.add(src)
   return false
+}
+
+function addToCache(props) {
+  if (props.fluid) {
+    cache.add(props.fluid.src)
+  }
 }
 
 let io
@@ -102,7 +108,8 @@ class Image extends React.Component {
   state = {
     isVisible: false,
     isLoaded: false,
-    isSeenBefore: isInCache(this.props),
+    isSeenBefore: isCached(this.props),
+    // shouldAnimate: true,
   }
 
   wrapperRef = React.createRef()
@@ -122,7 +129,14 @@ class Image extends React.Component {
   }
 
   onLoad = () => {
-    this.setState({ isLoaded: true })
+    this.setState(
+      {
+        isLoaded: true,
+      },
+      () => {
+        addToCache(this.props)
+      },
+    )
     this.props.onLoad()
   }
 
