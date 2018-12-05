@@ -3,6 +3,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Cover from '../components/Cover'
+import NoSSR from '../components/NoSSR'
 import { H1, Excerpt } from '../components/Text'
 import Link from '../components/Link'
 
@@ -19,9 +20,11 @@ export default function NotFound() {
         </Link>
       </Hero>
       <Cover>
-        <Suspense fallback={null}>
-          <Playground />
-        </Suspense>
+        <NoSSR>
+          <Suspense fallback={null}>
+            <Playground />
+          </Suspense>
+        </NoSSR>
       </Cover>
     </Layout>
   )
