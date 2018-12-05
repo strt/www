@@ -3,23 +3,6 @@ import styled from 'styled-components'
 import { noop } from '../utils'
 import { easings, cover } from '../style'
 
-const cache = new Set()
-
-function isCached(props) {
-  if (!props.fluid) return false
-  const { src } = props.fluid
-  if (cache.has(src)) {
-    return true
-  }
-  return false
-}
-
-function addToCache(props) {
-  if (props.fluid) {
-    cache.add(props.fluid.src)
-  }
-}
-
 let io
 const listeners = new Map()
 function getIntersectionObserver() {
@@ -79,6 +62,15 @@ function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
   }
 }
 
+function isImageCached(props) {
+  if (typeof window === `undefined`) return false
+  const { src } = normalizeProps(props)
+  const image = new Image()
+  image.src = src
+
+  return image.complete
+}
+
 export const ImageWrapper = styled.figure`
   position: relative;
   overflow: hidden;
@@ -100,7 +92,7 @@ export const PlaceholderImage = styled.img`
   transition: opacity 400ms ${easings.easeInSine};
 `
 
-class Image extends React.Component {
+class LazyImage extends React.Component {
   static defaultProps = {
     onLoad: noop,
   }
@@ -108,8 +100,7 @@ class Image extends React.Component {
   state = {
     isVisible: false,
     isLoaded: false,
-    isSeenBefore: isCached(this.props),
-    // shouldAnimate: true,
+    isCached: isImageCached(this.props),
   }
 
   wrapperRef = React.createRef()
@@ -129,19 +120,12 @@ class Image extends React.Component {
   }
 
   onLoad = () => {
-    this.setState(
-      {
-        isLoaded: true,
-      },
-      () => {
-        addToCache(this.props)
-      },
-    )
+    this.setState({ isLoaded: true })
     this.props.onLoad()
   }
 
   render() {
-    const { isVisible, isLoaded, isSeenBefore } = this.state
+    const { isVisible, isLoaded, isCached } = this.state
     const {
       src,
       sizes,
@@ -163,7 +147,7 @@ class Image extends React.Component {
           <PlaceholderImage
             src={base64}
             alt=""
-            css={{ opacity: !isLoaded && !isSeenBefore ? 1 : 0 }}
+            css={{ opacity: !isLoaded && !isCached ? 1 : 0 }}
           />
         )}
         {isVisible && (
@@ -191,4 +175,4 @@ class Image extends React.Component {
   }
 }
 
-export default Image
+export default LazyImage
