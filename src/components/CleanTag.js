@@ -3,8 +3,10 @@ import React from 'react'
 export const defaultBlacklist = [
   'mt',
   'mb',
+  'my',
   'pt',
   'pb',
+  'py',
   'width',
   'tablet',
   'desktop',
