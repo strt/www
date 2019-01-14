@@ -5,6 +5,8 @@ import Meta from './Meta'
 import SkipNavLink from './SkipNav'
 import Header from './Header'
 import Footer from './Footer'
+import NoSSR from './NoSSR'
+import CookieToast from './CookieToast'
 import '../utils/iconLibrary'
 import '../assets/fonts/circular.css'
 
@@ -34,6 +36,9 @@ export default function Layout({
       <SkipNavLink />
       <Header />
       <Main id="main-content">{children}</Main>
+      <NoSSR>
+        <CookieToast />
+      </NoSSR>
       {!hideFooter && <Footer />}
     </PageWrapper>
   )
