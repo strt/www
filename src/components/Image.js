@@ -87,7 +87,7 @@ export const ImageWrapper = styled.figure`
     props.aspectRatio ? `${100 / props.aspectRatio}%` : null};
 
   img {
-    max-width: auto;
+    max-width: none;
     width: 100%;
   }
 `
