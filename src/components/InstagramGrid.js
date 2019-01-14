@@ -118,6 +118,11 @@ const Box = styled.div`
 
   & > * {
     ${cover()}
+
+    & img {
+      object-fit: inherit;
+      height: inherit;
+    }
   }
 
   & a {
