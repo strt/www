@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTransition, animated } from 'react-spring/hooks'
 import styled from 'styled-components'
 import Cookie from 'js-cookie'
@@ -28,10 +28,23 @@ const Toast = styled.div`
   }
 `
 
+const AnimatedCookieToastWrapper = animated(CookieToastWrapper)
+
 export default function CookieToast() {
-  const [hasAccepted, setHasAccepted] = useState(Cookie.get('accept_cookies'))
+  const [showToast, setShowToast] = useState(false)
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      if (!showToast && !Cookie.get('accept_cookies')) {
+        setShowToast(true)
+      }
+    }, 1000)
+
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [])
   const transitions = useTransition({
-    items: !hasAccepted,
+    items: showToast,
     from: { opacity: 0, transform: 'translateY(100%)' },
     enter: { opacity: 1, transform: 'translateY(0)' },
     leave: { opacity: 0, transform: 'translateY(100%)' },
@@ -40,7 +53,7 @@ export default function CookieToast() {
   return transitions.map(
     ({ item: show, props, key }) =>
       show && (
-        <CookieToastWrapper as={animated.div} key={key} style={props}>
+        <AnimatedCookieToastWrapper native key={key} style={props}>
           <Grid>
             <Column>
               <Toast>
@@ -61,7 +74,7 @@ export default function CookieToast() {
                       type="button"
                       textColor="white"
                       onClick={() => {
-                        setHasAccepted(true)
+                        setShowToast(false)
                         Cookie.set('accept_cookies', true)
                       }}
                     >
@@ -72,7 +85,7 @@ export default function CookieToast() {
               </Toast>
             </Column>
           </Grid>
-        </CookieToastWrapper>
+        </AnimatedCookieToastWrapper>
       ),
   )
 }
