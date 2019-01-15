@@ -13,6 +13,7 @@ const CookieToastWrapper = styled.div`
   bottom: 0;
   left: 0;
   z-index: 3;
+  backface-visibility: hidden;
 `
 
 const Toast = styled.div`
@@ -37,7 +38,7 @@ export default function CookieToast() {
       if (!showToast && !Cookie.get('accept_cookies')) {
         setShowToast(true)
       }
-    }, 1000)
+    }, 500)
 
     return () => {
       clearTimeout(timerId)
