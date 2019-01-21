@@ -8,10 +8,7 @@ const cache = new Set()
 function isImageCached(props) {
   if (!props.fluid) return false
   const { src } = props.fluid
-  if (cache.has(src)) {
-    return true
-  }
-  return false
+  return cache.has(src)
 }
 
 function addImageToCache(props) {
