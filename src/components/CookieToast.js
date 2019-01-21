@@ -46,6 +46,7 @@ export default function CookieToast() {
   }, [])
   const transitions = useTransition({
     items: showToast,
+    native: true,
     from: { opacity: 0, transform: 'translateY(100%)' },
     enter: { opacity: 1, transform: 'translateY(0)' },
     leave: { opacity: 0, transform: 'translateY(100%)' },
