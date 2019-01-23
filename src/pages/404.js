@@ -13,10 +13,13 @@ export default function NotFound() {
   return (
     <Layout title="404">
       <Hero>
-        <H1>Ajdå.</H1>
-        <Excerpt>Vi har letat men vi hittar inte sidan du söker.</Excerpt>
+        <H1>Vad letar du efter, kompis?</H1>
+        <Excerpt>
+          Sidan du vill till finns tyvärr inte. Testa igen eller gå till
+          startsidan, därifrån hittar du förhoppningsvis rätt.
+        </Excerpt>
         <Link as={GatsbyLink} to="/">
-          Gå till startsidan
+          Till startsidan
         </Link>
       </Hero>
       <Cover>
