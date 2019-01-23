@@ -55,7 +55,7 @@ export default function CookieToast() {
   return transitions.map(
     ({ item: show, props, key }) =>
       show && (
-        <AnimatedCookieToastWrapper native key={key} style={props}>
+        <AnimatedCookieToastWrapper key={key} style={props}>
           <Grid>
             <Column>
               <Toast>
