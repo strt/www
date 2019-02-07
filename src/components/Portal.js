@@ -1,7 +1,6 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
-
-const useForceUpdate = () => useState()[1]
+import { useForceUpdate } from '../utils/hooks'
 
 export default function Portal({ children, type = 'portal' }) {
   const node = useRef()
