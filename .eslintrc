@@ -1,8 +1,6 @@
 {
   "extends": "strateg",
-  "plugins": ["react-hooks"],
   "rules": {
-    "jsx-a11y/anchor-is-valid": "off",
-    "react-hooks/rules-of-hooks": "error"
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }
