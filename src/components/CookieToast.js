@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useTransition, animated } from 'react-spring/hooks'
+import { useTransition, animated } from 'react-spring'
 import styled from 'styled-components'
 import Cookie from 'js-cookie'
 import Link from './Link'
@@ -45,7 +45,6 @@ export default function CookieToast() {
     }
   }, [])
   const transitions = useTransition(showToast, p => p, {
-    native: true,
     from: { opacity: 0, transform: 'translateY(100%)' },
     enter: { opacity: 1, transform: 'translateY(0)' },
     leave: { opacity: 0, transform: 'translateY(100%)' },
