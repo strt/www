@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { noop } from '../utils'
 import { easings, cover } from '../style'
@@ -19,43 +19,46 @@ function addImageToCache(props) {
 
 let io
 const listeners = new Map()
-function getIntersectionObserver() {
+function getIntersectionObserver(options) {
   if (
     typeof io === `undefined` &&
     typeof window !== `undefined` &&
     'IntersectionObserver' in window
   ) {
-    io = new window.IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          listeners.forEach((cb, element) => {
-            if (
-              element === entry.target &&
-              (entry.isIntersecting || entry.intersectionRatio > 0)
-            ) {
-              io.unobserve(element)
-              listeners.delete(element)
-              cb()
-            }
-          })
-        })
-      },
-      { rootMargin: `200px` },
-    )
+    io = new window.IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (listeners.has(entry.target)) {
+          const cb = listeners.get(entry.target)
+          if (entry.isIntersecting || entry.intersectionRatio > 0) {
+            io.unobserve(entry.target)
+            listeners.delete(entry.target)
+            cb()
+          }
+        }
+      })
+    }, options)
   }
 
   return io
 }
 
-function observeIntersections(el, cb) {
-  const observer = getIntersectionObserver()
+function useIntersectionObserver({ target, onIntersect = noop }) {
+  useEffect(() => {
+    const observer = getIntersectionObserver({ rootMargin: '200px' })
 
-  if (observer) {
-    getIntersectionObserver().observe(el)
-    listeners.set(el, cb)
-  } else {
-    cb()
-  }
+    if (!observer) {
+      onIntersect()
+      return null
+    }
+
+    observer.observe(target.current)
+    listeners.set(target.current, onIntersect)
+
+    return () => {
+      observer.unobserve(target.current)
+      listeners.delete(target.current)
+    }
+  }, [])
 }
 
 function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
@@ -74,6 +77,76 @@ function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
     sizes,
     ...props,
   }
+}
+
+export default function LazyImage(props) {
+  const {
+    src,
+    sizes,
+    srcSet,
+    alt = '',
+    onLoad = noop,
+    base64,
+    aspectRatio,
+    ...elementProps
+  } = normalizeProps(props)
+
+  const imageWrapperRef = useRef()
+  const [isCached] = useState(() => isImageCached(props))
+  const [isVisible, setVisible] = useState(false)
+  const [isLoaded, setLoaded] = useState(false)
+
+  useIntersectionObserver({
+    target: imageWrapperRef,
+    onIntersect: () => {
+      setVisible(true)
+    },
+  })
+
+  useEffect(() => {
+    if (isLoaded) {
+      addImageToCache(props)
+    }
+  }, [isLoaded])
+
+  return (
+    <ImageWrapper
+      aspectRatio={aspectRatio}
+      ref={imageWrapperRef}
+      key={`${JSON.stringify(srcSet)}`}
+    >
+      {base64 && (
+        <PlaceholderImage
+          src={base64}
+          alt=""
+          fadeIn={isLoaded || (isLoaded && isCached)}
+        />
+      )}
+      {isVisible && (
+        <img
+          alt={alt}
+          srcSet={srcSet}
+          sizes={sizes}
+          src={src}
+          onLoad={(event) => {
+            onLoad(event)
+            setLoaded(true)
+          }}
+          {...elementProps}
+        />
+      )}
+      <noscript>
+        <img
+          alt={alt}
+          srcSet={srcSet}
+          sizes={sizes}
+          src={src}
+          {...elementProps}
+          style={{ position: 'relative', zIndex: 3 }}
+        />
+      </noscript>
+    </ImageWrapper>
+  )
 }
 
 export const ImageWrapper = styled.figure`
@@ -96,87 +169,5 @@ export const PlaceholderImage = styled.img`
   z-index: 2;
   opacity: ${props => (props.fadeIn ? 0 : 1)};
   transition: opacity 400ms ${easings.easeInSine};
+  pointer-events: none;
 `
-
-class LazyImage extends React.Component {
-  static defaultProps = {
-    onLoad: noop,
-  }
-
-  state = {
-    isVisible: false,
-    isLoaded: false,
-    isCached: isImageCached(this.props),
-  }
-
-  wrapperRef = React.createRef()
-
-  componentDidMount() {
-    const { current: node } = this.wrapperRef
-
-    if (node) {
-      observeIntersections(node, () => {
-        this.setState({ isVisible: true })
-      })
-    }
-  }
-
-  componentWillUnmount() {
-    listeners.delete(this.wrapperRef.current)
-  }
-
-  onLoad = () => {
-    this.setState({ isLoaded: true }, () => {
-      addImageToCache(this.props)
-    })
-    this.props.onLoad()
-  }
-
-  render() {
-    const { isVisible, isLoaded, isCached } = this.state
-    const {
-      src,
-      sizes,
-      srcSet,
-      alt = '',
-      onLoad,
-      base64,
-      aspectRatio,
-      ...props
-    } = normalizeProps(this.props)
-
-    return (
-      <ImageWrapper
-        aspectRatio={aspectRatio}
-        ref={this.wrapperRef}
-        key={`${JSON.stringify(srcSet)}`}
-      >
-        {base64 && (
-          <PlaceholderImage src={base64} alt="" fadeIn={isLoaded || isCached} />
-        )}
-        {isVisible && (
-          <img
-            alt={alt}
-            srcSet={srcSet}
-            sizes={sizes}
-            src={src}
-            onLoad={this.onLoad}
-            {...props}
-          />
-        )}
-        <noscript>
-          <img
-            alt={alt}
-            srcSet={srcSet}
-            sizes={sizes}
-            src={src}
-            {...props}
-            style={{ position: 'relative', zIndex: 3 }}
-          />
-        </noscript>
-      </ImageWrapper>
-    )
-  }
-}
-
-export default LazyImage
