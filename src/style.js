@@ -241,7 +241,7 @@ function getSpaceValue(n, i) {
   const scale = i === 0 ? 3.75 : 15.2
   const value = (Number(n) * 8) / scale
 
-  return `${value}vw`
+  return value !== 0 ? `${value}vw` : value
 }
 
 export function space(props) {
