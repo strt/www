@@ -26,7 +26,6 @@ const Div = styled.div(
   },
   space,
   bgColor,
-  props => props.css,
 )
 
 export default Div
