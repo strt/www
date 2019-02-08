@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { H1, H2 } from '../components/Text'
+import { H1, H2, H3, Text } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
@@ -10,14 +10,23 @@ import Link from '../components/Link'
 import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
+import Icon from '../components/Icon'
 import Hero from '../components/Hero'
 import NoSSR from '../components/NoSSR'
 import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
+import Dialog, {
+  DialogRow,
+  DialogActions,
+  DialogButton,
+} from '../components/Dialog'
+import Toggle from '../components/Toggle'
 import { colors, breakpoints, vw } from '../style'
 import pageRoutes from '../routes'
 
 const Playground = React.lazy(() => import('../components/Playground'))
+
+const LinkButton = props => <Link as="button" {...props} />
 
 const routes = pageRoutes.reduce((acc, i) => {
   acc[i.id] = i.link
@@ -111,9 +120,50 @@ export default function Index({ data }) {
               <H1 as="h2" textColor="white">
                 Kontakt är det bästa vi vet
               </H1>
-              <H2 as={Link} href="/" textColor="white">
-                Vad vill du prata om?
-              </H2>
+              <Toggle>
+                {({ on, toggleOn, toggleOff }) => (
+                  <>
+                    <H2
+                      as={LinkButton}
+                      type="button"
+                      onClick={toggleOn}
+                      textColor="white"
+                    >
+                      Vad vill du prata om?
+                    </H2>
+                    <Dialog isOpen={on} onDismiss={toggleOff}>
+                      <DialogRow>
+                        <H3 mb="0">Jag är intresserad av att jobba ihop</H3>
+                        <Text>
+                          Genom att skicka samtycker du till vår policy
+                        </Text>
+                        <div>
+                          <label htmlFor="">Input</label>
+                          <input type="text" />
+                        </div>
+                        <div>
+                          <label htmlFor="">Input</label>
+                          <input type="text" />
+                        </div>
+                        <div>
+                          <label htmlFor="">Input</label>
+                          <input type="text" />
+                        </div>
+                        <div>
+                          <label htmlFor="">Input</label>
+                          <input type="text" />
+                        </div>
+                      </DialogRow>
+                      <DialogActions>
+                        <DialogButton>
+                          <span>Skicka</span>
+                          <Icon name={['fal', 'long-arrow-right']} />
+                        </DialogButton>
+                      </DialogActions>
+                    </Dialog>
+                  </>
+                )}
+              </Toggle>
             </Column>
           </Grid>
         </Div>

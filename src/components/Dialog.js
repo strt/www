@@ -2,8 +2,11 @@ import React, { useRef, useContext } from 'react'
 import styled from 'styled-components'
 import { useTransition, animated, config } from 'react-spring'
 import Portal from './Portal'
+import Div from './Div'
+import Icon from './Icon'
+import Button, { ButtonInner, IconButton } from './Button'
 import { useFocusTrap, useLockScroll } from '../utils/hooks'
-import { vw, breakpoints } from '../style'
+import { vw, breakpoints, colors } from '../style'
 
 const StyledDialogOverlay = styled.div`
   position: fixed;
@@ -37,10 +40,44 @@ const StyledDialogContent = styled.div`
   }
 `
 
-export const DialogRow = styled.div`
+export const DialogRow = styled(Div)`
   padding-right: ${vw(56)};
   padding-left: ${vw(56)};
 `
+
+export const DialogActions = styled(Div).attrs({ mt: [4, 8] })`
+  display: flex;
+
+  & > * {
+    flex-grow: 1;
+  }
+`
+
+export function DialogButton(props) {
+  return (
+    <Button css={{ paddingLeft: 0, paddingRight: 0 }}>
+      <DialogRow as={ButtonInner} {...props} />
+    </Button>
+  )
+}
+
+export function DialogCloseButton(props) {
+  return (
+    <DialogRow
+      pt={[3, 5]}
+      pb={[1, 1]}
+      css={{ display: 'flex', justifyContent: 'flex-end' }}
+    >
+      <IconButton
+        textColor={colors.watermelonRed}
+        aria-label="Stäng"
+        {...props}
+      >
+        <Icon name={['fal', 'times']} />
+      </IconButton>
+    </DialogRow>
+  )
+}
 
 const AnimatedDialogOverlay = animated(StyledDialogOverlay)
 const AnimatedDialogContent = animated(StyledDialogContent)
@@ -89,7 +126,7 @@ export function DialogContent({ onClick, onKeyDown, ...props }) {
   )
 }
 
-export default function Dialog({ isOpen, onDismiss, ...props }) {
+export default function Dialog({ isOpen, onDismiss, children, ...props }) {
   useLockScroll(isOpen)
   const transitions = useTransition(isOpen, p => p, {
     unique: true,
@@ -108,7 +145,10 @@ export default function Dialog({ isOpen, onDismiss, ...props }) {
       show && (
         <Portal key={key}>
           <DialogOverlay onDismiss={onDismiss} style={style}>
-            <DialogContent style={{ transform }} {...props} />
+            <DialogContent style={{ transform }} {...props}>
+              <DialogCloseButton onClick={onDismiss} />
+              {children}
+            </DialogContent>
           </DialogOverlay>
         </Portal>
       ),
