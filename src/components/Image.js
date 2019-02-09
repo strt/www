@@ -61,14 +61,14 @@ function useIntersectionObserver({ target, onIntersect = noop }) {
   }, [])
 }
 
-function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
-  if (image) {
+function normalizeProps({ fluid, aspectRatio, sizes, ...props }) {
+  if (fluid) {
     return {
-      src: image.src,
-      srcSet: image.srcSet,
-      sizes: sizes || image.sizes,
-      aspectRatio: aspectRatio !== 'auto' ? image.aspectRatio : undefined,
-      base64: image.base64,
+      src: fluid.src,
+      srcSet: fluid.srcSet,
+      sizes: sizes || fluid.sizes,
+      aspectRatio: aspectRatio !== 'auto' ? fluid.aspectRatio : undefined,
+      base64: fluid.base64,
       ...props,
     }
   }
@@ -79,22 +79,22 @@ function normalizeProps({ fluid: image, aspectRatio, sizes, ...props }) {
   }
 }
 
-export default function LazyImage(props) {
+function LazyImage(props, forwardedRef) {
   const {
     src,
     sizes,
     srcSet,
     alt = '',
-    onLoad = noop,
     base64,
     aspectRatio,
+    critical = false,
+    onLoad = noop,
     ...elementProps
   } = normalizeProps(props)
 
   const imageWrapperRef = useRef()
-  const [isCached] = useState(() => isImageCached(props))
-  const [isVisible, setVisible] = useState(false)
-  const [isLoaded, setLoaded] = useState(false)
+  const [isVisible, setVisible] = useState(!!critical)
+  const [isLoaded, setLoaded] = useState(() => isImageCached(props))
 
   useIntersectionObserver({
     target: imageWrapperRef,
@@ -111,19 +111,16 @@ export default function LazyImage(props) {
 
   return (
     <ImageWrapper
-      aspectRatio={aspectRatio}
-      ref={imageWrapperRef}
       key={`${JSON.stringify(srcSet)}`}
+      ref={imageWrapperRef}
+      aspectRatio={aspectRatio}
     >
       {base64 && (
-        <PlaceholderImage
-          src={base64}
-          alt=""
-          fadeIn={isLoaded || (isLoaded && isCached)}
-        />
+        <PlaceholderImage src={base64} alt="" opacity={isLoaded ? 0 : 1} />
       )}
       {isVisible && (
         <img
+          ref={forwardedRef}
           alt={alt}
           srcSet={srcSet}
           sizes={sizes}
@@ -149,6 +146,8 @@ export default function LazyImage(props) {
   )
 }
 
+export default React.forwardRef(LazyImage)
+
 export const ImageWrapper = styled.figure`
   position: relative;
   overflow: hidden;
@@ -167,7 +166,7 @@ export const PlaceholderImage = styled.img`
   filter: blur(30px);
   transform: scale(1.2);
   z-index: 2;
-  opacity: ${props => (props.fadeIn ? 0 : 1)};
+  opacity: ${props => props.opacity || 0};
   transition: opacity 400ms ${easings.easeInSine};
   pointer-events: none;
 `
