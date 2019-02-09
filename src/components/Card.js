@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { H3, Text } from './Text'
@@ -51,7 +51,10 @@ const ImageWrapper = styled.div`
 `
 
 export default function Card({ url, title, date, image }) {
-  const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
+  const formattedDate = useMemo(
+    () => (date ? dayjs(date).format('D MMM YYYY') : null),
+    [date],
+  )
 
   return (
     <Link to={url}>
