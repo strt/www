@@ -7,14 +7,14 @@ import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import { colors, vw, breakpoints, fluidRange } from '../style'
 
-const CookieToastWrapper = styled.div`
+const CookieToastWrapper = animated(styled.div`
   position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 3;
   backface-visibility: hidden;
-`
+`)
 
 const Toast = styled.div`
   padding: ${fluidRange({ min: 24, max: 32 })} 0;
@@ -29,8 +29,6 @@ const Toast = styled.div`
   }
 `
 
-const AnimatedCookieToastWrapper = animated(CookieToastWrapper)
-
 export default function CookieToast() {
   const [showToast, setShowToast] = useState(false)
   useEffect(() => {
@@ -44,7 +42,8 @@ export default function CookieToast() {
       clearTimeout(timerId)
     }
   }, [])
-  const transitions = useTransition(showToast, p => p, {
+  const transitions = useTransition(showToast, null, {
+    unique: true,
     from: { opacity: 0, transform: 'translateY(100%)' },
     enter: { opacity: 1, transform: 'translateY(0)' },
     leave: { opacity: 0, transform: 'translateY(100%)' },
@@ -53,7 +52,7 @@ export default function CookieToast() {
   return transitions.map(
     ({ item: show, props, key }) =>
       show && (
-        <AnimatedCookieToastWrapper key={key} style={props}>
+        <CookieToastWrapper key={key} style={props}>
           <Grid>
             <Column>
               <Toast>
@@ -85,7 +84,7 @@ export default function CookieToast() {
               </Toast>
             </Column>
           </Grid>
-        </AnimatedCookieToastWrapper>
+        </CookieToastWrapper>
       ),
   )
 }
