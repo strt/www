@@ -46,18 +46,18 @@ function useIntersectionObserver({ target, onIntersect = noop }) {
   useEffect(() => {
     const observer = getIntersectionObserver({ rootMargin: '200px' })
 
-    if (!observer) {
-      onIntersect()
-      return null
+    if (observer) {
+      observer.observe(target.current)
+      listeners.set(target.current, onIntersect)
+
+      return () => {
+        observer.unobserve(target.current)
+        listeners.delete(target.current)
+      }
     }
 
-    observer.observe(target.current)
-    listeners.set(target.current, onIntersect)
-
-    return () => {
-      observer.unobserve(target.current)
-      listeners.delete(target.current)
-    }
+    onIntersect()
+    return undefined
   }, [])
 }
 
