@@ -12,6 +12,7 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Icon from '../components/Icon'
 import Hero from '../components/Hero'
+import TextField from '../components/TextField'
 import NoSSR from '../components/NoSSR'
 import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
@@ -135,24 +136,14 @@ export default function Index({ data }) {
                       <DialogRow>
                         <H3 mb="0">Jag är intresserad av att jobba ihop</H3>
                         <Text>
-                          Genom att skicka samtycker du till vår policy
+                          Genom att skicka samtycker du till vår{' '}
+                          <a href="">policy</a>
                         </Text>
-                        <div>
-                          <label htmlFor="">Input</label>
-                          <input type="text" />
-                        </div>
-                        <div>
-                          <label htmlFor="">Input</label>
-                          <input type="text" />
-                        </div>
-                        <div>
-                          <label htmlFor="">Input</label>
-                          <input type="text" />
-                        </div>
-                        <div>
-                          <label htmlFor="">Input</label>
-                          <input type="text" />
-                        </div>
+                        <TextField label="Namn" />
+                        <TextField label="Företag" />
+                        <TextField label="Din e-postadress" />
+                        <TextField label="Telefonnummer" />
+                        <TextField label="Berätta vad du vill ha hjälp med" />
                       </DialogRow>
                       <DialogActions>
                         <DialogButton>
