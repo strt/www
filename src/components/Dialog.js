@@ -6,7 +6,7 @@ import Div from './Div'
 import Icon from './Icon'
 import Button, { ButtonInner, IconButton } from './Button'
 import { useFocusTrap, useDisableScroll } from '../utils/hooks'
-import { vw, breakpoints, colors } from '../style'
+import { vw, breakpoints, colors, fluidRange } from '../style'
 
 const StyledDialogOverlay = animated(styled.div`
   position: fixed;
@@ -41,8 +41,13 @@ const StyledDialogContent = animated(styled.div`
 `)
 
 export const DialogRow = styled(Div)`
-  padding-right: ${vw(56)};
-  padding-left: ${vw(56)};
+  padding-right: ${fluidRange({ min: 16, max: 24 })};
+  padding-left: ${fluidRange({ min: 16, max: 24 })};
+
+  @media ${breakpoints.medium} {
+    padding-right: ${vw(56)};
+    padding-left: ${vw(56)};
+  }
 `
 
 export const DialogActions = styled(Div).attrs({ mt: [4, 8] })`
