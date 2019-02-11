@@ -5,6 +5,8 @@ import { colors, fluidRange, breakpoints, vw, fontFamily } from '../style'
 
 const StyledButton = styled.button`
   display: inline-block;
+  vertical-align: middle;
+  margin: 0;
   border: none;
   border-radius: 0;
   padding: ${fluidRange({ min: 18, max: 24 })};
