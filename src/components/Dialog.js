@@ -8,82 +8,6 @@ import Button, { ButtonInner, IconButton } from './Button'
 import { useFocusTrap, useDisableScroll } from '../utils/hooks'
 import { vw, breakpoints, colors, fluidRange } from '../style'
 
-const StyledDialogOverlay = animated(styled.div`
-  position: fixed;
-  z-index: 11;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  background-color: rgba(0, 0, 0, 0.8);
-`)
-
-const StyledDialogContent = animated(styled.div`
-  position: relative;
-  flex-shrink: 0;
-  width: 94%;
-  max-width: 480px;
-  margin: auto;
-  outline: none;
-  background-color: white;
-  box-shadow: 0 30px 40px 10px #0b101e33;
-
-  @media ${breakpoints.large} {
-    width: 100%;
-    max-width: ${vw(624)};
-  }
-`)
-
-export const DialogRow = styled(Div)`
-  padding-right: ${fluidRange({ min: 16, max: 24 })};
-  padding-left: ${fluidRange({ min: 16, max: 24 })};
-
-  @media ${breakpoints.medium} {
-    padding-right: ${vw(56)};
-    padding-left: ${vw(56)};
-  }
-`
-
-export const DialogActions = styled(Div).attrs({ mt: [4, 8] })`
-  display: flex;
-
-  & > * {
-    flex-grow: 1;
-  }
-`
-
-export function DialogButton(props) {
-  return (
-    <Button css={{ paddingLeft: 0, paddingRight: 0 }}>
-      <DialogRow as={ButtonInner} {...props} />
-    </Button>
-  )
-}
-
-export function DialogCloseButton(props) {
-  return (
-    <DialogRow
-      pt={[3, 5]}
-      pb={[1, 1]}
-      css={{ display: 'flex', justifyContent: 'flex-end' }}
-    >
-      <IconButton
-        textColor={colors.watermelonRed}
-        aria-label="Stäng"
-        {...props}
-      >
-        <Icon name={['fal', 'times']} />
-      </IconButton>
-    </DialogRow>
-  )
-}
-
 const FocusContext = React.createContext()
 
 export function DialogOverlay({
@@ -165,3 +89,79 @@ export default function Dialog({ isOpen, onDismiss, children, ...props }) {
       ),
   )
 }
+
+export function DialogButton(props) {
+  return (
+    <Button css={{ paddingLeft: 0, paddingRight: 0 }}>
+      <DialogRow as={ButtonInner} {...props} />
+    </Button>
+  )
+}
+
+export function DialogCloseButton(props) {
+  return (
+    <DialogRow
+      pt={[3, 5]}
+      pb={[1, 1]}
+      css={{ display: 'flex', justifyContent: 'flex-end' }}
+    >
+      <IconButton
+        textColor={colors.watermelonRed}
+        aria-label="Stäng"
+        {...props}
+      >
+        <Icon name={['fal', 'times']} />
+      </IconButton>
+    </DialogRow>
+  )
+}
+
+const StyledDialogOverlay = animated(styled.div`
+  position: fixed;
+  z-index: 11;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(0, 0, 0, 0.8);
+`)
+
+const StyledDialogContent = animated(styled.div`
+  position: relative;
+  flex-shrink: 0;
+  width: 94%;
+  max-width: 480px;
+  margin: auto;
+  outline: none;
+  background-color: white;
+  box-shadow: 0 30px 40px 10px #0b101e33;
+
+  @media ${breakpoints.large} {
+    width: 100%;
+    max-width: ${vw(624)};
+  }
+`)
+
+export const DialogRow = styled(Div)`
+  padding-right: ${fluidRange({ min: 16, max: 24 })};
+  padding-left: ${fluidRange({ min: 16, max: 24 })};
+
+  @media ${breakpoints.medium} {
+    padding-right: ${vw(56)};
+    padding-left: ${vw(56)};
+  }
+`
+
+export const DialogActions = styled(Div).attrs({ mt: [4, 8] })`
+  display: flex;
+
+  & > * {
+    flex-grow: 1;
+  }
+`
