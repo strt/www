@@ -5,10 +5,10 @@ import Portal from './Portal'
 import Div from './Div'
 import Icon from './Icon'
 import Button, { ButtonInner, IconButton } from './Button'
-import { useFocusTrap, useLockScroll } from '../utils/hooks'
+import { useFocusTrap, useDisableScroll } from '../utils/hooks'
 import { vw, breakpoints, colors } from '../style'
 
-const StyledDialogOverlay = styled.div`
+const StyledDialogOverlay = animated(styled.div`
   position: fixed;
   z-index: 11;
   top: 0;
@@ -22,9 +22,9 @@ const StyledDialogOverlay = styled.div`
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   background-color: rgba(0, 0, 0, 0.8);
-`
+`)
 
-const StyledDialogContent = styled.div`
+const StyledDialogContent = animated(styled.div`
   position: relative;
   flex-shrink: 0;
   width: 94%;
@@ -38,7 +38,7 @@ const StyledDialogContent = styled.div`
     width: 100%;
     max-width: ${vw(624)};
   }
-`
+`)
 
 export const DialogRow = styled(Div)`
   padding-right: ${vw(56)};
@@ -79,19 +79,22 @@ export function DialogCloseButton(props) {
   )
 }
 
-const AnimatedDialogOverlay = animated(StyledDialogOverlay)
-const AnimatedDialogContent = animated(StyledDialogContent)
-
 const FocusContext = React.createContext()
 
-function DialogOverlay({ onDismiss, initialFocusRef, ...props }) {
+export function DialogOverlay({
+  onDismiss,
+  isOpen,
+  initialFocusRef,
+  ...props
+}) {
   const overlayRef = useRef()
   const contentRef = useRef()
-  useFocusTrap({ initialFocusRef, overlayRef, contentRef })
+  useFocusTrap({ initialFocusRef, overlayRef, contentRef }, isOpen)
+  useDisableScroll(isOpen)
 
   return (
     <FocusContext.Provider value={contentRef}>
-      <AnimatedDialogOverlay
+      <StyledDialogOverlay
         ref={overlayRef}
         onClick={(event) => {
           event.stopPropagation()
@@ -113,7 +116,7 @@ export function DialogContent({ onClick, onKeyDown, ...props }) {
   const contentRef = useContext(FocusContext)
 
   return (
-    <AnimatedDialogContent
+    <StyledDialogContent
       ref={contentRef}
       tabIndex="-1"
       role="dialog"
@@ -127,11 +130,14 @@ export function DialogContent({ onClick, onKeyDown, ...props }) {
 }
 
 export default function Dialog({ isOpen, onDismiss, children, ...props }) {
-  useLockScroll(isOpen)
-  const transitions = useTransition(isOpen, p => p, {
+  const transitions = useTransition(isOpen, null, {
     unique: true,
     from: { opacity: 0, transform: `translate3d(0, 24px, 0) scale(0.98)` },
-    enter: { opacity: 1, transform: `translate3d(0, 0, 0) scale(1)` },
+    enter: {
+      opacity: 1,
+      transform: `translate3d(0, 0, 0) scale(1)`,
+      pointerEvents: 'auto',
+    },
     leave: {
       opacity: 0,
       transform: `translate3d(0, 8px, 0) scale(0.98)`,
@@ -144,7 +150,7 @@ export default function Dialog({ isOpen, onDismiss, children, ...props }) {
     ({ item: show, props: { transform, ...style }, key }) =>
       show && (
         <Portal key={key}>
-          <DialogOverlay onDismiss={onDismiss} style={style}>
+          <DialogOverlay onDismiss={onDismiss} isOpen={isOpen} style={style}>
             <DialogContent style={{ transform }} {...props}>
               <DialogCloseButton onClick={onDismiss} />
               {children}

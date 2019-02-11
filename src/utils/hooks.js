@@ -6,26 +6,24 @@ export function useForceUpdate() {
   return () => setState(i => !i)
 }
 
-export function useLockScroll(shouldLock = true) {
+export function useDisableScroll(shouldDisable = true) {
   useEffect(() => {
-    if (shouldLock) {
+    if (shouldDisable) {
       document.body.style.setProperty('overflow', 'hidden')
-    } else {
-      document.body.style.setProperty('overflow', null)
+
+      return () => {
+        document.body.style.setProperty('overflow', null)
+      }
     }
 
-    return () => {
-      document.body.style.setProperty('overflow', null)
-    }
-  }, [shouldLock])
+    return undefined
+  }, [shouldDisable])
 }
 
-export function useFocusTrap({
-  initialFocusRef,
-  overlayRef,
-  contentRef,
-  isOpen,
-}) {
+export function useFocusTrap(
+  { initialFocusRef, overlayRef, contentRef },
+  shouldTrap = true,
+) {
   const focusTrap = useRef()
 
   useEffect(() => {
@@ -35,12 +33,19 @@ export function useFocusTrap({
       escapeDeactivates: false,
       clickOutsideDeactivates: false,
     })
-    focusTrap.current.activate()
+  }, [])
 
-    return () => {
-      focusTrap.current.deactivate()
+  useEffect(() => {
+    if (shouldTrap) {
+      focusTrap.current.activate()
+
+      return () => {
+        focusTrap.current.deactivate()
+      }
     }
-  }, [overlayRef, contentRef, initialFocusRef, isOpen])
+
+    return undefined
+  }, [shouldTrap])
 
   return focusTrap
 }
