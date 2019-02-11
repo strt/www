@@ -126,10 +126,15 @@ const StyledDialogOverlay = animated(styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: ${fluidRange({ min: 24, max: 32 })} 0;
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   background-color: rgba(0, 0, 0, 0.8);
+
+  @media ${breakpoints.medium} {
+    padding: ${vw(32)} 0;
+  }
 `)
 
 const StyledDialogContent = animated(styled.div`
