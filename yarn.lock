@@ -4588,9 +4588,9 @@ eslint-config-airbnb@^17.1.0:
     object.entries "^1.0.4"
 
 eslint-config-alexandernanberg@^1.0.1:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-alexandernanberg/-/eslint-config-alexandernanberg-1.6.2.tgz#506de01fd66ef4e05f01940aa51c57d3f6062ed6"
-  integrity sha512-zFO2kYGd+b3v5AmbkfYGyjwYFLLjLDlOnL0635eLFdi1OhWhrc9883A2TyWCBCqQHBUoA/P7G+Ipe/1us6s8CA==
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-alexandernanberg/-/eslint-config-alexandernanberg-1.7.0.tgz#6d7b53e08b9d6416d864e6b7b7a3d302b3c129c5"
+  integrity sha512-bETLbOYc2hA0acyCXhWRVcXR7B6KrH2mFJbAg7MBfOB4ft58COrCc9564Pu3uxpZEOZ/p3UBuvV8qWBxoHU1SQ==
   dependencies:
     babel-eslint "^10.0.0"
     eslint-config-airbnb "^17.1.0"
