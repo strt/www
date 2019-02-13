@@ -9,6 +9,7 @@ collections:
   - name: case
     label: Case
     folder: '/content/case'
+    slug: '{{client}}-{{slug}}'
     create: true
     editor:
       preview: false
@@ -52,10 +53,10 @@ collections:
     label: 'Articles'
     label_singular: 'Article'
     folder: '/content/aktuellt'
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     create: true
     editor:
       preview: false
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - { name: 'title', label: 'Title', widget: 'string' }
       - { name: 'excerpt', label: 'Excerpt', widget: 'text' }
@@ -67,6 +68,7 @@ collections:
     label: 'Employees'
     label_singular: 'Employee'
     folder: '/content/employees'
+    slug: '{{first_name}}-{{last_name}}'
     identifier_field: 'email'
     create: true
     editor:
