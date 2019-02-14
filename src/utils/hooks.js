@@ -6,6 +6,12 @@ export function useForceUpdate() {
   return () => setState(i => !i)
 }
 
+export function useToggle(defaultState = true) {
+  const [state, setState] = useState(defaultState)
+
+  return [state, () => setState(on => !on)]
+}
+
 export function useDisableScroll(shouldDisable = true) {
   useEffect(() => {
     if (shouldDisable) {
@@ -21,22 +27,26 @@ export function useDisableScroll(shouldDisable = true) {
 }
 
 export function useFocusTrap(
-  { initialFocusRef, overlayRef, contentRef },
-  shouldTrap = true,
+  elementRef,
+  { initialFocusRef, fallbackFocusRef, shouldTrap = true },
 ) {
   const focusTrap = useRef()
 
   useEffect(() => {
-    focusTrap.current = createFocusTrap(overlayRef.current, {
-      initialFocus: initialFocusRef ? () => initialFocusRef.current : undefined,
-      fallbackFocus: contentRef.current,
-      escapeDeactivates: false,
-      clickOutsideDeactivates: false,
-    })
-  }, [])
-
-  useEffect(() => {
     if (shouldTrap) {
+      if (!focusTrap.current) {
+        focusTrap.current = createFocusTrap(elementRef.current, {
+          initialFocus: initialFocusRef
+            ? () => initialFocusRef.current
+            : undefined,
+          fallbackFocus: fallbackFocusRef
+            ? fallbackFocusRef.current
+            : undefined,
+          escapeDeactivates: false,
+          clickOutsideDeactivates: false,
+        })
+      }
+
       focusTrap.current.activate()
 
       return () => {
