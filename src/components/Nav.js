@@ -77,22 +77,23 @@ export function Navigation({ children }) {
   const [isOpen, toggle] = useToggle(false)
 
   const navRef = useRef()
-  useFocusTrap(navRef, { shouldTrap: isOpen })
+  // TODO: Fix this
+  // useFocusTrap(navRef, { shouldTrap: isOpen })
   useDisableScroll(isOpen)
 
   const springRef = useRef()
-  const navAnimationStyle = useSpring({
+  const { translateY, ...navAnimStyle } = useSpring({
     ref: springRef,
     config: { ...config.stiff, friction: 28 },
     from: {
       opacity: 0,
       pointerEvents: 'none',
+      translateY: 0,
     },
     to: {
       opacity: isOpen ? 1 : 0,
       pointerEvents: isOpen ? 'auto' : 'none',
-      // visibility: isOpen ? 'visible' : 'hidden',
-      transform: isOpen ? 'translate3d(0,0,0)' : 'translate3d(0,-50%, 0)',
+      translateY: isOpen ? 0 : -50,
     },
   })
 
@@ -105,9 +106,9 @@ export function Navigation({ children }) {
       ref: transRef,
       unique: true,
       trail: 200 / childrenArray.length,
-      from: { opacity: 0, transform: 'scale(0.8)' },
-      enter: { opacity: 1, transform: 'scale(1)' },
-      leave: { opacity: 0, transform: 'scale(0.8)' },
+      from: { opacity: 0, scale: 0.8 },
+      enter: { opacity: 1, scale: 1 },
+      leave: { opacity: 0, scale: 0.8 },
     },
   )
 
@@ -128,7 +129,13 @@ export function Navigation({ children }) {
       </Link>
       <Nav
         ref={navRef}
-        style={navAnimationStyle}
+        style={{
+          ...navAnimStyle,
+          transform: translateY.interpolate(y => `translate3d(0, ${y}%, 0)`),
+          visibility: navAnimStyle.opacity.interpolate(o =>
+            o === 0 ? 'hidden' : 'visible',
+          ),
+        }}
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             event.stopPropagation()
@@ -145,9 +152,15 @@ export function Navigation({ children }) {
           <Icon name={['fal', 'times']} />
         </IconButton>
         <ul>
-          {transitions.map(transition => (
-            <animated.li key={transition.key} style={transition.props}>
-              {transition.item}
+          {transitions.map(({ key, item, props: { scale, ...style } }) => (
+            <animated.li
+              key={key}
+              style={{
+                ...style,
+                transform: scale.interpolate(y => `scale(${y})`),
+              }}
+            >
+              {item}
             </animated.li>
           ))}
         </ul>
