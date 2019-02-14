@@ -18,7 +18,11 @@ export function DialogOverlay({
 }) {
   const overlayRef = useRef()
   const contentRef = useRef()
-  useFocusTrap({ initialFocusRef, overlayRef, contentRef }, isOpen)
+  useFocusTrap(overlayRef, {
+    initialFocusRef,
+    fallbackFocusRef: contentRef,
+    shouldTrap: isOpen,
+  })
   useDisableScroll(isOpen)
 
   return (
