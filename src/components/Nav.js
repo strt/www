@@ -12,7 +12,7 @@ import { IconButton } from './Button'
 import Link from './Link'
 import Icon from './Icon'
 import { useFocusTrap, useDisableScroll, useToggle } from '../utils/hooks'
-import { colors, fluidRange } from '../style'
+import { colors, fluidRange, easings } from '../style'
 
 function getProps({ href, isPartiallyCurrent }) {
   return isPartiallyCurrent && href !== '/' ? { 'data-active': true } : null
@@ -30,13 +30,17 @@ export const StyledNavLink = styled(GatsbyLink)`
   font-weight: 700;
   text-decoration: none;
   color: white;
+  transition: all 200ms ${easings.easeOutQuad};
 
   &:last-child {
     margin-right: 0;
   }
 
+  &:hover,
+  &:focus,
   &[aria-current],
   &[data-active] {
+    outline: none;
     text-indent: ${fluidRange({ min: 24, max: 32 })};
     background-color: rgba(255, 255, 255, 0.2);
   }
@@ -73,6 +77,8 @@ export function Navigation({ children }) {
   const [isOpen, toggle] = useToggle(false)
 
   const navRef = useRef()
+  useFocusTrap(navRef, { shouldTrap: isOpen })
+  useDisableScroll(isOpen)
 
   const springRef = useRef()
   const navAnimationStyle = useSpring({
@@ -109,9 +115,6 @@ export function Navigation({ children }) {
     0,
     isOpen ? 0.1 : 0,
   ])
-
-  useFocusTrap(navRef, { shouldTrap: isOpen })
-  useDisableScroll(isOpen)
 
   return (
     <>
