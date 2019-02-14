@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
 import { breakpoints, fluidRange, vw } from '../style'
-import routes from '../routes'
+import { mainNavigation } from '../routes'
 import { Navigation, NavLink } from './Nav'
 
 export default function Header() {
@@ -18,8 +18,7 @@ export default function Header() {
         </Column>
         <Column width="auto">
           <Navigation>
-            <NavLink to="/">Hem</NavLink>
-            {routes.map(route => (
+            {mainNavigation.map(route => (
               <NavLink key={route.link} to={route.link}>
                 {route.title}
               </NavLink>

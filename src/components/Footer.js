@@ -5,7 +5,7 @@ import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import Section from './Section'
 import { ScrollToTopButton } from './Button'
-import routes from '../routes'
+import { footerNavigation } from '../routes'
 import { colors, breakpoints, fluidRange, vw } from '../style'
 import { formatPhone } from '../utils'
 
@@ -108,7 +108,7 @@ export default function Footer() {
             </Column>
             <Column tablet="3">
               <Text as="ul">
-                {routes.map(route => (
+                {footerNavigation.map(route => (
                   <li key={route.link}>
                     <Link to={route.link}>{route.title}</Link>
                   </li>

@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { graphql, Link as GatsbyLink } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { H1, H2, H3, Text } from '../components/Text'
+import { H1, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
@@ -10,29 +10,15 @@ import Link from '../components/Link'
 import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
-import Icon from '../components/Icon'
 import Hero from '../components/Hero'
-import TextField from '../components/TextField'
 import NoSSR from '../components/NoSSR'
+import ContactArea from '../components/ContactArea'
 import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
-import Dialog, {
-  DialogRow,
-  DialogActions,
-  DialogButton,
-} from '../components/Dialog'
-import Toggle from '../components/Toggle'
 import { colors, breakpoints, vw } from '../style'
-import pageRoutes from '../routes'
+import { routes } from '../routes'
 
 const Playground = React.lazy(() => import('../components/Playground'))
-
-const LinkButton = props => <Link as="button" {...props} />
-
-const routes = pageRoutes.reduce((acc, i) => {
-  acc[i.id] = i.link
-  return acc
-}, {})
 
 export default function Index({ data }) {
   const { title } = data.page.frontmatter
@@ -69,7 +55,7 @@ export default function Index({ data }) {
         <Grid>
           <Column>
             <Div mt={[3, 6]}>
-              <Link as={GatsbyLink} to={routes.case}>
+              <Link as={GatsbyLink} to={routes.case.link}>
                 Fler case
               </Link>
             </Div>
@@ -97,7 +83,7 @@ export default function Index({ data }) {
           ))}
           <Column>
             <Div mt={[3, 2]}>
-              <Link as={GatsbyLink} to={routes.news}>
+              <Link as={GatsbyLink} to={routes.news.link}>
                 Fler inlägg
               </Link>
             </Div>
@@ -109,7 +95,7 @@ export default function Index({ data }) {
           backgroundImage={data.careerImage.childImageSharp.fluid}
           title="Vill du längta till måndag? "
           excerpt="Bra! Just nu letar vi efter dig som är copywriter, utvecklare eller kundansvarig. Och som vill ha en helt ny, otippad favoritdag."
-          link={{ text: 'Bli en av oss', href: routes.career }}
+          link={{ text: 'Bli en av oss', href: routes.career.link }}
           boxBg={colors.pinkPeach}
         />
       </Section>
@@ -118,43 +104,7 @@ export default function Index({ data }) {
         <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>
             <Column>
-              <H1 as="h2" textColor="white">
-                Kontakt är det bästa vi vet
-              </H1>
-              <Toggle>
-                {({ on, toggleOn, toggleOff }) => (
-                  <>
-                    <H2
-                      as={LinkButton}
-                      type="button"
-                      onClick={toggleOn}
-                      textColor="white"
-                    >
-                      Vad vill du prata om?
-                    </H2>
-                    <Dialog isOpen={on} onDismiss={toggleOff}>
-                      <DialogRow>
-                        <H3 mb="0">Jag är intresserad av att jobba ihop</H3>
-                        <Text>
-                          Genom att skicka samtycker du till vår{' '}
-                          <a href="">policy</a>
-                        </Text>
-                        <TextField label="Namn" />
-                        <TextField label="Företag" />
-                        <TextField label="Din e-postadress" />
-                        <TextField label="Telefonnummer" />
-                        <TextField label="Berätta vad du vill ha hjälp med" />
-                      </DialogRow>
-                      <DialogActions>
-                        <DialogButton>
-                          <span>Skicka</span>
-                          <Icon name={['fal', 'long-arrow-right']} />
-                        </DialogButton>
-                      </DialogActions>
-                    </Dialog>
-                  </>
-                )}
-              </Toggle>
+              <ContactArea />
             </Column>
           </Grid>
         </Div>
