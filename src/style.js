@@ -74,6 +74,10 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
     background-color: ${colors.watermelonRed};
   }
+
+  :focus {
+    outline: dotted 1px ${colors.watermelonRed};
+  }
 `
 
 /**
