@@ -87,12 +87,10 @@ export function Navigation({ children }) {
     config: { ...config.stiff, friction: 28 },
     from: {
       opacity: 0,
-      pointerEvents: 'none',
       translateY: 0,
     },
     to: {
       opacity: isOpen ? 1 : 0,
-      pointerEvents: isOpen ? 'auto' : 'none',
       translateY: isOpen ? 0 : -50,
     },
   })
@@ -134,6 +132,9 @@ export function Navigation({ children }) {
           transform: translateY.interpolate(y => `translate3d(0, ${y}%, 0)`),
           visibility: navAnimStyle.opacity.interpolate(o =>
             o === 0 ? 'hidden' : 'visible',
+          ),
+          pointerEvents: navAnimStyle.opacity.interpolate(o =>
+            o !== 1 ? 'none' : 'auto',
           ),
         }}
         onKeyDown={(event) => {
