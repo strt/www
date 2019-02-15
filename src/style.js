@@ -78,6 +78,11 @@ export const GlobalStyle = createGlobalStyle`
   :focus {
     outline: dotted 1px ${colors.watermelonRed};
   }
+
+  button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
 `
 
 /**
