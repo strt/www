@@ -153,14 +153,6 @@ export function Navigation({ children }) {
           }
         }}
       >
-        <IconButton
-          type="button"
-          onClick={toggle}
-          textColor="white"
-          aria-label="Stäng meny"
-        >
-          <Icon name={['fal', 'times']} />
-        </IconButton>
         <ul>
           {transitions.map(({ key, item, props: itemStyle }) => (
             <animated.li
@@ -176,6 +168,14 @@ export function Navigation({ children }) {
             </animated.li>
           ))}
         </ul>
+        <IconButton
+          type="button"
+          onClick={toggle}
+          textColor="white"
+          aria-label="Stäng meny"
+        >
+          <Icon name={['fal', 'times']} />
+        </IconButton>
       </Nav>
     </>
   )
