@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
   width: 1px;
   padding: 0;
   overflow: hidden;
-  line-height: 1.4em;
+  line-height: 1.2em;
   transition: none;
 
   &:focus {
@@ -20,6 +20,7 @@ const StyledLink = styled(Link)`
     top: 10px;
     left: 10px;
     z-index: 1;
+    overflow: visible;
     margin: 0;
     width: auto;
     height: auto;
