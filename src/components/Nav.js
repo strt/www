@@ -80,15 +80,13 @@ export const Nav = animated(styled.nav`
 
 export function Navigation({ children }) {
   const [isOpen, toggle] = useToggle(false)
-
   const navRef = useRef()
-  // TODO: Fix this
-  // useFocusTrap(navRef, { shouldTrap: isOpen })
+  useFocusTrap(navRef, { shouldTrap: isOpen })
   useDisableScroll(isOpen)
 
-  const springRef = useRef()
+  const navSpringRef = useRef()
   const navAnimStyle = useSpring({
-    ref: springRef,
+    ref: navSpringRef,
     config: { ...config.stiff, friction: 28 },
     from: {
       opacity: 0,
@@ -101,12 +99,12 @@ export function Navigation({ children }) {
   })
 
   const childrenArray = React.Children.toArray(children)
-  const transRef = useRef()
+  const itemsTransitionRef = useRef()
   const transitions = useTransition(
     isOpen ? childrenArray : [],
     item => item.key,
     {
-      ref: transRef,
+      ref: itemsTransitionRef,
       unique: true,
       trail: 200 / childrenArray.length,
       from: { opacity: 0, scale: 0.8 },
@@ -115,10 +113,12 @@ export function Navigation({ children }) {
     },
   )
 
-  useChain(isOpen ? [springRef, transRef] : [transRef, springRef], [
-    0,
-    isOpen ? 0.1 : 0,
-  ])
+  useChain(
+    isOpen
+      ? [navSpringRef, itemsTransitionRef]
+      : [itemsTransitionRef, navSpringRef],
+    [0, isOpen ? 0.1 : 0],
+  )
 
   return (
     <>
@@ -135,7 +135,7 @@ export function Navigation({ children }) {
         style={{
           opacity: navAnimStyle.opacity,
           visibility: navAnimStyle.opacity.interpolate(o =>
-            o === 0 ? 'hidden' : 'visible',
+            o === 0 && !isOpen ? 'hidden' : 'visible',
           ),
           pointerEvents: navAnimStyle.opacity.interpolate(o =>
             o !== 1 ? 'none' : 'auto',
@@ -164,8 +164,10 @@ export function Navigation({ children }) {
             <animated.li
               key={key}
               style={{
-                opacity: itemStyle,
-                transform: itemStyle.scale.interpolate(y => `scale(${y})`),
+                opacity: itemStyle.opacity,
+                transform: itemStyle.scale.interpolate(
+                  s => `scale3d(${s}, 1, 1)`,
+                ),
               }}
             >
               {item}
