@@ -15,7 +15,9 @@ import { useFocusTrap, useDisableScroll, useToggle } from '../utils/hooks'
 import { colors, fluidRange, easings } from '../style'
 
 function getProps({ href, isPartiallyCurrent }) {
-  return isPartiallyCurrent && href !== '/' ? { 'data-active': true } : null
+  return isPartiallyCurrent && href !== '/'
+    ? { 'data-partially-current': true }
+    : null
 }
 
 export function NavLink(props) {
@@ -39,7 +41,7 @@ export const StyledNavLink = styled(GatsbyLink)`
   &:hover,
   &:focus,
   &[aria-current],
-  &[data-active] {
+  &[data-partially-current] {
     outline: none;
     text-indent: ${fluidRange({ min: 24, max: 32 })};
     background-color: rgba(255, 255, 255, 0.2);
