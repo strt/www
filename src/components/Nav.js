@@ -57,7 +57,8 @@ export const Nav = animated(styled.nav`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background-color: ${colors.watermelonRed};
 
   ${IconButton} {
@@ -66,6 +67,10 @@ export const Nav = animated(styled.nav`
     right: ${fluidRange({ min: 24, max: 32 })};
     font-size: ${fluidRange({ min: 32, max: 40 })};
     color: white;
+  }
+
+  ul {
+    margin: auto 0;
   }
 
   li {
@@ -82,7 +87,7 @@ export function Navigation({ children }) {
   useDisableScroll(isOpen)
 
   const springRef = useRef()
-  const { translateY, ...navAnimStyle } = useSpring({
+  const navAnimStyle = useSpring({
     ref: springRef,
     config: { ...config.stiff, friction: 28 },
     from: {
@@ -128,13 +133,15 @@ export function Navigation({ children }) {
       <Nav
         ref={navRef}
         style={{
-          ...navAnimStyle,
-          transform: translateY.interpolate(y => `translate3d(0, ${y}%, 0)`),
+          opacity: navAnimStyle.opacity,
           visibility: navAnimStyle.opacity.interpolate(o =>
             o === 0 ? 'hidden' : 'visible',
           ),
           pointerEvents: navAnimStyle.opacity.interpolate(o =>
             o !== 1 ? 'none' : 'auto',
+          ),
+          transform: navAnimStyle.translateY.interpolate(
+            y => `translate3d(0, ${y}%, 0)`,
           ),
         }}
         onKeyDown={(event) => {
@@ -153,12 +160,12 @@ export function Navigation({ children }) {
           <Icon name={['fal', 'times']} />
         </IconButton>
         <ul>
-          {transitions.map(({ key, item, props: { scale, ...style } }) => (
+          {transitions.map(({ key, item, props: itemStyle }) => (
             <animated.li
               key={key}
               style={{
-                ...style,
-                transform: scale.interpolate(y => `scale(${y})`),
+                opacity: itemStyle,
+                transform: itemStyle.scale.interpolate(y => `scale(${y})`),
               }}
             >
               {item}
