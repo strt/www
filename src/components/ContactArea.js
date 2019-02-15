@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
+import { useSpring, animated } from 'react-spring'
 import { H1, H2, H3, Text } from './Text'
 import Dialog, { DialogRow, DialogActions, DialogButton } from './Dialog'
 import Icon from './Icon'
@@ -14,36 +15,57 @@ const LinkButton = props => <Link as="button" {...props} />
 export default function ContactArea() {
   const [on, toggle] = useToggle()
   const [bind, { height }] = useMeasure()
+  const props = useSpring({
+    config: { tension: 320, friction: 32 },
+    height: on ? height : 0,
+    opacity: on ? 1 : 0,
+  })
 
   return (
     <>
       <H1 as="h2" textColor="white">
         Kontakt är det bästa vi vet
       </H1>
-      <H2 as={LinkButton} type="button" onClick={toggle} textColor="white">
-        Vad vill du prata om?
+      <H2
+        as={LinkButton}
+        type="button"
+        aria-pressed={on}
+        onClick={toggle}
+        textColor="white"
+      >
+        <span>Vad vill du prata om?</span> <Icon name={['fal', 'angle-down']} />
       </H2>
-      {on && (
-        <Div
-          {...bind}
-          pt={[3, 5]}
-          css={{
-            display: 'flex',
-            flexFlow: 'column',
-            alignItems: 'flex-start',
-          }}
-        >
-          <H3 as={LinkButton} type="button" onClick={null} textColor="white">
-            Att jobba med Strateg
-          </H3>
-          <H3 as={LinkButton} type="button" onClick={null} textColor="white">
-            Att jobba eller praktisera på Strateg
-          </H3>
-          <H3 as={LinkButton} type="button" onClick={null} textColor="white">
-            Om något annat
-          </H3>
-        </Div>
-      )}
+      <animated.div
+        style={{
+          overflow: 'hidden',
+          visibility: props.opacity.interpolate(o =>
+            o === 0 && !on ? 'hidden' : 'visible',
+          ),
+          ...props,
+        }}
+      >
+        <div {...bind}>
+          <Div
+            pt={[3, 5]}
+            css={{
+              display: 'flex',
+              flexFlow: 'column',
+              alignItems: 'flex-start',
+            }}
+          >
+            <H3 as={LinkButton} type="button" onClick={null} textColor="white">
+              Att jobba med Strateg
+            </H3>
+            <H3 as={LinkButton} type="button" onClick={null} textColor="white">
+              Att jobba eller praktisera på Strateg
+            </H3>
+            <H3 as={LinkButton} type="button" onClick={null} textColor="white">
+              Om något annat
+            </H3>
+          </Div>
+        </div>
+      </animated.div>
+
       <Dialog isOpen={false} onDismiss={null}>
         <DialogRow>
           <H3 mb="0">Jag är intresserad av att jobba ihop</H3>
