@@ -39,7 +39,7 @@ export const StyledNavLink = styled(GatsbyLink)`
   }
 
   &:hover,
-  &:focus,
+  &.focus-visible,
   &[aria-current],
   &[data-partially-current] {
     outline: none;
@@ -61,7 +61,7 @@ export const Nav = animated(styled.nav`
   align-items: flex-start;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: ${colors.watermelonRed};
+  background-color: ${colors.watermelonRed500};
 
   ${IconButton} {
     position: absolute;
@@ -127,7 +127,7 @@ export function Navigation({ children }) {
       <Link
         as="button"
         type="button"
-        textColor={colors.watermelonRed}
+        textColor="watermelonRed"
         onClick={toggle}
       >
         meny.
