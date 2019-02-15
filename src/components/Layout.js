@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { GlobalStyle } from '../style'
 import Meta from './Meta'
-import SkipNavLink from './SkipNav'
+import SkipToContentLink from './SkipToContentLink'
 import Header from './Header'
 import Footer from './Footer'
 import NoSSR from './NoSSR'
@@ -33,7 +33,7 @@ export default function Layout({
       <Meta title={title} description={description}>
         {meta}
       </Meta>
-      <SkipNavLink />
+      <SkipToContentLink />
       <Header />
       <Main id="main-content">{children}</Main>
       <NoSSR>

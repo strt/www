@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from './Link'
 
-const StyledSkipNavLink = styled.a`
+const StyledLink = styled(Link)`
   position: absolute;
+  display: inline-block;
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -10,23 +12,24 @@ const StyledSkipNavLink = styled.a`
   width: 1px;
   padding: 0;
   overflow: hidden;
+  line-height: 1.4em;
+  transition: none;
 
   &:focus {
     position: fixed;
     top: 10px;
     left: 10px;
     z-index: 1;
-    padding: 1rem;
+    margin: 0;
     width: auto;
     height: auto;
-    background: white;
     clip: auto;
   }
 `
 
-export default function SkipNavLink({
+export default function SkipToContentLink({
   children = 'Till huvudinnehållet',
   id = 'main-content',
 }) {
-  return <StyledSkipNavLink href={`#${id}`}>{children}</StyledSkipNavLink>
+  return <StyledLink href={`#${id}`}>{children}</StyledLink>
 }
