@@ -1,6 +1,7 @@
 {
   "extends": "strateg",
   "rules": {
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/require-default-props": "off"
   }
 }
