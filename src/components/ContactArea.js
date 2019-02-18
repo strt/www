@@ -10,7 +10,9 @@ import TextField from './TextField'
 import { useToggle, useMeasure } from '../utils/hooks'
 import { routes } from '../routes'
 
-const LinkButton = props => <Link as="button" {...props} />
+const LinkButton = props => (
+  <Link as="button" type="button" colorVariant="white" {...props} />
+)
 
 export default function ContactArea() {
   const [on, toggle] = useToggle()
@@ -26,14 +28,8 @@ export default function ContactArea() {
       <H1 as="h2" textColor="white">
         Kontakt är det bästa vi vet
       </H1>
-      <H2
-        as={LinkButton}
-        type="button"
-        aria-pressed={on}
-        onClick={toggle}
-        textColor="white"
-      >
-        <span>Vad vill du prata om?</span> <Icon name={['fal', 'angle-down']} />
+      <H2 as={LinkButton} aria-pressed={on} onClick={toggle} textColor="white">
+        <span>Vad vill du prata om?</span>
       </H2>
       <animated.div
         style={{
@@ -53,13 +49,13 @@ export default function ContactArea() {
               alignItems: 'flex-start',
             }}
           >
-            <H3 as={LinkButton} type="button" onClick={null} textColor="white">
+            <H3 as={LinkButton} onClick={null} textColor="white">
               Att jobba med Strateg
             </H3>
-            <H3 as={LinkButton} type="button" onClick={null} textColor="white">
+            <H3 as={LinkButton} onClick={null} textColor="white">
               Att jobba eller praktisera på Strateg
             </H3>
-            <H3 as={LinkButton} type="button" onClick={null} textColor="white">
+            <H3 as={LinkButton} onClick={null} textColor="white">
               Om något annat
             </H3>
           </Div>

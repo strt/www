@@ -66,6 +66,7 @@ function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
                 {({ file: { siteSettings } }) => (
                   <Link
                     href={siteSettings.social.instagram}
+                    variant="large"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -127,7 +127,8 @@ export function Navigation({ children }) {
       <Link
         as="button"
         type="button"
-        textColor="watermelonRed"
+        colorVariant="red"
+        variant="large"
         onClick={toggle}
       >
         meny.

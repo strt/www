@@ -15,11 +15,11 @@ export default function Tags({ items, linked = true, ...rest }) {
         {items.map(item => (
           <li key={item}>
             {linked ? (
-              <TagLink
+              <Link
                 href={`/case?filter=${encodeURIComponent(item.toLowerCase())}`}
               >
                 {item}
-              </TagLink>
+              </Link>
             ) : (
               item
             )}
@@ -75,9 +75,3 @@ const Hyphen = styled.span`
     content: '—\00a0';
   }
 `
-
-const TagLink = styled(Link).attrs({
-  fontSize: 'inherit',
-  thin: true,
-  textColor: 'inherit',
-})({})

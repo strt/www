@@ -32,5 +32,9 @@ export default function SkipToContentLink({
   children = 'Till huvudinnehållet',
   id = 'main-content',
 }) {
-  return <StyledLink href={`#${id}`}>{children}</StyledLink>
+  return (
+    <StyledLink href={`#${id}`} variant="large">
+      {children}
+    </StyledLink>
+  )
 }

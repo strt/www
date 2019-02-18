@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
+import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
@@ -38,13 +39,13 @@ export default function Contact({ data }) {
               {siteSettings.contact.address}, {siteSettings.contact.zipcode}{' '}
               {siteSettings.contact.city}
               <br />
-              <a href={`mailto:${siteSettings.contact.email}`}>
+              <Link href={`mailto:${siteSettings.contact.email}`}>
                 {siteSettings.contact.email}
-              </a>
+              </Link>
               <br />
-              <a href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
+              <Link href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
                 {siteSettings.contact.phone}
-              </a>
+              </Link>
             </Text>
           </Column>
           <Column tablet="4">
@@ -53,17 +54,17 @@ export default function Contact({ data }) {
               <br />
               Hör av dig till {data.clientContact.frontmatter.first_name}.
               <br />
-              <a href={`mailto:${data.clientContact.frontmatter.email}`}>
+              <Link href={`mailto:${data.clientContact.frontmatter.email}`}>
                 {data.clientContact.frontmatter.email}
-              </a>
+              </Link>
               <br />
-              <a
+              <Link
                 href={`tel:${formatPhone(
                   data.clientContact.frontmatter.phone,
                 )}`}
               >
                 {data.clientContact.frontmatter.phone}
-              </a>
+              </Link>
             </Text>
           </Column>
           <Column tablet="4">
@@ -72,17 +73,17 @@ export default function Contact({ data }) {
               <br />
               Hör av dig till {data.careerContact.frontmatter.first_name}.
               <br />
-              <a href={`mailto:${data.careerContact.frontmatter.email}`}>
+              <Link href={`mailto:${data.careerContact.frontmatter.email}`}>
                 {data.careerContact.frontmatter.email}
-              </a>
+              </Link>
               <br />
-              <a
+              <Link
                 href={`tel:${formatPhone(
                   data.careerContact.frontmatter.phone,
                 )}`}
               >
                 {data.careerContact.frontmatter.phone}
-              </a>
+              </Link>
             </Text>
           </Column>
         </Grid>

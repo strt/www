@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import Link from './Link'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import Section from './Section'
@@ -57,52 +58,52 @@ export default function Footer() {
               <Text as="address">
                 {siteSettings.contact.email && (
                   <>
-                    <a href={`mailto:${siteSettings.contact.email}`}>
+                    <Link href={`mailto:${siteSettings.contact.email}`}>
                       {siteSettings.contact.email}
-                    </a>
+                    </Link>
                     <br />
                   </>
                 )}
                 {siteSettings.contact.phone && (
-                  <a href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
+                  <Link href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
                     {siteSettings.contact.phone}
-                  </a>
+                  </Link>
                 )}
               </Text>
             </Column>
             <Column tablet="3">
               <Text>
-                <a
+                <Link
                   href={siteSettings.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Instagram
-                </a>
+                </Link>
                 <br />
-                <a
+                <Link
                   href={siteSettings.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Facebook
-                </a>
+                </Link>
                 <br />
-                <a
+                <Link
                   href={siteSettings.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   LinkedIn
-                </a>
+                </Link>
                 <br />
-                <a
+                <Link
                   href={siteSettings.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   GitHub
-                </a>
+                </Link>
                 <br />
               </Text>
             </Column>
@@ -122,13 +123,13 @@ export default function Footer() {
                 © 2018 <br />
                 {siteSettings.name} <br />
                 En del av{' '}
-                <a
+                <Link
                   href="//diplomatgruppen.se/sv"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Diplomatgruppen
-                </a>
+                </Link>
               </CopyrightText>
             </Column>
             <Column width="auto">

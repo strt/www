@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { graphql, Link as GatsbyLink } from 'gatsby'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { H1, H2 } from '../components/Text'
@@ -55,7 +55,7 @@ export default function Index({ data }) {
         <Grid>
           <Column>
             <Div mt={[3, 6]}>
-              <Link as={GatsbyLink} to={routes.case.link}>
+              <Link to={routes.case.link} colorVariant="blue" variant="large">
                 Fler case
               </Link>
             </Div>
@@ -83,7 +83,7 @@ export default function Index({ data }) {
           ))}
           <Column>
             <Div mt={[3, 2]}>
-              <Link as={GatsbyLink} to={routes.news.link}>
+              <Link to={routes.news.link} colorVariant="blue" variant="large">
                 Fler inlägg
               </Link>
             </Div>

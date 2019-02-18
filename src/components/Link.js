@@ -1,61 +1,66 @@
-import styled from 'styled-components'
+import React from 'react'
+import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
+import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
-import {
-  colors,
-  fontFamily,
-  fluidRange,
-  breakpoints,
-  vw,
-  easings,
-} from '../style'
+import { textSize } from './Text'
+import { colors, fontFamily, easings } from '../style'
 
-// function getColor(variant, state) {
-//   let color
+const COLOR_VARIANTS = {
+  red: colors.watermelonRed500,
+  blue: colors.blue500,
+  dark: colors.dark,
+  white: '#fff',
+}
 
-//   if (state === 'hover') {
-//   }
+function getColor(props) {
+  return COLOR_VARIANTS[props.colorVariant] || colors.dark
+}
 
-//   if (state === 'focus') {
-//   }
-
-//   return color
-// }
-
-const Link = styled.a`
+export const A = styled.a`
   border: none;
   padding: 0;
   margin: 0;
   outline: none;
-  font-size: ${props => props.fontSize || fluidRange({ min: 16, max: 20 })};
   font-family: ${fontFamily};
-  font-weight: ${props => (props.thin ? 400 : 500)};
+  font-size: inherit;
+  font-weight: 400;
   text-decoration: underline;
-  color: ${props => colors[`${props.textColor}500`] || colors.blue500};
+  color: ${props => getColor(props)};
   background: none;
   transition: background 200ms ${easings.easeOutQuad};
 
-  @media screen and ${breakpoints.medium} {
-    font-size: ${props => props.fontSize || vw(20)};
-  }
-
   &:hover {
-    background-color: ${props =>
-      colors[`${props.textColor}050`] || colors.blue050};
+    background-color: ${props => rgba(getColor(props), 0.1)};
   }
 
   &.focus-visible {
-    background-color: ${props =>
-      colors[`${props.textColor}100`] || colors.blue100};
+    background-color: ${props => rgba(getColor(props), 0.2)};
   }
 
   &:active,
   &[aria-current] {
     text-decoration: none;
   }
+
+  ${props =>
+    props.variant === 'large' &&
+    css`
+      font-weight: 500;
+      ${textSize}
+    `}
 `
 
-Link.propTypes = {
-  textColor: PropTypes.oneOf(['blue', 'watermelonRed', 'steel']),
+export default function Link({ to, ...props }) {
+  if (to) {
+    return <A as={GatsbyLink} to={to} {...props} />
+  }
+
+  return <A {...props} />
 }
 
-export default Link
+Link.propTypes = {
+  colorVariant: PropTypes.oneOf(['blue', 'red', 'dark', 'white']),
+  to: PropTypes.string,
+  href: PropTypes.string,
+}

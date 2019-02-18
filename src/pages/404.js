@@ -18,7 +18,7 @@ export default function NotFound() {
           Sidan du vill till finns tyvärr inte. Testa igen eller gå till
           startsidan, därifrån hittar du förhoppningsvis rätt.
         </Excerpt>
-        <Link as={GatsbyLink} to="/">
+        <Link as={GatsbyLink} to="/" colorVariant="blue">
           Till startsidan
         </Link>
       </Hero>

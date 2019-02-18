@@ -28,7 +28,7 @@ const Filter = styled(Div)`
   display: flex;
   flex-wrap: wrap;
 
-  ${Link} {
+  a {
     margin-bottom: ${fluidRange({ min: 12, max: 24 })};
 
     &:not(:last-child) {
@@ -90,6 +90,8 @@ export default class Case extends React.Component {
               href={location.pathname}
               onClick={this.onTagClick}
               aria-current={!filter ? true : undefined}
+              colorVariant="blue"
+              variant="large"
             >
               Alla projekt
             </Link>
@@ -98,6 +100,8 @@ export default class Case extends React.Component {
                 key={tag}
                 href={getTagLink(tag.toLowerCase())}
                 onClick={this.onTagClick}
+                colorVariant="blue"
+                variant="large"
                 aria-current={
                   filter && filter.includes(tag.toLowerCase())
                     ? true

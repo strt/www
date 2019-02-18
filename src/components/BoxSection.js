@@ -52,7 +52,11 @@ export default function BoxSection({
       <Box bg={boxBg}>
         <H2 mb={[2, 4]}>{title}</H2>
         <Text>{excerpt}</Text>
-        {link && <Link href={link.href}>{link.text}</Link>}
+        {link && (
+          <Link href={link.href} colorVariant="blue" variant="large">
+            {link.text}
+          </Link>
+        )}
       </Box>
     </CssGrid>
   )

@@ -1,8 +1,9 @@
 import React from 'react'
-import { graphql, Link as GatsbyLink } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Hero from '../components/Hero'
+import Link from '../components/Link'
 import { Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
@@ -58,9 +59,9 @@ export default function Template({
                 <Text>
                   Kontakta {contact.first_name} {contact.last_name},{' '}
                   {contact.role}. <br />
-                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                  <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
                   <br />
-                  <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+                  <Link href={`tel:${contact.phone}`}>{contact.phone}</Link>
                 </Text>
               </Column>
             )}
@@ -74,7 +75,7 @@ export default function Template({
                   Nästa case <Icon name={['fal', 'long-arrow-down']} />
                 </H6>
                 <H1
-                  as={GatsbyLink}
+                  as={Link}
                   to={next.fields.slug}
                   rel="next"
                   textColor="white"
