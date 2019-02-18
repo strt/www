@@ -4,12 +4,39 @@ import { reset } from 'styled-reset'
 export const fontFamily = 'Circular, Helvetica, sans-serif'
 
 export const colors = {
+  blue050: '#e6eafa',
+  blue100: '#c0caf2',
+  blue200: '#97a7ea',
+  blue300: '#6d84e1',
+  blue400: '#4d69da',
+  blue500: '#2e4fd4',
+  blue600: '#2948cf',
+  blue700: '#233fc9',
+  blue800: '#1d36c3',
+  blue900: '#1226b9',
   dark: '#0b101e',
-  steel: '#6d7078',
   ice: '#f5f6f6',
-  blue: '#2e4fd4',
-  watermelonRed: '#fa344e',
-  pinkPeach: '#fdbab8',
+  pinkPeach500: '#fdbab8',
+  steel050: '#edeeef',
+  steel100: '#d3d4d7',
+  steel200: '#b6b8bc',
+  steel300: '#999ba1',
+  steel400: '#83858c',
+  steel500: '#6d7078',
+  steel600: '#656870',
+  steel700: '#5a5d65',
+  steel800: '#50535b',
+  steel900: '#3e4148',
+  watermelonRed050: '#fee7ea',
+  watermelonRed100: '#fec2ca',
+  watermelonRed200: '#fd9aa7',
+  watermelonRed300: '#fc7183',
+  watermelonRed400: '#fb5269',
+  watermelonRed500: '#fa344e',
+  watermelonRed600: '#f92f47',
+  watermelonRed700: '#f9273d',
+  watermelonRed800: '#f82135',
+  watermelonRed900: '#f61525',
 }
 
 export const breakpoints = {
@@ -72,11 +99,11 @@ export const GlobalStyle = createGlobalStyle`
 
   ::selection {
     color: white;
-    background-color: ${colors.watermelonRed};
+    background-color: ${colors.watermelonRed500};
   }
 
   :focus {
-    outline: dotted 1px ${colors.watermelonRed};
+    outline: dotted 1px ${colors.watermelonRed500};
   }
 
   button::-moz-focus-inner {

@@ -72,7 +72,13 @@ const Media = styled.div`
   }
 `
 
-export default function Tile({ title, image, url, tags, bg = colors.steel }) {
+export default function Tile({
+  title,
+  image,
+  url,
+  tags,
+  bg = colors.steel500,
+}) {
   return (
     <Link to={url}>
       <Article>

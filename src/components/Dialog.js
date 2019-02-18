@@ -110,7 +110,7 @@ export function DialogCloseButton(props) {
       css={{ display: 'flex', justifyContent: 'flex-end' }}
     >
       <IconButton
-        textColor={colors.watermelonRed}
+        textColor={colors.watermelonRed500}
         aria-label="Stäng"
         {...props}
       >

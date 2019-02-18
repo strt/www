@@ -14,7 +14,7 @@ const StyledButton = styled.button`
   font-weight: 500;
   color: white;
   font-family: ${fontFamily};
-  background-color: ${colors.blue};
+  background-color: ${colors.blue500};
   box-shadow: none;
   appearance: none;
 

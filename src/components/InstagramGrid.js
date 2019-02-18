@@ -131,7 +131,15 @@ const Box = styled.div`
     align-items: center;
     justify-content: center;
     color: white;
-    background-color: ${colors.blue};
+    background-color: ${colors.blue500};
+
+    &:hover {
+      background-color: ${colors.blue700};
+    }
+
+    &.focus-visible {
+      background-color: ${colors.blue900};
+    }
 
     & svg {
       margin-bottom: 0.5em;

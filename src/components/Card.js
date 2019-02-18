@@ -39,7 +39,7 @@ const ImageWrapper = styled.div`
   ${ratio({ x: 4, y: 3 })}
   width: ${getWidth(4)};
   overflow: hidden;
-  background-color: ${colors.steel};
+  background-color: ${colors.steel500};
 
   @media ${breakpoints.medium} {
     width: ${getWidth(6)};
@@ -61,7 +61,7 @@ export default function Card({ url, title, date, image }) {
       <Article>
         <Content>
           {date && (
-            <Text as="time" dateTime={date} textColor={colors.steel} mb="2">
+            <Text as="time" dateTime={date} textColor={colors.steel500} mb="2">
               {formattedDate}
             </Text>
           )}

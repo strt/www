@@ -9,7 +9,7 @@ const Input = styled.input`
   width: 100%;
   padding: ${fluidRange({ min: 4, max: 8 })} 0
     ${fluidRange({ min: 12, max: 16 })};
-  border-bottom: solid 1px ${colors.steel};
+  border-bottom: solid 1px ${colors.steel500};
   font-family: ${fontFamily};
   font-size: ${fluidRange({ min: 16, max: 22 })};
   line-height: normal;
@@ -25,7 +25,7 @@ const Input = styled.input`
 const Label = styled.label`
   font-size: ${fluidRange({ min: 12, max: 16 })};
   line-height: 1.2em;
-  color: ${colors.steel};
+  color: ${colors.steel500};
 
   @media ${breakpoints.medium} {
     font-size: ${vw(16)};

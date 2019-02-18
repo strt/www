@@ -96,7 +96,7 @@ export default function Index({ data }) {
           title="Vill du längta till måndag? "
           excerpt="Bra! Just nu letar vi efter dig som är copywriter, utvecklare eller kundansvarig. Och som vill ha en helt ny, otippad favoritdag."
           link={{ text: 'Bli en av oss', href: routes.career.link }}
-          boxBg={colors.pinkPeach}
+          boxBg={colors.pinkPeach500}
         />
       </Section>
       <Section bg={colors.dark} pt="0" mt={[8, 25]}>

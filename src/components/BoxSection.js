@@ -9,7 +9,7 @@ import { breakpoints, colors, fluidRange, vw } from '../style'
 const Background = styled.div`
   grid-column: full-start/col-end 12;
   grid-row: 1/3;
-  background-color: ${colors.steel};
+  background-color: ${colors.steel500};
 
   img {
     width: 100%;

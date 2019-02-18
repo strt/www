@@ -10,7 +10,7 @@ import { H1, Excerpt, Text } from '../components/Text'
 import { formatPhone } from '../utils'
 import { breakpoints, fluidRange, vw, colors } from '../style'
 
-const RoleText = styled(Text).attrs({ textColor: colors.steel })`
+const RoleText = styled(Text).attrs({ textColor: colors.steel500 })`
   font-size: ${fluidRange({ min: 11, max: 14 })};
   line-height: 1.2em;
 
