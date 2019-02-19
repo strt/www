@@ -80,6 +80,8 @@ export const Nav = animated(styled.nav`
   }
 `)
 
+const NAV_ID = 'main_navigation'
+
 export function Navigation({ children }) {
   const [isOpen, toggle] = useToggle(false)
   const navRef = useRef()
@@ -130,10 +132,13 @@ export function Navigation({ children }) {
         colorVariant="red"
         variant="large"
         onClick={toggle}
+        aria-expanded={isOpen}
+        aria-controls={NAV_ID}
       >
         meny.
       </Link>
       <Nav
+        id={NAV_ID}
         ref={navRef}
         style={{
           opacity: navAnimStyle.opacity,
