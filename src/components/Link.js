@@ -24,7 +24,7 @@ export const A = styled.a`
   outline: none;
   font-family: ${fontFamily};
   font-size: inherit;
-  font-weight: 400;
+  font-weight: inherit;
   text-decoration: underline;
   color: ${props => getColor(props)};
   background: none;

@@ -10,10 +10,6 @@ import TextField from './TextField'
 import { useToggle, useMeasure } from '../utils/hooks'
 import { routes } from '../routes'
 
-const LinkButton = props => (
-  <Link as="button" type="button" colorVariant="white" {...props} />
-)
-
 export default function ContactArea() {
   const [on, toggle] = useToggle()
   const [bind, { height }] = useMeasure()
@@ -28,8 +24,16 @@ export default function ContactArea() {
       <H1 as="h2" textColor="white">
         Kontakt är det bästa vi vet
       </H1>
-      <H2 as={LinkButton} aria-pressed={on} onClick={toggle} textColor="white">
-        <span>Vad vill du prata om?</span>
+      <H2 as="div">
+        <Link
+          as="button"
+          type="button"
+          aria-expanded={on}
+          onClick={toggle}
+          colorVariant="white"
+        >
+          Vad vill du prata om?
+        </Link>
       </H2>
       <animated.div
         style={{
@@ -49,14 +53,35 @@ export default function ContactArea() {
               alignItems: 'flex-start',
             }}
           >
-            <H3 as={LinkButton} onClick={null} textColor="white">
-              Att jobba med Strateg
+            <H3 as="div">
+              <Link
+                as="button"
+                type="button"
+                onClick={null}
+                colorVariant="white"
+              >
+                Att jobba med Strateg
+              </Link>
             </H3>
-            <H3 as={LinkButton} onClick={null} textColor="white">
-              Att jobba eller praktisera på Strateg
+            <H3 as="div">
+              <Link
+                as="button"
+                type="button"
+                onClick={null}
+                colorVariant="white"
+              >
+                Att jobba eller praktisera på Strateg
+              </Link>
             </H3>
-            <H3 as={LinkButton} onClick={null} textColor="white">
-              Om något annat
+            <H3 as="div">
+              <Link
+                as="button"
+                type="button"
+                onClick={null}
+                colorVariant="white"
+              >
+                Om något annat
+              </Link>
             </H3>
           </Div>
         </div>
