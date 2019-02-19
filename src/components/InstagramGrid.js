@@ -5,13 +5,17 @@ import Link from './Link'
 import Image from './Image'
 import Div from './Div'
 import { Grid, Column } from './Grid'
-import Fetch from './Fetch'
+import useAxios from './useAxios'
 import Icon from './Icon'
 import { colors, breakpoints, cover } from '../style'
 
 const placeholderItems = Array.from(Array(5)).map((v, i) => ({ id: i }))
 
-function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
+export default function Posts({ halfTopBg = 'white', ...props }) {
+  const { data: posts = placeholderItems } = useAxios({
+    url: '/.netlify/functions/instagram',
+  })
+
   return (
     <Wrapper halfTopBg={halfTopBg} {...props}>
       <Grid justifyContent="center">
@@ -80,14 +84,6 @@ function Posts({ posts = placeholderItems, halfTopBg = 'white', ...props }) {
         </Column>
       </Grid>
     </Wrapper>
-  )
-}
-
-export default function InstagramGrid(props) {
-  return (
-    <Fetch url="/.netlify/functions/instagram">
-      {({ data }) => <Posts posts={data} {...props} />}
-    </Fetch>
   )
 }
 
