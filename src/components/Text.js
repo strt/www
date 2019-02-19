@@ -81,7 +81,7 @@ export const H3 = styled.h3`
   }
 `
 
-export const H4 = styled.h3`
+export const H4 = styled.h4`
   margin-bottom: 0.666em;
   font-size: ${fluidRange({ min: 14, max: 18 })};
   font-weight: 700;
@@ -93,9 +93,9 @@ export const H4 = styled.h3`
   }
 `
 
-export const H6 = styled.h3`
+export const H6 = styled.h6`
   margin-bottom: 0.666em;
-  font-size: ${fluidRange({ min: 11, max: 15 })};
+  font-size: ${fluidRange({ min: 12, max: 15 })};
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
