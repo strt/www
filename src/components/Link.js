@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
+import { CleanTag } from './CleanTag'
 import { textSize } from './Text'
 import { colors, fontFamily, easings } from '../style'
 
@@ -51,12 +52,15 @@ export const A = styled.a`
     `}
 `
 
-export default function Link({ to, ...props }) {
+const RouterLink = props =>
+  React.createElement(CleanTag, { as: GatsbyLink, ...props })
+
+function Link({ to, ...props }, ref) {
   if (to) {
-    return <A as={GatsbyLink} to={to} {...props} />
+    return <A as={RouterLink} to={to} {...props} ref={ref} />
   }
 
-  return <A {...props} />
+  return <A {...props} ref={ref} />
 }
 
 Link.propTypes = {
@@ -64,3 +68,5 @@ Link.propTypes = {
   to: PropTypes.string,
   href: PropTypes.string,
 }
+
+export default React.forwardRef(Link)

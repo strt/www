@@ -15,6 +15,8 @@ export const defaultBlacklist = [
   'flexWrap',
   'textAlign',
   'bottomGap',
+  'variant',
+  'colorVariant',
 ]
 
 export function omitInvalidProps(props, keys = defaultBlacklist) {
@@ -28,8 +30,8 @@ export function omitInvalidProps(props, keys = defaultBlacklist) {
 }
 
 export const CleanTag = React.forwardRef(
-  ({ as: Component = 'div', blacklist = defaultBlacklist, ...props }, ref) =>
-    React.createElement(Component, {
+  ({ as: Tag = 'div', blacklist = defaultBlacklist, ...props }, ref) =>
+    React.createElement(Tag, {
       ref,
       ...omitInvalidProps(props, blacklist),
     }),
