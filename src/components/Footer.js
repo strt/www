@@ -26,7 +26,7 @@ export default function Footer() {
           file(relativePath: { eq: "settings.json" }) {
             siteSettings: childContentJson {
               name
-              contact {
+              offices {
                 address
                 zipcode
                 city
@@ -47,30 +47,17 @@ export default function Footer() {
       {({ file: { siteSettings } }) => (
         <Section as="footer" bg={colors.ice} py={[4, 7]}>
           <Grid>
-            <Column tablet="3">
-              <Text as="address">
-                {siteSettings.name} <br />
-                {siteSettings.contact.address} <br />
-                {siteSettings.contact.zipcode} {siteSettings.contact.city}
-              </Text>
-            </Column>
-            <Column tablet="3">
-              <Text as="address">
-                {siteSettings.contact.email && (
-                  <>
-                    <Link href={`mailto:${siteSettings.contact.email}`}>
-                      {siteSettings.contact.email}
-                    </Link>
-                    <br />
-                  </>
-                )}
-                {siteSettings.contact.phone && (
-                  <Link href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
-                    {siteSettings.contact.phone}
+            {siteSettings.offices.map(office => (
+              <Column tablet="3" key={office.city}>
+                <Text as="address">
+                  {office.address} <br />
+                  {office.zipcode} {office.city} <br />
+                  <Link href={`tel:${formatPhone(office.phone)}`}>
+                    {office.phone}
                   </Link>
-                )}
-              </Text>
-            </Column>
+                </Text>
+              </Column>
+            ))}
             <Column tablet="3">
               <Text>
                 <Link

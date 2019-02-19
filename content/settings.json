@@ -1,12 +1,21 @@
 {
   "name": "Strateg Marknadsföring",
-  "contact": {
-    "address": "Slöjdgatan 39",
-    "zipcode": "703 83",
-    "city": "Örebro",
-    "email": "info@strateg.se",
-    "phone": "019-673 44 00"
-  },
+  "offices": [
+    {
+      "address": "Kungsgatan 12-14",
+      "zipcode": "111 35",
+      "city": "Stockholm",
+      "email": "hej@strateg.se",
+      "phone": "08-588 095 00"
+    },
+    {
+      "address": "Slöjdgatan 39",
+      "zipcode": "703 83",
+      "city": "Örebro",
+      "email": "hej@strateg.se",
+      "phone": "019-673 44 00"
+    }
+  ],
   "social": {
     "facebook": "https://www.facebook.com/strategmarknadsforing/",
     "facebook_app_id": "",

@@ -32,22 +32,21 @@ export default function Contact({ data }) {
       </Hero>
       <Section mb={[4, 7]}>
         <Grid>
-          <Column tablet="4">
-            <Text>
-              {siteSettings.name}
-              <br />
-              {siteSettings.contact.address}, {siteSettings.contact.zipcode}{' '}
-              {siteSettings.contact.city}
-              <br />
-              <Link href={`mailto:${siteSettings.contact.email}`}>
-                {siteSettings.contact.email}
-              </Link>
-              <br />
-              <Link href={`tel:${formatPhone(siteSettings.contact.phone)}`}>
-                {siteSettings.contact.phone}
-              </Link>
-            </Text>
-          </Column>
+          {siteSettings.offices.map(office => (
+            <Column tablet="4" key={office.city}>
+              <Text>
+                <strong>{office.city}</strong>
+                <br />
+                {office.address}, {office.zipcode} {office.city}
+                <br />
+                <Link href={`mailto:${office.email}`}>{office.email}</Link>
+                <br />
+                <Link href={`tel:${formatPhone(office.phone)}`}>
+                  {office.phone}
+                </Link>
+              </Text>
+            </Column>
+          ))}
           <Column tablet="4">
             <Text>
               Vill du jobba med Strateg?
@@ -64,25 +63,6 @@ export default function Contact({ data }) {
                 )}`}
               >
                 {data.clientContact.frontmatter.phone}
-              </Link>
-            </Text>
-          </Column>
-          <Column tablet="4">
-            <Text>
-              Vill du jobba eller praktisera på Strateg?
-              <br />
-              Hör av dig till {data.careerContact.frontmatter.first_name}.
-              <br />
-              <Link href={`mailto:${data.careerContact.frontmatter.email}`}>
-                {data.careerContact.frontmatter.email}
-              </Link>
-              <br />
-              <Link
-                href={`tel:${formatPhone(
-                  data.careerContact.frontmatter.phone,
-                )}`}
-              >
-                {data.careerContact.frontmatter.phone}
               </Link>
             </Text>
           </Column>
@@ -127,7 +107,7 @@ export const query = graphql`
     siteSettings: file(relativePath: { eq: "settings.json" }) {
       childContentJson {
         name
-        contact {
+        offices {
           address
           zipcode
           city
@@ -138,15 +118,6 @@ export const query = graphql`
     }
     clientContact: markdownRemark(
       frontmatter: { email: { eq: "fredrik.vannestal@strateg.se" } }
-    ) {
-      frontmatter {
-        first_name
-        email
-        phone
-      }
-    }
-    careerContact: markdownRemark(
-      frontmatter: { email: { eq: "malin.hakansson@strateg.se" } }
     ) {
       frontmatter {
         first_name
