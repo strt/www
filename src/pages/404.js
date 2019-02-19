@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react'
-import { Link as GatsbyLink } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Cover from '../components/Cover'
@@ -18,7 +17,7 @@ export default function NotFound() {
           Sidan du vill till finns tyvärr inte. Testa igen eller gå till
           startsidan, därifrån hittar du förhoppningsvis rätt.
         </Excerpt>
-        <Link as={GatsbyLink} to="/" colorVariant="blue">
+        <Link to="/" colorVariant="blue" variant="large">
           Till startsidan
         </Link>
       </Hero>

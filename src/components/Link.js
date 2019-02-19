@@ -65,6 +65,7 @@ function Link({ to, ...props }, ref) {
 
 Link.propTypes = {
   colorVariant: PropTypes.oneOf(['blue', 'red', 'dark', 'white']),
+  variant: PropTypes.oneOf(['large']),
   to: PropTypes.string,
   href: PropTypes.string,
 }
