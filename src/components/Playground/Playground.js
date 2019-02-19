@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import {
   Engine,
   Render,
@@ -57,27 +57,20 @@ const letters = [
   },
 ]
 
-export default class Playground extends React.Component {
-  canvas = React.createRef()
+export default function Playground() {
+  const canvasRef = useRef()
+  const gravityInterval = useRef()
 
-  componentDidMount() {
-    this.createPlayground()
-  }
+  useEffect(() => {
+    const engine = Engine.create()
+    const runner = Runner.create()
+    const { world } = engine
 
-  componentWillUnmount() {
-    this.destroyPlayground()
-  }
+    const rect = canvasRef.current.getBoundingClientRect()
 
-  createPlayground() {
-    this.engine = Engine.create()
-    this.runner = Runner.create()
-    this.world = this.engine.world
-
-    const rect = this.canvas.current.getBoundingClientRect()
-
-    this.renderer = Render.create({
-      canvas: this.canvas.current,
-      engine: this.engine,
+    const renderer = Render.create({
+      canvas: canvasRef.current,
+      engine,
       options: {
         width: rect.width,
         height: rect.height,
@@ -87,6 +80,43 @@ export default class Playground extends React.Component {
         wireframes: false,
       },
     })
+
+    const updateGravity = ({
+      x = (Math.random() < 0.5 ? -1 : 1) / 50,
+      y = (Math.random() < 0.5 ? -1 : 1) / 50,
+    } = {}) => {
+      /* eslint-disable no-param-reassign */
+      engine.world.gravity.x = x
+      engine.world.gravity.y = y
+      /* eslint-enable no-param-reassign */
+    }
+
+    const resizeCanvas = () => {
+      const { canvas } = renderer
+      const { width, height } = canvas.parentElement.getBoundingClientRect()
+
+      renderer.options.height = height
+      renderer.options.width = width
+      Render.setPixelRatio(renderer, renderer.options.pixelRatio)
+      Render.lookAt(renderer, {
+        min: { x: 0, y: 0 },
+        max: { x: 1440, y: 810 },
+      })
+      canvas.style = {}
+    }
+
+    const handleDeviceOrientation = (event) => {
+      const gravity = {}
+
+      if (gravityInterval.current) {
+        clearInterval(gravityInterval.current)
+      }
+
+      gravity.x = Common.clamp(event.gamma, -90, 90) / 90
+      gravity.y = Common.clamp(event.beta, -90, 90) / 90
+
+      updateGravity({ ...gravity })
+    }
 
     // Add letter glyphs
     letters.forEach(({ x, y, glyph, angle = 0 }) => {
@@ -111,7 +141,7 @@ export default class Playground extends React.Component {
         },
       })
 
-      World.add(this.world, [body, constraint])
+      World.add(world, [body, constraint])
     })
 
     const circle = Bodies.circle(700, 240, 45, {
@@ -128,11 +158,11 @@ export default class Playground extends React.Component {
       },
     })
 
-    World.add(this.world, [circle, constraint])
+    World.add(world, [circle, constraint])
 
     // Add mouse constraint
-    const mouse = Mouse.create(this.renderer.canvas)
-    const mouseConstraint = MouseConstraint.create(this.engine, {
+    const mouse = Mouse.create(renderer.canvas)
+    const mouseConstraint = MouseConstraint.create(engine, {
       mouse,
       constraint: {
         angularStiffness: 0,
@@ -142,7 +172,7 @@ export default class Playground extends React.Component {
       },
     })
 
-    World.add(this.world, mouseConstraint)
+    World.add(world, mouseConstraint)
 
     // Remove events to prevent scrolling from beeing hijacked
     mouse.element.removeEventListener('mousewheel', mouse.mousewheel)
@@ -152,94 +182,50 @@ export default class Playground extends React.Component {
     mouse.element.removeEventListener('touchend', mouse.mouseup)
 
     // Keep the mouse in sync with rendering
-    this.renderer.mouse = mouse
+    renderer.mouse = mouse
 
     // Randomize gravity
-    this.updateGravity()
-    this.gravityInterval = setInterval(this.updateGravity, 5000)
+    updateGravity()
+    gravityInterval.current = setInterval(updateGravity, 5000)
 
     // Fit scene into viewport
-    Render.lookAt(this.renderer, {
+    Render.lookAt(renderer, {
       min: { x: 0, y: 0 },
       max: { x: 1440, y: 810 },
     })
 
     // Reset style to remove the fixed height/width (breaks responsiveness)
-    this.canvas.current.style = {}
+    canvasRef.current.style = {}
 
     // Add gyro support
-    window.addEventListener('deviceorientation', this.handleDeviceOrientation)
+    window.addEventListener('deviceorientation', handleDeviceOrientation)
 
     // Handle resize
-    window.addEventListener('resize', this.resizeCanvas)
+    window.addEventListener('resize', resizeCanvas)
 
-    // Events.on(this.engine, 'beforeUpdate', () => {
+    // Events.on(engine, 'beforeUpdate', () => {
     //   console.log(mouse.position, mouse.absolute)
     //   // circle.position = mouse.position
     //   // MouseConstraint.update(mouseConstraint, allBodies)
     // })
 
     // Start
-    Render.run(this.renderer)
-    Runner.run(this.runner, this.engine)
-  }
+    Render.run(renderer)
+    Runner.run(runner, engine)
 
-  destroyPlayground() {
-    Render.stop(this.render)
-    World.clear(this.engine.world)
-    Engine.clear(this.engine)
+    return () => {
+      Render.stop(renderer)
+      World.clear(engine.world)
+      Engine.clear(engine)
 
-    if (this.gravityInterval) {
-      clearInterval(this.gravityInterval)
+      if (gravityInterval.current) {
+        clearInterval(gravityInterval.current)
+      }
+
+      window.removeEventListener('deviceorientation', handleDeviceOrientation)
+      window.removeEventListener('resize', resizeCanvas)
     }
+  }, [])
 
-    window.removeEventListener(
-      'deviceorientation',
-      this.handleDeviceOrientation,
-    )
-
-    window.removeEventListener('resize', this.resizeCanvas)
-  }
-
-  updateGravity = ({
-    engine = this.engine,
-    x = (Math.random() < 0.5 ? -1 : 1) / 50,
-    y = (Math.random() < 0.5 ? -1 : 1) / 50,
-  } = {}) => {
-    /* eslint-disable no-param-reassign */
-    engine.world.gravity.x = x
-    engine.world.gravity.y = y
-    /* eslint-enable no-param-reassign */
-  }
-
-  resizeCanvas = () => {
-    const { canvas } = this.renderer
-    const { width, height } = canvas.parentElement.getBoundingClientRect()
-
-    this.renderer.options.height = height
-    this.renderer.options.width = width
-    Render.setPixelRatio(this.renderer, this.renderer.options.pixelRatio)
-    Render.lookAt(this.renderer, {
-      min: { x: 0, y: 0 },
-      max: { x: 1440, y: 810 },
-    })
-    canvas.style = {}
-  }
-
-  handleDeviceOrientation = (event) => {
-    const gravity = {}
-
-    if (this.gravityInterval) {
-      clearInterval(this.gravityInterval)
-    }
-
-    gravity.x = Common.clamp(event.gamma, -90, 90) / 90
-    gravity.y = Common.clamp(event.beta, -90, 90) / 90
-
-    this.updateGravity({ ...gravity })
-  }
-
-  render() {
-    return <canvas ref={this.canvas} />
-  }
+  return <canvas ref={canvasRef} />
 }
