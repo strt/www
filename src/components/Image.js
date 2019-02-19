@@ -115,9 +115,7 @@ function LazyImage(props, forwardedRef) {
       ref={imageWrapperRef}
       aspectRatio={aspectRatio}
     >
-      {base64 && (
-        <PlaceholderImage src={base64} alt="" opacity={isLoaded ? 0 : 1} />
-      )}
+      {base64 && <PlaceholderImage src={base64} alt="" isLoaded={isLoaded} />}
       {isVisible && (
         <img
           ref={forwardedRef}
@@ -166,7 +164,7 @@ export const PlaceholderImage = styled.img`
   filter: blur(30px);
   transform: scale(1.2);
   z-index: 2;
-  opacity: ${props => props.opacity || 0};
+  opacity: ${props => (props.isLoaded ? 0 : 1)};
   transition: opacity 400ms ${easings.easeInSine};
   pointer-events: none;
 `
