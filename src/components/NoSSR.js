@@ -1,27 +1,15 @@
-/**
- * This is a modified version of react-no-ssr.
- * MIT License: https://github.com/kadirahq/react-no-ssr/blob/master/LICENSE
- */
+import React, { useState, useEffect } from 'react'
 
-import React from 'react'
-
-const DefaultOnSSR = () => null
-
-class NoSSR extends React.Component {
-  state = {
-    canRender: false,
-  }
-
-  componentDidMount() {
-    this.setState({ canRender: true })
-  }
-
-  render() {
-    const { children, onSSR = <DefaultOnSSR /> } = this.props
-    const { canRender } = this.state
-
-    return canRender ? children : onSSR
-  }
+function DefaultOnSSR() {
+  return null
 }
 
-export default NoSSR
+export default function NoSSR({ children, onSSR = <DefaultOnSSR /> }) {
+  const [canRender, setCanRender] = useState(false)
+
+  useEffect(() => {
+    setCanRender(true)
+  }, [])
+
+  return canRender ? children : onSSR
+}
