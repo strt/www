@@ -8,6 +8,7 @@ import { cover, breakpoints, fluidRange, vw, colors, easings } from '../style'
 
 const Link = styled(GatsbyLink)`
   display: flex;
+  outline: none;
   text-decoration: none;
 `
 
@@ -50,8 +51,8 @@ const Media = styled.div`
     transition: opacity 320ms ${easings.easeOutSine};
   }
 
-  ${Article}:hover &,
-  &:hover {
+  ${Link}:hover &,
+  ${Link}:focus & {
     &::before {
       opacity: 0.8;
     }
