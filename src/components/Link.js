@@ -29,7 +29,7 @@ export const A = styled.a`
   text-decoration: underline;
   color: ${props => getColor(props)};
   background: none;
-  transition: background 200ms ${easings.easeOutQuad};
+  transition: background 120ms ${easings.easeInQuad};
 
   &:hover {
     background-color: ${props => rgba(getColor(props), 0.1)};
