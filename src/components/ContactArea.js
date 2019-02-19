@@ -24,7 +24,7 @@ export default function ContactArea() {
       <H1 as="h2" textColor="white">
         Kontakt är det bästa vi vet
       </H1>
-      <H2 as="div">
+      <H2 as="div" mb="0">
         <Link
           as="button"
           type="button"
@@ -45,14 +45,7 @@ export default function ContactArea() {
         }}
       >
         <div {...bind}>
-          <Div
-            pt={[3, 5]}
-            css={{
-              display: 'flex',
-              flexFlow: 'column',
-              alignItems: 'flex-start',
-            }}
-          >
+          <Div pt={[3, 5]}>
             <H3 as="div">
               <Link
                 as="button"
