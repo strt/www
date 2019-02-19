@@ -71,7 +71,8 @@ export default function CookieToast() {
                     <Link
                       as="button"
                       type="button"
-                      textColor="white"
+                      colorVariant="white"
+                      variant="large"
                       onClick={() => {
                         setShowToast(false)
                         Cookie.set('accept_cookies', true)
