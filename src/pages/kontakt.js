@@ -6,6 +6,8 @@ import Hero from '../components/Hero'
 import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
+import Div from '../components/Div'
+import ContactArea from '../components/ContactArea'
 import { Grid, Column } from '../components/Grid'
 import { H1, Excerpt, Text } from '../components/Text'
 import { formatPhone } from '../utils'
@@ -91,6 +93,15 @@ export default function Contact({ data }) {
             </Column>
           ))}
         </Grid>
+      </Section>
+      <Section bg={colors.dark} pt="0">
+        <Div pt={[12, 18]} pb={[6, 14]}>
+          <Grid>
+            <Column>
+              <ContactArea />
+            </Column>
+          </Grid>
+        </Div>
       </Section>
     </Layout>
   )
