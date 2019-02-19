@@ -74,13 +74,15 @@ export default function Template({
                 <H6 textColor="white" mb={[3, 7]}>
                   Nästa case <Icon name={['fal', 'long-arrow-down']} />
                 </H6>
-                <H1
-                  as={Link}
-                  to={next.fields.slug}
-                  rel="next"
-                  textColor="white"
-                >
-                  {next.frontmatter.client}
+                <H1 as="div">
+                  <Link
+                    as={Link}
+                    to={next.fields.slug}
+                    rel="next"
+                    colorVariant="white"
+                  >
+                    {next.frontmatter.client}
+                  </Link>
                 </H1>
               </Column>
             </Grid>
