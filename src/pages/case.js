@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import queryString from 'query-string'
@@ -49,90 +49,84 @@ const Animation = styled.div`
   animation: ${animations.fadeIn} 220ms 120ms ${easings.easeOutSine} both;
 `
 
-export default class Case extends React.Component {
-  state = {
-    filter: queryString.parse(this.props.location.search).filter || null,
-  }
+export default function Case({ data, location }) {
+  const [filter, setFilter] = useState(
+    () => queryString.parse(location.search).filter || null,
+  )
 
-  onTagClick = (event) => {
+  function onTagClick(event) {
     event.preventDefault()
     const { target } = event
-    const { filter } = queryString.parse(target.search)
-    this.setState({ filter })
+    const { filter: nextFilter } = queryString.parse(target.search)
+    setFilter(nextFilter)
     window.history.replaceState({}, null, target.pathname + target.search)
   }
 
-  render() {
-    const { data, location } = this.props
-    const { filter } = this.state
-    const { title, excerpt } = data.page.frontmatter
+  const { title, excerpt } = data.page.frontmatter
 
-    const cases = filterCases(data.cases.edges, filter)
-    const tags = data.cases.edges
-      .reduce((acc, { node }) => {
-        node.frontmatter.tags.forEach((tag) => {
-          if (acc.indexOf(tag) === -1) {
-            acc.push(tag)
-          }
-        })
+  const cases = filterCases(data.cases.edges, filter)
+  const tags = data.cases.edges
+    .reduce((acc, { node }) => {
+      node.frontmatter.tags.forEach((tag) => {
+        if (acc.indexOf(tag) === -1) {
+          acc.push(tag)
+        }
+      })
 
-        return acc
-      }, [])
-      .sort()
+      return acc
+    }, [])
+    .sort()
 
-    return (
-      <Layout title="Case">
-        <Hero>
-          <H1>{title}</H1>
-          <Excerpt>{excerpt}</Excerpt>
-          <Filter>
+  return (
+    <Layout title="Case">
+      <Hero>
+        <H1>{title}</H1>
+        <Excerpt>{excerpt}</Excerpt>
+        <Filter>
+          <Link
+            href={location.pathname}
+            onClick={onTagClick}
+            aria-current={!filter ? true : undefined}
+            colorVariant="blue"
+            variant="large"
+          >
+            Alla projekt
+          </Link>
+          {tags.map(tag => (
             <Link
-              href={location.pathname}
-              onClick={this.onTagClick}
-              aria-current={!filter ? true : undefined}
+              key={tag}
+              href={getTagLink(tag)}
+              onClick={onTagClick}
               colorVariant="blue"
               variant="large"
+              aria-current={
+                filter && filter.includes(tag.toLowerCase()) ? true : undefined
+              }
             >
-              Alla projekt
+              {tag}
             </Link>
-            {tags.map(tag => (
-              <Link
-                key={tag}
-                href={getTagLink(tag.toLowerCase())}
-                onClick={this.onTagClick}
-                colorVariant="blue"
-                variant="large"
-                aria-current={
-                  filter && filter.includes(tag.toLowerCase())
-                    ? true
-                    : undefined
-                }
-              >
-                {tag}
-              </Link>
+          ))}
+        </Filter>
+      </Hero>
+      <Animation key={filter}>
+        <Section pb={[10, 20]}>
+          <Grid>
+            {cases.map(({ node }) => (
+              <Column key={node.id} tablet="6" bottomGap>
+                <Tile
+                  url={node.fields.slug}
+                  title={node.frontmatter.client}
+                  image={node.frontmatter.image}
+                  tags={node.frontmatter.tags}
+                  bg={node.frontmatter.color}
+                />
+              </Column>
             ))}
-          </Filter>
-        </Hero>
-        <Animation key={filter}>
-          <Section pb={[10, 20]}>
-            <Grid>
-              {cases.map(({ node }) => (
-                <Column key={node.id} tablet="6" bottomGap>
-                  <Tile
-                    url={node.fields.slug}
-                    title={node.frontmatter.client}
-                    image={node.frontmatter.image}
-                    tags={node.frontmatter.tags}
-                    bg={node.frontmatter.color}
-                  />
-                </Column>
-              ))}
-            </Grid>
-          </Section>
-        </Animation>
-      </Layout>
-    )
-  }
+          </Grid>
+        </Section>
+      </Animation>
+    </Layout>
+  )
 }
 
 export const query = graphql`
