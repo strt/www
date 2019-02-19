@@ -66,16 +66,6 @@ export default function ContactArea() {
                 Att jobba eller praktisera på Strateg
               </Link>
             </H3>
-            <H3 as="div">
-              <Link
-                as="button"
-                type="button"
-                onClick={null}
-                colorVariant="white"
-              >
-                Om något annat
-              </Link>
-            </H3>
           </Div>
         </div>
       </animated.div>
