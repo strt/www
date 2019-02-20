@@ -8,7 +8,7 @@ import Section from './Section'
 import { ScrollToTopButton } from './Button'
 import { footerNavigation } from '../routes'
 import { colors, breakpoints, fluidRange, vw } from '../style'
-import { formatPhone } from '../utils'
+import { formatPhone } from '../lib/format'
 
 const CopyrightText = styled(Text)`
   font-size: ${fluidRange({ min: 10, max: 14 })};

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import { H3, Text } from './Text'
 import Image from './Image'
-import dayjs from '../utils/date'
+import dayjs from '../lib/dayjs'
 import {
   colors,
   ratio,

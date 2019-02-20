@@ -12,7 +12,7 @@ import Image from '../components/Image'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import { colors } from '../style'
-import renderAst from '../utils/renderAst'
+import renderAst from '../lib/renderAst'
 
 export default function Template({
   data: { markdownRemark: post },

@@ -10,7 +10,7 @@ import Div from '../components/Div'
 import ContactArea from '../components/ContactArea'
 import { Grid, Column } from '../components/Grid'
 import { H1, Excerpt, Text } from '../components/Text'
-import { formatPhone } from '../utils'
+import { formatPhone } from '../lib/format'
 import { breakpoints, fluidRange, vw, colors } from '../style'
 
 const RoleText = styled(Text).attrs({ textColor: colors.steel500 })`

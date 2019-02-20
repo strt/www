@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { noop } from '../utils'
 import { easings, cover } from '../style'
 
 const cache = new Set()
+
+function noop() {}
 
 function isImageCached(props) {
   if (!props.fluid) return false

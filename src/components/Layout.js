@@ -7,7 +7,7 @@ import Header from './Header'
 import Footer from './Footer'
 import NoSSR from './NoSSR'
 import CookieToast from './CookieToast'
-import '../utils/iconLibrary'
+import '../lib/iconLibrary'
 import '../assets/fonts/circular.css'
 
 const PageWrapper = styled.div`

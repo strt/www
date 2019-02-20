@@ -7,8 +7,8 @@ import Section from '../components/Section'
 import { H1, H4, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
-import renderAst from '../utils/renderAst'
-import dayjs from '../utils/date'
+import renderAst from '../lib/renderAst'
+import dayjs from '../lib/dayjs'
 
 export default function Template({ data: { markdownRemark: post } }) {
   const { date } = post.frontmatter
