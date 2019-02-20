@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import React, { useState } from 'react'
 import { useSpring, animated } from 'react-spring'
 import { H1, H2, H3, Text } from './Text'
 import Dialog, { DialogRow, DialogActions, DialogButton } from './Dialog'
@@ -11,10 +10,87 @@ import useToggle from '../lib/useToggle'
 import useMeasure from '../lib/useMeasure'
 import { routes } from '../routes'
 
+function ContactOptionButton(props) {
+  return (
+    <H3 as="div">
+      <Link as="button" type="button" colorVariant="white" {...props} />
+    </H3>
+  )
+}
+
+function ContactOptions() {
+  const [activeForm, setActiveForm] = useState(null)
+
+  console.log('render')
+
+  function resetActiveForm() {
+    setActiveForm(null)
+  }
+
+  return (
+    <>
+      <ContactOptionButton
+        onClick={() => {
+          setActiveForm('work')
+        }}
+      >
+        Att jobba med Strateg
+      </ContactOptionButton>
+      <Dialog isOpen={activeForm === 'work'} onDismiss={resetActiveForm}>
+        <DialogRow>
+          <H3 mb="0">Kul att du vill jobba med oss</H3>
+          <Text>
+            Berätta kort om vad du vill ha hjälp med, så hörs vi snart.
+          </Text>
+          <Text>
+            Genom att skicka samtycker du till vår{' '}
+            <Link to={routes.policy.link}>policy</Link>.
+          </Text>
+          <TextField label="Namn" />
+          <TextField label="Företag" />
+          <TextField label="Din mejl" />
+          <TextField label="Ditt telefonnummer" />
+          <TextField label="Vad vill du ha hjälp med?" />
+        </DialogRow>
+        <DialogActions>
+          <DialogButton>
+            <span>Skicka</span>
+            <Icon name={['fal', 'long-arrow-right']} />
+          </DialogButton>
+        </DialogActions>
+      </Dialog>
+      <ContactOptionButton
+        onClick={() => {
+          setActiveForm('career')
+        }}
+      >
+        Att jobba eller praktisera på Strateg
+      </ContactOptionButton>
+      <Dialog isOpen={activeForm === 'career'} onDismiss={resetActiveForm}>
+        <DialogRow>
+          <H3 mb="0">Kul att du vill hänga med oss</H3>
+          <Text>Berätta lite mer, så hörs vi snart.</Text>
+          <TextField label="Namn" />
+          <TextField label="Din mejl" />
+          <TextField label="Ditt telefonnummer" />
+          <TextField label="Vilken roll är du intresserad av?" />
+          <TextField label="Ditt meddelande" />
+        </DialogRow>
+        <DialogActions>
+          <DialogButton>
+            <span>Skicka</span>
+            <Icon name={['fal', 'long-arrow-right']} />
+          </DialogButton>
+        </DialogActions>
+      </Dialog>
+    </>
+  )
+}
+
 export default function ContactArea() {
   const [on, toggle] = useToggle()
   const [bind, { height }] = useMeasure()
-  const props = useSpring({
+  const spring = useSpring({
     config: { tension: 320, friction: 32 },
     height: on ? height : 0,
     opacity: on ? 1 : 0,
@@ -39,60 +115,18 @@ export default function ContactArea() {
       <animated.div
         style={{
           overflow: 'hidden',
-          visibility: props.opacity.interpolate(o =>
+          visibility: spring.opacity.interpolate(o =>
             o === 0 && !on ? 'hidden' : 'visible',
           ),
-          ...props,
+          ...spring,
         }}
       >
         <div {...bind}>
           <Div pt={[3, 5]}>
-            <H3 as="div">
-              <Link
-                as="button"
-                type="button"
-                onClick={null}
-                colorVariant="white"
-              >
-                Att jobba med Strateg
-              </Link>
-            </H3>
-            <H3 as="div">
-              <Link
-                as="button"
-                type="button"
-                onClick={null}
-                colorVariant="white"
-              >
-                Att jobba eller praktisera på Strateg
-              </Link>
-            </H3>
+            <ContactOptions />
           </Div>
         </div>
       </animated.div>
-
-      <Dialog isOpen={false} onDismiss={null}>
-        <DialogRow>
-          <H3 mb="0">Jag är intresserad av att jobba ihop</H3>
-          <Text>
-            Genom att skicka samtycker du till vår{' '}
-            <a as={GatsbyLink} href={routes.policy.link}>
-              policy
-            </a>
-          </Text>
-          <TextField label="Namn" />
-          <TextField label="Företag" />
-          <TextField label="Din e-postadress" />
-          <TextField label="Telefonnummer" />
-          <TextField label="Berätta vad du vill ha hjälp med" />
-        </DialogRow>
-        <DialogActions>
-          <DialogButton>
-            <span>Skicka</span>
-            <Icon name={['fal', 'long-arrow-right']} />
-          </DialogButton>
-        </DialogActions>
-      </Dialog>
     </>
   )
 }
