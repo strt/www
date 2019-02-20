@@ -38,11 +38,10 @@ function ContactOptions() {
       </ContactOptionButton>
       <Dialog isOpen={activeForm === 'work'} onDismiss={resetActiveForm}>
         <DialogRow>
-          <H3 mb="0">Kul att du vill jobba med oss</H3>
+          <H3>Kul att du vill jobba med oss</H3>
           <Text>
             Berätta kort om vad du vill ha hjälp med, så hörs vi snart.
-          </Text>
-          <Text>
+            <br />
             Genom att skicka samtycker du till vår{' '}
             <Link to={routes.policy.link}>policy</Link>.
           </Text>
@@ -68,8 +67,13 @@ function ContactOptions() {
       </ContactOptionButton>
       <Dialog isOpen={activeForm === 'career'} onDismiss={resetActiveForm}>
         <DialogRow>
-          <H3 mb="0">Kul att du vill hänga med oss</H3>
-          <Text>Berätta lite mer, så hörs vi snart.</Text>
+          <H3>Kul att du vill hänga med oss</H3>
+          <Text>
+            Berätta lite mer, så hörs vi snart.
+            <br />
+            Genom att skicka samtycker du till vår{' '}
+            <Link to={routes.policy.link}>policy</Link>.
+          </Text>
           <TextField label="Namn" />
           <TextField label="Din mejl" />
           <TextField label="Ditt telefonnummer" />
