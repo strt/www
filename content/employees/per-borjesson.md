@@ -1,6 +1,6 @@
 ---
 first_name: Per
-last_name: Borjesson
+last_name: Börjesson
 role: 'Art director'
 email: 'per.borjesson@strateg.se'
 phone: ''

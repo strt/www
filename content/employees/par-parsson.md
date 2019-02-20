@@ -1,6 +1,6 @@
 ---
-first_name: Par
-last_name: Parsson
+first_name: Pär
+last_name: Pärsson
 role: 'Creative director'
 email: 'par.parsson@strateg.se'
 phone: ''
