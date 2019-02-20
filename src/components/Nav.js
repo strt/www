@@ -51,7 +51,7 @@ export const StyledNavLink = styled(GatsbyLink)`
   }
 `
 
-export const Nav = animated(styled.nav`
+export const NavContent = animated(styled.div`
   position: fixed;
   z-index: 9;
   top: 0;
@@ -83,7 +83,7 @@ export const Nav = animated(styled.nav`
   }
 `)
 
-const NAV_ID = 'main_navigation'
+const NAV_ID = 'navigation'
 
 export function Navigation({ children }) {
   const [isOpen, toggle] = useToggle(false)
@@ -128,7 +128,7 @@ export function Navigation({ children }) {
   )
 
   return (
-    <>
+    <nav role="navigation">
       <Link
         as="button"
         type="button"
@@ -140,7 +140,7 @@ export function Navigation({ children }) {
       >
         meny.
       </Link>
-      <Nav
+      <NavContent
         id={NAV_ID}
         ref={navRef}
         style={{
@@ -196,7 +196,7 @@ export function Navigation({ children }) {
             </ul>
           </Column>
         </Grid>
-      </Nav>
-    </>
+      </NavContent>
+    </nav>
   )
 }
