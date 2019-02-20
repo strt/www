@@ -62,6 +62,10 @@ export const easings = {
 export const GlobalStyle = createGlobalStyle`
   ${reset};
 
+  :root {
+    --scrollbar-width: 0;
+  }
+
   html {
     box-sizing: border-box;
     font-size: 10px;

@@ -11,6 +11,7 @@ import {
 import { IconButton } from './Button'
 import Link from './Link'
 import Icon from './Icon'
+import { Grid, Column } from './Grid'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -55,9 +56,9 @@ export const Nav = animated(styled.nav`
   z-index: 9;
   top: 0;
   right: 0;
+  right: var(--scrollbar-width);
   left: 0;
   bottom: 0;
-  padding: ${fluidRange({ min: 48, max: 56 })};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -67,8 +68,8 @@ export const Nav = animated(styled.nav`
 
   ${IconButton} {
     position: absolute;
-    top: ${fluidRange({ min: 24, max: 32 })};
-    right: ${fluidRange({ min: 24, max: 32 })};
+    top: ${fluidRange({ min: 16, max: 26 })};
+    right: 0;
     font-size: ${fluidRange({ min: 32, max: 40 })};
     color: white;
   }
@@ -144,6 +145,7 @@ export function Navigation({ children }) {
         ref={navRef}
         style={{
           opacity: navAnimStyle.opacity,
+          right: isOpen ? 'var(--scrollbar-width)' : null,
           visibility: navAnimStyle.opacity.interpolate(o =>
             o === 0 && !isOpen ? 'hidden' : 'visible',
           ),
@@ -161,29 +163,39 @@ export function Navigation({ children }) {
           }
         }}
       >
-        <ul>
-          {transitions.map(({ key, item, props: itemStyle }) => (
-            <animated.li
-              key={key}
-              style={{
-                opacity: itemStyle.opacity,
-                transform: itemStyle.scale.interpolate(
-                  s => `scale3d(${s}, 1, 1)`,
-                ),
-              }}
-            >
-              {item}
-            </animated.li>
-          ))}
-        </ul>
-        <IconButton
-          type="button"
-          onClick={toggle}
-          textColor="white"
-          aria-label="Stäng meny"
-        >
-          <Icon name={['fal', 'times']} />
-        </IconButton>
+        <Grid>
+          <Column>
+            <div css={{ position: 'relative' }}>
+              <IconButton
+                type="button"
+                onClick={toggle}
+                textColor="white"
+                aria-label="Stäng meny"
+              >
+                <Icon name={['fal', 'times']} />
+              </IconButton>
+            </div>
+          </Column>
+        </Grid>
+        <Grid my="auto">
+          <Column>
+            <ul>
+              {transitions.map(({ key, item, props: itemStyle }) => (
+                <animated.li
+                  key={key}
+                  style={{
+                    opacity: itemStyle.opacity,
+                    transform: itemStyle.scale.interpolate(
+                      s => `scale3d(${s}, 1, 1)`,
+                    ),
+                  }}
+                >
+                  {item}
+                </animated.li>
+              ))}
+            </ul>
+          </Column>
+        </Grid>
       </Nav>
     </>
   )

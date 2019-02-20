@@ -35,6 +35,7 @@ export const Grid = styled(CleanTag)(
     marginLeft: 'auto',
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
+    width: '100%',
     [`@media ${breakpoints.medium}`]: {
       paddingRight: `${vw(40)}`,
       paddingLeft: `${vw(40)}`,
