@@ -3,6 +3,7 @@ import RehypeReact from 'rehype-react'
 import { Text, H1, H2 } from '../components/Text'
 import { Column } from '../components/Grid'
 import Image from '../components/Image'
+import Link from '../components/Link'
 
 function withColumn(WrappedComponent, { tablet = 8, ...rest } = {}) {
   function Component(props) {
@@ -34,6 +35,7 @@ const { Compiler: renderAst } = new RehypeReact({
     h1: withColumn(H1),
     h2: withColumn(H2),
     p: withColumn(Text),
+    a: Link,
     'image-component': withColumn(ImageWrapper, { tablet: 12, my: 7 }),
   },
 })
