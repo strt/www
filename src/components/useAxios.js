@@ -18,7 +18,7 @@ function reducer(state, action) {
 
 export default function useAxios(args) {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const cancelToken = useRef()
+  const cancelToken = useRef(null)
 
   useEffect(() => {
     dispatch({ type: 'loading' })

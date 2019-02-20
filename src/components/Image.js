@@ -92,7 +92,7 @@ function LazyImage(props, forwardedRef) {
     ...elementProps
   } = normalizeProps(props)
 
-  const imageWrapperRef = useRef()
+  const imageWrapperRef = useRef(null)
   const [isVisible, setVisible] = useState(!!critical)
   const [isLoaded, setLoaded] = useState(() => isImageCached(props))
 

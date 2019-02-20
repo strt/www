@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { useForceUpdate } from '../utils/hooks'
 
 export default function Portal({ children, type = 'portal' }) {
-  const node = useRef()
+  const node = useRef(null)
   const forceUpdate = useForceUpdate()
 
   useLayoutEffect(() => {

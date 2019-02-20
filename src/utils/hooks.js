@@ -8,7 +8,7 @@ export function useForceUpdate() {
 }
 
 export function useMeasure() {
-  const ref = useRef()
+  const ref = useRef(null)
   const [bounds, set] = useState({ left: 0, top: 0, width: 0, height: 0 })
   const [ro] = useState(
     () => new ResizeObserver(([entry]) => set(entry.contentRect)),
@@ -44,7 +44,7 @@ export function useFocusTrap(
   elementRef,
   { initialFocusRef, fallbackFocusRef, shouldTrap = true },
 ) {
-  const focusTrap = useRef()
+  const focusTrap = useRef(null)
 
   useEffect(() => {
     if (shouldTrap) {

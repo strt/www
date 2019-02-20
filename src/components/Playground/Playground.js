@@ -58,8 +58,8 @@ const letters = [
 ]
 
 export default function Playground() {
-  const canvasRef = useRef()
-  const gravityInterval = useRef()
+  const canvasRef = useRef(null)
+  const gravityInterval = useRef(null)
 
   useEffect(() => {
     const engine = Engine.create()

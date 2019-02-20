@@ -84,11 +84,11 @@ const NAV_ID = 'main_navigation'
 
 export function Navigation({ children }) {
   const [isOpen, toggle] = useToggle(false)
-  const navRef = useRef()
+  const navRef = useRef(null)
   useFocusTrap(navRef, { shouldTrap: isOpen })
   useDisableScroll(isOpen)
 
-  const navSpringRef = useRef()
+  const navSpringRef = useRef(null)
   const navAnimStyle = useSpring({
     ref: navSpringRef,
     config: { ...config.stiff, friction: 28 },
@@ -103,7 +103,7 @@ export function Navigation({ children }) {
   })
 
   const childrenArray = React.Children.toArray(children)
-  const itemsTransitionRef = useRef()
+  const itemsTransitionRef = useRef(null)
   const transitions = useTransition(
     isOpen ? childrenArray : [],
     item => item.key,

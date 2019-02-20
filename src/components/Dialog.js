@@ -16,8 +16,8 @@ export function DialogOverlay({
   initialFocusRef,
   ...props
 }) {
-  const overlayRef = useRef()
-  const contentRef = useRef()
+  const overlayRef = useRef(null)
+  const contentRef = useRef(null)
   useFocusTrap(overlayRef, {
     initialFocusRef,
     fallbackFocusRef: contentRef,
