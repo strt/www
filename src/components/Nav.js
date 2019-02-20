@@ -11,7 +11,9 @@ import {
 import { IconButton } from './Button'
 import Link from './Link'
 import Icon from './Icon'
-import { useFocusTrap, useDisableScroll, useToggle } from '../utils/hooks'
+import useFocusTrap from '../lib/useFocusTrap'
+import useDisableScroll from '../lib/useDisableScroll'
+import useToggle from '../lib/useToggle'
 import { colors, fluidRange, easings } from '../style'
 
 function getProps({ href, isPartiallyCurrent }) {

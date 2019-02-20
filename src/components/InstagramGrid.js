@@ -5,7 +5,7 @@ import Link from './Link'
 import Image from './Image'
 import Div from './Div'
 import { Grid, Column } from './Grid'
-import useAxios from './useAxios'
+import useAxios from '../lib/useAxios'
 import Icon from './Icon'
 import { colors, breakpoints, cover } from '../style'
 
