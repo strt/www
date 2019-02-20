@@ -55,13 +55,13 @@ export const A = styled.a`
 const RouterLink = props =>
   React.createElement(CleanTag, { as: GatsbyLink, ...props })
 
-function Link({ to, ...props }, ref) {
+const Link = React.forwardRef(({ to, ...props }, ref) => {
   if (to) {
     return <A as={RouterLink} to={to} {...props} ref={ref} />
   }
 
   return <A {...props} ref={ref} />
-}
+})
 
 Link.propTypes = {
   colorVariant: PropTypes.oneOf(['blue', 'red', 'dark', 'white']),
@@ -70,4 +70,4 @@ Link.propTypes = {
   href: PropTypes.string,
 }
 
-export default React.forwardRef(Link)
+export default Link
