@@ -58,7 +58,6 @@
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-plugin-subfont": "^1.0.1",
     "gatsby-remark-relative-images": "^0.2.0",
-    "gatsby-remark-unwrap-images": "^1.0.1",
     "gatsby-source-filesystem": "^2.0.1",
     "gatsby-transformer-json": "^2.1.5",
     "gatsby-transformer-remark": "^2.1.6",
@@ -94,6 +93,7 @@
     "stylelint-config-strateg": "^1.8.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.5.0",
+    "unist-util-remove": "^1.0.1",
     "webpack-bundle-analyzer": "^3.0.3"
   }
 }
