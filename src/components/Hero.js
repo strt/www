@@ -5,20 +5,24 @@ import { IconButton } from './Button'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
 
-const StyledHero = styled(Section)`
-  ${/* sc-selector */ Column} > *:last-child {
-    margin-bottom: 0;
-  }
-`
+const StyledHero = styled(Section)(
+  props =>
+    !props.keepContentMargin && {
+      [`${Column} > *:last-child`]: {
+        marginBottom: 0,
+      },
+    },
+)
 
 export default function Hero({
   children,
   pt = 2,
   pb = [3, 7],
   scrollButtonElement,
+  keepContentMargin,
 }) {
   return (
-    <StyledHero pt={pt} pb={pb}>
+    <StyledHero pt={pt} pb={pb} keepContentMargin={keepContentMargin}>
       <Grid>
         <Column tablet="8">{children}</Column>
       </Grid>

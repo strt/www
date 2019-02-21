@@ -13,6 +13,7 @@ import dayjs from '../lib/dayjs'
 export default function Template({ data: { markdownRemark: post } }) {
   const { date } = post.frontmatter
   const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
+  const hasCover = !!post.frontmatter.image
 
   return (
     <Layout title={post.frontmatter.title}>
@@ -26,11 +27,15 @@ export default function Template({ data: { markdownRemark: post } }) {
             </Column>
           </Grid>
         )}
-        <Hero pt={[2, 7]}>
+        <Hero
+          pt={[2, 7]}
+          pb={hasCover ? undefined : 0}
+          keepContentMargin={!hasCover}
+        >
           <H1>{post.frontmatter.title}</H1>
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Hero>
-        {post.frontmatter.image && (
+        {hasCover && (
           <Cover>
             <Image
               fluid={post.frontmatter.image.childImageSharp.fluid}
@@ -38,7 +43,7 @@ export default function Template({ data: { markdownRemark: post } }) {
             />
           </Cover>
         )}
-        <Section py="7">
+        <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
           <Grid>{renderAst(post.htmlAst)}</Grid>
         </Section>
       </article>
