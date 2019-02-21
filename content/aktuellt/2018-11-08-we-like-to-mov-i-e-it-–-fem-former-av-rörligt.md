@@ -6,7 +6,9 @@ excerpt: >-
   berätta? Vårt motion team med Victor Lund (motion designer) och Sara Blomqvist
   (filmproducent) reder ut ett och annat här. Take it away!
 date: 2018-11-08T07:48:55.802Z
+redirect_from: '/aktuellt/nyheter/2018/2018-11-08-we-like-to-movie-it---fem-former-av-rorligt.html'
 ---
+
 ## Animering och infografic
 
 Hör du ordet animering och tänker på Hitta Nemo? I så fall har du helt rätt. Animering och infografic är datorgjort, och inget du behöver en kamera för att skapa. När vi arbetar med infografic blandar vi ofta ikoner, text och ljud.
