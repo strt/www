@@ -2,6 +2,7 @@ const { resolve, join } = require('path')
 const { execSync } = require('child_process')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const redirectPaths = require('./content/redirects.json')
 
 // exports.onCreateWebpackConfig = ({ actions }) => {
 //   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -24,7 +25,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const articleTemplate = resolve('src/templates/article.js')
 
   const redirectToSlugMap = new Map()
-  function registerRedirects(node) {
+  function registerRedirectsFromNode(node) {
     if (node.fields.redirect) {
       const { slug } = node.fields
       let redirect = JSON.parse(node.fields.redirect)
@@ -100,7 +101,7 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
 
-    registerRedirects(node)
+    registerRedirectsFromNode(node)
   })
 
   // News
@@ -120,7 +121,17 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
 
-    registerRedirects(node)
+    registerRedirectsFromNode(node)
+  })
+
+  // Register redirects
+  Object.entries(redirectPaths).forEach(([fromPath, toPath]) => {
+    createRedirect({
+      fromPath,
+      redirectInBrowser: true,
+      isPermanent: true,
+      toPath,
+    })
   })
 }
 
