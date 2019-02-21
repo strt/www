@@ -4,6 +4,7 @@ import { Text, H1, H2 } from '../components/Text'
 import { Column } from '../components/Grid'
 import Image from '../components/Image'
 import Link from '../components/Link'
+import EmbedPLayer from '../components/EmbedPlayer'
 
 function withColumn(WrappedComponent, { tablet = 8, ...rest } = {}) {
   function Component(props) {
@@ -37,6 +38,7 @@ const { Compiler: renderAst } = new RehypeReact({
     p: withColumn(Text),
     a: Link,
     'image-component': withColumn(ImageWrapper, { tablet: 12, my: 7 }),
+    iframe: withColumn(EmbedPLayer, { tablet: 12, my: 7 }),
   },
 })
 
