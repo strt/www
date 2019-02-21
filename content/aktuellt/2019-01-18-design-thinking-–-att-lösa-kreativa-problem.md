@@ -11,6 +11,7 @@ redirect_from:
   - >-
     /aktuellt/nyheter/2019/2019-01-18-design-thinking---att-losa-kreativa-problem.html
 ---
+
 ## Med människan i centrum
 
 Idag handlar design om så mycket mer än schyssta typsnitt, helrätt färg och linjer ”to die for”. Oavsett om vi pratar om en produkt, en webbplats eller en tjänst. Istället är det funktionalitet som tar hänsyn till mottagarens behov, motivation och beteende som står i centrum. Det kognitiva möter det estetiska. Att designen faktiskt är utformad för att uppfylla ett högre syfte – det mottagaren önskar och behöver. Vi lever i upplevelsernas era där människor förväntar sig något mer. Designen ska inte bara lösa ett problem, utan även problemet bakom problemet, utifrån människors behov och känslor.
@@ -38,8 +39,7 @@ Skapa enkla prototyper, prova och känn efter.
 **Testa**\
 Testa och testa igen.
 
-**Implementera**
-
+**Implementera**\
 Gör prototypen till verklighet och producera.
 
 ## Nytänkande, buzzword eller skåpmat?
