@@ -44,8 +44,8 @@ const { Compiler: renderAst } = new RehypeReact({
     h2: withColumn(H2),
     p: withColumn(Text),
     a: Link,
-    'image-component': withColumn(ImageWrapper, { tablet: 12, my: 7 }),
-    iframe: withColumn(EmbedPLayer, { tablet: 12, my: 7 }),
+    'image-component': withColumn(ImageWrapper, { tablet: 12, mb: 7, mt: 2 }),
+    iframe: withColumn(EmbedPLayer, { tablet: 12, mb: 7, mt: 2 }),
   },
 })
 
