@@ -39,6 +39,7 @@ module.exports = {
           },
           'gatsby-remark-unwrap-images',
           'gatsby-remark-image-component',
+          'gatsby-remark-embed',
         ],
       },
     },
