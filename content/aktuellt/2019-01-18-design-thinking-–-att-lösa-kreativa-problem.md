@@ -6,11 +6,8 @@ excerpt: >-
   En upplevelse. Och visst är god design något att sträva efter, men vem är
   designen egentligen till för och vad är dess uppgift?
 date: 2019-01-18T15:39:48.398Z
-image: '/media/uploads/article-design-thinking.jpg'
-redirect_from:
-  - '/aktuellt/nyheter/2019/2019-01-18-design-thinking---att-losa-kreativa-problem.html'
+image: /media/uploads/article-design-thinking.jpg
 ---
-
 ## Med människan i centrum
 
 Idag handlar design om så mycket mer än schyssta typsnitt, helrätt färg och linjer ”to die for”. Oavsett om vi pratar om en produkt, en webbplats eller en tjänst. Istället är det funktionalitet som tar hänsyn till mottagarens behov, motivation och beteende som står i centrum. Det kognitiva möter det estetiska. Att designen faktiskt är utformad för att uppfylla ett högre syfte – det mottagaren önskar och behöver. Vi lever i upplevelsernas era där människor förväntar sig något mer. Designen ska inte bara lösa ett problem, utan även problemet bakom problemet, utifrån människors behov och känslor.
@@ -23,28 +20,22 @@ Design thinking är ett känt begrepp inom framförallt innovativ produktutveckl
 
 Så hur går det till?
 
-**Empatisera**
-
+**Empatisera**\
 Bakgrund, analys och research. Skapa förståelse för användaren – på riktigt.
 
-**Definiera**
-
+**Definiera**\
 Vad är problemet? Och problemet bakom problemet?
 
-**Generera**
-
+**Generera**\
 Kläck idéer! Massor av idéer.
 
-**Experimentera**
-
+**Experimentera**\
 Skapa enkla prototyper, prova och känn efter.
 
-**Testa**
-
+**Testa**\
 Testa och testa igen.
 
-**Implementera**
-
+**Implementera**\
 Gör prototypen till verklighet och producera.
 
 ## Nytänkande, buzzword eller skåpmat?
