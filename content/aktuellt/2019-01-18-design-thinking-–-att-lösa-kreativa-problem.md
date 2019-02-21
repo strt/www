@@ -7,6 +7,8 @@ excerpt: >-
   designen egentligen till för och vad är dess uppgift?
 date: 2019-01-18T15:39:48.398Z
 image: /media/uploads/article-design-thinking.jpg
+redirect_from:
+  - /aktuellt/nyheter/2019/2019-01-18-design-thinking---att-losa-kreativa-problem.html
 ---
 ## Med människan i centrum
 
