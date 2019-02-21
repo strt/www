@@ -5,7 +5,7 @@ module.exports = ({ markdownAST }) => {
   visit(markdownAST, 'link', (node, index, parent) => {
     const { url } = node
 
-    if (url.startsWith('youtube:') || url.startsWith('vimeo:')) {
+    if (url.startsWith('embed:')) {
       const videoUrl = url.replace(/^[\w]+:/, '')
 
       /* eslint-disable no-param-reassign */

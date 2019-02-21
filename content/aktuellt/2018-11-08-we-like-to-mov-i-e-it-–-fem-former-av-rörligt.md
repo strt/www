@@ -18,7 +18,7 @@ På så vis blir det enklare för oss att uppfatta budskapet eftersom hjärnan l
 
 Här är ett exempel där vi använde infografic för att förklara hur SJ Röststyrning fungerar.
 
-[](vimeo:https://player.vimeo.com/video/298560580)
+<embed:https://player.vimeo.com/video/298560580>
 
 ## 3D
 
@@ -26,7 +26,7 @@ Grejen med 3D är att vi – förutom bredd och höjd – även kan arbeta med d
 
 Vill du visa upp en produkt som inte är färdig än? Gör det med hjälp av 3D. Har du en idé som är för kostsam – eller rent av omöjlig – att utföra på riktigt? 3D kan vara lösningen. Tillsammans med Epiroc (före detta Atlas Copco) skapade vi den här filmen i 3D.
 
-[](vimeo:https://player.vimeo.com/video/298189446)
+<embed:https://player.vimeo.com/video/298189446>
 
 ## Stop motion
 
@@ -36,7 +36,7 @@ Många specialeffekter görs inte visuellt utan med verkliga objekt, och det ska
 
 Nedan är ett exempel på en reklamfilm för Länstrafiken skapad med stop motion.
 
-[](vimeo:https://player.vimeo.com/video/298185881)
+<embed:https://player.vimeo.com/video/298185881>
 
 ## Fiction
 
@@ -44,7 +44,7 @@ När vi arbetar med fiction skapar vi en påhittad historia. Vi snackar skådesp
 
 Här har vi använt fiction för att marknadsföra Familjerådgivningen i Region Örebro län.
 
-[](vimeo:https://player.vimeo.com/video/298426971)
+<embed:https://player.vimeo.com/video/298426971>
 
 ## Dokumentär
 
@@ -52,4 +52,4 @@ När du vill berätta om verkligheten gör du det bäst i form av en dokumentär
 
 Friskolornas riksförbund ville berätta varför det fria skolvalet är viktigt. Lösningen blev en dokumentär.
 
-[](vimeo:https://player.vimeo.com/video/298551152)
+<embed:https://player.vimeo.com/video/298551152>
