@@ -1,9 +1,10 @@
-const visitWithParents = require(`unist-util-visit-parents`)
-const path = require(`path`)
-const isRelativeUrl = require(`is-relative-url`)
-const _ = require(`lodash`)
-const { fluid } = require(`gatsby-plugin-sharp`)
-const slash = require(`slash`)
+/* eslint-disable import/no-extraneous-dependencies */
+const visitWithParents = require('unist-util-visit-parents')
+const path = require('path')
+const isRelativeUrl = require('is-relative-url')
+const _ = require('lodash')
+const { fluid } = require('gatsby-plugin-sharp')
+const slash = require('slash')
 
 async function generateImages({
   node,
@@ -53,7 +54,7 @@ module.exports = (
   pluginOptions,
 ) => {
   const markdownImageNodes = []
-  visitWithParents(markdownAST, `image`, (node) => {
+  visitWithParents(markdownAST, 'image', (node) => {
     markdownImageNodes.push({ node })
   })
 
@@ -64,8 +65,8 @@ module.exports = (
           const fileType = node.url.slice(-3)
 
           if (
-            fileType !== `gif` &&
-            fileType !== `svg` &&
+            fileType !== 'gif' &&
+            fileType !== 'svg' &&
             isRelativeUrl(node.url)
           ) {
             const image = await generateImages({
@@ -81,7 +82,7 @@ module.exports = (
 
             if (image) {
               /* eslint-disable no-param-reassign */
-              node.type = `html`
+              node.type = 'html'
               node.value = `<image-component fluid='${JSON.stringify(
                 image,
               )}'></image-component>`
