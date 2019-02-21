@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { StaticQuery, graphql } from 'gatsby'
 import Link from './Link'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
@@ -9,6 +8,7 @@ import { ScrollToTopButton } from './Button'
 import { footerNavigation } from '../routes'
 import { colors, breakpoints, fluidRange, vw } from '../style'
 import { formatPhone } from '../lib/format'
+import useSiteSettings from '../lib/useSiteSettings'
 
 const CopyrightText = styled(Text)`
   font-size: ${fluidRange({ min: 10, max: 14 })};
@@ -19,112 +19,87 @@ const CopyrightText = styled(Text)`
 `
 
 export default function Footer() {
+  const siteSettings = useSiteSettings()
+
   return (
-    <StaticQuery
-      query={graphql`
-        query {
-          file(relativePath: { eq: "settings.json" }) {
-            siteSettings: childContentJson {
-              name
-              offices {
-                address
-                zipcode
-                city
-                email
-                phone
-              }
-              social {
-                facebook
-                instagram
-                linkedin
-                github
-              }
-            }
-          }
-        }
-      `}
-    >
-      {({ file: { siteSettings } }) => (
-        <Section as="footer" bg={colors.ice} py={[4, 7]}>
-          <Grid>
-            {siteSettings.offices.map(office => (
-              <Column tablet="3" key={office.city}>
-                <Text as="address">
-                  {office.address} <br />
-                  {office.zipcode} {office.city} <br />
-                  <Link href={`tel:${formatPhone(office.phone)}`}>
-                    {office.phone}
-                  </Link>
-                </Text>
-              </Column>
+    <Section as="footer" bg={colors.ice} py={[4, 7]}>
+      <Grid>
+        {siteSettings.offices.map(office => (
+          <Column tablet="3" key={office.city}>
+            <Text as="address">
+              {office.address} <br />
+              {office.zipcode} {office.city} <br />
+              <Link href={`tel:${formatPhone(office.phone)}`}>
+                {office.phone}
+              </Link>
+            </Text>
+          </Column>
+        ))}
+        <Column tablet="3">
+          <Text>
+            <Link
+              href={siteSettings.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </Link>
+            <br />
+            <Link
+              href={siteSettings.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Facebook
+            </Link>
+            <br />
+            <Link
+              href={siteSettings.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </Link>
+            <br />
+            <Link
+              href={siteSettings.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </Link>
+            <br />
+          </Text>
+        </Column>
+        <Column tablet="3">
+          <Text as="ul">
+            {footerNavigation.map(route => (
+              <li key={route.link}>
+                <Link to={route.link}>{route.title}</Link>
+              </li>
             ))}
-            <Column tablet="3">
-              <Text>
-                <Link
-                  href={siteSettings.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </Link>
-                <br />
-                <Link
-                  href={siteSettings.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </Link>
-                <br />
-                <Link
-                  href={siteSettings.social.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </Link>
-                <br />
-                <Link
-                  href={siteSettings.social.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </Link>
-                <br />
-              </Text>
-            </Column>
-            <Column tablet="3">
-              <Text as="ul">
-                {footerNavigation.map(route => (
-                  <li key={route.link}>
-                    <Link to={route.link}>{route.title}</Link>
-                  </li>
-                ))}
-              </Text>
-            </Column>
-          </Grid>
-          <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
-            <Column width="auto">
-              <CopyrightText as="small">
-                © 2018 <br />
-                {siteSettings.name} <br />
-                En del av{' '}
-                <Link
-                  href="//diplomatgruppen.se/sv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Diplomatgruppen
-                </Link>
-              </CopyrightText>
-            </Column>
-            <Column width="auto">
-              <ScrollToTopButton />
-            </Column>
-          </Grid>
-        </Section>
-      )}
-    </StaticQuery>
+          </Text>
+        </Column>
+      </Grid>
+      <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
+        <Column width="auto">
+          <CopyrightText as="small">
+            © 2018 <br />
+            {siteSettings.name} <br />
+            En del av{' '}
+            <Link
+              href="//diplomatgruppen.se/sv"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Diplomatgruppen
+            </Link>
+          </CopyrightText>
+        </Column>
+        <Column width="auto">
+          <ScrollToTopButton />
+        </Column>
+      </Grid>
+    </Section>
   )
 }

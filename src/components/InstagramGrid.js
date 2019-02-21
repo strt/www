@@ -1,5 +1,4 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Link from './Link'
 import Image from './Image'
@@ -8,10 +7,12 @@ import { Grid, Column } from './Grid'
 import useAxios from '../lib/useAxios'
 import Icon from './Icon'
 import { colors, breakpoints, cover } from '../style'
+import useSiteSettings from '../lib/useSiteSettings'
 
 const placeholderItems = Array.from(Array(5)).map((v, i) => ({ id: i }))
 
 export default function Posts({ halfTopBg = 'white', ...props }) {
+  const siteSettings = useSiteSettings()
   const { data: posts = placeholderItems } = useAxios({
     url: '/.netlify/functions/instagram',
   })
@@ -54,31 +55,15 @@ export default function Posts({ halfTopBg = 'white', ...props }) {
               </Box>
             ))}
             <Box>
-              <StaticQuery
-                query={graphql`
-                  query {
-                    file(relativePath: { eq: "settings.json" }) {
-                      siteSettings: childContentJson {
-                        social {
-                          instagram
-                        }
-                      }
-                    }
-                  }
-                `}
+              <Link
+                href={siteSettings.social.instagram}
+                variant="large"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {({ file: { siteSettings } }) => (
-                  <Link
-                    href={siteSettings.social.instagram}
-                    variant="large"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Icon name={['fab', 'instagram']} />
-                    <span>Följ enstrateg</span>
-                  </Link>
-                )}
-              </StaticQuery>
+                <Icon name={['fab', 'instagram']} />
+                <span>Följ enstrateg</span>
+              </Link>
             </Box>
           </ImageGrid>
         </Column>
