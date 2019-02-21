@@ -69,6 +69,7 @@ collections:
         }
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
+      - { name: 'redirect_from', label: 'Redirect', widget: 'list' }
 
   - name: 'employees'
     label: 'Employees'
