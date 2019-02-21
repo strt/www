@@ -23,7 +23,13 @@ const PlayerWrapper = styled.div`
 export default function EmbedPlayer({ title, ...props }) {
   return (
     <PlayerWrapper>
-      <iframe title={title} {...props} />
+      <iframe
+        title={title}
+        frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        {...props}
+      />
     </PlayerWrapper>
   )
 }
