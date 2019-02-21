@@ -19,9 +19,41 @@ exports.onPostBuild = ({ store }) => {
 }
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
   const caseTemplate = resolve('src/templates/case.js')
   const articleTemplate = resolve('src/templates/article.js')
+
+  const redirectToSlugMap = new Map()
+  function registerRedirects(node) {
+    if (node.fields.redirect) {
+      const { slug } = node.fields
+      let redirect = JSON.parse(node.fields.redirect)
+      if (!Array.isArray(redirect)) {
+        redirect = [redirect]
+      }
+
+      redirect.forEach((fromPath) => {
+        if (redirectToSlugMap.has(fromPath)) {
+          console.error(
+            `Duplicate redirect detected from "${fromPath}" to:\n` +
+              `* ${redirectToSlugMap.get(fromPath)}\n` +
+              `* ${slug}\n`,
+          )
+          process.exit(1)
+        }
+
+        const toPath = slug.startsWith('/') ? slug : `/${slug}`
+        redirectToSlugMap.set(fromPath, slug)
+
+        createRedirect({
+          fromPath,
+          redirectInBrowser: true,
+          isPermanent: true,
+          toPath,
+        })
+      })
+    }
+  }
 
   const allMarkdown = await graphql(`
     {
@@ -67,6 +99,8 @@ exports.createPages = async ({ actions, graphql }) => {
         next,
       },
     })
+
+    registerRedirects(node)
   })
 
   // News
@@ -85,14 +119,8 @@ exports.createPages = async ({ actions, graphql }) => {
         next,
       },
     })
-  })
 
-  // Redirects
-  edges.forEach((edge) => {
-    const { redirect } = edge.node.fields
-    if (redirect) {
-      console.log('redirect')
-    }
+    registerRedirects(node)
   })
 }
 

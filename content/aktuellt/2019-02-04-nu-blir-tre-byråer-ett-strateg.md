@@ -7,6 +7,8 @@ excerpt: >-
   och Stockholm är vi en av landets största kreativa kommunikationsbyråer.
 date: 2019-02-04T15:32:14.536Z
 image: '/media/uploads/article-nu-blir-tre-byraer-ett-strateg.jpg'
+redirect_from:
+  - '/aktuellt/nyheter/2019/2019-02-04-nu-blir-tre-byraer-ett-strateg.html'
 ---
 
 – Med vår gemensamma erfarenhet inom strategisk höjd, kreativa idéer och digital innovation har vi ett svårslaget erbjudande. Vi har samma namn som tidigare, men blir så mycket starkare, säger Fredrik Vannestål som är vd på Strateg.
