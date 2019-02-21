@@ -31,7 +31,14 @@ function ImageWrapper(props) {
 }
 
 const { Compiler: renderAst } = new RehypeReact({
-  createElement: React.createElement,
+  // Remove wrapping div element
+  createElement: (component, props = {}, children = []) => {
+    if (component === 'div') {
+      return <>{children}</>
+    }
+
+    return React.createElement(component, props, children)
+  },
   components: {
     h1: withColumn(H1),
     h2: withColumn(H2),
