@@ -108,9 +108,9 @@ export default function Contact({ data }) {
   )
 }
 
-export const query = graphql`
-  query {
-    page: markdownRemark(fileAbsolutePath: { regex: "/pages/kontakt/" }) {
+export const pageQuery = graphql`
+  query($slug: String!) {
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt

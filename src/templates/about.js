@@ -17,9 +17,9 @@ export default function About({ data }) {
   )
 }
 
-export const query = graphql`
-  query {
-    page: markdownRemark(fileAbsolutePath: { regex: "/pages/vad-vi-gor/" }) {
+export const pageQuery = graphql`
+  query($slug: String!) {
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt

@@ -36,9 +36,9 @@ export default function News({ data }) {
   )
 }
 
-export const query = graphql`
-  query {
-    page: markdownRemark(fileAbsolutePath: { regex: "/pages/aktuellt/" }) {
+export const pageQuery = graphql`
+  query($slug: String!) {
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt
@@ -56,7 +56,7 @@ export const query = graphql`
       }
     }
     articles: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/aktuellt/" } }
+      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

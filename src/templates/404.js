@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Cover from '../components/Cover'
@@ -8,15 +9,13 @@ import Link from '../components/Link'
 
 const Playground = React.lazy(() => import('../components/Playground'))
 
-export default function NotFound() {
+export default function NotFound({ data }) {
+  const { title, excerpt } = data.page.frontmatter
   return (
     <Layout meta={{ titel: '404' }}>
       <Hero>
-        <H1>Vad letar du efter, kompis?</H1>
-        <Excerpt>
-          Sidan du vill till finns tyvärr inte. Testa igen eller gå till
-          startsidan, därifrån hittar du förhoppningsvis rätt.
-        </Excerpt>
+        <H1>{title}</H1>
+        <Excerpt>{excerpt}</Excerpt>
         <Link to="/" colorVariant="blue" variant="large">
           Till startsidan
         </Link>
@@ -31,3 +30,25 @@ export default function NotFound() {
     </Layout>
   )
 }
+
+export const pageQuery = graphql`
+  query($slug: String!) {
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        excerpt
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              og: resize(width: 1200, height: 630, quality: 75) {
+                src
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
