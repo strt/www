@@ -14,6 +14,7 @@ aliases:
       - { name: 'title', label: 'Title', widget: 'string' }
       - { name: 'description', label: 'Description', widget: 'text' }
       - { name: 'image', label: 'Image', widget: 'image' }
+      - { name: 'redirect_from', label: 'Alias', widget: 'list' }
 
 collections:
   - name: case
@@ -60,10 +61,10 @@ collections:
       - { name: 'body', label: 'Body', widget: 'markdown' }
       - *seo
 
-  - name: 'articles'
-    label: 'Articles'
-    label_singular: 'Article'
-    folder: '/content/aktuellt'
+  - name: 'posts'
+    label: 'Posts'
+    label_singular: 'Post'
+    folder: '/content/posts'
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     create: true
     editor:
@@ -80,7 +81,6 @@ collections:
         }
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
-      - { name: 'redirect_from', label: 'Redirect', widget: 'list' }
       - *seo
   - name: 'employees'
     label: 'Employees'
