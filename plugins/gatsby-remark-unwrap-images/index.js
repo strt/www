@@ -3,11 +3,12 @@
  * MIT License: https://github.com/xuopled/gatsby-remark-unwrap-images/blob/master/LICENCE.md
  */
 
-const visit = require(`unist-util-visit`)
-const remove = require(`unist-util-remove`)
+/* eslint-disable import/no-extraneous-dependencies */
+const visit = require('unist-util-visit')
+const remove = require('unist-util-remove')
 
 module.exports = ({ markdownAST }) => {
-  visit(markdownAST, `paragraph`, (node, index, parent) => {
+  visit(markdownAST, 'paragraph', (node, index, parent) => {
     const hasOnlyImagesNodes = node.children.every((child) => {
       return (
         child.type === 'image' ||
