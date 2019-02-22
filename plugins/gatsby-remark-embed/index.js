@@ -15,8 +15,10 @@ module.exports = ({ markdownAST }) => {
       }></iframe>`
       parent.children = []
       /* eslint-enable no-param-reassign */
-    }
-  })
 
-  return markdownAST
+      return visit.SKIP
+    }
+
+    return visit.CONTINUE
+  })
 }
