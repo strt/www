@@ -5,7 +5,7 @@ import useSiteSettings from '../lib/useSiteSettings'
 export default function Meta({
   title,
   description = '',
-  image,
+  image = '',
   url,
   publishedTime,
   type = 'website',
@@ -29,7 +29,7 @@ export default function Meta({
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      {image && <meta property="og:image" content={image} />}
+      <meta property="og:image" content={image} />
       {url && <meta property="og:url" content={siteSettings.siteUrl + url} />}
       {publishedTime && (
         <meta

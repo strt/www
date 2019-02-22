@@ -116,6 +116,9 @@ export const pageQuery = graphql`
         image {
           childImageSharp {
             ...CoverImage
+            og: resize(width: 1200, height: 630, quality: 75) {
+              src
+            }
           }
         }
         contact_relation {
