@@ -86,12 +86,10 @@ exports.createPages = async ({ actions, graphql }) => {
   const { edges } = allMarkdown.data.allMarkdownRemark
 
   // Pages
-  // console.log(edges.map(({ node }) => node.fields.slug))
   const pages = edges.filter(({ node }) =>
     node.fileAbsolutePath.includes('/pages/'),
   )
   pages.forEach(({ node }) => {
-    console.log(node.fields.slug)
     const template = node.frontmatter.template || 'frontpage'
 
     createPage({
