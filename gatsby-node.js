@@ -21,7 +21,7 @@ const redirectPaths = require('./content/redirects.json')
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
   const caseTemplate = resolve('src/templates/case.js')
-  const articleTemplate = resolve('src/templates/article.js')
+  const postTemplate = resolve('src/templates/post.js')
 
   const redirectToSlugMap = new Map()
   function registerRedirectsFromNode(node) {
@@ -63,6 +63,7 @@ exports.createPages = async ({ actions, graphql }) => {
       ) {
         edges {
           node {
+            fileAbsolutePath
             fields {
               slug
               redirect
@@ -70,6 +71,7 @@ exports.createPages = async ({ actions, graphql }) => {
             frontmatter {
               title
               client
+              template
             }
           }
         }
@@ -83,9 +85,29 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const { edges } = allMarkdown.data.allMarkdownRemark
 
+  // Pages
+  const pages = edges.filter(({ node }) =>
+    node.fileAbsolutePath.includes('/pages/'),
+  )
+  pages.forEach(({ node }) => {
+    const template = node.frontmatter.template || 'frontpage'
+
+    createPage({
+      path: node.fields.slug,
+      component: resolve(`./src/templates/${template}.js`),
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+
+    registerRedirectsFromNode(node)
+  })
+
   // Case
-  const cases = edges.filter(({ node }) =>
-    node.fields.slug.startsWith('/case/'),
+  const cases = edges.filter(
+    ({ node }) =>
+      node.fields.slug.startsWith('/case/') &&
+      !node.fileAbsolutePath.includes('/pages/'),
   )
   cases.forEach(({ node }, index) => {
     const { node: next } =
@@ -103,17 +125,19 @@ exports.createPages = async ({ actions, graphql }) => {
     registerRedirectsFromNode(node)
   })
 
-  // News
-  const articles = edges.filter(({ node }) =>
-    node.fields.slug.startsWith('/aktuellt/'),
+  // Posts
+  const posts = edges.filter(
+    ({ node }) =>
+      node.fields.slug.startsWith('/posts/') &&
+      !node.fileAbsolutePath.includes('/pages/'),
   )
-  articles.forEach(({ node }, index) => {
+  posts.forEach(({ node }, index) => {
     const { node: next } =
-      index === articles.length - 1 ? articles[0] : articles[index + 1]
+      index === posts.length - 1 ? posts[0] : posts[index + 1]
 
     createPage({
       path: node.fields.slug,
-      component: articleTemplate,
+      component: postTemplate,
       context: {
         slug: node.fields.slug,
         next,
@@ -153,8 +177,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node)
 
   if (node.internal.type === 'MarkdownRemark') {
-    const { redirect_from } = node.frontmatter // eslint-disable-line camelcase
-    const slug = createFilePath({ node, getNode })
+    const { redirect_from: redirectFrom, permalink } = node.frontmatter
+    let slug = permalink || createFilePath({ node, getNode })
+
+    if (slug.startsWith('/pages')) {
+      slug = slug.replace('/pages', '')
+    }
+
+    if (slug.startsWith('/posts')) {
+      slug = slug.replace('/aktuellt', '')
+    }
 
     createNodeField({
       node,
@@ -165,7 +197,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       node,
       name: 'redirect',
-      value: buildRedirectString(slug, redirect_from),
+      value: buildRedirectString(slug, redirectFrom),
     })
   }
 }

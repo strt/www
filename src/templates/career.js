@@ -98,9 +98,9 @@ export default function Career({ data }) {
   )
 }
 
-export const query = graphql`
-  query {
-    page: markdownRemark(fileAbsolutePath: { regex: "/pages/bli-en-av-oss/" }) {
+export const pageQuery = graphql`
+  query($slug: String!) {
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt

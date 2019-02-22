@@ -130,9 +130,9 @@ export default function Case({ data, location }) {
   )
 }
 
-export const query = graphql`
-  query {
-    page: markdownRemark(fileAbsolutePath: { regex: "/pages/case/" }) {
+export const pageQuery = graphql`
+  query($slug: String!) {
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt
