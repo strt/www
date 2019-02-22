@@ -11,6 +11,7 @@ import Link from '../components/Link'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { breakpoints, fluidRange, vw, easings, animations } from '../style'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
 function filterCases(items, filter) {
   return items.filter(({ node }) =>
@@ -78,7 +79,7 @@ export default function Case({ data, location }) {
     .sort()
 
   return (
-    <Layout meta={{ title: 'Case' }}>
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
@@ -135,6 +136,17 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              og: resize(width: 1200, height: 630, quality: 75) {
+                src
+              }
+            }
+          }
+        }
       }
     }
     cases: allMarkdownRemark(

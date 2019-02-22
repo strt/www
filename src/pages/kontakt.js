@@ -12,6 +12,7 @@ import { Grid, Column } from '../components/Grid'
 import { H1, Excerpt, Text } from '../components/Text'
 import { formatPhone } from '../lib/format'
 import { breakpoints, fluidRange, vw, colors } from '../style'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
 const RoleText = styled(Text).attrs({ textColor: colors.steel500 })`
   font-size: ${fluidRange({ min: 11, max: 14 })};
@@ -27,7 +28,7 @@ export default function Contact({ data }) {
   const { title, excerpt } = data.page.frontmatter
 
   return (
-    <Layout meta={{ title: 'Kontakt', description: excerpt }}>
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
@@ -113,6 +114,17 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              og: resize(width: 1200, height: 630, quality: 75) {
+                src
+              }
+            }
+          }
+        }
       }
     }
     siteSettings: file(relativePath: { eq: "settings.json" }) {

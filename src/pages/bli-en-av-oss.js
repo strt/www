@@ -11,12 +11,13 @@ import { H1, H2, H3, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
 import BoxSection from '../components/BoxSection'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Career({ data }) {
   const { title } = data.page.frontmatter
 
   return (
-    <Layout meta={{ title: 'Bli en av oss' }}>
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero scrollButtonElement="#cover">
         <H1>{title}</H1>
       </Hero>
@@ -103,6 +104,17 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              og: resize(width: 1200, height: 630, quality: 75) {
+                src
+              }
+            }
+          }
+        }
       }
     }
     coverImage: file(relativePath: { eq: "uploads/news-space.jpg" }) {

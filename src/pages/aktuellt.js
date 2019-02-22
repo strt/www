@@ -2,18 +2,18 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-
 import Card from '../components/Card'
 import Section from '../components/Section'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
   const { title, excerpt } = data.page.frontmatter
 
   return (
-    <Layout meta={{ title: 'Aktuellt' }}>
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
@@ -42,6 +42,17 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              og: resize(width: 1200, height: 630, quality: 75) {
+                src
+              }
+            }
+          }
+        }
       }
     }
     articles: allMarkdownRemark(

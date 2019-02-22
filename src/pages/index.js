@@ -17,6 +17,7 @@ import InstagramGrid from '../components/InstagramGrid'
 import BoxSection from '../components/BoxSection'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
 const Playground = React.lazy(() => import('../components/Playground'))
 
@@ -24,13 +25,7 @@ export default function Index({ data }) {
   const { title } = data.page.frontmatter
 
   return (
-    <Layout
-      meta={{
-        title: 'Kommunikationsbyrån som gör skillnad',
-        description:
-          'Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang.',
-      }}
-    >
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero scrollButtonElement="#playground" pt={8}>
         <H1>{title}</H1>
       </Hero>
@@ -122,6 +117,17 @@ export const query = graphql`
       frontmatter {
         title
         excerpt
+        seo {
+          title
+          description
+          image {
+            childImageSharp {
+              og: resize(width: 1200, height: 630, quality: 75) {
+                src
+              }
+            }
+          }
+        }
       }
     }
     cases: allMarkdownRemark(
