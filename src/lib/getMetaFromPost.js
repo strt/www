@@ -1,4 +1,4 @@
-export default function getMetaFromPost(post, { type }) {
+export default function getMetaFromPost(post, { type } = {}) {
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.excerpt,
