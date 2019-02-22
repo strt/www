@@ -5,6 +5,16 @@ display_url: https://beta.strateg.se
 publish_mode: editorial_workflow
 media_folder: 'content/media/uploads'
 
+aliases:
+  - &seo
+    name: 'seo'
+    label: 'SEO'
+    widget: 'object'
+    fields:
+      - { name: 'title', label: 'Title', widget: 'string' }
+      - { name: 'description', label: 'Description', widget: 'text' }
+      - { name: 'image', label: 'Image', widget: 'image' }
+
 collections:
   - name: case
     label: Case
@@ -48,6 +58,7 @@ collections:
           displayFields: ['first_name', 'last_name'],
         }
       - { name: 'body', label: 'Body', widget: 'markdown' }
+      - *seo
 
   - name: 'articles'
     label: 'Articles'
@@ -70,13 +81,7 @@ collections:
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
       - { name: 'redirect_from', label: 'Redirect', widget: 'list' }
-      - name: 'seo'
-        label: 'SEO'
-        widget: 'object'
-        fields:
-          - { name: 'title', label: 'Title', widget: 'string' }
-          - { name: 'description', label: 'Description', widget: 'text' }
-          - { name: 'image', label: 'Image', widget: 'image' }
+      - *seo
   - name: 'employees'
     label: 'Employees'
     label_singular: 'Employee'
@@ -105,30 +110,35 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *seo
       - name: 'about'
         label: 'About'
         file: 'content/pages/vad-vi-gor.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *seo
       - name: 'career'
         label: 'Career'
         file: 'content/pages/bli-en-av-oss.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *seo
       - name: 'news'
         label: 'News'
         file: 'content/pages/aktuellt.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *seo
       - name: 'contact'
         label: 'Contact'
         file: 'content/pages/kontakt.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *seo
 
   - name: 'settings'
     label: 'Settings'
