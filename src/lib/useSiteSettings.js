@@ -18,6 +18,7 @@ export default function useSiteSettings() {
           }
           social {
             facebook
+            facebook_app_id
             instagram
             linkedin
             github
