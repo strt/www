@@ -11,13 +11,19 @@ aliases:
     label: 'SEO'
     widget: 'object'
     fields:
-      - { name: 'title', label: 'Title', widget: 'string' }
-      - { name: 'description', label: 'Description', widget: 'text' }
-      - { name: 'image', label: 'Image', widget: 'image' }
+      - { name: 'title', label: 'Title', widget: 'string', required: false }
+      - {
+          name: 'description',
+          label: 'Description',
+          widget: 'text',
+          required: false,
+        }
+      - { name: 'image', label: 'Image', widget: 'image', required: false }
   - &redirect_from
     name: 'redirect_from'
     label: 'Alias'
     widget: 'list'
+    required: false
     field: { label: URL, name: url, widget: string }
 
 collections:
