@@ -10,7 +10,8 @@ export default function getMetaFromPost(post, { type } = {}) {
     type,
     publishedTime: post.frontmatter.date,
     image: getSeoField('image')
-      ? post.frontmatter.seo.image.childImageSharp.og.src
-      : post.frontmatter.image.childImageSharp.og.src,
+      ? post.frontmatter.seo.image &&
+        post.frontmatter.seo.image.childImageSharp.og.src
+      : post.frontmatter.image && post.frontmatter.image.childImageSharp.og.src,
   }
 }

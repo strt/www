@@ -29,10 +29,12 @@ export default function Meta({
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta
-        property="og:image"
-        content={image ? siteSettings.siteUrl + image : ''}
-      />
+      {image && (
+        <meta
+          property="og:image"
+          content={image ? siteSettings.siteUrl + image : ''}
+        />
+      )}
       {url && <meta property="og:url" content={siteSettings.siteUrl + url} />}
       {publishedTime && (
         <meta
