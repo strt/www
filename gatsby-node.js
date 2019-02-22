@@ -1,5 +1,4 @@
-const { resolve, join } = require('path')
-const { execSync } = require('child_process')
+const { resolve } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const redirectPaths = require('./content/redirects.json')
@@ -11,13 +10,13 @@ const redirectPaths = require('./content/redirects.json')
 //   })
 // }
 
-// Inlined version of subfont
-// (https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-subfont)
-exports.onPostBuild = ({ store }) => {
-  const root = join(store.getState().program.directory, `public`)
+// // Inlined version of subfont
+// // (https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-subfont)
+// exports.onPostBuild = ({ store }) => {
+//   const root = path.join(store.getState().program.directory, `public`)
 
-  execSync(`npx subfont -i --no-recursive --inline-css --root ${root}`)
-}
+//   require('child_process').execSync(`npx subfont -i --no-recursive --inline-css --root ${root}`)
+// }
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
