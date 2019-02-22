@@ -13,8 +13,9 @@ import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import { colors } from '../style'
 import renderAst from '../lib/renderAst'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
-export default function Template({
+export default function Case({
   data: { markdownRemark: post },
   pageContext: { next },
 }) {
@@ -23,7 +24,7 @@ export default function Template({
     post.frontmatter.contact_relation.frontmatter
 
   return (
-    <Layout title={post.frontmatter.title} hideFooter>
+    <Layout meta={getMetaFromPost(post)} hideFooter>
       <article>
         <Grid
           justifyContent="space-between"
@@ -102,6 +103,9 @@ export const pageQuery = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
+      fields {
+        slug
+      }
       frontmatter {
         date
         title

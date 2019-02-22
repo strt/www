@@ -20,19 +20,11 @@ const Main = styled.main`
   flex-grow: 1;
 `
 
-export default function Layout({
-  children,
-  title,
-  description,
-  meta,
-  hideFooter,
-}) {
+export default function Layout({ meta, hideFooter, children }) {
   return (
     <PageWrapper>
       <GlobalStyle />
-      <Meta title={title} description={description}>
-        {meta}
-      </Meta>
+      <Meta {...meta} />
       <SkipToContentLink />
       <Header />
       <Main id="main-content">{children}</Main>

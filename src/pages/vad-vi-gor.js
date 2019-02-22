@@ -7,7 +7,7 @@ import { H1, Excerpt } from '../components/Text'
 export default function About({ data }) {
   const { title, excerpt } = data.page.frontmatter
   return (
-    <Layout title="Vad vi gör">
+    <Layout meta={{ title: 'Vad vi gör' }}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>

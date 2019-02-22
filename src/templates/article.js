@@ -9,14 +9,15 @@ import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import renderAst from '../lib/renderAst'
 import dayjs from '../lib/dayjs'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
-export default function Template({ data: { markdownRemark: post } }) {
+export default function Article({ data: { markdownRemark: post } }) {
   const { date } = post.frontmatter
   const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
   const hasCover = !!post.frontmatter.image
 
   return (
-    <Layout title={post.frontmatter.title}>
+    <Layout meta={getMetaFromPost(post, { type: 'article' })}>
       <article>
         {date && (
           <Grid>
@@ -55,6 +56,9 @@ export const pageQuery = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
+      fields {
+        slug
+      }
       frontmatter {
         date
         title

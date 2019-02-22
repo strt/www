@@ -4,10 +4,11 @@ import useSiteSettings from '../lib/useSiteSettings'
 
 export default function Meta({
   title,
-  description,
+  description = '',
   image,
   url,
-  isArticle,
+  publishedTime,
+  type = 'website',
   children,
 }) {
   const siteSettings = useSiteSettings()
@@ -15,30 +16,34 @@ export default function Meta({
   return (
     <Helmet
       htmlAttributes={{ lang: 'sv' }}
-      title={title}
       titleTemplate={`%s – ${siteSettings.name}`}
       defaultTitle={siteSettings.name}
     >
       {/* TODO: Remove before release */}
       <meta name="robots" content="noindex, nofollow" />
 
-      {description && <meta name="description" content={description} />}
+      <title>{title}</title>
+      <meta name="description" content={description} />
 
-      {/* OpenGraph tags */}
-      {url && <meta property="og:url" content={url} />}
       <meta property="og:site_name" content={siteSettings.name} />
-      <meta property="og:type" content={isArticle ? 'article' : 'website'} />
+      <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
-      {description && <meta property="og:description" content={description} />}
+      <meta property="og:description" content={description} />
       {image && <meta property="og:image" content={image} />}
+      {url && <meta property="og:url" content={siteSettings.siteUrl + url} />}
+      {publishedTime && (
+        <meta
+          property="article:published_time"
+          itemProp="datePublished"
+          content={publishedTime}
+        />
+      )}
       {siteSettings.social.facebook_app_id && (
         <meta
           property="fb:app_id"
           content={siteSettings.social.facebook_app_id}
         />
       )}
-
-      {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
 
       {children}

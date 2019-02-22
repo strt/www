@@ -27,7 +27,7 @@ export default function Contact({ data }) {
   const { title, excerpt } = data.page.frontmatter
 
   return (
-    <Layout title="Kontakt" description={excerpt}>
+    <Layout meta={{ title: 'Kontakt', description: excerpt }}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>

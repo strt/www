@@ -25,8 +25,11 @@ export default function Index({ data }) {
 
   return (
     <Layout
-      title="Kommunikationsbyrån som gör skillnad"
-      description="Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang."
+      meta={{
+        title: 'Kommunikationsbyrån som gör skillnad',
+        description:
+          'Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang.',
+      }}
     >
       <Hero scrollButtonElement="#playground" pt={8}>
         <H1>{title}</H1>

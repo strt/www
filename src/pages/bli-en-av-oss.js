@@ -16,7 +16,7 @@ export default function Career({ data }) {
   const { title } = data.page.frontmatter
 
   return (
-    <Layout title="Bli en av oss">
+    <Layout meta={{ title: 'Bli en av oss' }}>
       <Hero scrollButtonElement="#cover">
         <H1>{title}</H1>
       </Hero>

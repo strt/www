@@ -13,7 +13,7 @@ export default function News({ data }) {
   const { title, excerpt } = data.page.frontmatter
 
   return (
-    <Layout title="Aktuellt">
+    <Layout meta={{ title: 'Aktuellt' }}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>

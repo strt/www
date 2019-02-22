@@ -78,7 +78,7 @@ export default function Case({ data, location }) {
     .sort()
 
   return (
-    <Layout title="Case">
+    <Layout meta={{ title: 'Case' }}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>

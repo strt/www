@@ -10,7 +10,7 @@ const Playground = React.lazy(() => import('../components/Playground'))
 
 export default function NotFound() {
   return (
-    <Layout title="404">
+    <Layout meta={{ titel: '404' }}>
       <Hero>
         <H1>Vad letar du efter, kompis?</H1>
         <Excerpt>
