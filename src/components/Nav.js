@@ -138,7 +138,7 @@ export function Navigation({ children }) {
         aria-expanded={isOpen}
         aria-controls={NAV_ID}
       >
-        meny.
+        meny
       </Link>
       <NavContent
         id={NAV_ID}
