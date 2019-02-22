@@ -30,6 +30,7 @@ export const A = styled.a`
   color: ${props => getColor(props)};
   background: none;
   transition: background 120ms ${easings.easeInQuad};
+  -webkit-touch-callout: none;
 
   &:hover {
     background-color: ${props => rgba(getColor(props), 0.1)};
