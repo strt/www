@@ -4,7 +4,7 @@ import { Text, H1, H2 } from '../components/Text'
 import { Column } from '../components/Grid'
 import Image from '../components/Image'
 import Link from '../components/Link'
-import EmbedPLayer from '../components/EmbedPlayer'
+import EmbedPlayer from '../components/EmbedPlayer'
 
 function withColumn(WrappedComponent, { tablet = 8, ...rest } = {}) {
   function Component(props) {
@@ -31,21 +31,14 @@ function ImageWrapper(props) {
 }
 
 const { Compiler: renderAst } = new RehypeReact({
-  // Remove wrapping div element
-  createElement: (component, props = {}, children = []) => {
-    if (component === 'div') {
-      return <>{children}</>
-    }
-
-    return React.createElement(component, props, children)
-  },
+  createElement: React.createElement,
   components: {
     h1: withColumn(H1),
     h2: withColumn(H2),
     p: withColumn(Text),
     a: Link,
-    'image-component': withColumn(ImageWrapper, { tablet: 12, mb: 7, mt: 2 }),
-    iframe: withColumn(EmbedPLayer, { tablet: 12, mb: 7, mt: 2 }),
+    'image-component': withColumn(ImageWrapper, { tablet: 12, my: 7 }),
+    iframe: withColumn(EmbedPlayer, { tablet: 12, my: 7 }),
   },
 })
 
