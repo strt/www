@@ -21,8 +21,6 @@ function ContactOptionButton(props) {
 function ContactOptions() {
   const [activeForm, setActiveForm] = useState(null)
 
-  console.log('render')
-
   function resetActiveForm() {
     setActiveForm(null)
   }
