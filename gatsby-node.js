@@ -1,7 +1,6 @@
 const { resolve } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
-const redirectPaths = require('./content/redirects.json')
 
 // exports.onCreateWebpackConfig = ({ actions }) => {
 //   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -145,16 +144,6 @@ exports.createPages = async ({ actions, graphql }) => {
     })
 
     registerRedirectsFromNode(node)
-  })
-
-  // Register redirects
-  Object.entries(redirectPaths).forEach(([fromPath, toPath]) => {
-    createRedirect({
-      fromPath,
-      redirectInBrowser: true,
-      isPermanent: true,
-      toPath,
-    })
   })
 }
 
