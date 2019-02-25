@@ -177,14 +177,15 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node)
 
   if (node.internal.type === 'MarkdownRemark') {
+    const { relativePath } = getNode(node.parent)
     const { redirect_from: redirectFrom, permalink } = node.frontmatter
     let slug = permalink || createFilePath({ node, getNode })
 
-    if (slug.startsWith('/pages')) {
+    if (relativePath.startsWith('pages')) {
       slug = slug.replace('/pages', '')
     }
 
-    if (slug.startsWith('/posts')) {
+    if (relativePath.startsWith('posts')) {
       slug = slug.replace('/aktuellt', '')
     }
 
