@@ -127,7 +127,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // Posts
   const posts = edges.filter(
     ({ node }) =>
-      node.fields.slug.startsWith('/posts/') &&
+      node.fields.slug.startsWith('/aktuellt/') &&
       !node.fileAbsolutePath.includes('/pages/'),
   )
   posts.forEach(({ node }, index) => {
@@ -175,7 +175,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     if (relativePath.startsWith('posts')) {
-      slug = slug.replace('/aktuellt', '')
+      slug = slug.replace('/posts', '/aktuellt')
     }
 
     createNodeField({
