@@ -123,9 +123,9 @@ function LazyImage(props, forwardedRef) {
       ref={imageWrapperRef}
       aspectRatio={aspectRatio}
       isLoaded={isLoaded}
-      bg={bg}
     >
       {base64 && <img src={base64} alt="" data-placeholder />}
+      {bg && <div style={{ background: bg }} data-background />}
       {isVisible && (
         <Img
           ref={forwardedRef}
@@ -146,11 +146,11 @@ export default React.forwardRef(LazyImage)
 
 export const ImageWrapper = styled.figure`
   position: relative;
+  z-index: 0;
   overflow: hidden;
   height: 0;
   padding-bottom: ${props =>
     props.aspectRatio ? `${100 / props.aspectRatio}%` : null};
-  background: ${props => props.bg || 'none'};
 
   img {
     max-width: none;
@@ -158,14 +158,18 @@ export const ImageWrapper = styled.figure`
   }
 
   [data-image] {
-    position: relative;
-    z-index: 1;
     opacity: ${props => (props.isLoaded ? 1 : 0)};
     transition: opacity ${durations.slow} ${easings.easeInQuad};
   }
 
   [data-placeholder] {
     ${cover()}
+    z-index: -1;
     filter: blur(30px);
+  }
+
+  [data-background] {
+    ${cover()}
+    z-index: -2;
   }
 `
