@@ -1,6 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { vw, colors, fontFamily, breakpoints, fluidRange } from '../style'
+import {
+  vw,
+  colors,
+  fontFamily,
+  breakpoints,
+  fluidRange,
+  easings,
+  durations,
+} from '../style'
 
 const Input = styled.input`
   border: 0;
@@ -9,7 +17,7 @@ const Input = styled.input`
   width: 100%;
   padding: ${fluidRange({ min: 4, max: 8 })} 0
     ${fluidRange({ min: 12, max: 16 })};
-  border-bottom: solid 1px ${colors.steel500};
+  outline: none;
   font-family: ${fontFamily};
   font-size: ${fluidRange({ min: 16, max: 22 })};
   line-height: normal;
@@ -33,7 +41,29 @@ const Label = styled.label`
 `
 
 const Wrapper = styled.div`
+  position: relative;
   margin-bottom: ${fluidRange({ min: 24, max: 32 })};
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    pointer-events: none;
+    background-color: ${colors.steel500};
+    transform-origin: 100% 100%;
+    transition: all ${durations.fast} ${easings.easeOutQuad};
+  }
+
+  &:focus-within,
+  &:hover {
+    &::after {
+      transform: scale3d(1, 2, 1);
+    }
+  }
 
   @media ${breakpoints.medium} {
     margin-bottom: ${vw(32)};
