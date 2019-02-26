@@ -63,8 +63,11 @@ export default function CookieToast() {
                   <Column>
                     <Text textColor="white" m="0">
                       Vi tycker att kakor gör livet lite bättre, även på webben.
-                      Genom att surfa vidare godkänner du att vi använder
-                      cookies.
+                      Genom att surfa vidare godkänner du att vi använder{' '}
+                      <Link to="/privacy" colorVariant="white">
+                        cookies
+                      </Link>
+                      .
                     </Text>
                   </Column>
                   <Column width="auto">
