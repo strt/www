@@ -22,7 +22,11 @@ export default function Career({ data }) {
         <H1>{title}</H1>
       </Hero>
       <Cover id="cover">
-        <Image fluid={data.coverImage.childImageSharp.fluid} alt="" />
+        <Image
+          fluid={data.coverImage.childImageSharp.fluid}
+          aspectRatio="auto"
+          alt=""
+        />
       </Cover>
       <Section py="7">
         <Grid>
