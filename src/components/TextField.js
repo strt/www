@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { IdContext } from './IdManager'
 import {
   vw,
   colors,
@@ -71,10 +72,13 @@ const Wrapper = styled.div`
 `
 
 function TextField({ label, ...props }, forwardedRef) {
+  const getId = useContext(IdContext)
+  const id = props.id || getId()
+
   return (
     <Wrapper>
-      <Label>{label}</Label>
-      <Input ref={forwardedRef} {...props} />
+      <Label htmlFor={id}>{label}</Label>
+      <Input id={id} ref={forwardedRef} {...props} />
     </Wrapper>
   )
 }
