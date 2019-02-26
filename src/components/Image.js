@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { easings, cover, durations } from '../style'
 
@@ -82,11 +82,13 @@ function normalizeProps({ fluid, aspectRatio, sizes, ...props }) {
 
 function LazyImage(props, forwardedRef) {
   const {
+    as: Img = 'img',
     src,
     sizes,
     srcSet,
     alt = '',
     base64,
+    bg,
     aspectRatio,
     critical = false,
     onLoad = noop,
@@ -110,37 +112,32 @@ function LazyImage(props, forwardedRef) {
     }
   }, [isLoaded])
 
+  const handleLoad = useCallback((event) => {
+    onLoad(event)
+    setLoaded(true)
+  })
+
   return (
     <ImageWrapper
       key={`${JSON.stringify(srcSet)}`}
       ref={imageWrapperRef}
       aspectRatio={aspectRatio}
+      isLoaded={isLoaded}
+      bg={bg}
     >
-      {base64 && <PlaceholderImage src={base64} alt="" isLoaded={isLoaded} />}
+      {base64 && <img src={base64} alt="" data-placeholder />}
       {isVisible && (
-        <img
+        <Img
           ref={forwardedRef}
           alt={alt}
           srcSet={srcSet}
           sizes={sizes}
           src={src}
-          onLoad={(event) => {
-            onLoad(event)
-            setLoaded(true)
-          }}
+          onLoad={handleLoad}
+          data-image
           {...elementProps}
         />
       )}
-      <noscript>
-        <img
-          alt={alt}
-          srcSet={srcSet}
-          sizes={sizes}
-          src={src}
-          {...elementProps}
-          style={{ position: 'relative', zIndex: 3 }}
-        />
-      </noscript>
     </ImageWrapper>
   )
 }
@@ -153,19 +150,23 @@ export const ImageWrapper = styled.figure`
   height: 0;
   padding-bottom: ${props =>
     props.aspectRatio ? `${100 / props.aspectRatio}%` : null};
+  background: ${props => props.bg || 'none'};
 
   img {
     max-width: none;
     width: 100%;
   }
-`
 
-export const PlaceholderImage = styled.img`
-  ${cover()}
-  filter: blur(30px);
-  transform: scale(1.2);
-  z-index: 2;
-  opacity: ${props => (props.isLoaded ? 0 : 1)};
-  transition: opacity ${durations.slow} ${easings.easeInSine};
-  pointer-events: none;
+  [data-image] {
+    position: relative;
+    z-index: 1;
+    opacity: ${props => (props.isLoaded ? 1 : 0)};
+    transition: opacity ${durations.slow} ${easings.easeInQuad};
+  }
+
+  [data-placeholder] {
+    ${cover()}
+    filter: blur(30px);
+    transform: scale(1.2);
+  }
 `
