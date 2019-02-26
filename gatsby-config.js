@@ -43,6 +43,12 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve('./src/components/App.js'),
+      },
+    },
     'gatsby-plugin-sitemap',
     // 'gatsby-plugin-subfont', Enable again once it's less buggy
     'gatsby-plugin-catch-links',

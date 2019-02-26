@@ -1,14 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { GlobalStyle } from '../style'
 import Meta from './Meta'
 import SkipToContentLink from './SkipToContentLink'
 import Header from './Header'
 import Footer from './Footer'
-import NoSSR from './NoSSR'
-import CookieToast from './CookieToast'
-import '../lib/iconLibrary'
-import '../assets/fonts/circular.css'
 
 const PageWrapper = styled.div`
   display: flex;
@@ -23,14 +18,10 @@ const Main = styled.main`
 export default function Layout({ meta, hideFooter, children }) {
   return (
     <PageWrapper>
-      <GlobalStyle />
       <Meta {...meta} />
       <SkipToContentLink />
       <Header />
       <Main id="main-content">{children}</Main>
-      <NoSSR>
-        <CookieToast />
-      </NoSSR>
       {!hideFooter && <Footer />}
     </PageWrapper>
   )
