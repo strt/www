@@ -84,6 +84,7 @@ export default function Contact({ data }) {
               {node.frontmatter.image && (
                 <Image
                   fluid={node.frontmatter.image.childImageSharp.fluid}
+                  bg={colors.dark}
                   sizes="(min-width: 768px) 24vw, 46vw"
                 />
               )}
