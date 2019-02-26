@@ -167,6 +167,5 @@ export const ImageWrapper = styled.figure`
   [data-placeholder] {
     ${cover()}
     filter: blur(30px);
-    transform: scale(1.2);
   }
 `
