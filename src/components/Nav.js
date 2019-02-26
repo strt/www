@@ -97,7 +97,7 @@ export function Navigation({ children }) {
     config: { ...config.stiff, friction: 28 },
     from: {
       opacity: 0,
-      translateY: 0,
+      translateY: -50,
     },
     to: {
       opacity: isOpen ? 1 : 0,
@@ -150,7 +150,7 @@ export function Navigation({ children }) {
             o === 0 && !isOpen ? 'hidden' : 'visible',
           ),
           pointerEvents: navAnimStyle.opacity.interpolate(o =>
-            o !== 1 ? 'none' : 'auto',
+            o !== 0 && !isOpen ? 'none' : 'auto',
           ),
           transform: navAnimStyle.translateY.interpolate(
             y => `translate3d(0, ${y}%, 0)`,
