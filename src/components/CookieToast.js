@@ -6,6 +6,7 @@ import Link from './Link'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import { colors, vw, breakpoints, fluidRange } from '../style'
+import { routes } from '../routes'
 
 const CookieToastWrapper = animated(styled.div`
   position: fixed;
@@ -64,7 +65,7 @@ export default function CookieToast() {
                     <Text textColor="white" m="0">
                       Vi tycker att kakor gör livet lite bättre, även på webben.
                       Genom att surfa vidare godkänner du att vi använder{' '}
-                      <Link to="/privacy" colorVariant="white">
+                      <Link to={routes.policy} colorVariant="white">
                         cookies
                       </Link>
                       .
