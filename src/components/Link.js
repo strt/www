@@ -5,7 +5,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
 import { textSize } from './Text'
-import { colors, fontFamily, easings } from '../style'
+import { colors, fontFamily, easings, durations } from '../style'
 
 const COLOR_VARIANTS = {
   red: colors.watermelonRed500,
@@ -29,7 +29,7 @@ export const A = styled.a`
   text-decoration: underline;
   color: ${props => getColor(props)};
   background: none;
-  transition: background 120ms ${easings.easeInQuad};
+  transition: background ${durations.fast} ${easings.easeInQuad};
   -webkit-touch-callout: none;
 
   &:hover {

@@ -10,7 +10,14 @@ import Tile from '../components/Tile'
 import Link from '../components/Link'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints, fluidRange, vw, easings, animations } from '../style'
+import {
+  breakpoints,
+  fluidRange,
+  vw,
+  easings,
+  animations,
+  durations,
+} from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 function filterCases(items, filter) {
@@ -47,7 +54,8 @@ const Filter = styled(Div)`
 `
 
 const Animation = styled.div`
-  animation: ${animations.fadeIn} 220ms 120ms ${easings.easeOutSine} both;
+  animation: ${animations.fadeIn} ${durations.normal} ${easings.easeOutSine}
+    120ms both;
 `
 
 export default function Case({ data, location }) {

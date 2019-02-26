@@ -13,6 +13,7 @@ import {
   fluidRange,
   vw,
   easings,
+  durations,
 } from '../style'
 import { getWidth } from './Grid'
 
@@ -40,7 +41,7 @@ const Content = styled.div`
     /* Copy/mimic Link component style */
     & span {
       text-decoration: underline;
-      transition: background 120ms ${easings.easeInQuad};
+      transition: background ${durations.fast} ${easings.easeInQuad};
 
       ${Link}:hover & {
         background-color: ${rgba(colors.dark, 0.1)};

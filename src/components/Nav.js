@@ -15,7 +15,7 @@ import { Grid, Column } from './Grid'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
-import { colors, fluidRange, easings } from '../style'
+import { colors, fluidRange, easings, durations } from '../style'
 
 function getProps({ href, isPartiallyCurrent }) {
   return isPartiallyCurrent && href !== '/'
@@ -35,7 +35,7 @@ export const StyledNavLink = styled(GatsbyLink)`
   font-weight: 700;
   text-decoration: none;
   color: white;
-  transition: all 200ms ${easings.easeOutQuad};
+  transition: all ${durations.fast} ${easings.easeOutQuad};
 
   &:last-child {
     margin-right: 0;

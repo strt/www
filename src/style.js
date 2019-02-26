@@ -45,6 +45,12 @@ export const breakpoints = {
   large: '(min-width: 1024px)',
 }
 
+export const durations = {
+  fast: '120ms',
+  normal: '220ms',
+  slow: '320ms',
+}
+
 export const easings = {
   easeInCubic: 'cubic-bezier(0.55, 0.055, 0.675, 0.19)',
   easeInOutCubic: 'cubic-bezier(0.215, 0.61, 0.355, 1)',

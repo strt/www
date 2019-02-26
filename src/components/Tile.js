@@ -4,7 +4,15 @@ import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
 import Image, { ImageWrapper } from './Image'
-import { cover, breakpoints, fluidRange, vw, colors, easings } from '../style'
+import {
+  cover,
+  breakpoints,
+  fluidRange,
+  vw,
+  colors,
+  easings,
+  durations,
+} from '../style'
 
 const Link = styled(GatsbyLink)`
   display: flex;
@@ -48,7 +56,7 @@ const Media = styled.div`
     height: 100%;
     background-color: ${props => props.bg};
     opacity: 0;
-    transition: opacity 320ms ${easings.easeOutSine};
+    transition: opacity ${durations.slow} ${easings.easeOutSine};
   }
 
   ${Link}:hover &,

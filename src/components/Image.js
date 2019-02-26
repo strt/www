@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { easings, cover } from '../style'
+import { easings, cover, durations } from '../style'
 
 const cache = new Set()
 
@@ -166,6 +166,6 @@ export const PlaceholderImage = styled.img`
   transform: scale(1.2);
   z-index: 2;
   opacity: ${props => (props.isLoaded ? 0 : 1)};
-  transition: opacity 400ms ${easings.easeInSine};
+  transition: opacity ${durations.slow} ${easings.easeInSine};
   pointer-events: none;
 `
