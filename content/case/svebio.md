@@ -1,10 +1,11 @@
 ---
-date: '2018-08-07T15:25:24+02:00'
-client: 'Svebio'
-title: 'Tre webbplatser - en smart lösning.'
+client: Svebio
+title: Tre webbplatser - en smart lösning.
 excerpt: null
-image: '/media/uploads/case-svebio.jpg'
-tags: ['Digitalt']
+date: 2018-08-07T15:25:24+02:00
+image: /media/uploads/case-svebio.jpg
+tags:
+  - Digitalt
 color: '#76c900'
 ---
 

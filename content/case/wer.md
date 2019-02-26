@@ -1,10 +1,12 @@
 ---
-date: '2018-04-06T15:25:24+02:00'
-client: 'Wer'
-title: 'Wer ger mer än kunderna visste.'
+client: Wer
+title: Wer ger mer än kunderna visste.
 excerpt: null
-image: '/media/uploads/case-wer.jpg'
-tags: ['Digitalt', 'Print']
+date: 2018-04-06T15:25:24+02:00
+image: /media/uploads/case-wer.jpg
+tags:
+  - Digitalt
+  - Print
 ---
 
 ## Så ser vi ut

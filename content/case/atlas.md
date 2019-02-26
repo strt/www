@@ -1,10 +1,12 @@
 ---
-date: '2018-04-08T15:25:24+02:00'
-client: 'Epiroc'
-title: 'Epiroc.'
+client: Epiroc
+title: Epiroc.
 excerpt: null
+date: 2018-04-08T15:25:24+02:00
 image: /media/uploads/case-atlas.jpg
-tags: ['Digitalt', 'Print']
+tags:
+  - Digitalt
+  - Print
 color: '#55C3D7'
 ---
 
