@@ -1,6 +1,6 @@
-const axios = require('axios')
+import axios from 'axios'
 
-exports.handler = function instagram(event, context, callback) {
+export async function handler(event, context, callback) {
   const endpoint = 'https://api.instagram.com/v1/users/self/media/recent'
   const token = process.env.INSTAGRAM_ACCESS_TOKEN
   const limit = 5
