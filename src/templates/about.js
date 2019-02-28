@@ -19,7 +19,7 @@ export default function About({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: markdownRemark(fields: { slug: { eq: $slug } }) {
+    page: mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt

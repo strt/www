@@ -1,6 +1,6 @@
 const { resolve } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+// const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 // exports.onCreateWebpackConfig = ({ actions }) => {
 //   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
@@ -16,11 +16,54 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 //   require('child_process').execSync(`npx subfont -i --no-recursive --inline-css --root ${root}`)
 // }
+const path = require('path')
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      alias: {
+        $components: path.resolve(__dirname, 'src/components'),
+      },
+    },
+  })
+}
+
+const _ = require('lodash')
+const slash = require('slash')
+const deepMap = require('deep-map')
+
+const fileNodes = []
+
+function fmImagesToRelative(node) {
+  // Save file references
+  fileNodes.push(node)
+  // Only process markdown files
+  if (node.internal.type === `Mdx`) {
+    // Convert paths in frontmatter to relative
+    function makeRelative(value) {
+      if (_.isString(value) && path.isAbsolute(value)) {
+        let imagePath
+        const foundImageNode = _.find(fileNodes, (file) => {
+          if (!file.dir) return
+          imagePath = path.join(file.dir, path.basename(value))
+          return slash(path.normalize(file.absolutePath)) === slash(imagePath)
+        })
+        if (foundImageNode) {
+          return slash(
+            path.relative(path.join(node.fileAbsolutePath, '..'), imagePath),
+          )
+        }
+      }
+      return value
+    }
+    // Deeply iterate through frontmatter data for absolute paths
+    deepMap(node.frontmatter, makeRelative, { inPlace: true })
+  }
+}
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
-  const caseTemplate = resolve('src/templates/case.js')
-  const postTemplate = resolve('src/templates/post.js')
 
   const redirectToSlugMap = new Map()
   function registerRedirectsFromNode(node) {
@@ -56,15 +99,13 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const allMarkdown = await graphql(`
     {
-      allMarkdownRemark(
-        limit: 1000
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ) {
+      allMdx(limit: 1000, sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
           node {
             fileAbsolutePath
             fields {
               slug
+              template
               redirect
             }
             frontmatter {
@@ -82,18 +123,16 @@ exports.createPages = async ({ actions, graphql }) => {
     throw Error(allMarkdown.errors)
   }
 
-  const { edges } = allMarkdown.data.allMarkdownRemark
+  const { edges } = allMarkdown.data.allMdx
 
   // Pages
   const pages = edges.filter(({ node }) =>
     node.fileAbsolutePath.includes('/pages/'),
   )
   pages.forEach(({ node }) => {
-    const template = node.frontmatter.template || 'frontpage'
-
     createPage({
       path: node.fields.slug,
-      component: resolve(`./src/templates/${template}.js`),
+      component: resolve(`./src/templates/${node.fields.template}.js`),
       context: {
         slug: node.fields.slug,
       },
@@ -114,7 +153,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     createPage({
       path: node.fields.slug,
-      component: caseTemplate,
+      component: resolve(`./src/templates/${node.fields.template}.js`),
       context: {
         slug: node.fields.slug,
         next,
@@ -136,7 +175,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     createPage({
       path: node.fields.slug,
-      component: postTemplate,
+      component: resolve(`./src/templates/${node.fields.template}.js`),
       context: {
         slug: node.fields.slug,
         next,
@@ -165,9 +204,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   fmImagesToRelative(node)
 
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const { relativePath } = getNode(node.parent)
     const { redirect_from: redirectFrom, permalink } = node.frontmatter
+    let { template = 'frontpage' } = node.frontmatter
     let slug = permalink || createFilePath({ node, getNode })
 
     if (relativePath.startsWith('pages')) {
@@ -175,13 +215,24 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     }
 
     if (relativePath.startsWith('posts')) {
+      template = 'post'
       slug = slug.replace('/posts', '/aktuellt')
+    }
+
+    if (relativePath.startsWith('case')) {
+      template = 'case'
     }
 
     createNodeField({
       node,
       name: 'slug',
       value: slug,
+    })
+
+    createNodeField({
+      node,
+      name: 'template',
+      value: template,
     })
 
     createNodeField({

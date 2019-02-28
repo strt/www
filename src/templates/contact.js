@@ -111,7 +111,7 @@ export default function Contact({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: markdownRemark(fields: { slug: { eq: $slug } }) {
+    page: mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt
@@ -140,7 +140,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    clientContact: markdownRemark(
+    clientContact: mdx(
       frontmatter: { email: { eq: "fredrik.vannestal@strateg.se" } }
     ) {
       frontmatter {
@@ -149,7 +149,7 @@ export const pageQuery = graphql`
         phone
       }
     }
-    employees: allMarkdownRemark(
+    employees: allMdx(
       filter: { fileAbsolutePath: { regex: "/employees/" } }
       sort: { fields: [frontmatter___first_name, frontmatter___last_name] }
     ) {

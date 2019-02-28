@@ -6,8 +6,7 @@ module.exports = {
     siteUrl: 'https://beta.strateg.se',
   },
   mapping: {
-    'MarkdownRemark.frontmatter.contact_relation':
-      'MarkdownRemark.frontmatter.email',
+    'Mdx.frontmatter.contact_relation': 'Mdx.frontmatter.email',
   },
   plugins: [
     {
@@ -28,18 +27,32 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-mdx`,
       options: {
-        plugins: [
+        extensions: ['.mdx', '.md'],
+        globalScope: `
+          import EmbedPlayer from "$components/EmbedPlayer";
+          import { Column } from "$components/Grid";
+          import Image from "$components/Image";
+          
+          export default { EmbedPlayer, Column, Image };
+        `,
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
               name: 'media',
             },
           },
-          'gatsby-remark-unwrap-images',
-          'gatsby-remark-image-component',
-          'gatsby-remark-embed',
+          {
+            resolve: require.resolve('./plugins/gatsby-remark-unwrap-images'),
+          },
+          {
+            resolve: require.resolve('./plugins/gatsby-remark-image-component'),
+          },
+          // {
+          //   resolve: require.resolve('./plugins/gatsby-remark-columns'),
+          // },
         ],
       },
     },
