@@ -76,9 +76,11 @@
     "react-dom": "^16.8.0",
     "react-helmet": "^5.2.0",
     "react-spring": "^8.0.0",
+    "remark-unwrap-images": "^0.1.0",
     "resize-observer-polyfill": "^1.5.1",
     "styled-components": "^4.0.0",
-    "styled-reset": "^1.5.1"
+    "styled-reset": "^1.5.1",
+    "unist-util-remove": "^1.0.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.8.0",
@@ -96,7 +98,6 @@
     "stylelint-config-strateg": "^1.8.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.5.0",
-    "unist-util-remove": "^1.0.1",
     "webpack-bundle-analyzer": "^3.0.3"
   }
 }

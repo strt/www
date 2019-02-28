@@ -1,4 +1,4 @@
-/* eslint-disable-next-line import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, global-require */
 const proxy = require('http-proxy-middleware')
 
 module.exports = {
@@ -33,19 +33,17 @@ module.exports = {
         globalScope: `
           import EmbedPlayer from "$components/EmbedPlayer";
           import { Column } from "$components/Grid";
-          import Image from "$components/Image";
+          import { MDXImage as Image } from "$components/Image";
           
           export default { EmbedPlayer, Column, Image };
         `,
+        mdPlugins: [require('remark-unwrap-images')],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
               name: 'media',
             },
-          },
-          {
-            resolve: require.resolve('./plugins/gatsby-remark-unwrap-images'),
           },
           {
             resolve: require.resolve('./plugins/gatsby-remark-image-component'),
