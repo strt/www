@@ -108,11 +108,6 @@ exports.createPages = async ({ actions, graphql }) => {
               template
               redirect
             }
-            frontmatter {
-              title
-              client
-              template
-            }
           }
         }
       }
