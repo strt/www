@@ -108,6 +108,10 @@ exports.createPages = async ({ actions, graphql }) => {
               template
               redirect
             }
+            frontmatter {
+              title
+              client
+            }
           }
         }
       }
@@ -137,11 +141,7 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 
   // Case
-  const cases = edges.filter(
-    ({ node }) =>
-      node.fields.slug.startsWith('/case/') &&
-      !node.fileAbsolutePath.includes('/pages/'),
-  )
+  const cases = edges.filter(({ node }) => node.fields.template === 'case')
   cases.forEach(({ node }, index) => {
     const { node: next } =
       index === cases.length - 1 ? cases[0] : cases[index + 1]
@@ -159,21 +159,13 @@ exports.createPages = async ({ actions, graphql }) => {
   })
 
   // Posts
-  const posts = edges.filter(
-    ({ node }) =>
-      node.fields.slug.startsWith('/aktuellt/') &&
-      !node.fileAbsolutePath.includes('/pages/'),
-  )
-  posts.forEach(({ node }, index) => {
-    const { node: next } =
-      index === posts.length - 1 ? posts[0] : posts[index + 1]
-
+  const posts = edges.filter(({ node }) => node.fields.template === 'post')
+  posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component: resolve(`./src/templates/${node.fields.template}.js`),
       context: {
         slug: node.fields.slug,
-        next,
       },
     })
 
@@ -203,11 +195,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     const { relativePath } = getNode(node.parent)
     const { redirect_from: redirectFrom, permalink } = node.frontmatter
     let { template = 'frontpage' } = node.frontmatter
-    let slug = permalink || createFilePath({ node, getNode })
-
-    if (relativePath.startsWith('pages')) {
-      slug = slug.replace('/pages', '')
-    }
+    let slug = permalink || createFilePath({ node, getNode, basePath: 'pages' })
 
     if (relativePath.startsWith('posts')) {
       template = 'post'
