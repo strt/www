@@ -97,7 +97,7 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   }
 
-  const allMarkdown = await graphql(`
+  const result = await graphql(`
     {
       allMdx(limit: 1000, sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
@@ -118,11 +118,11 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `)
 
-  if (allMarkdown.errors) {
-    throw Error(allMarkdown.errors)
+  if (result.errors) {
+    throw Error(result.errors)
   }
 
-  const { edges } = allMarkdown.data.allMdx
+  const { edges } = result.data.allMdx
 
   // Pages
   const pages = edges.filter(({ node }) =>
