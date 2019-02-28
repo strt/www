@@ -82,10 +82,10 @@ module.exports = (
 
             if (image) {
               /* eslint-disable no-param-reassign */
-              node.type = 'html'
-              node.value = `<image-component fluid='${JSON.stringify(
+              node.type = 'jsx'
+              node.value = `<Image stringifiedFluid='${JSON.stringify(
                 image,
-              )}'></image-component>`
+              )}' />`
               /* eslint-enable no-param-reassign */
             }
 
