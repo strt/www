@@ -3,7 +3,7 @@ import axios from 'axios'
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
-export async function handler(event, context, callback) {
+export async function handler(event) {
   // const msg = {
   //   to: 'alexander.nanberg@strateg.se',
   //   from: 'development@strateg.se',
@@ -17,43 +17,39 @@ export async function handler(event, context, callback) {
   console.log(event.queryStringParameters)
   console.log(event.body.foo)
 
-  try {
-    // await sendgrid.send(msg)
-    // const res = await axios.post(
-    //   `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-    //   {
-    //     submittedAt: Date.now(),
-    //     fields: [
-    //       {
-    //         name: 'firstname',
-    //         value: 'Alexander',
-    //       },
-    //       {
-    //         name: 'lastname',
-    //         value: 'Nanberg',
-    //       },
-    //       {
-    //         name: 'email',
-    //         value: 'alexander.nanberg@strateg.se',
-    //       },
-    //       {
-    //         name: 'message',
-    //         value: 'Hello',
-    //       },
-    //     ],
-    //   },
-    // )
+  // await sendgrid.send(msg)
+  // const res = await axios.post(
+  //   `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
+  //   {
+  //     submittedAt: Date.now(),
+  //     fields: [
+  //       {
+  //         name: 'firstname',
+  //         value: 'Alexander',
+  //       },
+  //       {
+  //         name: 'lastname',
+  //         value: 'Nanberg',
+  //       },
+  //       {
+  //         name: 'email',
+  //         value: 'alexander.nanberg@strateg.se',
+  //       },
+  //       {
+  //         name: 'message',
+  //         value: 'Hello',
+  //       },
+  //     ],
+  //   },
+  // )
 
-    // console.log(res.data)
+  // console.log(res.data)
 
-    callback(null, {
-      statusCode: 200,
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({ message: 'ok' }),
-    })
-  } catch (e) {
-    callback(e)
+  return {
+    statusCode: 200,
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({ message: 'ok' }),
   }
 }
