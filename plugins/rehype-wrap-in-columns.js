@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const visit = require('unist-util-visit')
 const findBefore = require('unist-util-find-before')
+const visitChildren = require('unist-util-visit-children')
 
 function isTextElement(node) {
   return (
     node.type === 'element' &&
     (node.tagName === 'p' ||
+      node.tagName === 'a' ||
       node.tagName === 'h2' ||
       node.tagName === 'h3' ||
       node.tagName === 'h4')
@@ -15,18 +16,18 @@ function isTextElement(node) {
 module.exports = () => (tree) => {
   let isNestedInColumn = false
 
-  visit(tree, ['element', 'jsx'], (node, index, parent) => {
+  function visitor(node, index, parent) {
     if (node.type === 'jsx' && node.value.includes('<Column')) {
       isNestedInColumn = true
-      return visit.SKIP
+      return 'skip'
     }
 
     if (node.type === 'jsx' && node.value.includes('</Column>')) {
       isNestedInColumn = false
-      return visit.SKIP
+      return 'skip'
     }
 
-    if (!isNestedInColumn) {
+    if (!isNestedInColumn && (node.type === 'element' || node.type === 'jsx')) {
       const prevSibling = findBefore(parent, node, 'element')
 
       // Move node to an existing column if the previous sibling is a text element
@@ -55,6 +56,11 @@ module.exports = () => (tree) => {
       }
     }
 
-    return visit.CONTINUE
-  })
+    return true
+  }
+
+  if (tree.children.length) {
+    const visit = visitChildren(visitor)
+    visit(tree)
+  }
 }
