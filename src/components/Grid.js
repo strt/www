@@ -48,16 +48,36 @@ export const Grid = styled(CleanTag)(
   justifyContent,
 )
 
+const gapMapFluid = {
+  small: 24,
+  standard: 32,
+  large: 56,
+}
+
+const gapMapFluidRange = {
+  small: { min: 16, max: 24 },
+  standard: { min: 16, max: 24 },
+  large: { min: 24, max: 40 },
+}
+
+function getGap(dir, props, cb, map) {
+  const gap =
+    props[`${dir}Gap`] != null ? props[`${dir}Gap`] : props.theme[`${dir}Gap`]
+  return gap ? cb(map[gap] || map.standard) : null
+}
+
 export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
-    marginBottom: props.bottomGap ? fluidRange({ min: 16, max: 24 }) : null,
+    marginBottom: getGap('bottom', props, fluidRange, gapMapFluidRange),
+    marginTop: getGap('top', props, fluidRange, gapMapFluidRange),
     [mediaQuery(breakpoints.medium)]: {
       paddingRight: `${vw(16)}`,
       paddingLeft: `${vw(16)}`,
-      marginBottom: props.bottomGap ? `${vw(32)}` : null,
+      marginBottom: getGap('bottom', props, vw, gapMapFluid),
+      marginTop: getGap('top', props, vw, gapMapFluid),
       width: getWidth(props.tablet),
     },
     [mediaQuery(breakpoints.large)]: {
