@@ -62,7 +62,17 @@ function useIntersectionObserver({ target, onIntersect = noop }) {
   }, [])
 }
 
-function normalizeProps({ fluid, aspectRatio, sizes, ...props }) {
+function normalizeProps({
+  fluid,
+  aspectRatio,
+  sizes,
+  srcSetType,
+  originalImg,
+  originalName,
+  presentationWidth,
+  presentationHeight,
+  ...props
+}) {
   if (fluid) {
     return {
       src: fluid.src,
@@ -136,6 +146,7 @@ function LazyImage(props, forwardedRef) {
           src={src}
           onLoad={handleLoad}
           data-image
+          decoding="async"
           {...elementProps}
         />
       )}
