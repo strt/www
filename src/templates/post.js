@@ -7,6 +7,7 @@ import Image from '../components/Image'
 import Section from '../components/Section'
 import { H1, H4, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import ContentWrapper from '../components/ContentWrapper'
 import Cover from '../components/Cover'
 import dayjs from '../lib/dayjs'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -45,9 +46,11 @@ export default function Article({ data: { mdx: post } }) {
           </Cover>
         )}
         <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
-          <Grid>
-            <MDXRenderer>{post.code.body}</MDXRenderer>
-          </Grid>
+          <ContentWrapper>
+            <Grid>
+              <MDXRenderer>{post.code.body}</MDXRenderer>
+            </Grid>
+          </ContentWrapper>
         </Section>
       </article>
     </Layout>

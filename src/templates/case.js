@@ -12,6 +12,7 @@ import Icon from '../components/Icon'
 import Image from '../components/Image'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
+import ContentWrapper from '../components/ContentWrapper'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
@@ -48,9 +49,13 @@ export default function Case({ data: { mdx: post }, pageContext: { next } }) {
           </Cover>
         )}
         <Section py={[5, 7]}>
-          <Grid>
-            <MDXRenderer>{post.code.body}</MDXRenderer>
+          <ContentWrapper>
+            <Grid>
+              <MDXRenderer>{post.code.body}</MDXRenderer>
+            </Grid>
+          </ContentWrapper>
 
+          <Grid>
             {contact && (
               <Column tablet="8" mt={[3, 5]}>
                 <H3>Vill du veta mer?</H3>
