@@ -17,6 +17,10 @@ const StyledBox = styled.div`
     grid-column: col-start 6 / col-end 11;
     grid-row: 5/7;
   }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
 `
 
 export default function Box({ title, content, link, ...props }) {
