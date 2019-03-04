@@ -1,6 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const visit = require('unist-util-visit')
-const is = require('hast-util-is-element')
+const findBefore = require('unist-util-find-before')
+
+function isTextElement(node) {
+  return (
+    node.type === 'element' &&
+    (node.tagName === 'p' ||
+      node.tagName === 'h2' ||
+      node.tagName === 'h3' ||
+      node.tagName === 'h4')
+  )
+}
 
 module.exports = () => (tree) => {
   let isNestedInColumn = false
@@ -17,12 +27,29 @@ module.exports = () => (tree) => {
     }
 
     if (!isNestedInColumn) {
+      const prevSibling = findBefore(parent, node, 'element')
+
+      // Move node to an existing column if the previous sibling is a text element
+      if (
+        prevSibling &&
+        prevSibling.children &&
+        prevSibling.children.some(n => isTextElement(n)) &&
+        isTextElement(node)
+      ) {
+        prevSibling.children.push(node)
+        parent.children.splice(index, 1)
+
+        return index
+      }
+
       // eslint-disable-next-line no-param-reassign
       parent.children[index] = {
         type: 'element',
         tagName: 'column',
         properties: {
-          tablet: is(node, 'image') || node.type === 'jsx' ? 12 : 8,
+          tablet: isTextElement(node) ? 8 : 12,
+          bottomGap: isTextElement(node) ? 'large' : undefined,
+          topGap: isTextElement(node) ? 'small' : undefined,
         },
         children: [node],
       }
