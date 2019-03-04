@@ -76,6 +76,7 @@ function normalizeProps({ fluid, aspectRatio, sizes, ...props }) {
 
   return {
     sizes,
+    aspectRatio,
     ...props,
   }
 }
@@ -160,7 +161,7 @@ export const ImageWrapper = styled.figure`
   position: relative;
   z-index: 0;
   overflow: hidden;
-  height: 0;
+  height: ${props => (props.aspectRatio ? 0 : null)};
   padding-bottom: ${props =>
     props.aspectRatio ? `${100 / props.aspectRatio}%` : null};
 
