@@ -34,9 +34,11 @@ module.exports = {
           import EmbedPlayer from "$components/EmbedPlayer";
           import { Column } from "$components/Grid";
           import { MDXImage as Image } from "$components/Image";
+          import Box from "$components/Box";
           
-          export default { EmbedPlayer, Column, Image };
+          export default { EmbedPlayer, Column, Image, Box };
         `,
+        hastPlugins: [require('./plugins/rehype-wrap-in-columns')],
         mdPlugins: [require('remark-unwrap-images')],
         gatsbyRemarkPlugins: [
           {
@@ -48,9 +50,6 @@ module.exports = {
           {
             resolve: require.resolve('./plugins/gatsby-remark-image-component'),
           },
-          // {
-          //   resolve: require.resolve('./plugins/gatsby-remark-columns'),
-          // },
         ],
       },
     },
