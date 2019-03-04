@@ -15,6 +15,7 @@ export const defaultBlacklist = [
   'flexWrap',
   'textAlign',
   'bottomGap',
+  'topGap',
   'variant',
   'colorVariant',
 ]
