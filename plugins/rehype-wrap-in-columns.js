@@ -50,7 +50,7 @@ module.exports = () => (tree) => {
         properties: {
           tablet: isTextElement(node) ? 8 : 12,
           bottomGap: isTextElement(node) ? 'large' : undefined,
-          topGap: isTextElement(node) ? 'small' : undefined,
+          topGap: isTextElement(node) && index !== 0 ? 'small' : undefined,
         },
         children: [node],
       }
