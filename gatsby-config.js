@@ -1,4 +1,4 @@
-/* eslint-disable-next-line import/no-extraneous-dependencies */
+/* eslint-disable import/no-extraneous-dependencies, global-require */
 const proxy = require('http-proxy-middleware')
 
 module.exports = {
@@ -6,8 +6,7 @@ module.exports = {
     siteUrl: 'https://beta.strateg.se',
   },
   mapping: {
-    'MarkdownRemark.frontmatter.contact_relation':
-      'MarkdownRemark.frontmatter.email',
+    'Mdx.frontmatter.contact_relation': 'Mdx.frontmatter.email',
   },
   plugins: [
     {
@@ -28,18 +27,29 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-mdx`,
       options: {
-        plugins: [
+        extensions: ['.mdx', '.md'],
+        globalScope: `
+          import EmbedPlayer from "$components/EmbedPlayer";
+          import { Column } from "$components/Grid";
+          import { MDXImage as Image } from "$components/Image";
+          import Box from "$components/Box";
+          
+          export default { EmbedPlayer, Column, Image, Box };
+        `,
+        hastPlugins: [require('./plugins/rehype-wrap-in-columns')],
+        mdPlugins: [require('remark-unwrap-images')],
+        gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
               name: 'media',
             },
           },
-          'gatsby-remark-unwrap-images',
-          'gatsby-remark-image-component',
-          'gatsby-remark-embed',
+          {
+            resolve: require.resolve('./plugins/gatsby-remark-image-component'),
+          },
         ],
       },
     },

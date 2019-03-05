@@ -16,6 +16,6 @@ color: '#1d1d1d'
 
 Familjerådgivningen ville nå ut med den informationen till nyblivna och blivande föräldrar på mödravårdscentralerna och barnavårdscentralerna i Region Örebro län. De ville skapa igenkänning och förbereda målgruppen på de känslor som kan uppstå. Och berätta att det är helt okej att prata med någon även innan det blivit kris och panik.
 
-<embed:https://www.youtube.com/embed/uD6jaTqerO4?rel=0&controls=0&showinfo=0>
+<EmbedPlayer src="https://player.vimeo.com/video/298426971" />
 
 Vi intervjuade 20 småbarnsföräldrar i regionen för att få svar på hur deras relationer påverkats. Utifrån svaren dramatiserade vi ett antal situationer som tillsammans blev en film som visats på MVC, BVC och i digitala kanaler.

@@ -113,7 +113,7 @@ export default function Index({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: markdownRemark(fields: { slug: { eq: $slug } }) {
+    page: mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
         excerpt
@@ -130,7 +130,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    cases: allMarkdownRemark(
+    cases: allMdx(
       limit: 5
       filter: { fileAbsolutePath: { regex: "/content/case/" } }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -154,7 +154,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    articles: allMarkdownRemark(
+    articles: allMdx(
       limit: 4
       filter: { fileAbsolutePath: { regex: "/content/posts/" } }
       sort: { fields: [frontmatter___date], order: DESC }

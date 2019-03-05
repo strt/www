@@ -82,10 +82,13 @@ module.exports = (
 
             if (image) {
               /* eslint-disable no-param-reassign */
-              node.type = 'html'
-              node.value = `<image-component fluid='${JSON.stringify(
-                image,
-              )}'></image-component>`
+              node.type = 'element'
+              node.data = {
+                hName: 'image',
+                hProperties: {
+                  ...image,
+                },
+              }
               /* eslint-enable no-param-reassign */
             }
 

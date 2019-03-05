@@ -1,17 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Image from '../components/Image'
 import Section from '../components/Section'
 import { H1, H4, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import ContentWrapper from '../components/ContentWrapper'
 import Cover from '../components/Cover'
-import renderAst from '../lib/renderAst'
 import dayjs from '../lib/dayjs'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
-export default function Article({ data: { markdownRemark: post } }) {
+export default function Article({ data: { mdx: post } }) {
   const { date } = post.frontmatter
   const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
   const hasCover = !!post.frontmatter.image
@@ -45,7 +46,11 @@ export default function Article({ data: { markdownRemark: post } }) {
           </Cover>
         )}
         <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
-          <Grid>{renderAst(post.htmlAst)}</Grid>
+          <ContentWrapper>
+            <Grid>
+              <MDXRenderer>{post.code.body}</MDXRenderer>
+            </Grid>
+          </ContentWrapper>
         </Section>
       </article>
     </Layout>
@@ -54,8 +59,10 @@ export default function Article({ data: { markdownRemark: post } }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
+    mdx(fields: { slug: { eq: $slug } }) {
+      code {
+        body
+      }
       fields {
         slug
       }

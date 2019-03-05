@@ -20,26 +20,32 @@ Idag handlar design om så mycket mer än schyssta typsnitt, helrätt färg och 
 
 Design thinking är ett känt begrepp inom framförallt innovativ produktutveckling och har sitt ursprung i Silicon Valley. Ett förhållningssätt eller en ideologi som sätter människan i centrum av problemlösningen i designprocessen. Definitionen av Design Thinking är långt ifrån solklar och beskrivningarna av vad begreppet innebär många. Det som däremot alltid är gemensamt är de sex delar som utgör processen, även om resan ser olika ut varje gång. Här går vi inte från ett steg till nästa tills slutprodukten är färdig, istället är flödet så kallat iterativt där man ofta backar tillbaka för att sedan gå framåt igen. Allt för att uppnå ett optimalt resultat. Så här säger David Kelly, centralfigur för begreppet och grundare av designkonsultföretaget IDEO:
 
-> “Design thinking is not a linear path. It's a big mass of looping back to different places in the process.”
+“Design thinking is not a linear path. It's a big mass of looping back to different places in the process.”
 
 Så hur går det till?
 
-**Empatisera**\
+### Empatisera
+
 Bakgrund, analys och research. Skapa förståelse för användaren – på riktigt.
 
-**Definiera**\
+### Definiera
+
 Vad är problemet? Och problemet bakom problemet?
 
-**Generera**\
+### Generera
+
 Kläck idéer! Massor av idéer.
 
-**Experimentera**\
+### Experimentera
+
 Skapa enkla prototyper, prova och känn efter.
 
-**Testa**\
+### Testa
+
 Testa och testa igen.
 
-**Implementera**\
+### Implementera
+
 Gör prototypen till verklighet och producera.
 
 ## Nytänkande, buzzword eller skåpmat?

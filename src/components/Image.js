@@ -62,7 +62,17 @@ function useIntersectionObserver({ target, onIntersect = noop }) {
   }, [])
 }
 
-function normalizeProps({ fluid, aspectRatio, sizes, ...props }) {
+function normalizeProps({
+  fluid,
+  aspectRatio,
+  sizes,
+  srcSetType,
+  originalImg,
+  originalName,
+  presentationWidth,
+  presentationHeight,
+  ...props
+}) {
   if (fluid) {
     return {
       src: fluid.src,
@@ -76,6 +86,7 @@ function normalizeProps({ fluid, aspectRatio, sizes, ...props }) {
 
   return {
     sizes,
+    aspectRatio,
     ...props,
   }
 }
@@ -135,6 +146,7 @@ function LazyImage(props, forwardedRef) {
           src={src}
           onLoad={handleLoad}
           data-image
+          decoding="async"
           {...elementProps}
         />
       )}
@@ -142,13 +154,25 @@ function LazyImage(props, forwardedRef) {
   )
 }
 
-export default React.forwardRef(LazyImage)
+const Image = React.forwardRef(LazyImage)
+
+export default Image
+
+export function MDXImage(props) {
+  let fluid
+  try {
+    fluid = JSON.parse(props.stringifiedFluid)
+  } catch (e) {
+    // silently fail
+  }
+  return <Image fluid={fluid} />
+}
 
 export const ImageWrapper = styled.figure`
   position: relative;
   z-index: 0;
   overflow: hidden;
-  height: 0;
+  height: ${props => (props.aspectRatio ? 0 : null)};
   padding-bottom: ${props =>
     props.aspectRatio ? `${100 / props.aspectRatio}%` : null};
 

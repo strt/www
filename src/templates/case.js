@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Hero from '../components/Hero'
@@ -11,14 +12,11 @@ import Icon from '../components/Icon'
 import Image from '../components/Image'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
+import ContentWrapper from '../components/ContentWrapper'
 import { colors } from '../style'
-import renderAst from '../lib/renderAst'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
-export default function Case({
-  data: { markdownRemark: post },
-  pageContext: { next },
-}) {
+export default function Case({ data: { mdx: post }, pageContext: { next } }) {
   const contact =
     post.frontmatter.contact_relation &&
     post.frontmatter.contact_relation.frontmatter
@@ -51,9 +49,13 @@ export default function Case({
           </Cover>
         )}
         <Section py={[5, 7]}>
-          <Grid>
-            {renderAst(post.htmlAst)}
+          <ContentWrapper>
+            <Grid>
+              <MDXRenderer>{post.code.body}</MDXRenderer>
+            </Grid>
+          </ContentWrapper>
 
+          <Grid>
             {contact && (
               <Column tablet="8" mt={[3, 5]}>
                 <H3>Vill du veta mer?</H3>
@@ -101,8 +103,10 @@ export default function Case({
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
+    mdx(fields: { slug: { eq: $slug } }) {
+      code {
+        body
+      }
       fields {
         slug
       }
