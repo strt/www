@@ -17,6 +17,9 @@ export async function handler(event) {
   const [, action, formId] = path
   const body = parseBody(event)
 
+  console.log(event.path)
+  console.log(action)
+
   try {
     if (action === 'submit') {
       if (method !== 'POST') {
