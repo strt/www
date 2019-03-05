@@ -17,20 +17,23 @@ module.exports = () => (tree) => {
   let isNestedInColumn = false
 
   function visitor(node, index, parent) {
+    // Toggle flag if node is a Column
     if (node.type === 'jsx' && node.value.includes('Column')) {
       isNestedInColumn = !node.value.startsWith('</Column>')
       return 'skip'
     }
 
+    // Wrap or group node if it's not nested in a Column
     if (!isNestedInColumn && (node.type === 'element' || node.type === 'jsx')) {
       const prevSibling = findBefore(parent, node, 'element')
+      const isNodeTextElement = isTextElement(node)
 
       // Move node to an existing column if the previous sibling is a text element
       if (
         prevSibling &&
         prevSibling.children &&
         prevSibling.children.some(n => isTextElement(n)) &&
-        isTextElement(node)
+        isNodeTextElement
       ) {
         prevSibling.children.push(node)
         parent.children.splice(index, 1)
@@ -43,9 +46,9 @@ module.exports = () => (tree) => {
         type: 'element',
         tagName: 'column',
         properties: {
-          tablet: isTextElement(node) ? 8 : 12,
-          bottomGap: isTextElement(node) ? 'large' : undefined,
-          topGap: isTextElement(node) && index !== 0 ? 'small' : undefined,
+          tablet: isNodeTextElement ? 8 : 12,
+          bottomGap: isNodeTextElement ? 'large' : undefined,
+          topGap: isNodeTextElement && index !== 0 ? 'small' : undefined,
         },
         children: [node],
       }
