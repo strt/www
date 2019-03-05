@@ -17,13 +17,8 @@ module.exports = () => (tree) => {
   let isNestedInColumn = false
 
   function visitor(node, index, parent) {
-    if (node.type === 'jsx' && node.value.includes('<Column')) {
-      isNestedInColumn = true
-      return 'skip'
-    }
-
-    if (node.type === 'jsx' && node.value.includes('</Column>')) {
-      isNestedInColumn = false
+    if (node.type === 'jsx' && node.value.includes('Column')) {
+      isNestedInColumn = !node.value.startsWith('</Column>')
       return 'skip'
     }
 
