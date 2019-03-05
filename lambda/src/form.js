@@ -12,12 +12,16 @@ function parseBody(event) {
 export async function handler(event) {
   const portalId = process.env.HUBSPOT_PORTAL_ID
   const apiKey = process.env.HUBSPOT_API_KEY
-  const path = event.path.split('/').filter(Boolean)
+  const path = event.path
+    .replace('/.netlify/functions', '')
+    .split('/')
+    .filter(Boolean)
   const method = event.httpMethod
   const [, action, formId] = path
   const body = parseBody(event)
 
   console.log(event.path)
+  console.log(path)
   console.log(action)
 
   try {
