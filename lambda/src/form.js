@@ -1,55 +1,95 @@
-import sendgrid from '@sendgrid/mail'
 import axios from 'axios'
+import queryString from 'query-string'
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
+function parseBody(event) {
+  if (event.headers['content-type'] === 'application/x-www-form-urlencoded') {
+    return queryString.parse(event.body)
+  }
+
+  return null
+}
 
 export async function handler(event) {
-  // const msg = {
-  //   to: 'alexander.nanberg@strateg.se',
-  //   from: 'development@strateg.se',
-  //   subject: 'Sending with SendGrid is Fun',
-  //   text: 'and easy to do anywhere, even with Node.js',
-  //   html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  // }
   const portalId = process.env.HUBSPOT_PORTAL_ID
-  const formId = 'b5cad137-0e3a-4171-98e9-b46b765e2763'
+  const apiKey = process.env.HUBSPOT_API_KEY
+  const path = event.path.split('/').filter(Boolean)
+  const method = event.httpMethod
+  const [, action, formId] = path
+  const body = parseBody(event)
 
-  console.log(event.queryStringParameters)
-  console.log(event.body.foo)
+  try {
+    if (action === 'submit') {
+      if (method !== 'POST') {
+        return {
+          statusCode: 405,
+          body: '405 Method not allowed',
+        }
+      }
 
-  // await sendgrid.send(msg)
-  // const res = await axios.post(
-  //   `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-  //   {
-  //     submittedAt: Date.now(),
-  //     fields: [
-  //       {
-  //         name: 'firstname',
-  //         value: 'Alexander',
-  //       },
-  //       {
-  //         name: 'lastname',
-  //         value: 'Nanberg',
-  //       },
-  //       {
-  //         name: 'email',
-  //         value: 'alexander.nanberg@strateg.se',
-  //       },
-  //       {
-  //         name: 'message',
-  //         value: 'Hello',
-  //       },
-  //     ],
-  //   },
-  // )
+      const fields = Object.entries(body).map(([key, value]) => ({
+        name: key,
+        value,
+      }))
 
-  // console.log(res.data)
+      const res = await axios.post(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
+        {
+          submittedAt: Date.now(),
+          fields,
+        },
+      )
+
+      return {
+        statusCode: 200,
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ message: res.data.inlineMessage }),
+      }
+    }
+    if (action === 'get') {
+      if (method !== 'GET') {
+        return {
+          statusCode: 405,
+          body: '405 Method not allowed',
+        }
+      }
+
+      const res = await axios.get(
+        `https://api.hubapi.com/forms/v2/forms/${formId}/?hapikey=${apiKey}`,
+      )
+
+      const { portalId: _, ...data } = res.data
+
+      return {
+        statusCode: 200,
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }
+    }
+  } catch (e) {
+    if (e.response) {
+      return {
+        statusCode: e.response.status,
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(e.response.data),
+      }
+    }
+
+    console.log(e)
+
+    return {
+      statusCode: 500,
+      body: '500 Internal server error',
+    }
+  }
 
   return {
-    statusCode: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-    body: JSON.stringify({ message: 'ok' }),
+    statusCode: 404,
+    body: '404 Not found',
   }
 }
