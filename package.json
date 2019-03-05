@@ -42,7 +42,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.4.1",
     "@fortawesome/pro-light-svg-icons": "^5.4.1",
     "@fortawesome/pro-regular-svg-icons": "^5.4.1",
-    "@mdx-js/mdx": "^0.18.1",
+    "@mdx-js/mdx": "^0.20.0",
     "@mdx-js/tag": "^0.18.0",
     "@sendgrid/mail": "^6.3.1",
     "axios": "^0.18.0",
@@ -79,7 +79,7 @@
     "remark-unwrap-images": "^0.1.0",
     "resize-observer-polyfill": "^1.5.1",
     "styled-components": "^4.0.0",
-    "styled-reset": "^1.5.1",
+    "styled-reset": "^2.0.0",
     "unist-util-find-before": "^2.0.2",
     "unist-util-remove": "^1.0.1",
     "unist-util-visit-children": "^1.1.2"
