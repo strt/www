@@ -154,19 +154,7 @@ function LazyImage(props, forwardedRef) {
   )
 }
 
-const Image = React.forwardRef(LazyImage)
-
-export default Image
-
-export function MDXImage(props) {
-  let fluid
-  try {
-    fluid = JSON.parse(props.stringifiedFluid)
-  } catch (e) {
-    // silently fail
-  }
-  return <Image fluid={fluid} />
-}
+export default React.forwardRef(LazyImage)
 
 export const ImageWrapper = styled.figure`
   position: relative;

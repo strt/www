@@ -33,7 +33,7 @@ module.exports = {
         globalScope: `
           import EmbedPlayer from "$components/EmbedPlayer";
           import { Column } from "$components/Grid";
-          import { MDXImage as Image } from "$components/Image";
+          import Image from "$components/Image";
           import Box from "$components/Box";
           
           export default { EmbedPlayer, Column, Image, Box };
