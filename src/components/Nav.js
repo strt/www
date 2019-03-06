@@ -165,7 +165,7 @@ export function Navigation({ children }) {
       >
         <Grid>
           <Column>
-            <div css={{ position: 'relative' }}>
+            <div css={{ position: 'relative', zIndex: 1 }}>
               <IconButton
                 type="button"
                 onClick={toggle}
