@@ -2,11 +2,17 @@ import axios from 'axios'
 import queryString from 'query-string'
 
 function parseBody(event) {
-  if (event.headers['content-type'] === 'application/x-www-form-urlencoded') {
+  const contentType = event.headers['content-type']
+
+  if (contentType === 'application/x-www-form-urlencoded') {
     return queryString.parse(event.body)
   }
 
-  return null
+  if (contentType.includes('application/json')) {
+    return JSON.parse(event.body)
+  }
+
+  return {}
 }
 
 export async function handler(event) {
