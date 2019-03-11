@@ -99,14 +99,34 @@ export function ClientForm({ onSubmit, ...props }) {
 }
 
 export function CareerForm({ onSubmit, ...props }) {
-  const { values, getInputProps } = useFormin()
+  const { values, getInputProps, reset } = useFormin()
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   return (
     <Dialog {...props}>
       <form
         action=""
-        onSubmit={(e) => {
-          onSubmit(e, { values })
+        onSubmit={(event) => {
+          event.preventDefault()
+
+          setIsSubmitting(true)
+
+          axios
+            .post(`/.netlify/functions/contact/career`, values)
+            .then(({ data }) => {
+              console.log(data)
+              reset()
+            })
+            .catch((e) => {
+              console.error(e)
+            })
+            .finally(() => {
+              setIsSubmitting(false)
+            })
+
+          if (onSubmit) {
+            onSubmit(event, { values })
+          }
         }}
       >
         <DialogRow>
@@ -143,8 +163,8 @@ export function CareerForm({ onSubmit, ...props }) {
           />
         </DialogRow>
         <DialogActions>
-          <DialogButton>
-            <span>Skicka</span>
+          <DialogButton disabled={isSubmitting || undefined}>
+            <span>{isSubmitting ? 'Skickar...' : 'Skicka'}</span>
             <Icon name={['fal', 'long-arrow-right']} />
           </DialogButton>
         </DialogActions>
