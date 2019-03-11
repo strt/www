@@ -14,6 +14,12 @@ function requiredProp(fnName, propName) {
   throw new Error(`The property "${propName}" is required in "${fnName}"`)
 }
 
+const defaultState = {
+  values: {},
+  touched: {},
+  validity: {},
+}
+
 function reducer(state, action) {
   switch (action.type) {
     case 'change':
@@ -32,15 +38,11 @@ function reducer(state, action) {
         ...state,
         validity: { ...state.validity, ...action.payload.validity },
       }
+    case 'reset':
+      return defaultState
     default:
       throw new Error()
   }
-}
-
-const defaultState = {
-  values: {},
-  touched: {},
-  validity: {},
 }
 
 export default function useFormin(initialState = {}) {
@@ -102,8 +104,13 @@ export default function useFormin(initialState = {}) {
     }
   }
 
+  function reset() {
+    dispatch({ type: 'reset' })
+  }
+
   return {
     ...state,
+    reset,
     getInputProps,
   }
 }
