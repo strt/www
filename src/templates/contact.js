@@ -36,7 +36,7 @@ export default function Contact({ data }) {
       <Section mb={[4, 7]}>
         <Grid>
           {siteSettings.offices.map(office => (
-            <Column tablet="4" key={office.city}>
+            <Column md="4" key={office.city}>
               <Text>
                 <strong>{office.city}</strong>
                 <br />
@@ -50,7 +50,7 @@ export default function Contact({ data }) {
               </Text>
             </Column>
           ))}
-          <Column tablet="4">
+          <Column md="4">
             <Text>
               Vill du jobba med Strateg?
               <br />
@@ -80,7 +80,7 @@ export default function Contact({ data }) {
             </Text>
           </Column>
           {data.employees.edges.map(({ node }) => (
-            <Column key={node.id} width="6" tablet="3" bottomGap>
+            <Column key={node.id} width="6" md="3" bottomGap>
               {node.frontmatter.image && (
                 <Image
                   fluid={node.frontmatter.image.childImageSharp.fluid}

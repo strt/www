@@ -45,7 +45,7 @@ export default function Career({ data }) {
       </Div>
       <Section bg={colors.dark} pt="20" pb="25">
         <Grid justifyContent="space-around">
-          <Column tablet="4">
+          <Column md="4">
             <H3 textColor="white">Tre annan samma äng</H3>
             <Text textColor="white">
               Tre annan samma äng kom se sista genom sitt sin, smultron dunge
@@ -57,7 +57,7 @@ export default function Career({ data }) {
               själv ännu plats kunde, där som nya så strand miljoner.
             </Text>
           </Column>
-          <Column tablet="4">
+          <Column md="4">
             <H3 textColor="white">Tre annan samma äng</H3>
             <Text textColor="white">
               Tre annan samma äng kom se sista genom sitt sin, smultron dunge
@@ -71,7 +71,7 @@ export default function Career({ data }) {
           </Column>
         </Grid>
         <Grid justifyContent="space-around">
-          <Column tablet="4">
+          <Column md="4">
             <H3 textColor="white">Tre annan samma äng</H3>
             <Text textColor="white">
               Tre annan samma äng kom se sista genom sitt sin, smultron dunge
@@ -83,7 +83,7 @@ export default function Career({ data }) {
               själv ännu plats kunde, där som nya så strand miljoner.
             </Text>
           </Column>
-          <Column tablet="4">
+          <Column md="4">
             <H3 textColor="white">Tre annan samma äng</H3>
             <Text textColor="white">
               Tre annan samma äng kom se sista genom sitt sin, smultron dunge

@@ -78,10 +78,10 @@ export const Column = styled(CleanTag)(
       paddingLeft: `${vw(16)}`,
       marginBottom: getGap('bottom', props, vw, gapMapFluid),
       marginTop: getGap('top', props, vw, gapMapFluid),
-      width: getWidth(props.tablet),
+      width: getWidth(props.md),
     },
     [mediaQuery(breakpoints.large)]: {
-      width: getWidth(props.desktop),
+      width: getWidth(props.lg),
     },
   }),
   space,

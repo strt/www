@@ -57,7 +57,7 @@ export default function Case({ data: { mdx: post }, pageContext: { next } }) {
 
           <Grid>
             {contact && (
-              <Column tablet="8" mt={[3, 5]}>
+              <Column md="8" mt={[3, 5]}>
                 <H3>Vill du veta mer?</H3>
                 <Text>
                   Kontakta {contact.first_name} {contact.last_name},{' '}

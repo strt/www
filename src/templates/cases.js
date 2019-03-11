@@ -121,7 +121,7 @@ export default function Case({ data, location }) {
         <Section pb={[10, 20]}>
           <Grid>
             {cases.map(({ node }) => (
-              <Column key={node.id} tablet="6" bottomGap>
+              <Column key={node.id} md="6" bottomGap>
                 <Tile
                   url={node.fields.slug}
                   title={node.frontmatter.client}

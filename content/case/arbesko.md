@@ -19,14 +19,14 @@ color: '#1d1d1d'
 contact_relation: hans.tedsjo@strateg.se
 ---
 
-<Column tablet="6">
+<Column md="6">
   <Box
     title="Skomakare sedan 1839"
     content="Sedan april 2017 är Arbesko en del av koncernen Bergman &amp; Beving. I samband det ville man ta ett nytt grepp om all kommunikation. Strateg skapade ett koncept som sammanfattas i den nya payoffen: Skomakare sedan 1839."
   />
 </Column>
 
-<Column tablet="6">
+<Column md="6">
 
 ![](/media/uploads/case-arbesko-logo.png)
 
@@ -38,25 +38,25 @@ contact_relation: hans.tedsjo@strateg.se
 
 Arbesko har en historia som verkligen är värd att berätta. Det som startade 1839 med en av Sveriges första partiskomakare är idag ett marknadsledande företag som omsätter cirka 190 miljoner per år – och som tillverkar skydds- och yrkesskor av högsta kvalitet i Sveriges idag enda skofabrik. Så istället för att se ut som konkurrenterna, är det den unika berättelsen och det genuina hantverket som nu lyfts fram.
 
-<Column tablet="6">
+<Column md="6">
 
 ![](/media/uploads/case-arbesko-typography-1.jpg)
 
 </Column>
 
-<Column tablet="6">
+<Column md="6">
 
 ![](/media/uploads/case-arbesko-typography-2.jpg)
 
 </Column>
 
-<Column tablet="6">
+<Column md="6">
 
 ![](/media/uploads/case-arbesko-1.jpg)
 
 </Column>
 
-<Column tablet="6">
+<Column md="6">
 
 ![](/media/uploads/case-arbesko-2.jpg)
 

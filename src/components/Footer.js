@@ -25,7 +25,7 @@ export default function Footer() {
     <Section as="footer" bg={colors.ice} py={[4, 7]}>
       <Grid>
         {siteSettings.offices.map(office => (
-          <Column tablet="3" key={office.city}>
+          <Column md="3" key={office.city}>
             <Text as="address">
               {office.address} <br />
               {office.zipcode} {office.city} <br />
@@ -35,7 +35,7 @@ export default function Footer() {
             </Text>
           </Column>
         ))}
-        <Column tablet="3">
+        <Column md="3">
           <Text>
             <Link
               href={siteSettings.social.instagram}
@@ -71,7 +71,7 @@ export default function Footer() {
             <br />
           </Text>
         </Column>
-        <Column tablet="3">
+        <Column md="3">
           <Text as="ul">
             {footerNavigation.map(route => (
               <li key={route.link}>

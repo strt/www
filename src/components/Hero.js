@@ -24,7 +24,7 @@ export default function Hero({
   return (
     <StyledHero pt={pt} pb={pb} keepContentMargin={keepContentMargin}>
       <Grid>
-        <Column tablet="8">{children}</Column>
+        <Column md="8">{children}</Column>
       </Grid>
       {scrollButtonElement && (
         <Grid justifyContent="flex-end" mt={[4, 5, 5]}>

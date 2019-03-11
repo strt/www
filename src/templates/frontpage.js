@@ -70,7 +70,7 @@ export default function Index({ data }) {
         </Div>
         <Grid>
           {data.articles.edges.map(({ node }) => (
-            <Column key={node.id} tablet="6" bottomGap>
+            <Column key={node.id} md="6" bottomGap>
               <Card
                 date={node.frontmatter.date}
                 title={node.frontmatter.title}

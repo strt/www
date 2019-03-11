@@ -20,7 +20,7 @@ export default function Posts({ halfTopBg = 'white', ...props }) {
   return (
     <Wrapper halfTopBg={halfTopBg} {...props}>
       <Grid justifyContent="center">
-        <Column tablet="10">
+        <Column md="10">
           <ImageGrid>
             {posts.map(post => (
               <Box key={post.id}>
