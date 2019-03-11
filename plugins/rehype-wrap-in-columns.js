@@ -46,7 +46,7 @@ module.exports = () => (tree) => {
         type: 'element',
         tagName: 'column',
         properties: {
-          tablet: isNodeTextElement ? 8 : 12,
+          md: isNodeTextElement ? 8 : 12,
           bottomGap: isNodeTextElement ? 'large' : undefined,
           topGap: isNodeTextElement && index !== 0 ? 'small' : undefined,
         },
