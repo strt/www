@@ -11,26 +11,6 @@ import {
   durations,
 } from '../style'
 
-const Input = styled.input`
-  border: 0;
-  border-radius: 0;
-  margin: 0;
-  width: 100%;
-  padding: ${fluidRange({ min: 4, max: 8 })} 0
-    ${fluidRange({ min: 12, max: 16 })};
-  outline: none;
-  font-family: ${fontFamily};
-  font-size: ${fluidRange({ min: 16, max: 22 })};
-  line-height: normal;
-  color: ${colors.dark};
-  box-shadow: 0;
-
-  @media ${breakpoints.medium} {
-    padding: ${vw(8)} 0 ${vw(16)};
-    font-size: ${vw(22)};
-  }
-`
-
 const Label = styled.label`
   font-size: ${fluidRange({ min: 12, max: 16 })};
   line-height: 1.2em;
@@ -69,11 +49,38 @@ const Wrapper = styled.div`
   @media ${breakpoints.medium} {
     margin-bottom: ${vw(32)};
   }
+
+  input,
+  textarea {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    width: 100%;
+    padding: ${fluidRange({ min: 4, max: 8 })} 0
+      ${fluidRange({ min: 12, max: 16 })};
+    outline: none;
+    font-family: ${fontFamily};
+    font-size: ${fluidRange({ min: 16, max: 22 })};
+    line-height: normal;
+    color: ${colors.dark};
+    box-shadow: none;
+
+    @media ${breakpoints.medium} {
+      padding: ${vw(8)} 0 ${vw(16)};
+      font-size: ${vw(22)};
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 2.4em;
+  }
 `
 
-function TextField({ label, ...props }, forwardedRef) {
+function TextField({ label, multiline, ...props }, forwardedRef) {
   const getId = useContext(IdContext)
-  const id = props.id || getId()
+  const id = props.id || getId('textfield')
+  const Input = multiline ? 'textarea' : 'input'
 
   return (
     <Wrapper>
