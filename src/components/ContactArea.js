@@ -1,15 +1,11 @@
 import React, { useState, useCallback } from 'react'
 import { useSpring, animated } from 'react-spring'
-import { H1, H2, H3, Text } from './Text'
-import Dialog, { DialogRow, DialogActions, DialogButton } from './Dialog'
-import Icon from './Icon'
+import { H1, H2, H3 } from './Text'
 import Link from './Link'
 import Div from './Div'
-import TextField from './TextField'
 import useToggle from '../lib/useToggle'
 import useMeasure from '../lib/useMeasure'
-import { routes } from '../routes'
-import useFormin from '../lib/useFormin'
+import { ClientForm, CareerForm } from './Forms'
 
 function ContactOptionButton(props) {
   return (
@@ -19,49 +15,7 @@ function ContactOptionButton(props) {
   )
 }
 
-function WorkContactForm({ onSubmit, ...props }) {
-  const { values, getInputProps } = useFormin()
-
-  return (
-    <Dialog {...props}>
-      <form
-        action=""
-        onSubmit={(e) => {
-          onSubmit(e, { values })
-        }}
-      >
-        <DialogRow>
-          <H3>Kul att du vill jobba med oss</H3>
-          <Text>
-            Berätta kort om vad du vill ha hjälp med, så hörs vi snart.
-            <br />
-            Genom att skicka samtycker du till vår{' '}
-            <Link to={routes.policy.link}>policy</Link>.
-          </Text>
-          <TextField label="Namn" {...getInputProps({ name: 'name' })} />
-          <TextField label="Företag" {...getInputProps({ name: 'company' })} />
-          <TextField label="Din mejl" {...getInputProps({ name: 'email' })} />
-          <TextField
-            label="Ditt telefonnummer"
-            {...getInputProps({ name: 'phone' })}
-          />
-          <TextField
-            label="Vad vill du ha hjälp med?"
-            {...getInputProps({ name: 'message' })}
-          />
-        </DialogRow>
-        <DialogActions>
-          <DialogButton>
-            <span>Skicka</span>
-            <Icon name={['fal', 'long-arrow-right']} />
-          </DialogButton>
-        </DialogActions>
-      </form>
-    </Dialog>
-  )
-}
-
-function ContactOptions() {
+function ContactForms() {
   const [activeForm, setActiveForm] = useState(null)
   const resetActiveForm = useCallback(() => {
     setActiveForm(null)
@@ -76,10 +30,7 @@ function ContactOptions() {
       >
         Att jobba med Strateg
       </ContactOptionButton>
-      <WorkContactForm
-        isOpen={activeForm === 'work'}
-        onDismiss={resetActiveForm}
-      />
+      <ClientForm isOpen={activeForm === 'work'} onDismiss={resetActiveForm} />
       <ContactOptionButton
         onClick={() => {
           setActiveForm('career')
@@ -87,28 +38,10 @@ function ContactOptions() {
       >
         Att jobba eller praktisera på Strateg
       </ContactOptionButton>
-      <Dialog isOpen={activeForm === 'career'} onDismiss={resetActiveForm}>
-        <DialogRow>
-          <H3>Kul att du vill hänga med oss</H3>
-          <Text>
-            Berätta lite mer, så hörs vi snart.
-            <br />
-            Genom att skicka samtycker du till vår{' '}
-            <Link to={routes.policy.link}>policy</Link>.
-          </Text>
-          <TextField label="Namn" />
-          <TextField label="Din mejl" />
-          <TextField label="Ditt telefonnummer" />
-          <TextField label="Vilken roll är du intresserad av?" />
-          <TextField label="Ditt meddelande" />
-        </DialogRow>
-        <DialogActions>
-          <DialogButton>
-            <span>Skicka</span>
-            <Icon name={['fal', 'long-arrow-right']} />
-          </DialogButton>
-        </DialogActions>
-      </Dialog>
+      <CareerForm
+        isOpen={activeForm === 'career'}
+        onDismiss={resetActiveForm}
+      />
     </>
   )
 }
@@ -149,7 +82,7 @@ export default function ContactArea() {
       >
         <div {...bind}>
           <Div pt={[3, 5]}>
-            <ContactOptions />
+            <ContactForms />
           </Div>
         </div>
       </animated.div>
