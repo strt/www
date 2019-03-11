@@ -6,13 +6,14 @@ import Cover from '../components/Cover'
 import NoSSR from '../components/NoSSR'
 import { H1, Excerpt } from '../components/Text'
 import Link from '../components/Link'
+import getMetaFromPost from '../lib/getMetaFromPost'
 
 const Playground = React.lazy(() => import('../components/Playground'))
 
 export default function NotFound({ data }) {
   const { title, excerpt } = data.page.frontmatter
   return (
-    <Layout meta={{ titel: '404' }}>
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
@@ -42,7 +43,7 @@ export const pageQuery = graphql`
           description
           image {
             childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 75) {
+              og: resize(width: 1200, height: 630, quality: 80) {
                 src
               }
             }

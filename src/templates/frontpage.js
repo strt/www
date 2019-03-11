@@ -122,7 +122,7 @@ export const pageQuery = graphql`
           description
           image {
             childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 75) {
+              og: resize(width: 1200, height: 630, quality: 80) {
                 src
               }
             }
