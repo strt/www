@@ -103,6 +103,7 @@ function LazyImage(props, forwardedRef) {
     aspectRatio,
     critical = false,
     onLoad = noop,
+    children,
     ...elementProps
   } = normalizeProps(props)
 
