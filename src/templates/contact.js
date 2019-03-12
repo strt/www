@@ -167,7 +167,7 @@ export const pageQuery = graphql`
                   maxWidth: 520
                   srcSetBreakpoints: [175, 328, 420]
                 ) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }

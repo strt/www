@@ -80,6 +80,7 @@ function normalizeProps({
       sizes: sizes || fluid.sizes,
       aspectRatio: aspectRatio !== 'auto' ? fluid.aspectRatio : undefined,
       base64: fluid.base64,
+      srcSetWebp: fluid.srcSetWebp,
       ...props,
     }
   }
@@ -97,6 +98,7 @@ function LazyImage(props, forwardedRef) {
     src,
     sizes,
     srcSet,
+    srcSetWebp,
     alt = '',
     base64,
     bg,
@@ -139,17 +141,23 @@ function LazyImage(props, forwardedRef) {
       {base64 && <img src={base64} alt="" data-placeholder />}
       {bg && <div style={{ background: bg }} data-background />}
       {isVisible && (
-        <Img
-          ref={forwardedRef}
-          alt={alt}
-          srcSet={srcSet}
-          sizes={sizes}
-          src={src}
-          onLoad={handleLoad}
-          data-image
-          decoding="async"
-          {...elementProps}
-        />
+        <picture>
+          {srcSetWebp && (
+            <source type="image/webp" srcSet={srcSetWebp} sizes={sizes} />
+          )}
+
+          <Img
+            ref={forwardedRef}
+            alt={alt}
+            srcSet={srcSet}
+            sizes={sizes}
+            src={src}
+            onLoad={handleLoad}
+            data-image
+            decoding="async"
+            {...elementProps}
+          />
+        </picture>
       )}
     </ImageWrapper>
   )

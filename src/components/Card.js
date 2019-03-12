@@ -115,7 +115,7 @@ export default function Card({ url, title, date, image }) {
 export const query = graphql`
   fragment CardImage on ImageSharp {
     fluid(quality: 80, srcSetBreakpoints: [200, 340, 420]) {
-      ...GatsbyImageSharpFluid
+      ...GatsbyImageSharpFluid_withWebp
     }
   }
 `
