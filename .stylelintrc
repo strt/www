@@ -1,15 +1,3 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
-  "extends": ["stylelint-config-strateg", "stylelint-config-styled-components"],
-  "rules": {
-    "declaration-empty-line-before": null,
-    "comment-empty-line-before": null,
-    "declaration-colon-newline-after": null,
-    "value-list-max-empty-lines": null,
-    "declaration-block-semicolon-newline-after": null,
-    "rule-empty-line-before": null,
-    "no-duplicate-selectors": null,
-    "selector-type-no-unknown": null,
-    "selector-type-case": null
-  }
+  "extends": "stylelint-config-strateg/css-in-js"
 }
