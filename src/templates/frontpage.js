@@ -10,7 +10,6 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
 import ContactArea from '../components/ContactArea'
-import InstagramGrid from '../components/InstagramGrid'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -23,7 +22,7 @@ export default function Index({ data }) {
       <Hero scrollButtonElement="#case-section" pt={8}>
         <H1>{title}</H1>
       </Hero>
-      <Section id="case-section" py={[8, 15]}>
+      <Section id="case-section" py={[3, 4]}>
         <CaseGrid>
           {data.cases.edges.map(({ node }) => (
             <Tile
@@ -47,8 +46,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 25]}>
-        <InstagramGrid />
+      <Section bg={colors.dark} pt="0" mt={[8, 12]}>
         <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>
             <Column>
