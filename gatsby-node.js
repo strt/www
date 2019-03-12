@@ -1,13 +1,7 @@
 const { resolve } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
-// const { fmImagesToRelative } = require('gatsby-remark-relative-images')
-
-// exports.onCreateWebpackConfig = ({ actions }) => {
-//   const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-//   actions.setWebpackConfig({
-//     plugins: [new BundleAnalyzerPlugin()],
-//   })
-// }
+const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // // Inlined version of subfont
 // // (https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-subfont)
@@ -16,50 +10,17 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 //   require('child_process').execSync(`npx subfont -i --no-recursive --inline-css --root ${root}`)
 // }
-const path = require('path')
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
-      modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+      modules: [resolve(__dirname, 'src'), 'node_modules'],
       alias: {
-        $components: path.resolve(__dirname, 'src/components'),
+        $components: resolve(__dirname, 'src/components'),
       },
     },
+    // plugins: [new BundleAnalyzerPlugin()],
   })
-}
-
-const _ = require('lodash')
-const slash = require('slash')
-const deepMap = require('deep-map')
-
-const fileNodes = []
-
-function fmImagesToRelative(node) {
-  // Save file references
-  fileNodes.push(node)
-  // Only process markdown files
-  if (node.internal.type === `Mdx`) {
-    // Convert paths in frontmatter to relative
-    function makeRelative(value) {
-      if (_.isString(value) && path.isAbsolute(value)) {
-        let imagePath
-        const foundImageNode = _.find(fileNodes, (file) => {
-          if (!file.dir) return
-          imagePath = path.join(file.dir, path.basename(value))
-          return slash(path.normalize(file.absolutePath)) === slash(imagePath)
-        })
-        if (foundImageNode) {
-          return slash(
-            path.relative(path.join(node.fileAbsolutePath, '..'), imagePath),
-          )
-        }
-      }
-      return value
-    }
-    // Deeply iterate through frontmatter data for absolute paths
-    deepMap(node.frontmatter, makeRelative, { inPlace: true })
-  }
 }
 
 exports.createPages = async ({ actions, graphql }) => {
