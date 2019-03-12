@@ -60,7 +60,11 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const result = await graphql(`
     {
-      allMdx(limit: 1000, sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMdx(
+        limit: 1000
+        sort: { order: DESC, fields: [frontmatter___date] }
+        filter: { fileAbsolutePath: { regex: "/^((?!/employees/).)*$/" } }
+      ) {
         edges {
           node {
             fileAbsolutePath
