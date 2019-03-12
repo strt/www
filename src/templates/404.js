@@ -1,14 +1,10 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import Cover from '../components/Cover'
-import NoSSR from '../components/NoSSR'
 import { H1, Excerpt } from '../components/Text'
 import Link from '../components/Link'
 import getMetaFromPost from '../lib/getMetaFromPost'
-
-const Playground = React.lazy(() => import('../components/Playground'))
 
 export default function NotFound({ data }) {
   const { title, excerpt } = data.page.frontmatter
@@ -21,13 +17,6 @@ export default function NotFound({ data }) {
           Till startsidan
         </Link>
       </Hero>
-      <Cover>
-        <NoSSR>
-          <Suspense fallback={null}>
-            <Playground />
-          </Suspense>
-        </NoSSR>
-      </Cover>
     </Layout>
   )
 }
