@@ -8,7 +8,7 @@ export default function getMetaFromPost(post, { type } = {}) {
     description: getSeoField('description') || post.frontmatter.excerpt,
     url: post.fields ? post.fields.slug : undefined,
     type,
-    publishedTime: post.frontmatter.date,
+    publishedTime: type === 'article' ? post.frontmatter.date : undefined,
     image: getSeoField('image')
       ? post.frontmatter.seo.image &&
         post.frontmatter.seo.image.childImageSharp.og.src
