@@ -140,7 +140,7 @@ export function Navigation() {
   const itemsTransitionRef = useRef(null)
   const transitions = useTransition(
     isOpen ? mainNavigation : [],
-    item => item.link,
+    item => item.id,
     {
       ref: itemsTransitionRef,
       unique: true,
@@ -162,7 +162,7 @@ export function Navigation() {
     <NavWrapper role="navigation">
       <ul data-desktop>
         {mainNavigation.map(child => (
-          <li key={child.link}>
+          <li key={child.id}>
             <Link
               to={child.link}
               getProps={getProps}
