@@ -27,7 +27,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-json',
     {
-      resolve: `gatsby-mdx`,
+      resolve: 'gatsby-mdx',
       options: {
         extensions: ['.mdx', '.md'],
         globalScope: `
@@ -60,6 +60,14 @@ module.exports = {
       },
     },
     'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-7298749-1',
+        anonymize: true,
+        respectDNT: true,
+      },
+    },
     // 'gatsby-plugin-subfont', Enable again once it's less buggy
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
