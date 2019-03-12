@@ -63,7 +63,10 @@ exports.createPages = async ({ actions, graphql }) => {
       allMdx(
         limit: 1000
         sort: { order: DESC, fields: [frontmatter___date] }
-        filter: { fileAbsolutePath: { regex: "/^((?!/employees/).)*$/" } }
+        filter: {
+          frontmatter: { published: { ne: false } }
+          fileAbsolutePath: { regex: "/^((?!/employees/).)*$/" }
+        }
       ) {
         edges {
           node {

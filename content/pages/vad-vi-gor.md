@@ -4,6 +4,7 @@ excerpt: 'Söka del vid tre dimma dimmhöljd annat när, stora ännu fram plats 
 template: about
 redirect_from:
   - /vad-vi-gor.html
+published: false
 seo:
   title: null
   description: null

@@ -4,6 +4,7 @@ excerpt: null
 template: career
 redirect_from:
   - /bli-en-av-oss.html
+published: false
 seo:
   title: null
   description: null

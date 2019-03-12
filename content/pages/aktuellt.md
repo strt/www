@@ -4,6 +4,7 @@ excerpt: 'Vi gillar att dela med oss. Av riktigt-bra-att-ha-kunskap, guidning i 
 template: posts
 redirect_from:
   - /aktuellt.html
+published: false
 seo:
   title: null
   description: null
