@@ -25,6 +25,20 @@ aliases:
     widget: 'list'
     required: false
     field: { label: URL, name: url, widget: string }
+  - &page_template
+    name: 'template'
+    label: 'Template'
+    widget: 'select'
+    options:
+      [
+        { label: 'Frontpage', value: 'frontpage' },
+        { label: 'Posts', value: 'posts' },
+        { label: 'Career', value: 'career' },
+        { label: 'Cases', value: 'cases' },
+        { label: 'Contact', value: 'contact' },
+        { label: 'About', value: 'about' },
+        { label: '404', value: '404' },
+      ]
 
 collections:
   - name: case
@@ -123,6 +137,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
           - *seo
           - *redirect_from
       - name: 'about'
@@ -131,6 +146,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
           - *seo
           - *redirect_from
       - name: 'career'
@@ -139,6 +155,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
           - *seo
           - *redirect_from
       - name: 'news'
@@ -147,6 +164,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
           - *seo
           - *redirect_from
       - name: 'contact'
@@ -155,6 +173,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
           - *seo
           - *redirect_from
 
