@@ -1,7 +1,6 @@
 const { resolve } = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 // // Inlined version of subfont
 // // (https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-subfont)
@@ -19,7 +18,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         $components: resolve(__dirname, 'src/components'),
       },
     },
-    // plugins: [new BundleAnalyzerPlugin()],
+    // plugins: [new (require('webpack-bundle-analyzer')).BundleAnalyzerPlugin()],
   })
 }
 
