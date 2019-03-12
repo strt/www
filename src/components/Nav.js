@@ -15,7 +15,15 @@ import { Grid, Column } from './Grid'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
-import { colors, fluidRange, easings, durations } from '../style'
+import {
+  colors,
+  fluidRange,
+  easings,
+  durations,
+  breakpoints,
+  vw,
+} from '../style'
+import { mainNavigation } from '../routes'
 
 function getProps({ href, isPartiallyCurrent }) {
   return isPartiallyCurrent && href !== '/'
@@ -83,9 +91,33 @@ export const NavContent = animated(styled.div`
   }
 `)
 
+const NavWrapper = styled.nav`
+  [data-responsive] {
+    @media ${breakpoints.medium} {
+      display: none;
+    }
+  }
+
+  [data-desktop] {
+    display: none;
+
+    @media ${breakpoints.medium} {
+      display: flex;
+    }
+
+    li {
+      padding-right: ${vw(40)};
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+`
+
 const NAV_ID = 'navigation'
 
-export function Navigation({ children }) {
+export function Navigation() {
   const [isOpen, toggle] = useToggle(false)
   const navRef = useRef(null)
   useFocusTrap(navRef, { shouldTrap: isOpen })
@@ -105,15 +137,14 @@ export function Navigation({ children }) {
     },
   })
 
-  const childrenArray = React.Children.toArray(children)
   const itemsTransitionRef = useRef(null)
   const transitions = useTransition(
-    isOpen ? childrenArray : [],
-    item => item.key,
+    isOpen ? mainNavigation : [],
+    item => item.link,
     {
       ref: itemsTransitionRef,
       unique: true,
-      trail: 200 / childrenArray.length,
+      trail: 200 / mainNavigation.length,
       from: { opacity: 0, scale: 0.8 },
       enter: { opacity: 1, scale: 1 },
       leave: { opacity: 0, scale: 0.8 },
@@ -128,75 +159,88 @@ export function Navigation({ children }) {
   )
 
   return (
-    <nav role="navigation">
-      <Link
-        as="button"
-        type="button"
-        colorVariant="red"
-        variant="large"
-        onClick={toggle}
-        aria-expanded={isOpen}
-        aria-controls={NAV_ID}
-      >
-        meny
-      </Link>
-      <NavContent
-        id={NAV_ID}
-        ref={navRef}
-        style={{
-          opacity: navAnimStyle.opacity,
-          right: isOpen ? 'var(--scrollbar-width)' : null,
-          visibility: navAnimStyle.opacity.interpolate(o =>
-            o === 0 && !isOpen ? 'hidden' : 'visible',
-          ),
-          pointerEvents: navAnimStyle.opacity.interpolate(o =>
-            o !== 0 && !isOpen ? 'none' : 'auto',
-          ),
-          transform: navAnimStyle.translateY.interpolate(
-            y => `translate3d(0, ${y}%, 0)`,
-          ),
-        }}
-        onKeyDown={(event) => {
-          if (event.key === 'Escape') {
-            event.stopPropagation()
-            toggle()
-          }
-        }}
-      >
-        <Grid>
-          <Column>
-            <div css={{ position: 'relative', zIndex: 1 }}>
-              <IconButton
-                type="button"
-                onClick={toggle}
-                textColor="white"
-                aria-label="Stäng meny"
-              >
-                <Icon name={['fal', 'times']} />
-              </IconButton>
-            </div>
-          </Column>
-        </Grid>
-        <Grid my="auto">
-          <Column>
-            <ul>
-              {transitions.map(({ key, item, props: itemStyle }) => (
-                <animated.li
-                  key={key}
-                  style={{
-                    opacity: itemStyle.opacity,
-                    transform: itemStyle.scale.interpolate(
-                      s => `scale3d(${s}, 1, 1)`,
-                    ),
-                  }}
+    <NavWrapper role="navigation">
+      <ul data-desktop>
+        {mainNavigation.map(child => (
+          <li key={child.link}>
+            <Link to={child.link} colorVariant="red" variant="large">
+              {child.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div data-responsive>
+        <Link
+          as="button"
+          type="button"
+          colorVariant="red"
+          variant="large"
+          onClick={toggle}
+          aria-expanded={isOpen}
+          aria-controls={NAV_ID}
+        >
+          meny
+        </Link>
+        <NavContent
+          id={NAV_ID}
+          ref={navRef}
+          style={{
+            opacity: navAnimStyle.opacity,
+            right: isOpen ? 'var(--scrollbar-width)' : null,
+            visibility: navAnimStyle.opacity.interpolate(o =>
+              o === 0 && !isOpen ? 'hidden' : 'visible',
+            ),
+            pointerEvents: navAnimStyle.opacity.interpolate(o =>
+              o !== 0 && !isOpen ? 'none' : 'auto',
+            ),
+            transform: navAnimStyle.translateY.interpolate(
+              y => `translate3d(0, ${y}%, 0)`,
+            ),
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') {
+              event.stopPropagation()
+              toggle()
+            }
+          }}
+        >
+          <Grid>
+            <Column>
+              <div css={{ position: 'relative', zIndex: 1 }}>
+                <IconButton
+                  type="button"
+                  onClick={toggle}
+                  textColor="white"
+                  aria-label="Stäng meny"
                 >
-                  {item}
-                </animated.li>
-              ))}
-            </ul>
-          </Column>
-        </Grid>
-      </NavContent>
-    </nav>
+                  <Icon name={['fal', 'times']} />
+                </IconButton>
+              </div>
+            </Column>
+          </Grid>
+          <Grid my="auto">
+            <Column>
+              <ul>
+                {transitions.map(({ key, item, props: itemStyle }) => (
+                  <animated.li
+                    key={key}
+                    style={{
+                      opacity: itemStyle.opacity,
+                      transform: itemStyle.scale.interpolate(
+                        s => `scale3d(${s}, 1, 1)`,
+                      ),
+                    }}
+                  >
+                    <NavLink key={item.link} to={item.link}>
+                      {item.title}
+                    </NavLink>
+                  </animated.li>
+                ))}
+              </ul>
+            </Column>
+          </Grid>
+        </NavContent>
+      </div>
+    </NavWrapper>
   )
 }
