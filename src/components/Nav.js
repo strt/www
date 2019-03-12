@@ -163,7 +163,12 @@ export function Navigation() {
       <ul data-desktop>
         {mainNavigation.map(child => (
           <li key={child.link}>
-            <Link to={child.link} colorVariant="red" variant="large">
+            <Link
+              to={child.link}
+              getProps={getProps}
+              colorVariant="red"
+              variant="large"
+            >
               {child.title}
             </Link>
           </li>

@@ -41,7 +41,8 @@ export const A = styled.a`
   }
 
   &:active,
-  &[aria-current] {
+  &[aria-current],
+  &[data-partially-current] {
     text-decoration: none;
   }
 
