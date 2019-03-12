@@ -41,6 +41,58 @@ aliases:
       ]
 
 collections:
+  - name: 'pages'
+    label: 'Pages'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: 'index'
+        label: 'Start'
+        file: 'content/pages/index.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
+          - *seo
+          - *redirect_from
+      - name: 'about'
+        label: 'About'
+        file: 'content/pages/vad-vi-gor.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
+          - *seo
+          - *redirect_from
+      - name: 'career'
+        label: 'Career'
+        file: 'content/pages/bli-en-av-oss.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
+          - *seo
+          - *redirect_from
+      - name: 'news'
+        label: 'News'
+        file: 'content/pages/aktuellt.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
+          - *seo
+          - *redirect_from
+      - name: 'contact'
+        label: 'Contact'
+        file: 'content/pages/kontakt.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *page_template
+          - *seo
+          - *redirect_from
+
   - name: case
     label: Case
     folder: '/content/case'
@@ -124,58 +176,6 @@ collections:
       - { name: 'role', label: 'Role', widget: 'string' }
       - { name: 'email', label: 'Email', widget: 'string' }
       - { name: 'phone', label: 'Phone', widget: 'string' }
-
-  - name: 'pages'
-    label: 'Pages'
-    delete: false
-    editor:
-      preview: false
-    files:
-      - name: 'index'
-        label: 'Start'
-        file: 'content/pages/index.md'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
-          - *page_template
-          - *seo
-          - *redirect_from
-      - name: 'about'
-        label: 'About'
-        file: 'content/pages/vad-vi-gor.md'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
-          - *page_template
-          - *seo
-          - *redirect_from
-      - name: 'career'
-        label: 'Career'
-        file: 'content/pages/bli-en-av-oss.md'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
-          - *page_template
-          - *seo
-          - *redirect_from
-      - name: 'news'
-        label: 'News'
-        file: 'content/pages/aktuellt.md'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
-          - *page_template
-          - *seo
-          - *redirect_from
-      - name: 'contact'
-        label: 'Contact'
-        file: 'content/pages/kontakt.md'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
-          - *page_template
-          - *seo
-          - *redirect_from
 
   - name: 'settings'
     label: 'Settings'
