@@ -39,17 +39,17 @@ export const routes = {
 export const mainNavigation = [
   routes.index,
   routes.case,
-  routes.about,
-  routes.career,
-  routes.news,
+  // routes.about,
+  // routes.career,
+  // routes.news,
   routes.contact,
 ]
 
 export const footerNavigation = [
   routes.case,
-  routes.about,
-  routes.career,
-  routes.news,
+  // routes.about,
+  // routes.career,
+  // routes.news,
   routes.contact,
   routes.policy,
 ]
