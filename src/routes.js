@@ -6,32 +6,32 @@ export const routes = {
   },
   case: {
     id: 'case',
-    link: '/case',
+    link: '/case/',
     title: 'Case',
   },
   about: {
     id: 'about',
-    link: '/vad-vi-gor',
+    link: '/vad-vi-gor/',
     title: 'Vad vi gör',
   },
   career: {
     id: 'career',
-    link: '/bli-en-av-oss',
+    link: '/bli-en-av-oss/',
     title: 'Bli en av oss',
   },
   news: {
     id: 'news',
-    link: '/aktuellt',
+    link: '/aktuellt/',
     title: 'Aktuellt',
   },
   contact: {
     id: 'contact',
-    link: '/kontakt',
+    link: '/kontakt/',
     title: 'Kontakt',
   },
   policy: {
     id: 'policy',
-    link: '/policy',
+    link: '/policy/',
     title: 'Policy',
   },
 }
