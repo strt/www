@@ -72,7 +72,7 @@ export const NavContent = animated(styled.div`
   align-items: flex-start;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  background-color: ${colors.watermelonRed500};
+  background-color: ${colors.dark};
 
   ${IconButton} {
     position: absolute;
@@ -168,7 +168,7 @@ export function Navigation() {
               <Link
                 to={child.link}
                 getProps={getProps}
-                colorVariant="red"
+                colorVariant="dark"
                 variant="large"
               >
                 {child.title}
@@ -180,7 +180,7 @@ export function Navigation() {
         <Link
           as="button"
           type="button"
-          colorVariant="red"
+          colorVariant="dark"
           variant="large"
           onClick={toggle}
           aria-expanded={isOpen}

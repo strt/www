@@ -33,7 +33,7 @@ export default function Case({ data: { mdx: post }, pageContext: { next } }) {
             <H4 mb="0">{post.frontmatter.client}</H4>
           </Column>
           <Column width="auto">
-            <Tags items={post.frontmatter.tags} />
+            <Tags items={post.frontmatter.tags} colorVariant="gray" />
           </Column>
         </Grid>
         <Hero pt={[2, 7]} pb={[5, 7]}>

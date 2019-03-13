@@ -11,6 +11,7 @@ const COLOR_VARIANTS = {
   red: colors.watermelonRed500,
   blue: colors.blue500,
   dark: colors.dark,
+  gray: colors.steel800,
   white: '#fff',
 }
 
@@ -66,7 +67,7 @@ const Link = React.forwardRef(({ to, ...props }, ref) => {
 })
 
 Link.propTypes = {
-  colorVariant: PropTypes.oneOf(['blue', 'red', 'dark', 'white']),
+  colorVariant: PropTypes.oneOf(Object.keys(COLOR_VARIANTS)),
   variant: PropTypes.oneOf(['large']),
   to: PropTypes.string,
   href: PropTypes.string,

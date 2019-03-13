@@ -1,7 +1,7 @@
 import { createGlobalStyle, keyframes } from 'styled-components'
 import { reset } from 'styled-reset'
 
-export const fontFamily = 'Circular, Helvetica, sans-serif'
+export const fontFamily = 'StrategDIN, Helvetica, sans-serif'
 
 export const colors = {
   blue050: '#e6eafa',
@@ -109,11 +109,11 @@ export const GlobalStyle = createGlobalStyle`
 
   ::selection {
     color: white;
-    background-color: ${colors.watermelonRed500};
+    background-color: ${colors.dark};
   }
 
   :focus {
-    outline: dotted 1px ${colors.watermelonRed500};
+    outline: dotted 1px ${colors.dark};
   }
 
   button::-moz-focus-inner {

@@ -96,7 +96,7 @@ export default function Case({ data, location }) {
             href={location.pathname}
             onClick={onTagClick}
             aria-current={!filter ? true : undefined}
-            colorVariant="blue"
+            colorVariant="gray"
             variant="large"
           >
             Alla projekt
@@ -106,7 +106,7 @@ export default function Case({ data, location }) {
               key={tag}
               href={getTagLink(tag)}
               onClick={onTagClick}
-              colorVariant="blue"
+              colorVariant="gray"
               variant="large"
               aria-current={
                 filter && filter.includes(tag.toLowerCase()) ? true : undefined

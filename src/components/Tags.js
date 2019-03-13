@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from './Link'
 import { colors, breakpoints, fluidRange, vw } from '../style'
 
-export default function Tags({ items, linked = true, ...rest }) {
+export default function Tags({ items, linked = true, colorVariant, ...rest }) {
   if (!items || !items.length) {
     return null
   }
@@ -17,6 +17,7 @@ export default function Tags({ items, linked = true, ...rest }) {
             {linked ? (
               <Link
                 href={`/case?filter=${encodeURIComponent(item.toLowerCase())}`}
+                colorVariant={colorVariant}
               >
                 {item}
               </Link>
