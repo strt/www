@@ -31,7 +31,7 @@ export const routes = {
   },
   policy: {
     id: 'policy',
-    link: '/policy/',
+    link: '/privacy-policy/',
     title: 'Policy',
   },
 }
