@@ -6,7 +6,7 @@ import CookieToast from './CookieToast'
 import components from './MDXComponents'
 import { GlobalStyle } from '../style'
 import '../lib/iconLibrary'
-import '../assets/fonts/circular.css'
+import '../assets/fonts/strategdin.css'
 
 export default function App({ children }) {
   return (
