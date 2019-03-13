@@ -161,18 +161,20 @@ export function Navigation() {
   return (
     <NavWrapper role="navigation">
       <ul data-desktop>
-        {mainNavigation.map(child => (
-          <li key={child.id}>
-            <Link
-              to={child.link}
-              getProps={getProps}
-              colorVariant="red"
-              variant="large"
-            >
-              {child.title}
-            </Link>
-          </li>
-        ))}
+        {mainNavigation
+          .filter(child => child.link !== '/')
+          .map(child => (
+            <li key={child.id}>
+              <Link
+                to={child.link}
+                getProps={getProps}
+                colorVariant="red"
+                variant="large"
+              >
+                {child.title}
+              </Link>
+            </li>
+          ))}
       </ul>
       <div data-responsive>
         <Link
