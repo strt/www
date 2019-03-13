@@ -25,6 +25,11 @@ aliases:
     widget: 'list'
     required: false
     field: { label: URL, name: url, widget: string }
+  - &published
+    name: 'published'
+    label: 'Published'
+    widget: 'boolean'
+    default: true
   - &page_template
     name: 'template'
     label: 'Template'
@@ -53,6 +58,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
           - *page_template
           - *seo
           - *redirect_from
@@ -62,6 +68,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
           - *page_template
           - *seo
           - *redirect_from
@@ -71,6 +78,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
           - *page_template
           - *seo
           - *redirect_from
@@ -80,6 +88,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
           - *page_template
           - *seo
           - *redirect_from
@@ -89,6 +98,17 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
+          - *page_template
+          - *seo
+          - *redirect_from
+      - name: 'privacy-policy'
+        label: 'Privacy policy'
+        file: 'content/pages/privacy-policy.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
           - *page_template
           - *seo
           - *redirect_from
@@ -135,6 +155,7 @@ collections:
           displayFields: ['first_name', 'last_name'],
         }
       - { name: 'body', label: 'Body', widget: 'markdown' }
+      - *published
       - *seo
       - *redirect_from
 
@@ -158,6 +179,7 @@ collections:
         }
       - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
+      - *published
       - *seo
       - *redirect_from
 
@@ -176,6 +198,7 @@ collections:
       - { name: 'role', label: 'Role', widget: 'string' }
       - { name: 'email', label: 'Email', widget: 'string' }
       - { name: 'phone', label: 'Phone', widget: 'string' }
+      - *published
 
   - name: 'settings'
     label: 'Settings'
