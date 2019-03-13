@@ -13,7 +13,7 @@ export default function NotFound({ data }) {
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
-        <Link to="/" colorVariant="blue" variant="large">
+        <Link to="/" colorVariant="dark" variant="large">
           Till startsidan
         </Link>
       </Hero>
