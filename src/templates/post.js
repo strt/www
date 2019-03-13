@@ -12,13 +12,13 @@ import Cover from '../components/Cover'
 import dayjs from '../lib/dayjs'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
-export default function Article({ data: { mdx: post } }) {
-  const { date } = post.frontmatter
+export default function Article({ data }) {
+  const { date, title, excerpt, image } = data.post.frontmatter
   const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
-  const hasCover = !!post.frontmatter.image
+  const hasCover = !!data.post.frontmatter.image
 
   return (
-    <Layout meta={getMetaFromPost(post, { type: 'article' })}>
+    <Layout meta={getMetaFromPost(data.post, { type: 'article' })}>
       <article>
         {date && (
           <Grid>
@@ -34,21 +34,18 @@ export default function Article({ data: { mdx: post } }) {
           pb={hasCover ? undefined : 0}
           keepContentMargin={!hasCover}
         >
-          <H1>{post.frontmatter.title}</H1>
-          <Excerpt>{post.frontmatter.excerpt}</Excerpt>
+          <H1>{title}</H1>
+          <Excerpt>{excerpt}</Excerpt>
         </Hero>
         {hasCover && (
           <Cover>
-            <Image
-              fluid={post.frontmatter.image.childImageSharp.fluid}
-              alt=""
-            />
+            <Image fluid={image.childImageSharp.fluid} alt="" />
           </Cover>
         )}
         <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
           <ContentWrapper>
             <Grid>
-              <MDXRenderer>{post.code.body}</MDXRenderer>
+              <MDXRenderer>{data.post.code.body}</MDXRenderer>
             </Grid>
           </ContentWrapper>
         </Section>
@@ -59,7 +56,7 @@ export default function Article({ data: { mdx: post } }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
       code {
         body
       }
