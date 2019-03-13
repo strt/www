@@ -161,7 +161,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === 'Mdx') {
     const { relativePath } = getNode(node.parent)
     const { redirect_from: redirectFrom, permalink } = node.frontmatter
-    let { template = 'frontpage' } = node.frontmatter
+    let { template = 'standard' } = node.frontmatter
     let slug = permalink || createFilePath({ node, getNode, basePath: 'pages' })
 
     if (relativePath.startsWith('posts')) {
