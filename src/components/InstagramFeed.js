@@ -54,7 +54,7 @@ export default function Posts({ halfTopBg = 'white', ...props }) {
                 })()}
               </Box>
             ))}
-            <Box>
+            <Box bg="white">
               <Link
                 href={siteSettings.social.instagram}
                 variant="large"
@@ -96,7 +96,9 @@ const Box = styled.div`
   height: 0;
   overflow: hidden;
   padding-top: 100%;
-  background-image: linear-gradient(to top left, black, gray);
+  background: ${props =>
+    props.bg ||
+    `linear-gradient(to top left, ${colors.dark}, ${colors.steel500})`};
 
   & > * {
     ${cover()}
@@ -114,10 +116,6 @@ const Box = styled.div`
     justify-content: center;
     color: ${colors.dark};
     background: white;
-
-    &:hover {
-      background: white;
-    }
 
     & svg {
       margin-bottom: 0.5em;
