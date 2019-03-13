@@ -1,7 +1,7 @@
 import { createGlobalStyle, keyframes } from 'styled-components'
 import { reset } from 'styled-reset'
 
-export const fontFamily = 'StrategDIN, Helvetica, sans-serif'
+export const fontFamily = 'Circular, Helvetica, sans-serif'
 
 export const colors = {
   blue050: '#e6eafa',
