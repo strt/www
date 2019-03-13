@@ -9,6 +9,7 @@ import Link from '../components/Link'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
+import InstagramFeed from '../components/InstagramFeed'
 import ContactArea from '../components/ContactArea'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
@@ -46,7 +47,8 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 12]}>
+      <Section bg={colors.dark} pt="0" mt={[8, 16]}>
+        <InstagramFeed />
         <Div pt={[12, 18]} pb={[6, 14]}>
           <Grid>
             <Column>

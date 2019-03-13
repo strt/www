@@ -112,15 +112,11 @@ const Box = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white;
-    background-color: ${colors.blue500};
+    color: ${colors.dark};
+    background: white;
 
     &:hover {
-      background-color: ${colors.blue700};
-    }
-
-    &.focus-visible {
-      background-color: ${colors.blue900};
+      background: white;
     }
 
     & svg {
