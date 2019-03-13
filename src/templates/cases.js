@@ -158,7 +158,10 @@ export const pageQuery = graphql`
       }
     }
     cases: allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/case/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/case/" }
+        frontmatter: { published: { ne: false } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

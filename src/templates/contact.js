@@ -150,7 +150,10 @@ export const pageQuery = graphql`
       }
     }
     employees: allMdx(
-      filter: { fileAbsolutePath: { regex: "/employees/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/employees/" }
+        frontmatter: { published: { ne: false } }
+      }
       sort: { fields: [frontmatter___first_name, frontmatter___last_name] }
     ) {
       edges {

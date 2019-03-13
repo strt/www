@@ -80,7 +80,10 @@ export const pageQuery = graphql`
     }
     cases: allMdx(
       limit: 5
-      filter: { fileAbsolutePath: { regex: "/content/case/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/case/" }
+        frontmatter: { published: { ne: false } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

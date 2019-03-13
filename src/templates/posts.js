@@ -56,7 +56,10 @@ export const pageQuery = graphql`
       }
     }
     articles: allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/posts/" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts/" }
+        frontmatter: { published: { ne: false } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
