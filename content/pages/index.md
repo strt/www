@@ -5,5 +5,5 @@ template: frontpage
 seo:
   title: Kommunikationsbyrån som gör skillnad
   description: Välkommen till Strateg! Här finns fler än 40 strateger med en väldig massa kompetens och ett ovanligt stort engagemang.
-  image: /media/shapes.jpg
+  image: null
 ---
