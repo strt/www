@@ -36,10 +36,13 @@ export default function Meta({
             {image && (
               <meta
                 property="og:image"
-                content={image ? location.origin + image : ''}
+                content={image ? siteSettings.siteUrl + image : ''}
               />
             )}
-            <meta property="og:url" content={location.href} />
+            <meta
+              property="og:url"
+              content={siteSettings.siteUrl + location.pathname}
+            />
             {publishedTime && (
               <meta
                 property="article:published_time"
