@@ -4,6 +4,7 @@ excerpt: >-
   Vi har blivit med filmproducent! Det är Sara Blomqvist, med tio års erfarenhet
   inom rörlig bild, som ska ansvara för att utveckla Strategs motion-erbjudande.
 date: 2018-12-08T07:47:06.065Z
+published: false
 redirect_from:
   - '/aktuellt/nyheter/2018/2018-11-08-filmproducent-till-strategfamiljen.html'
 ---
