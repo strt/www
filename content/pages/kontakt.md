@@ -7,5 +7,5 @@ template: contact
 redirect_from:
   - kontakt.html
 seo:
-  image: /media/default-og.jpg
+  image: /media/uploads/default-og.jpg
 ---

@@ -4,7 +4,7 @@ excerpt: >-
   Lorem ipsum dolor
 template: standard
 seo:
-  image: /media/default-og.jpg
+  image: /media/uploads/default-og.jpg
 redirect_from: []
 ---
 

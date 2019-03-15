@@ -7,5 +7,5 @@ redirect_from:
 seo:
   title: null
   description: null
-  image: /media/default-og.jpg
+  image: /media/uploads/default-og.jpg
 ---
