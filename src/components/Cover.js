@@ -7,7 +7,7 @@ const CoverWrapper = styled.div`
   position: relative;
   height: 0;
   width: 100%;
-  padding-top: 100%;
+  padding-top: ${props => (props.isVideo ? '56.25%' : '100%')};
   overflow: hidden;
   background-color: ${props => props.bg || colors.dark};
 

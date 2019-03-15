@@ -42,7 +42,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Hero>
         {(post.frontmatter.image || post.frontmatter.video) && (
-          <Cover bg={post.frontmatter.color}>
+          <Cover bg={post.frontmatter.color} isVideo={!!post.frontmatter.video}>
             {post.frontmatter.image && (
               <Image
                 fluid={post.frontmatter.image.childImageSharp.fluid}
