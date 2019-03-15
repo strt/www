@@ -97,15 +97,15 @@ export default function Tile({
           </H3>
           <Tags items={tags} textColor="white" linked={false} variant="small" />
         </Content>
-        {image && (
-          <Media bg={bg}>
+        <Media bg={bg}>
+          {image && (
             <Image
               fluid={image.childImageSharp.fluid}
               alt=""
               aspectRatio="auto"
             />
-          </Media>
-        )}
+          )}
+        </Media>
       </Article>
     </Link>
   )
