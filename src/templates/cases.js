@@ -159,7 +159,7 @@ export const pageQuery = graphql`
     }
     cases: allMdx(
       filter: {
-        fileAbsolutePath: { regex: "/content/case/" }
+        fields: { template: { eq: "case" } }
         frontmatter: { published: { ne: false } }
       }
       sort: { fields: [frontmatter___date], order: DESC }

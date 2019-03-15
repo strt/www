@@ -57,7 +57,7 @@ export const pageQuery = graphql`
     }
     articles: allMdx(
       filter: {
-        fileAbsolutePath: { regex: "/content/posts/" }
+        fields: { template: { eq: "post" } }
         frontmatter: { published: { ne: false } }
       }
       sort: { fields: [frontmatter___date], order: DESC }
