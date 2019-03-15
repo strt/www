@@ -49,7 +49,7 @@ export default function Index({ data }) {
       </Section>
       <Section bg={colors.dark} pt="0" mt={[8, 16]}>
         <InstagramFeed />
-        <Div pt={[12, 18]} pb={[6, 14]}>
+        <Div pt={[15, 25]} pb={[6, 14]}>
           <Grid>
             <Column>
               <ContactArea />

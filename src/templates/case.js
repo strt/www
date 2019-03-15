@@ -54,7 +54,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
             )}
           </Cover>
         )}
-        <Section py={[5, 7]}>
+        <Section pt={[5, 7]} pb={[10, 13]}>
           <ContentWrapper>
             <Grid>
               <MDXRenderer>{post.code.body}</MDXRenderer>
@@ -63,7 +63,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
 
           <Grid>
             {contact && (
-              <Column md="8" mt={[3, 5]}>
+              <Column md="8" mt={[4, 6]}>
                 <H3>Vill du veta mer?</H3>
                 <Text>
                   Kontakta {contact.first_name} {contact.last_name},{' '}

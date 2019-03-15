@@ -118,7 +118,7 @@ export default function Case({ data, location }) {
         </Filter>
       </Hero>
       <Animation key={filter}>
-        <Section pb={[10, 20]}>
+        <Section pb={[15, 25]}>
           <Grid>
             {cases.map(({ node }) => (
               <Column key={node.id} md="6" bottomGap>
