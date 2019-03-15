@@ -1,55 +1,57 @@
-import { useRef, useReducer, useEffect } from 'react'
+import { useReducer, useEffect } from 'react'
 import axios from 'axios'
 
-const initialState = { count: 0 }
+const STATES = {
+  loading: 0,
+  success: 1,
+  error: 2,
+}
 
-function reducer(state, action) {
+const initialState = { loading: true, error: false, data: undefined }
+
+function axiosReducer(state, action) {
   switch (action.type) {
-    case 'loading':
-      return { loading: true, error: false, data: undefined }
-    case 'error':
-      return { loading: false, error: true, data: undefined }
-    case 'success':
-      return { loading: false, error: false, data: action.payload }
+    case STATES.loading:
+      return { ...state, loading: true, error: false }
+    case STATES.error:
+      return { ...state, loading: false, error: true }
+    case STATES.success:
+      return { ...state, loading: false, error: false, data: action.payload }
     default:
       throw new Error()
   }
 }
 
-export default function useAxios(args) {
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const cancelToken = useRef(null)
+export default function useAxios(args, inputs = []) {
+  const [state, dispatch] = useReducer(axiosReducer, initialState)
 
   useEffect(() => {
-    dispatch({ type: 'loading' })
+    let cancelToken = null
+
+    dispatch({ type: STATES.loading })
 
     axios({
       ...args,
       cancelToken: new axios.CancelToken((token) => {
-        cancelToken.current = token
+        cancelToken = token
       }),
     })
       .then(({ data }) => {
-        dispatch({ type: 'success', payload: data })
-        cancelToken.current = null
+        cancelToken = null
+        dispatch({ type: STATES.success, payload: data })
       })
       .catch((e) => {
-        if (
-          axios.isCancel(e) ||
-          (e.request.readyState === 4 && e.request.status === 0)
-        ) {
-          return
-        }
+        if (axios.isCancel(e)) return
 
-        dispatch({ type: 'error' })
+        dispatch({ type: STATES.error })
       })
 
     return () => {
-      if (cancelToken.current) {
-        cancelToken.current()
+      if (cancelToken) {
+        cancelToken()
       }
     }
-  }, [])
+  }, inputs)
 
   return state
 }
