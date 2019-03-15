@@ -10,13 +10,14 @@ import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
 import Image from '../components/Image'
+import EmbedPlayer from '../components/EmbedPlayer'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import ContentWrapper from '../components/ContentWrapper'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
-export default function Case({ data: { mdx: post }, pageContext: { next } }) {
+export default function Case({ data: { post }, pageContext: { next } }) {
   const contact =
     post.frontmatter.contact_relation &&
     post.frontmatter.contact_relation.frontmatter
@@ -40,14 +41,20 @@ export default function Case({ data: { mdx: post }, pageContext: { next } }) {
           <H1>{post.frontmatter.title}</H1>
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Hero>
-        {post.frontmatter.image && (
-          <Cover bg={post.frontmatter.color}>
-            <Image
-              fluid={post.frontmatter.image.childImageSharp.fluid}
-              alt=""
-            />
-          </Cover>
-        )}
+        {post.frontmatter.image ||
+          (post.frontmatter.video && (
+            <Cover bg={post.frontmatter.color}>
+              {post.frontmatter.image && (
+                <Image
+                  fluid={post.frontmatter.image.childImageSharp.fluid}
+                  alt=""
+                />
+              )}
+              {post.frontmatter.video && (
+                <EmbedPlayer src={post.frontmatter.video} />
+              )}
+            </Cover>
+          ))}
         <Section py={[5, 7]}>
           <ContentWrapper>
             <Grid>
@@ -103,7 +110,7 @@ export default function Case({ data: { mdx: post }, pageContext: { next } }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
       code {
         body
       }
@@ -117,6 +124,7 @@ export const pageQuery = graphql`
         excerpt
         tags
         color
+        video
         image {
           childImageSharp {
             ...CoverImage
