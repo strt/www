@@ -15,11 +15,7 @@ const CoverWrapper = styled.div`
     padding-top: 56.25%;
   }
 
-  canvas,
-  video,
-  iframe,
-  figure,
-  img {
+  > * {
     position: absolute;
     top: 0;
     left: 0;
