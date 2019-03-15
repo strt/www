@@ -8,7 +8,7 @@ const PlayerWrapper = styled.div`
   width: 100%;
   padding-top: 56.25%;
   overflow: hidden;
-  background-color: ${colors.dark};
+  background-color: ${props => props.bg || colors.dark};
 
   iframe {
     position: absolute;
@@ -21,9 +21,9 @@ const PlayerWrapper = styled.div`
   }
 `
 
-export default function EmbedPlayer({ title, ...props }) {
+export default function EmbedPlayer({ title, bg, ...props }) {
   return (
-    <PlayerWrapper>
+    <PlayerWrapper bg={bg}>
       <iframe
         title={title}
         frameBorder="0"

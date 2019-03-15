@@ -50,7 +50,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
               />
             )}
             {post.frontmatter.video && (
-              <EmbedPlayer src={post.frontmatter.video} />
+              <EmbedPlayer src={post.frontmatter.video} bg="transparent" />
             )}
           </Cover>
         )}
