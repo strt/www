@@ -16,7 +16,7 @@ tags:
   - Varumärkesarbete
   - Video
 color: '#1d1d1d'
-contact_relation: hans.tedsjo@strateg.se
+contact_relation: fredrik.vannestal@strateg.se
 ---
 
 <Column md="6">
