@@ -41,20 +41,19 @@ export default function Case({ data: { post }, pageContext: { next } }) {
           <H1>{post.frontmatter.title}</H1>
           <Excerpt>{post.frontmatter.excerpt}</Excerpt>
         </Hero>
-        {post.frontmatter.image ||
-          (post.frontmatter.video && (
-            <Cover bg={post.frontmatter.color}>
-              {post.frontmatter.image && (
-                <Image
-                  fluid={post.frontmatter.image.childImageSharp.fluid}
-                  alt=""
-                />
-              )}
-              {post.frontmatter.video && (
-                <EmbedPlayer src={post.frontmatter.video} />
-              )}
-            </Cover>
-          ))}
+        {(post.frontmatter.image || post.frontmatter.video) && (
+          <Cover bg={post.frontmatter.color}>
+            {post.frontmatter.image && (
+              <Image
+                fluid={post.frontmatter.image.childImageSharp.fluid}
+                alt=""
+              />
+            )}
+            {post.frontmatter.video && (
+              <EmbedPlayer src={post.frontmatter.video} />
+            )}
+          </Cover>
+        )}
         <Section py={[5, 7]}>
           <ContentWrapper>
             <Grid>
