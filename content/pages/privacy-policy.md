@@ -3,7 +3,8 @@ title: Privacy policy
 excerpt: >-
   Lorem ipsum dolor
 template: standard
-seo: {}
+seo:
+  image: /media/default-og.jpg
 redirect_from: []
 ---
 

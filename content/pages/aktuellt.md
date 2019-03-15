@@ -8,5 +8,5 @@ published: false
 seo:
   title: null
   description: null
-  image: null
+  image: /media/default-og.jpg
 ---
