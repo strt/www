@@ -1,4 +1,4 @@
-import React, { createContext, useRef, useCallback } from 'react'
+import React, { createContext, useContext, useRef, useCallback } from 'react'
 
 function generateId() {
   return Math.random()
@@ -6,7 +6,7 @@ function generateId() {
     .substr(2, 6)
 }
 
-export const IdContext = createContext(generateId)
+const IdContext = createContext(generateId)
 
 export function IdProvider(props) {
   const id = useRef(0)
@@ -19,4 +19,10 @@ export function IdProvider(props) {
   )
 
   return <IdContext.Provider value={genId}>{props.children}</IdContext.Provider>
+}
+
+export function useId(prefix) {
+  const genId = useContext(IdContext)
+  const ref = useRef(genId(prefix))
+  return ref.current
 }

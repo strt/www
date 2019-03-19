@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { IdContext } from './IdManager'
+import { useId } from './IdManager'
 import {
   vw,
   colors,
@@ -78,8 +78,7 @@ const Wrapper = styled.div`
 `
 
 function TextField({ label, multiline, ...props }, forwardedRef) {
-  const getId = useContext(IdContext)
-  const id = props.id || getId('textfield')
+  const id = useId('textfield')
   const Input = multiline ? 'textarea' : 'input'
 
   return (
