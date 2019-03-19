@@ -6,7 +6,6 @@ excerpt: >-
   berätta? Vårt motion team med Victor Lund (motion designer) och Sara Blomqvist
   (filmproducent) reder ut ett och annat här. Take it away!
 date: 2018-11-08T07:48:55.802Z
-published: false
 redirect_from:
   - '/aktuellt/nyheter/2018/2018-11-08-we-like-to-movie-it---fem-former-av-rorligt.html'
 ---

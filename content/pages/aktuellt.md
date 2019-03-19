@@ -7,7 +7,6 @@ excerpt: >-
 template: posts
 redirect_from:
   - /aktuellt.html
-published: false
 seo:
   title: null
   description: null

@@ -6,7 +6,6 @@ excerpt: >-
   under ett och samma varumärke – Strateg. Med totalt 70 medarbetare i Örebro
   och Stockholm är vi en av landets största kreativa kommunikationsbyråer.
 date: 2019-02-04T15:32:14.536Z
-published: false
 image: '/media/uploads/article-nu-blir-tre-byraer-ett-strateg.jpg'
 redirect_from:
   - '/aktuellt/nyheter/2019/2019-02-04-nu-blir-tre-byraer-ett-strateg.html'

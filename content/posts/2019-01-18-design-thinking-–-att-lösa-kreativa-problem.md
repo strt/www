@@ -6,7 +6,6 @@ excerpt: >-
   En upplevelse. Och visst är god design något att sträva efter, men vem är
   designen egentligen till för och vad är dess uppgift?
 date: 2019-01-18T15:39:48.398Z
-published: false
 image: /media/uploads/article-design-thinking.jpg
 redirect_from:
   - >-

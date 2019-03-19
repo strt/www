@@ -41,7 +41,7 @@ export const mainNavigation = [
   routes.case,
   // routes.about,
   // routes.career,
-  // routes.news,
+  routes.news,
   routes.contact,
 ]
 
@@ -49,7 +49,7 @@ export const footerNavigation = [
   routes.case,
   // routes.about,
   // routes.career,
-  // routes.news,
+  routes.news,
   routes.contact,
   routes.policy,
 ]

@@ -2,10 +2,11 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { H1 } from '../components/Text'
+import { H1, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
+import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
@@ -23,7 +24,7 @@ export default function Index({ data }) {
       <Hero scrollButtonElement="#case-section" pt={8}>
         <H1>{title}</H1>
       </Hero>
-      <Section id="case-section" py={[3, 4]}>
+      <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
           {data.cases.edges.map(({ node }) => (
             <Tile
@@ -42,6 +43,34 @@ export default function Index({ data }) {
             <Div mt={[3, 6]}>
               <Link to={routes.case.link} colorVariant="dark" variant="large">
                 Fler case
+              </Link>
+            </Div>
+          </Column>
+        </Grid>
+      </Section>
+      <Section bg={colors.ice} pt="0" pb={[5, 10]}>
+        <Div halfTopBg="white" mb={[2, 4]}>
+          <Grid>
+            <Column>
+              <H2>Aktuellt</H2>
+            </Column>
+          </Grid>
+        </Div>
+        <Grid>
+          {data.articles.edges.map(({ node }) => (
+            <Column key={node.id} md="6" bottomGap>
+              <Card
+                date={node.frontmatter.date}
+                title={node.frontmatter.title}
+                url={node.fields.slug}
+                image={node.frontmatter.image}
+              />
+            </Column>
+          ))}
+          <Column>
+            <Div mt={[3, 2]}>
+              <Link to={routes.news.link} colorVariant="blue" variant="large">
+                Fler inlägg
               </Link>
             </Div>
           </Column>
@@ -101,6 +130,32 @@ export const pageQuery = graphql`
             image {
               childImageSharp {
                 ...TileImage
+              }
+            }
+          }
+        }
+      }
+    }
+    articles: allMdx(
+      limit: 4
+      filter: {
+        fields: { template: { eq: "post" } }
+        frontmatter: { published: { ne: false } }
+      }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date
+            image {
+              childImageSharp {
+                ...CardImage
               }
             }
           }
