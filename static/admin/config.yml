@@ -36,6 +36,7 @@ aliases:
     widget: 'select'
     options:
       [
+        { label: 'Standard', value: 'standard' },
         { label: 'Frontpage', value: 'frontpage' },
         { label: 'Posts', value: 'posts' },
         { label: 'Career', value: 'career' },
