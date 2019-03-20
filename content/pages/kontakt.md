@@ -8,4 +8,5 @@ redirect_from:
   - kontakt.html
 seo:
   image: /media/uploads/default-og.jpg
+published: true
 ---

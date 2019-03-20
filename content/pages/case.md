@@ -11,4 +11,5 @@ seo:
   title: null
   description: null
   image: /media/uploads/default-og.jpg
+published: true
 ---
