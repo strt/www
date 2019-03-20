@@ -1,8 +1,9 @@
 ---
 first_name: Malin
 last_name: Eriksson
-role: 'Designer'
-email: 'malin.eriksson@strateg.se'
+role: Designer
+email: malin.eriksson@strateg.se
 phone: ''
-image: '/media/uploads/employee-malin-eriksson.jpg'
+image: /media/uploads/employee-malin-eriksson.jpg
+published: true
 ---
