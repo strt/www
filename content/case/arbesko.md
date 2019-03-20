@@ -6,7 +6,7 @@ excerpt: >-
   lika stort steg tillbaka. Det nya formspråket och den nya tonen bygger på
   berättelsen om det anrika företagets lika långa som fascinerande historia. Och
   på den stolthet som finns över det genuina och äkta hantverket.
-date: 2018-10-09T15:25:24+02:00
+date: 2018-10-09T13:25:24.000Z
 image: /media/uploads/case-arbesko.jpg
 tags:
   - Digitalt
@@ -17,6 +17,7 @@ tags:
   - Video
 color: '#1d1d1d'
 contact_relation: fredrik.vannestal@strateg.se
+published: true
 ---
 
 <Column md="6">
