@@ -198,6 +198,7 @@ collections:
       - { name: 'role', label: 'Role', widget: 'string' }
       - { name: 'email', label: 'Email', widget: 'string' }
       - { name: 'phone', label: 'Phone', widget: 'string' }
+      - { name: 'image', label: 'Image', widget: 'image' }
       - *published
 
   - name: 'settings'
