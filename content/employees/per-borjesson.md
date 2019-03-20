@@ -1,7 +1,7 @@
 ---
 first_name: Per
 last_name: Börjesson
-role: Art director
+role: Art Director
 email: per.borjesson@strateg.se
 phone: ''
 image: /media/uploads/employee-per-borjesson.jpg

@@ -1,7 +1,7 @@
 ---
 first_name: Sara
 last_name: Lindstrom
-role: Account director
+role: Account Director
 email: sara.lindstrom@strateg.se
 phone: ''
 image: /media/uploads/employee-sara-lindstrom.jpg
