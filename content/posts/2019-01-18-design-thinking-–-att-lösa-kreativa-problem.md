@@ -10,6 +10,7 @@ image: /media/uploads/article-design-thinking.jpg
 redirect_from:
   - >-
     /aktuellt/nyheter/2019/2019-01-18-design-thinking---att-losa-kreativa-problem.html
+published: true
 ---
 
 ## Med människan i centrum

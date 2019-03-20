@@ -7,7 +7,9 @@ excerpt: >-
   (filmproducent) reder ut ett och annat här. Take it away!
 date: 2018-11-08T07:48:55.802Z
 redirect_from:
-  - '/aktuellt/nyheter/2018/2018-11-08-we-like-to-movie-it---fem-former-av-rorligt.html'
+  - >-
+    /aktuellt/nyheter/2018/2018-11-08-we-like-to-movie-it---fem-former-av-rorligt.html
+published: true
 ---
 
 ## Animering och infografic
