@@ -67,9 +67,9 @@ export default function Case({ data: { post }, pageContext: { next } }) {
           <Grid>
             {contact && (
               <Column md="8" mt={[4, 6]}>
-                <H3>Vill du veta mer?</H3>
+                <H3>Would you like to know more?</H3>
                 <Text>
-                  Kontakta {contact.first_name} {contact.last_name},{' '}
+                  Contact {contact.first_name} {contact.last_name},{' '}
                   {contact.role}. <br />
                   <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
                   <br />
@@ -84,7 +84,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
             <Grid>
               <Column>
                 <H6 textColor="white" mb={[3, 7]}>
-                  Nästa case <Icon name={['fal', 'long-arrow-down']} />
+                  Next case <Icon name={['fal', 'long-arrow-down']} />
                 </H6>
                 <H1 as="div">
                   <Link
