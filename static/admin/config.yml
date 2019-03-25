@@ -94,7 +94,7 @@ collections:
           - *seo
           - *redirect_from
       - name: 'career'
-        label: 'Career'
+        label: 'Join us'
         file: 'content/pages/join-us.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
