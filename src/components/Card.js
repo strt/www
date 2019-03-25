@@ -101,7 +101,7 @@ export default function Card({ url, title, date, image }) {
           {image && (
             <Image
               fluid={image.childImageSharp.fluid}
-              sizes="(min-width: 768px) 20vw, 30vw"
+              sizes="(min-width: 768px) 30vw, 50vw"
               aspectRatio="auto"
               alt=""
             />
@@ -114,7 +114,7 @@ export default function Card({ url, title, date, image }) {
 
 export const query = graphql`
   fragment CardImage on ImageSharp {
-    fluid(quality: 80, srcSetBreakpoints: [200, 340, 420]) {
+    fluid(quality: 80, srcSetBreakpoints: [200, 340, 520]) {
       ...GatsbyImageSharpFluid_withWebp
     }
   }
