@@ -41,7 +41,7 @@ export default function Index({ data }) {
           <Column>
             <Div mt={[3, 6]}>
               <Link to={routes.work.link} colorVariant="dark" variant="large">
-                Fler case
+                More work
               </Link>
             </Div>
           </Column>
@@ -51,7 +51,7 @@ export default function Index({ data }) {
         <Div halfTopBg="white" mb={[2, 4]}>
           <Grid>
             <Column>
-              <H2>Aktuellt</H2>
+              <H2>News</H2>
             </Column>
           </Grid>
         </Div>
@@ -69,7 +69,7 @@ export default function Index({ data }) {
           <Column>
             <Div mt={[3, 2]}>
               <Link to={routes.news.link} colorVariant="blue" variant="large">
-                Fler inlägg
+                More news
               </Link>
             </Div>
           </Column>
