@@ -35,7 +35,7 @@ export default function Article({ data }) {
           keepContentMargin={!hasCover}
         >
           <H1>{title}</H1>
-          <Excerpt>{excerpt}</Excerpt>
+          {excerpt && <Excerpt>{excerpt}</Excerpt>}
         </Hero>
         {hasCover && (
           <Cover>

@@ -18,9 +18,17 @@ import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Case({ data: { post }, pageContext: { next } }) {
-  const contact =
-    post.frontmatter.contact_relation &&
-    post.frontmatter.contact_relation.frontmatter
+  const {
+    title,
+    excerpt,
+    tags,
+    client,
+    color,
+    image,
+    video,
+    contact_relation: contactRelation,
+  } = post.frontmatter
+  const contact = contactRelation && contactRelation.frontmatter
 
   return (
     <Layout meta={getMetaFromPost(post)} hideFooter>
@@ -31,27 +39,22 @@ export default function Case({ data: { post }, pageContext: { next } }) {
           flexWrap="nowrap"
         >
           <Column width="auto">
-            <H4 mb="0">{post.frontmatter.client}</H4>
+            <H4 mb="0">{client}</H4>
           </Column>
           <Column width="auto">
-            <Tags items={post.frontmatter.tags} colorVariant="gray" />
+            <Tags items={tags} colorVariant="gray" />
           </Column>
         </Grid>
         <Hero pt={[2, 7]} pb={[5, 7]}>
-          <H1>{post.frontmatter.title}</H1>
-          <Excerpt>{post.frontmatter.excerpt}</Excerpt>
+          <H1>{title}</H1>
+          {excerpt && <Excerpt>{excerpt}</Excerpt>}
         </Hero>
-        {(post.frontmatter.image || post.frontmatter.video) && (
-          <Cover bg={post.frontmatter.color} isVideo={!!post.frontmatter.video}>
-            {post.frontmatter.image && !post.frontmatter.video && (
-              <Image
-                fluid={post.frontmatter.image.childImageSharp.fluid}
-                alt=""
-              />
+        {(image || video) && (
+          <Cover bg={color} isVideo={!!video}>
+            {image && !video && (
+              <Image fluid={image.childImageSharp.fluid} alt="" />
             )}
-            {post.frontmatter.video && (
-              <EmbedPlayer src={post.frontmatter.video} bg="transparent" />
-            )}
+            {video && <EmbedPlayer src={video} bg="transparent" />}
           </Cover>
         )}
         <Section pt={[5, 7]} pb={[10, 13]}>
