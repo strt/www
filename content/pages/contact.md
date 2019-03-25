@@ -1,12 +1,13 @@
 ---
-title: Här är vi. Allihop.
+title: Hello! This is us
 excerpt: >-
-  Vill du jobba med oss? Hos oss? Snacka om japansk kultur, skrattgaranti eller
-  världens bästa låt? Det är bara att hojta till.
+  Would you like to work with us? Or be a part of the team? Just let us know. We
+  have a way of figuring things out. 
+published: true
 template: contact
-redirect_from:
-  - kontakt.html
 seo:
   image: /media/uploads/default-og.jpg
-published: true
+redirect_from:
+  - kontakt.html
 ---
+
