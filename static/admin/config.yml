@@ -73,9 +73,9 @@ collections:
           - *page_template
           - *seo
           - *redirect_from
-      - name: 'career'
-        label: 'Career'
-        file: 'content/pages/join-us.md'
+      - name: 'work'
+        label: 'Work'
+        file: 'content/pages/work.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
@@ -93,9 +93,9 @@ collections:
           - *page_template
           - *seo
           - *redirect_from
-      - name: 'work'
-        label: 'Work'
-        file: 'content/pages/work.md'
+      - name: 'career'
+        label: 'Career'
+        file: 'content/pages/join-us.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
