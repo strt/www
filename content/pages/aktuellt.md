@@ -1,15 +1,13 @@
 ---
-title: Nytt från Strateg.
+title: What’s happening at Strateg
 excerpt: >-
-  Vi gillar att dela med oss. Av riktigt-bra-att-ha-kunskap, guidning i 
-  kommunikationsdjungeln och sånt som händer här på Strateg. Stort och smått. 
-  Självklart och oväntat. Haka på.
+  Big news, small notes; trendspotting or the daily buzz – here’s a look at the
+  world inside Strateg.  
+published: true
 template: posts
+seo:
+  image: /media/uploads/default-og.jpg
 redirect_from:
   - /aktuellt.html
-seo:
-  title: null
-  description: null
-  image: /media/uploads/default-og.jpg
-published: true
 ---
+
