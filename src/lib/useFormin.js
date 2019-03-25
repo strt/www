@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer, useCallback } from 'react'
 
 const wrapEvent = (handler, cb) => (event) => {
   if (handler) {
@@ -104,9 +104,9 @@ export default function useFormin(initialState = {}) {
     }
   }
 
-  function reset() {
+  const reset = useCallback(() => {
     dispatch({ type: 'reset' })
-  }
+  }, [])
 
   return {
     ...state,
