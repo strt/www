@@ -85,14 +85,13 @@ export default function Footer() {
         <Column width="auto">
           <CopyrightText as="small">
             © 2018 <br />
-            {siteSettings.name} <br />
-            En del av{' '}
+            {siteSettings.name} <br />A part of{' '}
             <Link
-              href="//diplomatgruppen.se/sv"
+              href="//diplomatgruppen.se"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Diplomatgruppen
+              Diplomat Group
             </Link>
           </CopyrightText>
         </Column>
