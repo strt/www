@@ -11,7 +11,6 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
 import InstagramFeed from '../components/InstagramFeed'
-import ContactArea from '../components/ContactArea'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -76,15 +75,8 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 16]}>
+      <Section bg={colors.dark} pt="0" mt={[8, 16]} pb={[12, 36]}>
         <InstagramFeed />
-        <Div pt={[15, 25]} pb={[6, 14]}>
-          <Grid>
-            <Column>
-              <ContactArea />
-            </Column>
-          </Grid>
-        </Div>
       </Section>
     </Layout>
   )
