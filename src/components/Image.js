@@ -187,7 +187,7 @@ export const ImageWrapper = styled.figure`
     ${cover()}
     z-index: -1;
     transform: scale(1.1);
-    filter: blur(30px);
+    /* filter: blur(30px); */
   }
 
   [data-background] {
