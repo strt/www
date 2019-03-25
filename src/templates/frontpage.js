@@ -68,7 +68,7 @@ export default function Index({ data }) {
           ))}
           <Column>
             <Div mt={[3, 2]}>
-              <Link to={routes.news.link} colorVariant="blue" variant="large">
+              <Link to={routes.news.link} variant="large">
                 More news
               </Link>
             </Div>
