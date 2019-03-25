@@ -1,7 +1,5 @@
 ---
-title: >-
-  Vi tar ditt varumärke längre. Och vi gör det med ovanligt mycket hjärta och
-  engagemang.
+title: We transform people and brands with strategy and creativity.
 excerpt: null
 template: frontpage
 seo:
