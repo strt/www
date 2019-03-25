@@ -113,9 +113,9 @@ collections:
           - *page_template
           - *seo
           - *redirect_from
-      - name: 'privacy-policy'
+      - name: 'integrity-policy'
         label: 'Privacy policy'
-        file: 'content/pages/privacy-policy.md'
+        file: 'content/pages/integrity-policy.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
