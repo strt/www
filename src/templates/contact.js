@@ -52,9 +52,7 @@ export default function Contact({ data }) {
           ))}
           <Column md="4">
             <Text>
-              Vill du jobba med Strateg?
-              <br />
-              Hör av dig till {data.clientContact.frontmatter.first_name}.
+              New business
               <br />
               <Link href={`mailto:${data.clientContact.frontmatter.email}`}>
                 {data.clientContact.frontmatter.email}
@@ -75,8 +73,7 @@ export default function Contact({ data }) {
         <Grid>
           <Column>
             <Text>
-              Vill du kontakta någon av oss skicka ett mejl till
-              fornamn.efternamn[a]strateg.se
+              Reach us directly by e-mailing firstname.surname[a]strateg.se
             </Text>
           </Column>
           {data.employees.edges.map(({ node }) => (
