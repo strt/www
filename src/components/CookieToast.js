@@ -63,7 +63,7 @@ export default function CookieToast() {
                 >
                   <Column>
                     <Text textColor="white" m="0">
-                      This website uses cookies. Yum.
+                      This website uses cookies. Yum.{' '}
                       <Link to={routes.policy.link} colorVariant="white">
                         Policy
                       </Link>
