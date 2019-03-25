@@ -1,11 +1,11 @@
 ---
-client: Arbesko
-title: Det anrika skoföretaget går tillbaka till rötterna.
+title: Venerable shoe company going back to its roots
 excerpt: >-
-  I sin nya marknadsföring tar Arbesko ett rejält kliv framåt genom att ta ett
-  lika stort steg tillbaka. Det nya formspråket och den nya tonen bygger på
-  berättelsen om det anrika företagets lika långa som fascinerande historia. Och
-  på den stolthet som finns över det genuina och äkta hantverket.
+  In its new marketing, Arbesko takes a giant step forwards by taking an equally
+  giant step backwards. The new design language and the new tone are based on
+  this venerable company’s history, which is as fascinating as it is long. And
+  on their pride in the genuine and authentic craftsmanship they represent.
+client: Arbesko
 date: 2018-10-09T13:25:24.000Z
 image: /media/uploads/case-arbesko.jpg
 tags:
@@ -15,15 +15,13 @@ tags:
   - Print
   - Branding
   - Video
-color: '#1d1d1d'
 contact_relation: fredrik.vannestal@strateg.se
 published: true
 ---
-
 <Column md="6">
   <Box
-    title="Skomakare sedan 1839"
-    content="Sedan april 2017 är Arbesko en del av koncernen Bergman &amp; Beving. I samband det ville man ta ett nytt grepp om all kommunikation. Strateg skapade ett koncept som sammanfattas i den nya payoffen: Skomakare sedan 1839."
+    title="Shoemaker since 1839"
+    content="Since April 2017, Arbesko is a part of the holding company Bergman & Beving. In conjunction with this, they wanted to rethink their approach to all communications. Strateg created a concept that is exemplified by their new payoff: Shoemaker since 1839."
   />
 </Column>
 
@@ -35,9 +33,9 @@ published: true
 
 ![](/media/uploads/case-arbesko-0.jpg)
 
-## Äkta. Nära. Hantverk. Stolthet.
+## Genuine. Local. Craftsmanship. Pride.
 
-Arbesko har en historia som verkligen är värd att berätta. Det som startade 1839 med en av Sveriges första partiskomakare är idag ett marknadsledande företag som omsätter cirka 190 miljoner per år – och som tillverkar skydds- och yrkesskor av högsta kvalitet i Sveriges idag enda skofabrik. Så istället för att se ut som konkurrenterna, är det den unika berättelsen och det genuina hantverket som nu lyfts fram.
+Arbesko has a history that’s well worth telling. What started back in 1839 as one of Sweden’s first wholesale shoemakers is now a market-leading company generating annual sales of around SEK 190 million – and manufacturing safety and occupational footwear of the highest quality in what is now Sweden’s only shoe factory. So instead of simply mimicking the competition, they’re now highlighting their unique history and genuine craftsmanship.
 
 <Column md="6">
 
@@ -63,9 +61,9 @@ Arbesko har en historia som verkligen är värd att berätta. Det som startade 1
 
 </Column>
 
-## Oxelösund och Umeå
+## Oxelösund and Umeå
 
-Produktnamnen kommer från och med nu vara svenska ortsnamn. Orter som på något sätt har en anknytning till utvecklingen av den specifika skofamiljen. Namnen bidrar till den genuina och ärliga känslan och hyllar både arvet och det faktum att Arbeskos skor än idag tillverkas i Sverige.
+As of now, all product names will be Swedish place names. Places that in some way or other are associated with the development of a particular line of shoes. These names will add to the genuine and authentic feel while also celebrating both the company’s heritage and the fact that Arbesko shoes are still made in Sweden.
 
 ![](/media/uploads/case-arbesko-4.jpg)
 
