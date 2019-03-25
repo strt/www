@@ -54,7 +54,7 @@ const Media = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.bg};
+    background-color: ${colors.dark};
     opacity: 0;
     transition: opacity ${durations.slow} ${easings.easeOutSine};
   }
@@ -63,10 +63,6 @@ const Media = styled.div`
   ${Link}:focus & {
     &::before {
       opacity: 0.8;
-    }
-
-    & img {
-      filter: grayscale(1);
     }
   }
 
