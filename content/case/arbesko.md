@@ -9,11 +9,11 @@ excerpt: >-
 date: 2018-10-09T13:25:24.000Z
 image: /media/uploads/case-arbesko.jpg
 tags:
-  - Digitalt
-  - Identitet
-  - Kampanj
+  - Digital
+  - Identity
+  - Campaign
   - Print
-  - Varumärkesarbete
+  - Branding
   - Video
 color: '#1d1d1d'
 contact_relation: fredrik.vannestal@strateg.se

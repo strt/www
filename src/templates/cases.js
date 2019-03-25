@@ -99,7 +99,7 @@ export default function Case({ data, location }) {
             colorVariant="gray"
             variant="large"
           >
-            Alla projekt
+            All projects
           </Link>
           {tags.map(tag => (
             <Link

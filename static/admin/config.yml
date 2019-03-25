@@ -143,8 +143,7 @@ collections:
           widget: 'select',
           multiple: true,
           required: false,
-          options:
-            [Digitalt, Identitet, Kampanj, Print, Varumärkesarbete, Video],
+          options: [Digital, Identity, Campaign, Print, Branding, Video],
         }
       - {
           name: 'contact_relation',
