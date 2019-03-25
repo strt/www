@@ -1,23 +1,25 @@
 ---
-title: Nu blir tre byråer ett Strateg
+title: Three agencies become one – Strateg
 excerpt: >-
-  I april blev vi en del av Diplomatgruppen. Nu är det dags för nästa steg. Att
-  samla Strateg, varumärkesbyrån YouMe Agency och designbyrån Repeat Studio
-  under ett och samma varumärke – Strateg. Med totalt 70 medarbetare i Örebro
-  och Stockholm är vi en av landets största kreativa kommunikationsbyråer.
+  In April, we became part of the Diplomat Group. Now it’s time for the next
+  step. Gathering Strateg, branding experts YouMe Agency and design specialists
+  Repeat Studio under a single brand – Strateg. With a total of 70 employees in
+  Örebro and Stockholm, we’re one of Sweden’s largest creative communications
+  agencies.
 date: 2019-02-04T15:32:14.536Z
 image: /media/uploads/article-nu-blir-tre-byraer-ett-strateg.jpg
+published: true
 redirect_from:
   - /aktuellt/nyheter/2019/2019-02-04-nu-blir-tre-byraer-ett-strateg.html
-published: true
 ---
+In April, we became part of the Diplomat Group. Now it’s time for the next step. Gathering Strateg, branding experts YouMe Agency and design specialists Repeat Studio under a single brand – Strateg. With a total of 70 employees in Örebro and Stockholm, we’re one of Sweden’s largest creative communications agencies.
 
-– Med vår gemensamma erfarenhet inom strategisk höjd, kreativa idéer och digital innovation har vi ett svårslaget erbjudande. Vi har samma namn som tidigare, men blir så mycket starkare, säger Fredrik Vannestål som är vd på Strateg.
+“With our collective experience of strategic thinking, creativity and digital innovation, we represent an unbeatable offering. We have the same name as before, but will be so much stronger,” says Fredrik Vannestål, CEO of Strateg.
 
-Tillsammans stöttar vi våra kunder med utveckling av varumärke, digitalisering, kundupplevelser och försäljning. Och i nära samarbete med de två andra bolagen i Diplomatgruppen – Diplomat Communication och Tale – kan vi dessutom erbjuda något alldeles extra inom public affairs, corporate communications, finansiell kommunikation och content marketing.
+Together, we help our clients with branding, digitalisation, the customer experience and sales. Moreover, in partnership with the other two companies in the Diplomat Group – Diplomat Communication and Tale – we can also offer outstanding services in public affairs, corporate communications, financial communications and content marketing.
 
-Superkul tycker vi och firade in det nya med en första gemensam aw på Slöjdgatan i Örebro.
+We think this is all really great, so we celebrated our new form at our first joint after-hours get-together at our offices on Slöjdgatan in Örebro.
 
-[Läs mer om att tre blir ett på Resumé.](https://www.resume.se/nyheter/artiklar/2019/02/04/diplomatgruppen-vaxte-med-80-procent-2018--bildar-storbyra/)
+[Read more about one becoming three at Resumé (in Swedish).](https://www.resume.se/nyheter/artiklar/2019/02/04/diplomatgruppen-vaxte-med-80-procent-2018--bildar-storbyra/)
 
-På bilden från vänster: Fredrik Vannestål, vd, Fredrik Malm, creative partner, Malin Håkansson, projektledare, Joakim Norman, creative partner, Sara Lindström, kundansvarig, Magnus Westerberg, creative partner och Pär Pärsson, creative partner.
+Pictured, from the left: Fredrik Vannestål, CEO, Fredrik Malm, creative partner, Malin Håkansson, project manager, Joakim Norman, creative partner, Sara Lindström, account director, Magnus Westerberg, creative partner, and Pär Pärsson, creative partner.
