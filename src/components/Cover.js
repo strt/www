@@ -15,7 +15,9 @@ const CoverWrapper = styled.div`
     padding-top: 56.25%;
   }
 
-  > * {
+  > *,
+  video,
+  img {
     position: absolute;
     top: 0;
     left: 0;
