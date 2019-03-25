@@ -63,10 +63,9 @@ export default function CookieToast() {
                 >
                   <Column>
                     <Text textColor="white" m="0">
-                      Vi tycker att kakor gör livet lite bättre, även på webben.
-                      Genom att surfa vidare godkänner du att vi använder{' '}
+                      This website uses cookies. Yum.
                       <Link to={routes.policy.link} colorVariant="white">
-                        cookies
+                        Policy
                       </Link>
                       .
                     </Text>
