@@ -31,7 +31,7 @@ export default function Hero({
           <Column width="auto">
             <IconButton
               aria-label="Skrolla till nästa section"
-              onClick={(event) => {
+              onClick={event => {
                 event.preventDefault()
                 const element =
                   typeof scrollButtonElement === 'string'

@@ -32,7 +32,7 @@ export default function useAxios(args, inputs = []) {
 
     axios({
       ...args,
-      cancelToken: new axios.CancelToken((token) => {
+      cancelToken: new axios.CancelToken(token => {
         cancelToken = token
       }),
     })
@@ -40,7 +40,7 @@ export default function useAxios(args, inputs = []) {
         cancelToken = null
         dispatch({ type: STATES.success, payload: data })
       })
-      .catch((e) => {
+      .catch(e => {
         if (axios.isCancel(e)) return
 
         dispatch({ type: STATES.error })

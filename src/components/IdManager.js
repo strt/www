@@ -11,7 +11,7 @@ const IdContext = createContext(generateId)
 export function IdProvider(props) {
   const id = useRef(0)
   const genId = useCallback(
-    (prefix) => {
+    prefix => {
       id.current += 1
       return prefix ? `${prefix}-${id.current}` : id.current
     },

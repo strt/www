@@ -34,7 +34,7 @@ exports.createPages = async ({ actions, graphql }) => {
         redirect = [redirect]
       }
 
-      redirect.forEach((fromPath) => {
+      redirect.forEach(fromPath => {
         if (redirectToSlugMap.has(fromPath)) {
           console.error(
             `Duplicate redirect detected from "${fromPath}" to:\n` +

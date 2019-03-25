@@ -57,7 +57,7 @@ export function ScrollToTopButton(props) {
   return (
     <IconButton
       aria-label="Skrolla till toppen"
-      onClick={(event) => {
+      onClick={event => {
         event.preventDefault()
         window.scroll({
           top: 0,

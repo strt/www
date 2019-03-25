@@ -26,8 +26,8 @@ function getIntersectionObserver(options) {
     typeof window !== `undefined` &&
     'IntersectionObserver' in window
   ) {
-    io = new window.IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+    io = new window.IntersectionObserver(entries => {
+      entries.forEach(entry => {
         if (listeners.has(entry.target)) {
           const cb = listeners.get(entry.target)
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
@@ -126,7 +126,7 @@ function LazyImage(props, forwardedRef) {
     }
   }, [isLoaded])
 
-  const handleLoad = useCallback((event) => {
+  const handleLoad = useCallback(event => {
     onLoad(event)
     setLoaded(true)
   })

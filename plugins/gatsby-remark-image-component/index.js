@@ -24,7 +24,7 @@ async function generateImages({
     return null
   }
 
-  const imageNode = _.find(files, (file) => {
+  const imageNode = _.find(files, file => {
     if (file && file.absolutePath) {
       return file.absolutePath === imagePath
     }
@@ -54,14 +54,14 @@ module.exports = (
   pluginOptions,
 ) => {
   const markdownImageNodes = []
-  visitWithParents(markdownAST, 'image', (node) => {
+  visitWithParents(markdownAST, 'image', node => {
     markdownImageNodes.push({ node })
   })
 
   return Promise.all(
     markdownImageNodes.map(
       ({ node }) =>
-        new Promise(async (resolve) => {
+        new Promise(async resolve => {
           const fileType = node.url.slice(-3)
 
           if (

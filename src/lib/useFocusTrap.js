@@ -30,7 +30,7 @@ export default function useFocusTrap(
     }
 
     return undefined
-  }, [shouldTrap])
+  }, [elementRef, fallbackFocusRef, initialFocusRef, shouldTrap])
 
   return focusTrap
 }

@@ -204,7 +204,7 @@ export function Navigation() {
               y => `translate3d(0, ${y}%, 0)`,
             ),
           }}
-          onKeyDown={(event) => {
+          onKeyDown={event => {
             if (event.key === 'Escape') {
               event.stopPropagation()
               toggle()

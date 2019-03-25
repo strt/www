@@ -18,7 +18,7 @@ export function ClientForm({ onSubmit, ...props }) {
     <Dialog {...props}>
       <form
         action=""
-        onSubmit={(event) => {
+        onSubmit={event => {
           event.preventDefault()
 
           const { name, ...rest } = values
@@ -40,7 +40,7 @@ export function ClientForm({ onSubmit, ...props }) {
               console.log(data)
               reset()
             })
-            .catch((e) => {
+            .catch(e => {
               console.error(e)
             })
             .finally(() => {
@@ -99,14 +99,15 @@ export function ClientForm({ onSubmit, ...props }) {
 }
 
 export function CareerForm({ onSubmit, ...props }) {
-  const { values, getInputProps, reset } = useFormin()
+  const { values, getInputProps } = useFormin()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
 
   return (
     <Dialog {...props}>
       <form
         action=""
-        onSubmit={(event) => {
+        onSubmit={event => {
           event.preventDefault()
 
           setIsSubmitting(true)
@@ -115,9 +116,9 @@ export function CareerForm({ onSubmit, ...props }) {
             .post(`/.netlify/functions/contact/career`, values)
             .then(({ data }) => {
               console.log(data)
-              reset()
+              setHasSubmitted(true)
             })
-            .catch((e) => {
+            .catch(e => {
               console.error(e)
             })
             .finally(() => {

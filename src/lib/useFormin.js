@@ -1,6 +1,6 @@
 import { useReducer, useCallback } from 'react'
 
-const wrapEvent = (handler, cb) => (event) => {
+const wrapEvent = (handler, cb) => event => {
   if (handler) {
     handler(event)
   }
@@ -66,7 +66,7 @@ export default function useFormin(initialState = {}) {
       name,
       value,
       'aria-invalid': validity ? !validity.isValid : false,
-      onChange: wrapEvent(onChange, (event) => {
+      onChange: wrapEvent(onChange, event => {
         const { target } = event
         const nextValue =
           target.type === 'checkbox' ? target.checked : target.value
@@ -82,7 +82,7 @@ export default function useFormin(initialState = {}) {
       onFocus: wrapEvent(onFocus, () => {
         dispatch({ type: 'focus', payload: { touched: { [name]: true } } })
       }),
-      onInvalid: wrapEvent(onInvalid, (event) => {
+      onInvalid: wrapEvent(onInvalid, event => {
         const { target } = event
         // Make sure to update state after the focus event has fired. This is
         // necessary because IE11 will fire the events in another order.

@@ -76,7 +76,7 @@ export default function Case({ data, location }) {
   const cases = filterCases(data.cases.edges, filter)
   const tags = data.cases.edges
     .reduce((acc, { node }) => {
-      node.frontmatter.tags.forEach((tag) => {
+      node.frontmatter.tags.forEach(tag => {
         if (acc.indexOf(tag) === -1) {
           acc.push(tag)
         }

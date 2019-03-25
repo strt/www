@@ -13,7 +13,7 @@ function isTextElement(node) {
   )
 }
 
-module.exports = () => (tree) => {
+module.exports = () => tree => {
   let isNestedInColumn = false
 
   function visitor(node, index, parent) {

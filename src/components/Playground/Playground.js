@@ -105,7 +105,7 @@ export default function Playground() {
       canvas.style = {}
     }
 
-    const handleDeviceOrientation = (event) => {
+    const handleDeviceOrientation = event => {
       const gravity = {}
 
       if (gravityInterval.current) {

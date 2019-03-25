@@ -30,11 +30,11 @@ export function DialogOverlay({
     <FocusContext.Provider value={contentRef}>
       <StyledDialogOverlay
         ref={overlayRef}
-        onClick={(event) => {
+        onClick={event => {
           event.stopPropagation()
           onDismiss()
         }}
-        onKeyDown={(event) => {
+        onKeyDown={event => {
           if (event.key === 'Escape') {
             event.stopPropagation()
             onDismiss()
@@ -55,7 +55,7 @@ export function DialogContent({ onClick, onKeyDown, ...props }) {
       tabIndex="-1"
       role="dialog"
       aria-modal="true"
-      onClick={(event) => {
+      onClick={event => {
         event.stopPropagation()
       }}
       {...props}

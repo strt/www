@@ -76,7 +76,7 @@ module.exports = {
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify-cms',
   ],
-  developMiddleware: (app) => {
+  developMiddleware: app => {
     app.use(
       '/.netlify/functions/',
       proxy({

@@ -296,7 +296,7 @@ export function space(props) {
     .sort()
 
   return keys
-    .map((key) => {
+    .map(key => {
       const value = props[key]
       const cssProperties = getSpaceProperties(key)
 

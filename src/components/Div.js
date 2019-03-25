@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { space, bgColor } from '../style'
 
 const Div = styled.div(
-  (props) => {
+  props => {
     if (props.halfTopBg) {
       return {
         position: 'relative',
