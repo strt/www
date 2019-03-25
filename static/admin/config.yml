@@ -65,7 +65,7 @@ collections:
           - *redirect_from
       - name: 'about'
         label: 'About'
-        file: 'content/pages/vad-vi-gor.md'
+        file: 'content/pages/about.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
@@ -75,7 +75,7 @@ collections:
           - *redirect_from
       - name: 'career'
         label: 'Career'
-        file: 'content/pages/bli-en-av-oss.md'
+        file: 'content/pages/join-us.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
@@ -85,7 +85,7 @@ collections:
           - *redirect_from
       - name: 'news'
         label: 'News'
-        file: 'content/pages/aktuellt.md'
+        file: 'content/pages/news.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
@@ -95,7 +95,7 @@ collections:
           - *redirect_from
       - name: 'contact'
         label: 'Contact'
-        file: 'content/pages/kontakt.md'
+        file: 'content/pages/contact.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
@@ -109,6 +109,7 @@ collections:
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - { name: 'body', label: 'Body', widget: 'markdown' }
           - *published
           - *page_template
           - *seo
