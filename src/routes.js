@@ -2,32 +2,32 @@ export const routes = {
   index: {
     id: 'index',
     link: '/',
-    title: 'Hem',
+    title: 'Home',
   },
-  case: {
-    id: 'case',
-    link: '/case/',
-    title: 'Case',
+  work: {
+    id: 'work',
+    link: '/work/',
+    title: 'Work',
   },
-  about: {
-    id: 'about',
-    link: '/vad-vi-gor/',
-    title: 'Vad vi gör',
-  },
+  // about: {
+  //   id: 'about',
+  //   link: '/about/',
+  //   title: 'About',
+  // },
   career: {
     id: 'career',
-    link: '/bli-en-av-oss/',
-    title: 'Bli en av oss',
+    link: '/join-us/',
+    title: 'Join us',
   },
   news: {
     id: 'news',
-    link: '/aktuellt/',
-    title: 'Aktuellt',
+    link: '/news/',
+    title: 'News',
   },
   contact: {
     id: 'contact',
-    link: '/kontakt/',
-    title: 'Kontakt',
+    link: '/contact/',
+    title: 'Contact',
   },
   policy: {
     id: 'policy',
@@ -38,18 +38,18 @@ export const routes = {
 
 export const mainNavigation = [
   routes.index,
-  routes.case,
+  routes.work,
   // routes.about,
-  // routes.career,
   routes.news,
+  routes.career,
   routes.contact,
 ]
 
 export const footerNavigation = [
-  routes.case,
+  routes.work,
   // routes.about,
-  // routes.career,
   routes.news,
   routes.contact,
+  routes.career,
   routes.policy,
 ]

@@ -41,7 +41,7 @@ export default function Index({ data }) {
         <Grid>
           <Column>
             <Div mt={[3, 6]}>
-              <Link to={routes.case.link} colorVariant="dark" variant="large">
+              <Link to={routes.work.link} colorVariant="dark" variant="large">
                 Fler case
               </Link>
             </Div>

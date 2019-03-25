@@ -165,11 +165,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
     if (relativePath.startsWith('posts')) {
       template = 'post'
-      slug = slug.replace('/posts', '/aktuellt')
+      slug = slug.replace('/posts', '/news')
     }
 
     if (relativePath.startsWith('case')) {
       template = 'case'
+      slug = slug.replace('/case', '/work')
     }
 
     createNodeField({
