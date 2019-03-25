@@ -1,15 +1,14 @@
 ---
-title: Vi gillar det vi gör.
+title: We like what we do
 excerpt: >-
-  Det här är resultatet av analyser, briefer, strategier, manus, 
-  Slack-konversationer, postit-lappar, hackathon, kaffekoppar, skisser … Ja, du 
-  fattar. Det här är case som visar vad vi gör.
+  This is embodied in our analyses, briefs, strategies, scripts, post-it notes,
+  hackathons, sketches … You get the picture. Below are a few examples of what
+  we do.
+published: true
 template: cases
+seo:
+  image: /media/uploads/default-og.jpg
 redirect_from:
   - case.html
-seo:
-  title: null
-  description: null
-  image: /media/uploads/default-og.jpg
-published: true
 ---
+

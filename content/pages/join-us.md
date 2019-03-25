@@ -1,14 +1,10 @@
 ---
-title: >-
-  Vi vill vara ett jämställt team that delivers inspiring work and takes
-  satisfaction from it varje dag, while growing collectively and individually.
-excerpt: null
+title: Be our new best buddy
+excerpt: 'Don’t be shy – just apply. '
+published: false
 template: career
+seo: {}
 redirect_from:
   - /bli-en-av-oss.html
-published: false
-seo:
-  title: null
-  description: null
-  image: null
 ---
+

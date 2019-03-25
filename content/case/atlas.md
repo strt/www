@@ -19,7 +19,6 @@ seo:
     about smart, connected machines and comprehensive system integration.
   title: Mining of the future boasts a sixth sense
 ---
-
 ## New name, new concept
 
 In an industry where most things are changing, you need to refine and modernise your offering. And of course your communications. We were commissioned to develop a brand name and communications concept for Epiroc’s smart, connected machines and comprehensive system integration.
@@ -36,5 +35,4 @@ That’s why we did the opposite. Our concept film doesn’t feature a single ma
 
 The film has been used internally and externally with great success. It’s racked up more than 150,000 views on Vimeo.
 
-\
 _“With market surveys, research and analysis, Strateg has come up with a concept that is both innovative and creative, unique in the industry and completely in line with our vision of effective, digitalised mining.”_ J**onas Albertson, president, Rocktec Division**
