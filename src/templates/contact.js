@@ -50,7 +50,7 @@ export default function Contact({ data }) {
           ))}
           <Column md="4">
             <Text>
-              New business
+              <strong>New business</strong>
               <br />
               <Link href={`mailto:${data.clientContact.frontmatter.email}`}>
                 {data.clientContact.frontmatter.email}
