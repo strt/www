@@ -2,9 +2,9 @@ import React, { useMemo } from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { rgba } from 'polished'
+import dayjs from 'dayjs'
 import { H3, Text } from './Text'
 import Image from './Image'
-import dayjs from '../lib/dayjs'
 import {
   colors,
   ratio,

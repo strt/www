@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import dayjs from 'dayjs'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Image from '../components/Image'
@@ -9,7 +10,6 @@ import { H1, H4, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import ContentWrapper from '../components/ContentWrapper'
 import Cover from '../components/Cover'
-import dayjs from '../lib/dayjs'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Article({ data }) {
