@@ -145,6 +145,7 @@ collections:
           required: false,
           options: [Digital, Identity, Campaign, Print, Branding, Video],
         }
+      - { name: 'color', label: 'Color', widget: 'string', required: false }
       - {
           name: 'contact_relation',
           label: 'Contact',
