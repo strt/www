@@ -75,7 +75,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 16]} pb={[12, 36]}>
+      <Section bg={colors.dark} pt="0" mt={[8, 24]} pb={[12, 36]}>
         <InstagramFeed />
       </Section>
     </Layout>
