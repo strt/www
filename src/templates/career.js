@@ -6,29 +6,37 @@ import Div from '../components/Div'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
 import Image from '../components/Image'
-import InstagramGrid from '../components/InstagramGrid'
-import { H1, H2, H3, Text } from '../components/Text'
+import InstagramFeed from '../components/InstagramFeed'
+import { H1, H2, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
 import BoxSection from '../components/BoxSection'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Career({ data }) {
-  const { title } = data.page.frontmatter
+  const { title, excerpt, image } = data.page.frontmatter
+  const hasCover = !!image
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
-      <Hero scrollButtonElement="#cover">
+      <Hero
+        // scrollButtonElement="#cover"
+        pb={hasCover ? undefined : 0}
+        keepContentMargin={!hasCover}
+      >
         <H1>{title}</H1>
+        {excerpt && <Excerpt>{excerpt}</Excerpt>}
       </Hero>
-      <Cover id="cover">
-        <Image
-          fluid={data.coverImage.childImageSharp.fluid}
-          aspectRatio="auto"
-          alt=""
-        />
-      </Cover>
-      <Section py="7">
+      {hasCover && (
+        <Cover id="cover">
+          <Image
+            fluid={image.childImageSharp.fluid}
+            aspectRatio="auto"
+            alt=""
+          />
+        </Cover>
+      )}
+      <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
         <Grid>
           <Column>
             <H2>Just nu söker vi</H2>
@@ -43,61 +51,8 @@ export default function Career({ data }) {
           link={{ text: 'Spontanansökan', href: '/' }}
         />
       </Div>
-      <Section bg={colors.dark} pt="20" pb="25">
-        <Grid justifyContent="space-around">
-          <Column md="4">
-            <H3 textColor="white">Tre annan samma äng</H3>
-            <Text textColor="white">
-              Tre annan samma äng kom se sista genom sitt sin, smultron dunge
-              bäckasiner häst hav sax göras själv kan, färdväg har bra därmed så
-              samtidigt både söka. Och där hav göras icke jäst ordningens precis
-              äng tre som blivit, bäckasiner hela vi ska söka upprätthållande
-              stora hav att lax. Varit händer sällan är ingalunda häst mjuka
-              omfångsrik rot björnbär räv, hans söka vi göras bland björnbär
-              själv ännu plats kunde, där som nya så strand miljoner.
-            </Text>
-          </Column>
-          <Column md="4">
-            <H3 textColor="white">Tre annan samma äng</H3>
-            <Text textColor="white">
-              Tre annan samma äng kom se sista genom sitt sin, smultron dunge
-              bäckasiner häst hav sax göras själv kan, färdväg har bra därmed så
-              samtidigt både söka. Och där hav göras icke jäst ordningens precis
-              äng tre som blivit, bäckasiner hela vi ska söka upprätthållande
-              stora hav att lax. Varit händer sällan är ingalunda häst mjuka
-              omfångsrik rot björnbär räv, hans söka vi göras bland björnbär
-              själv ännu plats kunde, där som nya så strand miljoner.
-            </Text>
-          </Column>
-        </Grid>
-        <Grid justifyContent="space-around">
-          <Column md="4">
-            <H3 textColor="white">Tre annan samma äng</H3>
-            <Text textColor="white">
-              Tre annan samma äng kom se sista genom sitt sin, smultron dunge
-              bäckasiner häst hav sax göras själv kan, färdväg har bra därmed så
-              samtidigt både söka. Och där hav göras icke jäst ordningens precis
-              äng tre som blivit, bäckasiner hela vi ska söka upprätthållande
-              stora hav att lax. Varit händer sällan är ingalunda häst mjuka
-              omfångsrik rot björnbär räv, hans söka vi göras bland björnbär
-              själv ännu plats kunde, där som nya så strand miljoner.
-            </Text>
-          </Column>
-          <Column md="4">
-            <H3 textColor="white">Tre annan samma äng</H3>
-            <Text textColor="white">
-              Tre annan samma äng kom se sista genom sitt sin, smultron dunge
-              bäckasiner häst hav sax göras själv kan, färdväg har bra därmed så
-              samtidigt både söka. Och där hav göras icke jäst ordningens precis
-              äng tre som blivit, bäckasiner hela vi ska söka upprätthållande
-              stora hav att lax. Varit händer sällan är ingalunda häst mjuka
-              omfångsrik rot björnbär räv, hans söka vi göras bland björnbär
-              själv ännu plats kunde, där som nya så strand miljoner.
-            </Text>
-          </Column>
-        </Grid>
-      </Section>
-      <InstagramGrid halfTopBg={colors.dark} mb={[8, 19]} />
+      <Section bg={colors.dark} pt="20" pb="25" />
+      <InstagramFeed halfTopBg={colors.dark} mb={[8, 19]} />
     </Layout>
   )
 }
@@ -108,6 +63,14 @@ export const pageQuery = graphql`
       frontmatter {
         title
         excerpt
+        image {
+          childImageSharp {
+            ...CoverImage
+            og: resize(width: 1200, height: 630, quality: 80) {
+              src
+            }
+          }
+        }
         seo {
           title
           description
@@ -119,11 +82,6 @@ export const pageQuery = graphql`
             }
           }
         }
-      }
-    }
-    coverImage: file(relativePath: { eq: "uploads/news-space.jpg" }) {
-      childImageSharp {
-        ...CoverImage
       }
     }
   }
