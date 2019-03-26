@@ -62,7 +62,7 @@ export default function Posts({ halfTopBg = 'white', ...props }) {
                 rel="noopener noreferrer"
               >
                 <Icon name={['fab', 'instagram']} />
-                <span>Följ enstrateg</span>
+                <span>Follow enstrateg</span>
               </Link>
             </Box>
           </ImageGrid>
