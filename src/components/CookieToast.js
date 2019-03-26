@@ -65,7 +65,7 @@ export default function CookieToast() {
                     <Text textColor="white" m="0">
                       This website uses cookies. Yum.{' '}
                       <Link to={routes.policy.link} colorVariant="white">
-                        Policy
+                        Read more
                       </Link>
                       .
                     </Text>
