@@ -14,7 +14,7 @@ export default function NotFound({ data }) {
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
         <Link to="/" colorVariant="dark" variant="large">
-          Till startsidan
+          Go to start page
         </Link>
       </Hero>
     </Layout>
