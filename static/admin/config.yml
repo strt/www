@@ -124,6 +124,15 @@ collections:
           - *page_template
           - *seo
           - *redirect_from
+      - name: '404'
+        label: '404'
+        file: 'content/pages/404.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Excerpt', name: 'excerpt', widget: 'text' }
+          - *published
+          - *page_template
+          - *seo
 
   - name: case
     label: Case
