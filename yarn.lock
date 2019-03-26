@@ -7692,7 +7692,7 @@ ipaddr.js@^1.9.0:
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.9.0.tgz#37df74e430a0e47550fe54a2defe30d8acd95f65"
   integrity sha512-M4Sjn6N/+O6/IXSJseKqHoFc+5FdGJ22sXqnjTpdZweHK64MzEPAyQZyEU3R/KRv2GLoa7nNtg/C2Ev6m7z+eA==
 
-is-absolute-url@^2.0.0:
+is-absolute-url@^2.0.0, is-absolute-url@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-absolute-url/-/is-absolute-url-2.1.0.tgz#50530dfb84fcc9aa7dbe7852e83a37b93b9f2aa6"
   integrity sha1-UFMN+4T8yap9vnhS6Do3uTufKqY=
@@ -12582,6 +12582,16 @@ relay-runtime@2.0.0:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
 
+remark-external-links@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/remark-external-links/-/remark-external-links-4.0.0.tgz#2f6ff800ad9a422fcacd9a055471d68b6a381dd1"
+  integrity sha512-4R24/FfwUtBdrGQUdWnGGEp3rzYOE5Sj4hwpOFm1m4yzYak7Yt1ikfN1cPWgUhpKEMm8P7vb6WFIfcMFaUrelg==
+  dependencies:
+    is-absolute-url "^2.1.0"
+    mdast-util-definitions "^1.2.3"
+    space-separated-tokens "^1.1.2"
+    unist-util-visit "^1.4.0"
+
 remark-mdx@^1.0.0-alpha.8:
   version "1.0.0-alpha.8"
   resolved "https://registry.yarnpkg.com/remark-mdx/-/remark-mdx-1.0.0-alpha.8.tgz#650ac6490520c6c4c4bdde833ff0fa4f58f1226c"
@@ -13729,7 +13739,7 @@ source-map@~0.1.30:
   dependencies:
     amdefine ">=0.0.4"
 
-space-separated-tokens@^1.0.0:
+space-separated-tokens@^1.0.0, space-separated-tokens@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-1.1.2.tgz#e95ab9d19ae841e200808cd96bc7bd0adbbb3412"
   integrity sha512-G3jprCEw+xFEs0ORweLmblJ3XLymGGr6hxZYTYZjIlvDti9vOBUjRQa1Rzjt012aRrocKstHwdNi+F7HguPsEA==

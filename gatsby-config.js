@@ -39,7 +39,10 @@ module.exports = {
           export default { EmbedPlayer, Column, Image, Box };
         `,
         hastPlugins: [require('./plugins/rehype-wrap-in-columns')],
-        mdPlugins: [require('remark-unwrap-images')],
+        mdPlugins: [
+          require('remark-unwrap-images'),
+          require('remark-external-links'),
+        ],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-relative-images',
