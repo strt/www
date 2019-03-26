@@ -4,7 +4,7 @@ excerpt: >-
   Having kids changes your life, undoubtedly, but we seldom talk about how it
   affects the relationship between partners. That’s something we’re changing
   together with Familjerådgivningen, a family counselling service.  
-client: Region Örebro Län
+client: Region Örebro County
 date: 2019-02-08T13:25:24.000Z
 image: /media/uploads/case-familjeradgivningen.jpg
 tags:
