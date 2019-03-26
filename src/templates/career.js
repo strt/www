@@ -41,8 +41,8 @@ export default function Career({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 15]} pb="20">
-        <InstagramFeed halfTopBg={colors.white} mb={[8, 19]} />
+      <Section bg={colors.dark} pt="0" mt={[8, 24]} pb={[12, 36]}>
+        <InstagramFeed />
       </Section>
     </Layout>
   )
