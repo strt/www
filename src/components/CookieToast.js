@@ -78,7 +78,7 @@ export default function CookieToast() {
                       variant="large"
                       onClick={() => {
                         setShowToast(false)
-                        Cookie.set('accept_cookies', true)
+                        Cookie.set('accept_cookies', true, { expires: 365 })
                       }}
                     >
                       OK
