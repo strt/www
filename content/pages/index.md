@@ -1,5 +1,5 @@
 ---
-title: We transform people and brands with strategy and creativity.
+title: We transform people and brands with strategy and creativity
 excerpt: null
 template: frontpage
 seo:
