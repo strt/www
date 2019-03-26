@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import Div from '../components/Div'
 import Cover from '../components/Cover'
 import Section from '../components/Section'
 import Image from '../components/Image'
@@ -10,7 +9,6 @@ import InstagramFeed from '../components/InstagramFeed'
 import { H1, H2, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
-import BoxSection from '../components/BoxSection'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Career({ data }) {
@@ -39,20 +37,13 @@ export default function Career({ data }) {
       <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
         <Grid>
           <Column>
-            <H2>Just nu söker vi</H2>
+            <H2>Open positions</H2>
           </Column>
         </Grid>
       </Section>
-      <Div my="18">
-        <BoxSection
-          backgroundImage={null}
-          title="Vi har alltid ett fönster öppet"
-          excerpt="Blivit kunde faktor göras att år sjö och hwila har vidsträckt är, där trevnadens regn dag det och träutensilierna gör är löksås."
-          link={{ text: 'Spontanansökan', href: '/' }}
-        />
-      </Div>
-      <Section bg={colors.dark} pt="20" pb="25" />
-      <InstagramFeed halfTopBg={colors.dark} mb={[8, 19]} />
+      <Section bg={colors.dark} pt="0" mt={[8, 15]} pb="20">
+        <InstagramFeed halfTopBg={colors.white} mb={[8, 19]} />
+      </Section>
     </Layout>
   )
 }
