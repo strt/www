@@ -22,14 +22,17 @@ export default function Footer() {
   const siteSettings = useSiteSettings()
 
   return (
-    <Section as="footer" bg={colors.ice} py={[4, 7]}>
+    <Section as="footer" bg={colors.dark} py={[4, 7]}>
       <Grid>
         {siteSettings.offices.map(office => (
           <Column md="3" key={office.city}>
-            <Text as="address">
+            <Text as="address" textColor="white">
               {office.address} <br />
               {office.zipcode} {office.city} <br />
-              <Link href={`tel:${formatPhone(office.phone)}`}>
+              <Link
+                href={`tel:${formatPhone(office.phone)}`}
+                colorVariant="white"
+              >
                 {office.phone}
               </Link>
             </Text>
@@ -41,6 +44,7 @@ export default function Footer() {
               href={siteSettings.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              colorVariant="white"
             >
               Instagram
             </Link>
@@ -49,6 +53,7 @@ export default function Footer() {
               href={siteSettings.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
+              colorVariant="white"
             >
               Facebook
             </Link>
@@ -57,6 +62,7 @@ export default function Footer() {
               href={siteSettings.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              colorVariant="white"
             >
               LinkedIn
             </Link>
@@ -65,6 +71,7 @@ export default function Footer() {
               href={siteSettings.social.github}
               target="_blank"
               rel="noopener noreferrer"
+              colorVariant="white"
             >
               GitHub
             </Link>
@@ -75,7 +82,9 @@ export default function Footer() {
           <Text as="ul">
             {footerNavigation.map(route => (
               <li key={route.link}>
-                <Link to={route.link}>{route.title}</Link>
+                <Link to={route.link} colorVariant="white">
+                  {route.title}
+                </Link>
               </li>
             ))}
           </Text>
@@ -83,20 +92,21 @@ export default function Footer() {
       </Grid>
       <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
         <Column width="auto">
-          <CopyrightText as="small">
+          <CopyrightText as="small" textColor="white">
             © 2018 <br />
             {siteSettings.name} <br />A part of{' '}
             <Link
               href="//diplomatgruppen.se"
               target="_blank"
               rel="noopener noreferrer"
+              colorVariant="white"
             >
               Diplomat Group
             </Link>
           </CopyrightText>
         </Column>
         <Column width="auto">
-          <ScrollToTopButton />
+          <ScrollToTopButton textColor="white" />
         </Column>
       </Grid>
     </Section>
