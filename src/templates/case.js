@@ -23,7 +23,6 @@ export default function Case({ data: { post }, pageContext: { next } }) {
     excerpt,
     tags,
     client,
-    color,
     image,
     video,
     contact_relation: contactRelation,
@@ -50,10 +49,8 @@ export default function Case({ data: { post }, pageContext: { next } }) {
           {excerpt && <Excerpt>{excerpt}</Excerpt>}
         </Hero>
         {(image || video) && (
-          <Cover bg={color} isVideo={!!video}>
-            {image && !video && (
-              <Image fluid={image.childImageSharp.fluid} alt="" />
-            )}
+          <Cover bg={colors.dark} isVideo={!!video}>
+            {image && <Image fluid={image.childImageSharp.fluid} alt="" />}
             {video && <EmbedPlayer src={video} bg="transparent" />}
           </Cover>
         )}
@@ -125,7 +122,6 @@ export const pageQuery = graphql`
         client
         excerpt
         tags
-        color
         video
         image {
           childImageSharp {

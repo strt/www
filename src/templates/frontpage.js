@@ -118,7 +118,6 @@ export const pageQuery = graphql`
           frontmatter {
             client
             tags
-            color
             image {
               childImageSharp {
                 ...TileImage

@@ -127,7 +127,6 @@ export default function Case({ data, location }) {
                   title={node.frontmatter.client}
                   image={node.frontmatter.image}
                   tags={node.frontmatter.tags}
-                  bg={node.frontmatter.color}
                 />
               </Column>
             ))}
@@ -173,7 +172,6 @@ export const pageQuery = graphql`
           frontmatter {
             client
             tags
-            color
             image {
               childImageSharp {
                 ...TileImage
