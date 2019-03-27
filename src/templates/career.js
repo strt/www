@@ -3,10 +3,11 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Cover from '../components/Cover'
+import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
 import InstagramFeed from '../components/InstagramFeed'
-import { H1, H2, Excerpt } from '../components/Text'
+import { H1, H2, H3, Excerpt, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -14,6 +15,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 export default function Career({ data }) {
   const { title, excerpt, image } = data.page.frontmatter
   const hasCover = !!image
+  const hasOpenPositions = !!data.openPositions.edges.length
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
@@ -34,10 +36,35 @@ export default function Career({ data }) {
           />
         </Cover>
       )}
-      <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
+      {hasOpenPositions && (
+        <Section bg={colors.dark} py={[5, 7]}>
+          <Grid>
+            <Column>
+              <H2 textColor="white" mb={[3, 4]}>
+                Open positions
+              </H2>
+              <ul>
+                {data.openPositions.edges.map(({ node }) => (
+                  <li key={node.id}>
+                    <Excerpt mb={[2, 3]}>
+                      <Link to={node.fields.slug} colorVariant="white">
+                        {node.frontmatter.title}
+                      </Link>
+                    </Excerpt>
+                  </li>
+                ))}
+              </ul>
+            </Column>
+          </Grid>
+        </Section>
+      )}
+      <Section pt={hasOpenPositions ? [5, 7] : 0}>
         <Grid>
           <Column>
-            <H2>Open positions</H2>
+            <H3>Spontaneous applications and internship</H3>
+            <Text>
+              <Link href="mailto:career@strateg.se">career@strateg.se</Link>
+            </Text>
           </Column>
         </Grid>
       </Section>
@@ -71,6 +98,24 @@ export const pageQuery = graphql`
                 src
               }
             }
+          }
+        }
+      }
+    }
+    openPositions: allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/open-positions/" }
+        frontmatter: { published: { ne: false } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
           }
         }
       }
