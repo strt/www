@@ -91,8 +91,10 @@ exports.createPages = async ({ actions, graphql }) => {
   const { edges } = result.data.allMdx
 
   // Pages
-  const pages = edges.filter(({ node }) =>
-    node.fileAbsolutePath.includes('/pages/'),
+  const pages = edges.filter(
+    ({ node }) =>
+      node.fileAbsolutePath.includes('/pages/') ||
+      node.fileAbsolutePath.includes('/open-positions/'),
   )
   pages.forEach(({ node }) => {
     createPage({
@@ -171,6 +173,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     if (relativePath.startsWith('case')) {
       template = 'case'
       slug = slug.replace('/case', '/work')
+    }
+
+    if (relativePath.startsWith('open-positions')) {
+      slug = slug.replace('/open-positions', '/join-us')
     }
 
     createNodeField({
