@@ -37,6 +37,9 @@ export default function Standard({ data }) {
 export const pageQuery = graphql`
   query($slug: String!) {
     page: mdx(fields: { slug: { eq: $slug } }) {
+      fields {
+        slug
+      }
       frontmatter {
         title
         excerpt
