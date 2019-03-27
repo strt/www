@@ -3,7 +3,7 @@ client: Save the children
 title: Sustainability Partner - Save the Children
 excerpt: null
 date: 2019-03-12T13:25:24.000Z
-image: null
+image: /media/uploads/case-save-the-children-featured.jpg
 video: 'https://player.vimeo.com/video/324125581'
 tags:
   - Video
@@ -23,6 +23,8 @@ During 2018 medium-sized corporate donors were required under new, Swedish regul
 Instead of asking these companies what they could do to help Save the Children, we asked what Save the Children could do to help them. In fact, everything that Save the Children does is already aligned with Agenda 2020, the 17 global sustainable development goals defined by the UN. So we created a new program — Save the Children Sustainability Partner — though which companies could collaborate with Save the Children to reach selected SDGs. This also meant that any company participating in the program was able to automatically fulfil their own sustainability goals — without any extra work.
 
 The Save the Children Sustainability Partner program was launched as a digital service, and included a subscription-based communication package that automatically updated the digital channels of participating companies about their chosen projects. This freed up the communications department from that task, while simultaneously showing the world all the good that the company was doing.
+
+![](/media/uploads/case-save-the-children-1.png)
 
 ## Results
 
