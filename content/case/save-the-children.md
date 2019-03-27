@@ -7,7 +7,6 @@ image: null
 video: 'https://player.vimeo.com/video/324125581'
 tags:
   - Video
-color: '#ff3d19'
 published: true
 ---
 

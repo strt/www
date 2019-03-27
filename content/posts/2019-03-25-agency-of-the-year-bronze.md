@@ -7,13 +7,7 @@ excerpt: >-
 date: 2019-02-22T14:06:34.869Z
 image: /content/media/uploads/article-arets-byra.jpg
 published: true
-seo:
-  description: >-
-    Strateg won a bronze medal at this year’s Årets Byrå (Agency of the Year)
-    awards. Winning an award in this competition makes us particularly proud as
-    our clients decide the winners.
-  title: Agency of the Year Bronze!
-  image: /content/media/uploads/article-arets-byra.jpg
+seo: {}
 redirect_from:
   - /aktuellt/nyheter/2019/2019-02-22-pallplats-i-arets-byra.html
 ---

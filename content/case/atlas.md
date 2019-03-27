@@ -12,12 +12,7 @@ tags:
   - Print
 contact_relation: leif.goldkuhl@strateg.se
 published: true
-seo:
-  description: >-
-    Automation and digitalisation are the future of the mining industry. But
-    there’s so much more to this than driverless machines. For Epiroc, it’s all
-    about smart, connected machines and comprehensive system integration.
-  title: Mining of the future boasts a sixth sense
+seo: {}
 ---
 
 ## New name, new concept
