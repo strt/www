@@ -9,11 +9,6 @@ export const routes = {
     link: '/work/',
     title: 'Work',
   },
-  // about: {
-  //   id: 'about',
-  //   link: '/about/',
-  //   title: 'About',
-  // },
   career: {
     id: 'career',
     link: '/join-us/',
@@ -39,7 +34,6 @@ export const routes = {
 export const mainNavigation = [
   routes.index,
   routes.work,
-  // routes.about,
   routes.news,
   routes.career,
   routes.contact,
@@ -47,7 +41,6 @@ export const mainNavigation = [
 
 export const footerNavigation = [
   routes.work,
-  // routes.about,
   routes.news,
   routes.contact,
   routes.career,
