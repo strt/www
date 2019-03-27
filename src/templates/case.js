@@ -50,7 +50,9 @@ export default function Case({ data: { post }, pageContext: { next } }) {
         </Hero>
         {(image || video) && (
           <Cover bg={colors.dark} isVideo={!!video}>
-            {image && <Image fluid={image.childImageSharp.fluid} alt="" />}
+            {image && !video && (
+              <Image fluid={image.childImageSharp.fluid} alt="" />
+            )}
             {video && <EmbedPlayer src={video} bg="transparent" />}
           </Cover>
         )}
