@@ -18,6 +18,7 @@ tags:
 contact_relation: fredrik.vannestal@strateg.se
 published: true
 ---
+
 <Column md="6">
   <Box
     title="Shoemaker since 1839"

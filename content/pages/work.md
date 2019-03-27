@@ -11,4 +11,3 @@ seo:
 redirect_from:
   - case.html
 ---
-

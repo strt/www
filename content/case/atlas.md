@@ -19,6 +19,7 @@ seo:
     about smart, connected machines and comprehensive system integration.
   title: Mining of the future boasts a sixth sense
 ---
+
 ## New name, new concept
 
 In an industry where most things are changing, you need to refine and modernise your offering. And of course your communications. We were commissioned to develop a brand name and communications concept for Epiroc’s smart, connected machines and comprehensive system integration.

@@ -9,11 +9,10 @@ seo:
   image: /media/uploads/default-og.jpg
 redirect_from: []
 ---
+
 ## 1. Purpose
 
 The purpose of this policy is that you in a clear and transparent way should be able to know what types of personal information we manage, how we manage them and how you can enforce your rights. The policy follows the framework of EU’s General Data Protection Regulation (GDPR) and our trade organization PRECIS’s guidelines for application of GDPR. Furthermore, it is completed by our internal guidelines for managing personal information.
-
-
 
 ## 2. What personal information do we handle?
 
@@ -61,11 +60,7 @@ If you do not accept the use of cookies in compliance with the description above
 **E-post**\
 We handle personal information present in the email conversations we maintain, partly with our clients but also with our employees, suppliers, cooperative partners and external parties.
 
-
-
 ## 3. How are your personal information handled?
-
-
 
 **The legality of the handling**\
 Our handling of personal information, regardless if it is performed on behalf of our clients or for our internal administration or marketing, is based on the founding principles of GDPR. We only handle personal information after we have ensure that we have legal grounds in accordance with GDPR in doing so.
@@ -95,8 +90,6 @@ Furthermore, transfer of personal information within firms in Diplomat Group and
 **IT-security**\
 We follow the requirements on data security actions outlined by the GDPR. This includes encryption of our networks and limitation of access to data in order to avoid so-called personal information incidents. We have internal policies and routines for IT-security as well as handling of personal information incidents which comply with legal requirements.
 
-
-
 ## 4. Your rights
 
 The GDPR gives you the right to:
@@ -112,8 +105,6 @@ The GDPR gives you the right to:
 • Denounce your consent if the handling is based on consent, and
 
 • If you are dissatisfied with how we handle your personal information you can file a complaint with Datainspektionen, which is the responsible public authority
-
-
 
 ## 5. Contact information
 

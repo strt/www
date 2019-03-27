@@ -17,6 +17,7 @@ seo:
 redirect_from:
   - /aktuellt/nyheter/2019/2019-02-22-pallplats-i-arets-byra.html
 ---
+
 “Our vision is to create change in collaboration with our clients. Change that brings them success. And this award is confirmation that we do so very well,” says Fredrik Vannestål, CEO of Strateg.
 
 If you’d like to read more about Årets Byrå, you can do so [here](https://www.aretsbyra.se/om-arets-byra/) (in Swedish).
