@@ -7,6 +7,7 @@ excerpt: >-
 client: Region Örebro County
 date: 2019-02-08T13:25:24.000Z
 image: /media/uploads/case-familjeradgivningen.jpg
+video: https://player.vimeo.com/video/298426971
 tags:
   - Video
 contact_relation: sara.blomqvist@strateg.se
