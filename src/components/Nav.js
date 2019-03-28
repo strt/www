@@ -186,7 +186,7 @@ export function Navigation() {
           aria-expanded={isOpen}
           aria-controls={NAV_ID}
         >
-          meny
+          menu
         </Link>
         <NavContent
           id={NAV_ID}
@@ -218,7 +218,7 @@ export function Navigation() {
                   type="button"
                   onClick={toggle}
                   textColor="white"
-                  aria-label="Stäng meny"
+                  aria-label="Close menu"
                 >
                   <Icon name={['fal', 'times']} />
                 </IconButton>
