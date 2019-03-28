@@ -66,24 +66,32 @@ function getGap(dir, props, cb, map) {
   return gap ? cb(map[gap] || map.standard) : null
 }
 
+export function getColumnMargin(props) {
+  return {
+    marginBottom: getGap('bottom', props, fluidRange, gapMapFluidRange),
+    marginTop: getGap('top', props, fluidRange, gapMapFluidRange),
+    [mediaQuery(breakpoints.medium)]: {
+      marginBottom: getGap('bottom', props, vw, gapMapFluid),
+      marginTop: getGap('top', props, vw, gapMapFluid),
+    },
+  }
+}
+
 export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
-    marginBottom: getGap('bottom', props, fluidRange, gapMapFluidRange),
-    marginTop: getGap('top', props, fluidRange, gapMapFluidRange),
     [mediaQuery(breakpoints.medium)]: {
       paddingRight: `${vw(16)}`,
       paddingLeft: `${vw(16)}`,
-      marginBottom: getGap('bottom', props, vw, gapMapFluid),
-      marginTop: getGap('top', props, vw, gapMapFluid),
       width: getWidth(props.md),
     },
     [mediaQuery(breakpoints.large)]: {
       width: getWidth(props.lg),
     },
   }),
+  getColumnMargin,
   space,
   order,
   alignSelf,
