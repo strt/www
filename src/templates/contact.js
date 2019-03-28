@@ -106,7 +106,7 @@ export const pageQuery = graphql`
           description
           image {
             childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
+              og: resize(width: 1200, height: 630, quality: 90) {
                 src
               }
             }
@@ -152,7 +152,7 @@ export const pageQuery = graphql`
             image {
               childImageSharp {
                 fluid(
-                  quality: 80
+                  quality: 90
                   maxWidth: 520
                   srcSetBreakpoints: [175, 328, 420]
                 ) {

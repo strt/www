@@ -33,7 +33,7 @@ export default function Cover(props) {
 
 export const query = graphql`
   fragment CoverImage on ImageSharp {
-    fluid(maxWidth: 1440, quality: 80) {
+    fluid(maxWidth: 1440, quality: 90) {
       ...GatsbyImageSharpFluid_withWebp
     }
   }
