@@ -16,7 +16,7 @@ export default function Tags({ items, linked = true, colorVariant, ...rest }) {
           <li key={item}>
             {linked ? (
               <Link
-                href={`/case?filter=${encodeURIComponent(item.toLowerCase())}`}
+                href={`/work?filter=${encodeURIComponent(item.toLowerCase())}`}
                 colorVariant={colorVariant}
               >
                 {item}
