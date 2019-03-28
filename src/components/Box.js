@@ -5,6 +5,9 @@ import Link from './Link'
 import { fluidRange, colors, breakpoints, vw } from '../style'
 
 export const BoxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   flex-grow: 1;
   padding: ${fluidRange({ min: 24, max: 32 })};
   background-color: ${props => props.bg || colors.ice};
@@ -12,7 +15,7 @@ export const BoxWrapper = styled.div`
   grid-row: 2/5;
 
   @media ${breakpoints.medium} {
-    padding: ${vw(120)};
+    padding: ${vw(108)} ${vw(120)};
     grid-column: col-start 6 / col-end 11;
     grid-row: 5/7;
   }
