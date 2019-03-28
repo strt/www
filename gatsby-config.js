@@ -38,8 +38,8 @@ module.exports = {
           
           export default { EmbedPlayer, Column, Image, Box };
         `,
-        hastPlugins: [require('./plugins/rehype-wrap-in-columns')],
-        mdPlugins: [
+        rehypePlugins: [require('./plugins/rehype-wrap-in-columns')],
+        remarkPlugins: [
           require('remark-unwrap-images'),
           require('remark-external-links'),
         ],
