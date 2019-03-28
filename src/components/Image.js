@@ -131,7 +131,7 @@ function LazyImage(props, forwardedRef) {
     setLoaded(true)
   })
 
-  const fallback = `
+  const noscriptFallback = `
     <img src="${src}" alt="${alt}" />
   `
 
@@ -163,14 +163,7 @@ function LazyImage(props, forwardedRef) {
           />
         </picture>
       )}
-      <div
-        data-ie-fallback
-        /* eslint-disable-next-line react/no-danger */
-        dangerouslySetInnerHTML={{
-          __html: `<!--[if IE]>${fallback}<![endif]-->`,
-        }}
-      />
-      <noscript dangerouslySetInnerHTML={{ __html: fallback }} />
+      <noscript dangerouslySetInnerHTML={{ __html: noscriptFallback }} />
     </ImageWrapper>
   )
 }
@@ -203,10 +196,5 @@ export const ImageWrapper = styled.figure`
   [data-background] {
     ${cover()}
     z-index: -2;
-  }
-
-  [data-ie-fallback] {
-    ${cover()}
-    z-index: 1;
   }
 `
