@@ -131,6 +131,10 @@ function LazyImage(props, forwardedRef) {
     setLoaded(true)
   })
 
+  const fallback = `
+    <img src="${src}" alt="${alt}" />
+  `
+
   return (
     <ImageWrapper
       key={`${JSON.stringify(srcSet)}`}
@@ -159,6 +163,14 @@ function LazyImage(props, forwardedRef) {
           />
         </picture>
       )}
+      <div
+        data-ie-fallback
+        /* eslint-disable-next-line react/no-danger */
+        dangerouslySetInnerHTML={{
+          __html: `<!--[if IE]>${fallback}<![endif]-->`,
+        }}
+      />
+      <noscript dangerouslySetInnerHTML={{ __html: fallback }} />
     </ImageWrapper>
   )
 }
@@ -186,12 +198,15 @@ export const ImageWrapper = styled.figure`
   [data-placeholder] {
     ${cover()}
     z-index: -1;
-    /* transform: scale(1.1); */
-    /* filter: blur(30px); */
   }
 
   [data-background] {
     ${cover()}
     z-index: -2;
+  }
+
+  [data-ie-fallback] {
+    ${cover()}
+    z-index: 1;
   }
 `
