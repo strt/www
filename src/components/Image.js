@@ -191,6 +191,10 @@ export const ImageWrapper = styled.figure`
   [data-placeholder] {
     ${cover()}
     z-index: -1;
+    opacity: ${props => (props.isLoaded ? 0 : 1)};
+    transition: opacity ${durations.slow} ${easings.easeInQuad};
+    transition-delay: ${props =>
+      props.isLoaded ? durations.slow : durations.normal};
   }
 
   [data-background] {
