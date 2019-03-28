@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { Column, getColumnMargin } from './Grid'
 import { Text } from './Text'
 import { ImageWrapper } from './Image'
+import { OrderedList, UnorderedList } from './List'
 
 const ContentWrapperStyle = styled.div`
   ${Column} {
@@ -15,6 +16,18 @@ const ContentWrapperStyle = styled.div`
   }
 
   ${Text} {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ${UnorderedList} {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ${OrderedList} {
     &:last-child {
       margin-bottom: 0;
     }
