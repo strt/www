@@ -10,6 +10,15 @@ export default function useSiteSettings() {
         siteSettings: childContentJson {
           name
           shortName
+          seo {
+            default_image {
+              childImageSharp {
+                resize(width: 1200, height: 630, quality: 80) {
+                  src
+                }
+              }
+            }
+          }
           offices {
             address
             zipcode

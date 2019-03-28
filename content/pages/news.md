@@ -5,8 +5,7 @@ excerpt: >-
   world inside Strateg.
 published: true
 template: posts
-seo:
-  image: /media/uploads/default-og.jpg
+seo: {}
 redirect_from:
   - /aktuellt.html
 ---

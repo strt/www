@@ -6,8 +6,7 @@ excerpt: >-
   we do.
 published: true
 template: cases
-seo:
-  image: /media/uploads/default-og.jpg
+seo: {}
 redirect_from:
   - case.html
 ---

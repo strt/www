@@ -23,5 +23,8 @@
     "instagram": "https://www.instagram.com/enstrateg/",
     "linkedin": "https://www.linkedin.com/company/strateg-marknadsf-ring-ab",
     "github": "https://github.com/strt"
+  },
+  "seo": {
+    "default_image": "./media/uploads/default-og.jpg"
   }
 }

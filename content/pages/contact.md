@@ -5,8 +5,7 @@ excerpt: >-
   have a way of figuring things out.
 published: true
 template: contact
-seo:
-  image: /media/uploads/default-og.jpg
+seo: {}
 redirect_from:
   - kontakt.html
 ---

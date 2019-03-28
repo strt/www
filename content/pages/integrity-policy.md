@@ -5,8 +5,7 @@ excerpt: >-
   personal information and is enforced since the 25th of May 2018.
 published: true
 template: standard
-seo:
-  image: /media/uploads/default-og.jpg
+seo: {}
 redirect_from: []
 ---
 

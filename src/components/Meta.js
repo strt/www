@@ -7,12 +7,15 @@ import useSiteSettings from '../lib/useSiteSettings'
 export default function Meta({
   title,
   description = '',
-  image = '',
+  image: propImage,
   publishedTime,
   type = 'website',
   children,
 }) {
   const siteSettings = useSiteSettings()
+  const image =
+    propImage || siteSettings.seo.default_image.childImageSharp.resize.src
+  const imageSrc = siteSettings.siteUrl + image
 
   return (
     <Location>
@@ -33,12 +36,7 @@ export default function Meta({
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            {image && (
-              <meta
-                property="og:image"
-                content={image ? siteSettings.siteUrl + image : ''}
-              />
-            )}
+            <meta property="og:image" content={imageSrc} />
             <meta
               property="og:url"
               content={siteSettings.siteUrl + location.pathname}
