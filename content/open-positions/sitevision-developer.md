@@ -4,6 +4,8 @@ job_title: SiteVision developer
 excerpt: Great! Then you’re probably just the person we’re looking for.
 date: 2019-02-04T15:32:14.536Z
 published: true
+redirect_from:
+  - /bli-en-av-oss/utvecklare.html
 ---
 
 ## About your new role
