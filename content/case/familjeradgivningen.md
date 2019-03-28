@@ -30,10 +30,7 @@ Based on the interviews, we dramatised a number of situations, creating a film t
 
 The film has been shown to family counselling services throughout Sweden and several other regions have expressed an interest in using the film in their work.
 
-Swedish Media Festival:
-
-Gold for Best Target Audience Adaptation
-
-Gold for Best Film – Nursing and Healthcare
-
-Silver for Best Direction
+- Swedish Media Festival:
+- Gold for Best Target Audience Adaptation
+- Gold for Best Film – Nursing and Healthcare
+- Silver for Best Direction
