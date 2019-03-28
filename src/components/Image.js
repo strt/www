@@ -71,6 +71,7 @@ function normalizeProps({
   originalName,
   presentationWidth,
   presentationHeight,
+  density,
   ...props
 }) {
   if (fluid) {
