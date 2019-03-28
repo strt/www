@@ -2,6 +2,7 @@ import { H1, H2, H3, Text } from './Text'
 import Link from './Link'
 import { Column } from './Grid'
 import Image from './Image'
+import { UnorderedList, OrderedList } from './List'
 
 const components = {
   h1: H1,
@@ -11,6 +12,8 @@ const components = {
   a: Link,
   column: Column,
   image: Image,
+  ul: UnorderedList,
+  ol: OrderedList,
 }
 
 export default components

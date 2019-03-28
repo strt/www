@@ -7,6 +7,8 @@ function isTextElement(node) {
     node.type === 'element' &&
     (node.tagName === 'p' ||
       node.tagName === 'a' ||
+      node.tagName === 'ul' ||
+      node.tagName === 'ol' ||
       node.tagName === 'h2' ||
       node.tagName === 'h3' ||
       node.tagName === 'h4')
