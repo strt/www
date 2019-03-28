@@ -6,7 +6,7 @@ excerpt: >-
   about smart, connected machines and comprehensive system integration.
 client: Epiroc
 date: 2018-04-08T13:25:24.000Z
-image: /media/uploads/case-atlas.jpg
+image: /media/uploads/case-epiroc-featured.jpg
 tags:
   - Digital
   - Print
