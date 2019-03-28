@@ -16,6 +16,7 @@ import Tags from '../components/Tags'
 import ContentWrapper from '../components/ContentWrapper'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import { formatPhone } from '../lib/format'
 
 export default function Case({ data: { post }, pageContext: { next } }) {
   const {
@@ -72,7 +73,9 @@ export default function Case({ data: { post }, pageContext: { next } }) {
                   {contact.role}. <br />
                   <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
                   <br />
-                  <Link href={`tel:${contact.phone}`}>{contact.phone}</Link>
+                  <Link href={`tel:${formatPhone(contact.phone)}`}>
+                    {contact.phone}
+                  </Link>
                 </Text>
               </Column>
             )}
