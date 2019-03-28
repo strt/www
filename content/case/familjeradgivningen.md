@@ -6,7 +6,7 @@ excerpt: >-
   together with Familjerådgivningen, a family counselling service.
 client: Region Örebro County
 date: 2019-02-08T13:25:24.000Z
-image: /media/uploads/case-familjeradgivningen.jpg
+image: /media/uploads/case-familjeradgivningen-featured.jpg
 video: https://player.vimeo.com/video/298426971
 tags:
   - Video
