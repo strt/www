@@ -10,7 +10,7 @@ image: /media/uploads/case-save-the-children-featured.jpg
 video: 'https://player.vimeo.com/video/324125581'
 tags:
   - Video
-contact_relation: fredrik.malm@strateg.se
+contact_relation: magnus.westerberg@strateg.se
 published: true
 ---
 ## 
