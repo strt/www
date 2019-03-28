@@ -93,7 +93,7 @@ export default function Footer() {
       <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
         <Column width="auto">
           <CopyrightText as="small" textColor="white">
-            © 2018 <br />
+            © 2019 <br />
             {siteSettings.name} <br />A part of{' '}
             <Link
               href="//diplomatgruppen.se"
