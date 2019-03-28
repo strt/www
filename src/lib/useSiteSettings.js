@@ -9,6 +9,7 @@ export default function useSiteSettings() {
       file(relativePath: { eq: "settings.json" }) {
         siteSettings: childContentJson {
           name
+          shortName
           offices {
             address
             zipcode
