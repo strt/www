@@ -7,7 +7,7 @@ excerpt: >-
   on their pride in the genuine and authentic craftsmanship they represent.
 client: Arbesko
 date: 2018-10-09T13:25:24.000Z
-image: /media/uploads/case-arbesko.jpg
+image: /media/uploads/case-arbesko-featured.jpg
 tags:
   - Identity
   - Print
@@ -37,13 +37,13 @@ Arbesko has a history that’s well worth telling. What started back in 1839 as 
 
 <Column md="6">
 
-![](/media/uploads/case-arbesko-typography-1.jpg)
+![](/media/uploads/case-arbesko-aa.png)
 
 </Column>
 
 <Column md="6">
 
-![](/media/uploads/case-arbesko-typography-2.jpg)
+![](/media/uploads/case-arbesko-typo.png)
 
 </Column>
 
