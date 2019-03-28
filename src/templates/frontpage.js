@@ -56,7 +56,7 @@ export default function Index({ data }) {
           </Grid>
         </Div>
         <Grid>
-          {data.articles.edges.map(({ node }) => (
+          {data.posts.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>
               <Card
                 date={node.frontmatter.date}
@@ -127,7 +127,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    articles: allMdx(
+    posts: allMdx(
       limit: 4
       filter: {
         fields: { template: { eq: "post" } }
