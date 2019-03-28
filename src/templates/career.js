@@ -48,7 +48,7 @@ export default function Career({ data }) {
                   <li key={node.id}>
                     <Excerpt mb={[2, 3]}>
                       <Link to={node.fields.slug} colorVariant="white">
-                        {node.frontmatter.title}
+                        {node.frontmatter.job_title}
                       </Link>
                     </Excerpt>
                   </li>
@@ -115,7 +115,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            title
+            job_title
           }
         }
       }
