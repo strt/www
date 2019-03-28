@@ -60,7 +60,7 @@ const gapMapFluidRange = {
   large: { min: 24, max: 40 },
 }
 
-function getGap(dir, props, cb, map) {
+function getGap(dir, props = {}, cb, map) {
   const gap =
     props[`${dir}Gap`] != null ? props[`${dir}Gap`] : props.theme[`${dir}Gap`]
   return gap ? cb(map[gap] || map.standard) : null
