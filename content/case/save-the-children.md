@@ -9,7 +9,7 @@ date: 2019-03-12T13:25:24.000Z
 image: /media/uploads/case-save-the-children-featured.jpg
 video: 'https://player.vimeo.com/video/324125581'
 tags:
-  - Video
+  - Digital
 contact_relation: magnus.westerberg@strateg.se
 published: true
 ---
