@@ -30,6 +30,7 @@ module.exports = {
       resolve: 'gatsby-mdx',
       options: {
         extensions: ['.mdx', '.md'],
+        commonmark: true,
         globalScope: `
           import EmbedPlayer from "$components/EmbedPlayer";
           import { Column } from "$components/Grid";
