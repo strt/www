@@ -1,6 +1,6 @@
 ---
 title: Are you a developer who’s all over Sitevision?
-role: SiteVision developer
+role: SiteVision Developer
 excerpt: Great! Then you’re probably just the person we’re looking for.
 date: 2019-02-04T15:32:14.536Z
 published: true
