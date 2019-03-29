@@ -1,6 +1,6 @@
 ---
 title: Are you our new UX designer? We hope so.
-job_title: User Experience Designer
+role: User Experience Designer
 excerpt: You’re well-up on all the programmes, tools and expertise that a UX designer must have. We offer you a team of dedicated colleagues, freedom, responsibility, variation - and plenty of opportunity to grow and develop. It starts off as a temporary position, but who knows where it’ll end up?
 date: 2019-02-04T15:32:14.536Z
 published: true
