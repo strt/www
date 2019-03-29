@@ -15,3 +15,5 @@ redirect_from:
 ---
 
 On hand was our experience director Magnus Westerberg, who’s also given lectures at seats of learning such as Berghs School of Communication, Hyper Island and KTH Royal Institute of Technology. We took the opportunity to bust a few myths about digitalisation and asked ourselves: Does it have to go so slowly?
+
+<EmbedPlayer src="https://player.vimeo.com/video/324139245" />
