@@ -8,7 +8,6 @@ template: standard
 seo: {}
 redirect_from: []
 ---
-
 ## 1. Purpose
 
 The purpose of this policy is that you in a clear and transparent way should be able to know what types of personal information we manage, how we manage them and how you can enforce your rights. The policy follows the framework of EU’s General Data Protection Regulation (GDPR) and our trade organization PRECIS’s guidelines for application of GDPR. Furthermore, it is completed by our internal guidelines for managing personal information.
