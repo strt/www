@@ -10,7 +10,7 @@ client: SDI
 date: 2019-03-29T13:25:24.000Z
 image: /media/uploads/case-sdi-featured.jpg
 tags:
-  - Branding
+  - Strategy
   - Campaign
 contact_relation: par.parsson@strateg.se
 published: true

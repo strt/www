@@ -11,7 +11,7 @@ image: /media/uploads/case-arbesko-featured.jpg
 tags:
   - Identity
   - Print
-  - Branding
+  - Strategy
 contact_relation: fredrik.vannestal@strateg.se
 published: true
 ---

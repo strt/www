@@ -8,8 +8,7 @@ client: Epiroc
 date: 2018-04-08T13:25:24.000Z
 image: /media/uploads/case-epiroc-featured.jpg
 tags:
-  - Digital
-  - Print
+  - Motion
 contact_relation: leif.goldkuhl@strateg.se
 published: true
 seo: {}
@@ -31,4 +30,5 @@ That’s why we did the opposite. Our concept film doesn’t feature a single ma
 
 The film has been used internally and externally with great success. It’s racked up more than 150,000 views on Vimeo.
 
-_“With market surveys, research and analysis, Strateg has come up with a concept that is both innovative and creative, unique in the industry and completely in line with our vision of effective, digitalised mining.”_ J**onas Albertson, president, Rocktec Division**
+_“With market surveys, research and analysis, Strateg has come up with a concept that is both innovative and creative, unique in the industry and completely in line with our vision of effective, digitalised mining.”_
+**– Jonas Albertson, president, Rocktec Division**

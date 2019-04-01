@@ -159,7 +159,7 @@ collections:
           widget: 'select',
           multiple: true,
           required: false,
-          options: [Digital, Identity, Campaign, Print, Branding, Motion],
+          options: [Digital, Identity, Campaign, Print, Strategy, Motion],
         }
       - {
           name: 'contact_relation',
