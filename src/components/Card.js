@@ -40,14 +40,15 @@ const Content = styled.div`
 
     /* Copy/mimic Link component style */
     & span {
-      text-decoration: underline;
       transition: background ${durations.fast} ${easings.easeInQuad};
 
       ${Link}:hover & {
+        text-decoration: underline;
         background-color: ${rgba(colors.dark, 0.1)};
       }
 
       ${Link}.focus-visible & {
+        text-decoration: underline;
         background-color: ${rgba(colors.dark, 0.2)};
       }
 
