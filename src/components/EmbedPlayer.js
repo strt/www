@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '../style'
 
 const PlayerWrapper = styled.div`
   position: relative;
@@ -11,7 +10,7 @@ const PlayerWrapper = styled.div`
       ? `${(props.aspectRatio[1] / props.aspectRatio[0]) * 100}%`
       : '56.25%'};
   overflow: hidden;
-  background-color: ${props => props.bg || colors.dark};
+  background-color: ${props => props.bg || 'transparent'};
 
   iframe {
     position: absolute;
