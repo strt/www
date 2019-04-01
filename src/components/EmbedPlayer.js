@@ -6,7 +6,10 @@ const PlayerWrapper = styled.div`
   position: relative;
   height: 0;
   width: 100%;
-  padding-top: 56.25%;
+  padding-top: ${props =>
+    props.aspectRatio
+      ? `${(props.aspectRatio[1] / props.aspectRatio[0]) * 100}%`
+      : '56.25%'};
   overflow: hidden;
   background-color: ${props => props.bg || colors.dark};
 
@@ -21,9 +24,9 @@ const PlayerWrapper = styled.div`
   }
 `
 
-export default function EmbedPlayer({ title, bg, ...props }) {
+export default function EmbedPlayer({ title, bg, aspectRatio, ...props }) {
   return (
-    <PlayerWrapper bg={bg}>
+    <PlayerWrapper bg={bg} aspectRatio={aspectRatio}>
       <iframe
         title={title}
         frameBorder="0"
