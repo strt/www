@@ -1,24 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import { ratio, cover } from '../style'
 
 const PlayerWrapper = styled.div`
-  position: relative;
-  height: 0;
-  width: 100%;
-  padding-top: ${props =>
-    props.aspectRatio
-      ? `${(props.aspectRatio[1] / props.aspectRatio[0]) * 100}%`
-      : '56.25%'};
-  overflow: hidden;
   background-color: ${props => props.bg || 'transparent'};
+  ${props =>
+    ratio(
+      props.aspectRatio
+        ? { x: props.aspectRatio[0], y: props.aspectRatio[1] }
+        : undefined,
+    )}
 
   iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    ${cover()}
     object-position: left;
   }
 `
