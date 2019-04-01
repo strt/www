@@ -7,6 +7,7 @@ excerpt: >-
 client: Epiroc
 date: 2018-04-08T13:25:24.000Z
 image: /media/uploads/case-epiroc-featured.jpg
+video: https://player.vimeo.com/video/298189446
 tags:
   - Motion
 contact_relation: leif.goldkuhl@strateg.se
