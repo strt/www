@@ -7,7 +7,7 @@ import { fluidRange, colors, breakpoints, vw } from '../style'
 export const BoxWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-content: center;
+  justify-content: center;
   flex-grow: 1;
   padding: ${fluidRange({ min: 32, max: 56 })};
   background-color: ${props => props.bg || colors.ice};
