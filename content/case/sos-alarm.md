@@ -30,6 +30,8 @@ seo: {}
 
 </Column>
 
+![](/media/uploads/case-sos-typo.jpg)
+
 ## Insight
 
 The core idea is based on directions in the shape of arrows, symbolising how
@@ -46,7 +48,7 @@ services.
 
 <Column md="6">
 
-![](/media/uploads/case-sos-app-loading.jpg)
+![](/media/uploads/case-sos-app.jpg)
 
 </Column>
 
@@ -62,17 +64,13 @@ campaigns to support SOS Alarm’s Public Affairs work.
 <EmbedPlayer src="https://player.vimeo.com/video/327692733" />
 
 <Column md="6">
-  <Box
-    title="Result"
-    content="The identity is not only implemented throughout the organisation, it’s highly appreciated and it continues to develop in new exciting ways."
-  />
-</Column>
-
-<Column md="6">
-
-![](/media/uploads/case-sos-app.jpg)
 
 </Column>
+
+## Results
+
+The identity is not only implemented throughout the organisation, it’s highly
+appreciated and it continues to develop in new exciting ways.
 
 ![](/media/uploads/case-sos-flyer.jpg)
 

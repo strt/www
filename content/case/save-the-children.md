@@ -29,8 +29,8 @@ Instead of asking these companies what they could do to help Save the Children, 
 
 The Save the Children Sustainability Partner program was launched as a digital service, and included a subscription-based communication package that automatically updated the digital channels of participating companies about their chosen projects. This freed up the communications department from that task, while simultaneously showing the world all the good that the company was doing.
 
-![](/media/uploads/case-save-the-children-screens.jpg)
-
 ## Results - A Four to One Return on Investment
 
 It took only two weeks of running commercials on YouTube and LinkedIn for Save the Children to land its first Sustainability Partner. And looking back at the activity during the end of 2018, the overall return of investment was four to one.
+
+![](/media/uploads/case-save-the-children-screens.jpg)
