@@ -134,9 +134,11 @@ export function fluidRange({ min, max, viewportMin = 320, viewportMax = 728 }) {
     viewportMin}))`
 }
 
-export function ratio({ x = 16, y = 9 }) {
+export function ratio({ x = 16, y = 9 } = {}) {
   return {
     position: 'relative',
+    width: '100%',
+    overflow: 'hidden',
     '&::before': {
       content: "''",
       display: 'inline-block',

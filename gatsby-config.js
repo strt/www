@@ -36,8 +36,9 @@ module.exports = {
           import { Column } from "$components/Grid";
           import Image from "$components/Image";
           import Box from "$components/Box";
+          import Video from "$components/Video";
           
-          export default { EmbedPlayer, Column, Image, Box };
+          export default { EmbedPlayer, Column, Image, Box, Video };
         `,
         rehypePlugins: [require('./plugins/rehype-wrap-in-columns')],
         remarkPlugins: [
