@@ -74,7 +74,7 @@ appreciated and it continues to develop in new exciting ways.
 
 ![](/media/uploads/case-sos-flyer.jpg)
 
-![](/media/uploads/case-sos-police.gif)
+<Video src="https://player.vimeo.com/external/327725624.hd.mp4?s=ea3961a0747cec44ff7e4d4c61b80c5046469356&profile_id=175" />
 
 <Column md="6">
 
