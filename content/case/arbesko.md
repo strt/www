@@ -69,8 +69,7 @@ As of now, all product names will be Swedish place names. Places that in some wa
 
 <EmbedPlayer
 src="https://player.vimeo.com/video/310585847"
-aspectRatio={[21, 9]}
-bg="white"
+aspectRatio={[640, 267]}
 />
 
 ![](/media/uploads/case-arbesko-6.jpg)
