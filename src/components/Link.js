@@ -47,6 +47,10 @@ export const A = styled.a`
     text-decoration: none;
   }
 
+  button& {
+    user-select: none;
+  }
+
   ${props =>
     props.variant === 'large' &&
     css`

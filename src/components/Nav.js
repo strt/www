@@ -184,7 +184,6 @@ export function Navigation() {
           colorVariant="dark"
           variant="large"
           onClick={toggle}
-          style={{ userSelect: 'none' }}
           aria-expanded={isOpen}
           aria-controls={NAV_ID}
         >
