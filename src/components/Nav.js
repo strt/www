@@ -44,6 +44,7 @@ export const StyledNavLink = styled(GatsbyLink)`
   text-decoration: none;
   color: white;
   transition: all ${durations.fast} ${easings.easeOutQuad};
+  -webkit-tap-highlight-color: transparent;
 
   &:last-child {
     margin-right: 0;
@@ -183,6 +184,7 @@ export function Navigation() {
           colorVariant="dark"
           variant="large"
           onClick={toggle}
+          style={{ userSelect: 'none' }}
           aria-expanded={isOpen}
           aria-controls={NAV_ID}
         >
