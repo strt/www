@@ -18,6 +18,7 @@ const Link = styled(GatsbyLink)`
   display: flex;
   outline: none;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 `
 
 const Article = styled.article`

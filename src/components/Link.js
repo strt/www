@@ -31,7 +31,7 @@ export const A = styled.a`
   color: ${props => getColor(props)};
   background: none;
   transition: background ${durations.fast} ${easings.easeInQuad};
-  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     background-color: ${props => rgba(getColor(props), 0.1)};
