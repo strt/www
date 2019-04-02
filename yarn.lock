@@ -6041,7 +6041,7 @@ gatsby-link@^2.0.16:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-mdx@^0.5.6-ci.361:
+gatsby-mdx@^0.5.6:
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/gatsby-mdx/-/gatsby-mdx-0.5.6.tgz#632e095d42149ad4592f4d51437746c7603e51a3"
   integrity sha512-iKX6/DVq0nLz+KWDTqT2FSQMlR9imbmXb4zGZtpIZ8YbsvAWbDOcmTwAC61fDtJwS4SbXEJhEFrGxPzi2OYz4Q==
