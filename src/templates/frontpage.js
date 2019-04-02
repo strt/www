@@ -16,7 +16,14 @@ import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Index({ data }) {
-  const { title } = data.page.frontmatter
+  const { title, featured_case: featuredCase } = data.page.frontmatter
+
+  const cases = [...featuredCase, ...data.cases.edges]
+    .filter(
+      (item, index, self) =>
+        index === self.findIndex(t => t.node.id === item.node.id),
+    )
+    .slice(0, 5)
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
@@ -25,7 +32,7 @@ export default function Index({ data }) {
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
-          {data.cases.edges.map(({ node }) => (
+          {cases.map(({ node }) => (
             <Tile
               key={node.id}
               url={node.fields.slug}
@@ -83,6 +90,21 @@ export default function Index({ data }) {
 }
 
 export const pageQuery = graphql`
+  fragment caseFields on Mdx {
+    id
+    fields {
+      slug
+    }
+    frontmatter {
+      client
+      tags
+      image {
+        childImageSharp {
+          ...TileImage
+        }
+      }
+    }
+  }
   query($slug: String!) {
     page: mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
@@ -99,6 +121,11 @@ export const pageQuery = graphql`
             }
           }
         }
+        featured_case {
+          node: childMdx {
+            ...caseFields
+          }
+        }
       }
     }
     cases: allMdx(
@@ -111,19 +138,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            client
-            tags
-            image {
-              childImageSharp {
-                ...TileImage
-              }
-            }
-          }
+          ...caseFields
         }
       }
     }

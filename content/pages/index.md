@@ -9,7 +9,10 @@ seo:
     things out.
   image: /media/uploads/default-og.jpg
 featured_case:
+  - ../case/sdi.md
+  - ../case/familjeradgivningen.md
+  - ../case/sos-alarm.md
   - ../case/arbesko.md
-  - ../case/save-the-children.md
+  - ../case/epiroc.md
 published: true
 ---
