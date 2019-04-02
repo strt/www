@@ -73,6 +73,19 @@ module.exports = {
         respectDNT: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Strateg',
+        short_name: 'Strateg',
+        start_url: '.',
+        background_color: '#ffffff',
+        theme_color: '#0b101e',
+        display: 'fullscreen',
+        icon: 'src/assets/icon.png',
+        include_favicon: false,
+      },
+    },
     // 'gatsby-plugin-subfont', Enable again once it's less buggy
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
