@@ -88,6 +88,12 @@ module.exports = {
     },
     // 'gatsby-plugin-subfont', Enable again once it's less buggy
     'gatsby-plugin-catch-links',
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        showSpinner: false,
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',

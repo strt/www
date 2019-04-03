@@ -70,6 +70,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --scrollbar-width: 0;
+    --nprogress-color: ${colors.dark};
   }
 
   html {
@@ -119,6 +120,30 @@ export const GlobalStyle = createGlobalStyle`
   button::-moz-focus-inner {
     border-style: none;
     padding: 0;
+  }
+
+  #nprogress {
+    pointer-events: none;
+  }
+
+  #nprogress .bar {
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--nprogress-color);
+  }
+
+  #nprogress .peg {
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 100px;
+    height: 100%;
+    opacity: 1.0;
+    transform: rotate(3deg) translate(0, -4px);
   }
 `
 

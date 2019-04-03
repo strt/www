@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import {
@@ -123,6 +123,19 @@ export function Navigation() {
   const navRef = useRef(null)
   useFocusTrap(navRef, { shouldTrap: isOpen })
   useDisableScroll(isOpen)
+
+  // Update nprogress color
+  useEffect(() => {
+    if (isOpen) {
+      document.documentElement.style.setProperty('--nprogress-color', 'white')
+
+      return () => {
+        document.documentElement.style.setProperty('--nprogress-color', null)
+      }
+    }
+
+    return undefined
+  }, [isOpen])
 
   const navSpringRef = useRef(null)
   const navAnimStyle = useSpring({
