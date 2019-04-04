@@ -1,5 +1,5 @@
 ---
-title: Three agencies become one – Strateg
+title: When three become one
 excerpt: >-
   In April, we became part of the Diplomat Group. Now it’s time for the next
   step. Gathering Strateg, branding experts YouMe Agency and design specialists
