@@ -16,7 +16,7 @@ export default function useDisableScroll(shouldDisable = true) {
       return () => {
         document.body.style.setProperty('overflow', null)
         document.body.style.setProperty('margin-right', null)
-        document.documentElement.style.setProperty('--scrollbar-width', 0)
+        document.documentElement.style.setProperty('--scrollbar-width', null)
       }
     }
 
