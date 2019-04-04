@@ -85,6 +85,7 @@ export const NavContent = animated(styled.div`
 
   ul {
     margin: auto 0;
+    padding-left: ${fluidRange({ min: 24, max: 32 })};
   }
 
   li {
