@@ -70,7 +70,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
                 <H3>Would you like to know more?</H3>
                 <Text>
                   Contact {contact.first_name} {contact.last_name},{' '}
-                  {contact.role}. <br />
+                  {contact.role} <br />
                   <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
                   <br />
                   <Link href={`tel:${formatPhone(contact.phone)}`}>
