@@ -1,12 +1,15 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Location } from '@reach/router'
 import {
   useSpring,
   useTransition,
   useChain,
   config,
   animated,
+  interpolate,
 } from 'react-spring'
 import { IconButton } from './Button'
 import Link from './Link'
@@ -60,37 +63,7 @@ export const StyledNavLink = styled(GatsbyLink)`
   }
 `
 
-export const NavContent = animated(styled.div`
-  position: fixed;
-  z-index: 9;
-  top: 0;
-  right: 0;
-  right: var(--scrollbar-width);
-  left: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background-color: ${colors.dark};
-
-  ${IconButton} {
-    position: absolute;
-    top: ${fluidRange({ min: 16, max: 26 })};
-    right: 0;
-    font-size: ${fluidRange({ min: 32, max: 40 })};
-    color: white;
-  }
-
-  ul {
-    margin: auto 0;
-  }
-
-  li {
-    transform-origin: left center;
-  }
-`)
+const AnimatedIconButton = animated(IconButton)
 
 const NavWrapper = styled.nav`
   [data-responsive] {
@@ -114,15 +87,65 @@ const NavWrapper = styled.nav`
       }
     }
   }
+
+  [data-cover] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rebeccapurple;
+    transform-origin: top right;
+    background-color: ${colors.dark};
+  }
+
+  [data-content] {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    right: var(--scrollbar-width);
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    ${IconButton} {
+      position: absolute;
+      top: ${fluidRange({ min: 16, max: 32 })};
+      right: ${fluidRange({ min: 4, max: 8 })};
+      font-size: ${fluidRange({ min: 32, max: 40 })};
+      color: white;
+    }
+
+    ul {
+      margin: auto 0;
+      padding-left: ${fluidRange({ min: 24, max: 32 })};
+    }
+
+    li {
+      transform-origin: left center;
+    }
+  }
 `
 
 const NAV_ID = 'navigation'
 
-export function Navigation() {
+function Navigation({ location }) {
   const [isOpen, toggle] = useToggle(false)
   const navRef = useRef(null)
   useFocusTrap(navRef, { shouldTrap: isOpen })
   useDisableScroll(isOpen)
+
+  // Close nav on location change
+  useEffect(() => {
+    if (location.action) {
+      toggle(false)
+    }
+  }, [location])
 
   // Update nprogress color
   useEffect(() => {
@@ -137,17 +160,35 @@ export function Navigation() {
     return undefined
   }, [isOpen])
 
-  const navSpringRef = useRef(null)
-  const navAnimStyle = useSpring({
-    ref: navSpringRef,
-    config: { ...config.stiff, friction: 28 },
+  const closeSpringRef = useRef(null)
+  const closeAnimStyle = useSpring({
+    ref: closeSpringRef,
     from: {
       opacity: 0,
-      translateY: -50,
+      scale: 0,
     },
     to: {
       opacity: isOpen ? 1 : 0,
-      translateY: isOpen ? 0 : -50,
+      scale: isOpen ? 1 : 0,
+    },
+  })
+
+  const coverSpringRef = useRef(null)
+  const coverAnimStyle = useSpring({
+    ref: coverSpringRef,
+    from: {
+      opacity: 0,
+      scaleX: 0,
+      scaleY: 0,
+      x: 0,
+      y: 0,
+    },
+    to: {
+      opacity: isOpen ? 1 : 0,
+      scaleY: isOpen ? 1 : 0,
+      scaleX: isOpen ? 1 : 0,
+      x: isOpen ? 0 : -16,
+      y: isOpen ? 0 : 16,
     },
   })
 
@@ -158,18 +199,19 @@ export function Navigation() {
     {
       ref: itemsTransitionRef,
       unique: true,
-      trail: 200 / mainNavigation.length,
-      from: { opacity: 0, scale: 0.8 },
-      enter: { opacity: 1, scale: 1 },
-      leave: { opacity: 0, scale: 0.8 },
+      config: isOpen ? { ...config.default, friction: 40 } : config.stiff,
+      trail: isOpen ? 200 / mainNavigation.length : 10,
+      from: { opacity: 0, x: -40 },
+      enter: { opacity: 1, x: 0 },
+      leave: { opacity: 0, x: -16 },
     },
   )
 
   useChain(
     isOpen
-      ? [navSpringRef, itemsTransitionRef]
-      : [itemsTransitionRef, navSpringRef],
-    [0, isOpen ? 0.1 : 0],
+      ? [coverSpringRef, itemsTransitionRef, closeSpringRef]
+      : [closeSpringRef, itemsTransitionRef, coverSpringRef],
+    isOpen ? [0, 0.1, 0.2] : [0, 0, 0.15],
   )
 
   return (
@@ -196,46 +238,77 @@ export function Navigation() {
           type="button"
           colorVariant="dark"
           variant="large"
-          onClick={toggle}
+          onClick={() => {
+            toggle()
+          }}
           aria-expanded={isOpen}
           aria-controls={NAV_ID}
         >
           menu
         </Link>
-        <NavContent
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <animated.div
+          data-content
           id={NAV_ID}
           ref={navRef}
           style={{
-            opacity: navAnimStyle.opacity,
+            opacity: coverAnimStyle.opacity,
             right: isOpen ? 'var(--scrollbar-width)' : null,
-            visibility: navAnimStyle.opacity.interpolate(o =>
+            visibility: coverAnimStyle.opacity.interpolate(o =>
               o === 0 && !isOpen ? 'hidden' : 'visible',
             ),
-            pointerEvents: navAnimStyle.opacity.interpolate(o =>
+            pointerEvents: coverAnimStyle.opacity.interpolate(o =>
               o !== 0 && !isOpen ? 'none' : 'auto',
-            ),
-            transform: navAnimStyle.translateY.interpolate(
-              y => `translate3d(0, ${y}%, 0)`,
             ),
           }}
           onKeyDown={event => {
             if (event.key === 'Escape') {
               event.stopPropagation()
-              toggle()
+              toggle(false)
             }
           }}
         >
+          <animated.div
+            data-cover
+            style={{
+              opacity: coverAnimStyle.opacity,
+              transform: interpolate(
+                [
+                  coverAnimStyle.x,
+                  coverAnimStyle.y,
+                  coverAnimStyle.scaleX,
+                  coverAnimStyle.scaleY,
+                ],
+                (x, y, sx, sy) => {
+                  return `translate3d(${x}px, ${y}px, 0) scale3d(${sx}, ${sy}, 1)`
+                },
+              ),
+            }}
+          />
           <Grid>
             <Column>
-              <div css={{ position: 'relative', zIndex: 1 }}>
-                <IconButton
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: '1',
+                }}
+              >
+                <AnimatedIconButton
                   type="button"
-                  onClick={toggle}
+                  onClick={() => {
+                    toggle()
+                  }}
                   textColor="white"
                   aria-label="Close menu"
+                  style={{
+                    opacity: closeAnimStyle.opacity,
+                    transform: closeAnimStyle.scale.interpolate(
+                      s => `scale3d(${s}, ${s}, 1)`,
+                    ),
+                  }}
                 >
                   <Icon name={['fal', 'times']} />
-                </IconButton>
+                </AnimatedIconButton>
               </div>
             </Column>
           </Grid>
@@ -247,8 +320,8 @@ export function Navigation() {
                     key={key}
                     style={{
                       opacity: itemStyle.opacity,
-                      transform: itemStyle.scale.interpolate(
-                        s => `scale3d(${s}, 1, 1)`,
+                      transform: itemStyle.x.interpolate(
+                        x => `translate3d(${x}%, 0, 0)`,
                       ),
                     }}
                   >
@@ -260,8 +333,15 @@ export function Navigation() {
               </ul>
             </Column>
           </Grid>
-        </NavContent>
+        </animated.div>
       </div>
     </NavWrapper>
   )
+}
+
+export default function NavigationWrapper() {
+  const cb = useCallback(({ location }) => {
+    return <Navigation location={location} />
+  }, [])
+  return <Location>{cb}</Location>
 }
