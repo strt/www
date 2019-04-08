@@ -14,6 +14,7 @@ tags:
 contact_relation: magnus.westerberg@strateg.se
 published: true
 ---
+
 ## How to increase the number of corporate donors?
 
 Save the Children isn’t just one of the world’s best-known NGOs, it’s one of world’s most-recognised brands in any category. Nevertheless, its recognition among companies in Sweden was not where Save the Children wanted it to be. Specifically, they wanted to increase the number of annual medium-sized corporate donors, i.e. in the €25.000-40.000 range. But what could Save the Children do to encourage companies to donate at such levels?

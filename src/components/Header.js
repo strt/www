@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
 import { breakpoints, fluidRange, vw } from '../style'
-import { Navigation } from './Nav'
+import Navigation from './Nav'
 
 export default function Header() {
   return (
