@@ -12,7 +12,7 @@ import { formatPhone } from '../lib/format'
 import { breakpoints, fluidRange, vw, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
-const RoleText = styled(Text).attrs({ textColor: colors.steel500 })`
+const SmallText = styled(Text)`
   font-size: ${fluidRange({ min: 11, max: 14 })};
   line-height: 1.2em;
 
@@ -69,11 +69,6 @@ export default function Contact({ data }) {
       </Section>
       <Section pb={[10, 20]}>
         <Grid>
-          <Column>
-            <Text>
-              Reach us directly by e-mailing firstname.surname[a]strateg.se
-            </Text>
-          </Column>
           {data.employees.edges.map(({ node }) => (
             <Column key={node.id} width="6" md="3" bottomGap>
               {node.frontmatter.image && (
@@ -86,7 +81,19 @@ export default function Contact({ data }) {
               <Text mt={[1, 1]} mb="0">
                 {node.frontmatter.first_name} {node.frontmatter.last_name}
               </Text>
-              <RoleText mb="0">{node.frontmatter.role}</RoleText>
+              <SmallText mb={0.5} textColor={colors.steel500}>
+                {node.frontmatter.role}
+              </SmallText>
+              <SmallText mb={0.5}>
+                <Link href={`mailto:${node.frontmatter.email}`}>
+                  {node.frontmatter.email}
+                </Link>
+              </SmallText>
+              <SmallText mb="0">
+                <Link href={`tel:${formatPhone(node.frontmatter.phone)}`}>
+                  {node.frontmatter.phone}
+                </Link>
+              </SmallText>
             </Column>
           ))}
         </Grid>
@@ -149,6 +156,8 @@ export const pageQuery = graphql`
             first_name
             last_name
             role
+            email
+            phone
             image {
               childImageSharp {
                 fluid(
