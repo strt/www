@@ -3,7 +3,7 @@ first_name: Anders
 last_name: Holmquist
 role: Planner
 email: anders.holmquist@strateg.se
-phone: 070-184 44 38
+phone: +46 701 84 44 38
 image: /media/uploads/employee-anders-holmquist.jpg
 published: true
 ---
