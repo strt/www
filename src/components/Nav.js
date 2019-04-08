@@ -94,7 +94,6 @@ const NavWrapper = styled.nav`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rebeccapurple;
     transform-origin: top right;
     background-color: ${colors.dark};
   }
@@ -142,9 +141,7 @@ function Navigation({ location }) {
 
   // Close nav on location change
   useEffect(() => {
-    if (location.action) {
-      toggle(false)
-    }
+    toggle(false)
   }, [location])
 
   // Update nprogress color
@@ -199,11 +196,12 @@ function Navigation({ location }) {
     {
       ref: itemsTransitionRef,
       unique: true,
-      config: isOpen ? { ...config.default, friction: 40 } : config.stiff,
-      trail: isOpen ? 200 / mainNavigation.length : 10,
+      config: { ...config.default, friction: 30 },
+      trail: 250 / mainNavigation.length,
+      reverse: !isOpen,
       from: { opacity: 0, x: -40 },
       enter: { opacity: 1, x: 0 },
-      leave: { opacity: 0, x: -16 },
+      leave: { opacity: 0, x: -12 },
     },
   )
 
@@ -211,7 +209,7 @@ function Navigation({ location }) {
     isOpen
       ? [coverSpringRef, itemsTransitionRef, closeSpringRef]
       : [closeSpringRef, itemsTransitionRef, coverSpringRef],
-    isOpen ? [0, 0.1, 0.2] : [0, 0, 0.15],
+    isOpen ? [0, 0.1, 0.21] : [0, 0, 0.1],
   )
 
   return (
