@@ -12,7 +12,7 @@ import {
   interpolate,
 } from 'react-spring'
 import { IconButton } from './Button'
-import Link from './Link'
+import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
 import useFocusTrap from '../lib/useFocusTrap'
@@ -62,6 +62,10 @@ const NavLink = styled(GatsbyLink)`
 const AnimatedIconButton = animated(IconButton)
 
 const NavWrapper = styled.nav`
+  ${A} {
+    text-decoration: none;
+  }
+
   [data-responsive] {
     @media ${breakpoints.medium} {
       display: none;
@@ -81,10 +85,6 @@ const NavWrapper = styled.nav`
       &:last-child {
         padding-right: 0;
       }
-    }
-
-    a {
-      text-decoration: none;
     }
   }
 
