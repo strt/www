@@ -34,11 +34,7 @@ function getProps({ href, isPartiallyCurrent }) {
     : null
 }
 
-export function NavLink(props) {
-  return <StyledNavLink getProps={getProps} {...props} />
-}
-
-export const StyledNavLink = styled(GatsbyLink)`
+const NavLink = styled(GatsbyLink)`
   display: inline-block;
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
   font-size: ${fluidRange({ min: 36, max: 48 })};
@@ -85,6 +81,10 @@ const NavWrapper = styled.nav`
       &:last-child {
         padding-right: 0;
       }
+    }
+
+    a {
+      text-decoration: none;
     }
   }
 
@@ -323,7 +323,7 @@ function Navigation({ location }) {
                       ),
                     }}
                   >
-                    <NavLink key={item.link} to={item.link}>
+                    <NavLink key={item.link} to={item.link} getProps={getProps}>
                       {item.title}
                     </NavLink>
                   </animated.li>
