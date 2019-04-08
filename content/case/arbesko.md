@@ -9,9 +9,9 @@ client: Arbesko
 date: 2018-10-09T13:25:24.000Z
 image: /media/uploads/case-arbesko-featured.jpg
 tags:
-  - Identity
+  - Visual Identity
   - Print
-  - Strategy
+  - Brand Development
 contact_relation: fredrik.vannestal@strateg.se
 published: true
 ---

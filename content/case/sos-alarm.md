@@ -10,8 +10,8 @@ client: SOS Alarm
 date: 2019-02-01T13:25:24.000Z
 image: /media/uploads/case-sos-featured.jpg
 tags:
-  - Identity
-  - Strategy
+  - Visual Identity
+  - Brand Development
 contact_relation: par.parsson@strateg.se
 published: true
 seo: {}
