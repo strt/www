@@ -26,9 +26,6 @@ export default function Meta({
             titleTemplate={`%s – ${siteSettings.shortName}`}
             defaultTitle={siteSettings.name}
           >
-            {/* TODO: Remove before release */}
-            <meta name="robots" content="noindex, nofollow" />
-
             <title>{title}</title>
             <meta name="description" content={description} />
 

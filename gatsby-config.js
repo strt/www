@@ -3,7 +3,7 @@ const proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://beta.strateg.se',
+    siteUrl: 'https://strateg.se',
   },
   mapping: {
     'Mdx.frontmatter.contact_relation': 'Mdx.frontmatter.email',
