@@ -29,6 +29,11 @@ export default function Meta({
             <title>{title}</title>
             <meta name="description" content={description} />
 
+            <meta
+              name="google-site-verification"
+              content="yOEi9G2K6BAml0aaT6LSru-SnaJGs5e0v9krM6JeWZg"
+            />
+
             <meta property="og:site_name" content={siteSettings.name} />
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
