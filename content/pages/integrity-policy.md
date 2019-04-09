@@ -94,17 +94,12 @@ We follow the requirements on data security actions outlined by the GDPR. This i
 
 The GDPR gives you the right to:
 
-• Request information regarding what personal information we handle regarding you
-
-• Request to have faulty personal information corrected and in certain cases ask us to completely erase your personal information
-
-• Object against that certain personal information on you is being handled as well as requesting that the handling of your personal information be limited
-
-• Have the personal information you have left us transferred to another handler (the right to data portability)
-
-• Denounce your consent if the handling is based on consent, and
-
-• If you are dissatisfied with how we handle your personal information you can file a complaint with Datainspektionen, which is the responsible public authority
+- Request information regarding what personal information we handle regarding you
+- Request to have faulty personal information corrected and in certain cases ask us to completely erase your personal information
+- Object against that certain personal information on you is being handled as well as requesting that the handling of your personal information be limited
+- Have the personal information you have left us transferred to another handler (the right to data portability)
+- Denounce your consent if the handling is based on consent, and
+- If you are dissatisfied with how we handle your personal information you can file a complaint with Datainspektionen, which is the responsible public authority
 
 ## 5. Contact information
 
