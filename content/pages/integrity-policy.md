@@ -6,7 +6,8 @@ excerpt: >-
 published: true
 template: standard
 seo: {}
-redirect_from: []
+redirect_from:
+  - /other/samtycke.html
 ---
 
 ## 1. Purpose
