@@ -3,8 +3,8 @@ title: What lead management is – and how to excel at it
 excerpt: >-
   Start small and scale up. See how more and more leads come rolling in.
   Increase your company's market share. Piece of cake? We had a chat with Leif
-  Goldkuhl, account manager and strategic advisor at Strateg, about how to get
-  going with lead management.
+  Goldkuhl, account director at Strateg, about how to get going with lead
+  management.
 date: 2019-04-03T14:09:56.637Z
 image: /content/media/uploads/lead_illu_3.jpg
 published: true
