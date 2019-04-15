@@ -28,6 +28,6 @@ Take a look around the website and check out our social media channels (our tag 
 
 ## Time to apply?
 
-There’s no time to lose, is there? Send a personal letter and CV to <malin.hakansson@strateg.se>. As long as the vacancy is visible it’s perfectly okay to apply. And you know, it starts with a temporary position for 12 months, but after that, who knows where it can end? That is to say, there is a chance of extension.
+There’s no time to lose, is there? Send a personal letter and CV to <career@strateg.se>. As long as the vacancy is visible it’s perfectly okay to apply. And you know, it starts with a temporary position for 12 months, but after that, who knows where it can end? That is to say, there is a chance of extension.
 
-[Apply here](mailto:malin.hakansson@strateg.se)
+[Apply here](mailto:career@strateg.se)
