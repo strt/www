@@ -36,6 +36,6 @@ Check out the website, but have a closer look primarily at our social channels (
 
 ## Made your mind up?
 
-Yes! Send a personal letter and CV to <malin.hakansson@strateg.se> and she’ll get in touch with you. You can also give Malin a bell if there’s a burning question you want to take up, on [070-184 44 28](tel:+4670-1844428). As long as the vacancy is visible it’s perfectly okay to apply.
+Yes! Send a personal letter and CV to [career@strateg.se](mailto:career@strateg.se) and we’ll get in touch with you. As long as the vacancy is visible it’s perfectly okay to apply.
 
-[Apply here](mailto:malin.hakansson@strateg.se)
+[Apply here](mailto:career@strateg.se)
