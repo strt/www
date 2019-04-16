@@ -64,7 +64,8 @@ const TagList = styled.ul`
 
   & li:not(:last-child) {
     &::after {
-      content: ',\00a0';
+      content: ', ';
+      white-space: pre;
     }
   }
 `
@@ -73,6 +74,7 @@ const Hyphen = styled.span`
   flex-shrink: 0;
 
   &::before {
-    content: '—\00a0';
+    content: '— ';
+    white-space: pre;
   }
 `
