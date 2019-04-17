@@ -1,6 +1,7 @@
 ---
 label: Employee
 hide_body: true
+display_field: email
 fields:
 - type: text
   name: first_name
