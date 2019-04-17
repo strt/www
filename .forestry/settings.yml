@@ -14,6 +14,8 @@ sections:
   label: Employees
   create: all
   match: "**/*"
+  templates:
+  - employee
 - type: directory
   path: content/posts
   label: Posts
@@ -24,6 +26,8 @@ sections:
   label: Case
   create: all
   match: "**/*"
+  templates:
+  - case
 upload_dir: content/media/uploads
 public_path: "/uploads"
 front_matter_path: ''
