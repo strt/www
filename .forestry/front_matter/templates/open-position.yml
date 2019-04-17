@@ -1,0 +1,22 @@
+---
+label: Open position
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: role
+  label: role
+- type: text
+  name: excerpt
+  label: excerpt
+- type: datetime
+  name: date
+  label: date
+- type: boolean
+  name: published
+  label: published
+- type: list
+  name: redirect_from
+  label: redirect_from
