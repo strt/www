@@ -3,7 +3,27 @@ new_page_extension: md
 auto_deploy: false
 admin_path: 
 webhook_url: 
-sections: 
+sections:
+- type: directory
+  path: content/open-positions
+  label: Open positions
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/employees
+  label: Employees
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/posts
+  label: Posts
+  create: all
+  match: "**/*"
+- type: directory
+  path: content/case
+  label: Case
+  create: all
+  match: "**/*"
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
