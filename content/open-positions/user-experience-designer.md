@@ -1,13 +1,16 @@
 ---
 title: Are you our new UX designer? We hope so.
 role: User Experience Designer
-excerpt: You’re well-up on all the programmes, tools and expertise that a UX designer must have. We offer you a team of dedicated colleagues, freedom, responsibility, variation - and plenty of opportunity to grow and develop. It starts off as a temporary position, but who knows where it’ll end up?
-date: 2019-02-04T15:32:14.536Z
-published: true
+excerpt: You’re well-up on all the programmes, tools and expertise that a UX designer
+  must have. We offer you a team of dedicated colleagues, freedom, responsibility,
+  variation - and plenty of opportunity to grow and develop. It starts off as a temporary
+  position, but who knows where it’ll end up?
+date: 2019-02-04T15:32:14+00:00
+published: false
 redirect_from:
-  - /bli-en-av-oss/ux-designer.html
----
+- "/bli-en-av-oss/ux-designer.html"
 
+---
 ## Your skillset?
 
 We could do the standard thing and publish a long list of all the programmes, tools and expertise that we want our new UX designer to be awesome at. But we won’t. If you’re an UX designer, you already know what we want. And of course you’re well-versed in matters we’ve not even heard of (yet). No, we think it’s more important to talk a bit about what a UX designer can expect from us.
