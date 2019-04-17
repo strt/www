@@ -5,6 +5,11 @@ admin_path: ''
 webhook_url: 
 sections:
 - type: directory
+  path: content/pages
+  label: Pages
+  create: documents
+  match: "**/*"
+- type: directory
   path: content/open-positions
   label: Open positions
   create: all
