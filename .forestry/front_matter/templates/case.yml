@@ -1,6 +1,7 @@
 ---
 label: Case
 hide_body: false
+display_field: title
 fields:
 - type: text
   name: title
@@ -23,6 +24,7 @@ fields:
 - type: text
   name: contact_relation
   label: contact_relation
+  description: Email address to employee
 - type: boolean
   name: published
   label: published
