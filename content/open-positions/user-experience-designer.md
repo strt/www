@@ -6,7 +6,7 @@ excerpt: You’re well-up on all the programmes, tools and expertise that a UX d
   variation - and plenty of opportunity to grow and develop. It starts off as a temporary
   position, but who knows where it’ll end up?
 date: 2019-02-04T15:32:14+00:00
-published: false
+published: true
 redirect_from:
 - "/bli-en-av-oss/ux-designer.html"
 
