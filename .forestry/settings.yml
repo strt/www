@@ -12,12 +12,12 @@ sections:
 - type: directory
   path: content/open-positions
   label: Open positions
-  create: all
+  create: documents
   match: "**/*"
 - type: directory
   path: content/employees
   label: Employees
-  create: all
+  create: documents
   match: "**/*"
   templates:
   - employee
@@ -29,7 +29,7 @@ sections:
 - type: directory
   path: content/case
   label: Case
-  create: all
+  create: documents
   match: "**/*"
   templates:
   - case
