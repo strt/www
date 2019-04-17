@@ -14,6 +14,8 @@ sections:
   label: Open positions
   create: documents
   match: "**/*"
+  templates:
+  - open-position
 - type: directory
   path: content/employees
   label: Employees
