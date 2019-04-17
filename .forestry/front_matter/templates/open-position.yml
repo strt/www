@@ -6,12 +6,12 @@ fields:
 - type: text
   name: title
   label: title
+- type: textarea
+  name: excerpt
+  label: excerpt
 - type: text
   name: role
   label: role
-- type: text
-  name: excerpt
-  label: excerpt
 - type: datetime
   name: date
   label: date
