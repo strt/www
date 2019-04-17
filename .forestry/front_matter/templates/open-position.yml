@@ -1,6 +1,7 @@
 ---
 label: Open position
 hide_body: false
+display_field: role
 fields:
 - type: text
   name: title
