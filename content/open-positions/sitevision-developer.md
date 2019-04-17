@@ -2,12 +2,12 @@
 title: Are you a developer who’s all over Sitevision?
 role: SiteVision Developer
 excerpt: Great! Then you’re probably just the person we’re looking for.
-date: 2019-02-04T15:32:14.536Z
+date: 2019-02-04T15:32:14+00:00
 published: true
 redirect_from:
-  - /bli-en-av-oss/utvecklare.html
----
+- "/bli-en-av-oss/utvecklare.html"
 
+---
 ## About your new role
 
 As a developer at Strateg you’re part of a customer-centric team of around 10 people, whose mission it is to create qualitative and sustainable solutions for our customers. Strateg is a part of the Diplomat Group, so you can choose whether to be based in Stockholm or Örebro. It is a permanent, full-time position with a six month trial period.
@@ -16,11 +16,11 @@ In your new role you’ll be responsible for the running of Sitevision-related m
 
 ## Your skills
 
-- A few years’ experience in web development
-- In-depth knowledge of the Sitevision tool
-- Good knowledge in CSS, HTML and JavaScript
-- An understanding of UX/UI
-- Use GIT
+* A few years’ experience in web development
+* In-depth knowledge of the Sitevision tool
+* Good knowledge in CSS, HTML and JavaScript
+* An understanding of UX/UI
+* Use GIT
 
 We’ll be even happier if you have experience of other CMS, such as Episerver and WordPress.
 
@@ -39,3 +39,5 @@ Check out the website, but have a closer look primarily at our social channels (
 Yes! Send a personal letter and CV to [career@strateg.se](mailto:career@strateg.se) and we’ll get in touch with you. As long as the vacancy is visible it’s perfectly okay to apply.
 
 [Apply here](mailto:career@strateg.se)
+
+### ...
