@@ -39,5 +39,3 @@ Check out the website, but have a closer look primarily at our social channels (
 Yes! Send a personal letter and CV to [career@strateg.se](mailto:career@strateg.se) and we’ll get in touch with you. As long as the vacancy is visible it’s perfectly okay to apply.
 
 [Apply here](mailto:career@strateg.se)
-
-### ...
