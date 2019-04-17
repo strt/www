@@ -1,0 +1,28 @@
+---
+label: Case
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: textarea
+  name: excerpt
+  label: excerpt
+- type: text
+  name: client
+  label: client
+- type: datetime
+  name: date
+  label: date
+- type: file
+  name: image
+  label: image
+- type: list
+  name: tags
+  label: tags
+- type: text
+  name: contact_relation
+  label: contact_relation
+- type: boolean
+  name: published
+  label: published
