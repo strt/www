@@ -24,6 +24,7 @@ aliases:
     widget: 'list'
     required: false
     field: { label: URL, name: url, widget: string }
+    default: []
   - &published
     name: 'published'
     label: 'Published'
@@ -200,7 +201,6 @@ collections:
           widget: 'image',
           required: false,
         }
-      - { name: 'tags', label: 'Tags', widget: 'list', required: false }
       - { name: 'body', label: 'Body', widget: 'markdown' }
       - *published
       - *seo
