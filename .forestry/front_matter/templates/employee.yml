@@ -1,0 +1,26 @@
+---
+label: Employee
+hide_body: true
+display_field: email
+fields:
+- type: text
+  name: first_name
+  label: first_name
+- type: text
+  name: last_name
+  label: last_name
+- type: text
+  name: role
+  label: role
+- type: text
+  name: email
+  label: email
+- type: text
+  name: phone
+  label: phone
+- type: file
+  name: image
+  label: image
+- type: boolean
+  name: published
+  label: published
