@@ -5,7 +5,7 @@ excerpt: >-
   You’re well-up on all the programmes, tools and expertise that a UX designer
   must have. We offer you a team of dedicated colleagues, freedom,
   responsibility, variation - and plenty of opportunity to grow and develop. It
-  starts off as a temporary position, but who knows where it’ll end up? 
+  starts off as a temporary position, but who knows where it’ll end up?
 published: false
 redirect_from:
   - /bli-en-av-oss/ux-designer.html
