@@ -2,8 +2,7 @@ backend:
   name: git-gateway
 
 display_url: https://strateg.se
-publish_mode: editorial_workflow
-media_folder: 'content/media/uploads'
+media_folder: content/media/uploads
 
 aliases:
   - &seo
