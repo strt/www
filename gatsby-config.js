@@ -31,15 +31,6 @@ module.exports = {
       options: {
         extensions: ['.mdx', '.md'],
         commonmark: true,
-        globalScope: `
-          import EmbedPlayer from "$components/EmbedPlayer";
-          import { Column } from "$components/Grid";
-          import Image from "$components/Image";
-          import Box from "$components/Box";
-          import Video from "$components/Video";
-          
-          export default { EmbedPlayer, Column, Image, Box, Video };
-        `,
         rehypePlugins: [require('./plugins/rehype-wrap-in-columns')],
         remarkPlugins: [
           require('remark-unwrap-images'),

@@ -10,17 +10,12 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 //   require('child_process').execSync(`npx subfont -i --no-recursive --inline-css --root ${root}`)
 // }
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [resolve(__dirname, 'src'), 'node_modules'],
-      alias: {
-        $components: resolve(__dirname, 'src/components'),
-      },
-    },
-    // plugins: [new (require('webpack-bundle-analyzer')).BundleAnalyzerPlugin()],
-  })
-}
+// // Use to debug bundle size
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//   actions.setWebpackConfig({
+//     plugins: [new (require('webpack-bundle-analyzer')).BundleAnalyzerPlugin()],
+//   })
+// }
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
