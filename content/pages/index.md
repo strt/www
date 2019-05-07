@@ -13,5 +13,6 @@ featured_case:
   - ../case/familjeradgivningen.md
   - ../case/sos-alarm.md
   - ../case/arbesko.md
+  - ../case/epiroc.md
 published: true
 ---
