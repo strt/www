@@ -16,19 +16,19 @@ Strateg is a part of the Diplomat Group, so you can choose whether to be based i
 
 ## Your skills
 
-_Mandatory  requirements_
+**Mandatory  requirements**
 
 * Mastering HTML & CSS
 * Very good understanding of Javascript
 * PHP
 * Wordpress, Sitevision or other CMS
 
-_Basic understanding_
+**Basic understanding**
 
 * Version control (Git)
 * MySQL
 
-_Bonus_
+**Bonus**
 
 * Laravel
 * RESTful APIs
