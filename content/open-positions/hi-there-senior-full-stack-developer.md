@@ -51,7 +51,7 @@ We also truly value having fun together. We arrange different kinds of activitie
 
 Strateg is a part of the Diplomat Group with fellow subsidiaries Diplomat Communications and Tale. Together we form one of Sweden’s leading communications advisers. Some 70 employees work at Strateg, with an unusually large dedication and broad expertise to ensure our customers’ success.
 
-Check out our [Git repository](https://github.com/strt), our tools are open-source. Don’t forget to check [our case studies](https://www.strateg.se/work/) if you haven’t done it yet
+Check out our [Git repository](https://github.com/strt), our tools are open-source. Don’t forget to check [our case studies](/work) if you haven’t done it yet
 
 ## Made your mind up?
 
@@ -59,8 +59,6 @@ Great! Send a personal letter, your CV and the link to your repository to <mailt
 
 Are you a Full Stack developer but not a senior one? Apply anyway, we'll figure something out.
 
-For more information, feel free to contact the development team coach, Maximilien Noël
-
-07018/44414
-
+For more information, feel free to contact the development team coach, Maximilien Noël\
+07018/44414\
 <mailto:maximilien.noel@strateg.se>
