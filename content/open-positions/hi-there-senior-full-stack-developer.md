@@ -5,7 +5,8 @@ excerpt: >-
   Would you like to be a part of the team? Welcome to a creative agency where we
   truly value having fun.
 published: true
-seo: {}
+seo:
+  image: /content/media/uploads/open-positiens-fullstack.jpg
 redirect_from: []
 ---
 
