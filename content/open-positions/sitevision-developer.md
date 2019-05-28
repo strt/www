@@ -5,6 +5,8 @@ excerpt: Great! Then you’re probably just the person we’re looking for.
 published: true
 redirect_from:
   - /bli-en-av-oss/utvecklare.html
+seo:
+  image: /content/media/uploads/open-positiens-sitevision-developer.JPG
 ---
 ## About your new role
 
