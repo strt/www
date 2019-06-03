@@ -27,8 +27,6 @@ redirect_from: []
 
 </Column>
 
-
-
 <EmbedPlayer
 
 src="https://player.vimeo.com/video/261798953"
@@ -36,8 +34,6 @@ src="https://player.vimeo.com/video/261798953"
 aspectRatio={\[640, 267]}
 
 />
-
-
 
 ## Get out now!
 
