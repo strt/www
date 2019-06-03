@@ -16,7 +16,7 @@ redirect_from: []
 ---
 <Column md="6">  
 
-<Box   \
+<Box
  title="A challenge to challenge"   content="A world-famous brand with strong values and culture - is that enough to catch the  employees you want? The assignment was to create a campaign for the target group that was identified as "Hunters" - hungry, engineered engineers with power. Thee are digital and triggered by challenges. We created an idea based on the target group's competition instinct and the desire to meet challenges that are not solved by anyone - a true braingineer."  />
 
 </Column>
@@ -31,7 +31,7 @@ redirect_from: []
 
 src="https://player.vimeo.com/video/261798953"
 
-aspectRatio={\[640, 267]}
+aspectRatio={[640, 267]}
 
 />
 
