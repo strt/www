@@ -6,6 +6,7 @@ excerpt: >-
   communication that have landed on your desk, but also sales. And for some poor
   souls even IT. 
 date: 2019-06-04T09:45:05.643Z
+image: /content/media/uploads/article-50-competences.jpg
 published: false
 seo: {}
 redirect_from: []
