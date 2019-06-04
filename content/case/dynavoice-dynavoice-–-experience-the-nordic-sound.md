@@ -7,7 +7,7 @@ excerpt: >-
   experience. 
 client: Dynavoice
 date: '2019-06-04T11:05:24+02:00'
-image: /content/media/uploads/case-dynavoice-logo.png
+image: /content/media/uploads/case-dynavoice-hero.jpg
 tags:
   - Digital
 contact_relation: leif.goldkuhl@strateg.se
@@ -19,7 +19,7 @@ redirect_from: []
 
 <Column md="6">
 
-![](/content/media/uploads/case-dynavoice-logo.jpg)
+![](/content/media/uploads/case-dynavoice-logo.png)
 
 </Column>
 
