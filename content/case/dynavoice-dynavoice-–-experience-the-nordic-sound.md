@@ -19,7 +19,7 @@ redirect_from: []
 
 <Column md="6">
 
-![](/content/media/uploads/case-dynavoice-logo.png)
+![](/content/media/uploads/case-dynavoice-logo-new.jpg)
 
 </Column>
 
@@ -31,7 +31,7 @@ With inspiration from Nordic design, the unique light and the power of the ocean
 
 <Column md="6">
 
-![](/content/media/uploads/case-dynavoice-logo-white.png)
+![](/content/media/uploads/case-dynavoice-logo-white-new.png)
 
 </Column>
 
