@@ -19,7 +19,7 @@ redirect_from: []
 <Column md="6">  <Box    title="A challenge to challenge"    content="A world-famous brand with strong values and culture - is that enough to catch the  employees you want? The assignment was to create a campaign for the target group that was identified as 'Hunters' - hungry, engineered engineers with power. Thee are digital and triggered by challenges. We created an idea based on the target group's competition instinct and the desire to meet challenges that are not solved by anyone - a true braingineer."  /></Column>
 
 <Column md="6">
-![](/media/uploads/case-toyota-highscore.jpg)
+![](/content/media/uploads/case-toyota-highscore.jpg)
 </Column>
 
 <EmbedPlayer src="https://player.vimeo.com/video/261798953" />
@@ -29,11 +29,11 @@ The solution became a digital game in the shape of an Escape room. The player is
 
 
 <Column md="6">
-![](/media/uploads/case-toyota-conceptsketch.png)
+![](/content/media/uploads/case-toyota-conceptsketch.png)
 </Column>
 
 <Column md="6">
-![](/media/uploads/case-toyota-printscreen.jpg)
+![](/content/media/uploads/case-toyota-printscreen.jpg)
 </Column>
 
 ## Got what it takes?
@@ -41,8 +41,8 @@ The solution became a digital game in the shape of an Escape room. The player is
 The game is filled with sublime details and clever comments. The tone is cocky, humorous and a little provocative, while the design should appeal to the target group's technical expertise and interest. A top list and the chance to challenge like-minded people got our Escape Room to be noticed by more. And also, the mention Merit for Commendable Sites by Awwwards 2018. 'This is to certify that this website has received recognition from the Chiefs, Professionals and Tribe of the Awwwards community as an example of skills and creativity in web design.'
 
 
-![](/media/uploads/case-toyota-room-one.jpg)
+![](/content/media/uploads/case-toyota-room-one.jpg)
 
-![](/media/uploads/case-toyota-room-two.jpg)
+![](/content/media/uploads/case-toyota-room-two.jpg)
 
-![](/media/uploads/case-toyota-room-three.jpg)
+![](/content/media/uploads/case-toyota-room-three.jpg)
