@@ -7,7 +7,7 @@ excerpt: >-
   experience. 
 client: Dynavoice
 date: '2019-06-04T11:05:24+02:00'
-image: /content/media/uploads/case-dynavoice-hero.jpg
+image: /content/media/uploads/case-dynavoice-logo.png
 tags:
   - Digital
 contact_relation: leif.goldkuhl@strateg.se
