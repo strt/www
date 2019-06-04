@@ -6,7 +6,7 @@ excerpt: >-
   Branding campaign.
 client: Toyota Material Handling
 date: '2019-06-03T04:38:13+02:00'
-image: /content/media/uploads/case-toyota-hero.jpg
+image: /content/media/uploads/case-toyota-toy_hero.jpg
 tags:
   - Digital
   - Campaign
