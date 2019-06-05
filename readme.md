@@ -11,7 +11,7 @@
 
 Run `cp .env.example .env` and fill in the required variables.
 
-You will also need to have a global `FONTAWESOME_TOKEN` env variable set to access fontawsomes npm registry.
+You will also need to have a global `FONTAWESOME_TOKEN` env variable set to access fontawsomes npm registry (`$ export FONTAWESOME_TOKEN=<token>`).
 
 Run `yarn` to install dependencies and `yarn dev` to start the dev server.
 
