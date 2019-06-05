@@ -7,7 +7,7 @@ excerpt: >-
   souls even IT. 
 date: 2019-06-04T09:45:05.643Z
 image: /content/media/uploads/article-50-competences.jpg
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
