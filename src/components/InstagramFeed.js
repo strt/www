@@ -100,7 +100,8 @@ const Box = styled.div`
     props.bg ||
     `linear-gradient(to top left, ${colors.dark}, ${colors.steel500})`};
 
-  & > * {
+  & > *,
+  & picture {
     /* fixes weird issue with SC where a less specific selector still overwrites position  */
     position: absolute !important;
     ${cover()}
