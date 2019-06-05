@@ -28,4 +28,4 @@ This is right for companies that:
 * want a monthly follow up of budget and schedules
 
 Curious to know more?
-Phone Leif Goldkuhl (070 184 44 09) or your account manager.
+Phone Leif Goldkuhl (070 184 44 09)
