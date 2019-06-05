@@ -12,6 +12,4 @@ redirect_from: []
 ---
 “We're delighted to be once again at the top of a prestigious international ranking of strategic communications advisors. We can’t help but feel proud of being part of a team that so clearly sets the agenda for the Nordic market,” says Oscar Hyleén, CEO Diplomat Group.
 
-It’s all decided at the 2019 EMEA Sabre Awards in London on 22 May. Fingers crossed!
-
 [Read more here.](https://www.holmesreport.com/events-awards/agencies-of-the-year/2019-agencies-of-the-year/emea/nordic-consultancies-of-the-year)
