@@ -9,6 +9,7 @@ seo:
     things out.
   image: /media/uploads/default-og.jpg
 featured_case:
+  - ../case/grythyttans-gästgivaregård-trying-to-catch-the-christmas-spirit.md
   - ../case/dynavoice-dynavoice-–-experience-the-nordic-sound.md
   - ../case/toyota-material-handling-the-braingeneer-challenge.md
   - ../case/sdi.md
