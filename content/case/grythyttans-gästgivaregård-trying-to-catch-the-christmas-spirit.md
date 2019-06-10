@@ -11,7 +11,7 @@ date: '2019-06-10T02:39:12+02:00'
 image: /content/media/uploads/case_gg.jpg
 video: ''
 contact_relation: fredrik.vannestal@strateg.se
-published: true
+published: false
 seo: {}
 redirect_from: []
 ---
