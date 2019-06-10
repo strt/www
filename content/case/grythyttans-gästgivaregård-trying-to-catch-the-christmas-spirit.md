@@ -9,7 +9,7 @@ excerpt: >-
 client: Grythyttans Gästgivaregård
 date: '2019-06-10T02:39:12+02:00'
 image: /content/media/uploads/case_gg.jpg
-video: 'https://vimeo.com/306014361'
+video: ''
 contact_relation: fredrik.vannestal@strateg.se
 published: true
 seo: {}
