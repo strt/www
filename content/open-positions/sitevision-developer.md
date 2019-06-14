@@ -3,10 +3,10 @@ title: Are you a developer who’s all over Sitevision?
 role: SiteVision Developer
 excerpt: Great! Then you’re probably just the person we’re looking for.
 published: true
-redirect_from:
-  - /bli-en-av-oss/utvecklare.html
 seo:
   image: /content/media/uploads/open-positiens-sitevision-developer.JPG
+redirect_from:
+  - /bli-en-av-oss/utvecklare.html
 ---
 ## About your new role
 
@@ -39,6 +39,8 @@ Check out our [GitHub](https://github.com/strt), our tools are open-source. Don�
 ## Made your mind up?
 
 Great! Send a personal letter, your CV and the link to your repository to <mailto:career@strateg.se> and we'll get in touch with you.
+
+You haven't worked with Sitevision before but are a great developer and eager to learn? Apply anyway, we'll figure something out!
 
 For more information, feel free to contact the development team coach, Maximilien Noël\
 [+46 701 84 44 14](tel:+46701844414)\
