@@ -1,6 +1,6 @@
 ---
-title: Hi there senior Full Stack developer
-role: Senior Full Stack Developer
+title: Hi there Full Stack developer
+role: Full Stack Developer
 excerpt: >-
   Would you like to be a part of the team? Welcome to a creative agency where we
   truly value having fun.
@@ -9,10 +9,9 @@ seo:
   image: /content/media/uploads/open-positiens-fullstack.jpg
 redirect_from: []
 ---
-
 ## About your new role
 
-As a senior Full Stack developer at Strateg, you work on projects with clients from industrials and state owned companies to startups. You work closely with copywriters, designers, UX, planners and developers
+As a Full Stack developer at Strateg, you work on projects with clients from industrials and state owned companies to startups. You work closely with copywriters, designers, UX, planners and developers
 
 Strateg is a part of the Diplomat Group, so you can choose whether to be based in Stockholm or Örebro - we can also consider remote working if that suits you better. It is a permanent, full-time position with a six-month trial period.
 
@@ -20,24 +19,24 @@ Strateg is a part of the Diplomat Group, so you can choose whether to be based i
 
 ### Mandatory requirements
 
-- Mastering HTML & CSS
-- Very good understanding of JavaScript
-- PHP
-- Wordpress, Sitevision or other CMS
+* Mastering HTML & CSS
+* Very good understanding of JavaScript
+* PHP
+* Wordpress, Sitevision or other CMS
 
 ### Basic understanding
 
-- Version control (Git)
-- MySQL
+* Version control (Git)
+* MySQL
 
 ### Bonus
 
-- Laravel
-- RESTful APIs
-- React
-- Build tools
-- SEO
-- Docker
+* Laravel
+* RESTful APIs
+* React
+* Build tools
+* SEO
+* Docker
 
 ## Who you are
 
@@ -58,8 +57,6 @@ Check out our [GitHub](https://github.com/strt), our tools are open-source. Don�
 ## Made your mind up?
 
 Great! Send a personal letter, your CV and the link to your repository to <mailto:career@strateg.se> and we'll get in touch with you.
-
-Are you a Full Stack developer but not a senior one? Apply anyway, we'll figure something out.
 
 For more information, feel free to contact the development team coach, Maximilien Noël\
 [+46 701 84 44 14](tel:+46701844414)\
