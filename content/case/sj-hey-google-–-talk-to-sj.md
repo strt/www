@@ -7,7 +7,7 @@ excerpt: >-
   them with a short film – communicating how it all works. 
 client: SJ
 date: '2019-06-13T04:31:56+02:00'
-image: /content/media/uploads/case-sj_google_assistent.jpg
+image: /content/media/uploads/case-sj_google_assistent_phone.jpg
 video: 'https://player.vimeo.com/video/342033415'
 tags:
   - Motion
