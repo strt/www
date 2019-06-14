@@ -12,7 +12,7 @@ video: 'https://player.vimeo.com/video/342033415'
 tags:
   - Motion
 contact_relation: fredrik.vannestal@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
