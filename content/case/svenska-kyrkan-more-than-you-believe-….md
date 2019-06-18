@@ -7,6 +7,7 @@ excerpt: >-
   generally not how or in what areas.
 client: Svenska kyrkan
 date: '2019-06-18T04:01:04+02:00'
+image: /content/media/uploads/case-svenskakyrkan-medlemsfilm2.png
 video: 'https://player.vimeo.com/video/342996999'
 tags:
   - Motion
