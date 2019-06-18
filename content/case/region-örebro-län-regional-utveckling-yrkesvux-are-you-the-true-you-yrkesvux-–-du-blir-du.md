@@ -7,6 +7,7 @@ excerpt: >-
   the right one.
 client: 'Region Örebro Län, Regional utveckling, Yrkesvux'
 date: '2019-06-18T03:55:29+02:00'
+video: 'https://player.vimeo.com/video/342994753'
 tags:
   - Campaign
 contact_relation: leif.goldkuhl@strateg.se
