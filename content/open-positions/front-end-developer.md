@@ -8,29 +8,32 @@ published: true
 seo: {}
 redirect_from: []
 ---
+
 ## About your new role
 
 As a front-end developer at Strateg, you will work in teams, both small and large ones. Your closest co-worker will be a back-end developer. You and your team will develop new, exciting ideas and solutions for the benefit of our clients: more specifically tailored and creative web solutions.
+
+Strateg is a part of the Diplomat Group, so you can choose whether to be based in Stockholm or Örebro - we can also consider remote working if that suits you better. It is a permanent, full-time position with a six-month trial period.
 
 ## Your skills
 
 ### Mandatory requirements
 
-* Mastering HTML & CSS
-* Very good understanding of JavaScript
+- Mastering HTML & CSS
+- Very good understanding of JavaScript
 
 ### Basic understanding
 
-* Version control (Git)
-* React
+- Version control (Git)
+- React
 
 ### Bonus
 
-* Accessibility
-* Build tools
-* Wordpress, Sitevision or other CMS
-* Twig, blade or other templating engine
-* SEO
+- Accessibility
+- Build tools
+- Wordpress, Sitevision or other CMS
+- Twig, blade or other templating engine
+- SEO
 
 ## Who you are
 
