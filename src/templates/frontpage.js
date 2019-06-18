@@ -38,7 +38,7 @@ export default function Index({ data }) {
               url={node.fields.slug}
               title={node.frontmatter.client}
               image={node.frontmatter.image}
-              tags={node.frontmatter.tags}
+              // tags={node.frontmatter.tags}
               bg={node.frontmatter.color}
               mb="0"
             />
