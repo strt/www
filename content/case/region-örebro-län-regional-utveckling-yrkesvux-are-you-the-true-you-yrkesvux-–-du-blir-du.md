@@ -7,7 +7,7 @@ excerpt: >-
   the right one.
 client: 'Region Örebro County, Yrkesvux'
 date: '2019-06-18T03:55:29+02:00'
-image: /content/media/uploads/case-yrkesvux-m2.jpg
+image: /content/media/uploads/case-yrkesvux-xl1.jpg
 video: 'https://player.vimeo.com/video/342994753'
 tags:
   - Campaign
@@ -38,7 +38,7 @@ We created a campaign with the goal of getting more people to discover that the 
 
 The main message "Jag är jag – Du blir du" (I am me – You become you) was the focus when our idea became a film. We let witnesses people who have experienced the changebe foreground figures in the campaign and showed portraits of people who changed career-paths through vocational education. The main character of the film is one of our real-life witnesses. The film is based on the idea of the concept moving from dark to light and how life can move in a positive direction, even in a short time.
 
-![](/content/media/uploads/case-yrkesvux-xl1.jpg)
+![](/content/media/uploads/case-yrkesvux-xl2.jpg)
 
 ## 
 
@@ -46,9 +46,7 @@ The main message "Jag är jag – Du blir du" (I am me – You become you) was t
 
 "Du blir du" calls for change. In order to be able to guide the visitors to studentum.se, a website promoting educational programs and enabling applications, we also created a text message service, which in a personal way gets the recipient to reveal more about their interests and likes and then points them to the website.
 
-![](/content/media/uploads/case-yrkesvux-xl2.jpg)
-
-
+![](/content/media/uploads/case-yrkesvux-xl1.jpg)
 
 ## Results
 
