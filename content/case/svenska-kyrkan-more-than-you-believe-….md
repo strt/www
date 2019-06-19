@@ -6,7 +6,7 @@ excerpt: >-
   behind the scenes. Plenty of people know that the church does good deeds, but
   generally not how or in what areas.
 client: Svenska kyrkan
-date: '2019-06-18T04:01:04+02:00'
+date: '2019-01-01T04:01:04+01:00'
 image: /content/media/uploads/case-svenskakyrkan-hero.jpg
 video: 'https://player.vimeo.com/video/342996999'
 tags:
