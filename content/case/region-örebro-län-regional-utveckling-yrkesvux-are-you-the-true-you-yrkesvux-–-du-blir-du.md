@@ -5,7 +5,7 @@ excerpt: >-
   new start to your career is something most people experience at some point in
   their lives. Yrkesvux enables more people to change career paths and follow
   the right one.
-client: 'Region Örebro Län, Regional utveckling, Yrkesvux'
+client: 'Region Örebro County, Yrkesvux'
 date: '2019-06-18T03:55:29+02:00'
 image: /content/media/uploads/case-yrkesvux-m2.jpg
 video: 'https://player.vimeo.com/video/342994753'
