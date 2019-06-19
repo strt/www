@@ -12,10 +12,9 @@ tags:
   - Visual Identity
   - Print
   - Brand Development
-contact_relation: fredrik.vannestal@strateg.se
+contact_relation: anders.hasselstrand@strateg.se
 published: true
 ---
-
 <Column md="6">
   <Box
     title="Shoemaker since 1839"
@@ -69,7 +68,7 @@ As of now, all product names will be Swedish place names. Places that in some wa
 
 <EmbedPlayer
 src="https://player.vimeo.com/video/310585847"
-aspectRatio={[640, 267]}
+aspectRatio={\[640, 267]}
 />
 
 ![](/media/uploads/case-arbesko-6.jpg)
