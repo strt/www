@@ -66,10 +66,7 @@ As of now, all product names will be Swedish place names. Places that in some wa
 
 ![](/media/uploads/case-arbesko-3.jpg)
 
-<EmbedPlayer
-src="https://player.vimeo.com/video/310585847"
-
-/>
+<EmbedPlayer src="https://player.vimeo.com/video/310585847"  />
 
 ![](/media/uploads/case-arbesko-6.jpg)
 
