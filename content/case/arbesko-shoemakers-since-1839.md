@@ -6,6 +6,7 @@ excerpt: >-
   made. Follow on the journey from full-grain leather to ready-to-ship shoes.
 client: Arbesko
 date: '2019-06-18T04:11:27+02:00'
+image: /content/media/uploads/case-arbesko-stillbild-6.jpg
 video: 'https://player.vimeo.com/video/342998672'
 tags:
   - Motion
