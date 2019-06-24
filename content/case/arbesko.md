@@ -6,7 +6,7 @@ excerpt: >-
   this venerable company’s history, which is as fascinating as it is long. And
   on their pride in the genuine and authentic craftsmanship they represent.
 client: Arbesko
-date: 2018-10-09T13:25:24.000Z
+date: '2019-06-24T12:25:24+02:00'
 image: /media/uploads/case-arbesko-featured.jpg
 tags:
   - Visual Identity
