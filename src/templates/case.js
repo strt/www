@@ -12,7 +12,7 @@ import Icon from '../components/Icon'
 import Image from '../components/Image'
 import EmbedPlayer from '../components/EmbedPlayer'
 import { ScrollToTopButton } from '../components/Button'
-// import Tags from '../components/Tags'
+import Tags from '../components/Tags'
 import ContentWrapper from '../components/ContentWrapper'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -22,7 +22,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
   const {
     title,
     excerpt,
-    // tags,
+    tags,
     client,
     image,
     video,
@@ -42,7 +42,7 @@ export default function Case({ data: { post }, pageContext: { next } }) {
             <H4 mb="0">{client}</H4>
           </Column>
           <Column width="auto">
-            {/* <Tags items={tags} colorVariant="gray" /> */}
+            <Tags items={tags} colorVariant="gray" />
           </Column>
         </Grid>
         <Hero pt={[2, 7]} pb={[5, 7]}>
