@@ -11,7 +11,7 @@ video: 'https://player.vimeo.com/video/342998672'
 tags:
   - Motion
 contact_relation: anders.hasselstrand@strateg.se
-published: true
+published: false
 seo: {}
 redirect_from: []
 ---
