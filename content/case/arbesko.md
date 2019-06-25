@@ -12,6 +12,7 @@ tags:
   - Visual Identity
   - Print
   - Brand Development
+  - Motion
 contact_relation: anders.hasselstrand@strateg.se
 published: true
 ---
