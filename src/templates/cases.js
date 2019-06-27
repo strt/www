@@ -4,16 +4,16 @@ import { graphql } from 'gatsby'
 import queryString from 'query-string'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-// import Div from '../components/Div'
+import Div from '../components/Div'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
-// import Link from '../components/Link'
+import Link from '../components/Link'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import {
-  // breakpoints,
-  // fluidRange,
-  // vw,
+  breakpoints,
+  fluidRange,
+  vw,
   easings,
   animations,
   durations,
@@ -28,30 +28,30 @@ function filterCases(items, filter) {
   )
 }
 
-// function getTagLink(tag) {
-//   return `?filter=${encodeURIComponent(tag.toLowerCase())}`
-// }
+function getTagLink(tag) {
+  return `?filter=${encodeURIComponent(tag.toLowerCase())}`
+}
 
-// const Filter = styled(Div)`
-//   display: flex;
-//   flex-wrap: wrap;
+const Filter = styled(Div)`
+  display: flex;
+  flex-wrap: wrap;
 
-//   a {
-//     margin-bottom: ${fluidRange({ min: 12, max: 24 })};
+  a {
+    margin-bottom: ${fluidRange({ min: 12, max: 24 })};
 
-//     &:not(:last-child) {
-//       margin-right: ${fluidRange({ min: 16, max: 32 })};
-//     }
+    &:not(:last-child) {
+      margin-right: ${fluidRange({ min: 16, max: 32 })};
+    }
 
-//     @media ${breakpoints.medium} {
-//       margin-bottom: ${vw(32)};
+    @media ${breakpoints.medium} {
+      margin-bottom: ${vw(32)};
 
-//       &:not(:last-child) {
-//         margin-right: ${vw(48)};
-//       }
-//     }
-//   }
-// `
+      &:not(:last-child) {
+        margin-right: ${vw(48)};
+      }
+    }
+  }
+`
 
 const Animation = styled.div`
   animation: ${animations.fadeIn} ${durations.normal} ${easings.easeOutSine}
@@ -59,39 +59,39 @@ const Animation = styled.div`
 `
 
 export default function Case({ data, location }) {
-  const [filter /* setFilter */] = useState(
+  const [filter, setFilter] = useState(
     () => queryString.parse(location.search).filter || null,
   )
 
-  // function onTagClick(event) {
-  //   event.preventDefault()
-  //   const { target } = event
-  //   const { filter: nextFilter } = queryString.parse(target.search)
-  //   setFilter(nextFilter)
-  //   window.history.replaceState({}, null, target.pathname + target.search)
-  // }
+  function onTagClick(event) {
+    event.preventDefault()
+    const { target } = event
+    const { filter: nextFilter } = queryString.parse(target.search)
+    setFilter(nextFilter)
+    window.history.replaceState({}, null, target.pathname + target.search)
+  }
 
   const { title, excerpt } = data.page.frontmatter
 
   const cases = filterCases(data.cases.edges, filter)
-  // const tags = data.cases.edges
-  //   .reduce((acc, { node }) => {
-  //     node.frontmatter.tags.forEach(tag => {
-  //       if (acc.indexOf(tag) === -1) {
-  //         acc.push(tag)
-  //       }
-  //     })
+  const tags = data.cases.edges
+    .reduce((acc, { node }) => {
+      node.frontmatter.tags.forEach(tag => {
+        if (acc.indexOf(tag) === -1) {
+          acc.push(tag)
+        }
+      })
 
-  //     return acc
-  //   }, [])
-  //   .sort()
+      return acc
+    }, [])
+    .sort()
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
-        {/* <Filter>
+        <Filter>
           <Link
             href={location.pathname}
             onClick={onTagClick}
@@ -115,7 +115,7 @@ export default function Case({ data, location }) {
               {tag}
             </Link>
           ))}
-        </Filter> */}
+        </Filter>
       </Hero>
       <Animation key={filter}>
         <Section pb={[15, 25]}>
@@ -126,7 +126,7 @@ export default function Case({ data, location }) {
                   url={node.fields.slug}
                   title={node.frontmatter.client}
                   image={node.frontmatter.image}
-                  // tags={node.frontmatter.tags}
+                  tags={node.frontmatter.tags}
                 />
               </Column>
             ))}

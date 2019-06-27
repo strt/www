@@ -1,14 +1,13 @@
 ---
-title: Hi there Front-end Developer!
+title: Hi there Front-end Developer
 role: Front-end Developer
 excerpt: >-
   Are you a proactive team player with a feeling for great design? Welcome to a
-  creative agency where we truly value having fun!
+  creative agency where we truly value having fun.
 published: true
 seo: {}
 redirect_from: []
 ---
-
 ## About your new role
 
 As a front-end developer at Strateg, you will work in teams, both small and large ones. Your closest co-worker will be a back-end developer. You and your team will develop new, exciting ideas and solutions for the benefit of our clients: more specifically tailored and creative web solutions.
@@ -19,21 +18,21 @@ Strateg is a part of the Diplomat Group, so you can choose whether to be based i
 
 ### Mandatory requirements
 
-- Mastering HTML & CSS
-- Very good understanding of JavaScript
+* Mastering HTML & CSS
+* Very good understanding of JavaScript
 
 ### Basic understanding
 
-- Version control (Git)
-- React
+* Version control (Git)
+* React
 
 ### Bonus
 
-- Accessibility
-- Build tools
-- Wordpress, Sitevision or other CMS
-- Twig, blade or other templating engine
-- SEO
+* Accessibility
+* Build tools
+* Wordpress, Sitevision or other CMS
+* Twig, blade or other templating engine
+* SEO
 
 ## Who you are
 
@@ -49,7 +48,7 @@ We also truly value having fun together. We arrange different kinds of activitie
 
 Strateg is a part of the Diplomat Group with fellow subsidiaries Diplomat Communications and Tale. Together we form one of Sweden’s leading communications advisers. Some 70 employees work at Strateg, with an unusually large dedication and broad expertise to ensure our customers’ success.
 
-Check out our [GitHub](https://github.com/strt), our tools are open-source. Don’t forget to check [our case studies](/work) if you haven’t done it yet
+Check out our [GitHub](https://github.com/strt), our tools are open-source. Don’t forget to check [our case studies](/work) if you haven’t done it yet.
 
 ## Made your mind up?
 
