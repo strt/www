@@ -8,6 +8,8 @@ excerpt: >-
 client: Posti Messaging
 date: '2019-08-05T03:53:20+02:00'
 image: /content/media/uploads/hela-maskinen-posti.jpg
+tags:
+  - Digital
 contact_relation: per.ab@strateg.se
 published: true
 seo: {}
