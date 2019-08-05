@@ -11,8 +11,7 @@ image: /content/media/uploads/hela-maskinen-posti.jpg
 contact_relation: per.ab@strateg.se
 published: true
 seo: {}
-redirect_from:
-  - posti
+redirect_from: []
 ---
 Posti Messaging digitizes and automates documents, invoices and messages for different types of organizations. The company has more than 5,000 customers in Finland, Sweden and Norway and handles millions of invoices and document transactions every month.
 
