@@ -1,6 +1,10 @@
 ---
 title: Infographics make the complex simpler
-excerpt: ...
+excerpt: >-
+  Posti Messaging digitizes and automates documents, invoices and messages for
+  different types of organizations. The company has more than 5,000 customers in
+  Finland, Sweden and Norway and handles millions of invoices and document
+  transactions every month.
 client: Posti Messaging
 date: '2019-08-05T03:53:20+02:00'
 image: /content/media/uploads/hela-maskinen-posti.jpg
