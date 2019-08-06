@@ -24,7 +24,7 @@ redirect_from: []
 
 <Column md="6">
 
-![](/content/media/uploads/posti_messaging.gif)
+![](/content/media/uploads/posti_messaging.webp)
 
 </Column>
 
