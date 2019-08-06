@@ -17,20 +17,20 @@ redirect_from: []
 ---
 <Column md="6">
   <Box
-    title="The headline"
+    title="A playful introduction ..."
     content="The assignment was to develop moving images to give the target group (CFO, CEO and other management functions in Norwegian and Swedish companies) a first introduction to the complex service Multi channel solution."
   />
 </Column>
 
 <Column md="6">
 
-![](/content/media/uploads/posti_messaging.webp)
+<Video src="https://player.vimeo.com/external/352225637.sd.mp4?s=8e3616b9cdc6af431a47400c42e6afb4ad3f1dc9&profile_id=165" />
 
 </Column>
 
 <EmbedPlayer src="https://player.vimeo.com/video/314026359" />
 
-## Headline
+## ... with a clear message
 
 The film will be used in sales meetings but also live its own life on the website, in social media and in emails. An additional thought from the customer was that they clearly wanted to distinguish themselves from the competitors’ materials and deliver warmth without losing the seriousness. 
 
