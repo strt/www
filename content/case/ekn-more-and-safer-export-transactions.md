@@ -16,10 +16,7 @@ published: true
 seo: {}
 redirect_from: []
 ---
-
-## Government and business partners
-
-<Column md="6">
+<Column md="6">  
 
 <Box \
 title="" \
