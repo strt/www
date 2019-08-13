@@ -22,7 +22,7 @@ redirect_from: []
 
 <Box \
 title="" \
-content="“The Export Credit Committee has the government's mission to promote Swedish exports and Swedish companies' internationalization. This is done, for example, through insurance of export companies and banks against the risk of not getting paid, in order for these to be able to carry out more secure export transactions.”"  /></Column>
+content="“The Export Credit Committee has the government's mission to promote Swedish exports and Swedish companies' internationalization. This is done, for example, through insurance of export companies and banks against the risk of not getting paid, in order for these to be able to carry out more secure export transactions.”"/></Column>
 
 <Column md="6">
 
