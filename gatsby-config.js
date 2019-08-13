@@ -10,14 +10,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: `lxxyo1cefolk`,
-        // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/content/media/`,
