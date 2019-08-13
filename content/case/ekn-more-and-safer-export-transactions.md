@@ -6,13 +6,13 @@ excerpt: >-
   Therefore, it is especially fun that the result was so successful when we
   created two digital campaigns together.
 client: EKN
-date: '2019-08-13T09:51:37+02:00'
+date: '2018-08-13T09:51:00+02:00'
 image: /content/media/uploads/case-ekn-1.jpg
 tags:
   - Digital
   - Campaign
 contact_relation: leif.goldkuhl@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
