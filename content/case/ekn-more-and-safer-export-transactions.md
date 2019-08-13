@@ -36,6 +36,8 @@ We developed a strategy for how, where and when EKN could meet the desired targe
 
 Two campaign sites were created (Wordpress) with all from UX design, web development, main message, content production, layout and design to optimization and testing. In order to lead the visitor to the website, digital advertising was also added. Even a digital newsletter supplemented the campaigns.
 
+![](/content/media/uploads/case-ekn-3.jpg)
+
 ## Phenomenal results
 
 Thanks to an agile way of working, regular measurements on the website and the conversion rate of digital advertising, as well as a close dialogue with the customer, there was the possibility of constant and rapid improvements. For example, Strateg adjusted keywords, conversion opportunities on the website and main messages during the campaign period. This had a positive effect on the result and several goals were exceeded several times.
