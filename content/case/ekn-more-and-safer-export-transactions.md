@@ -16,13 +16,15 @@ published: true
 seo: {}
 redirect_from: []
 ---
-<Column md="6">  <Box title="Government and business partners" content="“The Export Credit Committee has the government's mission to promote Swedish exports and Swedish companies' internationalization. This is done, for example, through insurance of export companies and banks against the risk of not getting paid, in order for these to be able to carry out more secure export transactions.”"  /></Column>
+> <Column md="6">  <Box title="" content="“The Export Credit Committee has the government's mission to promote Swedish exports and Swedish companies' internationalization. This is done, for example, through insurance of export companies and banks against the risk of not getting paid, in order for these to be able to carry out more secure export transactions.”"  /></Column>
 
 <Column md="6">
 
 ![](/content/media/uploads/case-ekn-2.jpg)
 
 </Column>
+
+## Government and business partners
 
 EKN wanted help with strategy and concepts to create two campaigns for two different products. The goal was to make the communication more content-driven and digital and thereby generate leads and subscribers of newsletters for further processing. At the same time, they wanted to gain increased awareness - all in accordance with EKN's communication strategy that Diplomat Communication has previously produced.
 
