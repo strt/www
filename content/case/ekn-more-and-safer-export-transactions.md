@@ -12,7 +12,7 @@ tags:
   - Digital
   - Campaign
 contact_relation: leif.goldkuhl@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
