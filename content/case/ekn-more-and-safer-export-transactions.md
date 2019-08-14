@@ -22,6 +22,8 @@ redirect_from: []
 
 EKN wanted help with strategy and concepts to create two campaigns for two different products. The goal was to make the communication more content-driven and digital and thereby generate leads and subscribers of newsletters for further processing. At the same time, they wanted to gain increased awareness - all in accordance with EKN's communication strategy that Diplomat Communication has previously produced.
 
+![](/content/media/uploads/case-ekn-2.jpg)
+
 ## Strategy and concept
 
 We developed a strategy for how, where and when EKN could meet the desired target groups in the best possible way in its external communication. Subsequently, a concept was created with a common expression that signaled the brand's foundation, while the two campaigns were specially designed to communicate with the different target groups.
@@ -33,5 +35,3 @@ Two campaign sites were created (Wordpress) with all from UX design, web develop
 ## Phenomenal results
 
 Thanks to an agile way of working, regular measurements on the website and the conversion rate of digital advertising, as well as a close dialogue with the customer, there was the possibility of constant and rapid improvements. For example, Strateg adjusted keywords, conversion opportunities on the website and main messages during the campaign period. This had a positive effect on the result and several goals were exceeded several times.
-
-![](/content/media/uploads/case-ekn-2.jpg)
