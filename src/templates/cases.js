@@ -86,36 +86,42 @@ export default function Case({ data, location }) {
     }, [])
     .sort()
 
+  const renderFilter = false // Set to true to enable filter on tags again when we have enough cases published to require a filter
+
   return (
     <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt}</Excerpt>
-        <Filter>
-          <Link
-            href={location.pathname}
-            onClick={onTagClick}
-            aria-current={!filter ? true : undefined}
-            colorVariant="gray"
-            variant="large"
-          >
-            All projects
-          </Link>
-          {tags.map(tag => (
+        {renderFilter === true && (
+          <Filter>
             <Link
-              key={tag}
-              href={getTagLink(tag)}
+              href={location.pathname}
               onClick={onTagClick}
+              aria-current={!filter ? true : undefined}
               colorVariant="gray"
               variant="large"
-              aria-current={
-                filter && filter.includes(tag.toLowerCase()) ? true : undefined
-              }
             >
-              {tag}
+              All projects
             </Link>
-          ))}
-        </Filter>
+            {tags.map(tag => (
+              <Link
+                key={tag}
+                href={getTagLink(tag)}
+                onClick={onTagClick}
+                colorVariant="gray"
+                variant="large"
+                aria-current={
+                  filter && filter.includes(tag.toLowerCase())
+                    ? true
+                    : undefined
+                }
+              >
+                {tag}
+              </Link>
+            ))}
+          </Filter>
+        )}
       </Hero>
       <Animation key={filter}>
         <Section pb={[15, 25]}>
