@@ -18,6 +18,8 @@ published: true
 seo: {}
 redirect_from: []
 ---
+<EmbedPlayer src="https://player.vimeo.com/video/356171753" />
+
 <Column md="6">
 
 ### Challenge
