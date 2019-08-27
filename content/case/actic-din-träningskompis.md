@@ -14,7 +14,7 @@ date: '2019-08-27T02:20:05+02:00'
 tags:
   - Digital
 contact_relation: per.borjesson@strateg.se
-published: true
+published: false
 seo: {}
 redirect_from: []
 ---
