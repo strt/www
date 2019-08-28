@@ -1,5 +1,5 @@
 ---
-title: We transform brands and people – Strateg
+title: We transform brands and people
 excerpt: null
 template: frontpage
 seo:
