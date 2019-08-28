@@ -15,8 +15,6 @@ published: true
 seo: {}
 redirect_from: []
 ---
-![](/content/media/uploads/lr_02.png)
-
 ### A website in time
 
 Lärarnas Riksförbund provides teachers and study and vocational counselors with support and security in working life. Our mission - to create a website with the member in focus, and the purpose of securing the existing member and generating new members. The key words for the Lärarnas Riksförbund are strong, relevant, personal and present. These have been in focus during work in everything from development to customized content. Through an agile working method, a very close collaboration with the customer in a number of analyzing workshops, frequent reconciliations and meetings, we created a website with clarity and efficiency for the union's members.
