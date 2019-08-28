@@ -1,6 +1,6 @@
 ---
 title: We transform brands and people – Strateg
-excerpt: ' '
+excerpt: null
 published: true
 template: frontpage
 seo:
