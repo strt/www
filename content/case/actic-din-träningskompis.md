@@ -11,6 +11,7 @@ excerpt: >-
   Sweden, Norway and Germany.
 client: Actic
 date: '2019-08-27T02:20:05+02:00'
+video: 'https://player.vimeo.com/video/356171753'
 tags:
   - Digital
 contact_relation: par.parsson@strateg.se
@@ -18,8 +19,6 @@ published: true
 seo: {}
 redirect_from: []
 ---
-<EmbedPlayer src="https://player.vimeo.com/video/356171753" />
-
 <Column md="6">
 
 ### Challenge
@@ -36,13 +35,13 @@ To stand out and reach people’s hearts and minds in a very competitive marketp
 
 <Column md="6">
 
-### Insight
-
 ![](/content/media/uploads/actic_2.jpg)
 
 </Column>
 
 <Column md="6">
+
+### Insight
 
 Our main insight is that no research has ever showed that information about physical activities, lead to physical activity. In other words, you can’t tell people that they should workout; they will get it, but not do it. So, we have developed other ways of getting interest and our message through. Another insight is that the biggest barrier to continue training over time, is that people don’t feel at home and secure at the gym, so we opted to break down that barrier.
 
