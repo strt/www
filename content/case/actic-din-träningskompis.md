@@ -11,6 +11,7 @@ excerpt: >-
   Sweden, Norway and Germany.
 client: Actic
 date: '2019-08-27T02:20:05+02:00'
+image: /content/media/uploads/actic_hoodie_1408x792.jpg
 video: 'https://player.vimeo.com/video/356171753'
 tags:
   - Digital
