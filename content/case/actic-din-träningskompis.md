@@ -13,8 +13,8 @@ client: Actic
 date: '2019-08-27T02:20:05+02:00'
 tags:
   - Digital
-contact_relation: per.borjesson@strateg.se
-published: false
+contact_relation: par.parsson@strateg.se
+published: true
 seo: {}
 redirect_from: []
 ---
@@ -38,13 +38,13 @@ To stand out and reach people’s hearts and minds in a very competitive marketp
 
 ### Insight
 
-Our main insight is that no research has ever showed that information about physical activities, lead to physical activity. In other words, you can’t tell people that they should workout; they will get it, but not do it. So, we have developed other ways of getting interest and our message through. Another insight is that the biggest barrier to continue training over time, is that people don’t feel at home and secure at the gym, so we opted to break down that barrier.
+![](/content/media/uploads/actic_2.jpg)
 
 </Column>
 
 <Column md="6">
 
-![](/content/media/uploads/actic_2.jpg)
+Our main insight is that no research has ever showed that information about physical activities, lead to physical activity. In other words, you can’t tell people that they should workout; they will get it, but not do it. So, we have developed other ways of getting interest and our message through. Another insight is that the biggest barrier to continue training over time, is that people don’t feel at home and secure at the gym, so we opted to break down that barrier.
 
 </Column>
 
