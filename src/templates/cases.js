@@ -86,7 +86,7 @@ export default function Case({ data, location }) {
     }, [])
     .sort()
 
-  const renderFilter = false // Set to true to enable filter on tags again when we have enough cases published to require a filter
+  const renderFilter = true // Set to true to enable filter on tags again when we have enough cases published to require a filter
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
