@@ -9,6 +9,10 @@ seo:
     things out.
   image: /media/uploads/default-og.jpg
 featured_case:
+  - ../case/lärarnas-riksförbund-with-the-member-in-focus.md
+  - ../case/posti-messaging-infographics-make-the-complex-simpler.md
+  - ../case/arbesko.md  
+  - ../case/region-örebro-län-regional-utveckling-yrkesvux-are-you-the-true-you-yrkesvux-–-du-blir-du.md
   - ../case/sj-hey-google-–-talk-to-sj.md
   - ../case/grythyttans-gästgivaregård-trying-to-catch-the-christmas-spirit.md
   - ../case/dynavoice-dynavoice-–-experience-the-nordic-sound.md
