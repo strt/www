@@ -151,11 +151,7 @@ export const pageQuery = graphql`
           phone
           image {
             fluid(quality: 80, maxWidth: 520) {
-              sizes
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
