@@ -71,27 +71,25 @@ export default function Contact({ data }) {
         <Grid>
           {data.employees.edges.map(({ node }) => (
             <Column key={node.id} width="6" md="3" bottomGap>
-              {node.frontmatter.image && (
+              {node.image && (
                 <Image
-                  fluid={node.frontmatter.image.childImageSharp.fluid}
                   bg={colors.dark}
                   sizes="(min-width: 768px) 24vw, 46vw"
+                  fluid={node.image.fluid}
                 />
               )}
               <Text mt={[1, 1]} mb="0">
-                {node.frontmatter.first_name} {node.frontmatter.last_name}
+                {node.firstName} {node.lastName}
               </Text>
               <SmallText mb={0.5} textColor={colors.steel500}>
-                {node.frontmatter.role}
+                {node.role}
               </SmallText>
               <SmallText mb={0.5}>
-                <Link href={`mailto:${node.frontmatter.email}`}>
-                  {node.frontmatter.email}
-                </Link>
+                <Link href={`mailto:${node.email}`}>{node.email}</Link>
               </SmallText>
               <SmallText mb="0">
-                <Link href={`tel:${formatPhone(node.frontmatter.phone)}`}>
-                  {node.frontmatter.phone}
+                <Link href={`tel:${formatPhone(node.phone)}`}>
+                  {node.phone}
                 </Link>
               </SmallText>
             </Column>
@@ -142,32 +140,22 @@ export const pageQuery = graphql`
         phone
       }
     }
-    employees: allMdx(
-      filter: {
-        fileAbsolutePath: { regex: "/employees/" }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___first_name, frontmatter___last_name] }
-    ) {
+    employees: allContentfulEmployees(sort: { fields: [firstName, lastName] }) {
       edges {
         node {
           id
-          frontmatter {
-            first_name
-            last_name
-            role
-            email
-            phone
-            image {
-              childImageSharp {
-                fluid(
-                  quality: 80
-                  maxWidth: 520
-                  srcSetBreakpoints: [175, 328, 420]
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
+          firstName
+          lastName
+          role
+          email
+          phone
+          image {
+            fluid(quality: 80, maxWidth: 520) {
+              sizes
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
             }
           }
         }
