@@ -7,12 +7,13 @@ import Link from '../components/Link'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function NotFound({ data }) {
-  const { title, excerpt } = data.page.frontmatter
+  const { title, excerpt } = data.contentfulPages
+
   return (
     <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
         <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt>{excerpt.excerpt}</Excerpt>
         <Link to="/" colorVariant="dark" variant="large">
           Go to start page
         </Link>
@@ -23,21 +24,11 @@ export default function NotFound({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+    contentfulPages(slug: { eq: $slug }) {
+      title
+      slug
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
-        }
       }
     }
   }

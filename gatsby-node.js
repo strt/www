@@ -79,6 +79,36 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `)
 
+  const query = await graphql(`
+    {
+      allContentfulPages(filter: { node_locale: { eq: "en-GB" } }) {
+        edges {
+          node {
+            name
+            title
+            template
+            node_locale
+            slug
+          }
+        }
+      }
+    }
+  `)
+  const contentfulPages = query.data.allContentfulPages.edges
+  // Todo remove this when migration to contentful is completed
+  const migratedPages = ['/404/']
+  contentfulPages.forEach(page => {
+    if (migratedPages.includes(`/${page.node.slug}/`)) {
+      createPage({
+        path: `/${page.node.slug}/`,
+        component: resolve(`./src/templates/${page.node.template}.js`),
+        context: {
+          slug: page.node.slug,
+        },
+      })
+    }
+  })
+
   if (result.errors) {
     throw Error(result.errors)
   }
@@ -91,14 +121,16 @@ exports.createPages = async ({ actions, graphql }) => {
       node.fileAbsolutePath.includes('/pages/') ||
       node.fileAbsolutePath.includes('/open-positions/'),
   )
+
   pages.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      component: resolve(`./src/templates/${node.fields.template}.js`),
-      context: {
-        slug: node.fields.slug,
-      },
-    })
+    if (!migratedPages.includes(node.fields.slug))
+      createPage({
+        path: node.fields.slug,
+        component: resolve(`./src/templates/${node.fields.template}.js`),
+        context: {
+          slug: node.fields.slug,
+        },
+      })
 
     registerRedirectsFromNode(node)
   })

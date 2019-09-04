@@ -1,4 +1,8 @@
 export default function getMetaFromPost(post, { type } = {}) {
+  // Todo update this function when migration to contentful is completed
+  if (!post) {
+    return {}
+  }
   function getSeoField(field) {
     return post.frontmatter.seo && post.frontmatter.seo[field]
   }
