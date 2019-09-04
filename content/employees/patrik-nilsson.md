@@ -1,9 +1,9 @@
 ---
 first_name: Patrik
 last_name: Nilsson
-role: Fullstack developer
+role: Fullstack Developer
 email: patrik.nilsson@strateg.se
-phone: +46 701 84 44 25
+phone: +4670 184 44 25
 image: /content/media/uploads/patrik_nilsson.jpg
 published: true
 ---
