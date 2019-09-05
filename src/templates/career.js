@@ -11,21 +11,21 @@ import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Career({ data }) {
-  const { title, excerpt } = data.contentfulPages
+  const { contact, spontaneousTitle, page, secondHeader } = data.page
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   return (
     <Layout meta={getMetaFromPost()}>
       <Hero pb={0} keepContentMargin>
-        <H1>{title}</H1>
-        {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
+        <H1>{page.title}</H1>
+        {page.excerpt && <Excerpt>{page.excerpt.excerpt}</Excerpt>}
       </Hero>
       {hasOpenPositions && (
         <Section bg={colors.dark} py={[5, 7]}>
           <Grid>
             <Column>
               <H2 textColor="white" mb={[3, 4]}>
-                Open positions
+                {secondHeader}
               </H2>
               <ul>
                 {data.allContentfulPositions.edges.map(({ node }) => (
@@ -45,9 +45,9 @@ export default function Career({ data }) {
       <Section pt={hasOpenPositions ? [5, 7] : 0}>
         <Grid>
           <Column>
-            <H3>Spontaneous applications and internship</H3>
+            <H3>{spontaneousTitle}</H3>
             <Text>
-              <Link href="mailto:career@strateg.se">career@strateg.se</Link>
+              <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
             </Text>
           </Column>
         </Grid>
@@ -62,11 +62,18 @@ export default function Career({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    contentfulPages(slug: { eq: $slug }) {
-      title
-      slug
-      excerpt {
-        excerpt
+    page: contentfulCareer(page: { slug: { eq: $slug } }) {
+      contact {
+        email
+      }
+      spontaneousTitle
+      secondHeader
+      page {
+        title
+        slug
+        excerpt {
+          excerpt
+        }
       }
     }
 
