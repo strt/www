@@ -21,11 +21,15 @@ redirect_from: []
 
 In order to produce a strategy, we carried out a workshop with the marketing and HR managers. Based on the results, we created an activity plan and a guide to clearly show what content is to be posted, when, and in what channels. The guide also contained guidelines on tone and visual expression. And perhaps most importantly, who is responsible for what, who produces material, and who clicks on the post button. 
 
+![](/content/media/uploads/exactxl2.jpg)
+
 ### Facebook
 
 Exact is primarily recruiting new employees in this channel. Measurement consultants are extremely sought-after, but Exact is attractive due to large projects, a lot of independence and responsibility, and perhaps most important of all, a great team spirit. People looking for a new job traditionally gravitate to LinkedIn. However, we noticed that this was not the case for measurement consultants, and we immediately moved that content to Facebook. 
 
 E.g.: Puzzles that the clever measurement consultants are asked to solve and tag their smart colleagues in. The initial post reached 1216 people, and 19 measurement consultants were tagged in the comments. 
+
+![](/content/media/uploads/exactxll3.jpg)
 
 ### LinkedIn
 
