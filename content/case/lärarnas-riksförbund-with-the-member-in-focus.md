@@ -37,16 +37,6 @@ The work has been going on for more than two years and Lärarnas Riksförbund's 
 
 ![](/content/media/uploads/lr_colors.jpg)
 
-<Column md="6">
 
-<Video src="https://player.vimeo.com/external/356166952.hd.mp4?s=734be345ba5eb5bedc423aa8cfb8af84fa1f33ce&profile_id=174" />
-
-</Column>
-
-<Column md="6">
-
-<Video src="https://player.vimeo.com/external/356166469.hd.mp4?s=2f14caed51bb96ecbea956c1cb15097b1e4aaf9b&profile_id=174" />
-
-</Column>
 
 ![](/content/media/uploads/lr_03.jpg)
