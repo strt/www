@@ -22,49 +22,33 @@ const SmallText = styled(Text)`
 `
 
 export default function Contact({ data }) {
-  const siteSettings = data.siteSettings.childContentJson
-  const { title, excerpt } = data.page.frontmatter
+  const { page, contacts } = data.contentfulPage
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost()}>
       <Hero>
-        <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <H1>{page.title}</H1>
+        <Excerpt>{page.excerpt.excerpt}</Excerpt>
       </Hero>
       <Section mb={[4, 7]}>
         <Grid>
-          {siteSettings.offices.map(office => (
-            <Column md="4" key={office.city}>
+          {contacts.map(contact => (
+            <Column md="4" key={contact.id}>
               <Text>
-                <strong>{office.city}</strong>
+                <strong>{contact.city || contact.title}</strong>
                 <br />
-                {office.address}, {office.zipcode} {office.city}
+                {contact.address}
+                {contact.address && ','}
+                {contact.postalCode} {contact.city}
+                {contact.city && <br />}
+                <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
                 <br />
-                <Link href={`mailto:${office.email}`}>{office.email}</Link>
-                <br />
-                <Link href={`tel:${formatPhone(office.phone)}`}>
-                  {office.phone}
+                <Link href={`tel:${formatPhone(contact.phone)}`}>
+                  {contact.phone}
                 </Link>
               </Text>
             </Column>
           ))}
-          <Column md="4">
-            <Text>
-              <strong>New business</strong>
-              <br />
-              <Link href={`mailto:${data.clientContact.frontmatter.email}`}>
-                {data.clientContact.frontmatter.email}
-              </Link>
-              <br />
-              <Link
-                href={`tel:${formatPhone(
-                  data.clientContact.frontmatter.phone,
-                )}`}
-              >
-                {data.clientContact.frontmatter.phone}
-              </Link>
-            </Text>
-          </Column>
         </Grid>
       </Section>
       <Section pb={[10, 20]}>
@@ -102,42 +86,22 @@ export default function Contact({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
+    contentfulPage: contentfulContactPage(page: { slug: { eq: $slug } }) {
+      page {
         title
-        excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
+        slug
+        excerpt {
+          excerpt
         }
       }
-    }
-    siteSettings: file(relativePath: { eq: "settings.json" }) {
-      childContentJson {
-        name
-        offices {
-          address
-          zipcode
-          city
-          email
-          phone
-        }
-      }
-    }
-    clientContact: mdx(
-      frontmatter: { email: { eq: "fredrik.vannestal@strateg.se" } }
-    ) {
-      frontmatter {
-        first_name
+      contacts {
+        id
+        title
         email
         phone
+        address
+        city
+        postalCode
       }
     }
     employees: allContentfulEmployees(sort: { fields: [firstName, lastName] }) {
