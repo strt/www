@@ -13,7 +13,7 @@ image: /content/media/uploads/exactxl1.jpg
 tags:
   - Digital
 contact_relation: leif.goldkuhl@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
