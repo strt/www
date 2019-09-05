@@ -15,7 +15,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 export default function Career({ data }) {
   const { title, excerpt, image } = data.page.frontmatter
   const hasCover = !!image
-  const hasOpenPositions = !!data.openPositions.edges.length
+  const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
@@ -44,11 +44,11 @@ export default function Career({ data }) {
                 Open positions
               </H2>
               <ul>
-                {data.openPositions.edges.map(({ node }) => (
+                {data.allContentfulPositions.edges.map(({ node }) => (
                   <li key={node.id}>
                     <Excerpt mb={[2, 3]}>
-                      <Link to={node.fields.slug} colorVariant="white">
-                        {node.frontmatter.role}
+                      <Link to={`join-us/${node.slug}`} colorVariant="white">
+                        {node.role}
                       </Link>
                     </Excerpt>
                   </li>
@@ -102,21 +102,12 @@ export const pageQuery = graphql`
         }
       }
     }
-    openPositions: allMdx(
-      filter: {
-        fileAbsolutePath: { regex: "/open-positions/" }
-        frontmatter: { published: { ne: false } }
-      }
-    ) {
+    allContentfulPositions {
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          frontmatter {
-            role
-          }
+          role
+          slug
         }
       }
     }
