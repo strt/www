@@ -11,7 +11,7 @@ import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Career({ data }) {
-  const { contact, spontaneousTitle, page, secondHeader } = data.page
+  const { contact, spontaneousTitle, page, secondHeader } = data.contentfulPage
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   return (
@@ -62,7 +62,7 @@ export default function Career({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: contentfulCareer(page: { slug: { eq: $slug } }) {
+    contentfulPage: contentfulCareerPage(page: { slug: { eq: $slug } }) {
       contact {
         email
       }
