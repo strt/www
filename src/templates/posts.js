@@ -23,10 +23,10 @@ export default function News({ data }) {
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>
               <Card
-                date={node.frontmatter.date}
-                title={node.frontmatter.title}
-                url={node.fields.slug}
-                image={node.frontmatter.image}
+                date={node.createdAt}
+                title={node.title}
+                url={node.slug}
+                image={node.featuredImage}
               />
             </Column>
           ))}
@@ -55,26 +55,16 @@ export const pageQuery = graphql`
         }
       }
     }
-    articles: allMdx(
-      filter: {
-        fields: { template: { eq: "post" } }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    articles: allContentfulPosts {
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date
-            image {
-              childImageSharp {
-                ...CardImage
-              }
+          slug
+          title
+          createdAt
+          featuredImage {
+            fluid(quality: 80) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
