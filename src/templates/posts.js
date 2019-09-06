@@ -10,13 +10,13 @@ import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
-  const { title, excerpt } = data.page.frontmatter
+  const { title, excerpt } = data.page
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost()}>
       <Hero>
         <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt>{excerpt.excerpt}</Excerpt>
       </Hero>
       <Section bg={colors.ice} pt={[5, 8]} pb={[10, 20]}>
         <Grid>
@@ -38,21 +38,10 @@ export default function News({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+    page: contentfulPages(slug: { eq: $slug }) {
+      title
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
-        }
       }
     }
     articles: allContentfulPosts {
