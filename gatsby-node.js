@@ -96,11 +96,12 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
   const contentfulPages = query.data.allContentfulPages.edges
   // Todo remove this when migration to contentful is completed
-  const migratedPages = ['/404/', '/join-us/', '/contact/', '/news/']
+  const migratedPages = ['/404/', '/join-us/', '/contact/', '/news/', '/']
   contentfulPages.forEach(page => {
-    if (migratedPages.includes(`/${page.node.slug}/`)) {
+    const slug = page.node.slug === '/' ? '/' : `/${page.node.slug}/`
+    if (migratedPages.includes(slug)) {
       createPage({
-        path: `/${page.node.slug}/`,
+        path: slug,
         component: resolve(`./src/templates/${page.node.template}.js`),
         context: {
           slug: page.node.slug,
