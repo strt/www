@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
+    "@contentful/rich-text-types": "^13.4.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.6",
     "@fortawesome/free-brands-svg-icons": "^5.4.1",
     "@fortawesome/pro-light-svg-icons": "^5.4.1",
