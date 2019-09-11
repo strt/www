@@ -12,7 +12,7 @@ video: 'https://player.vimeo.com/video/342996999'
 tags:
   - Motion
 contact_relation: leif.goldkuhl@strateg.se
-published: true
+published: false
 seo: {}
 redirect_from: []
 ---
