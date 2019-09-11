@@ -5,6 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { H1, H2, H3, Text } from './Text'
 import { UnorderedList } from './List'
+import Image from './Image'
 import Link from './Link'
 
 function isUrlAbsolute(url) {
@@ -32,6 +33,14 @@ const options = {
     [BLOCKS.UL_LIST]: (node, children) => (
       <UnorderedList>{children}</UnorderedList>
     ),
+    [BLOCKS.EMBEDDED_ASSET]: ({
+      data: {
+        target: { fields },
+      },
+    }) => {
+      const file = fields.file['en-GB']
+      return <Image alt={fields.description['en-GB']} src={file.url} />
+    },
   },
 }
 

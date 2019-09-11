@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import dayjs from 'dayjs'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Image from '../components/Image'
@@ -13,6 +12,7 @@ import Cover from '../components/Cover'
 import Div from '../components/Div'
 import Link from '../components/Link'
 import Card from '../components/Card'
+import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { colors } from '../style'
 import { routes } from '../routes'
@@ -49,7 +49,9 @@ export default function Article({ data }) {
         )}
         <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
           <ContentWrapper>
-            <Grid>{documentToReactComponents(body.json)}</Grid>
+            <Grid>
+              <RichText document={body.json} />
+            </Grid>
           </ContentWrapper>
         </Section>
         <Section as="aside" bg={colors.ice} mt={[10, 15]} pb={[5, 12]}>
