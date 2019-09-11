@@ -1,7 +1,11 @@
 ---
 title: More and safer export transactions
 excerpt: >-
-  Exportkreditnämnden (EKN) is an authority, but also a strategic business partner to exporting companies. EKN has a challenging assignment to constantly increase awareness about their different products and solutionsamong SMEs. Therefore, it is especially fun that the result was so successful when we created two digital campaigns together during autumn 2018.
+  Exportkreditnämnden (EKN) is an authority, but also a strategic business
+  partner to exporting companies. EKN has a challenging assignment to constantly
+  increase awareness about their different products and solutionsamong SMEs.
+  Therefore, it is especially fun that the result was so successful when we
+  created two digital campaigns together during autumn 2018.
 client: EKN
 date: '2019-09-11T14:41:53+02:00'
 image: /content/media/uploads/case-ekn-1.jpg
