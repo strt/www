@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react'
 import Link from './Link'
 
-let selectedLang = localStorage.getItem('selectedLang')
+let selectedLang = null
+
+if (typeof window !== 'undefined' && window.localStorage) {
+  selectedLang = localStorage.getItem('selectedLang')
+}
 
 function setActiveLang(lang) {
   localStorage.setItem('selectedLang', lang)
@@ -17,7 +21,7 @@ export function getActiveLangPath() {
 
 export function getUrl(location, country) {
   const path = country !== 'en' ? country : ''
-  let finalUrl
+  let finalUrl = ''
 
   if (selectedLang) {
     finalUrl = location.pathname.replace(`${selectedLang}`, '')
