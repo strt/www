@@ -3,12 +3,13 @@ import Link from './Link'
 
 let selectedLang = null
 
-if (typeof window !== 'undefined' && window.localStorage) {
-  selectedLang = localStorage.getItem('selectedLang')
+if (typeof window !== 'undefined' && window.location) {
+  if (window.location.pathname.includes('/sv')) {
+    selectedLang = 'sv'
+  }
 }
 
 function setActiveLang(lang) {
-  localStorage.setItem('selectedLang', lang)
   selectedLang = lang
 }
 
@@ -20,16 +21,10 @@ export function getActiveLangPath() {
 }
 
 export function getUrl(location, country) {
-  const path = country !== 'en' ? country : ''
-  let finalUrl = ''
+  const langPath = country !== 'en' ? country : ''
+  const url = location.pathname.replace(`${selectedLang}/`, '')
 
-  if (selectedLang) {
-    finalUrl = location.pathname.replace(`${selectedLang}`, '')
-  }
-
-  finalUrl = path + finalUrl
-
-  return finalUrl
+  return langPath + url
 }
 
 export default function SelectLanguage({ location }) {
