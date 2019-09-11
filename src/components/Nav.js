@@ -15,6 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
+import SelectLanguage, { getActiveLangPath } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -215,12 +216,13 @@ function Navigation({ location }) {
   return (
     <NavWrapper role="navigation">
       <ul data-desktop>
+        <SelectLanguage location={location} />
         {mainNavigation
           .filter(child => child.link !== '/')
           .map(child => (
             <li key={child.id}>
               <Link
-                to={child.link}
+                to={getActiveLangPath() + child.link}
                 getProps={getProps}
                 colorVariant="dark"
                 variant="large"
