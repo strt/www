@@ -6,12 +6,12 @@ import Card from '../components/Card'
 import Section from '../components/Section'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
   const { title, excerpt } = data.page
-
   return (
     <Layout meta={getMetaFromPost()}>
       <Hero>
@@ -25,7 +25,7 @@ export default function News({ data }) {
               <Card
                 date={node.createdAt}
                 title={node.title}
-                url={node.slug}
+                url={`${getActiveLangPath(node.node_local)}/${node.slug}`}
                 image={node.featuredImage}
               />
             </Column>
@@ -37,19 +37,20 @@ export default function News({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: contentfulPages(slug: { eq: $slug }) {
+  query($slug: String!, $locale: String!) {
+    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
       title
       excerpt {
         excerpt
       }
     }
-    articles: allContentfulPosts {
+    articles: allContentfulPosts(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           id
           slug
           title
+          node_locale
           createdAt
           featuredImage {
             fluid(quality: 80) {

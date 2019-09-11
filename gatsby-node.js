@@ -17,19 +17,30 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 //   })
 // }
 
+function getLangOptions(node) {
+  const localePath = node.node_locale === 'en-GB' ? '' : node.node_locale
+  const slug = node.slug === '/' ? '/' : `/${node.slug}/`
+
+  return {
+    localePath,
+    slug,
+  }
+}
+
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
 
   const redirectToSlugMap = new Map()
   function registerRedirectsFromNode(node) {
-    if (node.fields.redirect) {
-      const { slug } = node.fields
-      let redirect = JSON.parse(node.fields.redirect)
-      if (!Array.isArray(redirect)) {
-        redirect = [redirect]
+    if (node.alias) {
+      let { alias } = node
+      const { slug } = node
+
+      if (!Array.isArray(alias)) {
+        alias = [alias]
       }
 
-      redirect.forEach(fromPath => {
+      alias.forEach(fromPath => {
         if (redirectToSlugMap.has(fromPath)) {
           console.error(
             `Duplicate redirect detected from "${fromPath}" to:\n` +
@@ -81,7 +92,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
   const query = await graphql(`
     {
-      allContentfulPages(filter: { node_locale: { eq: "en-GB" } }) {
+      allContentfulPages {
         edges {
           node {
             name
@@ -94,16 +105,31 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+  const contentfulPosts = await graphql(`
+    {
+      allContentfulPosts {
+        edges {
+          node {
+            slug
+            title
+            alias
+            node_locale
+          }
+        }
+      }
+    }
+  `)
   const contentfulPages = query.data.allContentfulPages.edges
   // Todo remove this when migration to contentful is completed
   const migratedPages = ['/404/', '/join-us/', '/contact/', '/news/', '/']
   contentfulPages.forEach(page => {
-    const slug = page.node.slug === '/' ? '/' : `/${page.node.slug}/`
+    const { slug, localePath } = getLangOptions(page.node)
     if (migratedPages.includes(slug)) {
       createPage({
-        path: slug,
+        path: `/${localePath}${slug}`,
         component: resolve(`./src/templates/${page.node.template}.js`),
         context: {
+          locale: page.node.node_locale,
           slug: page.node.slug,
         },
       })
@@ -151,21 +177,23 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
 
-    registerRedirectsFromNode(node)
+    //  registerRedirectsFromNode(node)
   })
 
   // Posts
-  const posts = edges.filter(({ node }) => node.fields.template === 'post')
+  const posts = contentfulPosts.data.allContentfulPosts.edges
   posts.forEach(({ node }) => {
+    const { slug, localePath } = getLangOptions(node)
     createPage({
-      path: node.fields.slug,
-      component: resolve(`./src/templates/${node.fields.template}.js`),
+      path: `/${localePath}${slug}`,
+      component: resolve(`./src/templates/post.js`),
       context: {
-        slug: node.fields.slug,
+        slug: node.slug,
+        locale: node.node_locale,
       },
     })
 
-    registerRedirectsFromNode(node)
+    // registerRedirectsFromNode(node)
   })
 }
 

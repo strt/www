@@ -88,8 +88,8 @@ export default function Article({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    post: contentfulPosts(slug: { eq: $slug }) {
+  query($slug: String!, $locale: String!) {
+    post: contentfulPosts(slug: { eq: $slug }, node_locale: { eq: $locale }) {
       title
       slug
       createdAt
@@ -105,7 +105,10 @@ export const pageQuery = graphql`
         json
       }
     }
-    posts: allContentfulPosts(limit: 4) {
+    posts: allContentfulPosts(
+      limit: 4
+      filter: { node_locale: { eq: $locale } }
+    ) {
       edges {
         node {
           id

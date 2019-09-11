@@ -105,11 +105,20 @@ export const pageQuery = graphql`
       }
     }
   }
-  query($slug: String!) {
-    page: contentfulPages(slug: { eq: $slug }) {
+  query($slug: String!, $locale: String!) {
+    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
       title
       excerpt {
         excerpt
+      }
+      seoDescription {
+        seoDescription
+      }
+      seoTitle
+      seoImage {
+        fixed(width: 1200, height: 630, quality: 80) {
+          ...GatsbyContentfulFixed
+        }
       }
     }
     cases: allMdx(
@@ -126,7 +135,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allContentfulPosts(limit: 4) {
+    posts: allContentfulPosts(
+      limit: 4
+      filter: { node_locale: { eq: $locale } }
+    ) {
       edges {
         node {
           id

@@ -61,8 +61,10 @@ export default function Career({ data }) {
 // Todo add meta
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    contentfulPage: contentfulCareerPage(page: { slug: { eq: $slug } }) {
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulCareerPage(
+      page: { slug: { eq: $slug }, node_locale: { eq: $locale } }
+    ) {
       contact {
         email
       }

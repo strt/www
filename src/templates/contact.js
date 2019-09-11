@@ -85,8 +85,10 @@ export default function Contact({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    contentfulPage: contentfulContactPage(page: { slug: { eq: $slug } }) {
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulContactPage(
+      page: { slug: { eq: $slug }, node_locale: { eq: $locale } }
+    ) {
       page {
         title
         slug

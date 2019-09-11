@@ -4,6 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
 import { breakpoints, fluidRange, vw } from '../style'
+import { getActiveLangPath } from './SelectLanguage'
 import Navigation from './Nav'
 
 export default function Header() {
@@ -11,7 +12,7 @@ export default function Header() {
     <StyledHeader>
       <Grid justifyContent="space-between">
         <Column width="auto">
-          <LogoLink to="/">
+          <LogoLink to={`${getActiveLangPath()}/`}>
             <Logo />
           </LogoLink>
         </Column>
