@@ -11,6 +11,7 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
 import InstagramFeed from '../components/InstagramFeed'
+import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -68,7 +69,7 @@ export default function Index({ data }) {
               <Card
                 date={node.createdAt}
                 title={node.title}
-                url={node.slug}
+                url={`${getActiveLangPath(node.node_local)}/${node.slug}`}
                 image={node.featuredImage}
               />
             </Column>
@@ -144,6 +145,7 @@ export const pageQuery = graphql`
           id
           slug
           title
+          node_locale
           createdAt
           featuredImage {
             fluid(quality: 80) {
