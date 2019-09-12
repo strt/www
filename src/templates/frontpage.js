@@ -69,7 +69,7 @@ export default function Index({ data }) {
               <Card
                 date={node.createdAt}
                 title={node.title}
-                url={`${getActiveLangPath(node.node_local)}/${node.slug}`}
+                url={`${getActiveLangPath()}/${node.slug}`}
                 image={node.featuredImage}
               />
             </Column>
@@ -145,7 +145,6 @@ export const pageQuery = graphql`
           id
           slug
           title
-          node_locale
           createdAt
           featuredImage {
             fluid(quality: 80) {

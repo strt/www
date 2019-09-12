@@ -30,31 +30,36 @@ export function getUrl(location, country) {
 export default function SelectLanguage({ location }) {
   return (
     <Fragment>
-      <li style={{ padding: '0' }}>
+      <li
+        style={{
+          padding: '0',
+          textDecoration: getActiveLangPath() === 'sv' && 'underline',
+        }}
+      >
         <Link
           onClick={() => {
             setActiveLang('sv')
           }}
           to={getUrl(location, 'sv')}
-          colorVariant="dark"
+          colorVariant="gray"
           variant="large"
         >
           Sv
         </Link>
       </li>
       <li style={{ padding: '0 5px' }}>
-        <Link colorVariant="dark" variant="large">
+        <Link colorVariant="gray" variant="large">
           /
         </Link>
       </li>
 
-      <li>
+      <li style={{ textDecoration: !getActiveLangPath() && 'underline' }}>
         <Link
           to={getUrl(location, 'en')}
           onClick={() => {
             setActiveLang('en')
           }}
-          colorVariant="dark"
+          colorVariant="gray"
           variant="large"
         >
           En
