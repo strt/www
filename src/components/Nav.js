@@ -233,19 +233,29 @@ function Navigation({ location }) {
           ))}
       </ul>
       <div data-responsive>
-        <Link
-          as="button"
-          type="button"
-          colorVariant="dark"
-          variant="large"
-          onClick={() => {
-            toggle()
-          }}
-          aria-expanded={isOpen}
-          aria-controls={NAV_ID}
-        >
-          menu
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
+            <ul style={{ display: 'flex' }}>
+              <SelectLanguage location={location} />
+            </ul>
+          </div>
+
+          <Link
+            style={{ marginLeft: '10px' }}
+            as="button"
+            type="button"
+            colorVariant="dark"
+            variant="large"
+            onClick={() => {
+              toggle()
+            }}
+            aria-expanded={isOpen}
+            aria-controls={NAV_ID}
+          >
+            menu
+          </Link>
+        </div>
+
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <animated.div
           data-content
