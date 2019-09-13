@@ -127,7 +127,9 @@ exports.createPages = async ({ actions, graphql }) => {
     if (migratedPages.includes(slug)) {
       createPage({
         path: `/${localePath}${slug}`,
-        component: resolve(`./src/templates/${page.node.template}.js`),
+        component: resolve(
+          `./src/templates/${page.node.template.toLowerCase()}.js`,
+        ),
         context: {
           locale: page.node.node_locale,
           slug: page.node.slug,
