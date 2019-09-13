@@ -1,10 +1,11 @@
 ---
-title: Welcome to Strateg, Francesco and Patrik!
+title: 'Welcome to Strateg, Francesco and Patrik!'
 excerpt: >-
-  We’re happy to welcome two new full stack developers – Francesco Mussi and Patrik Nilsson.
-date: 2019-09-12T10:45:05.643Z
+  We’re happy to welcome two new full stack developers – Francesco Mussi and
+  Patrik Nilsson.
+date: 2019-09-13T19:40:00.000Z
 image: /content/media/uploads/patrik_francesco.jpg
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
