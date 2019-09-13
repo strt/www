@@ -1,7 +1,7 @@
 ---
 title: 'They want to go to school, but just can’t'
 excerpt: >-
-  in order to help children and young people come back from– or avoid –
+  In order to help children and young people come back from– or avoid –
   long-lasting school absences, the municipalities in mid-eastern Sweden have
   initiated a project called #jagmed.
 client: '#jagmed'
