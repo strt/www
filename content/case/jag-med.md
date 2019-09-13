@@ -10,7 +10,7 @@ image: /content/media/uploads/jagmed.jpg
 video: 'https://player.vimeo.com/video/359556160'
 tags:
   - Motion
-contact_relation: fredrik.vannestal@strateg.se
+contact_relation: leif.goldkuhl@strateg.se
 published: true
 seo: {}
 redirect_from: []
