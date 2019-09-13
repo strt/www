@@ -15,7 +15,6 @@ published: true
 seo: {}
 redirect_from: []
 ---
-
 ## Challenge – Reach decision-makers and politicians
 
 The #jagmed project, designed to find methods to identify and prevent long-lasting school absence, was launched in 2017. The project required a great deal of communication, and that’s where Strateg came in. Our job was to find ways to inform decision-makers in the school system and politicians from across Sweden about the project and the method that’s been developed, so that more schools can work according to its guidelines.
@@ -30,4 +29,6 @@ Our opinion is that strong feelings are best expressed through film. Since the v
 
 ## Follow-up – What happened?
 
-During 2019 the film has been shown to principals, school therapists and politicians all over Sweden. A comment from the client: “We have received a lot of positive feedback; the film is perceived as very touching and true.” We know that increased knowledge is an important part of the solution to the problem of involuntary school absence. #jagmed may hopefully lead to more children and young people completing their primary education and getting back to living a normal, full life again.
+During 2019 the film has been shown to principals, school therapists and politicians all over Sweden. A comment from the client: “We have received a lot of positive feedback; the film is perceived as very touching and true.” 
+
+We know that increased knowledge is an important part of the solution to the problem of involuntary school absence. #jagmed may hopefully lead to more children and young people completing their primary education and getting back to living a normal, full life again.
