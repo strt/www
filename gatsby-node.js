@@ -216,6 +216,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   fmImagesToRelative(node)
 
   if (node.internal.type === 'Mdx') {
+    if (!node.fileAbsolutePath) {
+      return
+    }
+
     const { relativePath } = getNode(node.parent)
     const { redirect_from: redirectFrom, permalink } = node.frontmatter
     let { template = 'standard' } = node.frontmatter
