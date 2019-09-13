@@ -1,7 +1,7 @@
 ---
 title: Seven (!) nominations for the Publishing Prize
 excerpt: ... and two for Svenska Designpriset
-date: 2019-09-12T10:45:05.643Z
+date: 2019-09-13T07:37:00.000Z
 image: /content/media/uploads/nominations.jpeg
 published: true
 seo: {}
