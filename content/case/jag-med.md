@@ -1,15 +1,17 @@
 ---
 title: 'They want to go to school, but just can’t'
 excerpt: >-
-  in order to help children and young people come back from– or avoid – long-lasting school absences, the municipalities in mid-eastern Sweden have initiated a project called #jagmed.
+  in order to help children and young people come back from– or avoid –
+  long-lasting school absences, the municipalities in mid-eastern Sweden have
+  initiated a project called #jagmed.
 client: '#jagmed'
-date: '2019-09-12T02:39:12+02:00'
+date: '2019-09-13T10:05:00+02:00'
 image: /content/media/uploads/jagmed.jpg
 video: 'https://player.vimeo.com/video/359556160'
 tags:
   - Motion
 contact_relation: fredrik.vannestal@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
