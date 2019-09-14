@@ -18,7 +18,7 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 // }
 
 function getLangOptions(node) {
-  const localePath = node.node_locale === 'en-GB' ? '' : node.node_locale
+  const localePath = node.node_locale === 'en-GB' ? '' : `/${node.node_locale}`
   const slug = node.slug === '/' ? '/' : `/${node.slug}/`
 
   return {
@@ -126,7 +126,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const { slug, localePath } = getLangOptions(page.node)
     if (migratedPages.includes(slug)) {
       createPage({
-        path: `/${localePath}${slug}`,
+        path: `${localePath}${slug}`,
         component: resolve(
           `./src/templates/${page.node.template.toLowerCase()}.js`,
         ),
