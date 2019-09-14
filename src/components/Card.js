@@ -102,7 +102,7 @@ export default function Card({ url, title, date, image }) {
         <ImageWrapper>
           {image && (
             <Image
-              fluid={image.childImageSharp.fluid}
+              fluid={image.fluid}
               sizes="(min-width: 768px) 30vw, 50vw"
               aspectRatio="auto"
               alt=""

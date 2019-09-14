@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies, global-require */
 const proxy = require('http-proxy-middleware')
+require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -97,6 +98,14 @@ module.exports = {
     'gatsby-plugin-netlify',
     'gatsby-plugin-netlify-cache',
     'gatsby-plugin-netlify-cms',
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `lxxyo1cefolk`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
   ],
   developMiddleware: app => {
     app.use(

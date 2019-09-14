@@ -11,14 +11,15 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
 import InstagramFeed from '../components/InstagramFeed'
+import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Index({ data }) {
-  const { title, featured_case: featuredCase } = data.page.frontmatter
+  const { title } = data.page
 
-  const cases = [...featuredCase, ...data.cases.edges]
+  const cases = [...data.cases.edges]
     .filter(
       (item, index, self) =>
         index === self.findIndex(t => t.node.id === item.node.id),
@@ -26,7 +27,7 @@ export default function Index({ data }) {
     .slice(0, 5)
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost()}>
       <Hero scrollButtonElement="#case-section" pt={8}>
         <H1>{title}</H1>
       </Hero>
@@ -66,10 +67,10 @@ export default function Index({ data }) {
           {data.posts.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>
               <Card
-                date={node.frontmatter.date}
-                title={node.frontmatter.title}
-                url={node.fields.slug}
-                image={node.frontmatter.image}
+                date={node.createdAt}
+                title={node.title}
+                url={`${getActiveLangPath()}/${node.slug}`}
+                image={node.featuredImage}
               />
             </Column>
           ))}
@@ -105,26 +106,19 @@ export const pageQuery = graphql`
       }
     }
   }
-  query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+  query($slug: String!, $locale: String!) {
+    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+      title
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
-        }
-        featured_case {
-          node: childMdx {
-            ...caseFields
-          }
+      }
+      seoDescription {
+        seoDescription
+      }
+      seoTitle
+      seoImage {
+        fixed(width: 1200, height: 630, quality: 80) {
+          ...GatsbyContentfulFixed
         }
       }
     }
@@ -142,27 +136,19 @@ export const pageQuery = graphql`
         }
       }
     }
-    posts: allMdx(
+    posts: allContentfulPosts(
       limit: 4
-      filter: {
-        fields: { template: { eq: "post" } }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { node_locale: { eq: $locale } }
     ) {
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date
-            image {
-              childImageSharp {
-                ...CardImage
-              }
+          slug
+          title
+          createdAt
+          featuredImage {
+            fluid(quality: 80) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }

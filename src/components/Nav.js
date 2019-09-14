@@ -15,6 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
+import SelectLanguage, { getActiveLangPath } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -215,12 +216,13 @@ function Navigation({ location }) {
   return (
     <NavWrapper role="navigation">
       <ul data-desktop>
+        <SelectLanguage location={location} />
         {mainNavigation
           .filter(child => child.link !== '/')
           .map(child => (
             <li key={child.id}>
               <Link
-                to={child.link}
+                to={getActiveLangPath() + child.link}
                 getProps={getProps}
                 colorVariant="dark"
                 variant="large"
@@ -231,19 +233,29 @@ function Navigation({ location }) {
           ))}
       </ul>
       <div data-responsive>
-        <Link
-          as="button"
-          type="button"
-          colorVariant="dark"
-          variant="large"
-          onClick={() => {
-            toggle()
-          }}
-          aria-expanded={isOpen}
-          aria-controls={NAV_ID}
-        >
-          menu
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
+            <ul style={{ display: 'flex' }}>
+              <SelectLanguage location={location} />
+            </ul>
+          </div>
+
+          <Link
+            style={{ marginLeft: '10px' }}
+            as="button"
+            type="button"
+            colorVariant="dark"
+            variant="large"
+            onClick={() => {
+              toggle()
+            }}
+            aria-expanded={isOpen}
+            aria-controls={NAV_ID}
+          >
+            menu
+          </Link>
+        </div>
+
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
         <animated.div
           data-content

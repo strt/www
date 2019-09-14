@@ -6,27 +6,27 @@ import Card from '../components/Card'
 import Section from '../components/Section'
 import { H1, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
+import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
-  const { title, excerpt } = data.page.frontmatter
-
+  const { title, excerpt } = data.page
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost()}>
       <Hero>
         <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt>{excerpt.excerpt}</Excerpt>
       </Hero>
       <Section bg={colors.ice} pt={[5, 8]} pb={[10, 20]}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>
               <Card
-                date={node.frontmatter.date}
-                title={node.frontmatter.title}
-                url={node.fields.slug}
-                image={node.frontmatter.image}
+                date={node.createdAt}
+                title={node.title}
+                url={`${getActiveLangPath()}/${node.slug}`}
+                image={node.featuredImage}
               />
             </Column>
           ))}
@@ -37,44 +37,23 @@ export default function News({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+  query($slug: String!, $locale: String!) {
+    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+      title
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
-        }
       }
     }
-    articles: allMdx(
-      filter: {
-        fields: { template: { eq: "post" } }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    articles: allContentfulPosts(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date
-            image {
-              childImageSharp {
-                ...CardImage
-              }
+          slug
+          title
+          createdAt
+          featuredImage {
+            fluid(quality: 80) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
         }
