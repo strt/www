@@ -12,7 +12,9 @@ export default function getMetaFromPost(post, { type } = {}) {
     return {
       title: post.seoTitle || post.title || '',
       description:
-        post.seoDescription.seoDescription || post.excerpt.excerpt || '',
+        (post.seoDescription && post.seoDescription.seoDescription) ||
+        post.excerpt.excerpt ||
+        '',
       url: post.slug || '',
       type,
       publishedTime: type === 'article' ? post.createdAt : undefined,
