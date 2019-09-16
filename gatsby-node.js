@@ -121,7 +121,14 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
   const contentfulPages = query.data.allContentfulPages.edges
   // Todo remove this when migration to contentful is completed
-  const migratedPages = ['/404/', '/join-us/', '/contact/', '/news/', '/']
+  const migratedPages = [
+    '/404/',
+    '/join-us/',
+    '/contact/',
+    '/news/',
+    '/',
+    '/work/',
+  ]
   contentfulPages.forEach(page => {
     const { slug, localePath } = getLangOptions(page.node)
     if (migratedPages.includes(slug)) {

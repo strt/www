@@ -71,7 +71,7 @@ export default function Case({ data, location }) {
     window.history.replaceState({}, null, target.pathname + target.search)
   }
 
-  const { title, excerpt } = data.page.frontmatter
+  const { title, excerpt } = data.contentfulPage
 
   const cases = filterCases(data.cases.edges, filter)
   const tags = data.cases.edges
@@ -89,10 +89,10 @@ export default function Case({ data, location }) {
   const renderFilter = true // Set to true to enable filter on tags again when we have enough cases published to require a filter
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
         <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt>{excerpt.excerpt}</Excerpt>
         {renderFilter === true && (
           <Filter>
             <Link
@@ -144,23 +144,16 @@ export default function Case({ data, location }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulPages(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
+      title
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
-        }
       }
+      ...Meta
     }
     cases: allMdx(
       filter: {
