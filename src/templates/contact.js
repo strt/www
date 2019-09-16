@@ -25,7 +25,7 @@ export default function Contact({ data }) {
   const { page, contacts } = data.contentfulPage
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero>
         <H1>{page.title}</H1>
         <Excerpt>{page.excerpt.excerpt}</Excerpt>
@@ -95,6 +95,7 @@ export const pageQuery = graphql`
         excerpt {
           excerpt
         }
+        ...Meta
       }
       contacts {
         id

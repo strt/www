@@ -11,9 +11,9 @@ import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
-  const { title, excerpt } = data.page
+  const { title, excerpt } = data.contentfulPage
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt.excerpt}</Excerpt>
@@ -38,11 +38,15 @@ export default function News({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+    contentfulPage: contentfulPages(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
       title
       excerpt {
         excerpt
       }
+      ...Meta
     }
     articles: allContentfulPosts(filter: { node_locale: { eq: $locale } }) {
       edges {

@@ -15,7 +15,7 @@ export default function Career({ data }) {
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero pb={0} keepContentMargin>
         <H1>{page.title}</H1>
         {page.excerpt && <Excerpt>{page.excerpt.excerpt}</Excerpt>}
@@ -76,6 +76,7 @@ export const pageQuery = graphql`
         excerpt {
           excerpt
         }
+        ...Meta
       }
     }
 

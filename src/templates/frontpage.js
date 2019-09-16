@@ -17,7 +17,7 @@ import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Index({ data }) {
-  const { title } = data.page
+  const { title } = data.contentfulPage
 
   const cases = [...data.cases.edges]
     .filter(
@@ -27,7 +27,7 @@ export default function Index({ data }) {
     .slice(0, 5)
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero scrollButtonElement="#case-section" pt={8}>
         <H1>{title}</H1>
       </Hero>
@@ -107,20 +107,15 @@ export const pageQuery = graphql`
     }
   }
   query($slug: String!, $locale: String!) {
-    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+    contentfulPage: contentfulPages(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
       title
       excerpt {
         excerpt
       }
-      seoDescription {
-        seoDescription
-      }
-      seoTitle
-      seoImage {
-        fixed(width: 1200, height: 630, quality: 80) {
-          ...GatsbyContentfulFixed
-        }
-      }
+      ...Meta
     }
     cases: allMdx(
       limit: 5
