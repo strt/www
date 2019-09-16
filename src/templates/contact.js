@@ -107,7 +107,10 @@ export const pageQuery = graphql`
         postalCode
       }
     }
-    employees: allContentfulEmployees(sort: { fields: [firstName, lastName] }) {
+    employees: allContentfulEmployees(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: [firstName, lastName] }
+    ) {
       edges {
         node {
           id
