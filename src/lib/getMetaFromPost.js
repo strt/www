@@ -1,5 +1,6 @@
 export default function getMetaFromPost(post, { type } = {}) {
   // Todo update this function when migration to contentful is completed
+
   if (!post) {
     return {}
   }
@@ -15,9 +16,9 @@ export default function getMetaFromPost(post, { type } = {}) {
       url: post.slug || '',
       type,
       publishedTime: type === 'article' ? post.createdAt : undefined,
-      image: getSeoField('image')
-        ? post.seoImage && post.seoImage.fixed.src
-        : post.frontmatter.image && post.image.fluid.src,
+      image: post.seoImage
+        ? post.seoImage && `https:${post.seoImage.fixed.src}`
+        : post.featuredImage && `https:${post.featuredImage.fixed.src}`,
     }
   }
 
