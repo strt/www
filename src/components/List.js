@@ -8,6 +8,13 @@ const style = css`
   margin-left: ${fluidRange({ min: 4, max: 8 })};
   list-style-position: inside;
   line-height: 1.6em;
+
+  li {
+    p {
+      display: inline-block;
+      width: 100%;
+    }
+  }
 `
 
 export const UnorderedList = styled.ul`

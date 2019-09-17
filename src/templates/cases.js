@@ -22,8 +22,8 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 
 function filterCases(items, filter) {
   return items.filter(({ node }) =>
-    node.frontmatter.tags.some(
-      i => !filter || i.toLowerCase() === filter.toLowerCase(),
+    node.tags.some(
+      i => !filter || i.name.toLowerCase() === filter.toLowerCase(),
     ),
   )
 }
@@ -71,28 +71,17 @@ export default function Case({ data, location }) {
     window.history.replaceState({}, null, target.pathname + target.search)
   }
 
-  const { title, excerpt } = data.page.frontmatter
-
+  const { title, excerpt } = data.contentfulPage
   const cases = filterCases(data.cases.edges, filter)
-  const tags = data.cases.edges
-    .reduce((acc, { node }) => {
-      node.frontmatter.tags.forEach(tag => {
-        if (acc.indexOf(tag) === -1) {
-          acc.push(tag)
-        }
-      })
-
-      return acc
-    }, [])
-    .sort()
+  const tags = data.tags.edges
 
   const renderFilter = true // Set to true to enable filter on tags again when we have enough cases published to require a filter
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
         <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt>{excerpt.excerpt}</Excerpt>
         {renderFilter === true && (
           <Filter>
             <Link
@@ -106,18 +95,18 @@ export default function Case({ data, location }) {
             </Link>
             {tags.map(tag => (
               <Link
-                key={tag}
-                href={getTagLink(tag)}
+                key={tag.node.name}
+                href={getTagLink(tag.node.name)}
                 onClick={onTagClick}
                 colorVariant="gray"
                 variant="large"
                 aria-current={
-                  filter && filter.includes(tag.toLowerCase())
+                  filter && filter.includes(tag.node.name.toLowerCase())
                     ? true
                     : undefined
                 }
               >
-                {tag}
+                {tag.node.name}
               </Link>
             ))}
           </Filter>
@@ -129,10 +118,10 @@ export default function Case({ data, location }) {
             {cases.map(({ node }) => (
               <Column key={node.id} md="6" bottomGap>
                 <Tile
-                  url={node.fields.slug}
-                  title={node.frontmatter.client}
-                  image={node.frontmatter.image}
-                  tags={node.frontmatter.tags}
+                  url={node.slug}
+                  image={node.featuredImage}
+                  tags={node.tags}
+                  title={node.title}
                 />
               </Column>
             ))}
@@ -144,45 +133,38 @@ export default function Case({ data, location }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulPages(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
+      title
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
+      }
+      ...Meta
+    }
+    tags: allContentfulTags(filter: { node_locale: { eq: $locale } }) {
+      edges {
+        node {
+          name
         }
       }
     }
-    cases: allMdx(
-      filter: {
-        fields: { template: { eq: "case" } }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
+    cases: allContentfulCases(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          frontmatter {
-            client
-            tags
-            image {
-              childImageSharp {
-                ...TileImage
-              }
+          slug
+          title
+          createdAt
+          featuredImage {
+            fluid(quality: 80) {
+              ...GatsbyContentfulFluid_withWebp
             }
+          }
+          tags {
+            name
           }
         }
       }

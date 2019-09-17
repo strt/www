@@ -119,9 +119,29 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+  const contentfulCases = await graphql(`
+    {
+      allContentfulCases {
+        edges {
+          node {
+            slug
+            title
+            node_locale
+          }
+        }
+      }
+    }
+  `)
   const contentfulPages = query.data.allContentfulPages.edges
   // Todo remove this when migration to contentful is completed
-  const migratedPages = ['/404/', '/join-us/', '/contact/', '/news/', '/']
+  const migratedPages = [
+    '/404/',
+    '/join-us/',
+    '/contact/',
+    '/news/',
+    '/',
+    '/work/',
+  ]
   contentfulPages.forEach(page => {
     const { slug, localePath } = getLangOptions(page.node)
     if (migratedPages.includes(slug)) {
@@ -164,22 +184,18 @@ exports.createPages = async ({ actions, graphql }) => {
     registerRedirectsFromNode(node)
   })
 
-  // Case
-  const cases = edges.filter(({ node }) => node.fields.template === 'case')
-  cases.forEach(({ node }, index) => {
-    const { node: next } =
-      index === cases.length - 1 ? cases[0] : cases[index + 1]
-
+  contentfulCases.data.allContentfulCases.edges.forEach(({ node }) => {
+    const { slug, localePath } = getLangOptions(node)
     createPage({
-      path: node.fields.slug,
-      component: resolve(`./src/templates/${node.fields.template}.js`),
+      path: `/${localePath}${slug}`,
+      component: resolve(`./src/templates/case.js`),
       context: {
-        slug: node.fields.slug,
-        next,
+        slug: node.slug,
+        locale: node.node_locale,
       },
     })
 
-    //  registerRedirectsFromNode(node)
+    // registerRedirectsFromNode(node)
   })
 
   // Posts
