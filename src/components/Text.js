@@ -27,6 +27,7 @@ export const textSize = css`
 `
 
 export const Text = styled.p`
+  width: 100%;
   margin-bottom: 2em;
   line-height: 1.6em;
   ${base}
