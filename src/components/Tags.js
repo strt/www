@@ -13,16 +13,18 @@ export default function Tags({ items, linked = true, colorVariant, ...rest }) {
       <Hyphen />
       <TagList>
         {items.map(item => (
-          <li key={item}>
+          <li key={item.name}>
             {linked ? (
               <Link
-                href={`/work?filter=${encodeURIComponent(item.toLowerCase())}`}
+                href={`/work?filter=${encodeURIComponent(
+                  item.name.toLowerCase(),
+                )}`}
                 colorVariant={colorVariant}
               >
-                {item}
+                {item.name}
               </Link>
             ) : (
-              item
+              item.name
             )}
           </li>
         ))}
