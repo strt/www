@@ -5,8 +5,32 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { H1, H2, H3, Text } from './Text'
 import { UnorderedList } from './List'
+import { Grid, Column } from './Grid'
 import Image from './Image'
 import Link from './Link'
+import EmbedPlayer from './EmbedPlayer'
+
+function getImageData(data, name) {
+  if (data.target.fields[name]) {
+    const imageData = data.target.fields[name]['en-GB']
+    return (
+      <Image
+        alt={imageData.fields.description['en-GB']}
+        src={imageData.fields.file['en-GB'].url}
+      />
+    )
+  }
+  return null
+}
+
+function getVideoData(data, name) {
+  if (data.target.fields[name]) {
+    return (
+      <EmbedPlayer src={data.target.fields[name]['en-GB']} bg="transparent" />
+    )
+  }
+  return null
+}
 
 function isUrlAbsolute(url) {
   return url.indexOf('://') > 0 || url.indexOf('//') === 0
@@ -39,7 +63,28 @@ const options = {
       },
     }) => {
       const file = fields.file['en-GB']
-      return <Image alt={fields.description['en-GB']} src={file.url} />
+      return (
+        <Image
+          alt={fields.description && fields.description['en-GB']}
+          src={file.url}
+        />
+      )
+    },
+    [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
+      if (data.target.sys.contentType.sys.id === 'col2') {
+        const image1 = getImageData(data, 'image1')
+        const image2 = getImageData(data, 'image2')
+        const video1 = getVideoData(data, 'videoLink1')
+        const video2 = getVideoData(data, 'videoLink2')
+
+        return (
+          <Grid>
+            <Column md="6">{image1 || video1}</Column>
+            <Column md="6">{image2 || video2}</Column>
+          </Grid>
+        )
+      }
+      return null
     },
   },
 }
