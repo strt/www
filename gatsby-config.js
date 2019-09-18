@@ -2,14 +2,35 @@
 const proxy = require('http-proxy-middleware')
 require('dotenv').config()
 
+const siteUrl =
+  process.env.ACTIVE_ENV === 'staging'
+    ? 'https://strateg.dev'
+    : 'https://strateg.se'
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://strateg.se',
+    siteUrl,
   },
   mapping: {
     'Mdx.frontmatter.contact_relation': 'Mdx.frontmatter.email',
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        resolveEnv: () => process.env.ACTIVE_ENV,
+        env: {
+          staging: {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }],
+          },
+        },
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -60,7 +81,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-7298749-1',
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
         anonymize: true,
         respectDNT: true,
       },
