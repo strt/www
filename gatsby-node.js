@@ -187,7 +187,7 @@ exports.createPages = async ({ actions, graphql }) => {
   contentfulCases.data.allContentfulCases.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     createPage({
-      path: `/${localePath}${slug}`,
+      path: `${localePath}${slug}`,
       component: resolve(`./src/templates/case.js`),
       context: {
         slug: node.slug,
@@ -203,7 +203,7 @@ exports.createPages = async ({ actions, graphql }) => {
   posts.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     createPage({
-      path: `/${localePath}${slug}`,
+      path: `${localePath}${slug}`,
       component: resolve(`./src/templates/post.js`),
       context: {
         slug: node.slug,
