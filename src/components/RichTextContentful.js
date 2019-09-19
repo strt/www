@@ -15,7 +15,7 @@ function getImageData(data, name) {
     const imageData = data.target.fields[name]['en-GB']
     return (
       <Image
-        alt={imageData.fields.description['en-GB']}
+        alt={imageData.fields.title && imageData.fields.title['en-GB']}
         src={imageData.fields.file['en-GB'].url}
       />
     )
@@ -46,8 +46,8 @@ const options = {
       const isAbsolute = isUrlAbsolute(node.data.uri)
       return (
         <Link
-          rel={isAbsolute ? 'nfollow,noopener,noreferrer' : ''}
-          blank={isAbsolute ? '_blank' : ''}
+          rel={isAbsolute ? 'nofollow,noopener,noreferrer' : ''}
+          target={isAbsolute ? '_blank' : ''}
           href={node.data.uri}
         >
           {children}

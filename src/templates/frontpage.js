@@ -65,7 +65,7 @@ export default function Index({ data }) {
           {data.posts.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>
               <Card
-                date={node.createdAt}
+                date={node.oldDate || node.createdAt}
                 title={node.title}
                 url={`${getActiveLangPath()}/${node.slug}`}
                 image={node.featuredImage}
@@ -122,6 +122,7 @@ export const pageQuery = graphql`
     }
     posts: allContentfulPosts(
       limit: 4
+      sort: { fields: [oldDate, createdAt], order: [DESC, DESC] }
       filter: { node_locale: { eq: $locale } }
     ) {
       edges {
@@ -129,6 +130,7 @@ export const pageQuery = graphql`
           id
           slug
           title
+          oldDate
           createdAt
           featuredImage {
             fluid(quality: 80) {
