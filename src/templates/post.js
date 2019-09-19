@@ -18,17 +18,19 @@ import { colors } from '../style'
 import { routes } from '../routes'
 
 export default function Article({ data }) {
-  const { createdAt, title, excerpt, body, featuredImage } = data.post
-  const formattedDate = createdAt ? dayjs(createdAt).format('D MMM YYYY') : null
+  const { createdAt, oldDate, title, excerpt, body, featuredImage } = data.post
+  const formattedDate = oldDate
+    ? dayjs(oldDate).format('D MMM YYYY')
+    : dayjs(createdAt).format('D MMM YYYY')
   const hasCover = !!featuredImage
 
   return (
     <Layout meta={getMetaFromPost()}>
       <article>
-        {createdAt && (
+        {(createdAt || oldDate) && (
           <Grid>
             <Column width="auto">
-              <H4 as="time" dateTime={createdAt}>
+              <H4 as="time" dateTime={oldDate || createdAt}>
                 {formattedDate}
               </H4>
             </Column>
@@ -92,6 +94,7 @@ export const pageQuery = graphql`
     post: contentfulPosts(slug: { eq: $slug }, node_locale: { eq: $locale }) {
       title
       slug
+      oldDate
       createdAt
       featuredImage {
         fluid(quality: 80, maxWidth: 1300) {
