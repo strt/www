@@ -17,30 +17,28 @@ import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Index({ data }) {
-  const { title } = data.contentfulPage
-
-  const cases = [...data.cases.edges]
-    .filter(
-      (item, index, self) =>
-        index === self.findIndex(t => t.node.id === item.node.id),
-    )
-    .slice(0, 5)
-
+  const {
+    page,
+    featuredCases,
+    casesLinkText,
+    newsLinkText,
+    newsHeader,
+  } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero scrollButtonElement="#case-section" pt={8}>
-        <H1>{title}</H1>
+        <H1>{page.title}</H1>
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
-          {cases.map(({ node }) => (
+          {featuredCases.map(node => (
             <Tile
               key={node.id}
-              url={node.fields.slug}
-              title={node.frontmatter.client}
-              image={node.frontmatter.image}
-              tags={node.frontmatter.tags}
-              bg={node.frontmatter.color}
+              url={node.slug}
+              title={node.client.name}
+              image={node.featuredImage}
+              tags={node.tags}
+              bg={node.color}
               mb="0"
             />
           ))}
@@ -49,7 +47,7 @@ export default function Index({ data }) {
           <Column>
             <Div mt={[3, 6]}>
               <Link to={routes.work.link} colorVariant="dark" variant="large">
-                More work
+                {casesLinkText}
               </Link>
             </Div>
           </Column>
@@ -59,7 +57,7 @@ export default function Index({ data }) {
         <Div halfTopBg="white" mb={[2, 4]}>
           <Grid>
             <Column>
-              <H2>News</H2>
+              <H2>{newsHeader}</H2>
             </Column>
           </Grid>
         </Div>
@@ -77,7 +75,7 @@ export default function Index({ data }) {
           <Column>
             <Div mt={[3, 2]}>
               <Link to={routes.news.link} variant="large">
-                More news
+                {newsLinkText}
               </Link>
             </Div>
           </Column>
@@ -91,44 +89,35 @@ export default function Index({ data }) {
 }
 
 export const pageQuery = graphql`
-  fragment caseFields on Mdx {
-    id
-    fields {
-      slug
-    }
-    frontmatter {
-      client
-      tags
-      image {
-        childImageSharp {
-          ...TileImage
-        }
-      }
-    }
-  }
   query($slug: String!, $locale: String!) {
-    contentfulPage: contentfulPages(
-      slug: { eq: $slug }
-      node_locale: { eq: $locale }
-    ) {
-      title
-      excerpt {
-        excerpt
-      }
-      ...Meta
-    }
-    cases: allMdx(
-      limit: 5
-      filter: {
-        fields: { template: { eq: "case" } }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
-    ) {
-      edges {
-        node {
-          ...caseFields
+    contentfulPage: contentfulStartPage(page: { slug: { eq: $slug } }) {
+      casesLinkText
+      newsLinkText
+      newsHeader
+      featuredCases {
+        id
+        title
+        slug
+        featuredImage {
+          fluid(quality: 80) {
+            ...GatsbyContentfulFluid_withWebp
+          }
         }
+        featuredVideo
+        tags {
+          name
+        }
+        client {
+          name
+        }
+      }
+      page {
+        title
+        slug
+        excerpt {
+          excerpt
+        }
+        ...Meta
       }
     }
     posts: allContentfulPosts(
