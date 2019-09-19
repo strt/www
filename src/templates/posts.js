@@ -23,7 +23,7 @@ export default function News({ data }) {
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>
               <Card
-                date={node.createdAt}
+                date={node.oldDate || node.createdAt}
                 title={node.title}
                 url={`${getActiveLangPath()}/${node.slug}`}
                 image={node.featuredImage}
@@ -48,13 +48,17 @@ export const pageQuery = graphql`
       }
       ...Meta
     }
-    articles: allContentfulPosts(filter: { node_locale: { eq: $locale } }) {
+    articles: allContentfulPosts(
+      sort: { fields: [oldDate, createdAt], order: [DESC, DESC] }
+      filter: { node_locale: { eq: $locale } }
+    ) {
       edges {
         node {
           id
           slug
           title
           createdAt
+          oldDate
           featuredImage {
             fluid(quality: 80) {
               ...GatsbyContentfulFluid_withWebp
