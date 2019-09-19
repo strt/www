@@ -11,12 +11,12 @@ excerpt: >-
   Sweden, Norway and Germany.
 client: Actic
 date: '2019-08-27T02:20:05+02:00'
-image: /content/media/uploads/actic_hoodie_1408x792.jpg
+image: /content/media/uploads/actic_featured.jpg
 video: 'https://player.vimeo.com/video/356171753'
 tags:
   - Digital
 contact_relation: par.parsson@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
@@ -48,9 +48,13 @@ Our main insight is that no research has ever showed that information about phys
 
 </Column>
 
+<Column md="6">
+
 ### Concept
 
 Twice a year we have created national outdoor campaigns to create reach and impact for the brand. And we are continuously creating digital and social campaigns that builds frequency and transaction. The main concept is always Din Träningskompis in different shapes and forms, depending on media and target group.
+
+</Column>
 
 ### Results
 
