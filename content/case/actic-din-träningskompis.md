@@ -14,9 +14,9 @@ date: '2019-08-27T02:20:05+02:00'
 image: /content/media/uploads/actic_featured.jpg
 video: 'https://player.vimeo.com/video/356171753'
 tags:
-  - Digital
+  - Brand Development
 contact_relation: par.parsson@strateg.se
-published: false
+published: true
 seo: {}
 redirect_from: []
 ---
