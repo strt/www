@@ -335,7 +335,11 @@ function Navigation({ location }) {
                       ),
                     }}
                   >
-                    <NavLink key={item.link} to={item.link} getProps={getProps}>
+                    <NavLink
+                      key={item.link}
+                      to={getActiveLangPath() + item.link}
+                      getProps={getProps}
+                    >
                       {item.title}
                     </NavLink>
                   </animated.li>

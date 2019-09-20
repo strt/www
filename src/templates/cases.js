@@ -151,7 +151,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    cases: allContentfulCases(filter: { node_locale: { eq: $locale } }) {
+    cases: allContentfulCases(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: [createdAt], order: [DESC] }
+    ) {
       edges {
         node {
           id

@@ -80,7 +80,7 @@ export const pageQuery = graphql`
       }
     }
 
-    allContentfulPositions {
+    allContentfulPositions(filter: { node_locale: { eq: $locale } }) {
       edges {
         node {
           id
