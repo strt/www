@@ -6,6 +6,7 @@ client: Ny vy Mäklare
 date: '2019-09-25T03:53:20+02:00'
 image: /content/media/uploads/ny-vy_1_hero.png
 tags:
+  - Visual Identity
   - Brand Development
   - Digital
   - Print
