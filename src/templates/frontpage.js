@@ -90,7 +90,7 @@ export default function Index({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    contentfulPage: contentfulStartPage(page: { slug: { eq: $slug } }) {
+    contentfulPage: contentfulStartPage(page: { slug: { eq: $slug }, node_locale: { eq: $locale }}) {
       casesLinkText
       newsLinkText
       newsHeader
