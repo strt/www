@@ -122,7 +122,7 @@ export default function Case({ data, location }) {
                   url={`${getActiveLangPath()}/${node.slug}`}
                   image={node.featuredImage}
                   tags={node.tags}
-                  title={node.title}
+                  title={node.client.name}
                 />
               </Column>
             ))}
@@ -168,6 +168,9 @@ export const pageQuery = graphql`
             }
           }
           tags {
+            name
+          }
+          client {
             name
           }
         }
