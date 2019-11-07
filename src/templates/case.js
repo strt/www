@@ -116,8 +116,8 @@ export default function Case({ data, pageContext: { next } }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    contentfulCase: contentfulCases(slug: { eq: $slug }) {
+  query($slug: String!, $locale: String! ) {
+    contentfulCase: contentfulCases(slug: { eq: $slug }, node_locale: { eq: $locale }) {
       id
       title
       slug
@@ -147,38 +147,6 @@ export const pageQuery = graphql`
         json
       }
     }
-    post: mdx(fields: { slug: { eq: $slug } }) {
-      code {
-        body
-      }
-      fields {
-        slug
-      }
-      frontmatter {
-        date
-        title
-        client
-        excerpt
-        tags
-        video
-        image {
-          childImageSharp {
-            ...CoverImage
-            og: resize(width: 1200, height: 630, quality: 80) {
-              src
-            }
-          }
-        }
-        contact_relation {
-          frontmatter {
-            first_name
-            last_name
-            role
-            email
-            phone
-          }
-        }
-      }
-    }
+ 
   }
 `
