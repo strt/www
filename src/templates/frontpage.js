@@ -16,6 +16,7 @@ import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
+
 export default function Index({ data }) {
   const {
     page,
@@ -46,7 +47,7 @@ export default function Index({ data }) {
         <Grid>
           <Column>
             <Div mt={[3, 6]}>
-              <Link to={routes.work.link} colorVariant="dark" variant="large">
+              <Link to= {`${getActiveLangPath()}/${routes.work.link}`} colorVariant="dark" variant="large">
                 {casesLinkText}
               </Link>
             </Div>
@@ -74,7 +75,7 @@ export default function Index({ data }) {
           ))}
           <Column>
             <Div mt={[3, 2]}>
-              <Link to={routes.news.link} variant="large">
+              <Link to={`${getActiveLangPath()}/${routes.news.link}`} variant="large">
                 {newsLinkText}
               </Link>
             </Div>
