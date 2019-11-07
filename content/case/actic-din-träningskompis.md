@@ -1,5 +1,5 @@
 ---
-title: Din Träningskompis
+title: Your fitness friend
 excerpt: >-
   We have been on Actic’s side since 2013. It all started with a brand platform
   and a rejuvenated visual identity. This strategic work led to a brand promise
