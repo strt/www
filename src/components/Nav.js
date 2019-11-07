@@ -227,7 +227,7 @@ function Navigation({ location }) {
                 colorVariant="dark"
                 variant="large"
               >
-                {child.title}
+                {getActiveLangPath() ? child.sv.title : child.title}
               </Link>
             </li>
           ))}
