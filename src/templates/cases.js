@@ -19,6 +19,7 @@ import {
   durations,
 } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import { getActiveLangPath } from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
   return items.filter(({ node }) =>
@@ -118,7 +119,7 @@ export default function Case({ data, location }) {
             {cases.map(({ node }) => (
               <Column key={node.id} md="6" bottomGap>
                 <Tile
-                  url={node.slug}
+                  url={`${getActiveLangPath()}/${node.slug}`}
                   image={node.featuredImage}
                   tags={node.tags}
                   title={node.title}
