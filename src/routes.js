@@ -15,7 +15,7 @@ export const routes = {
     id: 'career',
     link: '/join-us/',
     title: 'Join us',
-    sv: { title: 'Gå med oss' }
+    sv: { title: 'Arbeta hos oss' }
 
   },
   news: {
