@@ -9,20 +9,20 @@ export const routes = {
     id: 'work',
     link: '/work/',
     title: 'Work',
-    sv: { title: 'Arbete' }
+    sv: { title: 'Case' }
   },
   career: {
     id: 'career',
     link: '/join-us/',
     title: 'Join us',
-    sv: { title: 'Arbeta hos oss' }
+    sv: { title: 'Bli en av oss' }
 
   },
   news: {
     id: 'news',
     link: '/news/',
     title: 'News',
-    sv: { title: 'Nyheter' }
+    sv: { title: 'Aktuellt' }
 
   },
   contact: {
