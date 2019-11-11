@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- Node 8+
+- Node 8+ (lts/carbon)
 - Yarn
 
 ## Setup
