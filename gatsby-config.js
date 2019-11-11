@@ -118,7 +118,6 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
     'gatsby-plugin-netlify-cache',
-    'gatsby-plugin-netlify-cms',
     {
       resolve: `gatsby-source-contentful`,
       options: {
