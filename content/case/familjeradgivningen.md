@@ -35,3 +35,7 @@ The film has been shown to family counselling services throughout Sweden and sev
 - Gold for Best Target Audience Adaptation
 - Gold for Best Film – Nursing and Healthcare
 - Silver for Best Direction
+
+### Publishing Prize
+
+- Gold for Best Information Film
