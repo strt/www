@@ -34,7 +34,7 @@ export default function Index({ data }) {
           {featuredCases.map(node => (
             <Tile
               key={node.id}
-              url={node.slug}
+              url={`${getActiveLangPath()}/work/${node.slug}`}
               title={node.client.name}
               image={node.featuredImage}
               tags={node.tags}
@@ -71,7 +71,7 @@ export default function Index({ data }) {
               <Card
                 date={node.oldDate || node.createdAt}
                 title={node.title}
-                url={`${getActiveLangPath()}/${node.slug}`}
+                url={`${getActiveLangPath()}/news/${node.slug}`}
                 image={node.featuredImage}
               />
             </Column>
