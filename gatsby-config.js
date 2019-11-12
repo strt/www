@@ -126,6 +126,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
+    'gatsby-plugin-client-side-redirect',
   ],
   developMiddleware: app => {
     app.use(

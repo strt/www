@@ -72,29 +72,21 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
 
   const contentfulPages = query.data.allContentfulPages.edges
-  // Todo remove this when migration to contentful is completed
-  const migratedPages = [
-    '/404/',
-    '/join-us/',
-    '/contact/',
-    '/news/',
-    '/',
-    '/work/',
-  ]
   contentfulPages.forEach(page => {
     const { slug, localePath } = getLangOptions(page.node)
-    if (migratedPages.includes(slug)) {
-      createPage({
-        path: `${localePath}${slug}`,
-        component: resolve(
-          `./src/templates/${page.node.template.toLowerCase()}.js`,
-        ),
-        context: {
-          locale: page.node.node_locale,
-          slug: page.node.slug,
-        },
-      })
-    }
+    const template = page.node.template
+      ? page.node.template.toLowerCase()
+      : 'standard'
+    createPage({
+      path: `${localePath}${slug}`,
+      component: resolve(`./src/templates/${template}.js`),
+      context: {
+        locale: page.node.node_locale,
+        slug: page.node.slug,
+      },
+    })
+
+    // registerRedirectsFromNode(page.node)
   })
 
   contentfulCases.data.allContentfulCases.edges.forEach(({ node }) => {
@@ -120,7 +112,6 @@ exports.createPages = async ({ actions, graphql }) => {
         locale: node.node_locale,
       },
     })
-
     // registerRedirectsFromNode(node)
   })
 
