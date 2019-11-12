@@ -25,7 +25,7 @@ export default function Article({ data }) {
   const hasCover = !!featuredImage
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.post)}>
       <article>
         {(createdAt || oldDate) && (
           <Grid>
@@ -106,6 +106,15 @@ export const pageQuery = graphql`
       }
       body {
         json
+      }
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoImage {
+        og: resize(width: 1200, height: 630, quality: 80) {
+          src
+        }
       }
     }
     posts: allContentfulPosts(

@@ -2,22 +2,7 @@ import React from 'react'
 /* eslint-disable-next-line import/no-extraneous-dependencies */
 import { Location } from '@reach/router'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
 import useSiteSettings from '../lib/useSiteSettings'
-
-export const metaQuery = graphql`
-  fragment Meta on ContentfulPages {
-    seoImage {
-      fixed(width: 1200, height: 630, quality: 80) {
-        ...GatsbyContentfulFixed
-      }
-    }
-    seoTitle
-    seoDescription {
-      seoDescription
-    }
-  }
-`
 
 export default function Meta({
   title,

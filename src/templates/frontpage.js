@@ -16,7 +16,6 @@ import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
-
 export default function Index({ data }) {
   const {
     page,
@@ -47,7 +46,11 @@ export default function Index({ data }) {
         <Grid>
           <Column>
             <Div mt={[3, 6]}>
-              <Link to= {`${getActiveLangPath()}/${routes.work.link}`} colorVariant="dark" variant="large">
+              <Link
+                to={`${getActiveLangPath()}/${routes.work.link}`}
+                colorVariant="dark"
+                variant="large"
+              >
                 {casesLinkText}
               </Link>
             </Div>
@@ -75,7 +78,10 @@ export default function Index({ data }) {
           ))}
           <Column>
             <Div mt={[3, 2]}>
-              <Link to={`${getActiveLangPath()}/${routes.news.link}`} variant="large">
+              <Link
+                to={`${getActiveLangPath()}/${routes.news.link}`}
+                variant="large"
+              >
                 {newsLinkText}
               </Link>
             </Div>
@@ -91,7 +97,9 @@ export default function Index({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    contentfulPage: contentfulStartPage(page: { slug: { eq: $slug }, node_locale: { eq: $locale }}) {
+    contentfulPage: contentfulStartPage(
+      page: { slug: { eq: $slug }, node_locale: { eq: $locale } }
+    ) {
       casesLinkText
       newsLinkText
       newsHeader
@@ -118,7 +126,15 @@ export const pageQuery = graphql`
         excerpt {
           excerpt
         }
-        ...Meta
+        seoTitle
+        seoDescription {
+          seoDescription
+        }
+        seoImage {
+          og: resize(width: 1200, height: 630, quality: 80) {
+            src
+          }
+        }
       }
     }
     posts: allContentfulPosts(

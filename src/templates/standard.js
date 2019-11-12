@@ -17,7 +17,7 @@ export default function Standard({ data }) {
   const hasCover = !!image
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.page)}>
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
         {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}

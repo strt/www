@@ -13,7 +13,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 export default function News({ data }) {
   const { title, excerpt } = data.contentfulPage
   return (
-    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
+    <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
         <H1>{title}</H1>
         <Excerpt>{excerpt.excerpt}</Excerpt>
@@ -46,7 +46,15 @@ export const pageQuery = graphql`
       excerpt {
         excerpt
       }
-      ...Meta
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoImage {
+        og: resize(width: 1200, height: 630, quality: 80) {
+          src
+        }
+      }
     }
     articles: allContentfulPosts(
       sort: { fields: [oldDate, createdAt], order: [DESC, DESC] }

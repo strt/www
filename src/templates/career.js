@@ -80,7 +80,15 @@ export const pageQuery = graphql`
         excerpt {
           excerpt
         }
-        ...Meta
+        seoTitle
+        seoDescription {
+          seoDescription
+        }
+        seoImage {
+          og: resize(width: 1200, height: 630, quality: 80) {
+            src
+          }
+        }
       }
     }
 
