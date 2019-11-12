@@ -100,6 +100,9 @@ export const pageQuery = graphql`
         fluid(quality: 80, maxWidth: 1300) {
           ...GatsbyContentfulFluid
         }
+        fixed {
+          src
+        }
       }
       excerpt {
         excerpt
@@ -119,7 +122,7 @@ export const pageQuery = graphql`
     }
     posts: allContentfulPosts(
       limit: 4
-      filter: { node_locale: { eq: $locale } }
+      filter: { slug: { ne: $slug }, node_locale: { eq: $locale } }
     ) {
       edges {
         node {
