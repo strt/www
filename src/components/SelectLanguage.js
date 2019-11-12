@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Link from './Link'
 
 let selectedLang = null
@@ -29,11 +29,10 @@ export function getUrl(location, country) {
 
 export default function SelectLanguage({ location }) {
   return (
-    <Fragment>
+    <>
       <li
         style={{
           padding: '0',
-          textDecoration: getActiveLangPath() === 'sv' && 'underline',
         }}
       >
         <Link
@@ -53,7 +52,7 @@ export default function SelectLanguage({ location }) {
         </Link>
       </li>
 
-      <li style={{ textDecoration: !getActiveLangPath() && 'underline' }}>
+      <li>
         <Link
           to={getUrl(location, 'en')}
           onClick={() => {
@@ -65,6 +64,6 @@ export default function SelectLanguage({ location }) {
           En
         </Link>
       </li>
-    </Fragment>
+    </>
   )
 }
