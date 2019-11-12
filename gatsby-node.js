@@ -120,7 +120,7 @@ exports.createPages = async ({ actions, graphql }) => {
   posts.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     createPage({
-      path: `${localePath}${slug}`,
+      path: `${localePath}/news${slug}`,
       component: resolve(`./src/templates/post.js`),
       context: {
         slug: node.slug,
