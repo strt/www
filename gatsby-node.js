@@ -132,6 +132,21 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+
+  const contentfulPositions = await graphql(`
+    {
+      allContentfulPositions {
+        edges {
+          node {
+            slug
+            title
+            node_locale
+          }
+        }
+      }
+    }
+  `)
+
   const contentfulPages = query.data.allContentfulPages.edges
   // Todo remove this when migration to contentful is completed
   const migratedPages = [
@@ -189,6 +204,19 @@ exports.createPages = async ({ actions, graphql }) => {
     createPage({
       path: `${localePath}${slug}`,
       component: resolve(`./src/templates/case.js`),
+      context: {
+        slug: node.slug,
+        locale: node.node_locale,
+      },
+    })
+
+    // registerRedirectsFromNode(node)
+  })
+  contentfulPositions.data.allContentfulPositions.edges.forEach(({ node }) => {
+    const { slug, localePath } = getLangOptions(node)
+    createPage({
+      path: `${localePath}/join-us${slug}`,
+      component: resolve(`./src/templates/position.js`),
       context: {
         slug: node.slug,
         locale: node.node_locale,
