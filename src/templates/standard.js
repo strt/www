@@ -1,24 +1,26 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
 import Cover from '../components/Cover'
 import Image from '../components/Image'
-import { Grid } from '../components/Grid'
+import ContentWrapper from '../components/ContentWrapper'
+import { Grid, Column } from '../components/Grid'
 import { H1, Excerpt } from '../components/Text'
+import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Standard({ data }) {
-  const { title, excerpt, image } = data.page.frontmatter
+  const { title, excerpt, image, body } = data.contentfulPage
+
   const hasCover = !!image
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost()}>
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt>{excerpt.excerpt}</Excerpt>
       </Hero>
       {hasCover && (
         <Cover>
@@ -26,37 +28,41 @@ export default function Standard({ data }) {
         </Cover>
       )}
       <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
-        <Grid>
-          <MDXRenderer>{data.page.code.body}</MDXRenderer>
-        </Grid>
+        <ContentWrapper>
+          <Grid>
+            <Column md="8">
+              <RichText document={body.json} />
+            </Column>
+          </Grid>
+        </ContentWrapper>
       </Section>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulPages(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
+      id
+      title
+      slug
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
-        }
       }
-      code {
-        body
+      body {
+        json
+      }
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoImage {
+        og: resize(width: 1200, height: 630, quality: 80) {
+          src
+        }
       }
     }
   }
