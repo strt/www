@@ -12,7 +12,7 @@ import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Standard({ data }) {
-  const { title, excerpt, image, body } = data.contentfulPage
+  const { title, excerpt, image, body } = data.page
 
   const hasCover = !!image
 
@@ -20,7 +20,7 @@ export default function Standard({ data }) {
     <Layout meta={getMetaFromPost()}>
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
-        <Excerpt>{excerpt.excerpt}</Excerpt>
+        {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
       </Hero>
       {hasCover && (
         <Cover>
@@ -31,7 +31,7 @@ export default function Standard({ data }) {
         <ContentWrapper>
           <Grid>
             <Column md="8">
-              <RichText document={body.body} />
+              <RichText document={body.json} />
             </Column>
           </Grid>
         </ContentWrapper>
@@ -42,10 +42,7 @@ export default function Standard({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    contentfulPage: contentfulPages(
-      slug: { eq: $slug }
-      node_locale: { eq: $locale }
-    ) {
+    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
       id
       title
       slug
@@ -53,7 +50,7 @@ export const pageQuery = graphql`
         excerpt
       }
       body {
-        body
+        json
       }
       seoTitle
       seoDescription {
