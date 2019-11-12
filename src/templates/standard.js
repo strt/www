@@ -31,7 +31,7 @@ export default function Standard({ data }) {
         <ContentWrapper>
           <Grid>
             <Column md="8">
-              <RichText document={body.json} />
+              <RichText document={body.body} />
             </Column>
           </Grid>
         </ContentWrapper>
@@ -53,7 +53,7 @@ export const pageQuery = graphql`
         excerpt
       }
       body {
-        json
+        body
       }
       seoTitle
       seoDescription {
