@@ -12,4 +12,4 @@ This year Strateg was nominated no less than SEVEN times for the Publishing Priz
 
 We would like to say a warm thank you to our lovely, brave clients for patiently considering all of the – sometimes challenging – ideas we are presenting. But now, let’s celebrate!
 
-Read about the Familjerådgivningen case and watch the film [here](https://www.strateg.se/work/familjeradgivningen/)
+Read about the Familjerådgivningen case and watch the film [here](https://www.strateg.se/work/familjeradgivningen/).
