@@ -9,6 +9,7 @@ import { H1, H2, H3, Excerpt, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import { getActiveLangPath } from '../components/SelectLanguage'
 
 export default function Career({ data }) {
   const { contact, spontaneousTitle, page, secondHeader } = data.contentfulPage
@@ -31,7 +32,10 @@ export default function Career({ data }) {
                 {data.allContentfulPositions.edges.map(({ node }) => (
                   <li key={node.id}>
                     <Excerpt mb={[2, 3]}>
-                      <Link to={`join-us/${node.slug}`} colorVariant="white">
+                      <Link
+                        to={`${getActiveLangPath()}/join-us/${node.slug}`}
+                        colorVariant="white"
+                      >
                         {node.role}
                       </Link>
                     </Excerpt>
