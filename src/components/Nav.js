@@ -143,7 +143,7 @@ function Navigation({ location }) {
   // Close nav on location change
   useEffect(() => {
     toggle(false)
-  }, [location])
+  }, [location, toggle])
 
   // Update nprogress color
   useEffect(() => {
