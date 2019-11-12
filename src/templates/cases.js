@@ -119,7 +119,7 @@ export default function Case({ data, location }) {
             {cases.map(({ node }) => (
               <Column key={node.id} md="6" bottomGap>
                 <Tile
-                  url={`${getActiveLangPath()}/${node.slug}`}
+                  url={`${getActiveLangPath()}/work/${node.slug}`}
                   image={node.featuredImage}
                   tags={node.tags}
                   title={node.client.name}
