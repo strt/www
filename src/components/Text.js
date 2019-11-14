@@ -22,7 +22,7 @@ export const textSize = css`
   font-size: ${fluidRange({ min: 14, max: 18 })};
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(20)};
+    font-size: max(${vw(20)}, 10px);
   }
 `
 
@@ -42,7 +42,7 @@ export const Excerpt = styled.p`
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(24)};
+    font-size: max(${vw(24)}, 12px);
   }
 `
 
@@ -54,7 +54,8 @@ export const H1 = styled.h1`
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(56)};
+    font-size: max(${vw(56)}, 24px);
+
   }
 `
 
@@ -66,7 +67,7 @@ export const H2 = styled.h2`
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(32)};
+    font-size: max(${vw(32)}, 14px);
   }
 `
 
@@ -78,7 +79,7 @@ export const H3 = styled.h3`
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(24)};
+    font-size: max(${vw(24)}, 12px);
   }
 `
 
@@ -90,7 +91,7 @@ export const H4 = styled.h4`
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(20)};
+    font-size: max(${vw(20)}, 10px);
   }
 `
 
@@ -104,6 +105,6 @@ export const H6 = styled.h6`
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(14)};
+    font-size: max(${vw(14)}, 10px);
   }
 `
