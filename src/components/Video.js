@@ -19,6 +19,12 @@ const Wrapper = styled.div`
 export default function Video({ src, ...props }) {
   const ref = useRef(null)
   const [intersection] = useIntersectionObserver(ref)
+  let aspectRatio
+
+  if (props.aspect)
+    aspectRatio = props.aspect.includes(':')
+      ? props.aspect.split(':')
+      : props.aspect
 
   useEffect(() => {
     if (intersection) {
@@ -31,7 +37,7 @@ export default function Video({ src, ...props }) {
   }, [intersection])
 
   return (
-    <Wrapper>
+    <Wrapper aspectRatio={aspectRatio}>
       <video ref={ref} src={src} muted playsInline autoPlay loop {...props} />
     </Wrapper>
   )

@@ -24,10 +24,18 @@ function getImageData(data, name) {
   return null
 }
 
-function getVideoData(data, name) {
+function getVideoData(data, name, aspect) {
   if (data.target.fields[name]) {
     return (
-      <EmbedPlayer src={data.target.fields[name]['en-GB']} bg="transparent" />
+      <Video
+        src={data.target.fields[name]['en-GB']}
+        aspect={
+          data.target.fields[aspect]
+            ? data.target.fields[aspect]['en-GB']
+            : undefined
+        }
+        bg="transparent"
+      />
     )
   }
   return null
@@ -96,8 +104,8 @@ const options = {
       if (data.target.sys.contentType.sys.id === 'col2') {
         const image1 = getImageData(data, 'image1')
         const image2 = getImageData(data, 'image2')
-        const video1 = getVideoData(data, 'videoLink1')
-        const video2 = getVideoData(data, 'videoLink2')
+        const video1 = getVideoData(data, 'videoLink1', 'videoAspectRatio1')
+        const video2 = getVideoData(data, 'videoLink2', 'videoAspectRatio2')
 
         return (
           <Grid>
