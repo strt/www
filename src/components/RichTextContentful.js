@@ -47,9 +47,21 @@ function isUrlAbsolute(url) {
 
 const options = {
   renderNode: {
-    [BLOCKS.HEADING_1]: (node, children) => <H1>{children}</H1>,
-    [BLOCKS.HEADING_2]: (node, children) => <H2>{children}</H2>,
-    [BLOCKS.HEADING_3]: (node, children) => <H3>{children}</H3>,
+    [BLOCKS.HEADING_1]: (node, children) => (
+      <Column md={8} mb={[0, 0]}>
+        <H1>{children}</H1>
+      </Column>
+    ),
+    [BLOCKS.HEADING_2]: (node, children) => (
+      <Column md={8} mb={[0, 0]}>
+        <H2>{children}</H2>
+      </Column>
+    ),
+    [BLOCKS.HEADING_3]: (node, children) => (
+      <Column md={8} mb={[0, 0]}>
+        <H3>{children}</H3>
+      </Column>
+    ),
     [BLOCKS.PARAGRAPH]: (node, children) => {
       let vimeoLink = null
       let videoLink = null
@@ -70,7 +82,11 @@ const options = {
         return <EmbedPlayer src={vimeoLink} bg="transparent" />
       }
 
-      return <Text>{children}</Text>
+      return (
+        <Column md="8">
+          <Text>{children}</Text>
+        </Column>
+      )
     },
     [INLINES.HYPERLINK]: (node, children) => {
       const isAbsolute = isUrlAbsolute(node.data.uri)
@@ -94,10 +110,12 @@ const options = {
     }) => {
       const file = fields.file['en-GB']
       return (
-        <Image
-          alt={fields.description && fields.description['en-GB']}
-          src={file.url}
-        />
+        <Column md={12}>
+          <Image
+            alt={fields.description && fields.description['en-GB']}
+            src={file.url}
+          />
+        </Column>
       )
     },
     [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
@@ -108,9 +126,9 @@ const options = {
         const video2 = getVideoData(data, 'videoLink2', 'videoAspectRatio2')
 
         return (
-          <Grid>
-            <Column md="6">{image1 || video1}</Column>
-            <Column md="6">{image2 || video2}</Column>
+          <Grid pl={[0, 0]} pr={[0, 0]}>
+            <Column md={6}>{image1 || video1}</Column>
+            <Column md={6}>{image2 || video2}</Column>
           </Grid>
         )
       }
