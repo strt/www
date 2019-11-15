@@ -25,6 +25,6 @@
     "github": "https://github.com/strt"
   },
   "seo": {
-    "default_image": "./media/uploads/default-og.jpg"
+    "default_image": "./default-og.jpg"
   }
 }
