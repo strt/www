@@ -220,11 +220,10 @@ function isNumeric(num) {
 }
 
 function merge(a, b) {
-  return Object.assign(
-    {},
-    a,
-    b,
-    Object.keys(b || {}).reduce(
+  return {
+    ...a,
+    ...b,
+    ...Object.keys(b || {}).reduce(
       (obj, key) =>
         Object.assign(obj, {
           [key]:
@@ -234,7 +233,7 @@ function merge(a, b) {
         }),
       {},
     ),
-  )
+  }
 }
 
 const mediaQueries = [null, ...Object.values(breakpoints).map(mediaQuery)]
