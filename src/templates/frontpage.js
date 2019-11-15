@@ -40,6 +40,7 @@ export default function Index({ data }) {
               tags={node.tags}
               bg={node.color}
               mb="0"
+              awards={node.awards}
             />
           ))}
         </CaseGrid>
@@ -118,6 +119,13 @@ export const pageQuery = graphql`
         }
         client {
           name
+        }
+        awards {
+          description
+          title
+          fluid: fluid(quality: 80, maxWidth: 500) {
+            ...GatsbyContentfulFluid
+          }
         }
       }
       page {

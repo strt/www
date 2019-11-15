@@ -17,6 +17,7 @@ import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
+import Awards from '../components/Awards'
 
 export default function Case({ data, pageContext: { next } }) {
   const {
@@ -28,6 +29,7 @@ export default function Case({ data, pageContext: { next } }) {
     featuredVideo,
     featuredImage,
     body,
+    awards,
   } = data.contentfulCase
 
   return (
@@ -57,6 +59,7 @@ export default function Case({ data, pageContext: { next } }) {
             {featuredVideo && (
               <EmbedPlayer src={featuredVideo} bg="transparent" />
             )}
+            <Awards items={awards} />
           </Cover>
         )}
         <Section pt={[5, 7]} pb={[10, 13]}>
@@ -116,8 +119,11 @@ export default function Case({ data, pageContext: { next } }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!, $locale: String! ) {
-    contentfulCase: contentfulCases(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+  query($slug: String!, $locale: String!) {
+    contentfulCase: contentfulCases(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
       id
       title
       slug
@@ -143,10 +149,16 @@ export const pageQuery = graphql`
         lastName
         email
       }
+      awards {
+        description
+        title
+        fluid: fluid(quality: 80, maxWidth: 500) {
+          ...GatsbyContentfulFluid
+        }
+      }
       body {
         json
       }
     }
- 
   }
 `

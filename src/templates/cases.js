@@ -123,6 +123,7 @@ export default function Case({ data, location }) {
                   image={node.featuredImage}
                   tags={node.tags}
                   title={node.client.name}
+                  awards={node.awards}
                 />
               </Column>
             ))}
@@ -180,6 +181,13 @@ export const pageQuery = graphql`
           }
           client {
             name
+          }
+          awards {
+            description
+            title
+            fluid: fluid(quality: 80, maxWidth: 500) {
+              ...GatsbyContentfulFluid
+            }
           }
         }
       }
