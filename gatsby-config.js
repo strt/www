@@ -11,9 +11,6 @@ module.exports = {
   siteMetadata: {
     siteUrl,
   },
-  mapping: {
-    'Mdx.frontmatter.contact_relation': 'Mdx.frontmatter.email',
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-robots-txt',
@@ -29,13 +26,6 @@ module.exports = {
             policy: [{ userAgent: '*', allow: '/' }],
           },
         },
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/media/`,
-        name: 'media',
       },
     },
     {
