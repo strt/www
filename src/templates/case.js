@@ -59,7 +59,7 @@ export default function Case({ data, pageContext: { next } }) {
             {featuredVideo && (
               <EmbedPlayer src={featuredVideo} bg="transparent" />
             )}
-            <Awards items={awards} />
+            {awards && <Awards items={awards} />}
           </Cover>
         )}
         <Section pt={[5, 7]} pb={[10, 13]}>
