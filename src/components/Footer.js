@@ -108,7 +108,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               colorVariant="white"
             >
-              {getActiveLangPath() ? 'Diplomat Gruppen' : 'Diplomat Group'}
+              {getActiveLangPath() ? 'Diplomatgruppen' : 'Diplomat Group'}
             </Link>
           </CopyrightText>
         </Column>
