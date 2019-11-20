@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
 import { colors, breakpoints, fluidRange, vw } from '../style'
+import { getActiveLangPath } from './SelectLanguage'
 
 export default function Tags({ items, linked = true, colorVariant, ...rest }) {
   if (!items || !items.length) {
@@ -16,7 +17,7 @@ export default function Tags({ items, linked = true, colorVariant, ...rest }) {
           <li key={item.name}>
             {linked ? (
               <Link
-                href={`/work?filter=${encodeURIComponent(
+                href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
                   item.name.toLowerCase(),
                 )}`}
                 colorVariant={colorVariant}
