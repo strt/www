@@ -92,7 +92,7 @@ export default function Case({ data, location }) {
               colorVariant="gray"
               variant="large"
             >
-              All projects
+              {getActiveLangPath() ? 'Alla projekt' : 'All projects'}
             </Link>
             {tags.map(tag => (
               <Link
