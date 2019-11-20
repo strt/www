@@ -54,7 +54,7 @@ function tagsWrapperModifiers(props) {
 const TagsWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  line-height: 1.3em;
+  line-height: 0.8125em;
   ${tagsWrapperModifiers}
   color: ${props => props.textColor || colors.dark};
 `

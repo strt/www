@@ -13,7 +13,7 @@ import {
 
 const Label = styled.label`
   font-size: ${fluidRange({ min: 12, max: 16 })};
-  line-height: 1.2em;
+  line-height: 0.75em;
   color: ${colors.steel500};
 
   @media ${breakpoints.medium} {
@@ -73,7 +73,7 @@ const Wrapper = styled.div`
 
   textarea {
     resize: vertical;
-    min-height: 2.4em;
+    min-height: 1.5em;
   }
 `
 

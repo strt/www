@@ -65,6 +65,8 @@ export const easings = {
   easeOutSine: 'cubic-bezier(0.39, 0.575, 0.565, 1)',
 }
 
+export const baseFontsize = '16px'
+
 export const GlobalStyle = createGlobalStyle`
   ${reset};
 
@@ -75,7 +77,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    font-size: 10px;
+    font-size: ${baseFontsize};
     font-family: ${fontFamily};
   }
 

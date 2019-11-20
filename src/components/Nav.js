@@ -39,7 +39,7 @@ const NavLink = styled(GatsbyLink)`
   display: inline-block;
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
   font-size: ${fluidRange({ min: 36, max: 48 })};
-  line-height: 1.2777777778em;
+  line-height: 0.798611em;
   font-weight: 700;
   text-decoration: none;
   color: white;

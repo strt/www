@@ -121,8 +121,8 @@ const Box = styled.div`
     background: white;
 
     & svg {
-      margin-bottom: 0.5em;
-      font-size: 1.2em;
+      margin-bottom: 0.3125em;
+      font-size: 0.75em;
     }
   }
 

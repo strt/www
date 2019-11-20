@@ -4,10 +4,10 @@ import { fluidRange } from '../style'
 
 const style = css`
   ${textSize}
-  margin-bottom: 2em;
+  margin-bottom: 1.25em;
   margin-left: ${fluidRange({ min: 4, max: 8 })};
   list-style-position: inside;
-  line-height: 1.6em;
+  line-height: 1em;
 
   li {
     p {

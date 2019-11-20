@@ -14,7 +14,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 
 const SmallText = styled(Text)`
   font-size: ${fluidRange({ min: 11, max: 14 })};
-  line-height: 1.2em;
+  line-height: 0.75em;
 
   @media ${breakpoints.medium} {
     font-size: ${vw(16)};
