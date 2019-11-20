@@ -9,7 +9,7 @@ import {
   vw,
 } from '../style'
 
-const base = css(
+export const base = css(
   props => ({
     fontFamily,
     color: props.textColor || colors.dark,
@@ -29,7 +29,7 @@ export const textSize = css`
 export const Text = styled.p`
   width: 100%;
   margin-bottom: 1.25em;
-  line-height: 1em;
+  line-height: 1.5em;
   ${base}
   ${textSize}
 `
@@ -38,7 +38,7 @@ export const Excerpt = styled.p`
   margin-bottom: 1.25em;
   font-size: ${fluidRange({ min: 16, max: 20 })};
   font-weight: 500;
-  line-height: 1em;
+  line-height: 1.25em;
   ${base}
 
   @media ${breakpoints.medium} {
@@ -48,17 +48,19 @@ export const Excerpt = styled.p`
 
 export const H1 = styled.h1`
   margin-bottom: 0.175em;
-  font-size: ${fluidRange({ min: 32, max: 48 })};
-  font-weight: 900;
-  line-height: 0.78125em;
-  ${base}
-
+  font-size: 2.5em;
+  font-weight: 400;
+  line-height: 1.125em;
+  ${base} 
+  
   @media ${breakpoints.medium} {
     font-size: max(${vw(56)}, 24px);
+    letter-spacing: -2px;
+
   }
 `
 
-export const HeroText = styled.h1`
+export const H1Large = styled.h1`
   margin-bottom: 0.175em;
   font-size: ${fluidRange({ min: 48, max: 64 })};
   font-weight: 400;
@@ -68,7 +70,6 @@ export const HeroText = styled.h1`
   @media ${breakpoints.medium} {
     font-size: 8.25em;
     letter-spacing: -6.6px;
-    line-height: 1em;
   }
 `
 

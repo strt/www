@@ -7,14 +7,14 @@ import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
-import { H1, Excerpt, Text } from '../components/Text'
+import { H1Large, Excerpt, Text } from '../components/Text'
 import { formatPhone } from '../lib/format'
 import { breakpoints, fluidRange, vw, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 const SmallText = styled(Text)`
   font-size: ${fluidRange({ min: 11, max: 14 })};
-  line-height: 0.75em;
+  line-height: 1.1em;
 
   @media ${breakpoints.medium} {
     font-size: ${vw(16)};
@@ -27,7 +27,7 @@ export default function Contact({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero>
-        <H1>{page.title}</H1>
+        <H1Large>{page.title}</H1Large>
         <Excerpt>{page.excerpt.excerpt}</Excerpt>
       </Hero>
       <Section mb={[4, 7]}>

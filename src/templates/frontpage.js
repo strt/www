@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { HeroText, H2 } from '../components/Text'
+import { H2, base } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -15,6 +15,20 @@ import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
+
+export const HeroText = styled.h1`
+  margin-bottom: 0.175em;
+  font-size: 4em;
+  font-weight: 400;
+  line-height: 1.25em;
+  ${base} 
+  
+  @media ${breakpoints.medium} {
+    font-size: 16em;
+    line-height: 0.92578125em;
+    letter-spacing: -2px;
+  }
+`
 
 export default function Index({ data }) {
   const {
