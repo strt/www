@@ -4,18 +4,19 @@ import Link from './Link'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import Section from './Section'
+import LogoIcon from './LogoIcon'
 import { ScrollToTopButton } from './Button'
 import { footerNavigation } from '../routes'
-import { colors, breakpoints, fluidRange, vw } from '../style'
+import { colors, breakpoints } from '../style'
 import { formatPhone } from '../lib/format'
 import useSiteSettings from '../lib/useSiteSettings'
 import { getActiveLangPath } from './SelectLanguage'
 
 const CopyrightText = styled(Text)`
-  font-size: ${fluidRange({ min: 10, max: 14 })};
+  font-size: 0.75rem;
 
   @media ${breakpoints.medium} {
-    font-size: max(${vw(12)}, 8px);
+    font-size: 1rem;
   }
 `
 
@@ -27,6 +28,9 @@ export default function Footer() {
   return (
     <Section as="footer" bg={colors.dark} py={[4, 7]}>
       <Grid>
+        <Column md="12">
+          <LogoIcon />
+        </Column>
         {siteSettings.offices.map(office => (
           <Column md="3" key={office.city}>
             <Text as="address" textColor="white">
