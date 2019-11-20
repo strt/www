@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { H1, H2 } from '../components/Text'
+import { HeroText, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -27,7 +27,7 @@ export default function Index({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero scrollButtonElement="#case-section" pt={8}>
-        <H1>{page.title}</H1>
+        <HeroText>{page.title}</HeroText>
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
