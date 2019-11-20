@@ -10,7 +10,6 @@ import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
 import Hero from '../components/Hero'
-import InstagramFeed from '../components/InstagramFeed'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
@@ -102,9 +101,6 @@ export default function Index({ data }) {
             </Div>
           </Column>
         </Grid>
-      </Section>
-      <Section bg={colors.dark} pt="0" mt={[8, 24]} pb={[12, 36]}>
-        <InstagramFeed />
       </Section>
     </Layout>
   )
