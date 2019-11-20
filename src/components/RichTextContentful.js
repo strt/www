@@ -4,7 +4,7 @@ import React from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { H1, H2, H3, Text } from './Text'
-import { UnorderedList } from './List'
+import { UnorderedList, ListItem } from './List'
 import { Grid, Column } from './Grid'
 import Image from './Image'
 import Link from './Link'
@@ -101,8 +101,11 @@ const options = {
       )
     },
     [BLOCKS.UL_LIST]: (node, children) => (
-      <UnorderedList>{children}</UnorderedList>
+      <Column md={8} mb={[0, 0]}>
+        <UnorderedList>{children}</UnorderedList>
+      </Column>
     ),
+    [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
     [BLOCKS.EMBEDDED_ASSET]: ({
       data: {
         target: { fields },
