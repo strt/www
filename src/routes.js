@@ -3,40 +3,43 @@ export const routes = {
     id: 'index',
     link: '/',
     title: 'Home',
-    sv: { title: 'Hem' }
+    sv: { title: 'Hem' },
   },
   work: {
     id: 'work',
     link: '/work/',
     title: 'Work',
-    sv: { title: 'Case' }
+    sv: { title: 'Case' },
+  },
+  about: {
+    id: 'about',
+    link: '/about/',
+    title: 'About',
+    sv: { title: 'Om oss' },
   },
   career: {
     id: 'career',
     link: '/join-us/',
     title: 'Join us',
-    sv: { title: 'Bli en av oss' }
-
+    sv: { title: 'Bli en av oss' },
   },
   news: {
     id: 'news',
     link: '/news/',
     title: 'News',
-    sv: { title: 'Aktuellt' }
-
+    sv: { title: 'Aktuellt' },
   },
   contact: {
     id: 'contact',
     link: '/contact/',
     title: 'Contact',
-    sv: { title: 'Kontakt' }
-
+    sv: { title: 'Kontakt' },
   },
   policy: {
     id: 'policy',
     link: '/integrity-policy/',
     title: 'Policy',
-    sv: { title: 'Policy' }
+    sv: { title: 'Policy' },
   },
 }
 
