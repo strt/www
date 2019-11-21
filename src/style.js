@@ -15,6 +15,7 @@ export const colors = {
   blue800: '#1d36c3',
   blue900: '#1226b9',
   dark: '#0b101e',
+  light: '#ffffff',
   ice: '#f5f6f6',
   pinkPeach500: '#fdbab8',
   steel050: '#edeeef',
@@ -148,7 +149,7 @@ export const GlobalStyle = createGlobalStyle`
     transform: rotate(3deg) translate(0, -4px);
   }
 
-  -webkit-keyframes move {
+  @-webkit-keyframes move {
     from {
       background-position: 2px 19px;
     }
@@ -156,8 +157,8 @@ export const GlobalStyle = createGlobalStyle`
       background-position: 500px 19px;
     }
   }
-
-  keyframe move {
+  
+  @keyframe move {
     from {
       background-position: 2px 19px;
     }
