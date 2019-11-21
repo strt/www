@@ -5,7 +5,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
 import { textSize } from './Text'
-import { colors, fontFamily, easings, durations } from '../style'
+import { colors, fontFamily } from '../style'
 
 const COLOR_VARIANTS = {
   red: colors.watermelonRed500,
@@ -20,6 +20,7 @@ function getColor(props) {
 }
 
 export const A = styled.a`
+  position: relative;
   border: none;
   padding: 0;
   margin: 0;
@@ -27,14 +28,32 @@ export const A = styled.a`
   font-family: ${fontFamily};
   font-size: inherit;
   font-weight: inherit;
-  text-decoration: underline;
   color: ${props => getColor(props)};
-  background: none;
-  transition: background ${durations.fast} ${easings.easeInQuad};
   -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+
+  &::after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 8px;
+    background-size: 15px 11px;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-image: url('/wave.svg');
+    animation: move 15s linear infinite;
+    transition: width 1s;
+    animation-play-state: running;
+  }
 
   &:hover {
-    background-color: ${props => rgba(getColor(props), 0.1)};
+    &::after {
+      width: 100%;
+      animation-play-state: running !important;
+    }
   }
 
   &.focus-visible {
@@ -44,7 +63,10 @@ export const A = styled.a`
   &:active,
   &[aria-current],
   &[data-partially-current] {
-    text-decoration: none;
+    &::after {
+      width: 100%;
+      animation-play-state: paused;
+    }
   }
 
   button& {
