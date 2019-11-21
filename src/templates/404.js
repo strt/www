@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import { H1, Excerpt } from '../components/Text'
@@ -8,6 +9,9 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function NotFound({ data }) {
   const { page, linkText } = data.contentfulPage
+
+  const theme = useContext(ThemeContext)
+  theme.dark = false
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>

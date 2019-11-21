@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import { H2, base } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
@@ -30,6 +31,9 @@ export const HeroText = styled.h1`
 `
 
 export default function Index({ data }) {
+  const theme = useContext(ThemeContext)
+  theme.dark = false
+
   const {
     page,
     featuredCases,

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Link from '../components/Link'
@@ -23,6 +24,9 @@ const SmallText = styled(Text)`
 
 export default function Contact({ data }) {
   const { page, contacts } = data.contentfulPage
+
+  const theme = useContext(ThemeContext)
+  theme.dark = false
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>

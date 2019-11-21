@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Hero from '../components/Hero'
@@ -31,6 +32,9 @@ export default function Case({ data, pageContext: { next } }) {
     body,
     awards,
   } = data.contentfulCase
+
+  const theme = useContext(ThemeContext)
+  theme.dark = false
 
   return (
     <Layout meta={getMetaFromPost()} hideFooter>

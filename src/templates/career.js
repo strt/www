@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Link from '../components/Link'
@@ -14,6 +15,9 @@ import { getActiveLangPath } from '../components/SelectLanguage'
 export default function Career({ data }) {
   const { contact, spontaneousTitle, page, secondHeader } = data.contentfulPage
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
+
+  const theme = useContext(ThemeContext)
+  theme.dark = true
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>

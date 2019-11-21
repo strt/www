@@ -68,6 +68,7 @@ export const H1Large = styled.h1`
 
   @media ${breakpoints.medium} {
     font-size: 8.25em;
+    line-height: 0.924em;
     letter-spacing: -6.6px;
   }
 `

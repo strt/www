@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
 import dayjs from 'dayjs'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Image from '../components/Image'
@@ -23,6 +24,9 @@ export default function Article({ data }) {
     ? dayjs(oldDate).format('D MMM YYYY')
     : dayjs(createdAt).format('D MMM YYYY')
   const hasCover = !!featuredImage
+
+  const theme = useContext(ThemeContext)
+  theme.dark = false
 
   return (
     <Layout meta={getMetaFromPost(data.post)}>

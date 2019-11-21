@@ -147,6 +147,34 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 1.0;
     transform: rotate(3deg) translate(0, -4px);
   }
+
+  -webkit-keyframes move {
+    from {
+      background-position: 2px 19px;
+    }
+    to {
+      background-position: 500px 19px;
+    }
+  }
+
+  keyframe move {
+    from {
+      background-position: 2px 19px;
+    }
+    to {
+      background-position: 500px 19px;
+    }
+  }
+
+  .dark {
+    background-color: ${colors.dark};
+    transition: all 0.6s ease;
+  }
+  
+  .light {
+    transition: all 0.6s ease;
+  }
+
 `
 
 /**

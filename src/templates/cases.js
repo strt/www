@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useContext, useState } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import queryString from 'query-string'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Div from '../components/Div'
@@ -61,6 +62,9 @@ const Animation = styled.div`
 `
 
 export default function Case({ data, location }) {
+  const theme = useContext(ThemeContext)
+  theme.dark = false
+
   const [filter, setFilter] = useState(
     () => queryString.parse(location.search).filter || null,
   )

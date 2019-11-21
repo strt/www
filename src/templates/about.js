@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
@@ -14,6 +15,9 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 export default function About({ data }) {
   const { excerpt, image, body } = data.page
   const hasCover = !!image
+
+  const theme = useContext(ThemeContext)
+  theme.dark = true
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
