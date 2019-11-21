@@ -46,6 +46,7 @@ export const routes = {
 export const mainNavigation = [
   routes.index,
   routes.work,
+  routes.about,
   routes.news,
   routes.career,
   routes.contact,
@@ -53,6 +54,7 @@ export const mainNavigation = [
 
 export const footerNavigation = [
   routes.work,
+  routes.about,
   routes.news,
   routes.contact,
   routes.career,
