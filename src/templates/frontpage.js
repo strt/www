@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
-import { H2, base } from '../components/Text'
+import { H1Large, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -15,20 +15,6 @@ import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
-
-export const HeroText = styled.h1`
-  margin-bottom: 0.175em;
-  font-size: 4em;
-  font-weight: 400;
-  line-height: 1.25em;
-  ${base} 
-  
-  @media ${breakpoints.medium} {
-    font-size: 16em;
-    line-height: 0.92578125em;
-    letter-spacing: -2px;
-  }
-`
 
 export default function Index({ data }) {
   const theme = useContext(ThemeContext)
@@ -44,7 +30,7 @@ export default function Index({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero scrollButtonElement="#case-section" pt={8}>
-        <HeroText>{page.title}</HeroText>
+        <H1Large>{page.title}</H1Large>
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
