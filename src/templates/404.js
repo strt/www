@@ -11,7 +11,7 @@ export default function NotFound({ data }) {
   const { page, linkText } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>

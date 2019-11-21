@@ -26,7 +26,7 @@ export default function Contact({ data }) {
   const { page, contacts } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>

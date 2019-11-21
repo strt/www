@@ -18,7 +18,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Index({ data }) {
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   const {
     page,

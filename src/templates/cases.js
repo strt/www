@@ -63,7 +63,7 @@ const Animation = styled.div`
 
 export default function Case({ data, location }) {
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   const [filter, setFilter] = useState(
     () => queryString.parse(location.search).filter || null,

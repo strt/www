@@ -15,7 +15,7 @@ export default function News({ data }) {
   const { title, excerpt } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>

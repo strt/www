@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Meta from './Meta'
 import Footer from './Footer'
 import { ThemeContext } from '../context/ThemeContext'
+import { colors } from '../style'
 
 const PageWrapper = styled.div`
   display: flex;
@@ -18,7 +19,9 @@ export default function Layout({ meta, hideFooter, children }) {
   return (
     <ThemeContext.Consumer>
       {theme => (
-        <PageWrapper className={theme.dark ? 'dark' : 'light'}>
+        <PageWrapper
+          style={{ background: theme.dark ? colors.dark : colors.light }}
+        >
           <Meta {...meta} />
           <Main id="main-content">{children}</Main>
           {!hideFooter && <Footer />}

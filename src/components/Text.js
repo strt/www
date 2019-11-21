@@ -54,7 +54,7 @@ export const H1 = styled.h1`
   ${base} 
   
   @media ${breakpoints.medium} {
-    font-size: max(30px, 60px);
+    font-size: 2.5em;
     line-height: 1.125em;
   }
 `

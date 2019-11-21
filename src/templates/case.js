@@ -34,7 +34,7 @@ export default function Case({ data, pageContext: { next } }) {
   } = data.contentfulCase
 
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost()} hideFooter>

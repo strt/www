@@ -17,12 +17,12 @@ export default function About({ data }) {
   const hasCover = !!image
 
   const theme = useContext(ThemeContext)
-  theme.dark = true
+  if (!theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
       <Hero md={6} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
-        {excerpt && <H1>{excerpt.excerpt}</H1>}
+        {excerpt && <H1 textColor="white">{excerpt.excerpt}</H1>}
       </Hero>
       {hasCover && (
         <Cover>
@@ -34,7 +34,7 @@ export default function About({ data }) {
           <ContentWrapper>
             <Grid>
               <Column md="8">
-                <RichText document={body.json} />
+                <RichText textColor="white" document={body.json} />
               </Column>
             </Grid>
           </ContentWrapper>

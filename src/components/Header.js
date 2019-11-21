@@ -3,24 +3,31 @@ import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
-import { breakpoints, fluidRange, vw } from '../style'
+import { colors, breakpoints, fluidRange, vw } from '../style'
 import { getActiveLangPath } from './SelectLanguage'
 import Navigation from './Nav'
+import { ThemeContext } from '../context/ThemeContext'
 
 export default function Header() {
   return (
-    <StyledHeader>
-      <Grid justifyContent="space-between">
-        <Column width="auto">
-          <LogoLink to={`${getActiveLangPath()}/`}>
-            <Logo />
-          </LogoLink>
-        </Column>
-        <Column width="auto">
-          <Navigation />
-        </Column>
-      </Grid>
-    </StyledHeader>
+    <ThemeContext.Consumer>
+      {theme => (
+        <StyledHeader
+          style={{ background: theme.dark ? colors.dark : colors.light }}
+        >
+          <Grid justifyContent="space-between">
+            <Column width="auto">
+              <LogoLink to={`${getActiveLangPath()}/`}>
+                <Logo />
+              </LogoLink>
+            </Column>
+            <Column width="auto">
+              <Navigation />
+            </Column>
+          </Grid>
+        </StyledHeader>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 

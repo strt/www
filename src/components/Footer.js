@@ -39,6 +39,7 @@ export default function Footer() {
               <Link
                 href={`tel:${formatPhone(office.phone)}`}
                 colorVariant="white"
+                styleVariant="light"
               >
                 {office.phone}
               </Link>
@@ -52,6 +53,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               colorVariant="white"
+              styleVariant="light"
             >
               Instagram
             </Link>
@@ -61,6 +63,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               colorVariant="white"
+              styleVariant="light"
             >
               Facebook
             </Link>
@@ -70,6 +73,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               colorVariant="white"
+              styleVariant="light"
             >
               LinkedIn
             </Link>
@@ -79,6 +83,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               colorVariant="white"
+              styleVariant="light"
             >
               GitHub
             </Link>
@@ -92,6 +97,7 @@ export default function Footer() {
                 <Link
                   to={getActiveLangPath() + route.link}
                   colorVariant="white"
+                  styleVariant="light"
                 >
                   {getActiveLangPath() ? route.sv.title : route.title}
                 </Link>
@@ -111,6 +117,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               colorVariant="white"
+              styleVariant="light"
             >
               {getActiveLangPath() ? 'Diplomatgruppen' : 'Diplomat Group'}
             </Link>

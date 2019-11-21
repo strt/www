@@ -4,6 +4,7 @@ const defaultState = {
   dark: false,
   toggleDark: () => {},
 }
+
 export const ThemeContext = React.createContext(defaultState)
 
 class ThemeProvider extends React.Component {
@@ -12,6 +13,10 @@ class ThemeProvider extends React.Component {
     this.state = {
       dark: false,
     }
+  }
+
+  toggleDark = () => {
+    this.setState(prevState => ({ dark: !prevState.dark }))
   }
 
   render() {

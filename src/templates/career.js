@@ -17,7 +17,7 @@ export default function Career({ data }) {
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   const theme = useContext(ThemeContext)
-  theme.dark = true
+  if (!theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>

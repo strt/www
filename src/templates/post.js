@@ -26,7 +26,7 @@ export default function Article({ data }) {
   const hasCover = !!featuredImage
 
   const theme = useContext(ThemeContext)
-  theme.dark = false
+  if (theme.dark) theme.toggleDark()
 
   return (
     <Layout meta={getMetaFromPost(data.post)}>

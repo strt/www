@@ -12,11 +12,20 @@ const COLOR_VARIANTS = {
   blue: colors.blue500,
   dark: colors.dark,
   gray: colors.steel800,
-  white: '#fff',
+  white: colors.light,
+}
+
+const UNDERLINE_VARIANTS = {
+  dark: 'waveDark.svg',
+  light: 'waveLight.svg',
 }
 
 function getColor(props) {
   return COLOR_VARIANTS[props.colorVariant] || colors.dark
+}
+
+function getUnderline(props) {
+  return UNDERLINE_VARIANTS[props.styleVariant] || UNDERLINE_VARIANTS.dark
 }
 
 export const A = styled.a`
@@ -43,7 +52,7 @@ export const A = styled.a`
     background-size: 15px 11px;
     background-position-y: 0%;
     background-repeat: repeat;
-    background-image: url('/wave.svg');
+    background-image: url('/${props => getUnderline(props)}');
     animation: move 15s linear infinite;
     transition: width 1s;
     animation-play-state: running;
@@ -64,8 +73,8 @@ export const A = styled.a`
   &[aria-current],
   &[data-partially-current] {
     &::after {
-      width: 100%;
       animation-play-state: paused;
+      width: 100%;
     }
   }
 
@@ -94,6 +103,7 @@ const Link = React.forwardRef(({ to, ...props }, ref) => {
 
 Link.propTypes = {
   colorVariant: PropTypes.oneOf(Object.keys(COLOR_VARIANTS)),
+  styleVariant: PropTypes.oneOf(Object.keys(UNDERLINE_VARIANTS)),
   variant: PropTypes.oneOf(['large']),
   to: PropTypes.string,
   href: PropTypes.string,
