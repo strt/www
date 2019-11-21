@@ -48,15 +48,14 @@ export const Excerpt = styled.p`
 
 export const H1 = styled.h1`
   margin-bottom: 0.175em;
-  font-size: 2.5em;
+  font-size: 1.75em;
   font-weight: 400;
   line-height: 1.125em;
   ${base} 
   
   @media ${breakpoints.medium} {
-    font-size: max(${vw(56)}, 24px);
-    letter-spacing: -2px;
-
+    font-size: max(30px, 60px);
+    line-height: 1.125em;
   }
 `
 
