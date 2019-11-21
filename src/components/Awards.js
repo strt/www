@@ -34,7 +34,7 @@ export default function Awards({ ...props }) {
   return (
     <AwardsGrid>
       {props.items.map(item => (
-        <AwardWrapper>
+        <AwardWrapper key={item.contentful_id}>
           {(() => {
             return (
               <Image

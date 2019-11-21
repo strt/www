@@ -39,6 +39,7 @@ const Filter = styled(Div)`
 
   a {
     margin-bottom: ${fluidRange({ min: 12, max: 24 })};
+    line-height: 1.2em;
 
     &:not(:last-child) {
       margin-right: ${fluidRange({ min: 16, max: 32 })};
@@ -183,6 +184,7 @@ export const pageQuery = graphql`
             name
           }
           awards {
+            contentful_id
             description
             title
             fluid: fluid(quality: 80, maxWidth: 500) {

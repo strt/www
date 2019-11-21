@@ -150,6 +150,7 @@ export const pageQuery = graphql`
         email
       }
       awards {
+        contentful_id
         description
         title
         fluid: fluid(quality: 80, maxWidth: 500) {
