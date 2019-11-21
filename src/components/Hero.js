@@ -18,13 +18,14 @@ export default function Hero({
   children,
   pt = 2,
   pb = [3, 7],
+  md = 8,
   scrollButtonElement,
   keepContentMargin,
 }) {
   return (
     <StyledHero pt={pt} pb={pb} keepContentMargin={keepContentMargin}>
       <Grid>
-        <Column md="8">{children}</Column>
+        <Column md={md}>{children}</Column>
       </Grid>
       {scrollButtonElement && (
         <Grid justifyContent="flex-end" mt={[4, 5, 5]}>
