@@ -4,8 +4,13 @@ import { rgba } from 'polished'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
-import { textSize } from './Text'
-import { colors, fontFamily } from '../style'
+import {
+  fluidRange,
+  breakpoints,
+  breakpointNr,
+  colors,
+  fontFamily,
+} from '../style'
 
 const COLOR_VARIANTS = {
   red: colors.watermelonRed500,
@@ -44,7 +49,7 @@ export const A = styled.a`
   &::after {
     position: absolute;
     content: '';
-    bottom: -3px;
+    bottom: -20%;
     left: 0;
     right: 0;
     width: 0;
@@ -86,7 +91,24 @@ export const A = styled.a`
     props.variant === 'large' &&
     css`
       font-weight: 500;
-      ${textSize}
+      font-size: 1.1em;
+
+      @media ${breakpoints.medium} {
+        font-size: 1.25em;
+      }
+
+      @media ${breakpoints.large} {
+        font-size: ${fluidRange({
+          min: 20,
+          max: 30,
+          viewportMin: breakpointNr.large,
+          viewportMax: breakpointNr.xlarge,
+        })};
+      }
+
+      @media ${breakpoints.xlarge} {
+        font-size: 1.875em;
+      }
     `}
 `
 
