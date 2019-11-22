@@ -113,7 +113,14 @@ module.exports = {
       options: {
         spaceId: `lxxyo1cefolk`,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        accessToken:
+          process.env.ACTIVE_ENV === 'staging'
+            ? process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW
+            : process.env.CONTENTFUL_ACCESS_TOKEN,
+        host:
+          process.env.ACTIVE_ENV === 'staging'
+            ? 'preview.contentful.com'
+            : 'cdn.contentful.com',
       },
     },
     'gatsby-plugin-client-side-redirect',
