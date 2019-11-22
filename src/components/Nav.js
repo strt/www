@@ -248,7 +248,6 @@ function Navigation({ location }) {
                 style={{ marginLeft: '10px' }}
                 as="button"
                 type="button"
-                colorVariant={theme.dark ? 'white' : 'dark'}
                 styleVariant={theme.dark ? 'light' : 'dark'}
                 variant="large"
                 onClick={() => {
