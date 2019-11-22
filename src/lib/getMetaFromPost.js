@@ -7,7 +7,7 @@ export default function getMetaFromPost(post, { type } = {}) {
     title: post.seoTitle || post.title || '',
     description:
       (post.seoDescription && post.seoDescription.seoDescription) ||
-      post.excerpt.excerpt ||
+      (post.excerpt && post.excerpt.excerpt) ||
       '',
     url: post.slug || '',
     type,
