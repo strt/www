@@ -18,7 +18,7 @@ export default function Hero({
   children,
   pt = 2,
   pb = [3, 7],
-  md = 8,
+  md = 12,
   scrollButtonElement,
   keepContentMargin,
 }) {
