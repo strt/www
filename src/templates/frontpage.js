@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
-import { H1Large, H2 } from '../components/Text'
+import { H1, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -15,6 +15,39 @@ import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
+
+const CaseGrid = styled(CssGrid)`
+  @media ${breakpoints.medium} {
+    grid-auto-flow: row dense;
+  }
+
+  > * {
+    @media ${breakpoints.medium} {
+      grid-row: span 2;
+      grid-column: grid-start / span 6;
+    }
+  }
+
+  > *:nth-child(1),
+  > *:nth-child(4),
+  > *:nth-child(5) {
+    @media ${breakpoints.medium} {
+      grid-row: span 5;
+      min-height: ${vw(752)};
+    }
+  }
+
+  > *:nth-child(2),
+  > *:nth-child(4) {
+    @media ${breakpoints.medium} {
+      grid-column-start: col-end 6;
+    }
+  }
+
+  > *:nth-child(5) {
+    grid-column: grid;
+  }
+`
 
 export default function Index({ data }) {
   const theme = useContext(ThemeContext)
@@ -29,8 +62,8 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
-      <Hero scrollButtonElement="#case-section" pt={8}>
-        <H1Large>{page.title}</H1Large>
+      <Hero md={10} scrollButtonElement="#case-section" pt={8}>
+        <H1>{page.title}</H1>
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
@@ -165,38 +198,5 @@ export const pageQuery = graphql`
         }
       }
     }
-  }
-`
-
-const CaseGrid = styled(CssGrid)`
-  @media ${breakpoints.medium} {
-    grid-auto-flow: row dense;
-  }
-
-  > * {
-    @media ${breakpoints.medium} {
-      grid-row: span 2;
-      grid-column: grid-start / span 6;
-    }
-  }
-
-  > *:nth-child(1),
-  > *:nth-child(4),
-  > *:nth-child(5) {
-    @media ${breakpoints.medium} {
-      grid-row: span 5;
-      min-height: ${vw(752)};
-    }
-  }
-
-  > *:nth-child(2),
-  > *:nth-child(4) {
-    @media ${breakpoints.medium} {
-      grid-column-start: col-end 6;
-    }
-  }
-
-  > *:nth-child(5) {
-    grid-column: grid;
   }
 `

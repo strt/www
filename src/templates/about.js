@@ -8,12 +8,12 @@ import Cover from '../components/Cover'
 import Image from '../components/Image'
 import ContentWrapper from '../components/ContentWrapper'
 import { Grid, Column } from '../components/Grid'
-import { H1 } from '../components/Text'
+import { Excerpt } from '../components/Text'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function About({ data }) {
-  const { excerpt, image, body } = data.page
+  const { title, excerpt, image, body } = data.page
   const hasCover = !!image
 
   const theme = useContext(ThemeContext)
@@ -21,8 +21,21 @@ export default function About({ data }) {
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
-      <Hero md={6} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
-        {excerpt && <H1 textColor="white">{excerpt.excerpt}</H1>}
+      <Hero md={8} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
+        {title && (
+          <Excerpt
+            as="h1"
+            textColor="white"
+            style={{ margin: '0', display: 'inline' }}
+          >
+            {title}&nbsp;
+          </Excerpt>
+        )}
+        {excerpt && (
+          <Excerpt textColor="white" style={{ display: 'inline' }}>
+            {excerpt.excerpt}
+          </Excerpt>
+        )}
       </Hero>
       {hasCover && (
         <Cover>

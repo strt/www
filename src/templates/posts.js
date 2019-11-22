@@ -5,14 +5,14 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Card from '../components/Card'
 import Section from '../components/Section'
-import { H1, Excerpt } from '../components/Text'
+import { Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
-  const { title, excerpt } = data.contentfulPage
+  const { title } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
   if (theme.dark) theme.toggleDark()
@@ -20,8 +20,7 @@ export default function News({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <H1>{title}</H1>
-        <Excerpt>{excerpt.excerpt}</Excerpt>
+        <Excerpt as="h1">{title}</Excerpt>
       </Hero>
       <Section bg={colors.ice} pt={[5, 8]} pb={[10, 20]}>
         <Grid>

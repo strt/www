@@ -1,16 +1,23 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Link from '../components/Link'
 import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
-import { H1, H2, H3, Excerpt, Text } from '../components/Text'
+import { H1, H4, Excerpt, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { colors } from '../style'
+import { breakpoints, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
+
+const LargeText = styled(Excerpt)`
+  @media ${breakpoints.medium} {
+    max-width: 100%;
+  }
+`
 
 export default function Career({ data }) {
   const { contact, spontaneousTitle, page, secondHeader } = data.contentfulPage
@@ -22,27 +29,27 @@ export default function Career({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero pb={0} keepContentMargin>
-        <H1>{page.title}</H1>
-        {page.excerpt && <Excerpt>{page.excerpt.excerpt}</Excerpt>}
+        <H1 textColor="white">{page.title}</H1>
       </Hero>
       {hasOpenPositions && (
         <Section bg={colors.dark} py={[5, 7]}>
           <Grid>
             <Column>
-              <H2 textColor="white" mb={[3, 4]}>
+              <Text as="h2" textColor="white" mb={[3, 4]}>
                 {secondHeader}
-              </H2>
+              </Text>
               <ul>
                 {data.allContentfulPositions.edges.map(({ node }) => (
                   <li key={node.id}>
-                    <Excerpt mb={[2, 3]}>
+                    <Text mb={[2, 3]} textColor="white">
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
                         colorVariant="white"
+                        styleVariant="light"
                       >
                         {node.role}
                       </Link>
-                    </Excerpt>
+                    </Text>
                   </li>
                 ))}
               </ul>
@@ -50,23 +57,41 @@ export default function Career({ data }) {
           </Grid>
         </Section>
       )}
-      <Section pt={hasOpenPositions ? [5, 7] : 0}>
+
+      <Section>
         <Grid>
           <Column>
-            <H3>{spontaneousTitle}</H3>
+            <H4 as="h2" textColor="white">
+              {spontaneousTitle}
+            </H4>
             <Text>
-              <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
+              <Link
+                colorVariant="white"
+                styleVariant="light"
+                href={`mailto:${contact.email}`}
+              >
+                {contact.email}
+              </Link>
             </Text>
           </Column>
         </Grid>
       </Section>
+
+      {page.excerpt && (
+        <Section>
+          <Grid>
+            <Column>
+              <LargeText textColor="white">{page.excerpt.excerpt}</LargeText>
+            </Column>
+          </Grid>
+        </Section>
+      )}
       <Section bg={colors.dark} pt="0">
         <InstagramFeed />
       </Section>
     </Layout>
   )
 }
-// Todo add meta
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {

@@ -8,17 +8,45 @@ import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
-import { H1Large, Excerpt, Text } from '../components/Text'
+import { base, H1, Text } from '../components/Text'
 import { formatPhone } from '../lib/format'
-import { breakpoints, fluidRange, vw, colors } from '../style'
+import { breakpoints, breakpointNr, fluidRange, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 const SmallText = styled(Text)`
-  font-size: ${fluidRange({ min: 11, max: 14 })};
-  line-height: 1.1em;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1.4em;
+  ${base}
+  font-size: 0.75em;
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(16)};
+    font-size: 0.8em;
+  }
+
+  @media ${breakpoints.large} {
+    font-size: ${fluidRange({
+      min: 16,
+      max: 20,
+      viewportMin: breakpointNr.large,
+      viewportMax: breakpointNr.xlarge,
+    })};
+  }
+
+  @media ${breakpoints.xlarge} {
+    font-size: 1.25em;
+  }
+
+  a::after {
+    bottom: -30%;
+    background-size: 9px 11px;
+
+    @media ${breakpoints.large} {
+      bottom: -20%;
+      background-size: 15px 11px;
+    }
   }
 `
 
@@ -29,15 +57,21 @@ export default function Contact({ data }) {
   if (theme.dark) theme.toggleDark()
 
   return (
-    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
+    <Layout meta={getMetaFromPost(page)}>
       <Hero>
-        <H1Large>{page.title}</H1Large>
-        <Excerpt>{page.excerpt.excerpt}</Excerpt>
+        <H1>{page.title}</H1>
+
+        {page.excerpt && (
+          <Column md={6} p={0}>
+            <Text>{page.excerpt.excerpt}</Text>
+          </Column>
+        )}
       </Hero>
+
       <Section mb={[4, 7]}>
         <Grid>
-          {contacts.map(contact => (
-            <Column md="4" key={contact.id}>
+          {contacts.map((contact, index) => (
+            <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
               <Text>
                 <strong>{contact.city || contact.title}</strong>
                 <br />
@@ -58,7 +92,7 @@ export default function Contact({ data }) {
       <Section pb={[10, 20]}>
         <Grid>
           {data.employees.edges.map(({ node }) => (
-            <Column key={node.id} width="6" md="3" bottomGap>
+            <Column key={node.id} width="6" md="3" bottomGap pt={2}>
               {node.image && (
                 <Image
                   bg={colors.dark}
@@ -94,10 +128,14 @@ export const pageQuery = graphql`
       page: { slug: { eq: $slug }, node_locale: { eq: $locale } }
     ) {
       page {
+        id
         title
         slug
         excerpt {
           excerpt
+        }
+        body {
+          json
         }
         seoTitle
         seoDescription {

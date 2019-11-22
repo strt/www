@@ -9,16 +9,9 @@ import Div from '../components/Div'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
 import Link from '../components/Link'
-import { H1, Excerpt } from '../components/Text'
+import { Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import {
-  breakpoints,
-  fluidRange,
-  vw,
-  easings,
-  animations,
-  durations,
-} from '../style'
+import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 
@@ -39,18 +32,25 @@ const Filter = styled(Div)`
   flex-wrap: wrap;
 
   a {
-    margin-bottom: ${fluidRange({ min: 12, max: 24 })};
+    margin-bottom: 16px;
+    font-size: 1.25em;
     line-height: 1.2em;
 
     &:not(:last-child) {
-      margin-right: ${fluidRange({ min: 16, max: 32 })};
+      margin-right: 16px;
+    }
+
+    &:active,
+    &[aria-current],
+    &[data-partially-current] {
+      color: ${colors.dark};
     }
 
     @media ${breakpoints.medium} {
-      margin-bottom: ${vw(32)};
+      margin-bottom: 16px;
 
       &:not(:last-child) {
-        margin-right: ${vw(48)};
+        margin-right: 48px;
       }
     }
   }
@@ -77,7 +77,7 @@ export default function Case({ data, location }) {
     window.history.replaceState({}, null, target.pathname + target.search)
   }
 
-  const { title, excerpt } = data.contentfulPage
+  const { title } = data.contentfulPage
   const cases = filterCases(data.cases.edges, filter)
   const tags = data.tags.edges
 
@@ -86,8 +86,8 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <H1>{title}</H1>
-        <Excerpt>{excerpt.excerpt}</Excerpt>
+        <Excerpt as="h1">{title}</Excerpt>
+        {/* <Excerpt>{excerpt.excerpt}}</Excerpt> */}
         {renderFilter === true && (
           <Filter>
             <Link
@@ -159,7 +159,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    tags: allContentfulTags(filter: { node_locale: { eq: $locale } }) {
+    tags: allContentfulTags(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: [name], order: [ASC] }
+    ) {
       edges {
         node {
           name
