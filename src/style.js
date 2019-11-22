@@ -14,7 +14,7 @@ export const colors = {
   blue700: '#233fc9',
   blue800: '#1d36c3',
   blue900: '#1226b9',
-  dark: '#0b101e',
+  dark: '#000000',
   light: '#ffffff',
   ice: '#f5f6f6',
   pinkPeach500: '#fdbab8',
@@ -40,10 +40,18 @@ export const colors = {
   watermelonRed900: '#f61525',
 }
 
+export const breakpointNr = {
+  small: 640,
+  medium: 768,
+  large: 1440,
+  xlarge: 1920,
+}
+
 export const breakpoints = {
   small: '(min-width: 640px)',
   medium: '(min-width: 768px)',
-  large: '(min-width: 1024px)',
+  large: '(min-width: 1440px)',
+  xlarge: '(min-width: 1920px)',
 }
 
 export const durations = {
