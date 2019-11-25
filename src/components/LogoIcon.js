@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
-import { colors } from '../style'
+import { colors, breakpoints } from '../style'
 
 const Svg = styled(BaseSvg)`
   width: ${75 / 7.68}vw;
@@ -11,7 +11,11 @@ const Svg = styled(BaseSvg)`
 `
 
 const LogoIconWrapper = styled.div`
-  padding-bottom: 310px;
+  padding-bottom: 50px;
+
+  @media ${breakpoints.medium} {
+    padding-bottom: 310px;
+  }
 `
 
 export default function LogoIcon() {
