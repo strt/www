@@ -49,7 +49,7 @@
     "dayjs": "^1.7.7",
     "focus-trap": "^5.0.0",
     "focus-visible": "^4.1.5",
-    "gatsby": "^2.1.0",
+    "gatsby": "^2.18.0",
     "gatsby-image": "^2.2.16",
     "gatsby-mdx": "^0.6.0",
     "gatsby-plugin-catch-links": "^2.0.3",
@@ -61,7 +61,7 @@
     "gatsby-plugin-netlify-cache": "^1.0.0",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-robots-txt": "^1.5.0",
-    "gatsby-plugin-sharp": "^2.0.6",
+    "gatsby-plugin-sharp": "^2.3.3",
     "gatsby-plugin-sitemap": "^2.0.1",
     "gatsby-plugin-styled-components": "^3.0.0",
     "gatsby-plugin-subfont": "^1.0.1",
@@ -91,8 +91,10 @@
     "unist-util-visit-children": "^1.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@types/react": "^16.9.13",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.8.0",
     "dotenv-webpack": "^1.5.7",
@@ -106,6 +108,8 @@
     "prettier": "^1.14.3",
     "stylelint": "^10.0.0",
     "stylelint-config-strateg": "^1.8.0",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
     "webpack-bundle-analyzer": "^3.0.3"
   }
 }
