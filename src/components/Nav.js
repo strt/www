@@ -219,13 +219,12 @@ function Navigation({ location }) {
       {theme => (
         <NavWrapper role="navigation">
           <ul data-desktop>
-            <SelectLanguage location={location} />
             {mainNavigation
               .filter(child => child.link !== '/')
               .map(child => (
                 <li key={child.id}>
                   <Link
-                    to={getActiveLangPath() + child.link}
+                    to={`${getActiveLangPath()}${child.link}`}
                     getProps={getProps}
                     colorVariant={theme.dark ? 'white' : 'dark'}
                     styleVariant={theme.dark ? 'light' : 'dark'}
@@ -235,11 +234,21 @@ function Navigation({ location }) {
                   </Link>
                 </li>
               ))}
+            <SelectLanguage location={location} />
           </ul>
           <div data-responsive>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <div>
-                <ul style={{ display: 'flex' }}>
+                <ul
+                  style={{
+                    display: 'flex',
+                  }}
+                >
                   <SelectLanguage location={location} />
                 </ul>
               </div>
@@ -256,7 +265,7 @@ function Navigation({ location }) {
                 aria-expanded={isOpen}
                 aria-controls={NAV_ID}
               >
-                menu
+                {getActiveLangPath() ? 'meny' : 'menu'}
               </Link>
             </div>
 
@@ -341,7 +350,7 @@ function Navigation({ location }) {
                       >
                         <NavLink
                           key={item.link}
-                          to={getActiveLangPath() + item.link}
+                          to={`${getActiveLangPath()}${item.link}`}
                           getProps={getProps}
                         >
                           {item.title}
