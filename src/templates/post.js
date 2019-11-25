@@ -17,6 +17,7 @@ import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { colors } from '../style'
 import { routes } from '../routes'
+import { getActiveLangPath } from '../components/SelectLanguage'
 
 export default function Article({ data }) {
   const { createdAt, oldDate, title, excerpt, body, featuredImage } = data.post
@@ -74,15 +75,18 @@ export default function Article({ data }) {
                 <Card
                   date={node.createdAt}
                   title={node.title}
-                  url={node.slug}
+                  url={`${getActiveLangPath()}${routes.news.link}${node.slug}`}
                   image={node.featuredImage}
                 />
               </Column>
             ))}
             <Column>
               <Div mt={[3, 2]}>
-                <Link to={routes.news.link} variant="large">
-                  More news
+                <Link
+                  to={`${getActiveLangPath()}${routes.news.link}`}
+                  variant="large"
+                >
+                  {getActiveLangPath() ? 'Fler nyheter' : 'More news'}
                 </Link>
               </Div>
             </Column>
