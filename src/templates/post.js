@@ -75,7 +75,7 @@ export default function Article({ data }) {
                 <Card
                   date={node.createdAt}
                   title={node.title}
-                  url={`${getActiveLangPath()}${routes.news.link}${node.slug}`}
+                  url={`${getActiveLangPath()}/${routes.news.link}${node.slug}`}
                   image={node.featuredImage}
                 />
               </Column>
@@ -83,7 +83,7 @@ export default function Article({ data }) {
             <Column>
               <Div mt={[3, 2]}>
                 <Link
-                  to={`${getActiveLangPath()}${routes.news.link}`}
+                  to={`${getActiveLangPath()}/${routes.news.link}`}
                   variant="large"
                 >
                   {getActiveLangPath() ? 'Fler nyheter' : 'More news'}

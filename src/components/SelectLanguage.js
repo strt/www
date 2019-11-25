@@ -18,12 +18,12 @@ export function getActiveLangPath() {
   if (!selectedLang || selectedLang === 'en') {
     return ''
   }
-  return selectedLang
+  return `/${selectedLang}`
 }
 
 export function getUrl(location, country) {
-  const langPath = country !== 'en' ? country : ''
-  const url = location.pathname.replace(`${selectedLang}/`, '')
+  const langPath = country !== 'en' ? `/${country}` : ''
+  const url = location.pathname.replace(`/${selectedLang}`, '')
 
   return langPath + url
 }

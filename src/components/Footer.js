@@ -95,7 +95,7 @@ export default function Footer() {
             {footerNavigation.map(route => (
               <li key={route.link}>
                 <Link
-                  to={getActiveLangPath() + route.link}
+                  to={`${getActiveLangPath()}/${route.link}`}
                   colorVariant="white"
                   styleVariant="light"
                 >

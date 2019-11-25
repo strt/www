@@ -224,7 +224,7 @@ function Navigation({ location }) {
               .map(child => (
                 <li key={child.id}>
                   <Link
-                    to={`${getActiveLangPath()}${child.link}`}
+                    to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
                     colorVariant={theme.dark ? 'white' : 'dark'}
                     styleVariant={theme.dark ? 'light' : 'dark'}
@@ -350,7 +350,7 @@ function Navigation({ location }) {
                       >
                         <NavLink
                           key={item.link}
-                          to={`${getActiveLangPath()}${item.link}`}
+                          to={`${getActiveLangPath()}/${item.link}`}
                           getProps={getProps}
                         >
                           {item.title}
