@@ -38,6 +38,7 @@ export const colors = {
   watermelonRed700: '#f9273d',
   watermelonRed800: '#f82135',
   watermelonRed900: '#f61525',
+  yellow: '#FFFF00',
 }
 
 export const breakpointNr = {
