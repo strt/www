@@ -5,6 +5,8 @@ import { H3 } from './Text'
 import Tags from './Tags'
 import Image, { ImageWrapper } from './Image'
 import Awards, { AwardWrapper } from './Awards'
+import EmbedPlayer from './EmbedPlayer'
+
 import {
   cover,
   breakpoints,
@@ -91,6 +93,7 @@ const Media = styled.div`
 export default function Tile({
   title,
   image,
+  video,
   url,
   tags,
   awards,
@@ -107,7 +110,16 @@ export default function Tile({
           {awards && <Awards items={awards} />}
         </Content>
         <Media bg={bg}>
-          {image && <Image fluid={image.fluid} alt="" aspectRatio="auto" />}
+          {image && !video && (
+            <Image fluid={image.fluid} alt="" aspectRatio="auto" />
+          )}
+          {video && (
+            <EmbedPlayer
+              data-desktop
+              src={`${video}?background=1`}
+              bg="transparent"
+            />
+          )}
         </Media>
       </Article>
     </Link>
