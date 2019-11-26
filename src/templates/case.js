@@ -37,7 +37,7 @@ export default function Case({ data, pageContext: { next } }) {
   if (theme.dark) theme.toggleDark()
 
   return (
-    <Layout meta={getMetaFromPost()} hideFooter>
+    <Layout meta={getMetaFromPost()}>
       <article>
         <Grid
           justifyContent="space-between"
