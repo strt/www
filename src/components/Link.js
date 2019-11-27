@@ -85,6 +85,8 @@ export const A = styled.a`
 
   button& {
     user-select: none;
+    border:none;
+    background:none;
   }
 
   ${props =>

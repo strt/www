@@ -7,6 +7,7 @@ import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import { colors, vw, breakpoints, fluidRange } from '../style'
 import { routes } from '../routes'
+import { getActiveLangPath } from './SelectLanguage'
 
 const CookieToastWrapper = animated(styled.div`
   position: fixed;
@@ -42,7 +43,7 @@ export default function CookieToast() {
     return () => {
       clearTimeout(timerId)
     }
-  }, [])
+  }, [showToast])
   const transitions = useTransition(showToast, null, {
     unique: true,
     from: { opacity: 0, transform: 'translateY(100%)' },
@@ -63,9 +64,15 @@ export default function CookieToast() {
                 >
                   <Column>
                     <Text textColor="white" m="0">
-                      This website uses cookies. Yum.{' '}
-                      <Link to={routes.policy.link} colorVariant="white">
-                        Read more
+                      {getActiveLangPath()
+                        ? 'Vi använder oss av kakor. Mums. '
+                        : 'This website uses cookies. Yum. '}
+                      <Link
+                        to={`${getActiveLangPath()}/${routes.policy.link}`}
+                        colorVariant="white"
+                        styleVariant="light"
+                      >
+                        {getActiveLangPath() ? 'Läs mer' : 'Read more'}
                       </Link>
                       .
                     </Text>
@@ -75,13 +82,14 @@ export default function CookieToast() {
                       as="button"
                       type="button"
                       colorVariant="white"
+                      styleVariant="light"
                       variant="large"
                       onClick={() => {
                         setShowToast(false)
                         Cookie.set('accept_cookies', true, { expires: 365 })
                       }}
                     >
-                      OK
+                      {getActiveLangPath() ? 'OK' : 'OK'}
                     </Link>
                   </Column>
                 </Grid>
