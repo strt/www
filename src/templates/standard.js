@@ -33,7 +33,7 @@ export default function Standard({ data }) {
       <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
         <ContentWrapper>
           <Grid>
-            <Column md="8">
+            <Column md="10" lg="8">
               <RichText document={body.json} />
             </Column>
           </Grid>
