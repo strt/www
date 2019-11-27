@@ -29,7 +29,7 @@ export default function FrontH1({ ...props }) {
     <StyledH1
       {...props}
       dangerouslySetInnerHTML={{
-        __html: text.replace(/\w+/g, '<span>$&</span>'),
+        __html: text.replace(/[^\s]+/g, '<span>$&</span>'),
       }}
     />
   )
