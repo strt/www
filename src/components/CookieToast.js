@@ -63,13 +63,13 @@ export default function CookieToast() {
                   alignItems={['flex-end', 'flex-end', 'center']}
                 >
                   <Column>
-                    <Text textColor="white" m="0">
+                    <Text textColor={colors.light} m="0">
                       {getActiveLangPath()
                         ? 'Vi använder oss av kakor. Mums. '
                         : 'This website uses cookies. Yum. '}
                       <Link
                         to={`${getActiveLangPath()}/${routes.policy.link}`}
-                        colorVariant="white"
+                        colorVariant="light"
                         styleVariant="light"
                       >
                         {getActiveLangPath() ? 'Läs mer' : 'Read more'}
@@ -81,7 +81,7 @@ export default function CookieToast() {
                     <Link
                       as="button"
                       type="button"
-                      colorVariant="white"
+                      colorVariant="light"
                       styleVariant="light"
                       variant="large"
                       onClick={() => {

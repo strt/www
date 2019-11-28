@@ -12,7 +12,7 @@ import {
 export const base = css(
   props => ({
     fontFamily,
-    color: props.textColor || colors.dark,
+    color: props.textColor || colors.darkText,
   }),
   textAlign,
   space,
@@ -91,6 +91,10 @@ export const H1 = styled.h1`
   font-weight: 400;
   line-height: 1.1em;
   ${base}
+  ${props => ({
+    fontFamily,
+    color: props.textColor || colors.dark,
+  })}
 
   @media ${breakpoints.medium} {
     font-size: 8.25em;
@@ -117,6 +121,10 @@ export const H2 = styled.h2`
   font-weight: 700;
   line-height: 1.25em;
   ${base}
+  ${props => ({
+    fontFamily,
+    color: props.textColor || colors.dark,
+  })}
 
   @media ${breakpoints.medium} {
     font-size: 2.5em;
@@ -142,6 +150,10 @@ export const H3 = styled.h3`
   font-weight: 700;
   line-height: 1.125em;
   ${base}
+  ${props => ({
+    fontFamily,
+    color: props.textColor || colors.dark,
+  })}
 
   @media ${breakpoints.medium} {
     font-size: 2em;
@@ -167,6 +179,10 @@ export const H4 = styled.h4`
   font-weight: 700;
   line-height: 1.25em;
   ${base}
+  ${props => ({
+    fontFamily,
+    color: props.textColor || colors.dark,
+  })}
 
   @media ${breakpoints.medium} {
     font-size: 1.75em;
@@ -187,27 +203,31 @@ export const H4 = styled.h4`
 `
 
 export const H6 = styled.h6`
-margin-bottom: 0.4125em;
-font-size: 1.3125em;
-font-weight: 700;
-text-transform: uppercase;
-line-height: 1em;
-${base}
+  margin-bottom: 0.4125em;
+  font-size: 1.3125em;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1em;
+  ${base}
+  ${props => ({
+    fontFamily,
+    color: props.textColor || colors.dark,
+  })}
 
-@media ${breakpoints.medium} {
-  font-size: 1.25em;
-}
+  @media ${breakpoints.medium} {
+    font-size: 1.25em;
+  }
 
-@media ${breakpoints.large} {
-  font-size: ${fluidRange({
-    min: 22,
-    max: 33,
-    viewportMin: breakpointNr.large,
-    viewportMax: breakpointNr.xlarge,
-  })};
-}
+  @media ${breakpoints.large} {
+    font-size: ${fluidRange({
+      min: 22,
+      max: 33,
+      viewportMin: breakpointNr.large,
+      viewportMax: breakpointNr.xlarge,
+    })};
+  }
 
-@media ${breakpoints.xlarge} {
-  font-size: 2.0625em;
-}
+  @media ${breakpoints.xlarge} {
+    font-size: 2.0625em;
+  }
 `

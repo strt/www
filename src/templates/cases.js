@@ -43,7 +43,7 @@ const Filter = styled(Div)`
     &:active,
     &[aria-current],
     &[data-partially-current] {
-      color: ${colors.dark};
+      color: ${colors.darkText};
     }
 
     @media ${breakpoints.medium} {
@@ -86,7 +86,9 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1">{title}</Excerpt>
+        <Excerpt as="h1" textColor={colors.dark}>
+          {title}
+        </Excerpt>
         {/* <Excerpt>{excerpt.excerpt}}</Excerpt> */}
         {renderFilter === true && (
           <Filter>

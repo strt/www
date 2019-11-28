@@ -20,9 +20,11 @@ export default function News({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1">{title}</Excerpt>
+        <Excerpt as="h1" textColor={colors.dark}>
+          {title}
+        </Excerpt>
       </Hero>
-      <Section bg={colors.ice} pt={[5, 8]} pb={[10, 20]}>
+      <Section pt={[5, 8]} pb={[10, 20]}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>

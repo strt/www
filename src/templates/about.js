@@ -11,6 +11,7 @@ import { Grid, Column } from '../components/Grid'
 import { Excerpt } from '../components/Text'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import { colors } from '../style'
 
 export default function About({ data }) {
   const { title, excerpt, image, body } = data.page
@@ -25,14 +26,14 @@ export default function About({ data }) {
         {title && (
           <Excerpt
             as="h1"
-            textColor="white"
+            textColor={colors.lightText}
             style={{ margin: '0', display: 'inline' }}
           >
             {title}&nbsp;
           </Excerpt>
         )}
         {excerpt && (
-          <Excerpt textColor="white" style={{ display: 'inline' }}>
+          <Excerpt textColor={colors.lightText} style={{ display: 'inline' }}>
             {excerpt.excerpt}
           </Excerpt>
         )}
@@ -47,7 +48,7 @@ export default function About({ data }) {
           <ContentWrapper>
             <Grid>
               <Column md="8">
-                <RichText textColor="white" document={body.json} />
+                <RichText textColor={colors.light} document={body.json} />
               </Column>
             </Grid>
           </ContentWrapper>

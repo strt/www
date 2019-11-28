@@ -13,11 +13,10 @@ import {
 } from '../style'
 
 const COLOR_VARIANTS = {
-  red: colors.watermelonRed500,
-  blue: colors.blue500,
   dark: colors.dark,
-  gray: colors.steel800,
-  white: colors.light,
+  light: colors.light,
+  darkText: colors.darkText,
+  lightText: colors.lightText,
 }
 
 const UNDERLINE_VARIANTS = {
@@ -26,7 +25,7 @@ const UNDERLINE_VARIANTS = {
 }
 
 function getColor(props) {
-  return COLOR_VARIANTS[props.colorVariant] || colors.dark
+  return COLOR_VARIANTS[props.colorVariant] || colors.darkText
 }
 
 function getUnderline(props) {

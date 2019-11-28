@@ -103,10 +103,15 @@ export default function Tile({
     <Link to={url}>
       <Article>
         <Content>
-          <H3 textColor="white" mb={[1 / 2, 1 / 2]}>
+          <H3 textColor={colors.light} mb={[1 / 2, 1 / 2]}>
             {title}
           </H3>
-          <Tags items={tags} textColor="white" linked={false} variant="small" />
+          <Tags
+            items={tags}
+            textColor={colors.light}
+            linked={false}
+            variant="small"
+          />
           {awards && <Awards items={awards} />}
         </Content>
         <Media bg={bg}>

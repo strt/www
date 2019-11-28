@@ -226,7 +226,7 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    colorVariant={theme.dark ? 'white' : 'dark'}
+                    colorVariant={theme.dark ? 'lightText' : 'darkText'}
                     styleVariant={theme.dark ? 'light' : 'dark'}
                     variant="large"
                   >
@@ -321,7 +321,7 @@ function Navigation({ location }) {
                       onClick={() => {
                         toggle()
                       }}
-                      textColor="white"
+                      textColor={colors.light}
                       aria-label="Close menu"
                       style={{
                         opacity: closeAnimStyle.opacity,

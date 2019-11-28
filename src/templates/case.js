@@ -27,6 +27,7 @@ const StyledH1 = styled(H1)`
   font-weight: 400;
   line-height: 1.1em;
   ${base}
+  color: ${colors.dark};
 
   @media ${breakpoints.medium} {
     font-size: 6.1875em;
@@ -122,7 +123,7 @@ export default function Case({ data, pageContext: { next } }) {
           <Section as="footer" bg={colors.dark} py={[7, 7]}>
             <Grid>
               <Column>
-                <H6 textColor="white" mb={[3, 7]}>
+                <H6 textColor={colors.light} mb={[3, 7]}>
                   Next case <Icon name={['fal', 'long-arrow-down']} />
                 </H6>
                 <H1 as="div">
@@ -130,7 +131,7 @@ export default function Case({ data, pageContext: { next } }) {
                     as={Link}
                     to={next.fields.slug}
                     rel="next"
-                    colorVariant="white"
+                    colorVariant="light"
                   >
                     {next.frontmatter.client}
                   </Link>
@@ -139,7 +140,7 @@ export default function Case({ data, pageContext: { next } }) {
             </Grid>
             <Grid justifyContent="flex-end" mt={[7, 4]}>
               <Column width="auto">
-                <ScrollToTopButton textColor="white" />
+                <ScrollToTopButton textColor={colors.light} />
               </Column>
             </Grid>
           </Section>

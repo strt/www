@@ -29,22 +29,22 @@ export default function Career({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero pb={0} keepContentMargin>
-        <H1 textColor="white">{page.title}</H1>
+        <H1 textColor={colors.light}>{page.title}</H1>
       </Hero>
       {hasOpenPositions && (
         <Section bg={colors.dark} py={[5, 7]}>
           <Grid>
             <Column>
-              <Text as="h2" textColor="white" mb={[3, 4]}>
+              <Text as="h2" textColor={colors.light} mb={[3, 4]}>
                 {secondHeader}
               </Text>
               <ul>
                 {data.allContentfulPositions.edges.map(({ node }) => (
                   <li key={node.id}>
-                    <Text mb={[2, 3]} textColor="white">
+                    <Text mb={[2, 3]} textColor={colors.light}>
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
-                        colorVariant="white"
+                        colorVariant="light"
                         styleVariant="light"
                       >
                         {node.role}
@@ -61,12 +61,12 @@ export default function Career({ data }) {
       <Section>
         <Grid>
           <Column>
-            <H4 as="h2" textColor="white">
+            <H4 as="h2" textColor={colors.light}>
               {spontaneousTitle}
             </H4>
             <Text>
               <Link
-                colorVariant="white"
+                colorVariant="light"
                 styleVariant="light"
                 href={`mailto:${contact.email}`}
               >
@@ -81,7 +81,9 @@ export default function Career({ data }) {
         <Section>
           <Grid>
             <Column>
-              <LargeText textColor="white">{page.excerpt.excerpt}</LargeText>
+              <LargeText textColor={colors.light}>
+                {page.excerpt.excerpt}
+              </LargeText>
             </Column>
           </Grid>
         </Section>
