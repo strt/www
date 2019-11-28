@@ -1,53 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
-import { colors, breakpoints, fluidRange, vw } from '../style'
+import { colors, breakpoints, breakpointNr, fluidRange } from '../style'
 import { getActiveLangPath } from './SelectLanguage'
-
-export default function Tags({ items, linked = true, colorVariant, ...rest }) {
-  if (!items || !items.length) {
-    return null
-  }
-
-  return (
-    <TagsWrapper {...rest}>
-      <Hyphen />
-      <TagList>
-        {items.map(item => (
-          <li key={item.name}>
-            {linked ? (
-              <Link
-                href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
-                  item.name.toLowerCase(),
-                )}`}
-                colorVariant={colorVariant}
-              >
-                {item.name}
-              </Link>
-            ) : (
-              item.name
-            )}
-          </li>
-        ))}
-      </TagList>
-    </TagsWrapper>
-  )
-}
 
 function tagsWrapperModifiers(props) {
   if (props.variant === 'small') {
     return {
-      fontSize: fluidRange({ min: 11, max: 14 }),
+      fontSize: '12px',
       [`@media ${breakpoints.medium}`]: {
-        fontSize: `${vw(14)}`,
+        fontSize: '14px',
+      },
+      [`@media ${breakpoints.large}`]: {
+        fontSize: fluidRange({
+          min: 14,
+          max: 24,
+          viewportMin: breakpointNr.large,
+          viewportMax: breakpointNr.xlarge,
+        }),
+      },
+      [`@media ${breakpoints.xlarge}`]: {
+        fontSize: '24px',
       },
     }
   }
 
   return {
-    fontSize: fluidRange({ min: 14, max: 18 }),
+    fontSize: '16px',
     [`@media ${breakpoints.medium}`]: {
-      fontSize: `${vw(18)}`,
+      fontSize: '22px',
+    },
+    [`@media ${breakpoints.large}`]: {
+      fontSize: fluidRange({
+        min: 22,
+        max: 28,
+        viewportMin: breakpointNr.large,
+        viewportMax: breakpointNr.xlarge,
+      }),
+    },
+    [`@media ${breakpoints.xlarge}`]: {
+      fontSize: '28px',
     },
   }
 }
@@ -81,3 +73,33 @@ const Hyphen = styled.span`
     white-space: pre;
   }
 `
+
+export default function Tags({ items, linked = true, colorVariant, ...rest }) {
+  if (!items || !items.length) {
+    return null
+  }
+
+  return (
+    <TagsWrapper {...rest}>
+      <Hyphen />
+      <TagList>
+        {items.map(item => (
+          <li key={item.name}>
+            {linked ? (
+              <Link
+                href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
+                  item.name.toLowerCase(),
+                )}`}
+                colorVariant={colorVariant}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              item.name
+            )}
+          </li>
+        ))}
+      </TagList>
+    </TagsWrapper>
+  )
+}
