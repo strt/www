@@ -1,6 +1,1 @@
 { "enabled": false }
-
-/*{
-  "extends": ["config:base"],
-  "rangeStrategy": "replace"
-}*/
