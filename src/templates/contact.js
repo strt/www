@@ -98,6 +98,7 @@ export default function Contact({ data }) {
                   bg={colors.dark}
                   sizes="(min-width: 768px) 24vw, 46vw"
                   fluid={node.image.fluid}
+                  overlay={node.color}
                 />
               )}
               <Text mt={[1, 1]} mb="0">
@@ -169,6 +170,7 @@ export const pageQuery = graphql`
           role
           email
           phone
+          color
           image {
             fluid(quality: 80, maxWidth: 520) {
               ...GatsbyContentfulFluid_withWebp
