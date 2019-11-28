@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Hero from '../components/Hero'
 import Link from '../components/Link'
-import { Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
+import { base, Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
@@ -14,11 +15,37 @@ import EmbedPlayer from '../components/EmbedPlayer'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import ContentWrapper from '../components/ContentWrapper'
-import { colors } from '../style'
+import { colors, fluidRange, breakpoints, breakpointNr } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
 import Awards from '../components/Awards'
+
+const StyledH1 = styled(H1)`
+  margin-bottom: 0.175em;
+  font-size: 4em;
+  font-weight: 400;
+  line-height: 1.1em;
+  ${base}
+
+  @media ${breakpoints.medium} {
+    font-size: 6.1875em;
+    letter-spacing: -0.05em;
+  }
+
+  @media ${breakpoints.large} {
+    font-size: ${fluidRange({
+      min: 99,
+      max: 148.5,
+      viewportMin: breakpointNr.large,
+      viewportMax: breakpointNr.xlarge,
+    })};
+  }
+
+  @media ${breakpoints.xlarge} {
+    font-size: 9.28125em;
+  }
+`
 
 export default function Case({ data, pageContext: { next } }) {
   const {
@@ -52,7 +79,7 @@ export default function Case({ data, pageContext: { next } }) {
           </Column>
         </Grid>
         <Hero pt={[2, 7]} pb={[5, 7]}>
-          <H1>{title}</H1>
+          <StyledH1>{title}</StyledH1>
           {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
         </Hero>
         {(featuredImage || featuredVideo) && (
