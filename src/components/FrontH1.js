@@ -7,7 +7,8 @@ import { colors } from '../style'
 
 const StyledH1 = styled(H1)`
   span:nth-child(${props => props.heroContent.colorWordPosition}):hover {
-    color: ${colors.yellow};
+    animation-name: color;
+    animation-duration: 10s;
   }
 
   span:nth-child(${props => props.heroContent.replaceWordPosition}):hover {

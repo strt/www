@@ -175,6 +175,21 @@ export const GlobalStyle = createGlobalStyle`
       background-position: 500px 19px;
     }
   }
+  @-webkit-keyframes color {
+    0%   {color: red;}
+    25%  {color: yellow;}
+    50%  {color: green;}
+    75% {color: blue;}
+    100% {color: purple;}
+  }
+
+  @keyframe color {
+    0%   {color: red;}
+    25%  {color: yellow;}
+    50%  {color: green;}
+    75% {color: blue;}
+    100% {color: purple;}
+  }
 
   .dark {
     background-color: ${colors.dark};
