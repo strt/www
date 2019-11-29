@@ -134,7 +134,7 @@ const ColorOverlay = styled.div`
   bottom: 0;
   z-index: 999;
   background-color: ${props => props.overlay};
-  mix-blend-mode: multiply;
+  opacity: 0.6;
 `
 
 function LazyImage(props, forwardedRef) {
