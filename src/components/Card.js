@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { rgba } from 'polished'
 import dayjs from 'dayjs'
 import { H3, Text } from './Text'
 import Image from './Image'
@@ -34,7 +33,7 @@ const Content = styled.div`
   justify-content: space-between;
   padding: ${fluidRange({ min: 16, max: 24 })};
   width: ${getWidth(8)};
-  background-color: white;
+  background-color: ${colors.light};
 
   h3 {
     margin-bottom: 0;
@@ -45,12 +44,10 @@ const Content = styled.div`
 
       ${Link}:hover & {
         text-decoration: underline;
-        background-color: ${rgba(colors.dark, 0.1)};
       }
 
       ${Link}.focus-visible & {
         text-decoration: underline;
-        background-color: ${rgba(colors.dark, 0.2)};
       }
 
       ${Link}:active & {
@@ -69,7 +66,6 @@ const ImageWrapper = styled.div`
   ${ratio({ x: 4, y: 3 })}
   width: ${getWidth(4)};
   overflow: hidden;
-  background-color: ${colors.steel500};
 
   @media ${breakpoints.medium} {
     width: ${getWidth(6)};
@@ -91,7 +87,7 @@ export default function Card({ url, title, date, image }) {
       <Article>
         <Content>
           {date && (
-            <Text as="time" dateTime={date} textColor={colors.steel500} mb="2">
+            <Text as="time" dateTime={date} textColor={colors.darkText} mb="2">
               {formattedDate}
             </Text>
           )}
