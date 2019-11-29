@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { easings, cover, durations } from '../style'
+import { colors, easings, cover, durations } from '../style'
+import { Text } from './Text'
 
 const cache = new Set()
 
@@ -134,7 +135,18 @@ const ColorOverlay = styled.div`
   bottom: 0;
   z-index: 999;
   background-color: ${props => props.overlay};
-  opacity: 0.6;
+`
+
+const ColorCode = styled(Text)`
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  z-index: 999;
+  width: auto;
+  margin: 0;
+  display: block;
+  color: ${colors.light};
+  text-transform: uppercase;
 `
 
 function LazyImage(props, forwardedRef) {
@@ -217,7 +229,9 @@ function LazyImage(props, forwardedRef) {
           onMouseOut={() => setHovering()}
           onBlur={() => setHovering()}
           {...props}
-        />
+        >
+          <ColorCode>{props.overlay}</ColorCode>
+        </ColorOverlay>
       )}
       <noscript dangerouslySetInnerHTML={{ __html: noscriptFallback }} />
     </ImageWrapper>
