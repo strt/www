@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
@@ -67,10 +66,6 @@ export const A = styled.a`
       width: 100%;
       animation-play-state: running !important;
     }
-  }
-
-  &.focus-visible {
-    background-color: ${props => rgba(getColor(props), 0.2)};
   }
 
   &:active,
