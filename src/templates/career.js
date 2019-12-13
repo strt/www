@@ -29,22 +29,33 @@ export default function Career({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
       <Hero pb={0} keepContentMargin>
-        <H1 textColor={colors.light}>{page.title}</H1>
+        <H1 textColor={colors.lightText}>{page.title}</H1>
       </Hero>
+      {page.excerpt && (
+        <Section>
+          <Grid>
+            <Column>
+              <LargeText textColor={colors.lightText}>
+                {page.excerpt.excerpt}
+              </LargeText>
+            </Column>
+          </Grid>
+        </Section>
+      )}
       {hasOpenPositions && (
         <Section bg={colors.dark} py={[5, 7]}>
           <Grid>
             <Column>
-              <Text as="h2" textColor={colors.light} mb={[3, 4]}>
+              <H4 as="h2" textColor={colors.lightText} mb={[3, 4]}>
                 {secondHeader}
-              </Text>
+              </H4>
               <ul>
                 {data.allContentfulPositions.edges.map(({ node }) => (
                   <li key={node.id}>
-                    <Text mb={[2, 3]} textColor={colors.light}>
+                    <Text mb={[2, 3]} textColor={colors.lightText}>
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
-                        colorVariant="light"
+                        colorVariant="lightText"
                         styleVariant="light"
                       >
                         {node.role}
@@ -61,12 +72,12 @@ export default function Career({ data }) {
       <Section>
         <Grid>
           <Column>
-            <H4 as="h2" textColor={colors.light}>
+            <H4 as="h2" textColor={colors.lightText}>
               {spontaneousTitle}
             </H4>
             <Text>
               <Link
-                colorVariant="light"
+                colorVariant="lightText"
                 styleVariant="light"
                 href={`mailto:${contact.email}`}
               >
@@ -76,18 +87,6 @@ export default function Career({ data }) {
           </Column>
         </Grid>
       </Section>
-
-      {page.excerpt && (
-        <Section>
-          <Grid>
-            <Column>
-              <LargeText textColor={colors.light}>
-                {page.excerpt.excerpt}
-              </LargeText>
-            </Column>
-          </Grid>
-        </Section>
-      )}
       <Section bg={colors.dark} pt="0">
         <InstagramFeed />
       </Section>
