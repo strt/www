@@ -7,7 +7,7 @@ import Section from '../components/Section'
 import Cover from '../components/Cover'
 import Image from '../components/Image'
 import ContentWrapper from '../components/ContentWrapper'
-import { Grid, Column } from '../components/Grid'
+import { Grid } from '../components/Grid'
 import { Excerpt } from '../components/Text'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -47,9 +47,7 @@ export default function About({ data }) {
         <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
           <ContentWrapper>
             <Grid>
-              <Column md="8">
-                <RichText textColor={colors.light} document={body.json} />
-              </Column>
+              <RichText document={body.json} />
             </Grid>
           </ContentWrapper>
         </Section>
