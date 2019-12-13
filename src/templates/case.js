@@ -65,7 +65,7 @@ export default function Case({ data, pageContext: { next } }) {
   if (theme.dark) theme.toggleDark()
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.contentfulCase)}>
       <article>
         <Grid
           justifyContent="space-between"
@@ -164,6 +164,9 @@ export const pageQuery = graphql`
         fluid(quality: 80, maxWidth: 1300) {
           ...GatsbyContentfulFluid
         }
+        fixed: resize(width: 1200, height: 630, quality: 80) {
+          src
+        }
       }
       tags {
         name
@@ -191,6 +194,15 @@ export const pageQuery = graphql`
       }
       body {
         json
+      }
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoImage {
+        og: resize(width: 1200, height: 630, quality: 80) {
+          src
+        }
       }
     }
   }
