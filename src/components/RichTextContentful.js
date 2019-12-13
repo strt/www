@@ -1,6 +1,6 @@
 /* eslint react/forbid-prop-types: 0 */
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useContext } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 import { H1, H2, H3, Text } from './Text'
@@ -10,6 +10,8 @@ import Image from './Image'
 import Link from './Link'
 import EmbedPlayer from './EmbedPlayer'
 import Video from './Video'
+import { ThemeContext } from '../context/ThemeContext'
+import { colors } from '../style'
 
 function getImageData(data, name) {
   if (data.target.fields[name]) {
@@ -47,22 +49,38 @@ function isUrlAbsolute(url) {
 
 const options = {
   renderNode: {
-    [BLOCKS.HEADING_1]: (node, children) => (
-      <Column md={8} mb={[0, 0]}>
-        <H1>{children}</H1>
-      </Column>
-    ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <Column md={8} mb={[0, 0]}>
-        <H2>{children}</H2>
-      </Column>
-    ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <Column md={8} mb={[0, 0]}>
-        <H3>{children}</H3>
-      </Column>
-    ),
+    [BLOCKS.HEADING_1]: (node, children) => {
+      const theme = useContext(ThemeContext)
+      return (
+        <Column md={8} mb={[0, 0]}>
+          <H1 textColor={theme.dark ? colors.lightText : colors.darkText}>
+            {children}
+          </H1>
+        </Column>
+      )
+    },
+    [BLOCKS.HEADING_2]: (node, children) => {
+      const theme = useContext(ThemeContext)
+      return (
+        <Column md={8} mb={[0, 0]}>
+          <H2 textColor={theme.dark ? colors.lightText : colors.darkText}>
+            {children}
+          </H2>
+        </Column>
+      )
+    },
+    [BLOCKS.HEADING_3]: (node, children) => {
+      const theme = useContext(ThemeContext)
+      return (
+        <Column md={8} mb={[0, 0]}>
+          <H3 textColor={theme.dark ? colors.lightText : colors.darkText}>
+            {children}
+          </H3>
+        </Column>
+      )
+    },
     [BLOCKS.PARAGRAPH]: (node, children) => {
+      const theme = useContext(ThemeContext)
       let vimeoLink = null
       let videoLink = null
       node.content.forEach(tag => {
@@ -84,7 +102,9 @@ const options = {
 
       return (
         <Column md="8">
-          <Text>{children}</Text>
+          <Text textColor={theme.dark ? colors.lightText : colors.darkText}>
+            {children}
+          </Text>
         </Column>
       )
     },
@@ -122,7 +142,10 @@ const options = {
       )
     },
     [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
-      if (data.target.sys.contentType.sys.id === 'col2') {
+      if (
+        data.target.sys.contentType &&
+        data.target.sys.contentType.sys.id === 'col2'
+      ) {
         const image1 = getImageData(data, 'image1')
         const image2 = getImageData(data, 'image2')
         const video1 = getVideoData(data, 'videoLink1', 'videoAspectRatio1')
