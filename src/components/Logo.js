@@ -21,7 +21,7 @@ export default function Logo() {
         <Svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 186.896 25.367"
-          style={{ color: theme.dark ? colors.light : colors.dark }}
+          style={{ color: theme.dark ? colors.lightText : colors.dark }}
         >
           <title>Strateg Marknadsföring</title>
           <g transform="translate(0.1)">
