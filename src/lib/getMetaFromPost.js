@@ -2,8 +2,7 @@ export default function getMetaFromPost(post, { type } = {}) {
   if (!post) {
     return {}
   }
-
-  return {
+  const meta = {
     title: post.seoTitle || post.title || '',
     description:
       (post.seoDescription && post.seoDescription.seoDescription) ||
@@ -16,4 +15,5 @@ export default function getMetaFromPost(post, { type } = {}) {
       ? post.seoImage && `https:${post.seoImage.og.src}`
       : post.featuredImage && `https:${post.featuredImage.fixed.src}`,
   }
+  return meta
 }
