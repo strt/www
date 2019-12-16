@@ -44,7 +44,6 @@ export const routes = {
 }
 
 export const mainNavigation = [
-  routes.index,
   routes.work,
   routes.about,
   routes.news,
