@@ -7,7 +7,7 @@ const Svg = styled(BaseSvg)`
   width: ${75 / 7.68}vw;
   max-width: 75px;
   height: auto;
-  color: ${colors.lightText};
+  color: ${colors.light};
 `
 
 const LogoIconWrapper = styled.div`

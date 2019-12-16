@@ -33,12 +33,12 @@ export default function Footer() {
         </Column>
         {siteSettings.offices.map(office => (
           <Column md="3" key={office.city}>
-            <Text as="address" textColor={colors.lightText}>
+            <Text as="address" textColor={colors.light}>
               {office.address} <br />
               {office.zipcode} {office.city} <br />
               <Link
                 href={`tel:${formatPhone(office.phone)}`}
-                colorVariant="lightText"
+                colorVariant="light"
                 styleVariant="light"
               >
                 {office.phone}
@@ -52,7 +52,7 @@ export default function Footer() {
               href={siteSettings.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="lightText"
+              colorVariant="light"
               styleVariant="light"
             >
               Instagram
@@ -62,7 +62,7 @@ export default function Footer() {
               href={siteSettings.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="lightText"
+              colorVariant="light"
               styleVariant="light"
             >
               Facebook
@@ -72,7 +72,7 @@ export default function Footer() {
               href={siteSettings.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="lightText"
+              colorVariant="light"
               styleVariant="light"
             >
               LinkedIn
@@ -82,7 +82,7 @@ export default function Footer() {
               href={siteSettings.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="lightText"
+              colorVariant="light"
               styleVariant="light"
             >
               GitHub
@@ -96,7 +96,7 @@ export default function Footer() {
               <li key={route.link}>
                 <Link
                   to={`${getActiveLangPath()}/${route.link}`}
-                  colorVariant="lightText"
+                  colorVariant="light"
                   styleVariant="light"
                 >
                   {getActiveLangPath() ? route.sv.title : route.title}
@@ -108,7 +108,7 @@ export default function Footer() {
       </Grid>
       <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
         <Column width="auto">
-          <CopyrightText as="small" textColor={colors.lightText}>
+          <CopyrightText as="small" textColor={colors.light}>
             © {currentYear} <br />
             {siteSettings.name} <br />
             {getActiveLangPath() ? 'En del av ' : 'A part of '}
@@ -116,7 +116,7 @@ export default function Footer() {
               href="//diplomatgruppen.se"
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="lightText"
+              colorVariant="light"
               styleVariant="light"
             >
               {getActiveLangPath() ? 'Diplomatgruppen' : 'Diplomat Group'}
@@ -124,7 +124,7 @@ export default function Footer() {
           </CopyrightText>
         </Column>
         <Column width="auto">
-          <ScrollToTopButton textColor={colors.lightText} />
+          <ScrollToTopButton textColor={colors.light} />
         </Column>
       </Grid>
     </Section>
