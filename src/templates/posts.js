@@ -24,7 +24,7 @@ export default function News({ data }) {
           {title}
         </Excerpt>
       </Hero>
-      <Section pt={[5, 8]} pb={[10, 20]}>
+      <Section pt={[5, 8]} pb={[10, 20]} bg={colors.lightGray}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>

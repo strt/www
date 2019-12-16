@@ -99,7 +99,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.ice} pt="0" pb={[5, 10]}>
+      <Section bg={colors.lightGray} pt="0" pb={[5, 10]}>
         <Div halfTopBg="white" mb={[2, 4]}>
           <Grid>
             <Column>
