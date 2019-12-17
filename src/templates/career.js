@@ -122,7 +122,7 @@ export default function Career({ data }) {
         </Section>
       )}
       {hasOpenPositions && (
-        <Section py={[5, 7]}>
+        <Section>
           <Grid>
             <Column>
               <H4 as="h2" textColor={theme.color} mb={[3, 4]}>
@@ -186,16 +186,8 @@ export default function Career({ data }) {
               {manifestoImages && (
                 <ManifestoImageWrapper>
                   {manifestoImages.map(item => (
-                    <ManifestoImage key={item.contentful_id}>
-                      {(() => {
-                        return (
-                          <Image
-                            key={item.contentful_id}
-                            src={item.fixed.src}
-                            alt={item.title}
-                          />
-                        )
-                      })()}
+                    <ManifestoImage key={`badge${item.contentful_id}`}>
+                      <Image src={item.fixed.src} alt={item.title} />
                     </ManifestoImage>
                   ))}
                 </ManifestoImageWrapper>
