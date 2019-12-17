@@ -16,10 +16,12 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
-  return items.filter(({ node }) =>
-    node.tags.some(
-      i => !filter || i.name.toLowerCase() === filter.toLowerCase(),
-    ),
+  return items.filter(
+    ({ node }) =>
+      node.tags &&
+      node.tags.some(
+        i => !filter || i.name.toLowerCase() === filter.toLowerCase(),
+      ),
   )
 }
 
@@ -183,8 +185,8 @@ export const pageQuery = graphql`
           title
           createdAt
           featuredImage {
-            fluid(quality: 80) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(quality: 100) {
+              ...GatsbyContentfulFluid
             }
           }
           tags {
