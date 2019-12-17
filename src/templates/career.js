@@ -12,6 +12,9 @@ import { Grid, Column } from '../components/Grid'
 import { breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
+import ContentWrapper from '../components/ContentWrapper'
+import RichText from '../components/RichTextContentful'
+import Image from '../components/Image'
 
 const LargeText = styled(Excerpt)`
   @media ${breakpoints.medium} {
@@ -19,8 +22,81 @@ const LargeText = styled(Excerpt)`
   }
 `
 
+const ManifestoImageWrapper = styled.div`
+  position: relative;
+  @media ${breakpoints.medium} {
+    min-height: 450px;
+  }
+  @media ${breakpoints.large} {
+    min-height: 650px;
+  }
+`
+
+const ManifestoImage = styled.div`
+  position: relative;
+  max-width: 25%;
+  padding: 10px;
+  display: inline-block;
+
+  @media ${breakpoints.medium} {
+    position: absolute;
+    max-width: 200px;
+  }
+
+  @media ${breakpoints.large} {
+    max-width: 300px;
+  }
+
+  &:nth-of-type(1) {
+    @media ${breakpoints.medium} {
+      top: -125px;
+      right: 0;
+    }
+  }
+
+  &:nth-of-type(2) {
+    @media ${breakpoints.medium} {
+      top: 200px;
+      right: 0;
+    }
+    @media ${breakpoints.large} {
+      top: 300px;
+    }
+  }
+
+  &:nth-of-type(3) {
+    @media ${breakpoints.medium} {
+      top: 30px;
+      right: 220px;
+    }
+    @media ${breakpoints.large} {
+      top: 100px;
+      right: 320px;
+    }
+  }
+
+  &:nth-of-type(4) {
+    @media ${breakpoints.medium} {
+      top: 200px;
+      right: 440px;
+    }
+    @media ${breakpoints.large} {
+      top: 300px;
+      right: 640px;
+    }
+  }
+`
+
 export default function Career({ data }) {
-  const { contact, spontaneousTitle, page, secondHeader } = data.contentfulPage
+  const {
+    contact,
+    spontaneousTitle,
+    page,
+    secondHeader,
+    manifestoHeader,
+    manifesto,
+    manifestoImages,
+  } = data.contentfulPage
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   const theme = useContext(ThemeContext)
@@ -72,24 +148,68 @@ export default function Career({ data }) {
         </Section>
       )}
 
-      <Section>
-        <Grid>
-          <Column>
-            <H4 as="h2" textColor={theme.color}>
-              {spontaneousTitle}
-            </H4>
-            <Text>
-              <Link
+      {hasOpenPositions && (
+        <Section>
+          <Grid>
+            <Column>
+              <H4 as="h2" textColor={theme.color}>
+                {spontaneousTitle}
+              </H4>
+              <Text>
+                <Link
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                  href={`mailto:${contact.email}`}
+                >
+                  {contact.email}
+                </Link>
+              </Text>
+            </Column>
+          </Grid>
+        </Section>
+      )}
+
+      {manifesto && (
+        <Section>
+          <Grid pt={20}>
+            <Column>
+              <H1
+                as="h2"
                 textColor={theme.color}
-                styleVariant={theme.theme}
-                href={`mailto:${contact.email}`}
-              >
-                {contact.email}
-              </Link>
-            </Text>
-          </Column>
-        </Grid>
-      </Section>
+                dangerouslySetInnerHTML={{
+                  __html: manifestoHeader.manifestoHeader.replace(
+                    /\n/g,
+                    '<br/>',
+                  ),
+                }}
+              />
+              {manifestoImages && (
+                <ManifestoImageWrapper>
+                  {manifestoImages.map(item => (
+                    <ManifestoImage key={item.contentful_id}>
+                      {(() => {
+                        return (
+                          <Image
+                            key={item.contentful_id}
+                            src={item.fixed.src}
+                            alt={item.title}
+                          />
+                        )
+                      })()}
+                    </ManifestoImage>
+                  ))}
+                </ManifestoImageWrapper>
+              )}
+            </Column>
+          </Grid>
+          <ContentWrapper>
+            <Grid>
+              <RichText document={manifesto.json} />
+            </Grid>
+          </ContentWrapper>
+        </Section>
+      )}
+
       <Section bg={theme.background} pt="0">
         <InstagramFeed halfTopBg={theme.background} />
       </Section>
@@ -107,6 +227,19 @@ export const pageQuery = graphql`
       }
       spontaneousTitle
       secondHeader
+      manifestoHeader {
+        manifestoHeader
+      }
+      manifesto {
+        json
+      }
+      manifestoImages {
+        contentful_id
+        title
+        fixed: resize(width: 300, height: 300, quality: 80) {
+          src
+        }
+      }
       page {
         title
         slug
