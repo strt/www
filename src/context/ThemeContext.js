@@ -1,9 +1,12 @@
 import React from 'react'
+import { colors } from '../style'
 
 const defaultState = {
-  dark: false,
-  toggleDark: () => {},
+  color: 'white',
+  toggleTheme: () => {},
 }
+
+// DO A SWITCH DEPENDING ON THEME
 
 export const ThemeContext = React.createContext(defaultState)
 
@@ -11,22 +14,64 @@ class ThemeProvider extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      dark: false,
+      theme: 'dark',
+      background: colors.dark,
+      color: colors.lightText,
+      colorSecondary: colors.light,
     }
   }
 
-  toggleDark = () => {
-    this.setState(prevState => ({ dark: !prevState.dark }))
+  toggleTheme = colorToggle => {
+    switch (colorToggle) {
+      case 'light':
+        this.setState({
+          theme: colorToggle,
+          background: colors.light,
+          color: colors.darkText,
+          colorSecondary: colors.dark,
+        })
+        break
+      case 'gray':
+        this.setState({
+          theme: colorToggle,
+          background: colors.lightGray,
+          color: colors.darkText,
+          colorSecondary: colors.darkText,
+        })
+        break
+      case 'purple':
+        this.setState({
+          theme: colorToggle,
+          background: colors.lightPurple,
+          color: colors.purple,
+          colorSecondary: colors.purple,
+        })
+        break
+      default:
+        this.setState({
+          theme: colorToggle,
+          background: colors.dark,
+          color: colors.lightText,
+          colorSecondary: colors.light,
+        })
+    }
   }
 
   render() {
     const { children } = this.props
-    const { dark } = this.state
+    const { color } = this.state
+    const { colorSecondary } = this.state
+    const { background } = this.state
+    const { theme } = this.state
+
     return (
       <ThemeContext.Provider
         value={{
-          dark,
-          toggleDark: this.toggleDark,
+          color,
+          colorSecondary,
+          background,
+          theme,
+          toggleTheme: this.toggleTheme,
         }}
       >
         {children}

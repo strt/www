@@ -226,8 +226,8 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    colorVariant={theme.dark ? 'lightText' : 'darkText'}
-                    styleVariant={theme.dark ? 'light' : 'dark'}
+                    textColor={theme.colorSecondary}
+                    styleVariant={theme.theme}
                     variant="large"
                   >
                     {getActiveLangPath() ? child.sv.title : child.title}
@@ -257,7 +257,7 @@ function Navigation({ location }) {
                 style={{ marginLeft: '10px' }}
                 as="button"
                 type="button"
-                styleVariant={theme.dark ? 'light' : 'dark'}
+                styleVariant={theme.theme}
                 variant="large"
                 onClick={() => {
                   toggle()

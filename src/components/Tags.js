@@ -74,7 +74,7 @@ const Hyphen = styled.span`
   }
 `
 
-export default function Tags({ items, linked = true, colorVariant, ...rest }) {
+export default function Tags({ items, linked = true, textColor, ...rest }) {
   if (!items || !items.length) {
     return null
   }
@@ -90,7 +90,7 @@ export default function Tags({ items, linked = true, colorVariant, ...rest }) {
                 href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
                   item.name.toLowerCase(),
                 )}`}
-                colorVariant={colorVariant}
+                textColor={textColor}
               >
                 {item.name}
               </Link>

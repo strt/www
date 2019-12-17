@@ -27,7 +27,7 @@ export default function Article({ data }) {
   const hasCover = !!featuredImage
 
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
     <Layout meta={getMetaFromPost(data.post)}>
@@ -46,8 +46,10 @@ export default function Article({ data }) {
           pb={hasCover ? undefined : 0}
           keepContentMargin={!hasCover}
         >
-          <H1>{title}</H1>
-          {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
+          <H1 textColor={theme.color}>{title}</H1>
+          {excerpt && (
+            <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
+          )}
         </Hero>
         {hasCover && (
           <Cover>
@@ -61,11 +63,11 @@ export default function Article({ data }) {
             </Grid>
           </ContentWrapper>
         </Section>
-        <Section as="aside" bg={colors.ice} mt={[10, 15]} pb={[5, 12]}>
-          <Div halfTopBg="white" mb={[2, 4]}>
+        <Section as="aside" bg={colors.lightGray} mt={[10, 15]} pb={[5, 12]}>
+          <Div halfTopBg={theme.background} mb={[2, 4]}>
             <Grid>
               <Column>
-                <H2>News</H2>
+                <H2 textColor={theme.color}>News</H2>
               </Column>
             </Grid>
           </Div>
@@ -85,6 +87,7 @@ export default function Article({ data }) {
                 <Link
                   to={`${getActiveLangPath()}/${routes.news.link}`}
                   variant="large"
+                  textColor={colors.darkText}
                 >
                   {getActiveLangPath() ? 'Fler nyheter' : 'More news'}
                 </Link>

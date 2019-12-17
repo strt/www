@@ -11,14 +11,14 @@ export default function NotFound({ data }) {
   const { page, linkText } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
-        <H1>{page.title}</H1>
-        <Excerpt>{page.excerpt.excerpt}</Excerpt>
-        <Link to="/" colorVariant="dark" variant="large">
+        <H1 textColor={theme.color}>{page.title}</H1>
+        <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
+        <Link to="/" textColor={theme.color} variant="large">
           {linkText}
         </Link>
       </Hero>

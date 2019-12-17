@@ -63,7 +63,7 @@ const Animation = styled.div`
 
 export default function Case({ data, location }) {
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   const [filter, setFilter] = useState(
     () => queryString.parse(location.search).filter || null,
@@ -86,17 +86,17 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1" textColor={colors.dark}>
+        <Excerpt as="h1" textColor={theme.color}>
           {title}
         </Excerpt>
-        {/* <Excerpt>{excerpt.excerpt}}</Excerpt> */}
         {renderFilter === true && (
           <Filter>
             <Link
               href={location.pathname}
               onClick={onTagClick}
               aria-current={!filter ? true : undefined}
-              colorVariant="gray"
+              textColor={theme.color}
+              colorVariant={theme.theme}
               variant="large"
             >
               {getActiveLangPath() ? 'Alla projekt' : 'All projects'}
@@ -106,7 +106,8 @@ export default function Case({ data, location }) {
                 key={tag.node.name}
                 href={getTagLink(tag.node.name)}
                 onClick={onTagClick}
-                colorVariant="gray"
+                textColor={theme.color}
+                colorVariant={theme.theme}
                 variant="large"
                 aria-current={
                   filter && filter.includes(tag.node.name.toLowerCase())

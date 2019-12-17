@@ -17,7 +17,7 @@ export default function Standard({ data }) {
 
   const hasCover = !!image
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>

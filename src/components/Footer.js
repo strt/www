@@ -24,6 +24,7 @@ const currentYear = new Date().getFullYear()
 
 export default function Footer() {
   const siteSettings = useSiteSettings()
+  const footerTheme = 'dark'
 
   return (
     <Section as="footer" bg={colors.dark} py={[4, 7]}>
@@ -38,8 +39,8 @@ export default function Footer() {
               {office.zipcode} {office.city} <br />
               <Link
                 href={`tel:${formatPhone(office.phone)}`}
-                colorVariant="light"
-                styleVariant="light"
+                textColor={colors.light}
+                styleVariant={footerTheme}
               >
                 {office.phone}
               </Link>
@@ -52,8 +53,8 @@ export default function Footer() {
               href={siteSettings.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="light"
-              styleVariant="light"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               Instagram
             </Link>
@@ -62,8 +63,8 @@ export default function Footer() {
               href={siteSettings.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="light"
-              styleVariant="light"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               Facebook
             </Link>
@@ -72,8 +73,8 @@ export default function Footer() {
               href={siteSettings.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="light"
-              styleVariant="light"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               LinkedIn
             </Link>
@@ -82,8 +83,8 @@ export default function Footer() {
               href={siteSettings.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="light"
-              styleVariant="light"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               GitHub
             </Link>
@@ -96,8 +97,8 @@ export default function Footer() {
               <li key={route.link}>
                 <Link
                   to={`${getActiveLangPath()}/${route.link}`}
-                  colorVariant="light"
-                  styleVariant="light"
+                  textColor={colors.light}
+                  styleVariant={footerTheme}
                 >
                   {getActiveLangPath() ? route.sv.title : route.title}
                 </Link>
@@ -116,8 +117,8 @@ export default function Footer() {
               href="//diplomatgruppen.se"
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="light"
-              styleVariant="light"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               {getActiveLangPath() ? 'Diplomatgruppen' : 'Diplomat Group'}
             </Link>

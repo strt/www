@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
-import { colors, breakpoints, fluidRange, vw } from '../style'
+import { breakpoints, fluidRange, vw } from '../style'
 import { getActiveLangPath } from './SelectLanguage'
 import Navigation from './Nav'
 import { ThemeContext } from '../context/ThemeContext'
@@ -12,9 +12,7 @@ export default function Header() {
   return (
     <ThemeContext.Consumer>
       {theme => (
-        <StyledHeader
-          style={{ background: theme.dark ? colors.dark : colors.light }}
-        >
+        <StyledHeader style={{ background: theme.background }}>
           <Grid justifyContent="space-between">
             <Column width="auto">
               <LogoLink to={`${getActiveLangPath()}/`}>

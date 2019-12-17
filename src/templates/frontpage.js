@@ -52,7 +52,7 @@ const CaseGrid = styled(CssGrid)`
 
 export default function Index({ data }) {
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   const {
     page,
@@ -90,7 +90,7 @@ export default function Index({ data }) {
             <Div mt={[3, 6]}>
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
-                colorVariant="dark"
+                textColor={theme.color}
                 variant="large"
               >
                 {casesLinkText}
@@ -100,10 +100,10 @@ export default function Index({ data }) {
         </Grid>
       </Section>
       <Section bg={colors.lightGray} pt="0" pb={[5, 10]}>
-        <Div halfTopBg="white" mb={[2, 4]}>
+        <Div halfTopBg={theme.background} mb={[2, 4]}>
           <Grid>
             <Column>
-              <H2>{newsHeader}</H2>
+              <H2 textColor={theme.color}>{newsHeader}</H2>
             </Column>
           </Grid>
         </Div>

@@ -15,7 +15,7 @@ import EmbedPlayer from '../components/EmbedPlayer'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import ContentWrapper from '../components/ContentWrapper'
-import { colors, fluidRange, breakpoints, breakpointNr } from '../style'
+import { fluidRange, breakpoints, breakpointNr } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
@@ -27,7 +27,7 @@ const StyledH1 = styled(H1)`
   font-weight: 400;
   line-height: 1.1em;
   ${base}
-  color: ${colors.dark};
+  color: ${props => props.textColor};
 
   @media ${breakpoints.medium} {
     font-size: 6.1875em;
@@ -62,7 +62,7 @@ export default function Case({ data, pageContext: { next } }) {
   } = data.contentfulCase
 
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulCase)}>
@@ -73,18 +73,22 @@ export default function Case({ data, pageContext: { next } }) {
           flexWrap="nowrap"
         >
           <Column width="auto">
-            <H4 mb="0">{client.name}</H4>
+            <H4 mb="0" textColor={theme.color}>
+              {client.name}
+            </H4>
           </Column>
           <Column width="auto">
-            <Tags items={tags} colorVariant="gray" />
+            <Tags items={tags} textColor={theme.color} />
           </Column>
         </Grid>
         <Hero pt={[2, 7]} pb={[5, 7]}>
-          <StyledH1>{title}</StyledH1>
-          {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
+          <StyledH1 textColor={theme.color}>{title}</StyledH1>
+          {excerpt && (
+            <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
+          )}
         </Hero>
         {(featuredImage || featuredVideo) && (
-          <Cover bg={colors.dark} isVideo={!!featuredVideo}>
+          <Cover bg={theme.background} isVideo={!!featuredVideo}>
             {featuredImage && !featuredVideo && (
               <Image fluid={featuredImage.fluid} alt="" />
             )}
@@ -104,14 +108,22 @@ export default function Case({ data, pageContext: { next } }) {
           <Grid>
             {contact && (
               <Column md="8" mt={[4, 6]}>
-                <H3>Would you like to know more?</H3>
-                <Text>
+                <H3 textColor={theme.color}>Would you like to know more?</H3>
+                <Text textColor={theme.color}>
                   Contact {contact.firstName} {contact.lastName},{' '}
                   {contact.title}
                   <br />
-                  <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
+                  <Link
+                    textColor={theme.color}
+                    href={`mailto:${contact.email}`}
+                  >
+                    {contact.email}
+                  </Link>
                   <br />
-                  <Link href={`tel:${formatPhone(contact.phone)}`}>
+                  <Link
+                    textColor={theme.color}
+                    href={`tel:${formatPhone(contact.phone)}`}
+                  >
                     {contact.phone}
                   </Link>
                 </Text>
@@ -120,10 +132,10 @@ export default function Case({ data, pageContext: { next } }) {
           </Grid>
         </Section>
         {next && (
-          <Section as="footer" bg={colors.dark} py={[7, 7]}>
+          <Section as="footer" bg={theme.background} py={[7, 7]}>
             <Grid>
               <Column>
-                <H6 textColor={colors.light} mb={[3, 7]}>
+                <H6 textColor={theme.color} mb={[3, 7]}>
                   Next case <Icon name={['fal', 'long-arrow-down']} />
                 </H6>
                 <H1 as="div">
@@ -131,7 +143,7 @@ export default function Case({ data, pageContext: { next } }) {
                     as={Link}
                     to={next.fields.slug}
                     rel="next"
-                    colorVariant="light"
+                    textColor={theme.color}
                   >
                     {next.frontmatter.client}
                   </Link>
@@ -140,7 +152,7 @@ export default function Case({ data, pageContext: { next } }) {
             </Grid>
             <Grid justifyContent="flex-end" mt={[7, 4]}>
               <Column width="auto">
-                <ScrollToTopButton textColor={colors.light} />
+                <ScrollToTopButton textColor={theme.color} />
               </Column>
             </Grid>
           </Section>

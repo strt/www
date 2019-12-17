@@ -43,18 +43,15 @@ export default function SelectLanguage({ location }) {
                 setActiveLang('sv')
               }}
               to={getUrl(location, 'sv')}
-              colorVariant={theme.dark ? 'lightText' : 'darkText'}
-              styleVariant={theme.dark ? 'light' : 'dark'}
+              textColor={theme.colorSecondary}
+              styleVariant={theme.theme}
               variant="large"
             >
               Sv
             </Link>
           </li>
           <li style={{ padding: '0 5px' }}>
-            <Link
-              colorVariant={theme.dark ? 'lightText' : 'darkText'}
-              variant="large"
-            >
+            <Link color={theme.colorSecondary} variant="large">
               /
             </Link>
           </li>
@@ -65,8 +62,8 @@ export default function SelectLanguage({ location }) {
               onClick={() => {
                 setActiveLang('en')
               }}
-              colorVariant={theme.dark ? 'lightText' : 'darkText'}
-              styleVariant={theme.dark ? 'light' : 'dark'}
+              textColor={theme.colorSecondary}
+              styleVariant={theme.theme}
               variant="large"
             >
               En

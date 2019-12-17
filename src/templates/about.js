@@ -11,14 +11,13 @@ import { Grid } from '../components/Grid'
 import { Excerpt } from '../components/Text'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import { colors } from '../style'
 
 export default function About({ data }) {
   const { title, excerpt, image, body } = data.page
   const hasCover = !!image
 
   const theme = useContext(ThemeContext)
-  if (!theme.dark) theme.toggleDark()
+  if (theme.theme !== 'dark') theme.toggleTheme('dark')
 
   return (
     <Layout meta={getMetaFromPost(data.page)}>
@@ -26,14 +25,14 @@ export default function About({ data }) {
         {title && (
           <Excerpt
             as="h1"
-            textColor={colors.lightText}
+            textColor={theme.color}
             style={{ margin: '0', display: 'inline' }}
           >
             {title}&nbsp;
           </Excerpt>
         )}
         {excerpt && (
-          <Excerpt textColor={colors.lightText} style={{ display: 'inline' }}>
+          <Excerpt textColor={theme.color} style={{ display: 'inline' }}>
             {excerpt.excerpt}
           </Excerpt>
         )}

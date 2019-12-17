@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
-import { colors, breakpoints, vw } from '../style'
+import { breakpoints, vw } from '../style'
 import { ThemeContext } from '../context/ThemeContext'
 
 const Svg = styled(BaseSvg)`
@@ -21,7 +21,7 @@ export default function Logo() {
         <Svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 186.896 25.367"
-          style={{ color: theme.dark ? colors.lightText : colors.dark }}
+          style={{ color: theme.colorSecondary }}
         >
           <title>Strateg Marknadsföring</title>
           <g transform="translate(0.1)">

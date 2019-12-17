@@ -3,28 +3,13 @@ import styled, { css } from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
-import {
-  fluidRange,
-  breakpoints,
-  breakpointNr,
-  colors,
-  fontFamily,
-} from '../style'
-
-const COLOR_VARIANTS = {
-  dark: colors.dark,
-  light: colors.light,
-  darkText: colors.darkText,
-  lightText: colors.lightText,
-}
+import { fluidRange, breakpoints, breakpointNr, fontFamily } from '../style'
 
 const UNDERLINE_VARIANTS = {
-  dark: 'waveDark.svg',
-  light: 'waveLight.svg',
-}
-
-function getColor(props) {
-  return COLOR_VARIANTS[props.colorVariant] || colors.darkText
+  dark: 'waveLight.svg',
+  light: 'waveDark.svg',
+  purple: 'waveDark.svg',
+  gray: 'waveDark.svg',
 }
 
 function getUnderline(props) {
@@ -40,7 +25,7 @@ export const A = styled.a`
   font-family: ${fontFamily};
   font-size: inherit;
   font-weight: inherit;
-  color: ${props => getColor(props)};
+  color: ${props => props.textColor};
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
@@ -71,6 +56,7 @@ export const A = styled.a`
   &:active,
   &[aria-current],
   &[data-partially-current] {
+
     &::after {
       animation-play-state: paused;
       width: 100%;
@@ -120,10 +106,10 @@ const Link = React.forwardRef(({ to, ...props }, ref) => {
 })
 
 Link.propTypes = {
-  colorVariant: PropTypes.oneOf(Object.keys(COLOR_VARIANTS)),
   styleVariant: PropTypes.oneOf(Object.keys(UNDERLINE_VARIANTS)),
   variant: PropTypes.oneOf(['large']),
   to: PropTypes.string,
+  textColor: PropTypes.string,
   href: PropTypes.string,
 }
 

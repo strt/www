@@ -54,16 +54,16 @@ export default function Contact({ data }) {
   const { page, contacts } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
     <Layout meta={getMetaFromPost(page)}>
       <Hero>
-        <H1>{page.title}</H1>
+        <H1 textColor={theme.color}>{page.title}</H1>
 
         {page.excerpt && (
           <Column md={6} p={0}>
-            <Text>{page.excerpt.excerpt}</Text>
+            <Text textColor={theme.color}>{page.excerpt.excerpt}</Text>
           </Column>
         )}
       </Hero>
@@ -72,16 +72,26 @@ export default function Contact({ data }) {
         <Grid>
           {contacts.map((contact, index) => (
             <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
-              <Text>
+              <Text textColor={theme.color}>
                 <strong>{contact.city || contact.title}</strong>
                 <br />
                 {contact.address}
                 {contact.address && ','}
                 {contact.postalCode} {contact.city}
                 {contact.city && <br />}
-                <Link href={`mailto:${contact.email}`}>{contact.email}</Link>
+                <Link
+                  href={`mailto:${contact.email}`}
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                >
+                  {contact.email}
+                </Link>
                 <br />
-                <Link href={`tel:${formatPhone(contact.phone)}`}>
+                <Link
+                  href={`tel:${formatPhone(contact.phone)}`}
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                >
                   {contact.phone}
                 </Link>
               </Text>
@@ -101,17 +111,27 @@ export default function Contact({ data }) {
                   overlay={node.color}
                 />
               )}
-              <Text mt={[1, 1]} mb="0">
+              <Text textColor={theme.color} mt={[1, 1]} mb="0">
                 {node.firstName} {node.lastName}
               </Text>
-              <SmallText mb={0.5} textColor={colors.steel500}>
+              <SmallText mb={0.5} textColor={theme.color}>
                 {node.role}
               </SmallText>
-              <SmallText mb={0.5}>
-                <Link href={`mailto:${node.email}`}>{node.email}</Link>
+              <SmallText mb={0.5} textColor={theme.color}>
+                <Link
+                  href={`mailto:${node.email}`}
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                >
+                  {node.email}
+                </Link>
               </SmallText>
-              <SmallText mb="0">
-                <Link href={`tel:${formatPhone(node.phone)}`}>
+              <SmallText mb="0" textColor={theme.color}>
+                <Link
+                  href={`tel:${formatPhone(node.phone)}`}
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                >
                   {node.phone}
                 </Link>
               </SmallText>

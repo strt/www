@@ -11,7 +11,6 @@ import Link from './Link'
 import EmbedPlayer from './EmbedPlayer'
 import Video from './Video'
 import { ThemeContext } from '../context/ThemeContext'
-import { colors } from '../style'
 
 function getImageData(data, name) {
   if (data.target.fields[name]) {
@@ -53,9 +52,7 @@ const options = {
       const theme = useContext(ThemeContext)
       return (
         <Column md={8} mb={[0, 0]}>
-          <H1 textColor={theme.dark ? colors.lightText : colors.darkText}>
-            {children}
-          </H1>
+          <H1 textColor={theme.color}>{children}</H1>
         </Column>
       )
     },
@@ -63,9 +60,7 @@ const options = {
       const theme = useContext(ThemeContext)
       return (
         <Column md={8} mb={[0, 0]}>
-          <H2 textColor={theme.dark ? colors.lightText : colors.darkText}>
-            {children}
-          </H2>
+          <H2 textColor={theme.color}>{children}</H2>
         </Column>
       )
     },
@@ -73,9 +68,7 @@ const options = {
       const theme = useContext(ThemeContext)
       return (
         <Column md={8} mb={[0, 0]}>
-          <H3 textColor={theme.dark ? colors.lightText : colors.darkText}>
-            {children}
-          </H3>
+          <H3 textColor={theme.color}>{children}</H3>
         </Column>
       )
     },
@@ -102,19 +95,20 @@ const options = {
 
       return (
         <Column md="8">
-          <Text textColor={theme.dark ? colors.lightText : colors.darkText}>
-            {children}
-          </Text>
+          <Text textColor={theme.color}>{children}</Text>
         </Column>
       )
     },
     [INLINES.HYPERLINK]: (node, children) => {
       const isAbsolute = isUrlAbsolute(node.data.uri)
+      const theme = useContext(ThemeContext)
       return (
         <Link
           rel={isAbsolute ? 'nofollow,noopener,noreferrer' : ''}
           target={isAbsolute ? '_blank' : ''}
           href={node.data.uri}
+          textColor={theme.color}
+          styleVariant={theme.theme}
         >
           {children}
         </Link>

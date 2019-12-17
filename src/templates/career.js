@@ -9,7 +9,7 @@ import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
 import { H1, H4, Excerpt, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints, colors } from '../style'
+import { breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 
@@ -24,18 +24,21 @@ export default function Career({ data }) {
   const hasOpenPositions = !!data.allContentfulPositions.edges.length
 
   const theme = useContext(ThemeContext)
-  if (!theme.dark) theme.toggleDark()
+  if (theme.theme !== 'purple') theme.toggleTheme('purple')
 
   return (
-    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
+    <Layout
+      meta={getMetaFromPost(data.contentfulPage.page)}
+      bg={theme.background}
+    >
       <Hero pb={0} keepContentMargin>
-        <H1 textColor={colors.lightText}>{page.title}</H1>
+        <H1 textColor={theme.color}>{page.title}</H1>
       </Hero>
       {page.excerpt && (
         <Section>
           <Grid>
             <Column>
-              <LargeText textColor={colors.lightText}>
+              <LargeText textColor={theme.color}>
                 {page.excerpt.excerpt}
               </LargeText>
             </Column>
@@ -43,20 +46,20 @@ export default function Career({ data }) {
         </Section>
       )}
       {hasOpenPositions && (
-        <Section bg={colors.dark} py={[5, 7]}>
+        <Section py={[5, 7]}>
           <Grid>
             <Column>
-              <H4 as="h2" textColor={colors.lightText} mb={[3, 4]}>
+              <H4 as="h2" textColor={theme.color} mb={[3, 4]}>
                 {secondHeader}
               </H4>
               <ul>
                 {data.allContentfulPositions.edges.map(({ node }) => (
                   <li key={node.id}>
-                    <Text mb={[2, 3]} textColor={colors.lightText}>
+                    <Text mb={[2, 3]} textColor={theme.color}>
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
-                        colorVariant="lightText"
-                        styleVariant="light"
+                        textColor={theme.color}
+                        styleVariant={theme.theme}
                       >
                         {node.role}
                       </Link>
@@ -72,13 +75,13 @@ export default function Career({ data }) {
       <Section>
         <Grid>
           <Column>
-            <H4 as="h2" textColor={colors.lightText}>
+            <H4 as="h2" textColor={theme.color}>
               {spontaneousTitle}
             </H4>
             <Text>
               <Link
-                colorVariant="lightText"
-                styleVariant="light"
+                textColor={theme.color}
+                styleVariant={theme.theme}
                 href={`mailto:${contact.email}`}
               >
                 {contact.email}
@@ -87,8 +90,8 @@ export default function Career({ data }) {
           </Column>
         </Grid>
       </Section>
-      <Section bg={colors.dark} pt="0">
-        <InstagramFeed />
+      <Section bg={theme.background} pt="0">
+        <InstagramFeed halfTopBg={theme.background} />
       </Section>
     </Layout>
   )

@@ -8,23 +8,22 @@ import Section from '../components/Section'
 import { Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { getActiveLangPath } from '../components/SelectLanguage'
-import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
   const { title } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
-  if (theme.dark) theme.toggleDark()
+  if (theme.theme !== 'gray') theme.toggleTheme('gray')
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1" textColor={colors.dark}>
+        <Excerpt as="h1" textColor={theme.color}>
           {title}
         </Excerpt>
       </Hero>
-      <Section pt={[5, 8]} pb={[10, 20]} bg={colors.lightGray}>
+      <Section pt={[5, 8]} pb={[10, 20]}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} md="6" bottomGap>

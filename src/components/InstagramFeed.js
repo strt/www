@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
 import Image from './Image'
@@ -8,21 +8,19 @@ import useAxios from '../lib/useAxios'
 import Icon from './Icon'
 import { colors, breakpoints, cover } from '../style'
 import useSiteSettings from '../lib/useSiteSettings'
-import { ThemeContext } from '../context/ThemeContext'
 
 const placeholderItems = Array.from(Array(5)).map((v, i) => ({ id: i }))
 
 export default function Posts({ halfTopBg = 'white', ...props }) {
-  const theme = useContext(ThemeContext)
   const siteSettings = useSiteSettings()
   const { data: posts = placeholderItems } = useAxios({
     url: '/.netlify/functions/instagram',
   })
 
   return (
-    <Wrapper halfTopBg={theme.dark ? colors.dark : halfTopBg} {...props}>
+    <Wrapper halfTopBg={halfTopBg} {...props}>
       <Grid justifyContent="center">
-        <Column md="10">
+        <Column md="10" mb="100px">
           <ImageGrid>
             {posts.map(post => (
               <Box key={post.id}>
