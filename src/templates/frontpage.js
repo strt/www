@@ -64,7 +64,7 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <Hero md={10} scrollButtonElement="#case-section" pt={8}>
+      <Hero md={10} scrollButtonElement="#case-section">
         <FrontH1 heroContent={hero} />
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
