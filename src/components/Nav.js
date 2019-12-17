@@ -15,7 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
-import SelectLanguage, { getActiveLangPath } from './SelectLanguage'
+import { getActiveLangPath } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -234,7 +234,6 @@ function Navigation({ location }) {
                   </Link>
                 </li>
               ))}
-            <SelectLanguage location={location} />
           </ul>
           <div data-responsive>
             <div
@@ -243,16 +242,6 @@ function Navigation({ location }) {
                 alignItems: 'center',
               }}
             >
-              <div>
-                <ul
-                  style={{
-                    display: 'flex',
-                  }}
-                >
-                  <SelectLanguage location={location} />
-                </ul>
-              </div>
-
               <Link
                 style={{ marginLeft: '10px' }}
                 as="button"

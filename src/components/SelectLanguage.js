@@ -1,6 +1,8 @@
 import React from 'react'
+import styled from 'styled-components'
 import Link from './Link'
-import { ThemeContext } from '../context/ThemeContext'
+import { Text } from './Text'
+import { breakpoints, colors } from '../style'
 
 let selectedLang = null
 
@@ -28,49 +30,51 @@ export function getUrl(location, country) {
   return langPath + url
 }
 
+const Li = styled.li`
+  padding: '0';
+
+  &:first-child {
+    margin-left: 0;
+    @media ${breakpoints.medium} {
+      margin-left: auto;
+    }
+  }
+`
+
 export default function SelectLanguage({ location }) {
   return (
-    <ThemeContext.Consumer>
-      {theme => (
-        <>
-          <li
-            style={{
-              padding: '0',
-            }}
-          >
-            <Link
-              onClick={() => {
-                setActiveLang('sv')
-              }}
-              to={getUrl(location, 'sv')}
-              textColor={theme.colorSecondary}
-              styleVariant={theme.theme}
-              variant="large"
-            >
-              Sv
-            </Link>
-          </li>
-          <li style={{ padding: '0 5px' }}>
-            <Link color={theme.colorSecondary} variant="large">
-              /
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to={getUrl(location, 'en')}
-              onClick={() => {
-                setActiveLang('en')
-              }}
-              textColor={theme.colorSecondary}
-              styleVariant={theme.theme}
-              variant="large"
-            >
-              En
-            </Link>
-          </li>
-        </>
-      )}
-    </ThemeContext.Consumer>
+    <>
+      <Li style={{}}>
+        <Link
+          onClick={() => {
+            setActiveLang('sv')
+          }}
+          to={getUrl(location, 'sv')}
+          textColor={colors.light}
+          styleVariant="dark"
+          variant="large"
+        >
+          Svenska
+        </Link>
+      </Li>
+      <Li style={{ padding: '0 5px' }}>
+        <Text style={{ lineHeight: 'inherit' }} textColor={colors.light}>
+          /
+        </Text>
+      </Li>
+      <Li>
+        <Link
+          to={getUrl(location, 'en')}
+          onClick={() => {
+            setActiveLang('en')
+          }}
+          textColor={colors.light}
+          styleVariant="dark"
+          variant="large"
+        >
+          English
+        </Link>
+      </Li>
+    </>
   )
 }
