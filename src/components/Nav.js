@@ -247,6 +247,7 @@ function Navigation({ location }) {
                 as="button"
                 type="button"
                 styleVariant={theme.theme}
+                textColor={theme.colorSecondary}
                 variant="large"
                 onClick={() => {
                   toggle()
