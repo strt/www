@@ -47,7 +47,7 @@ function isUrlAbsolute(url) {
   return url.indexOf('://') > 0 || url.indexOf('//') === 0
 }
 
-const options = (md = '8') => {
+const options = (pr, pl, md = '8') => {
   return {
     renderText: content =>
       content.split('\n').flatMap((content, i) => [i > 0 && <br />, content]),
@@ -55,7 +55,7 @@ const options = (md = '8') => {
       [BLOCKS.HEADING_1]: (node, children) => {
         const theme = useContext(ThemeContext)
         return (
-          <Column md={md} mb={[0, 0]}>
+          <Column md={md} mb={[0, 0]} pr={pr} pl={pl}>
             <H1 textColor={theme.color}>{children}</H1>
           </Column>
         )
@@ -63,7 +63,7 @@ const options = (md = '8') => {
       [BLOCKS.HEADING_2]: (node, children) => {
         const theme = useContext(ThemeContext)
         return (
-          <Column md={md} mb={[0, 0]}>
+          <Column md={md} mb={[0, 0]} pr={pr} pl={pl}>
             <H2 textColor={theme.color}>{children}</H2>
           </Column>
         )
@@ -71,7 +71,7 @@ const options = (md = '8') => {
       [BLOCKS.HEADING_3]: (node, children) => {
         const theme = useContext(ThemeContext)
         return (
-          <Column md={md} mb={[0, 0]}>
+          <Column md={md} mb={[0, 0]} pr={pr} pl={pl}>
             <H3 textColor={theme.color}>{children}</H3>
           </Column>
         )
@@ -99,7 +99,7 @@ const options = (md = '8') => {
         }
 
         return (
-          <Column md={md}>
+          <Column md={md} pr={pr} pl={pl}>
             <Text textColor={theme.color}>{children}</Text>
           </Column>
         )
@@ -120,7 +120,7 @@ const options = (md = '8') => {
         )
       },
       [BLOCKS.UL_LIST]: (node, children) => (
-        <Column md={md} mb={[0, 0]}>
+        <Column md={md} mb={[0, 0]} pr={pr} pl={pl}>
           <UnorderedList>{children}</UnorderedList>
         </Column>
       ),
@@ -132,7 +132,7 @@ const options = (md = '8') => {
       }) => {
         const file = fields.file['en-GB']
         return (
-          <Column md={12}>
+          <Column md={12} pr={pr} pl={pl}>
             <Image
               alt={fields.description && fields.description['en-GB']}
               src={file.url}
@@ -162,8 +162,8 @@ const options = (md = '8') => {
     },
   }
 }
-const RichText = ({ md, document }) => {
-  return documentToReactComponents(document, options(md))
+const RichText = ({ md, pr, pl, document }) => {
+  return documentToReactComponents(document, options(pr, pl, md))
 }
 
 RichText.propTypes = {
