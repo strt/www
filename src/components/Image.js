@@ -139,7 +139,7 @@ const ColorOverlay = styled.div`
 
 const ColorCode = styled(Text)`
   position: absolute;
-  right: 15px;
+  left: 20px;
   bottom: 15px;
   z-index: 999;
   width: auto;
