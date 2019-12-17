@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
-import { colors, breakpoints, breakpointNr, fluidRange } from '../style'
+import { breakpoints, breakpointNr, fluidRange } from '../style'
 import { getActiveLangPath } from './SelectLanguage'
 
 function tagsWrapperModifiers(props) {
@@ -49,7 +49,7 @@ const TagsWrapper = styled.div`
   align-items: baseline;
   line-height: 0.8125em;
   ${tagsWrapperModifiers}
-  color: ${props => props.textColor || colors.dark};
+  color: ${props => props.textColor};
 `
 
 const TagList = styled.ul`
@@ -65,10 +65,15 @@ const TagList = styled.ul`
   }
 `
 
+const Li = styled.li`
+  color: ${props => props.textColor};
+`
+
 const Hyphen = styled.span`
   flex-shrink: 0;
 
   &::before {
+    color: ${props => props.textColor};
     content: '— ';
     white-space: pre;
   }
@@ -80,11 +85,11 @@ export default function Tags({ items, linked = true, textColor, ...rest }) {
   }
 
   return (
-    <TagsWrapper {...rest}>
+    <TagsWrapper {...rest} textColor={textColor}>
       <Hyphen />
       <TagList>
         {items.map(item => (
-          <li key={item.name}>
+          <Li key={item.name}>
             {linked ? (
               <Link
                 href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
@@ -97,7 +102,7 @@ export default function Tags({ items, linked = true, textColor, ...rest }) {
             ) : (
               item.name
             )}
-          </li>
+          </Li>
         ))}
       </TagList>
     </TagsWrapper>
