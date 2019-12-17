@@ -33,8 +33,8 @@ export const A = styled.a`
     position: absolute;
     content: '';
     bottom: -20%;
-    left: 0;
     right: 0;
+    left: auto;
     width: 0;
     height: 8px;
     background-size: 15px 11px;
@@ -42,12 +42,14 @@ export const A = styled.a`
     background-repeat: repeat;
     background-image: url('/${props => getUnderline(props)}');
     animation: move 15s linear infinite;
-    transition: width 1s;
+    transition: width 0.5s;
     animation-play-state: running;
   }
 
   &:hover {
     &::after {
+      right: auto;
+      left: 0;
       width: 100%;
       animation-play-state: running !important;
     }
@@ -56,7 +58,6 @@ export const A = styled.a`
   &:active,
   &[aria-current],
   &[data-partially-current] {
-
     &::after {
       animation-play-state: paused;
       width: 100%;
