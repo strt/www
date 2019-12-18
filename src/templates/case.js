@@ -72,11 +72,13 @@ export default function Case({ data, pageContext: { next } }) {
           alignItems={['flex-start', 'center']}
           flexWrap="nowrap"
         >
-          <Column width="auto">
-            <H4 mb="0" textColor={theme.color}>
-              {client.name}
-            </H4>
-          </Column>
+          {client && (
+            <Column width="auto">
+              <H4 mb="0" textColor={theme.color}>
+                {client.name}
+              </H4>
+            </Column>
+          )}
           <Column width="auto">
             <Tags items={tags} textColor={theme.color} />
           </Column>
