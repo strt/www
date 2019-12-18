@@ -108,7 +108,7 @@ export const pageQuery = graphql`
       oldDate
       createdAt
       featuredImage {
-        fluid(quality: 80, maxWidth: 1300) {
+        fluid(quality: 80, maxWidth: 3000) {
           ...GatsbyContentfulFluid
         }
         fixed {
@@ -142,8 +142,8 @@ export const pageQuery = graphql`
           title
           createdAt
           featuredImage {
-            fluid(quality: 80) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(quality: 80, maxWidth: 800) {
+              ...GatsbyContentfulFluid
             }
           }
         }

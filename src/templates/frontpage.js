@@ -147,8 +147,8 @@ export const pageQuery = graphql`
         title
         slug
         featuredImage {
-          fluid(quality: 80) {
-            ...GatsbyContentfulFluid_withWebp
+          fluid(quality: 80, maxWidth: 2000) {
+            ...GatsbyContentfulFluid
           }
         }
         featuredVideo
@@ -161,7 +161,7 @@ export const pageQuery = graphql`
         awards {
           description
           title
-          fluid: fluid(quality: 80, maxWidth: 500) {
+          fluid: fluid(quality: 80, maxWidth: 800) {
             ...GatsbyContentfulFluid
           }
         }
@@ -203,8 +203,8 @@ export const pageQuery = graphql`
           oldDate
           createdAt
           featuredImage {
-            fluid(quality: 80) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(quality: 80, maxWidth: 800) {
+              ...GatsbyContentfulFluid
             }
           }
         }

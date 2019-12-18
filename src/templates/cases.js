@@ -185,7 +185,7 @@ export const pageQuery = graphql`
           title
           createdAt
           featuredImage {
-            fluid(quality: 100) {
+            fluid(quality: 80, maxWidth: 2000) {
               ...GatsbyContentfulFluid
             }
           }

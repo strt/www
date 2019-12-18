@@ -177,7 +177,7 @@ export const pageQuery = graphql`
       slug
       featuredVideo
       featuredImage {
-        fluid(quality: 80, maxWidth: 1300) {
+        fluid(quality: 80, maxWidth: 3000) {
           ...GatsbyContentfulFluid
         }
         fixed: resize(width: 1200, height: 630, quality: 80) {

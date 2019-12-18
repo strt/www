@@ -129,7 +129,7 @@ export const pageQuery = graphql`
         }
         title
         image {
-          fluid(quality: 80, maxWidth: 900) {
+          fluid(quality: 80, maxWidth: 1200) {
             ...GatsbyContentfulFluid
           }
         }

@@ -192,8 +192,8 @@ export const pageQuery = graphql`
           phone
           color
           image {
-            fluid(quality: 80, maxWidth: 520) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid(quality: 80, maxWidth: 800) {
+              ...GatsbyContentfulFluid
             }
           }
         }
