@@ -100,13 +100,15 @@ export default function Case({ data, pageContext: { next } }) {
             {awards && <Awards items={awards} />}
           </Cover>
         )}
-        <Section pt={[5, 7]} pb={[10, 13]}>
-          <ContentWrapper>
-            <Grid>
-              <RichText document={body.json} />
-            </Grid>
-          </ContentWrapper>
 
+        <Section pt={[5, 7]} pb={[10, 13]}>
+          {body && (
+            <ContentWrapper>
+              <Grid>
+                <RichText document={body.json} />
+              </Grid>
+            </ContentWrapper>
+          )}
           <Grid>
             {contact && (
               <Column md="8" mt={[4, 6]}>
