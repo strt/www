@@ -9,12 +9,14 @@ import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
 import { H1, H4, Excerpt, Text } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints } from '../style'
+import { vw, breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
 import Image from '../components/Image'
+// eslint-disable-next-line import/no-named-as-default
+import ImageLogo from '../components/ImageLogo'
 
 const LargeText = styled(Excerpt)`
   @media ${breakpoints.medium} {
@@ -24,6 +26,7 @@ const LargeText = styled(Excerpt)`
 
 const ManifestoImageWrapper = styled.div`
   position: relative;
+
   @media ${breakpoints.medium} {
     min-height: 450px;
   }
@@ -87,6 +90,28 @@ const ManifestoImage = styled.div`
   }
 `
 
+const ImageLogoItem = styled.div`
+  position: absolute;
+  right: 0;
+  width: 20%;
+  margin-right: 25px;
+  margin-top: 20%;
+
+  @media ${breakpoints.small} {
+    padding-right: 15px;
+    margin-right: ${vw(40)};
+  }
+
+  @media ${breakpoints.medium} {
+    width: 30%;
+    margin-top: 10%;
+  }
+
+  @media ${breakpoints.large} {
+    margin-top: 0;
+  }
+`
+
 export default function Career({ data }) {
   const {
     contact,
@@ -110,8 +135,13 @@ export default function Career({ data }) {
       <Hero pb={0} keepContentMargin>
         <H1 textColor={theme.color}>{page.title}</H1>
       </Hero>
-      {page.excerpt && (
-        <Section>
+
+      <Section>
+        <ImageLogoItem>
+          <ImageLogo />
+        </ImageLogoItem>
+
+        {page.excerpt && (
           <Grid>
             <Column>
               <LargeText textColor={theme.color}>
@@ -119,8 +149,9 @@ export default function Career({ data }) {
               </LargeText>
             </Column>
           </Grid>
-        </Section>
-      )}
+        )}
+      </Section>
+
       {hasOpenPositions && (
         <Section>
           <Grid>
