@@ -95,8 +95,10 @@ export const A = styled.a`
     `}
 `
 
-const RouterLink = props =>
-  React.createElement(CleanTag, { as: GatsbyLink, ...props })
+const RouterLink = props => {
+  const { textColor, styleVariant, ...rest } = props
+  return React.createElement(CleanTag, { as: GatsbyLink, ...rest })
+}
 
 const Link = React.forwardRef(({ to, ...props }, ref) => {
   if (to) {
