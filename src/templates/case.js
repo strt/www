@@ -20,6 +20,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
 import Awards from '../components/Awards'
+import { getActiveLangPath } from '../components/SelectLanguage'
 
 const StyledH1 = styled(H1)`
   margin-bottom: 0.175em;
@@ -112,7 +113,11 @@ export default function Case({ data, pageContext: { next } }) {
           <Grid>
             {contact && (
               <Column md="8" mt={[4, 6]}>
-                <H3 textColor={theme.color}>Would you like to know more?</H3>
+                <H3 textColor={theme.color}>
+                  {getActiveLangPath()
+                    ? 'Vill du veta mer?'
+                    : 'Would you like to know more?'}
+                </H3>
                 <Text textColor={theme.color}>
                   Contact {contact.firstName} {contact.lastName},{' '}
                   {contact.title}
