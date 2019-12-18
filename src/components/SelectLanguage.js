@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Location } from '@reach/router'
 import Link from './Link'
 import { Text } from './Text'
 import { breakpoints, colors } from '../style'
@@ -41,7 +43,7 @@ const Li = styled.li`
   }
 `
 
-export default function SelectLanguage({ location }) {
+function SelectLanguage({ location }) {
   return (
     <>
       <Li style={{}}>
@@ -77,4 +79,11 @@ export default function SelectLanguage({ location }) {
       </Li>
     </>
   )
+}
+
+export default function SelectLanguageWrapper() {
+  const cb = useCallback(({ location }) => {
+    return <SelectLanguage location={location} />
+  }, [])
+  return <Location>{cb}</Location>
 }

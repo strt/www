@@ -10,7 +10,7 @@ import { footerNavigation } from '../routes'
 import { colors, breakpoints } from '../style'
 import { formatPhone } from '../lib/format'
 import useSiteSettings from '../lib/useSiteSettings'
-import SelectLanguage, { getActiveLangPath } from './SelectLanguage'
+import SelectLanguageWrapper, { getActiveLangPath } from './SelectLanguage'
 
 const CopyrightText = styled(Text)`
   font-size: 0.75rem;
@@ -40,7 +40,7 @@ export default function Footer() {
               alignItems: 'right',
             }}
           >
-            <SelectLanguage textColor={colors.light} location={location} />
+            <SelectLanguageWrapper textColor={colors.light} />
           </ul>
         </Column>
         {siteSettings.offices.map(office => (
