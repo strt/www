@@ -33,7 +33,7 @@ export function getUrl(location, country) {
 }
 
 const Li = styled.li`
-  padding: '0';
+  padding: 0;
 
   &:first-child {
     margin-left: 0;

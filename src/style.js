@@ -139,7 +139,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   
-  @keyframe move {
+  @keyframes move {
     from {
       background-position: 2px 19px;
     }
@@ -155,7 +155,7 @@ export const GlobalStyle = createGlobalStyle`
     100% {color: purple;}
   }
 
-  @keyframe color {
+  @keyframes color {
     0%   {color: red;}
     25%  {color: yellow;}
     50%  {color: green;}
