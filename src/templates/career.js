@@ -47,7 +47,7 @@ const ManifestoImage = styled.div`
   }
 
   @media ${breakpoints.large} {
-    max-width: 300px;
+    max-width: 360px;
   }
 
   &:nth-of-type(1) {
@@ -111,7 +111,6 @@ const ImageLogoItem = styled.div`
     margin-top: 0;
   }
 `
-
 export default function Career({ data }) {
   const {
     contact,

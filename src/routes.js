@@ -20,8 +20,8 @@ export const routes = {
   career: {
     id: 'career',
     link: 'join-the-team/',
-    title: 'Join the team',
-    sv: { title: 'Bli en av oss' },
+    title: 'Join',
+    sv: { title: 'Karriär' },
   },
   news: {
     id: 'news',

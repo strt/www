@@ -89,7 +89,7 @@ export const H1 = styled.h1`
   margin-bottom: 0.175em;
   font-size: 4em;
   font-weight: 400;
-  line-height: 1.1em;
+  line-height: 1em;
   ${base}
   ${props => ({
     fontFamily,
@@ -119,7 +119,7 @@ export const H2 = styled.h2`
   margin-bottom: 0.4125em;
   font-size: 1.875em;
   font-weight: 700;
-  line-height: 1.25em;
+  line-height: 1em;
   ${base}
   ${props => ({
     fontFamily,
@@ -148,7 +148,7 @@ export const H3 = styled.h3`
   margin-bottom: 0.4125em;
   font-size: 1.5em;
   font-weight: 700;
-  line-height: 1.125em;
+  line-height: 1em;
   ${base}
   ${props => ({
     fontFamily,

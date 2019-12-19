@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
   }
 
   @media screen and ${breakpoints.medium} {
-    padding: ${vw(56)} 0;
+    padding: ${vw(30)} 0 ${vw(56)} 0;
   }
 `
 

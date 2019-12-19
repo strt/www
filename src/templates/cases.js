@@ -117,7 +117,7 @@ export default function Case({ data, location }) {
               onClick={onTagClick}
               aria-current={!filter ? true : undefined}
               textColor={theme.color}
-              colorVariant={theme.theme}
+              styleVariant={theme.theme}
               variant="large"
             >
               {getActiveLangPath() ? 'Alla projekt' : 'All projects'}
@@ -128,7 +128,7 @@ export default function Case({ data, location }) {
                 href={getTagLink(tag.node.name)}
                 onClick={onTagClick}
                 textColor={theme.color}
-                colorVariant={theme.theme}
+                styleVariant={theme.theme}
                 variant="large"
                 aria-current={
                   filter && filter.includes(tag.node.name.toLowerCase())
