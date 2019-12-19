@@ -217,7 +217,7 @@ function Navigation({ location }) {
   return (
     <ThemeContext.Consumer>
       {theme => (
-        <NavWrapper role="navigation">
+        <NavWrapper>
           <ul data-desktop>
             {mainNavigation
               .filter(child => child.link !== '/')

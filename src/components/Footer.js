@@ -37,7 +37,6 @@ export default function Footer() {
           <ul
             style={{
               display: 'flex',
-              alignItems: 'right',
             }}
           >
             <SelectLanguageWrapper textColor={colors.light} />
