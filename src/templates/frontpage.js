@@ -123,6 +123,7 @@ export default function Index({ data }) {
               <Link
                 to={`${getActiveLangPath()}/${routes.news.link}`}
                 variant="large"
+                textColor={theme.color}
               >
                 {newsLinkText}
               </Link>
