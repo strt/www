@@ -10,7 +10,7 @@ import Section from '../components/Section'
 import Tile from '../components/Tile'
 import Link from '../components/Link'
 import { Excerpt } from '../components/Text'
-import { Grid, Column } from '../components/Grid'
+import { CssGrid } from '../components/Grid'
 import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
@@ -61,6 +61,25 @@ const Filter = styled(Div)`
 const Animation = styled.div`
   animation: ${animations.fadeIn} ${durations.normal} ${easings.easeOutSine}
     120ms both;
+`
+
+const CaseGrid = styled(CssGrid)`
+  @media ${breakpoints.medium} {
+    grid-auto-flow: row dense;
+  }
+
+  > * {
+    @media ${breakpoints.medium} {
+      grid-row: span 2;
+      grid-column: span 6;
+    }
+  }
+
+  > *:nth-child(odd) {
+    @media ${breakpoints.medium} {
+      grid-column: grid-start / span 6;
+    }
+  }
 `
 
 export default function Case({ data, location }) {
@@ -125,19 +144,19 @@ export default function Case({ data, location }) {
       </Hero>
       <Animation key={filter}>
         <Section pb={[15, 25]}>
-          <Grid>
+          <CaseGrid>
             {cases.map(({ node }) => (
-              <Column key={node.id} md="6" bottomGap>
-                <Tile
-                  url={`${getActiveLangPath()}/work/${node.slug}`}
-                  image={node.featuredImage}
-                  tags={node.tags}
-                  title={node.client.name}
-                  awards={node.awards}
-                />
-              </Column>
+              <Tile
+                key={node.id}
+                url={`${getActiveLangPath()}/work/${node.slug}`}
+                image={node.featuredImage}
+                tags={node.tags}
+                title={node.client.name}
+                awards={node.awards}
+                bg={node.color}
+              />
             ))}
-          </Grid>
+          </CaseGrid>
         </Section>
       </Animation>
     </Layout>

@@ -83,16 +83,22 @@ export const Column = styled(CleanTag)(
  */
 export const CssGrid = styled.div`
   display: grid;
-  grid-gap: calc(2 * ${gutter.default});
+  grid-gap: calc(${gutter.default});
   grid-template-columns:
-    [full-start] 0 [grid-start] repeat(12, [col-start] 1fr [col-end])
-    [grid-end] 0 [full-end];
+    [full-start] ${gutter.default} [grid-start] repeat(
+      12,
+      [col-start] 1fr [col-end]
+    )
+    [grid-end] ${gutter.default} [full-end];
 
   @media ${breakpoints.medium} {
-    grid-gap: calc(2 * ${gutter.default});
+    grid-gap: calc(${gutter.default});
     grid-template-columns:
-      [full-start] ${vw(24)} [grid-start] repeat(12, [col-start] 1fr [col-end])
-      [grid-end] ${vw(24)} [full-end];
+      [full-start] calc(${vw(24)} + ${gutter.default}) [grid-start] repeat(
+        12,
+        [col-start] 1fr [col-end]
+      )
+      [grid-end] calc(${vw(24)} + ${gutter.default}) [full-end];
   }
 
   > * {
