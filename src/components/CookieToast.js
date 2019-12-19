@@ -69,8 +69,8 @@ export default function CookieToast() {
                         : 'This website uses cookies. Yum. '}
                       <Link
                         to={`${getActiveLangPath()}/${routes.policy.link}`}
-                        colorVariant="light"
-                        styleVariant="light"
+                        textColor={colors.light}
+                        styleVariant="dark"
                       >
                         {getActiveLangPath() ? 'Läs mer' : 'Read more'}
                       </Link>
@@ -81,8 +81,8 @@ export default function CookieToast() {
                     <Link
                       as="button"
                       type="button"
-                      colorVariant="light"
-                      styleVariant="light"
+                      textColor={colors.light}
+                      styleVariant="dark"
                       variant="large"
                       onClick={() => {
                         setShowToast(false)
