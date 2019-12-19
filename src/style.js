@@ -5,9 +5,9 @@ export const fontFamily = 'Circular, Helvetica, sans-serif'
 
 export const colors = {
   dark: '#000000',
-  darkText: '#404040',
+  darkText: '#000000',
   light: '#ffffff',
-  lightText: '#F5F6F6',
+  lightText: '#ffffff',
   lightGray: '#F5F6F6',
   purple: '#3E164C',
   lightPurple: '#F8ECFC',
