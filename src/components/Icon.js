@@ -5,8 +5,8 @@ import { findIconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 export const Svg = styled.svg`
   display: inline-block;
-  vertical-align: -0.125em;
-  height: 1em;
+  vertical-align: -0.078125em;
+  height: 0.625em;
   overflow: visible;
   font-size: inherit;
   fill: currentColor;

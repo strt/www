@@ -1,3 +1,6 @@
 {
-  "extends": "stylelint-config-strateg/css-in-js"
+  "extends": "stylelint-config-strateg/css-in-js",
+  "rules": {
+    "scss/at-rule-no-unknown": null
+  }
 }

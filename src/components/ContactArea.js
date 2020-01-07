@@ -6,11 +6,12 @@ import Div from './Div'
 import useToggle from '../lib/useToggle'
 import useMeasure from '../lib/useMeasure'
 import { ClientForm, CareerForm } from './Forms'
+import { colors } from '../style'
 
 function ContactOptionButton(props) {
   return (
     <H3 as="div">
-      <Link as="button" type="button" colorVariant="white" {...props} />
+      <Link as="button" type="button" colorVariant="light" {...props} />
     </H3>
   )
 }
@@ -57,7 +58,7 @@ export default function ContactArea() {
 
   return (
     <>
-      <H1 as="h2" textColor="white">
+      <H1 as="h2" textColor={colors.light}>
         Kontakt är det bästa vi vet
       </H1>
       <H2 as="div" mb="0">
@@ -66,7 +67,7 @@ export default function ContactArea() {
           type="button"
           aria-expanded={on}
           onClick={toggle}
-          colorVariant="white"
+          colorVariant="light"
         >
           Vad vill du prata om?
         </Link>

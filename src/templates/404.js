@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import { H1, Excerpt } from '../components/Text'
@@ -7,14 +8,18 @@ import Link from '../components/Link'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function NotFound({ data }) {
-  const { title, excerpt } = data.page.frontmatter
+  const { page, linkText } = data.contentfulPage
+
+  const theme = useContext(ThemeContext)
+  if (theme.theme !== 'light') theme.toggleTheme('light')
+
   return (
     <Layout meta={getMetaFromPost(data.page)}>
       <Hero>
-        <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
-        <Link to="/" colorVariant="dark" variant="large">
-          Go to start page
+        <H1 textColor={theme.color}>{page.title}</H1>
+        <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
+        <Link to="/" textColor={theme.color} variant="large">
+          {linkText}
         </Link>
       </Hero>
     </Layout>
@@ -23,22 +28,15 @@ export default function NotFound({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
+    contentfulPage: contentfulNotFoundPage(page: { slug: { eq: $slug } }) {
+      page {
         title
-        excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
+        slug
+        excerpt {
+          excerpt
         }
       }
+      linkText
     }
   }
 `

@@ -16,15 +16,16 @@ const StyledHero = styled(Section)(
 
 export default function Hero({
   children,
-  pt = 2,
+  pt = 8,
   pb = [3, 7],
+  md = 12,
   scrollButtonElement,
   keepContentMargin,
 }) {
   return (
     <StyledHero pt={pt} pb={pb} keepContentMargin={keepContentMargin}>
       <Grid>
-        <Column md="8">{children}</Column>
+        <Column md={md}>{children}</Column>
       </Grid>
       {scrollButtonElement && (
         <Grid justifyContent="flex-end" mt={[4, 5, 5]}>

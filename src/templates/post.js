@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import dayjs from 'dayjs'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Image from '../components/Image'
@@ -13,22 +13,29 @@ import Cover from '../components/Cover'
 import Div from '../components/Div'
 import Link from '../components/Link'
 import Card from '../components/Card'
+import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { colors } from '../style'
 import { routes } from '../routes'
+import { getActiveLangPath } from '../components/SelectLanguage'
 
 export default function Article({ data }) {
-  const { date, title, excerpt, image } = data.post.frontmatter
-  const formattedDate = date ? dayjs(date).format('D MMM YYYY') : null
-  const hasCover = !!data.post.frontmatter.image
+  const { createdAt, oldDate, title, excerpt, body, featuredImage } = data.post
+  const formattedDate = oldDate
+    ? dayjs(oldDate).format('D MMM YYYY')
+    : dayjs(createdAt).format('D MMM YYYY')
+  const hasCover = !!featuredImage
+
+  const theme = useContext(ThemeContext)
+  if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-    <Layout meta={getMetaFromPost(data.post, { type: 'article' })}>
+    <Layout meta={getMetaFromPost(data.post)}>
       <article>
-        {date && (
+        {(createdAt || oldDate) && (
           <Grid>
             <Column width="auto">
-              <H4 as="time" dateTime={date}>
+              <H4 as="time" dateTime={oldDate || createdAt}>
                 {formattedDate}
               </H4>
             </Column>
@@ -39,26 +46,28 @@ export default function Article({ data }) {
           pb={hasCover ? undefined : 0}
           keepContentMargin={!hasCover}
         >
-          <H1>{title}</H1>
-          {excerpt && <Excerpt>{excerpt}</Excerpt>}
+          <H1 textColor={theme.color}>{title}</H1>
+          {excerpt && (
+            <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
+          )}
         </Hero>
         {hasCover && (
           <Cover>
-            <Image fluid={image.childImageSharp.fluid} alt="" />
+            <Image fluid={featuredImage.fluid} alt="" />
           </Cover>
         )}
         <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
           <ContentWrapper>
             <Grid>
-              <MDXRenderer>{data.post.code.body}</MDXRenderer>
+              <RichText document={body.json} />
             </Grid>
           </ContentWrapper>
         </Section>
-        <Section as="aside" bg={colors.ice} mt={[10, 15]} pb={[5, 12]}>
-          <Div halfTopBg="white" mb={[2, 4]}>
+        <Section as="aside" bg={colors.lightGray} mt={[10, 15]} pb={[5, 12]}>
+          <Div halfTopBg={theme.background} mb={[2, 4]}>
             <Grid>
               <Column>
-                <H2>News</H2>
+                <H2 textColor={theme.color}>News</H2>
               </Column>
             </Grid>
           </Div>
@@ -66,17 +75,21 @@ export default function Article({ data }) {
             {data.posts.edges.map(({ node }) => (
               <Column key={node.id} md="6" bottomGap>
                 <Card
-                  date={node.frontmatter.date}
-                  title={node.frontmatter.title}
-                  url={node.fields.slug}
-                  image={node.frontmatter.image}
+                  date={node.createdAt}
+                  title={node.title}
+                  url={`${getActiveLangPath()}/${routes.news.link}${node.slug}`}
+                  image={node.featuredImage}
                 />
               </Column>
             ))}
             <Column>
               <Div mt={[3, 2]}>
-                <Link to={routes.news.link} variant="large">
-                  More news
+                <Link
+                  to={`${getActiveLangPath()}/${routes.news.link}`}
+                  variant="large"
+                  textColor={colors.darkText}
+                >
+                  {getActiveLangPath() ? 'Fler nyheter' : 'More news'}
                 </Link>
               </Div>
             </Column>
@@ -88,49 +101,49 @@ export default function Article({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    post: mdx(fields: { slug: { eq: $slug } }) {
-      code {
-        body
+  query($slug: String!, $locale: String!) {
+    post: contentfulPosts(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+      title
+      slug
+      oldDate
+      createdAt
+      featuredImage {
+        fluid(quality: 80, maxWidth: 3000) {
+          ...GatsbyContentfulFluid
+        }
+        fixed {
+          src
+        }
       }
-      fields {
-        slug
-      }
-      frontmatter {
-        date
-        title
+      excerpt {
         excerpt
-        image {
-          childImageSharp {
-            ...CoverImage
-            og: resize(width: 1200, height: 630, quality: 80) {
-              src
-            }
-          }
+      }
+      body {
+        json
+      }
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoImage {
+        og: resize(width: 1200, height: 630, quality: 80) {
+          src
         }
       }
     }
-    posts: allMdx(
+    posts: allContentfulPosts(
       limit: 4
-      filter: {
-        fields: { template: { eq: "post" }, slug: { ne: $slug } }
-        frontmatter: { published: { ne: false } }
-      }
-      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { slug: { ne: $slug }, node_locale: { eq: $locale } }
     ) {
       edges {
         node {
           id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date
-            image {
-              childImageSharp {
-                ...CardImage
-              }
+          slug
+          title
+          createdAt
+          featuredImage {
+            fluid(quality: 80, maxWidth: 800) {
+              ...GatsbyContentfulFluid
             }
           }
         }

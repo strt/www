@@ -20,7 +20,7 @@ export default function Posts({ halfTopBg = 'white', ...props }) {
   return (
     <Wrapper halfTopBg={halfTopBg} {...props}>
       <Grid justifyContent="center">
-        <Column md="10">
+        <Column md="10" mb="100px">
           <ImageGrid>
             {posts.map(post => (
               <Box key={post.id}>
@@ -121,8 +121,8 @@ const Box = styled.div`
     background: white;
 
     & svg {
-      margin-bottom: 0.5em;
-      font-size: 1.2em;
+      margin-bottom: 0.3125em;
+      font-size: 0.75em;
     }
   }
 

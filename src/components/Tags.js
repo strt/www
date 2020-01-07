@@ -1,50 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from './Link'
-import { colors, breakpoints, fluidRange, vw } from '../style'
-
-export default function Tags({ items, linked = true, colorVariant, ...rest }) {
-  if (!items || !items.length) {
-    return null
-  }
-
-  return (
-    <TagsWrapper {...rest}>
-      <Hyphen />
-      <TagList>
-        {items.map(item => (
-          <li key={item}>
-            {linked ? (
-              <Link
-                href={`/work?filter=${encodeURIComponent(item.toLowerCase())}`}
-                colorVariant={colorVariant}
-              >
-                {item}
-              </Link>
-            ) : (
-              item
-            )}
-          </li>
-        ))}
-      </TagList>
-    </TagsWrapper>
-  )
-}
+import { breakpoints, breakpointNr, fluidRange } from '../style'
+import { getActiveLangPath } from './SelectLanguage'
 
 function tagsWrapperModifiers(props) {
   if (props.variant === 'small') {
     return {
-      fontSize: fluidRange({ min: 11, max: 14 }),
+      fontSize: '12px',
       [`@media ${breakpoints.medium}`]: {
-        fontSize: `${vw(14)}`,
+        fontSize: '14px',
+      },
+      [`@media ${breakpoints.large}`]: {
+        fontSize: fluidRange({
+          min: 14,
+          max: 24,
+          viewportMin: breakpointNr.large,
+          viewportMax: breakpointNr.xlarge,
+        }),
+      },
+      [`@media ${breakpoints.xlarge}`]: {
+        fontSize: '24px',
       },
     }
   }
 
   return {
-    fontSize: fluidRange({ min: 14, max: 18 }),
+    fontSize: '16px',
     [`@media ${breakpoints.medium}`]: {
-      fontSize: `${vw(18)}`,
+      fontSize: '22px',
+    },
+    [`@media ${breakpoints.large}`]: {
+      fontSize: fluidRange({
+        min: 22,
+        max: 28,
+        viewportMin: breakpointNr.large,
+        viewportMax: breakpointNr.xlarge,
+      }),
+    },
+    [`@media ${breakpoints.xlarge}`]: {
+      fontSize: '28px',
     },
   }
 }
@@ -52,9 +47,9 @@ function tagsWrapperModifiers(props) {
 const TagsWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  line-height: 1.3em;
+  line-height: 0.8125em;
   ${tagsWrapperModifiers}
-  color: ${props => props.textColor || colors.dark};
+  color: ${props => props.textColor};
 `
 
 const TagList = styled.ul`
@@ -70,11 +65,46 @@ const TagList = styled.ul`
   }
 `
 
+const Li = styled.li`
+  color: ${props => props.textColor};
+`
+
 const Hyphen = styled.span`
   flex-shrink: 0;
 
   &::before {
+    color: ${props => props.textColor};
     content: '— ';
     white-space: pre;
   }
 `
+
+export default function Tags({ items, linked = true, textColor, ...rest }) {
+  if (!items || !items.length) {
+    return null
+  }
+
+  return (
+    <TagsWrapper {...rest} textColor={textColor}>
+      <Hyphen />
+      <TagList>
+        {items.map(item => (
+          <Li key={item.name}>
+            {linked ? (
+              <Link
+                href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
+                  item.name.toLowerCase(),
+                )}`}
+                textColor={textColor}
+              >
+                {item.name}
+              </Link>
+            ) : (
+              item.name
+            )}
+          </Li>
+        ))}
+      </TagList>
+    </TagsWrapper>
+  )
+}

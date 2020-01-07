@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
 import styled from 'styled-components'
-import { easings, cover, durations } from '../style'
+import { colors, easings, cover, durations } from '../style'
+import { Text } from './Text'
 
 const cache = new Set()
 
@@ -59,7 +60,7 @@ function useIntersectionObserver({ target, onIntersect = noop }) {
 
     onIntersect()
     return undefined
-  }, [])
+  }, [onIntersect, target])
 }
 
 function normalizeProps({
@@ -93,84 +94,6 @@ function normalizeProps({
   }
 }
 
-function LazyImage(props, forwardedRef) {
-  const {
-    as: Img = 'img',
-    src,
-    sizes,
-    srcSet,
-    srcSetWebp,
-    alt = '',
-    base64,
-    bg,
-    aspectRatio,
-    critical = false,
-    onLoad = noop,
-    children,
-    ...elementProps
-  } = normalizeProps(props)
-
-  const imageWrapperRef = useRef(null)
-  const [isVisible, setVisible] = useState(!!critical)
-  const [isLoaded, setLoaded] = useState(() => isImageCached(props))
-
-  useIntersectionObserver({
-    target: imageWrapperRef,
-    onIntersect: () => {
-      setVisible(true)
-    },
-  })
-
-  useEffect(() => {
-    if (isLoaded) {
-      addImageToCache(props)
-    }
-  }, [isLoaded])
-
-  const handleLoad = useCallback(event => {
-    onLoad(event)
-    setLoaded(true)
-  })
-
-  const noscriptFallback = `
-    <img src="${src}" alt="${alt}" />
-  `
-
-  return (
-    <ImageWrapper
-      key={`${JSON.stringify(srcSet)}`}
-      ref={imageWrapperRef}
-      aspectRatio={aspectRatio}
-      isLoaded={isLoaded}
-    >
-      {base64 && <img src={base64} alt="" data-placeholder />}
-      {bg && <div style={{ background: bg }} data-background />}
-      {isVisible && (
-        <picture>
-          {srcSetWebp && (
-            <source type="image/webp" srcSet={srcSetWebp} sizes={sizes} />
-          )}
-
-          <Img
-            ref={forwardedRef}
-            alt={alt}
-            srcSet={srcSet}
-            sizes={sizes}
-            src={src}
-            onLoad={handleLoad}
-            data-image
-            decoding="async"
-            {...elementProps}
-          />
-        </picture>
-      )}
-      <noscript dangerouslySetInnerHTML={{ __html: noscriptFallback }} />
-    </ImageWrapper>
-  )
-}
-
-export default React.forwardRef(LazyImage)
-
 export const ImageWrapper = styled.figure`
   position: relative;
   z-index: 0;
@@ -203,3 +126,116 @@ export const ImageWrapper = styled.figure`
     z-index: -2;
   }
 `
+
+const ColorOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: ${props => props.overlay};
+`
+
+const ColorCode = styled(Text)`
+  position: absolute;
+  left: 20px;
+  bottom: 15px;
+  z-index: 999;
+  width: auto;
+  margin: 0;
+  display: block;
+  color: ${colors.light};
+  text-transform: uppercase;
+`
+
+function LazyImage(props, forwardedRef) {
+  const {
+    as: Img = 'img',
+    src,
+    sizes,
+    srcSet,
+    srcSetWebp,
+    alt = '',
+    base64,
+    bg,
+    aspectRatio,
+    critical = false,
+    onLoad = noop,
+    children,
+    overlay = '',
+    ...elementProps
+  } = normalizeProps(props)
+
+  const imageWrapperRef = useRef(null)
+  const [isVisible, setVisible] = useState(!!critical)
+  const [isLoaded, setLoaded] = useState(() => isImageCached(props))
+  const [hovering, setHovering] = useState(0)
+
+  useIntersectionObserver({
+    target: imageWrapperRef,
+    onIntersect: () => {
+      setVisible(true)
+    },
+  })
+
+  useEffect(() => {
+    if (isLoaded) {
+      addImageToCache(props)
+    }
+  }, [isLoaded, props])
+
+  const handleLoad = useCallback(event => {
+    onLoad(event)
+    setLoaded(true)
+  })
+
+  const noscriptFallback = `
+    <img src="${src}" alt="${alt}" />
+  `
+
+  return (
+    <ImageWrapper
+      key={`${JSON.stringify(srcSet)}`}
+      ref={imageWrapperRef}
+      aspectRatio={aspectRatio}
+      isLoaded={isLoaded}
+      onMouseOver={() => setHovering(1)}
+      onFocus={() => setHovering(1)}
+    >
+      {base64 && <img src={base64} alt="" data-placeholder />}
+      {bg && <div style={{ background: bg }} data-background />}
+      {isVisible && (
+        <picture>
+          {srcSetWebp && (
+            <source type="image/webp" srcSet={srcSetWebp} sizes={sizes} />
+          )}
+
+          <Img
+            ref={forwardedRef}
+            alt={alt}
+            srcSet={srcSet}
+            sizes={sizes}
+            src={src}
+            onLoad={handleLoad}
+            data-image
+            decoding="async"
+            {...elementProps}
+          />
+        </picture>
+      )}
+      {overlay && hovering && (
+        <ColorOverlay
+          onMouseOut={() => setHovering()}
+          onBlur={() => setHovering()}
+          {...props}
+        >
+          <ColorCode>{props.overlay}</ColorCode>
+        </ColorOverlay>
+      )}
+      <noscript dangerouslySetInnerHTML={{ __html: noscriptFallback }} />
+    </ImageWrapper>
+  )
+}
+
+export default React.forwardRef(LazyImage)

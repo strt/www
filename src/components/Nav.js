@@ -15,6 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
+import { getActiveLangPath } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -27,6 +28,7 @@ import {
   vw,
 } from '../style'
 import { mainNavigation } from '../routes'
+import { ThemeContext } from '../context/ThemeContext'
 
 function getProps({ href, isPartiallyCurrent }) {
   return isPartiallyCurrent && href !== '/'
@@ -38,7 +40,7 @@ const NavLink = styled(GatsbyLink)`
   display: inline-block;
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
   font-size: ${fluidRange({ min: 36, max: 48 })};
-  line-height: 1.2777777778em;
+  line-height: 0.798611em;
   font-weight: 700;
   text-decoration: none;
   color: white;
@@ -142,7 +144,7 @@ function Navigation({ location }) {
   // Close nav on location change
   useEffect(() => {
     toggle(false)
-  }, [location])
+  }, [location, toggle])
 
   // Update nprogress color
   useEffect(() => {
@@ -213,127 +215,146 @@ function Navigation({ location }) {
   )
 
   return (
-    <NavWrapper role="navigation">
-      <ul data-desktop>
-        {mainNavigation
-          .filter(child => child.link !== '/')
-          .map(child => (
-            <li key={child.id}>
+    <ThemeContext.Consumer>
+      {theme => (
+        <NavWrapper>
+          <ul data-desktop>
+            {mainNavigation
+              .filter(child => child.link !== '/')
+              .map(child => (
+                <li key={child.id}>
+                  <Link
+                    to={`${getActiveLangPath()}/${child.link}`}
+                    getProps={getProps}
+                    textColor={theme.colorSecondary}
+                    styleVariant={theme.theme}
+                    variant="large"
+                  >
+                    {getActiveLangPath() ? child.sv.title : child.title}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+          <div data-responsive>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <Link
-                to={child.link}
-                getProps={getProps}
-                colorVariant="dark"
+                style={{ marginLeft: '10px' }}
+                as="button"
+                type="button"
+                styleVariant={theme.theme}
+                textColor={theme.colorSecondary}
                 variant="large"
-              >
-                {child.title}
-              </Link>
-            </li>
-          ))}
-      </ul>
-      <div data-responsive>
-        <Link
-          as="button"
-          type="button"
-          colorVariant="dark"
-          variant="large"
-          onClick={() => {
-            toggle()
-          }}
-          aria-expanded={isOpen}
-          aria-controls={NAV_ID}
-        >
-          menu
-        </Link>
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-        <animated.div
-          data-content
-          id={NAV_ID}
-          ref={navRef}
-          style={{
-            opacity: coverAnimStyle.opacity,
-            right: isOpen ? 'var(--scrollbar-width)' : null,
-            visibility: coverAnimStyle.opacity.interpolate(o =>
-              o === 0 && !isOpen ? 'hidden' : 'visible',
-            ),
-            pointerEvents: coverAnimStyle.opacity.interpolate(o =>
-              o !== 0 && !isOpen ? 'none' : 'auto',
-            ),
-          }}
-          onKeyDown={event => {
-            if (event.key === 'Escape') {
-              event.stopPropagation()
-              toggle(false)
-            }
-          }}
-        >
-          <animated.div
-            data-cover
-            style={{
-              opacity: coverAnimStyle.opacity,
-              transform: interpolate(
-                [
-                  coverAnimStyle.x,
-                  coverAnimStyle.y,
-                  coverAnimStyle.scaleX,
-                  coverAnimStyle.scaleY,
-                ],
-                (x, y, sx, sy) => {
-                  return `translate3d(${x}px, ${y}px, 0) scale3d(${sx}, ${sy}, 1)`
-                },
-              ),
-            }}
-          />
-          <Grid>
-            <Column>
-              <div
-                style={{
-                  position: 'relative',
-                  zIndex: '1',
+                onClick={() => {
+                  toggle()
                 }}
+                aria-expanded={isOpen}
+                aria-controls={NAV_ID}
               >
-                <AnimatedIconButton
-                  type="button"
-                  onClick={() => {
-                    toggle()
-                  }}
-                  textColor="white"
-                  aria-label="Close menu"
-                  style={{
-                    opacity: closeAnimStyle.opacity,
-                    transform: closeAnimStyle.scale.interpolate(
-                      s => `scale3d(${s}, ${s}, 1)`,
-                    ),
-                  }}
-                >
-                  <Icon name={['fal', 'times']} />
-                </AnimatedIconButton>
-              </div>
-            </Column>
-          </Grid>
-          <Grid my="auto">
-            <Column>
-              <ul>
-                {transitions.map(({ key, item, props: itemStyle }) => (
-                  <animated.li
-                    key={key}
+                {getActiveLangPath() ? 'meny' : 'menu'}
+              </Link>
+            </div>
+
+            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+            <animated.div
+              data-content
+              id={NAV_ID}
+              ref={navRef}
+              style={{
+                opacity: coverAnimStyle.opacity,
+                right: isOpen ? 'var(--scrollbar-width)' : null,
+                visibility: coverAnimStyle.opacity.interpolate(o =>
+                  o === 0 && !isOpen ? 'hidden' : 'visible',
+                ),
+                pointerEvents: coverAnimStyle.opacity.interpolate(o =>
+                  o !== 0 && !isOpen ? 'none' : 'auto',
+                ),
+              }}
+              onKeyDown={event => {
+                if (event.key === 'Escape') {
+                  event.stopPropagation()
+                  toggle(false)
+                }
+              }}
+            >
+              <animated.div
+                data-cover
+                style={{
+                  opacity: coverAnimStyle.opacity,
+                  transform: interpolate(
+                    [
+                      coverAnimStyle.x,
+                      coverAnimStyle.y,
+                      coverAnimStyle.scaleX,
+                      coverAnimStyle.scaleY,
+                    ],
+                    (x, y, sx, sy) => {
+                      return `translate3d(${x}px, ${y}px, 0) scale3d(${sx}, ${sy}, 1)`
+                    },
+                  ),
+                }}
+              />
+              <Grid>
+                <Column>
+                  <div
                     style={{
-                      opacity: itemStyle.opacity,
-                      transform: itemStyle.x.interpolate(
-                        x => `translate3d(${x}%, 0, 0)`,
-                      ),
+                      position: 'relative',
+                      zIndex: '1',
                     }}
                   >
-                    <NavLink key={item.link} to={item.link} getProps={getProps}>
-                      {item.title}
-                    </NavLink>
-                  </animated.li>
-                ))}
-              </ul>
-            </Column>
-          </Grid>
-        </animated.div>
-      </div>
-    </NavWrapper>
+                    <AnimatedIconButton
+                      type="button"
+                      onClick={() => {
+                        toggle()
+                      }}
+                      textColor={colors.light}
+                      aria-label="Close menu"
+                      style={{
+                        opacity: closeAnimStyle.opacity,
+                        transform: closeAnimStyle.scale.interpolate(
+                          s => `scale3d(${s}, ${s}, 1)`,
+                        ),
+                      }}
+                    >
+                      <Icon name={['fal', 'times']} />
+                    </AnimatedIconButton>
+                  </div>
+                </Column>
+              </Grid>
+              <Grid my="auto">
+                <Column>
+                  <ul>
+                    {transitions.map(({ key, item, props: itemStyle }) => (
+                      <animated.li
+                        key={key}
+                        style={{
+                          opacity: itemStyle.opacity,
+                          transform: itemStyle.x.interpolate(
+                            x => `translate3d(${x}%, 0, 0)`,
+                          ),
+                        }}
+                      >
+                        <NavLink
+                          key={item.link}
+                          to={`${getActiveLangPath()}/${item.link}`}
+                          getProps={getProps}
+                        >
+                          {item.title}
+                        </NavLink>
+                      </animated.li>
+                    ))}
+                  </ul>
+                </Column>
+              </Grid>
+            </animated.div>
+          </div>
+        </NavWrapper>
+      )}
+    </ThemeContext.Consumer>
   )
 }
 
