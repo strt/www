@@ -36,7 +36,9 @@ const ImageLogoItemWrapper = styled.div`
 
 export const componentQuery = graphql`
   query {
-    allContentfulEmployees(filter: { node_locale: { eq: "sv" } }) {
+    allContentfulEmployees(
+      filter: { node_locale: { eq: "sv" }, email: { ne: null } }
+    ) {
       edges {
         node {
           id
