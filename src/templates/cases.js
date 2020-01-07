@@ -219,7 +219,7 @@ export const pageQuery = graphql`
             description
             title
             fluid: fluid(quality: 80, maxWidth: 500) {
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_noBase64
             }
           }
         }
