@@ -114,27 +114,33 @@ export default function Contact({ data }) {
               <Text textColor={theme.color} mt={[1, 1]} mb="0">
                 {node.firstName} {node.lastName}
               </Text>
-              <SmallText mb={0.5} textColor={theme.color}>
-                {node.role}
-              </SmallText>
-              <SmallText mb={0.5} textColor={theme.color}>
-                <Link
-                  href={`mailto:${node.email}`}
-                  textColor={theme.color}
-                  styleVariant={theme.theme}
-                >
-                  {node.email}
-                </Link>
-              </SmallText>
-              <SmallText mb="0" textColor={theme.color}>
-                <Link
-                  href={`tel:${formatPhone(node.phone)}`}
-                  textColor={theme.color}
-                  styleVariant={theme.theme}
-                >
-                  {node.phone}
-                </Link>
-              </SmallText>
+              {node.role && (
+                <SmallText mb={0.5} textColor={theme.color}>
+                  {node.role}
+                </SmallText>
+              )}
+              {node.email && (
+                <SmallText mb={0.5} textColor={theme.color}>
+                  <Link
+                    href={`mailto:${node.email}`}
+                    textColor={theme.color}
+                    styleVariant={theme.theme}
+                  >
+                    {node.email}
+                  </Link>
+                </SmallText>
+              )}
+              {node.phone && (
+                <SmallText mb="0" textColor={theme.color}>
+                  <Link
+                    href={`tel:${formatPhone(node.phone)}`}
+                    textColor={theme.color}
+                    styleVariant={theme.theme}
+                  >
+                    {node.phone}
+                  </Link>
+                </SmallText>
+              )}
             </Column>
           ))}
         </Grid>
