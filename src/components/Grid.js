@@ -27,6 +27,10 @@ export function getWidth(value) {
   return value
 }
 
+const gutter = {
+  default: '15px',
+}
+
 export const Grid = styled(CleanTag)(
   {
     display: 'flex',
@@ -48,43 +52,19 @@ export const Grid = styled(CleanTag)(
   justifyContent,
 )
 
-const gapMapFluid = {
-  small: 24,
-  standard: 32,
-  large: 56,
-}
-
-const gapMapFluidRange = {
-  small: { min: 16, max: 24 },
-  standard: { min: 16, max: 24 },
-  large: { min: 24, max: 40 },
-}
-
-function getGap(dir, props = {}, cb, map) {
-  const gap =
-    props[`${dir}Gap`] != null ? props[`${dir}Gap`] : props.theme[`${dir}Gap`]
-  return gap ? cb(map[gap] || map.standard) : null
-}
-
-export function getColumnMargin(props) {
+export function getColumnMargin() {
   return {
-    marginBottom: getGap('bottom', props, fluidRange, gapMapFluidRange),
-    marginTop: getGap('top', props, fluidRange, gapMapFluidRange),
-    [mediaQuery(breakpoints.medium)]: {
-      marginBottom: getGap('bottom', props, vw, gapMapFluid),
-      marginTop: getGap('top', props, vw, gapMapFluid),
-    },
+    marginBottom: gutter.default,
+    marginTop: gutter.default,
   }
 }
 
 export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
-    paddingRight: fluidRange({ min: 8, max: 12 }),
-    paddingLeft: fluidRange({ min: 8, max: 12 }),
+    paddingRight: gutter.default,
+    paddingLeft: gutter.default,
     [mediaQuery(breakpoints.medium)]: {
-      paddingRight: `${vw(16)}`,
-      paddingLeft: `${vw(16)}`,
       width: getWidth(props.md),
     },
     [mediaQuery(breakpoints.large)]: {
@@ -98,18 +78,27 @@ export const Column = styled(CleanTag)(
   justifySelf,
 )
 
+/**
+ * CssGrid is used on frontpage
+ */
 export const CssGrid = styled.div`
   display: grid;
-  grid-gap: ${fluidRange({ min: 16, max: 24 })};
+  grid-gap: calc(${gutter.default});
   grid-template-columns:
-    [full-start] 0 [grid-start] repeat(12, [col-start] 1fr [col-end])
-    [grid-end] 0 [full-end];
+    [full-start] ${gutter.default} [grid-start] repeat(
+      12,
+      [col-start] 1fr [col-end]
+    )
+    [grid-end] ${gutter.default} [full-end];
 
   @media ${breakpoints.medium} {
-    grid-gap: ${vw(32)};
+    grid-gap: calc(${gutter.default});
     grid-template-columns:
-      [full-start] ${vw(24)} [grid-start] repeat(12, [col-start] 1fr [col-end])
-      [grid-end] ${vw(24)} [full-end];
+      [full-start] calc(${vw(24)} + ${gutter.default}) [grid-start] repeat(
+        12,
+        [col-start] 1fr [col-end]
+      )
+      [grid-end] calc(${vw(24)} + ${gutter.default}) [full-end];
   }
 
   > * {

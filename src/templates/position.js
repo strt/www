@@ -4,36 +4,29 @@ import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
-import Cover from '../components/Cover'
-import Image from '../components/Image'
-import ContentWrapper from '../components/ContentWrapper'
 import { Grid, Column } from '../components/Grid'
 import { H1, Excerpt } from '../components/Text'
-import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import RichText from '../components/RichTextContentful'
+import ContentWrapper from '../components/ContentWrapper'
 
 export default function Standard({ data }) {
-  const { title, excerpt, image, body } = data.page
-
+  const { title, excerpt, image, body } = data.contentfulPosition
   const hasCover = !!image
+
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost()}>
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
         {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
       </Hero>
-      {hasCover && (
-        <Cover>
-          <Image fluid={image.childImageSharp.fluid} alt="" />
-        </Cover>
-      )}
       <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
         <ContentWrapper>
           <Grid>
-            <Column md="10" lg="8">
+            <Column md="8">
               <RichText document={body.json} />
             </Column>
           </Grid>
@@ -45,7 +38,10 @@ export default function Standard({ data }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    page: contentfulPages(slug: { eq: $slug }, node_locale: { eq: $locale }) {
+    contentfulPosition: contentfulPositions(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
       id
       title
       slug

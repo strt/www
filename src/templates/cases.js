@@ -1,30 +1,27 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useContext, useState } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import queryString from 'query-string'
+import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Div from '../components/Div'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
 import Link from '../components/Link'
-import { H1, Excerpt } from '../components/Text'
-import { Grid, Column } from '../components/Grid'
-import {
-  breakpoints,
-  fluidRange,
-  vw,
-  easings,
-  animations,
-  durations,
-} from '../style'
+import { Excerpt } from '../components/Text'
+import { CssGrid } from '../components/Grid'
+import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import { getActiveLangPath } from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
-  return items.filter(({ node }) =>
-    node.frontmatter.tags.some(
-      i => !filter || i.toLowerCase() === filter.toLowerCase(),
-    ),
+  return items.filter(
+    ({ node }) =>
+      node.tags &&
+      node.tags.some(
+        i => !filter || i.name.toLowerCase() === filter.toLowerCase(),
+      ),
   )
 }
 
@@ -37,17 +34,25 @@ const Filter = styled(Div)`
   flex-wrap: wrap;
 
   a {
-    margin-bottom: ${fluidRange({ min: 12, max: 24 })};
+    margin-bottom: 16px;
+    font-size: 1.25em;
+    line-height: 1.2em;
 
     &:not(:last-child) {
-      margin-right: ${fluidRange({ min: 16, max: 32 })};
+      margin-right: 16px;
+    }
+
+    &:active,
+    &[aria-current],
+    &[data-partially-current] {
+      color: ${colors.darkText};
     }
 
     @media ${breakpoints.medium} {
-      margin-bottom: ${vw(32)};
+      margin-bottom: 16px;
 
       &:not(:last-child) {
-        margin-right: ${vw(48)};
+        margin-right: 48px;
       }
     }
   }
@@ -58,7 +63,29 @@ const Animation = styled.div`
     120ms both;
 `
 
+const CaseGrid = styled(CssGrid)`
+  @media ${breakpoints.medium} {
+    grid-auto-flow: row dense;
+  }
+
+  > * {
+    @media ${breakpoints.medium} {
+      grid-row: span 2;
+      grid-column: span 6;
+    }
+  }
+
+  > *:nth-child(odd) {
+    @media ${breakpoints.medium} {
+      grid-column: grid-start / span 6;
+    }
+  }
+`
+
 export default function Case({ data, location }) {
+  const theme = useContext(ThemeContext)
+  if (theme.theme !== 'light') theme.toggleTheme('light')
+
   const [filter, setFilter] = useState(
     () => queryString.parse(location.search).filter || null,
   )
@@ -71,53 +98,45 @@ export default function Case({ data, location }) {
     window.history.replaceState({}, null, target.pathname + target.search)
   }
 
-  const { title, excerpt } = data.page.frontmatter
-
+  const { title } = data.contentfulPage
   const cases = filterCases(data.cases.edges, filter)
-  const tags = data.cases.edges
-    .reduce((acc, { node }) => {
-      node.frontmatter.tags.forEach(tag => {
-        if (acc.indexOf(tag) === -1) {
-          acc.push(tag)
-        }
-      })
-
-      return acc
-    }, [])
-    .sort()
+  const tags = data.tags.edges
 
   const renderFilter = true // Set to true to enable filter on tags again when we have enough cases published to require a filter
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <H1>{title}</H1>
-        <Excerpt>{excerpt}</Excerpt>
+        <Excerpt as="h1" textColor={theme.color}>
+          {title}
+        </Excerpt>
         {renderFilter === true && (
           <Filter>
             <Link
               href={location.pathname}
               onClick={onTagClick}
               aria-current={!filter ? true : undefined}
-              colorVariant="gray"
+              textColor={theme.color}
+              styleVariant={theme.theme}
               variant="large"
             >
-              All projects
+              {getActiveLangPath() ? 'Alla projekt' : 'All projects'}
             </Link>
             {tags.map(tag => (
               <Link
-                key={tag}
-                href={getTagLink(tag)}
+                key={tag.node.name}
+                href={getTagLink(tag.node.name)}
                 onClick={onTagClick}
-                colorVariant="gray"
+                textColor={theme.color}
+                styleVariant={theme.theme}
                 variant="large"
                 aria-current={
-                  filter && filter.includes(tag.toLowerCase())
+                  filter && filter.includes(tag.node.name.toLowerCase())
                     ? true
                     : undefined
                 }
               >
-                {tag}
+                {tag.node.name}
               </Link>
             ))}
           </Filter>
@@ -125,18 +144,19 @@ export default function Case({ data, location }) {
       </Hero>
       <Animation key={filter}>
         <Section pb={[15, 25]}>
-          <Grid>
+          <CaseGrid>
             {cases.map(({ node }) => (
-              <Column key={node.id} md="6" bottomGap>
-                <Tile
-                  url={node.fields.slug}
-                  title={node.frontmatter.client}
-                  image={node.frontmatter.image}
-                  tags={node.frontmatter.tags}
-                />
-              </Column>
+              <Tile
+                key={node.id}
+                url={`${getActiveLangPath()}/work/${node.slug}`}
+                image={node.featuredImage}
+                tags={node.tags}
+                title={node.client.name}
+                awards={node.awards}
+                bg={node.color}
+              />
             ))}
-          </Grid>
+          </CaseGrid>
         </Section>
       </Animation>
     </Layout>
@@ -144,44 +164,62 @@ export default function Case({ data, location }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: mdx(fields: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulPages(
+      slug: { eq: $slug }
+      node_locale: { eq: $locale }
+    ) {
+      title
+      excerpt {
         excerpt
-        seo {
-          title
-          description
-          image {
-            childImageSharp {
-              og: resize(width: 1200, height: 630, quality: 80) {
-                src
-              }
-            }
-          }
+      }
+      seoTitle
+      seoDescription {
+        seoDescription
+      }
+      seoImage {
+        og: resize(width: 1200, height: 630, quality: 80) {
+          src
         }
       }
     }
-    cases: allMdx(
-      filter: {
-        fields: { template: { eq: "case" } }
-        frontmatter: { published: { ne: false } }
+    tags: allContentfulTags(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: [name], order: [ASC] }
+    ) {
+      edges {
+        node {
+          name
+        }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+    }
+    cases: allContentfulCases(
+      filter: { node_locale: { eq: $locale } }
+      sort: { fields: [createdAt], order: [DESC] }
     ) {
       edges {
         node {
           id
-          fields {
-            slug
+          slug
+          title
+          createdAt
+          featuredImage {
+            fluid(quality: 80, maxWidth: 2000) {
+              ...GatsbyContentfulFluid
+            }
           }
-          frontmatter {
-            client
-            tags
-            image {
-              childImageSharp {
-                ...TileImage
-              }
+          tags {
+            name
+          }
+          client {
+            name
+          }
+          awards {
+            contentful_id
+            description
+            title
+            fluid: fluid(quality: 80, maxWidth: 500) {
+              ...GatsbyContentfulFluid
             }
           }
         }

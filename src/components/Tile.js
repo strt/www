@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import { H3 } from './Text'
 import Tags from './Tags'
 import Image, { ImageWrapper } from './Image'
+import Awards, { AwardWrapper } from './Awards'
+import EmbedPlayer from './EmbedPlayer'
+
 import {
   cover,
   breakpoints,
@@ -35,9 +38,18 @@ const Content = styled.div`
   position: relative;
   z-index: 2;
   padding: ${fluidRange({ min: 16, max: 24 })};
+  height: 100%;
 
   @media ${breakpoints.medium} {
     padding: ${vw(40)};
+  }
+
+  ${Link}:hover &,
+  ${Link}:focus & {
+    ${AwardWrapper} {
+      opacity: 0.4;
+      transition: opacity ${durations.slow} ${easings.easeOutSine};
+    }
   }
 `
 
@@ -81,25 +93,36 @@ const Media = styled.div`
 export default function Tile({
   title,
   image,
+  video,
   url,
   tags,
+  awards,
   bg = colors.steel500,
 }) {
   return (
     <Link to={url}>
       <Article>
         <Content>
-          <H3 textColor="white" mb={[1 / 2, 1 / 2]}>
+          <H3 textColor={colors.light} mb={[1 / 2, 1 / 2]}>
             {title}
           </H3>
-          <Tags items={tags} textColor="white" linked={false} variant="small" />
+          <Tags
+            items={tags}
+            textColor={colors.light}
+            linked={false}
+            variant="small"
+          />
+          {awards && <Awards items={awards} />}
         </Content>
         <Media bg={bg}>
-          {image && (
-            <Image
-              fluid={image.childImageSharp.fluid}
-              alt=""
-              aspectRatio="auto"
+          {image && !video && (
+            <Image fluid={image.fluid} alt="" aspectRatio="auto" />
+          )}
+          {video && (
+            <EmbedPlayer
+              data-desktop
+              src={`${video}?background=1`}
+              bg="transparent"
             />
           )}
         </Media>

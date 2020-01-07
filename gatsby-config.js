@@ -1,19 +1,31 @@
 /* eslint-disable import/no-extraneous-dependencies, global-require */
 const proxy = require('http-proxy-middleware')
+require('dotenv').config()
+
+const siteUrl =
+  process.env.ACTIVE_ENV === 'staging'
+    ? 'https://strateg.dev'
+    : 'https://strateg.se'
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://strateg.se',
-  },
-  mapping: {
-    'Mdx.frontmatter.contact_relation': 'Mdx.frontmatter.email',
+    siteUrl,
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
-        path: `${__dirname}/content/media/`,
-        name: 'media',
+        host: siteUrl,
+        sitemap: `${siteUrl}/sitemap.xml`,
+        resolveEnv: () => process.env.ACTIVE_ENV,
+        env: {
+          staging: {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }],
+          },
+        },
       },
     },
     {
@@ -59,7 +71,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-7298749-1',
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
         anonymize: true,
         respectDNT: true,
       },
@@ -96,7 +108,22 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
     'gatsby-plugin-netlify-cache',
-    'gatsby-plugin-netlify-cms',
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `lxxyo1cefolk`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken:
+          process.env.ACTIVE_ENV === 'staging'
+            ? process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW
+            : process.env.CONTENTFUL_ACCESS_TOKEN,
+        host:
+          process.env.ACTIVE_ENV === 'staging'
+            ? 'preview.contentful.com'
+            : 'cdn.contentful.com',
+      },
+    },
+    'gatsby-plugin-client-side-redirect',
   ],
   developMiddleware: app => {
     app.use(

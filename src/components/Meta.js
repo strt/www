@@ -14,8 +14,9 @@ export default function Meta({
 }) {
   const siteSettings = useSiteSettings()
   const image =
-    propImage || siteSettings.seo.default_image.childImageSharp.resize.src
-  const imageSrc = siteSettings.siteUrl + image
+    propImage ||
+    siteSettings.siteUrl +
+      siteSettings.seo.default_image.childImageSharp.resize.src
 
   return (
     <Location>
@@ -38,7 +39,7 @@ export default function Meta({
             <meta property="og:type" content={type} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={imageSrc} />
+            <meta property="og:image" content={image} />
             <meta
               property="og:url"
               content={siteSettings.siteUrl + location.pathname}

@@ -40,7 +40,7 @@ export const IconButton = styled.button`
   margin: 0;
   border: none;
   font-size: ${fluidRange({ min: 20, max: 26 })};
-  line-height: 1em;
+  line-height: 0.625em;
   color: ${props => props.textColor || colors.dark};
   background: none;
 

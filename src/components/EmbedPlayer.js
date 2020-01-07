@@ -22,7 +22,6 @@ export default function EmbedPlayer({ title, bg, aspectRatio, ...props }) {
     <PlayerWrapper bg={bg} aspectRatio={aspectRatio}>
       <iframe
         title={title}
-        frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         {...props}

@@ -4,17 +4,19 @@ import Link from './Link'
 import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import Section from './Section'
+import LogoIcon from './LogoIcon'
 import { ScrollToTopButton } from './Button'
 import { footerNavigation } from '../routes'
-import { colors, breakpoints, fluidRange, vw } from '../style'
+import { colors, breakpoints } from '../style'
 import { formatPhone } from '../lib/format'
 import useSiteSettings from '../lib/useSiteSettings'
+import SelectLanguageWrapper, { getActiveLangPath } from './SelectLanguage'
 
 const CopyrightText = styled(Text)`
-  font-size: ${fluidRange({ min: 10, max: 14 })};
+  font-size: 0.75rem;
 
   @media ${breakpoints.medium} {
-    font-size: ${vw(12)};
+    font-size: 1rem;
   }
 `
 
@@ -22,18 +24,33 @@ const currentYear = new Date().getFullYear()
 
 export default function Footer() {
   const siteSettings = useSiteSettings()
+  const footerTheme = 'dark'
 
+  /* eslint no-restricted-globals:0 */
   return (
     <Section as="footer" bg={colors.dark} py={[4, 7]}>
       <Grid>
+        <Column md="8">
+          <LogoIcon />
+        </Column>
+        <Column md="4">
+          <ul
+            style={{
+              display: 'flex',
+            }}
+          >
+            <SelectLanguageWrapper textColor={colors.light} />
+          </ul>
+        </Column>
         {siteSettings.offices.map(office => (
           <Column md="3" key={office.city}>
-            <Text as="address" textColor="white">
+            <Text as="address" textColor={colors.light}>
               {office.address} <br />
               {office.zipcode} {office.city} <br />
               <Link
                 href={`tel:${formatPhone(office.phone)}`}
-                colorVariant="white"
+                textColor={colors.light}
+                styleVariant={footerTheme}
               >
                 {office.phone}
               </Link>
@@ -46,7 +63,8 @@ export default function Footer() {
               href={siteSettings.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="white"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               Instagram
             </Link>
@@ -55,7 +73,8 @@ export default function Footer() {
               href={siteSettings.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="white"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               Facebook
             </Link>
@@ -64,7 +83,8 @@ export default function Footer() {
               href={siteSettings.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="white"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               LinkedIn
             </Link>
@@ -73,7 +93,8 @@ export default function Footer() {
               href={siteSettings.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="white"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
               GitHub
             </Link>
@@ -84,8 +105,12 @@ export default function Footer() {
           <Text as="ul">
             {footerNavigation.map(route => (
               <li key={route.link}>
-                <Link to={route.link} colorVariant="white">
-                  {route.title}
+                <Link
+                  to={`${getActiveLangPath()}/${route.link}`}
+                  textColor={colors.light}
+                  styleVariant={footerTheme}
+                >
+                  {getActiveLangPath() ? route.sv.title : route.title}
                 </Link>
               </li>
             ))}
@@ -94,21 +119,23 @@ export default function Footer() {
       </Grid>
       <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
         <Column width="auto">
-          <CopyrightText as="small" textColor="white">
+          <CopyrightText as="small" textColor={colors.light}>
             © {currentYear} <br />
-            {siteSettings.name} <br />A part of{' '}
+            {siteSettings.name} <br />
+            {getActiveLangPath() ? 'En del av ' : 'A part of '}
             <Link
               href="//diplomatgruppen.se"
               target="_blank"
               rel="noopener noreferrer"
-              colorVariant="white"
+              textColor={colors.light}
+              styleVariant={footerTheme}
             >
-              Diplomat Group
+              {getActiveLangPath() ? 'Diplomatgruppen' : 'Diplomat Group'}
             </Link>
           </CopyrightText>
         </Column>
         <Column width="auto">
-          <ScrollToTopButton textColor="white" />
+          <ScrollToTopButton textColor={colors.light} />
         </Column>
       </Grid>
     </Section>
