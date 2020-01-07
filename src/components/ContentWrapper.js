@@ -23,13 +23,13 @@ const ContentWrapperStyle = styled.div`
 
   ${UnorderedList} {
     &:last-child {
-      margin-bottom: 0;
+      margin-bottom: 1em;
     }
   }
 
   ${OrderedList} {
     &:last-child {
-      margin-bottom: 0;
+      margin-bottom: 1em;
     }
   }
 `

@@ -124,7 +124,9 @@ const options = (pr, pl, md = '8') => {
           <UnorderedList>{children}</UnorderedList>
         </Column>
       ),
-      [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>,
+      [BLOCKS.LIST_ITEM]: node => (
+        <ListItem>{node.content[0].content[0].value}</ListItem>
+      ),
       [BLOCKS.EMBEDDED_ASSET]: ({
         data: {
           target: { fields },
