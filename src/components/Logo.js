@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
-import { breakpoints, vw } from '../style'
+import { colors, breakpoints, vw } from '../style'
 import { ThemeContext } from '../context/ThemeContext'
 
 const Svg = styled(BaseSvg)`
   width: ${164 / 7.68}vw;
   min-width: 112px;
   height: auto;
+  color: ${colors.dark};
 
   @media screen and ${breakpoints.medium} {
     width: ${vw(188)};
