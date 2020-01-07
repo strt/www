@@ -343,7 +343,7 @@ function Navigation({ location }) {
                           to={`${getActiveLangPath()}/${item.link}`}
                           getProps={getProps}
                         >
-                          {item.title}
+                          {getActiveLangPath() ? item.sv.title : item.title}
                         </NavLink>
                       </animated.li>
                     ))}
