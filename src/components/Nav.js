@@ -41,7 +41,7 @@ const NavLink = styled(GatsbyLink)`
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
   font-size: ${fluidRange({ min: 36, max: 48 })};
   line-height: 0.798611em;
-  font-weight: 700;
+  font-weight: 400;
   text-decoration: none;
   color: white;
   transition: all ${durations.fast} ${easings.easeOutQuad};
@@ -243,7 +243,7 @@ function Navigation({ location }) {
               }}
             >
               <Link
-                style={{ marginLeft: '10px' }}
+                style={{ marginTop: '-8px' }}
                 as="button"
                 type="button"
                 styleVariant={theme.theme}

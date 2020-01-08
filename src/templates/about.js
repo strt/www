@@ -23,7 +23,12 @@ export default function About({ data }) {
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
-      <Hero md={8} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
+      <Hero
+        lg={8}
+        md={12}
+        pb={hasCover ? undefined : 0}
+        keepContentMargin={!hasCover}
+      >
         {title && (
           <Excerpt
             as="h1"
@@ -54,7 +59,7 @@ export default function About({ data }) {
           </Column>
         )}
         {description && (
-          <Column md={10}>
+          <Column lg={10} md={12}>
             <Excerpt textColor={theme.color} style={{ display: 'inline' }}>
               {description.description}
             </Excerpt>
@@ -64,7 +69,7 @@ export default function About({ data }) {
       {contentColumns && (
         <Grid pt={20}>
           {contentColumns.map(item => (
-            <Column md={4} key={item.contentful_id}>
+            <Column md={12} lg={4} key={item.contentful_id}>
               {(() => {
                 return (
                   <>

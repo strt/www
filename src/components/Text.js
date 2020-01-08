@@ -50,14 +50,13 @@ export const Text = styled.p`
 export const Excerpt = styled.p`
   margin-bottom: 1.25em;
   font-size: 1.875em;
-  font-weight: 500;
-  line-height: 1.25em;
+  font-weight: 400;
+  line-height: 1.15em;
   white-space: pre-line;
   ${base}
 
   @media ${breakpoints.medium} {
-    max-width: 75%;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
   @media ${breakpoints.large} {
@@ -97,7 +96,7 @@ export const H1 = styled.h1`
   })}
 
   @media ${breakpoints.medium} {
-    font-size: 8.25em;
+    font-size: 6em;
     letter-spacing: -0.05em;
   }
 
@@ -118,7 +117,7 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   margin-bottom: 0.4125em;
   font-size: 1.875em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1em;
   ${base}
   ${props => ({
@@ -147,7 +146,7 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   margin-bottom: 0.4125em;
   font-size: 1.5em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1em;
   ${base}
   ${props => ({
@@ -176,7 +175,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   margin-bottom: 0.4125em;
   font-size: 1.3125em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.25em;
   ${base}
   ${props => ({
@@ -205,7 +204,7 @@ export const H4 = styled.h4`
 export const H6 = styled.h6`
   margin-bottom: 0.4125em;
   font-size: 1.3125em;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 1em;
   ${base}
