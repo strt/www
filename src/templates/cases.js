@@ -50,7 +50,7 @@ const Filter = styled(Div)`
       opacity: 1;
     }
 
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       margin-bottom: 16px;
 
       &:not(:last-child) {
@@ -66,19 +66,19 @@ const Animation = styled.div`
 `
 
 const CaseGrid = styled(CssGrid)`
-  @media ${breakpoints.medium} {
+  @media ${breakpoints.small} {
     grid-auto-flow: row dense;
   }
 
   > * {
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       grid-row: span 2;
       grid-column: span 6;
     }
   }
 
   > *:nth-child(odd) {
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       grid-column: grid-start / span 6;
     }
   }

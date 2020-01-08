@@ -18,12 +18,12 @@ import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 const CaseGrid = styled(CssGrid)`
-  @media ${breakpoints.medium} {
+  @media ${breakpoints.small} {
     grid-auto-flow: row dense;
   }
 
   > * {
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       grid-row: span 2;
       grid-column: grid-start / span 6;
     }
@@ -32,7 +32,7 @@ const CaseGrid = styled(CssGrid)`
   > *:nth-child(1),
   > *:nth-child(4),
   > *:nth-child(5) {
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       grid-row: span 5;
       min-height: ${vw(752)};
     }
@@ -40,7 +40,7 @@ const CaseGrid = styled(CssGrid)`
 
   > *:nth-child(2),
   > *:nth-child(4) {
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       grid-column-start: col-end 6;
     }
   }
@@ -64,7 +64,7 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <Hero md={10} scrollButtonElement="#case-section">
+      <Hero lg={3} md={10} scrollButtonElement="#case-section">
         <FrontH1 heroContent={hero} />
       </Hero>
       <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
@@ -109,7 +109,7 @@ export default function Index({ data }) {
         </Div>
         <Grid>
           {data.posts.edges.map(({ node }) => (
-            <Column key={node.id} md="6" bottomGap>
+            <Column key={node.id} sm="6" bottomGap>
               <Card
                 date={node.oldDate || node.createdAt}
                 title={node.title}

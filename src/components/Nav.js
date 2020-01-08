@@ -69,7 +69,7 @@ const NavWrapper = styled.nav`
   }
 
   [data-responsive] {
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       display: none;
     }
   }
@@ -77,7 +77,7 @@ const NavWrapper = styled.nav`
   [data-desktop] {
     display: none;
 
-    @media ${breakpoints.medium} {
+    @media ${breakpoints.small} {
       display: flex;
     }
 

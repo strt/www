@@ -69,16 +69,6 @@ const Li = styled.li`
   color: ${props => props.textColor};
 `
 
-const Hyphen = styled.span`
-  flex-shrink: 0;
-
-  &::before {
-    color: ${props => props.textColor};
-    content: '— ';
-    white-space: pre;
-  }
-`
-
 export default function Tags({ items, linked = true, textColor, ...rest }) {
   if (!items || !items.length) {
     return null
@@ -86,7 +76,6 @@ export default function Tags({ items, linked = true, textColor, ...rest }) {
 
   return (
     <TagsWrapper {...rest} textColor={textColor}>
-      <Hyphen />
       <TagList>
         {items.map(item => (
           <Li key={item.name}>
