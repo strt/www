@@ -43,7 +43,7 @@ export default function Footer() {
           </ul>
         </Column>
         {siteSettings.offices.map(office => (
-          <Column md={12} lg={3} key={office.city}>
+          <Column sm={12} md={3} key={office.city}>
             <Text as="address" textColor={colors.light}>
               {office.address} <br />
               {office.zipcode} {office.city} <br />
@@ -57,7 +57,7 @@ export default function Footer() {
             </Text>
           </Column>
         ))}
-        <Column md={12} lg={3}>
+        <Column sm={12} md={3}>
           <Text>
             <Link
               href={siteSettings.social.instagram}

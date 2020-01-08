@@ -40,7 +40,7 @@ export const Grid = styled(CleanTag)(
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
     width: '100%',
-    [`@media ${breakpoints.medium}`]: {
+    [`@media ${breakpoints.small}`]: {
       paddingRight: `${vw(40)}`,
       paddingLeft: `${vw(40)}`,
     },
@@ -64,6 +64,9 @@ export const Column = styled(CleanTag)(
     width: getWidth(props.width) || '100%',
     paddingRight: gutter.default,
     paddingLeft: gutter.default,
+    [mediaQuery(breakpoints.small)]: {
+      width: getWidth(props.sm),
+    },
     [mediaQuery(breakpoints.medium)]: {
       width: getWidth(props.md),
     },
@@ -91,7 +94,7 @@ export const CssGrid = styled.div`
     )
     [grid-end] ${gutter.default} [full-end];
 
-  @media ${breakpoints.medium} {
+  @media ${breakpoints.small} {
     grid-gap: calc(${gutter.default});
     grid-template-columns:
       [full-start] calc(${vw(24)} + ${gutter.default}) [grid-start] repeat(

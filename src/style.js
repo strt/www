@@ -15,15 +15,15 @@ export const colors = {
 
 export const breakpointNr = {
   small: 640,
-  medium: 768,
+  medium: 1024,
   large: 1440,
   xlarge: 1920,
 }
 
 export const breakpoints = {
   small: '(min-width: 640px)',
-  medium: '(min-width: 768px)',
-  large: '(min-width: 1440px)',
+  medium: '(min-width: 1024px)',
+  large: '(min-width: 1366px)',
   xlarge: '(min-width: 1920px)',
 }
 
