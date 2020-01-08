@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   border-radius: 0;
   padding: ${fluidRange({ min: 18, max: 24 })};
   font-size: ${fluidRange({ min: 18, max: 24 })};
-  font-weight: 500;
+  font-weight: 400;
   color: white;
   font-family: ${fontFamily};
   background-color: ${colors.dark};

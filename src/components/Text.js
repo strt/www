@@ -50,7 +50,7 @@ export const Text = styled.p`
 export const Excerpt = styled.p`
   margin-bottom: 1.25em;
   font-size: 1.875em;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.25em;
   white-space: pre-line;
   ${base}
@@ -117,7 +117,7 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   margin-bottom: 0.4125em;
   font-size: 1.875em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1em;
   ${base}
   ${props => ({
@@ -146,7 +146,7 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   margin-bottom: 0.4125em;
   font-size: 1.5em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1em;
   ${base}
   ${props => ({
@@ -175,7 +175,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   margin-bottom: 0.4125em;
   font-size: 1.3125em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.25em;
   ${base}
   ${props => ({
@@ -204,7 +204,7 @@ export const H4 = styled.h4`
 export const H6 = styled.h6`
   margin-bottom: 0.4125em;
   font-size: 1.3125em;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 1em;
   ${base}
