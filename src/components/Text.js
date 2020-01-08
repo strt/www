@@ -90,7 +90,7 @@ export const Excerpt = styled.p`
 
 export const H1 = styled.h1`
   margin-bottom: 0.175em;
-  font-size: 4em;
+  font-size: 2em;
   font-weight: 400;
   line-height: 1em;
   ${base}
@@ -98,6 +98,10 @@ export const H1 = styled.h1`
     fontFamily,
     color: props.textColor || colors.dark,
   })}
+
+  @media ${breakpoints.small} {
+    font-size: 4em;
+  }
 
   @media ${breakpoints.medium} {
     font-size: 6em;
