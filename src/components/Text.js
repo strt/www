@@ -56,8 +56,7 @@ export const Excerpt = styled.p`
   ${base}
 
   @media ${breakpoints.medium} {
-    max-width: 75%;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
   @media ${breakpoints.large} {
@@ -97,7 +96,7 @@ export const H1 = styled.h1`
   })}
 
   @media ${breakpoints.medium} {
-    font-size: 8.25em;
+    font-size: 6em;
     letter-spacing: -0.05em;
   }
 

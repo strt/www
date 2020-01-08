@@ -243,7 +243,7 @@ function Navigation({ location }) {
               }}
             >
               <Link
-                style={{ marginLeft: '10px' }}
+                style={{ marginTop: '-8px' }}
                 as="button"
                 type="button"
                 styleVariant={theme.theme}

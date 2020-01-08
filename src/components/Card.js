@@ -8,6 +8,7 @@ import {
   colors,
   ratio,
   breakpoints,
+  breakpointNr,
   cover,
   fluidRange,
   vw,
@@ -37,6 +38,24 @@ const Content = styled.div`
 
   h3 {
     margin-bottom: 0;
+    font-size: 1em;
+
+    @media ${breakpoints.medium} {
+      font-size: 1.2em;
+    }
+
+    @media ${breakpoints.large} {
+      font-size: ${fluidRange({
+        min: 30,
+        max: 36,
+        viewportMin: breakpointNr.large,
+        viewportMax: breakpointNr.xlarge,
+      })};
+    }
+
+    @media ${breakpoints.xlarge} {
+      font-size: 3em;
+    }
 
     /* Copy/mimic Link component style */
     & span {
@@ -59,6 +78,27 @@ const Content = styled.div`
   @media ${breakpoints.medium} {
     padding: ${vw(24)};
     width: ${getWidth(6)};
+  }
+`
+
+const DateTime = styled(Text)`
+  font-size: 0.8em;
+
+  @media ${breakpoints.medium} {
+    font-size: 1em;
+  }
+
+  @media ${breakpoints.large} {
+    font-size: ${fluidRange({
+      min: 20,
+      max: 30,
+      viewportMin: breakpointNr.large,
+      viewportMax: breakpointNr.xlarge,
+    })};
+  }
+
+  @media ${breakpoints.xlarge} {
+    font-size: 1.875em;
   }
 `
 
@@ -87,9 +127,14 @@ export default function Card({ url, title, date, image }) {
       <Article>
         <Content>
           {date && (
-            <Text as="time" dateTime={date} textColor={colors.darkText} mb="2">
+            <DateTime
+              as="time"
+              dateTime={date}
+              textColor={colors.darkText}
+              mb="2"
+            >
               {formattedDate}
-            </Text>
+            </DateTime>
           )}
           <H3>
             <span>{title}</span>

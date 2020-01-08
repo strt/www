@@ -24,14 +24,14 @@ import { getActiveLangPath } from '../components/SelectLanguage'
 
 const StyledH1 = styled(H1)`
   margin-bottom: 0.175em;
-  font-size: 4em;
+  font-size: 3em;
   font-weight: 400;
   line-height: 1.1em;
   ${base}
   color: ${props => props.textColor};
 
   @media ${breakpoints.medium} {
-    font-size: 6.1875em;
+    font-size: 5em;
     letter-spacing: -0.05em;
   }
 
@@ -80,7 +80,7 @@ export default function Case({ data, pageContext: { next } }) {
               </H4>
             </Column>
           )}
-          <Column width="auto">
+          <Column width="auto" pt={1}>
             <Tags items={tags} textColor={theme.color} />
           </Column>
         </Grid>

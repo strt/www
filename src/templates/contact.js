@@ -62,7 +62,7 @@ export default function Contact({ data }) {
         <H1 textColor={theme.color}>{page.title}</H1>
 
         {page.excerpt && (
-          <Column md={6} p={0}>
+          <Column lg={6} p={0}>
             <Text textColor={theme.color}>{page.excerpt.excerpt}</Text>
           </Column>
         )}
@@ -71,7 +71,7 @@ export default function Contact({ data }) {
       <Section mb={[4, 7]}>
         <Grid>
           {contacts.map((contact, index) => (
-            <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
+            <Column lg={index === 0 ? 6 : 3} key={contact.id}>
               <Text textColor={theme.color}>
                 <strong>{contact.city || contact.title}</strong>
                 <br />
@@ -102,7 +102,7 @@ export default function Contact({ data }) {
       <Section pb={[10, 20]}>
         <Grid>
           {data.employees.edges.map(({ node }) => (
-            <Column key={node.id} width="6" md="3" bottomGap pt={2}>
+            <Column key={node.id} width="6" md={6} lg={3} bottomGap pt={2}>
               {node.image && (
                 <Image
                   bg={colors.dark}
