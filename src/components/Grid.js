@@ -73,6 +73,9 @@ export const Column = styled(CleanTag)(
     [mediaQuery(breakpoints.large)]: {
       width: getWidth(props.lg),
     },
+    [mediaQuery(breakpoints.xlarge)]: {
+      width: getWidth(props.xl),
+    },
   }),
   getColumnMargin,
   space,
