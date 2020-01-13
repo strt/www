@@ -76,7 +76,7 @@ export default function Contact({ data }) {
                 <strong>{contact.city || contact.title}</strong>
                 <br />
                 {contact.address}
-                {contact.address && ','}
+                {contact.address && <br />}
                 {contact.postalCode} {contact.city}
                 {contact.city && <br />}
                 <Link
