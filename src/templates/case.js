@@ -119,7 +119,7 @@ export default function Case({ data, pageContext: { next } }) {
                     : 'Would you like to know more?'}
                 </H3>
                 <Text textColor={theme.color}>
-                  {getActiveLangPath() ? 'Kontakta' : 'Contact'}
+                  {getActiveLangPath() ? 'Kontakta ' : 'Contact '}
                   {contact.firstName} {contact.lastName}, {contact.title}
                   <br />
                   <Link
