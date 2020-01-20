@@ -197,7 +197,7 @@ export const pageQuery = graphql`
     }
     cases: allContentfulCases(
       filter: { node_locale: { eq: $locale } }
-      sort: { fields: [createdAt], order: [DESC] }
+      sort: { fields: [oldDate, createdAt], order: [DESC, DESC] }
     ) {
       edges {
         node {
@@ -205,6 +205,7 @@ export const pageQuery = graphql`
           slug
           title
           createdAt
+          oldDate
           featuredImage {
             fluid(quality: 80, maxWidth: 2000) {
               ...GatsbyContentfulFluid
