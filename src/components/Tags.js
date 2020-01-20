@@ -81,7 +81,7 @@ export default function Tags({ items, linked = true, textColor, ...rest }) {
           <Li key={item.name}>
             {linked ? (
               <Link
-                href={`/${getActiveLangPath()}/work?filter=${encodeURIComponent(
+                href={`${getActiveLangPath()}/work?filter=${encodeURIComponent(
                   item.name.toLowerCase(),
                 )}`}
                 textColor={textColor}

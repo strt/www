@@ -1,5 +1,6 @@
 /* eslint react/forbid-prop-types: 0 */
 /* eslint-disable no-shadow */
+/* eslint-disable consistent-return */
 import PropTypes from 'prop-types'
 import React, { useContext } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
@@ -132,15 +133,17 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
           target: { fields },
         },
       }) => {
-        const file = fields.file['en-GB']
-        return (
-          <Column md={12} pr={pr} pl={pl}>
-            <Image
-              alt={fields.description && fields.description['en-GB']}
-              src={file.url}
-            />
-          </Column>
-        )
+        if (fields && fields.file && fields.file['en-GB']) {
+          const file = fields.file['en-GB']
+          return (
+            <Column md={12} pr={pr} pl={pl}>
+              <Image
+                alt={fields.description && fields.description['en-GB']}
+                src={file.url}
+              />
+            </Column>
+          )
+        }
       },
       [BLOCKS.EMBEDDED_ENTRY]: ({ data }) => {
         if (
