@@ -71,10 +71,9 @@ export default function Case({ data, pageContext: { next } }) {
         <Grid
           justifyContent="space-between"
           alignItems="flex-start"
-          flexWrap="nowrap"
           pt={[2, 7]}
         >
-          <Column md="8">
+          <Column sm={12} md={8}>
             {client && (
               <H4 mb="1" textColor={theme.color}>
                 {client.name}
@@ -84,7 +83,7 @@ export default function Case({ data, pageContext: { next } }) {
           </Column>
 
           {contact && (
-            <Column md="4">
+            <Column sm={12} md={4}>
               <Text textColor={theme.color}>
                 {getActiveLangPath() ? 'Vill du veta mer?' : 'Your cup of tea?'}
                 <br />
