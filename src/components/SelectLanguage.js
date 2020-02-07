@@ -18,6 +18,13 @@ function setActiveLang(lang) {
   selectedLang = lang
 }
 
+export function getActiveLang() {
+  if (!selectedLang || selectedLang === 'en') {
+    return 'en'
+  }
+  return selectedLang
+}
+
 export function getActiveLangPath() {
   if (!selectedLang || selectedLang === 'en') {
     return ''

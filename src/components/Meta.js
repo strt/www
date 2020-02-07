@@ -3,6 +3,7 @@ import React from 'react'
 import { Location } from '@reach/router'
 import Helmet from 'react-helmet'
 import useSiteSettings from '../lib/useSiteSettings'
+import { getActiveLang } from './SelectLanguage'
 
 export default function Meta({
   title,
@@ -23,7 +24,7 @@ export default function Meta({
       {({ location }) => {
         return (
           <Helmet
-            htmlAttributes={{ lang: 'sv' }}
+            htmlAttributes={{ lang: getActiveLang() }}
             titleTemplate={`%s – ${siteSettings.shortName}`}
             defaultTitle={siteSettings.name}
           >
