@@ -17,12 +17,15 @@ import { ThemeContext } from '../context/ThemeContext'
 function getImageData(data, name) {
   if (data.target.fields[name] && data.target.fields[name]['en-GB']) {
     const imageData = data.target.fields[name]['en-GB']
-    return (
-      <Image
-        alt={imageData.fields.title && imageData.fields.title['en-GB']}
-        src={imageData.fields.file['en-GB'].url}
-      />
-    )
+
+    if (imageData.fields.file && imageData.fields.file['en-GB']) {
+      return (
+        <Image
+          alt={imageData.fields.title && imageData.fields.title['en-GB']}
+          src={imageData.fields.file['en-GB'].url}
+        />
+      )
+    }
   }
   return null
 }
