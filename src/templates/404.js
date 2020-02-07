@@ -9,7 +9,6 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function NotFound({ data }) {
   const { page, linkText } = data.contentfulPage
-
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
@@ -27,8 +26,10 @@ export default function NotFound({ data }) {
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
-    contentfulPage: contentfulNotFoundPage(page: { slug: { eq: $slug } }) {
+  query($slug: String!, $locale: String!) {
+    contentfulPage: contentfulNotFoundPage(
+      page: { slug: { eq: $slug }, node_locale: { eq: $locale } }
+    ) {
       page {
         title
         slug
