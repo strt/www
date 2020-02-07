@@ -15,7 +15,7 @@ import Video from './Video'
 import { ThemeContext } from '../context/ThemeContext'
 
 function getImageData(data, name) {
-  if (data.target.fields[name]) {
+  if (data.target.fields[name] && data.target.fields[name]['en-GB']) {
     const imageData = data.target.fields[name]['en-GB']
     return (
       <Image
@@ -28,7 +28,7 @@ function getImageData(data, name) {
 }
 
 function getVideoData(data, name, aspect) {
-  if (data.target.fields[name]) {
+  if (data.target.fields[name] && data.target.fields[name]['en-GB']) {
     return (
       <Video
         src={data.target.fields[name]['en-GB']}
