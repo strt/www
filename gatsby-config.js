@@ -77,6 +77,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GOOGLE_TAGMANAGER_ID,
+        includeInDevelopment: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-hubspot',
       options: {
         trackingId: '2677897',

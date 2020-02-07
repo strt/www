@@ -791,6 +791,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.7.6":
+  version "7.8.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
+  integrity sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.6.0", "@babel/template@^7.7.4":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.7.4.tgz#428a7d9eecffe27deac0a98e23bf8e3675d2a77b"
@@ -6622,6 +6629,13 @@ gatsby-plugin-google-analytics@^2.0.17:
   integrity sha512-Tfqwx3VYDxXAtHfgGkQbORIVcXDx9UUmCOP8PgZBnMzEzqtGlZSGI/P7P98SGLi4sjs9gDABJ6Z/VXbAqriqNg==
   dependencies:
     "@babel/runtime" "^7.7.2"
+
+gatsby-plugin-google-tagmanager@^2.1.25:
+  version "2.1.25"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-2.1.25.tgz#358cfdd0cf78ead7cece7d1ad5ab42b6d6dd0b1a"
+  integrity sha512-Db5EKRLjSSQea/b9ix+ZLjj9gG8clkNScXuF+QnxJl/LF2F8BmEsfGqMZj+3a2LONSpaax///kjuolVqmYsHsw==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
 
 gatsby-plugin-layout@^1.0.12:
   version "1.1.15"
