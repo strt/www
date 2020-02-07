@@ -64,10 +64,10 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <Hero lg={3} md={10} scrollButtonElement="#case-section">
+      <Hero lg={3} md={10}>
         <FrontH1 heroContent={hero} />
       </Hero>
-      <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
+      <Section id="case-section" pt={[3, 6]} pb={[8, 16]}>
         <CaseGrid>
           {featuredCases.map((node, index) => (
             <Tile
