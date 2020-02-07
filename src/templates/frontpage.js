@@ -91,6 +91,7 @@ export default function Index({ data }) {
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
                 textColor={theme.color}
+                styleVariant={theme.theme}
                 variant="large"
               >
                 {casesLinkText}
@@ -124,6 +125,7 @@ export default function Index({ data }) {
                 to={`${getActiveLangPath()}/${routes.news.link}`}
                 variant="large"
                 textColor={theme.color}
+                styleVariant={theme.theme}
               >
                 {newsLinkText}
               </Link>
