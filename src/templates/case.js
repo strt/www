@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Hero from '../components/Hero'
 import Link from '../components/Link'
-import { base, Text, Excerpt, H1, H3, H4, H6 } from '../components/Text'
+import { base, Text, Excerpt, H1, H4, H6 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import Cover from '../components/Cover'
 import Icon from '../components/Icon'
@@ -70,19 +70,45 @@ export default function Case({ data, pageContext: { next } }) {
       <article>
         <Grid
           justifyContent="space-between"
-          alignItems={['flex-start', 'center']}
+          alignItems="flex-start"
           flexWrap="nowrap"
+          pt={[2, 7]}
         >
-          {client && (
-            <Column width="auto">
-              <H4 mb="0" textColor={theme.color}>
+          <Column md="8">
+            {client && (
+              <H4 mb="1" textColor={theme.color}>
                 {client.name}
               </H4>
-            </Column>
-          )}
-          <Column width="auto" pt={1}>
+            )}
             <Tags items={tags} textColor={theme.color} />
           </Column>
+
+          {contact && (
+            <Column md="4">
+              <Text textColor={theme.color}>
+                {getActiveLangPath() ? 'Vill du veta mer?' : 'Your cup of tea?'}
+                <br />
+                {getActiveLangPath() ? 'Kontakta ' : 'Contact '}
+                {contact.firstName} {contact.lastName}, {contact.title}
+                <br />
+                <Link
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                  href={`mailto:${contact.email}`}
+                >
+                  {contact.email}
+                </Link>
+                <br />
+                <Link
+                  textColor={theme.color}
+                  styleVariant={theme.theme}
+                  href={`tel:${formatPhone(contact.phone)}`}
+                >
+                  {contact.phone}
+                </Link>
+              </Text>
+            </Column>
+          )}
         </Grid>
         <Hero pt={[2, 7]} pb={[5, 7]}>
           <StyledH1 textColor={theme.color}>{title}</StyledH1>
@@ -110,35 +136,6 @@ export default function Case({ data, pageContext: { next } }) {
               </Grid>
             </ContentWrapper>
           )}
-          <Grid>
-            {contact && (
-              <Column md="8" mt={[4, 6]}>
-                <H3 textColor={theme.color}>
-                  {getActiveLangPath()
-                    ? 'Vill du veta mer?'
-                    : 'Would you like to know more?'}
-                </H3>
-                <Text textColor={theme.color}>
-                  {getActiveLangPath() ? 'Kontakta ' : 'Contact '}
-                  {contact.firstName} {contact.lastName}, {contact.title}
-                  <br />
-                  <Link
-                    textColor={theme.color}
-                    href={`mailto:${contact.email}`}
-                  >
-                    {contact.email}
-                  </Link>
-                  <br />
-                  <Link
-                    textColor={theme.color}
-                    href={`tel:${formatPhone(contact.phone)}`}
-                  >
-                    {contact.phone}
-                  </Link>
-                </Text>
-              </Column>
-            )}
-          </Grid>
         </Section>
         {next && (
           <Section as="footer" bg={theme.background} py={[7, 7]}>

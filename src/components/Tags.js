@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Link from './Link'
 import { breakpoints, breakpointNr, fluidRange } from '../style'
 import { getActiveLangPath } from './SelectLanguage'
+import { ThemeContext } from '../context/ThemeContext'
 
 function tagsWrapperModifiers(props) {
   if (props.variant === 'small') {
@@ -70,6 +71,8 @@ const Li = styled.li`
 `
 
 export default function Tags({ items, linked = true, textColor, ...rest }) {
+  const theme = useContext(ThemeContext)
+
   if (!items || !items.length) {
     return null
   }
@@ -85,6 +88,7 @@ export default function Tags({ items, linked = true, textColor, ...rest }) {
                   item.name.toLowerCase(),
                 )}`}
                 textColor={textColor}
+                styleVariant={theme.theme}
               >
                 {item.name}
               </Link>
