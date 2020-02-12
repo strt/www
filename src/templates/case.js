@@ -84,7 +84,7 @@ export default function Case({ data, pageContext: { next } }) {
 
           {contact && (
             <Column sm={12} md={4}>
-              <Text textColor={theme.color}>
+              <Text textColor={theme.color} textAlign="right">
                 {getActiveLangPath() ? 'Vill du veta mer?' : 'Your cup of tea?'}
                 <br />
                 {getActiveLangPath() ? 'Kontakta ' : 'Contact '}
