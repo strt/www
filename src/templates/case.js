@@ -89,7 +89,7 @@ export default function Case({ data, pageContext: { next } }) {
                   ? 'Vill du veta mer? Kontakta '
                   : 'Your cup of tea? Contact '}
                 <br />
-                {contact.firstName} {contact.lastName}, {contact.title}
+                {contact.firstName} {contact.lastName}
                 <br />
                 <Link
                   textColor={theme.color}
