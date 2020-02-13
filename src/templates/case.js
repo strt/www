@@ -49,6 +49,11 @@ const StyledH1 = styled(H1)`
   }
 `
 
+const ContactText = styled(Text)`
+  @media ${breakpoints.medium} {
+    text-align: right;
+  }
+`
 export default function Case({ data, pageContext: { next } }) {
   const {
     title,
@@ -84,11 +89,10 @@ export default function Case({ data, pageContext: { next } }) {
 
           {contact && (
             <Column sm={12} md={4}>
-              <Text textColor={theme.color} textAlign="right">
-                {getActiveLangPath()
-                  ? 'Vill du veta mer? Kontakta '
-                  : 'Your cup of tea? Contact '}
+              <ContactText textColor={theme.color}>
+                {getActiveLangPath() ? 'Vill du veta mer?' : 'Your cup of tea?'}
                 <br />
+                {getActiveLangPath() ? 'Kontakta ' : 'Contact '}
                 {contact.firstName} {contact.lastName}
                 <br />
                 <Link
@@ -106,7 +110,7 @@ export default function Case({ data, pageContext: { next } }) {
                 >
                   {contact.phone}
                 </Link>
-              </Text>
+              </ContactText>
             </Column>
           )}
         </Grid>
