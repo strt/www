@@ -67,6 +67,9 @@ export const Column = styled(CleanTag)(
     [mediaQuery(breakpoints.small)]: {
       width: getWidth(props.sm),
     },
+    [mediaQuery(breakpoints.smallDown)]: {
+      width: getWidth(props.smDown),
+    },
     [mediaQuery(breakpoints.medium)]: {
       width: getWidth(props.md),
     },
