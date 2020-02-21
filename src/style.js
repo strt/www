@@ -22,6 +22,7 @@ export const breakpointNr = {
 
 export const breakpoints = {
   small: '(min-width: 640px)',
+  smallDown: '(max-width: 640px)',
   medium: '(min-width: 1024px)',
   large: '(min-width: 1366px)',
   xlarge: '(min-width: 1920px)',

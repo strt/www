@@ -10,9 +10,9 @@ import Link from '../components/Link'
 import Card from '../components/Card'
 import Tile from '../components/Tile'
 import Div from '../components/Div'
-import Hero from '../components/Hero'
+import { StyledHero } from '../components/Hero'
 import FrontH1 from '../components/FrontH1'
-import { getActiveLangPath } from '../components/SelectLanguage'
+import { getActiveLangPath, getActiveLang } from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -50,6 +50,17 @@ const CaseGrid = styled(CssGrid)`
   }
 `
 
+const CompanyOfTheYearBlock = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const CompanyOfTheYear = styled.img`
+  max-height: 300px;
+`
+
 export default function Index({ data }) {
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
@@ -64,9 +75,25 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <Hero lg={3} md={10}>
-        <FrontH1 heroContent={hero} />
-      </Hero>
+      <StyledHero>
+        <Grid>
+          <Column md={10} sm={10} smDown={9}>
+            <FrontH1 heroContent={hero} />
+          </Column>
+          <Column md={2} sm={2} smDown={3}>
+            <CompanyOfTheYearBlock>
+              <CompanyOfTheYear
+                src={
+                  getActiveLang() === 'en'
+                    ? '/AB_StrategAgency_02.png'
+                    : '/AB_StrategAgency_01.png'
+                }
+                alt="Årets Byrå"
+              />
+            </CompanyOfTheYearBlock>
+          </Column>
+        </Grid>
+      </StyledHero>
       <Section id="case-section" pt={[3, 6]} pb={[8, 16]}>
         <CaseGrid>
           {featuredCases.map((node, index) => (

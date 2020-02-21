@@ -5,7 +5,7 @@ import { IconButton } from './Button'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
 
-const StyledHero = styled(Section)(
+export const StyledHero = styled(Section)(
   props =>
     !props.keepContentMargin && {
       [`${Column} > *:last-child`]: {
