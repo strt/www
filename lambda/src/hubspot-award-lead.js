@@ -79,6 +79,9 @@ export async function handler(event) {
       }
     }
   } catch (e) {
+    const fields = Object.entries(body).map(([key, value]) => ({
+      [key]: value,
+    }))
     if (e.response) {
       return {
         statusCode: e.response.status,
@@ -86,6 +89,11 @@ export async function handler(event) {
           'content-type': 'application/json',
         },
         body: JSON.stringify(e.response.data),
+        fields,
+        form: {
+          id: formId,
+          portal: portalId,
+        },
       }
     }
 
