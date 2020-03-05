@@ -35,14 +35,14 @@ export async function handler(event) {
         }
       }
 
-      const fields = Object.entries(body).map(([key, value]) => ({
-        [key]: value,
-      }))
-
       const res = await axios({
         method: 'post',
         url: `https://forms.hubspot.com/uploads/form/v2/${portalId}/${formId}`,
-        data: fields,
+        data: {
+          phone: '123452313',
+          name: 'maximus',
+          email: 'maximus@strateg.se',
+        },
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
