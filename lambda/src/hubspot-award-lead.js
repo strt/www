@@ -37,12 +37,7 @@ export async function handler(event) {
 
       const res = await axios({
         method: 'post',
-        url: `https://forms.hubspot.com/uploads/form/v2/${portalId}/${formId}`,
-        data: {
-          phone: '123452313',
-          name: 'maximus',
-          email: 'maximus@strateg.se',
-        },
+        url: `https://forms.hubspot.com/uploads/form/v2/${portalId}/${formId}?phone=123452313&name=Maximus&email=maximus@strateg.se`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
