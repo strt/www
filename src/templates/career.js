@@ -121,8 +121,14 @@ export default function Career({ data }) {
     manifesto,
     manifestoImages,
   } = data.contentfulPage
-  const hasOpenPositions = !!data.allContentfulPositions.edges.length
+  const hasOpenPositions = !!(data.allContentfulPositions.edges.length > 1)
 
+  for(let i = 0; i < data.allContentfulPositions.edges.length; i++) {
+    if(data.allContentfulPositions.edges[i].node.slug === 'dummy') {
+      data.allContentfulPositions.edges.splice(i, 1)
+      break
+    }
+  }
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'purple') theme.toggleTheme('purple')
 
