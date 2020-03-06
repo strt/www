@@ -77,7 +77,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const template = page.node.template
       ? page.node.template.toLowerCase()
       : 'standard'
-    if (template != 'hubspot') {
+    if (template !== 'hubspot') {
       createPage({
         path: `${localePath}${slug}`,
         component: resolve(`./src/templates/${template}.js`),
@@ -106,7 +106,7 @@ exports.createPages = async ({ actions, graphql }) => {
   })
   contentfulPositions.data.allContentfulPositions.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
-    if (node.slug != 'dummy') {
+    if (node.slug !== 'dummy') {
       createPage({
         path: `${localePath}/join-us${slug}`,
         component: resolve(`./src/templates/position.js`),
@@ -116,7 +116,7 @@ exports.createPages = async ({ actions, graphql }) => {
         },
       })
     }
-  // registerRedirectsFromNode(node)
+    // registerRedirectsFromNode(node)
   })
 
   // Posts
