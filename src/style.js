@@ -175,6 +175,23 @@ export const GlobalStyle = createGlobalStyle`
 
 `
 
+export const visuallyhidden = () => {
+  return {
+    position: 'absolute',
+    zIndex: 9999,
+    left: 0,
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    border: 0,
+    whiteSpace: 'nowrap',
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+  }
+}
+
 /**
  * Mixins/helpers
  */
