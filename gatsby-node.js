@@ -77,16 +77,15 @@ exports.createPages = async ({ actions, graphql }) => {
     const template = page.node.template
       ? page.node.template.toLowerCase()
       : 'standard'
-    if (template !== 'hubspot') {
-      createPage({
-        path: `${localePath}${slug}`,
-        component: resolve(`./src/templates/${template}.js`),
-        context: {
-          locale: page.node.node_locale,
-          slug: page.node.slug,
-        },
-      })
-    }
+
+    createPage({
+      path: `${localePath}${slug}`,
+      component: resolve(`./src/templates/${template}.js`),
+      context: {
+        locale: page.node.node_locale,
+        slug: page.node.slug,
+      },
+    })
 
     // registerRedirectsFromNode(page.node)
   })
