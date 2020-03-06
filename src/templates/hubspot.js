@@ -6,6 +6,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import { Grid, Column } from '../components/Grid'
 import { H1, H2, Excerpt, Text } from '../components/Text'
+import RichText from '../components/RichTextContentful'
 import { BtnReset } from '../components/Button'
 import LogoIcon from '../components/LogoIcon'
 import {
@@ -197,7 +198,7 @@ const FormField = ({ name, label, type = 'text', ...props }) => (
 )
 
 export default function Hubspot({ data }) {
-  const { title, excerpt } = data.hubspotPage.nodes[0]
+  const { title, excerpt, body } = data.hubspotPage.nodes[0]
   const {
     submitLabel,
     title: legend,
@@ -259,19 +260,15 @@ export default function Hubspot({ data }) {
           </Column>
         </Grid>
       )}
-      <Grid>
-        <Column md={6} mb="3">
-          <Text>
-            – We always aim to push our creativity to the limit
-            <br />
-            – To solve our client’s everyday problems.
-            <br />
-            – To build long term value by creating meaningful change
-            <br />– Creativity - or creating magic, if you prefer - is our core
-            business
-          </Text>
-        </Column>
-      </Grid>
+      {body && (
+        <Grid>
+          <Column md={6} mb="3">
+            <Text>
+              <RichText document={body.json} />
+            </Text>
+          </Column>
+        </Grid>
+      )}
       {(processing || success) && (
         <Grid mb="24">
           <Column>
