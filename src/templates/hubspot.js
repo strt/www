@@ -398,6 +398,7 @@ export const pageQuery = graphql`
           title
           gdprText
           gdprLink
+          gdprLinkLabel
           formUid
           contentfulfields {
             name
