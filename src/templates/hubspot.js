@@ -304,7 +304,7 @@ export default function Hubspot({ data }) {
                   <FormField
                     type={field.type}
                     label={field.label}
-                    required
+                    required={field.required}
                     {...getInputProps({ name: field.name })}
                   />
                 </Column>
@@ -405,6 +405,7 @@ export const pageQuery = graphql`
             label
             type
             contentful_id
+            required
           }
         }
       }
