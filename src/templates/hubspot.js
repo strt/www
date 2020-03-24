@@ -253,7 +253,7 @@ export default function Hubspot({ data }) {
       )}
       {excerpt && (
         <Grid>
-          <Column md={6} mb="3">
+          <Column md={10} mb="3">
             <Excerpt textColor={theme.color} style={{ display: 'inline' }}>
               {excerpt.excerpt}
             </Excerpt>
@@ -262,11 +262,9 @@ export default function Hubspot({ data }) {
       )}
       {body && (
         <Grid>
-          <Column md={6} mb="3">
-            <Text>
-              <RichText document={body.json} />
-            </Text>
-          </Column>
+          <Text mb="3">
+            <RichText document={body.json} />
+          </Text>
         </Grid>
       )}
       {(processing || success) && (
