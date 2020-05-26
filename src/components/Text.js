@@ -8,6 +8,7 @@ import {
   textAlign,
   space,
 } from '../style'
+import { A } from './Link'
 
 export const base = css(
   props => ({
@@ -149,6 +150,17 @@ export const H2 = styled.h2`
   @media ${breakpoints.xlarge} {
     font-size: 3.75em;
   }
+
+  ${A}{
+    color: ${colors.purple500};
+    &:hover{
+      color: ${colors.purple600};
+
+      &::after{
+        display:none;
+      }
+    }
+  }
 `
 
 export const H3 = styled.h3`
@@ -178,6 +190,17 @@ export const H3 = styled.h3`
   @media ${breakpoints.xlarge} {
     font-size: 3em;
   }
+
+  ${A}{
+    color: ${colors.purple500};
+    &:hover{
+      color: ${colors.purple600};
+
+      &::after{
+        display:none;
+      }
+    }
+  }
 `
 
 export const H4 = styled.h4`
@@ -206,6 +229,18 @@ export const H4 = styled.h4`
 
   @media ${breakpoints.xlarge} {
     font-size: 2.625em;
+  }
+
+
+  ${A}{
+    color: ${colors.purple500};
+    &:hover{
+      color: ${colors.purple600};
+
+      &::after{
+        display:none;
+      }
+    }
   }
 `
 

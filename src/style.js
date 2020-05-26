@@ -11,6 +11,8 @@ export const colors = {
   lightGray: '#F5F6F6',
   purple: '#3E164C',
   lightPurple: '#F8ECFC',
+  purple500: '#b927e9',
+  purple600: '#9800c9',
 }
 
 export const breakpointNr = {
