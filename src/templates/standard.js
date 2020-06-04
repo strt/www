@@ -13,14 +13,14 @@ import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Standard({ data }) {
-  const { title, excerpt, image, body } = data.page
+  const { title, excerpt, image, body, slug} = data.page
 
   const hasCover = !!image
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+      <Layout meta={getMetaFromPost(data.page)}>
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
         {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
@@ -30,11 +30,17 @@ export default function Standard({ data }) {
           <Image fluid={image.childImageSharp.fluid} alt="" />
         </Cover>
       )}
+
       <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
         <ContentWrapper>
           <Grid>
             <Column md="10" lg="8">
-              <RichText document={body.json} />
+              {slug === 'srs-model' && (
+                <div dangerouslySetInnerHTML={{__html: body.json.content[0].content[0].value}}></div>
+              )}
+              {slug !== 'srs-model' && (
+                <RichText document={body.json} />
+              )}
             </Column>
           </Grid>
         </ContentWrapper>
