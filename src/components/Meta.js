@@ -4,7 +4,6 @@ import { Location } from '@reach/router'
 import Helmet from 'react-helmet'
 import useSiteSettings from '../lib/useSiteSettings'
 import { getActiveLang } from './SelectLanguage'
-import uxgif from '../../content/ux.gif' 
 
 export default function Meta({
   title,
@@ -46,9 +45,6 @@ export default function Meta({
               property="og:url"
               content={siteSettings.siteUrl + location.pathname}
             />
-            {location.pathname.indexOf('/join-us/ux-designer') !== -1 && (
-              <meta property="og:image" content={siteSettings.siteUrl + uxgif} />
-            )}
             {publishedTime && (
               <meta
                 property="article:published_time"
