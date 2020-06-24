@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 function getLangOptions(node) {
-  const localePath = node.node_locale === 'en-GB' ? '' : `/${node.node_locale}`
+  const localePath = node.node_locale === 'sv' ? '' : `/en`
   const slug = node.slug === '/' ? '/' : `/${node.slug}/`
 
   return {
