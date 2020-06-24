@@ -47,7 +47,7 @@ export default function Meta({
               content={siteSettings.siteUrl + location.pathname}
             />
             {location.pathname.indexOf('/join-us/ux-designer') !== -1 && (
-              <meta property="og:video" content={uxvideo} />
+              <meta property="og:video" content={siteSettings.siteUrl + uxvideo} />
             )}
             {publishedTime && (
               <meta
