@@ -4,7 +4,6 @@ import { Location } from '@reach/router'
 import Helmet from 'react-helmet'
 import useSiteSettings from '../lib/useSiteSettings'
 import { getActiveLang } from './SelectLanguage'
-import uxvideo from '../../content/uxvideo.mp4' 
 
 export default function Meta({
   title,
@@ -46,12 +45,6 @@ export default function Meta({
               property="og:url"
               content={siteSettings.siteUrl + location.pathname}
             />
-            {location.pathname.indexOf('/join-us/ux-designer') !== -1 && (
-              <meta property="og:video" content={siteSettings.siteUrl + uxvideo} />
-            )}
-            {location.pathname.indexOf('/join-us/ux-designer') !== -1 && (
-              <meta property="og:video:type" content="video/mp4" />
-            )}  
             {publishedTime && (
               <meta
                 property="article:published_time"
