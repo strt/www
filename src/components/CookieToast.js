@@ -7,7 +7,7 @@ import { Grid, Column } from './Grid'
 import { Text } from './Text'
 import { colors, vw, breakpoints, fluidRange } from '../style'
 import { routes } from '../routes'
-import { getActiveLangPath } from './SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 
 const CookieToastWrapper = animated(styled.div`
   position: fixed;
@@ -64,7 +64,7 @@ export default function CookieToast() {
                 >
                   <Column>
                     <Text textColor={colors.light} m="0">
-                      {getActiveLangPath()
+                      {isDefaultLanguage()
                         ? 'Vi använder oss av kakor. Mums. '
                         : 'This website uses cookies. Yum. '}
                       <Link
@@ -72,7 +72,7 @@ export default function CookieToast() {
                         textColor={colors.light}
                         styleVariant="dark"
                       >
-                        {getActiveLangPath() ? 'Läs mer' : 'Read more'}
+                        {isDefaultLanguage() ? 'Läs mer' : 'Read more'}
                       </Link>
                       .
                     </Text>
@@ -89,7 +89,7 @@ export default function CookieToast() {
                         Cookie.set('accept_cookies', true, { expires: 365 })
                       }}
                     >
-                      {getActiveLangPath() ? 'OK' : 'OK'}
+                      OK
                     </Link>
                   </Column>
                 </Grid>

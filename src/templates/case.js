@@ -20,7 +20,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
 import Awards from '../components/Awards'
-import { getActiveLangPath } from '../components/SelectLanguage'
+import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
 
 const StyledH1 = styled(H1)`
   margin-bottom: 0.175em;
@@ -90,9 +90,9 @@ export default function Case({ data, pageContext: { next } }) {
           {contact && (
             <Column sm={12} md={4}>
               <ContactText textColor={theme.color}>
-                {getActiveLangPath() ? 'Vill du veta mer?' : 'Your cup of tea?'}
+                {isDefaultLanguage() ? 'Vill du veta mer?' : 'Your cup of tea?'}
                 <br />
-                {getActiveLangPath() ? 'Kontakta ' : 'Contact '}
+                {isDefaultLanguage() ? 'Kontakta ' : 'Contact '}
                 {contact.firstName} {contact.lastName}
                 <br />
                 <Link

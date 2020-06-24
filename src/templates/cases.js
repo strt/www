@@ -13,7 +13,7 @@ import { Excerpt } from '../components/Text'
 import { CssGrid } from '../components/Grid'
 import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import { getActiveLangPath } from '../components/SelectLanguage'
+import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
   return items.filter(
@@ -122,7 +122,7 @@ export default function Case({ data, location }) {
               styleVariant={theme.theme}
               variant="large"
             >
-              {getActiveLangPath() ? 'Alla projekt' : 'All projects'}
+              {isDefaultLanguage() ? 'Alla projekt' : 'All projects'}
             </Link>
             {tags.map(tag => (
               <Link

@@ -10,7 +10,7 @@ import { footerNavigation } from '../routes'
 import { colors, breakpoints } from '../style'
 import { formatPhone } from '../lib/format'
 import useSiteSettings from '../lib/useSiteSettings'
-import SelectLanguageWrapper, { getActiveLangPath } from './SelectLanguage'
+import SelectLanguageWrapper, {getActiveLangPath, isDefaultLanguage} from './SelectLanguage'
 
 const CopyrightText = styled(Text)`
   font-size: 0.75rem;
@@ -110,7 +110,7 @@ export default function Footer() {
                   textColor={colors.light}
                   styleVariant={footerTheme}
                 >
-                  {getActiveLangPath() ? route.sv.title : route.title}
+                  {isDefaultLanguage() ? route.sv.title : route.title}
                 </Link>
               </li>
             ))}
@@ -122,7 +122,7 @@ export default function Footer() {
           <CopyrightText as="small" textColor={colors.light}>
             © {currentYear} <br />
             {siteSettings.name} <br />
-            {getActiveLangPath() ? 'En del av ' : 'A part of '}
+            {isDefaultLanguage() ? 'En del av ' : 'A part of '}
             <Link
               href="//diplomatgruppen.se"
               target="_blank"
@@ -130,7 +130,7 @@ export default function Footer() {
               textColor={colors.light}
               styleVariant={footerTheme}
             >
-              {getActiveLangPath() ? 'Diplomatgruppen' : 'Diplomat Group'}
+              {isDefaultLanguage() ? 'Diplomatgruppen' : 'Diplomat Group'}
             </Link>
           </CopyrightText>
         </Column>
