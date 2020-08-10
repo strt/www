@@ -41,7 +41,7 @@ export async function handler() {
         link: i.permalink,
         media_url: i.media_url,
         media_type: resolveMediaType(i),
-        caption: i.caption.text,
+        caption: i.caption,
       })),
     ),
   }
