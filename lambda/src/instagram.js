@@ -21,13 +21,13 @@ export async function handler() {
   }
 
   const resolveMediaType = function (item) {
-    if (item.mediaType === 'CAROUSEL_ALBUM') {
+    if (item.media_type === 'CAROUSEL_ALBUM') {
       const childMediaType = getFirstAlbumMedia(item.id).media_type
 
       return childMediaType === 'VIDEO' ? 'video' : 'image'
     }
 
-    return item.mediaType === 'VIDEO' ? 'video' : 'image'
+    return item.media_type === 'VIDEO' ? 'video' : 'image'
   }
 
   return {
