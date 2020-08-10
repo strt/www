@@ -36,7 +36,7 @@ export async function handler() {
       'content-type': 'application/json',
     },
     body: JSON.stringify(
-      posts.slice(0, 7).map(i => ({
+      posts.slice(0, 5).map(i => ({
         id: i.id,
         link: i.permalink,
         media_url: i.media_url,
