@@ -84,6 +84,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: process.env.FACEBOOK_PIXEL_ID,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-hubspot',
       options: {
         trackingId: '2677897',
