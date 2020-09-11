@@ -14,10 +14,10 @@ class ThemeProvider extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      theme: 'dark',
-      background: colors.dark,
-      color: colors.lightText,
-      colorSecondary: colors.light,
+      theme: 'light',
+      background: colors.light,
+      color: colors.darkText,
+      colorSecondary: colors.dark,
     }
   }
 
