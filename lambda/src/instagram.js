@@ -25,6 +25,7 @@ export async function handler() {
     params: {
       access_token: token,
       fields: 'id,media_url,permalink,caption,media_type',
+      limit: 5,
     },
   })
 
