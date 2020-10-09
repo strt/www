@@ -56,8 +56,8 @@ export const Excerpt = styled.p`
   white-space: pre-line;
   ${base}
 
-  @media ${breakpoints.small} {
-    font-size: 2em;
+  @media ${breakpoints.smallDown} {
+    font-size: 1em;
   }
   
   @media ${breakpoints.medium} {
