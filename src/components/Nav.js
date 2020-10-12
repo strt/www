@@ -15,7 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
-import {getActiveLangPath, isDefaultLanguage} from './SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -226,7 +226,7 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    textColor={theme.colorSecondary}
+                    textColor={theme.linkColor}
                     styleVariant={theme.theme}
                     variant="large"
                   >

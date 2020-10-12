@@ -9,6 +9,8 @@ export const colors = {
   light: '#ffffff',
   lightText: '#ffffff',
   lightGray: '#F5F6F6',
+  linkLight: '#b927e9',
+  linkDark: '#9800c9',
   purple: '#3E164C',
   lightPurple: '#F8ECFC',
   purple500: '#b927e9',
