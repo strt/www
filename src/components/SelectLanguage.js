@@ -1,10 +1,11 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useContext } from 'react'
 import styled from 'styled-components'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Location } from '@reach/router'
 import Link from './Link'
 import { Text } from './Text'
 import { breakpoints, colors } from '../style'
+import { ThemeContext } from '../context/ThemeContext'
 
 let selectedLang = null
 
@@ -55,6 +56,7 @@ const Li = styled.li`
 `
 
 function SelectLanguage({ location }) {
+  const theme = useContext(ThemeContext)
   return (
     <>
       <Li style={{}}>
@@ -63,15 +65,15 @@ function SelectLanguage({ location }) {
             setActiveLang('sv')
           }}
           to={getUrl(location, 'sv')}
-          textColor={colors.light}
-          styleVariant="dark"
+          textColor={theme.color}
+          styleVariant={theme.theme}
           variant="large"
         >
           Svenska
         </Link>
       </Li>
       <Li style={{ padding: '0 5px' }}>
-        <Text style={{ lineHeight: 'inherit' }} textColor={colors.light}>
+        <Text style={{ lineHeight: 'inherit' }} textColor={theme.color}>
           /
         </Text>
       </Li>
@@ -81,8 +83,8 @@ function SelectLanguage({ location }) {
           onClick={() => {
             setActiveLang('en')
           }}
-          textColor={colors.light}
-          styleVariant="dark"
+          textColor={theme.color}
+          styleVariant={theme.theme}
           variant="large"
         >
           English

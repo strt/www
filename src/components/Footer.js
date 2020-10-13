@@ -30,10 +30,10 @@ export default function Footer() {
   return (
     <Section as="footer" bg={colors.dark} py={[4, 7]}>
       <Grid>
-        <Column md="8">
+        <Column md="12">
           <LogoIcon />
         </Column>
-        <Column md="4">
+        {/* <Column md="4">
           <ul
             style={{
               display: 'flex',
@@ -41,7 +41,7 @@ export default function Footer() {
           >
             <SelectLanguageWrapper textColor={colors.light} />
           </ul>
-        </Column>
+        </Column> */}
         {siteSettings.offices.map(office => (
           <Column sm={12} md={3} key={office.city}>
             <Text as="address" textColor={colors.light}>

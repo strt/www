@@ -15,7 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
-import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
+import SelectLanguageWrapper, { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -235,6 +235,14 @@ function Navigation({ location }) {
                 </li>
               ))}
           </ul>
+
+          <ul style={{
+            display: 'flex',
+            paddingTop: '2rem'
+          }}>
+            <SelectLanguageWrapper/>
+          </ul>
+
           <div data-responsive>
             <div
               style={{
