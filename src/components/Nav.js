@@ -226,7 +226,7 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    textColor={theme.linkColor}
+                    textColor={theme.color}
                     styleVariant={theme.theme}
                     variant="large"
                   >
