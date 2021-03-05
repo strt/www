@@ -66,9 +66,10 @@ export function getColumnMargin() {
 export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
-    paddingRight: gutter.default,
-    paddingLeft: gutter.default,
+
     [mediaQuery(breakpoints.small)]: {
+      paddingRight: gutter.default,
+      paddingLeft: gutter.default,
       width: getWidth(props.sm),
     },
     [mediaQuery(breakpoints.smallDown)]: {
