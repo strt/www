@@ -66,7 +66,6 @@ export function getColumnMargin() {
 export const Column = styled(CleanTag)(
   props => ({
     width: getWidth(props.width) || '100%',
-
     [mediaQuery(breakpoints.small)]: {
       paddingRight: gutter.default,
       paddingLeft: gutter.default,
@@ -97,7 +96,7 @@ export const Column = styled(CleanTag)(
  */
 export const CssGrid = styled.div`
   display: grid;
-  grid-gap: calc(${gutter.default});
+  grid-row-gap: calc(${gutter.default});
   grid-template-columns:
     [full-start] ${gutter.default} [grid-start] repeat(
       12,
