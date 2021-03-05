@@ -31,6 +31,10 @@ const gutter = {
   default: '15px',
 }
 
+const gridGutter = {
+  default: '30px',
+}
+
 export const Grid = styled(CleanTag)(
   {
     display: 'flex',
@@ -101,13 +105,13 @@ export const CssGrid = styled.div`
     [grid-end] ${gutter.default} [full-end];
 
   @media ${breakpoints.small} {
-    grid-gap: calc(${gutter.default});
+    grid-gap: calc(${gridGutter.default});
     grid-template-columns:
-      [full-start] calc(${vw(24)} + ${gutter.default}) [grid-start] repeat(
+      [full-start] calc(${vw(24)}) [grid-start] repeat(
         12,
         [col-start] 1fr [col-end]
       )
-      [grid-end] calc(${vw(24)} + ${gutter.default}) [full-end];
+      [grid-end] calc(${vw(24)}) [full-end];
   }
 
   > * {
