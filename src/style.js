@@ -103,7 +103,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :focus {
-    outline: dotted 1px ${colors.dark} !important;
+    outline: dotted 1px ${colors.dark};
   }
 
   button::-moz-focus-inner {
