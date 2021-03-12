@@ -12,21 +12,14 @@ import {
   interpolate,
 } from 'react-spring'
 import { IconButton } from './Button'
-import Link, { A } from './Link'
+import Link from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
 import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
-import {
-  colors,
-  fluidRange,
-  easings,
-  durations,
-  breakpoints,
-  vw,
-} from '../style'
+import { colors, fluidRange, easings, durations, vw } from '../style'
 import { mainNavigation } from '../routes'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -65,7 +58,7 @@ const AnimatedIconButton = animated(IconButton)
 
 const NavWrapper = styled.nav`
   [data-responsive] {
-    @media ${breakpoints.small} {
+    @media (min-width: 685px) {
       display: none;
     }
   }
@@ -73,7 +66,7 @@ const NavWrapper = styled.nav`
   [data-desktop] {
     display: none;
 
-    @media ${breakpoints.small} {
+    @media (min-width: 685px) {
       display: flex;
     }
 

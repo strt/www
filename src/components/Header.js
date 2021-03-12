@@ -19,8 +19,7 @@ export default function Header() {
                 <Logo />
               </LogoLink>
             </Column>
-
-            <Column width="auto" style={{ marginLeft: '20%' }}>
+            <Column width="auto" className="langColumn">
               <ul
                 style={{
                   display: 'flex',
@@ -29,7 +28,6 @@ export default function Header() {
                 <SelectLanguageWrapper />
               </ul>
             </Column>
-
             <Column width="auto">
               <Navigation />
             </Column>
@@ -49,6 +47,18 @@ const StyledHeader = styled.header`
 
   @media screen and ${breakpoints.medium} {
     padding: ${vw(30)} 0 ${vw(56)} 0;
+  }
+
+  .langColumn {
+    margin-left: 20%;
+
+    @media (max-width: 975px) {
+      margin-left: auto;
+    }
+
+    @media (min-width: 685px) {
+      margin-top: 1rem;
+    }
   }
 `
 
