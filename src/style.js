@@ -11,6 +11,8 @@ export const colors = {
   light: '#ffffff',
   lightText: '#ffffff',
   lightGray: '#F5F6F6',
+  blue400: '#4062e9',
+  blue500: '#1d45e5',
   linkLight: '#b927e9',
   linkDark: '#9800c9',
   purple: '#3E164C',
@@ -380,12 +382,12 @@ export function space(props) {
       const style = (n, i) =>
         n != null
           ? cssProperties.reduce(
-            (a, prop) => ({
-              ...a,
-              [prop]: getSpaceValue(n, i),
-            }),
-            {},
-          )
+              (a, prop) => ({
+                ...a,
+                [prop]: getSpaceValue(n, i),
+              }),
+              {},
+            )
           : null
 
       if (!Array.isArray(value)) {
