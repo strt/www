@@ -64,10 +64,6 @@ const NavLink = styled(GatsbyLink)`
 const AnimatedIconButton = animated(IconButton)
 
 const NavWrapper = styled.nav`
-  ${A} {
-    text-decoration: none;
-  }
-
   [data-responsive] {
     @media ${breakpoints.small} {
       display: none;
