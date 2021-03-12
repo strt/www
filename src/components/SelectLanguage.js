@@ -47,6 +47,16 @@ export function getUrl(location, country) {
 const Li = styled.li`
   padding: 0;
   font-size: 0.75rem;
+
+  a {
+    opacity: 0.55;
+
+    &:active,
+    &[aria-current],
+    &[data-partially-current] {
+      opacity: 1;
+      text-decoration: underline;
+    }
 `
 
 function SelectLanguage({ location }) {
@@ -66,7 +76,7 @@ function SelectLanguage({ location }) {
            </Link>
           </Li>
           <Li style={{ padding: '0 5px' }}>
-            <Text style={{ lineHeight: 'inherit' }}
+            <Text style={{ lineHeight: 'inherit', fontSize: '0.75rem' }}
               textColor={theme.color}
             >
               /
