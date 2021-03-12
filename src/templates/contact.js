@@ -105,6 +105,7 @@ export default function Contact({ data }) {
             <Column key={node.id} sm={6} md={4} lg={3} bottomGap pt={2}>
               {node.image && (
                 <Image
+                  id={node.firstName + node.lastName}
                   bg={colors.dark}
                   sizes="(min-width: 768px) 24vw, 46vw"
                   fluid={node.image.fluid}

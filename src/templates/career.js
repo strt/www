@@ -121,7 +121,11 @@ export default function Career({ data }) {
     manifesto,
     manifestoImages,
   } = data.contentfulPage
-  const hasOpenPositions = !!data.allContentfulPositions.edges.length
+
+  const positions = data.allContentfulPositions.edges.filter(
+    pos => pos.node.slug !== 'dummy',
+  )
+  const hasOpenPositions = positions.length > 0
 
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'purple') theme.toggleTheme('purple')
@@ -159,7 +163,7 @@ export default function Career({ data }) {
                 {secondHeader}
               </H4>
               <ul>
-                {data.allContentfulPositions.edges.map(({ node }) => (
+                {positions.map(({ node }) => (
                   <li key={node.id}>
                     <Text mb={[2, 3]} textColor={theme.color}>
                       <Link

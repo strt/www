@@ -116,7 +116,7 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
             rel={isAbsolute ? 'nofollow,noopener,noreferrer' : ''}
             target={isAbsolute ? '_blank' : ''}
             href={node.data.uri}
-            textColor={theme.color}
+            textColor={theme.linkColor}
             styleVariant={theme.theme}
           >
             {children}

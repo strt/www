@@ -17,7 +17,7 @@ import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { colors } from '../style'
 import { routes } from '../routes'
-import { getActiveLangPath } from '../components/SelectLanguage'
+import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
 
 export default function Article({ data }) {
   const { createdAt, oldDate, title, excerpt, body, featuredImage } = data.post
@@ -89,7 +89,7 @@ export default function Article({ data }) {
                   variant="large"
                   textColor={colors.darkText}
                 >
-                  {getActiveLangPath() ? 'Fler nyheter' : 'More news'}
+                  {isDefaultLanguage() ? 'Fler nyheter' : 'More news'}
                 </Link>
               </Div>
             </Column>

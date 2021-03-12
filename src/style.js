@@ -9,8 +9,12 @@ export const colors = {
   light: '#ffffff',
   lightText: '#ffffff',
   lightGray: '#F5F6F6',
+  linkLight: '#b927e9',
+  linkDark: '#9800c9',
   purple: '#3E164C',
   lightPurple: '#F8ECFC',
+  purple500: '#b927e9',
+  purple600: '#9800c9',
 }
 
 export const breakpointNr = {
@@ -174,6 +178,23 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 `
+
+export const visuallyhidden = () => {
+  return {
+    position: 'absolute',
+    zIndex: 9999,
+    left: 0,
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    border: 0,
+    whiteSpace: 'nowrap',
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+  }
+}
 
 /**
  * Mixins/helpers

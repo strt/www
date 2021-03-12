@@ -15,7 +15,7 @@ import { IconButton } from './Button'
 import Link, { A } from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
-import { getActiveLangPath } from './SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -226,11 +226,11 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    textColor={theme.colorSecondary}
+                    textColor={theme.color}
                     styleVariant={theme.theme}
                     variant="large"
                   >
-                    {getActiveLangPath() ? child.sv.title : child.title}
+                    {isDefaultLanguage() ? child.sv.title : child.title}
                   </Link>
                 </li>
               ))}
@@ -255,7 +255,7 @@ function Navigation({ location }) {
                 aria-expanded={isOpen}
                 aria-controls={NAV_ID}
               >
-                {getActiveLangPath() ? 'meny' : 'menu'}
+                {isDefaultLanguage() ? 'meny' : 'menu'}
               </Link>
             </div>
 
@@ -343,7 +343,7 @@ function Navigation({ location }) {
                           to={`${getActiveLangPath()}/${item.link}`}
                           getProps={getProps}
                         >
-                          {getActiveLangPath() ? item.sv.title : item.title}
+                          {isDefaultLanguage() ? item.sv.title : item.title}
                         </NavLink>
                       </animated.li>
                     ))}

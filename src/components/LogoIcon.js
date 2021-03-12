@@ -18,9 +18,9 @@ const LogoIconWrapper = styled.div`
   }
 `
 
-export default function LogoIcon() {
+export default function LogoIcon({ ...props }) {
   return (
-    <LogoIconWrapper>
+    <LogoIconWrapper {...props}>
       <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.42 74.42">
         <title>Strateg Marknadsföring</title>
         <path

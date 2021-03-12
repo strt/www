@@ -3,6 +3,19 @@ import styled from 'styled-components'
 import Icon from './Icon'
 import { colors, fluidRange, breakpoints, vw, fontFamily } from '../style'
 
+export const BtnReset = styled.button`
+  display: inline-block;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  line-height: normal;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+`
+
 const StyledButton = styled.button`
   display: inline-block;
   vertical-align: middle;

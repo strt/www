@@ -14,10 +14,11 @@ class ThemeProvider extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      theme: 'dark',
-      background: colors.dark,
-      color: colors.lightText,
-      colorSecondary: colors.light,
+      theme: 'light',
+      background: colors.light,
+      color: colors.darkText,
+      linkColor: colors.linkDark,
+      colorSecondary: colors.dark,
     }
   }
 
@@ -28,6 +29,7 @@ class ThemeProvider extends React.Component {
           theme: colorToggle,
           background: colors.light,
           color: colors.darkText,
+          linkColor: colors.linkDark,
           colorSecondary: colors.dark,
         })
         break
@@ -52,6 +54,7 @@ class ThemeProvider extends React.Component {
           theme: colorToggle,
           background: colors.dark,
           color: colors.lightText,
+          linkColor: colors.linkLight,
           colorSecondary: colors.light,
         })
     }
@@ -63,6 +66,7 @@ class ThemeProvider extends React.Component {
     const { colorSecondary } = this.state
     const { background } = this.state
     const { theme } = this.state
+    const { linkColor } = this.state
 
     return (
       <ThemeContext.Provider
@@ -71,6 +75,7 @@ class ThemeProvider extends React.Component {
           colorSecondary,
           background,
           theme,
+          linkColor,
           toggleTheme: this.toggleTheme,
         }}
       >

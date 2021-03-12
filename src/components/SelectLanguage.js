@@ -9,8 +9,8 @@ import { breakpoints, colors } from '../style'
 let selectedLang = null
 
 if (typeof window !== 'undefined' && window.location) {
-  if (window.location.pathname.includes('/sv')) {
-    selectedLang = 'sv'
+  if (window.location.pathname.includes('/en')) {
+    selectedLang = 'en'
   }
 }
 
@@ -19,23 +19,27 @@ function setActiveLang(lang) {
 }
 
 export function getActiveLang() {
-  if (!selectedLang || selectedLang === 'en') {
-    return 'en'
+  if (!selectedLang || selectedLang === 'sv') {
+    return 'sv'
   }
   return selectedLang
 }
 
+export function isDefaultLanguage() {
+  return !selectedLang || selectedLang === 'sv'
+}
+
 export function getActiveLangPath() {
-  if (!selectedLang || selectedLang === 'en') {
+  if (!selectedLang || selectedLang === 'sv') {
     return ''
   }
   return `/${selectedLang}`
 }
 
 export function getUrl(location, country) {
-  const langPath = country !== 'en' ? `/${country}` : ''
+  const langPath = country !== 'sv' ? `/${country}` : ''
   const url = location.pathname.replace(`/${selectedLang}`, '')
-
+  
   return langPath + url
 }
 

@@ -2,7 +2,7 @@ const { resolve } = require('path')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 function getLangOptions(node) {
-  const localePath = node.node_locale === 'en-GB' ? '' : `/${node.node_locale}`
+  const localePath = node.node_locale === 'sv' ? '' : `/en`
   const slug = node.slug === '/' ? '/' : `/${node.slug}/`
 
   return {
@@ -77,6 +77,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const template = page.node.template
       ? page.node.template.toLowerCase()
       : 'standard'
+
     createPage({
       path: `${localePath}${slug}`,
       component: resolve(`./src/templates/${template}.js`),
@@ -104,14 +105,16 @@ exports.createPages = async ({ actions, graphql }) => {
   })
   contentfulPositions.data.allContentfulPositions.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
-    createPage({
-      path: `${localePath}/join-us${slug}`,
-      component: resolve(`./src/templates/position.js`),
-      context: {
-        slug: node.slug,
-        locale: node.node_locale,
-      },
-    })
+    if (node.slug !== 'dummy') {
+      createPage({
+        path: `${localePath}/join-us${slug}`,
+        component: resolve(`./src/templates/position.js`),
+        context: {
+          slug: node.slug,
+          locale: node.node_locale,
+        },
+      })
+    }
     // registerRedirectsFromNode(node)
   })
 

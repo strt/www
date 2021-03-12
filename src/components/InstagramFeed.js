@@ -24,34 +24,13 @@ export default function Posts({ halfTopBg = 'white', ...props }) {
           <ImageGrid>
             {posts.map(post => (
               <Box key={post.id}>
-                {(() => {
-                  if (post.videos) {
-                    return (
-                      <video
-                        poster={post.images.standard_resolution.url}
-                        autoPlay
-                        muted
-                        loop
-                      >
-                        <source
-                          type="video/mp4"
-                          src={post.videos.standard_resolution.url}
-                        />
-                      </video>
-                    )
-                  }
-
-                  if (post.images) {
-                    return (
-                      <Image
-                        src={post.images.standard_resolution.url}
-                        alt={post.caption}
-                      />
-                    )
-                  }
-
-                  return null
-                })()}
+                {post.media_type === 'video' ? (
+                  <video poster={post.media_url} autoPlay muted loop>
+                    <source type="video/mp4" src={post.media_url} />
+                  </video>
+                ) : (
+                  <Image src={post.media_url} alt={post.caption} />
+                )}
               </Box>
             ))}
             <Box bg="white">
