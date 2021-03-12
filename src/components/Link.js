@@ -29,39 +29,16 @@ export const A = styled.a`
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
-  &::after {
-    position: absolute;
-    content: '';
-    bottom: -20%;
-    right: 0;
-    left: auto;
-    width: 0;
-    height: 8px;
-    background-size: 15px 11px;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-image: url('/${props => getUnderline(props)}');
-    animation: move 15s linear infinite;
-    transition: width 0.5s;
-    animation-play-state: running;
-  }
+
 
   &:hover {
-    &::after {
-      right: auto;
-      left: 0;
-      width: 100%;
-      animation-play-state: running !important;
-    }
+
   }
 
   &:active,
   &[aria-current],
   &[data-partially-current] {
-    &::after {
-      animation-play-state: paused;
-      width: 100%;
-    }
+
   }
 
   button& {
@@ -82,11 +59,11 @@ export const A = styled.a`
 
       @media ${breakpoints.large} {
         font-size: ${fluidRange({
-          min: 20,
-          max: 30,
-          viewportMin: breakpointNr.large,
-          viewportMax: breakpointNr.xlarge,
-        })};
+      min: 20,
+      max: 30,
+      viewportMin: breakpointNr.large,
+      viewportMax: breakpointNr.xlarge,
+    })};
       }
 
       @media ${breakpoints.xlarge} {
