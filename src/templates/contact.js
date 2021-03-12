@@ -16,8 +16,6 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 const SmallText = styled(Text)`
   width: 100%;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   line-height: 1.4em;
   ${base}
   font-size: 0.75em;
