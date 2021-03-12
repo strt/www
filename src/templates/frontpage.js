@@ -75,7 +75,7 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <StyledHero pt={8} pb={[3, 7]}>
+      <StyledHero pt={8} pb={[2, 6]}>
         <Grid>
           <Column md={10} sm={10} smDown={9}>
             <FrontH1 heroContent={hero} />
@@ -85,8 +85,8 @@ export default function Index({ data }) {
               <CompanyOfTheYear
                 src={
                   getActiveLang() === 'en'
-                    ? '/AB_StrategAgency_02.png'
-                    : '/AB_StrategAgency_01.png'
+                    ? '/Vinnarknapp_ÅB_Eng.png'
+                    : '/Vinnarknapp_ÅB.png'
                 }
                 alt="Årets Byrå"
               />
@@ -94,7 +94,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </StyledHero>
-      <Section id="case-section" pt={[3, 6]} pb={[8, 16]}>
+      <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
         <CaseGrid>
           {featuredCases.map((node, index) => (
             <Tile
