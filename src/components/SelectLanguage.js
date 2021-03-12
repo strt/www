@@ -67,7 +67,6 @@ function SelectLanguage({ location }) {
               }}
               to={getUrl(location, 'sv')}
               textColor={theme.color}
-              styleVariant={theme.theme}
               variant="large"
             >
               Sv
@@ -76,7 +75,7 @@ function SelectLanguage({ location }) {
           <Li style={{ padding: '0 5px' }}>
             <Text style={{ lineHeight: 'inherit' }}
               textColor={theme.color}
-              styleVariant={theme.theme}>
+            >
               /
            </Text>
           </Li>
@@ -87,7 +86,6 @@ function SelectLanguage({ location }) {
                 setActiveLang('en')
               }}
               textColor={theme.color}
-              styleVariant={theme.theme}
               variant="large"
             >
               En
