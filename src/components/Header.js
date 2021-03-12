@@ -14,13 +14,13 @@ export default function Header() {
       {theme => (
         <StyledHeader style={{ background: theme.background }}>
           <Grid justifyContent="space-between">
-            <Column width="auto">
+            <Column smDown={4} md={5}>
               <LogoLink to={`${getActiveLangPath()}/`}>
                 <Logo />
               </LogoLink>
             </Column>
 
-            <Column md="4">
+            <Column smDown={4} md={2}>
               <ul
                 style={{
                   display: 'flex',
@@ -30,7 +30,7 @@ export default function Header() {
               </ul>
             </Column>
 
-            <Column width="auto">
+            <Column smDown={4} md={5}>
               <Navigation />
             </Column>
           </Grid>

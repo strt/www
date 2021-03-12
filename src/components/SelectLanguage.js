@@ -46,13 +46,7 @@ export function getUrl(location, country) {
 
 const Li = styled.li`
   padding: 0;
-
-  &:first-child {
-    margin-left: 0;
-    @media ${breakpoints.medium} {
-      margin-left: auto;
-    }
-  }
+  font-size: 0.75rem;
 `
 
 function SelectLanguage({ location }) {
@@ -67,7 +61,6 @@ function SelectLanguage({ location }) {
               }}
               to={getUrl(location, 'sv')}
               textColor={theme.color}
-              variant="large"
             >
               Sv
            </Link>
@@ -86,7 +79,6 @@ function SelectLanguage({ location }) {
                 setActiveLang('en')
               }}
               textColor={theme.color}
-              variant="large"
             >
               En
            </Link>
