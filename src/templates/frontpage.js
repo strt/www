@@ -75,7 +75,7 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <StyledHero pt={8} pb={[2, 6]}>
+      <StyledHero pt={2} pb={[2, 6]}>
         <Grid>
           <Column md={10} sm={10} smDown={9}>
             <FrontH1 heroContent={hero} />

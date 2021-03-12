@@ -55,7 +55,6 @@ const Li = styled.li`
     &[aria-current],
     &[data-partially-current] {
       opacity: 1;
-      text-decoration: underline;
     }
 `
 

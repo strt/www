@@ -29,16 +29,14 @@ export const A = styled.a`
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
-
-
   &:hover {
-
+    text-decoration: underline;
   }
 
   &:active,
   &[aria-current],
   &[data-partially-current] {
-
+    text-decoration: underline;
   }
 
   button& {
