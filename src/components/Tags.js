@@ -29,7 +29,7 @@ function tagsWrapperModifiers(props) {
   return {
     fontSize: '16px',
     [`@media ${breakpoints.medium}`]: {
-      fontSize: '22px',
+      fontSize: '18px',
     },
     [`@media ${breakpoints.large}`]: {
       fontSize: fluidRange({
@@ -39,16 +39,13 @@ function tagsWrapperModifiers(props) {
         viewportMax: breakpointNr.xlarge,
       }),
     },
-    [`@media ${breakpoints.xlarge}`]: {
-      fontSize: '28px',
-    },
   }
 }
 
 const TagsWrapper = styled.div`
   display: flex;
   align-items: baseline;
-  line-height: 0.8125em;
+  line-height: 1.4;
   ${tagsWrapperModifiers}
   color: ${props => props.textColor};
 `
