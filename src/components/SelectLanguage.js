@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { Location } from '@reach/router'
 import Link from './Link'
 import { Text } from './Text'
-import { breakpoints, colors } from '../style'
+import { breakpoints } from '../style'
+import { ThemeContext } from '../context/ThemeContext'
 
 let selectedLang = null
 
@@ -39,7 +40,7 @@ export function getActiveLangPath() {
 export function getUrl(location, country) {
   const langPath = country !== 'sv' ? `/${country}` : ''
   const url = location.pathname.replace(`/${selectedLang}`, '')
-  
+
   return langPath + url
 }
 
@@ -56,39 +57,47 @@ const Li = styled.li`
 
 function SelectLanguage({ location }) {
   return (
-    <>
-      <Li style={{}}>
-        <Link
-          onClick={() => {
-            setActiveLang('sv')
-          }}
-          to={getUrl(location, 'sv')}
-          textColor={colors.light}
-          styleVariant="dark"
-          variant="large"
-        >
-          Svenska
-        </Link>
-      </Li>
-      <Li style={{ padding: '0 5px' }}>
-        <Text style={{ lineHeight: 'inherit' }} textColor={colors.light}>
-          /
-        </Text>
-      </Li>
-      <Li>
-        <Link
-          to={getUrl(location, 'en')}
-          onClick={() => {
-            setActiveLang('en')
-          }}
-          textColor={colors.light}
-          styleVariant="dark"
-          variant="large"
-        >
-          English
-        </Link>
-      </Li>
-    </>
+    <ThemeContext.Consumer>
+      {theme => (
+        <>
+          <Li style={{}}>
+            <Link
+              onClick={() => {
+                setActiveLang('sv')
+              }}
+              to={getUrl(location, 'sv')}
+              textColor={theme.color}
+              styleVariant={theme.theme}
+              variant="large"
+            >
+              Sv
+           </Link>
+          </Li>
+          <Li style={{ padding: '0 5px' }}>
+            <Text style={{ lineHeight: 'inherit' }}
+              textColor={theme.color}
+              styleVariant={theme.theme}>
+              /
+           </Text>
+          </Li>
+          <Li>
+            <Link
+              to={getUrl(location, 'en')}
+              onClick={() => {
+                setActiveLang('en')
+              }}
+              textColor={theme.color}
+              styleVariant={theme.theme}
+              variant="large"
+            >
+              En
+           </Link>
+          </Li>
+        </>
+      )}
+
+
+    </ThemeContext.Consumer>
   )
 }
 

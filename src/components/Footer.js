@@ -10,7 +10,7 @@ import { footerNavigation } from '../routes'
 import { colors, breakpoints } from '../style'
 import { formatPhone } from '../lib/format'
 import useSiteSettings from '../lib/useSiteSettings'
-import SelectLanguageWrapper, {getActiveLangPath, isDefaultLanguage} from './SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 
 const CopyrightText = styled(Text)`
   font-size: 0.75rem;
@@ -30,17 +30,8 @@ export default function Footer() {
   return (
     <Section as="footer" bg={colors.dark} py={[4, 7]}>
       <Grid>
-        <Column md="8">
+        <Column md="12">
           <LogoIcon />
-        </Column>
-        <Column md="4">
-          <ul
-            style={{
-              display: 'flex',
-            }}
-          >
-            <SelectLanguageWrapper textColor={colors.light} />
-          </ul>
         </Column>
         {siteSettings.offices.map(office => (
           <Column sm={12} md={3} key={office.city}>

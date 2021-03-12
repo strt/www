@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
-import { breakpoints, fluidRange, vw } from '../style'
-import { getActiveLangPath } from './SelectLanguage'
+import { breakpoints, colors, fluidRange, vw } from '../style'
+import SelectLanguageWrapper, { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 import Navigation from './Nav'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -19,6 +19,17 @@ export default function Header() {
                 <Logo />
               </LogoLink>
             </Column>
+
+            <Column md="4">
+              <ul
+                style={{
+                  display: 'flex',
+                }}
+              >
+                <SelectLanguageWrapper />
+              </ul>
+            </Column>
+
             <Column width="auto">
               <Navigation />
             </Column>
