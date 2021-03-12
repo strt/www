@@ -224,7 +224,7 @@ function Navigation({ location }) {
                     getProps={getProps}
                     textColor={theme.color}
                     styleVariant={theme.theme}
-                    variant="large"
+                    style={{ fontSize: '1.125rem' }}
                   >
                     {isDefaultLanguage() ? child.sv.title : child.title}
                   </Link>
