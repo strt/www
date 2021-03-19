@@ -48,11 +48,10 @@ export const TextSmall = styled.p`
 `
 
 export const Excerpt = styled.p`
-  margin-top: 3.125rem;
   margin-bottom: 1.25em;
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1.15em;
+  line-height: 1.2;
   white-space: pre-line;
   ${base}
 
@@ -68,7 +67,7 @@ export const Excerpt = styled.p`
 `
 
 export const H1 = styled.h1`
-  margin-bottom: 0.175em;
+  margin-bottom: 0.375em;
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.1;
@@ -104,7 +103,6 @@ export const JumboH1 = styled.h1`
 `
 
 export const H2 = styled.h2`
-  margin-bottom: 0.4125em;
   font-size: 2rem;
   font-weight: 400;
   ${base}
