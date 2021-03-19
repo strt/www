@@ -382,12 +382,12 @@ export function space(props) {
       const style = (n, i) =>
         n != null
           ? cssProperties.reduce(
-              (a, prop) => ({
-                ...a,
-                [prop]: getSpaceValue(n, i),
-              }),
-              {},
-            )
+            (a, prop) => ({
+              ...a,
+              [prop]: getSpaceValue(n, i),
+            }),
+            {},
+          )
           : null
 
       if (!Array.isArray(value)) {

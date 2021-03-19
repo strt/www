@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
-import { fluidRange, breakpoints, breakpointNr, fontFamily } from '../style'
+import { breakpoints, fontFamily } from '../style'
 
 const UNDERLINE_VARIANTS = {
   dark: 'waveLight.svg',
@@ -29,43 +29,32 @@ export const A = styled.a`
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: underline;
+    opacity: 0.85;
   }
 
   &:active,
   &[aria-current],
   &[data-partially-current] {
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   button& {
     user-select: none;
-    border:none;
-    background:none;
+    border: none;
+    background: none;
   }
 
   ${props =>
     props.variant === 'large' &&
     css`
-      font-weight: 400;
-      font-size: 1.1em;
-
+      font-size: 1.125rem;
+      line-height: 1.4;
+    
       @media ${breakpoints.medium} {
-        font-size: 1.25em;
-      }
-
-      @media ${breakpoints.large} {
-        font-size: ${fluidRange({
-      min: 20,
-      max: 30,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
-      }
-
-      @media ${breakpoints.xlarge} {
-        font-size: 1.875em;
+        font-size: 1.5rem;
       }
     `}
 `
