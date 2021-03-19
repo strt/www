@@ -35,7 +35,7 @@ export const Text = styled.p`
   }
 `
 
-export const P2 = styled.p`
+export const TextSmall = styled.p`
   width: 100%;
   margin-bottom: 1.25em;
   font-size: 1rem;

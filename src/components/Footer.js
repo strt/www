@@ -108,7 +108,7 @@ export default function Footer() {
           </Text>
         </Column>
       </Grid>
-      <Grid justifyContent="space-between" alignItems="flex-end" mt="4">
+      <Grid justifyContent="space-between" alignItems="flex-end" mt={18}>
         <Column width="auto">
           <CopyrightText as="small" textColor={colors.light}>
             © {currentYear} <br />
