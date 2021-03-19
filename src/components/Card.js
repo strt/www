@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import { P1, Text } from './Text'
+import { Text } from './Text'
 import Image from './Image'
 import {
   colors,
@@ -106,9 +106,9 @@ export default function Card({ url, title, date, image }) {
               {formattedDate}
             </DateTime>
           )}
-          <P1>
+          <Text>
             <span>{title}</span>
-          </P1>
+          </Text>
         </Content>
         <ImageWrapper>
           {image && (

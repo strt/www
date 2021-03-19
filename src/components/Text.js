@@ -20,39 +20,14 @@ export const base = css(
 )
 
 export const textSize = css`
-  font-size: 16px;
+  font-size: 24px;
 `
 
 export const Text = styled.p`
   width: 100%;
   margin-bottom: 1.25em;
-  line-height: 1.5em;
-  ${base}
-  ${textSize}
-
-  @media ${breakpoints.medium} {
-    font-size: 1.25em;
-  }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-      min: 20,
-      max: 30,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 1.875em;
-  }
-`
-
-export const P1 = styled.p`
-  width: 100%;
-  margin-bottom: 1.25em;
-  font-size: 1.125rem;
   line-height: 1.4;
+  ${textSize}
   ${base}
 
   @media ${breakpoints.medium} {
