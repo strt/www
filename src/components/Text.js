@@ -48,6 +48,30 @@ export const Text = styled.p`
   }
 `
 
+export const P1 = styled.p`
+  width: 100%;
+  margin-bottom: 1.25em;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  ${base}
+
+  @media ${breakpoints.medium} {
+    font-size: 1.5rem;
+  }
+`
+
+export const P2 = styled.p`
+  width: 100%;
+  margin-bottom: 1.25em;
+  font-size: 1rem;
+  line-height: 1.4;
+  ${base}
+
+  @media ${breakpoints.medium} {
+    font-size: 1.125rem;
+  }
+`
+
 export const Excerpt = styled.p`
   margin-bottom: 1.25em;
   font-size: 1.875em;

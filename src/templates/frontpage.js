@@ -128,7 +128,7 @@ export default function Index({ data }) {
         </Grid>
       </Section>
       <Section bg={colors.lightGray} pt="0" pb={[5, 10]}>
-        <Div halfTopBg={theme.background} mb={[2, 4]}>
+        <Div halfTopBg={theme.background} mb={[2, 2]}>
           <Grid>
             <Column>
               <H2 textColor={theme.color}>{newsHeader}</H2>
