@@ -39,9 +39,9 @@ const Filter = styled(Div)`
 
   a {
     margin-bottom: 16px;
-    font-size: 1.25em;
+    font-size: 1.125rem;
     line-height: 1.2em;
-    opacity: 0.55;
+    opacity: 0.5;
 
     &:not(:last-child) {
       margin-right: 16px;
@@ -51,6 +51,7 @@ const Filter = styled(Div)`
     &[aria-current],
     &[data-partially-current] {
       color: ${colors.darkText};
+      text-decoration: underline;
       opacity: 1;
     }
 
