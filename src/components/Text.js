@@ -67,7 +67,7 @@ export const Excerpt = styled.p`
 `
 
 export const H1 = styled.h1`
-  margin-bottom: 0.375em;
+  margin-bottom: 0.275em;
   font-size: 3rem;
   font-weight: 400;
   line-height: 1.1;
