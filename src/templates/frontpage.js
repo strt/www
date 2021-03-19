@@ -55,10 +55,14 @@ const CompanyOfTheYearBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  a:hover {
+    opacity: 1;
+  }
 `
 
 const CompanyOfTheYear = styled.img`
-  max-height: 300px;
+  max-height: 216px;
 `
 
 export default function Index({ data }) {
@@ -75,7 +79,7 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <StyledHero pt={2} pb={[2, 6]}>
+      <StyledHero pb={[2, 6]}>
         <Grid>
           <Column md={10} sm={10} smDown={9}>
             <FrontH1 heroContent={hero} />
@@ -83,8 +87,9 @@ export default function Index({ data }) {
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
               <Link
-                to={`${getActiveLangPath()}/${routes.news.link
-                  }/arets-byra-igen`}
+                to={`${getActiveLangPath()}/${
+                  routes.news.link
+                }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
                   src={
