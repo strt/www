@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Location } from '@reach/router'
 import Link from './Link'
 import { Text } from './Text'
-import { breakpoints } from '../style'
 import { ThemeContext } from '../context/ThemeContext'
 
 let selectedLang = null
@@ -49,7 +48,7 @@ const Li = styled.li`
   font-size: 0.75rem;
 
   a {
-    opacity: 0.55;
+    opacity: 0.65;
 
     &:active,
     &[aria-current],

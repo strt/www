@@ -50,7 +50,7 @@ const StyledHeader = styled.header`
   }
 
   .langColumn {
-    margin-left: 20%;
+    margin-left: 19%;
 
     @media (max-width: 975px) {
       margin-left: auto;
