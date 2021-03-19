@@ -16,7 +16,7 @@ const CopyrightText = styled(Text)`
   font-size: 0.75rem;
 
   @media ${breakpoints.medium} {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
 `
 
