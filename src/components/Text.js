@@ -51,6 +51,7 @@ export const Excerpt = styled.p`
   margin-top: 3.125rem;
   margin-bottom: 1.25em;
   font-size: 1.5rem;
+  font-weight: 400;
   line-height: 1.15em;
   white-space: pre-line;
   ${base}
