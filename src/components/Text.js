@@ -123,6 +123,24 @@ export const H1 = styled.h1`
   }
 `
 
+export const JumboH1 = styled.h1`
+  margin-bottom: 0.175em;
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -2px;
+  ${base}
+  ${props => ({
+    fontFamily,
+    color: props.textColor || colors.dark,
+  })}
+
+  @media ${breakpoints.medium} {
+    font-size: 8rem;
+    line-height: 1.1;
+  }
+`
+
 export const H2 = styled.h2`
   margin-bottom: 0.4125em;
   font-size: 1.875em;

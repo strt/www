@@ -2,10 +2,10 @@
 
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { H1 } from './Text'
+import { JumboH1 } from './Text'
 import { ThemeContext } from '../context/ThemeContext'
 
-const StyledH1 = styled(H1)`
+const StyledH1 = styled(JumboH1)`
   color: ${props => props.theme.color};
 
   span:nth-child(${props => props.heroContent.colorWordPosition}):hover {
