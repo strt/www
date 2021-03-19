@@ -5,13 +5,13 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Card from '../components/Card'
 import Section from '../components/Section'
-import { Excerpt } from '../components/Text'
+import { Excerpt, H1 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
-  const { title } = data.contentfulPage
+  const { name, excerpt } = data.contentfulPage
 
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'gray') theme.toggleTheme('gray')
@@ -19,11 +19,12 @@ export default function News({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1" textColor={theme.color}>
-          {title}
-        </Excerpt>
+        <H1 textColor={theme.color}>{name}</H1>
+        {excerpt && (
+          <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
+        )}
       </Hero>
-      <Section pt={[5, 8]} pb={[10, 20]}>
+      <Section pt={[1, 1]} pb={[10, 20]}>
         <Grid>
           {data.articles.edges.map(({ node }) => (
             <Column key={node.id} sm="6" bottomGap>
@@ -48,6 +49,7 @@ export const pageQuery = graphql`
       node_locale: { eq: $locale }
     ) {
       title
+      name
       excerpt {
         excerpt
       }

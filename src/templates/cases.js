@@ -116,8 +116,8 @@ export default function Case({ data, location }) {
       <Hero>
         <H1 textColor={theme.color}>{title}</H1>
         <Excerpt>
-          Tillfälligt hårdkodat ingress. Om att olika uppdrag kräver spefika
-          lösningar och att vi gör skillnad.
+          Tillfälligt hårdkodat ingress tills ingressfältet är ifyllt i
+          contenful.
         </Excerpt>
         {renderFilter === true && (
           <Filter>
