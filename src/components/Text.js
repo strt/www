@@ -169,9 +169,8 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
   margin-bottom: 0.4125em;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 1em;
   ${base}
   ${props => ({
     fontFamily,
@@ -179,20 +178,7 @@ export const H3 = styled.h3`
   })}
 
   @media ${breakpoints.medium} {
-    font-size: 2em;
-  }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-      min: 32,
-      max: 48,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 3em;
+    font-size: 2rem;
   }
 
   ${A}{
