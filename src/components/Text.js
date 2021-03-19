@@ -27,11 +27,11 @@ export const Text = styled.p`
   width: 100%;
   margin-bottom: 1.25em;
   line-height: 1.4;
-  ${textSize}
+  font-size: 1.125rem;
   ${base}
 
   @media ${breakpoints.medium} {
-    font-size: 1.5rem;
+    ${textSize}
   }
 `
 
