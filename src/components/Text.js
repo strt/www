@@ -143,9 +143,8 @@ export const JumboH1 = styled.h1`
 
 export const H2 = styled.h2`
   margin-bottom: 0.4125em;
-  font-size: 1.875em;
+  font-size: 2rem;
   font-weight: 400;
-  line-height: 1em;
   ${base}
   ${props => ({
     fontFamily,
@@ -153,20 +152,7 @@ export const H2 = styled.h2`
   })}
 
   @media ${breakpoints.medium} {
-    font-size: 2.5em;
-  }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-      min: 40,
-      max: 60,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 3.75em;
+    font-size: 3rem;
   }
 
   ${A}{
