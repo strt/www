@@ -31,14 +31,6 @@ function tagsWrapperModifiers(props) {
     [`@media ${breakpoints.medium}`]: {
       fontSize: '18px',
     },
-    [`@media ${breakpoints.large}`]: {
-      fontSize: fluidRange({
-        min: 22,
-        max: 28,
-        viewportMin: breakpointNr.large,
-        viewportMax: breakpointNr.xlarge,
-      }),
-    },
   }
 }
 
