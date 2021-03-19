@@ -48,43 +48,21 @@ export const TextSmall = styled.p`
 `
 
 export const Excerpt = styled.p`
+  margin-top: 3.125rem;
   margin-bottom: 1.25em;
-  font-size: 1.875em;
-  font-weight: 400;
+  font-size: 1.5rem;
   line-height: 1.15em;
   white-space: pre-line;
   ${base}
 
-  @media ${breakpoints.smallDown} {
-    font-size: 1em;
-  }
-  
   @media ${breakpoints.medium} {
     max-width: 75%;
-  }
-
-  @media ${breakpoints.large} {
-    max-width: 50%;
-    font-size: ${fluidRange({
-  min: 40,
-  max: 60,
-  viewportMin: breakpointNr.large,
-  viewportMax: breakpointNr.xlarge,
-})};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 3.75em;
+    font-size: 2.5rem;
   }
 
   a::after {
     bottom: -10%;
     background-size: 9px 11px;
-
-    @media ${breakpoints.large} {
-      bottom: 0%;
-      background-size: 15px 11px;
-    }
   }
 `
 
@@ -101,6 +79,7 @@ export const H1 = styled.h1`
   })}
 
   @media ${breakpoints.medium} {
+    max-width: 75%;
     font-size: 5.5rem;
   }
 `

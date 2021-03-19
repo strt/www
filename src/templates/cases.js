@@ -112,6 +112,9 @@ export default function Case({ data, location }) {
         <H1 textColor={theme.color}>
           {title}
         </H1>
+        <Excerpt>
+          Tillfälligt hårdkodat ingress. Om att olika uppdrag kräver spefika lösningar och att vi gör skillnad.
+        </Excerpt>
         {renderFilter === true && (
           <Filter>
             <Link
