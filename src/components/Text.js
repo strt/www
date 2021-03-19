@@ -66,11 +66,11 @@ export const Excerpt = styled.p`
   @media ${breakpoints.large} {
     max-width: 50%;
     font-size: ${fluidRange({
-      min: 40,
-      max: 60,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
+  min: 40,
+  max: 60,
+  viewportMin: breakpointNr.large,
+  viewportMax: breakpointNr.xlarge,
+})};
   }
 
   @media ${breakpoints.xlarge} {
@@ -90,35 +90,18 @@ export const Excerpt = styled.p`
 
 export const H1 = styled.h1`
   margin-bottom: 0.175em;
-  font-size: 2em;
+  font-size: 3rem;
   font-weight: 400;
-  line-height: 1em;
+  line-height: 1.1;
+  letter-spacing: -2px
   ${base}
   ${props => ({
     fontFamily,
     color: props.textColor || colors.dark,
   })}
 
-  @media ${breakpoints.small} {
-    font-size: 4em;
-  }
-
   @media ${breakpoints.medium} {
-    font-size: 6em;
-    letter-spacing: -0.05em;
-  }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-      min: 132,
-      max: 196,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 12.25em;
+    font-size: 5.5rem;
   }
 `
 
@@ -209,11 +192,11 @@ export const H4 = styled.h4`
 
   @media ${breakpoints.large} {
     font-size: ${fluidRange({
-      min: 28,
-      max: 42,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
+    min: 28,
+    max: 42,
+    viewportMin: breakpointNr.large,
+    viewportMax: breakpointNr.xlarge,
+  })};
   }
 
   @media ${breakpoints.xlarge} {
@@ -251,11 +234,11 @@ export const H6 = styled.h6`
 
   @media ${breakpoints.large} {
     font-size: ${fluidRange({
-      min: 22,
-      max: 33,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
+    min: 22,
+    max: 33,
+    viewportMin: breakpointNr.large,
+    viewportMax: breakpointNr.xlarge,
+  })};
   }
 
   @media ${breakpoints.xlarge} {

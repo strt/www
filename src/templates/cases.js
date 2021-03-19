@@ -9,11 +9,11 @@ import Div from '../components/Div'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
 import Link from '../components/Link'
-import { Excerpt } from '../components/Text'
+import { Excerpt, H1 } from '../components/Text'
 import { CssGrid } from '../components/Grid'
 import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
   return items.filter(
@@ -109,9 +109,9 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1" textColor={theme.color}>
+        <H1 textColor={theme.color}>
           {title}
-        </Excerpt>
+        </H1>
         {renderFilter === true && (
           <Filter>
             <Link
