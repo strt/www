@@ -13,12 +13,12 @@ export const colors = {
   lightGray: '#F5F6F6',
   blue400: '#4062e9',
   blue500: '#1d45e5',
-  linkLight: '#b927e9',
-  linkDark: '#9800c9',
   purple: '#3E164C',
   lightPurple: '#F8ECFC',
   purple500: '#b927e9',
   purple600: '#9800c9',
+  linkLight: '#4062e9',
+  linkDark: '#1d45e5',
 }
 
 export const breakpointNr = {

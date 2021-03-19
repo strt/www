@@ -123,7 +123,7 @@ export default function Index({ data }) {
             <Div mt={[3, 6]}>
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
-                textColor={theme.color}
+                textColor={theme.linkColor}
                 styleVariant={theme.theme}
                 variant="large"
               >
