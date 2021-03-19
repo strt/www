@@ -13,7 +13,10 @@ import { Excerpt, H1 } from '../components/Text'
 import { CssGrid } from '../components/Grid'
 import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
   return items.filter(
@@ -32,6 +35,7 @@ function getTagLink(tag) {
 const Filter = styled(Div)`
   display: flex;
   flex-wrap: wrap;
+  margin-top: 4.375rem;
 
   a {
     margin-bottom: 16px;
@@ -109,11 +113,10 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <H1 textColor={theme.color}>
-          {title}
-        </H1>
+        <H1 textColor={theme.color}>{title}</H1>
         <Excerpt>
-          Tillfälligt hårdkodat ingress. Om att olika uppdrag kräver spefika lösningar och att vi gör skillnad.
+          Tillfälligt hårdkodat ingress. Om att olika uppdrag kräver spefika
+          lösningar och att vi gör skillnad.
         </Excerpt>
         {renderFilter === true && (
           <Filter>
