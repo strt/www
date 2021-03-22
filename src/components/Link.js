@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
-import { breakpoints, fontFamily } from '../style'
+import { breakpoints, fontFamily, colors } from '../style'
 
 const UNDERLINE_VARIANTS = {
   dark: 'waveLight.svg',
@@ -29,16 +29,22 @@ export const A = styled.a`
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     text-decoration: underline;
-    opacity: 0.85;
   }
 
-  &:active,
+  &:focus {
+    background-color: ${colors.orange300};
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: ${colors.orange100};
+    text-decoration: none;
+  }
+
   &[aria-current],
   &[data-partially-current] {
-    text-decoration: none;
   }
 
   button& {

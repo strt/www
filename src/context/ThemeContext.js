@@ -3,7 +3,7 @@ import { colors } from '../style'
 
 const defaultState = {
   color: 'white',
-  toggleTheme: () => {},
+  toggleTheme: () => { },
 }
 
 // DO A SWITCH DEPENDING ON THEME
@@ -18,6 +18,7 @@ class ThemeProvider extends React.Component {
       background: colors.light,
       color: colors.darkText,
       linkColor: colors.linkDark,
+      navColor: colors.grey600,
       colorSecondary: colors.dark,
     }
   }
@@ -30,6 +31,7 @@ class ThemeProvider extends React.Component {
           background: colors.light,
           color: colors.darkText,
           linkColor: colors.linkDark,
+          navColor: colors.grey600,
           colorSecondary: colors.dark,
         })
         break
@@ -39,6 +41,7 @@ class ThemeProvider extends React.Component {
           background: colors.lightGray,
           color: colors.darkText,
           colorSecondary: colors.darkText,
+          navColor: colors.grey600,
         })
         break
       case 'purple':
@@ -56,6 +59,7 @@ class ThemeProvider extends React.Component {
           color: colors.lightText,
           linkColor: colors.linkLight,
           colorSecondary: colors.light,
+          navColor: colors.grey400,
         })
     }
   }
@@ -67,6 +71,7 @@ class ThemeProvider extends React.Component {
     const { background } = this.state
     const { theme } = this.state
     const { linkColor } = this.state
+    const { navColor } = this.state
 
     return (
       <ThemeContext.Provider
@@ -76,6 +81,7 @@ class ThemeProvider extends React.Component {
           background,
           theme,
           linkColor,
+          navColor,
           toggleTheme: this.toggleTheme,
         }}
       >

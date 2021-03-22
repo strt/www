@@ -76,6 +76,12 @@ const NavWrapper = styled.nav`
       &:last-child {
         padding-right: 0;
       }
+
+      a {
+        &:focus {
+          background-color: ${colors.orange300};
+        }
+      }
     }
   }
 
@@ -215,7 +221,7 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    textColor={theme.color}
+                    textColor={theme.navColor}
                     styleVariant={theme.theme}
                     style={{ fontSize: '1.125rem' }}
                   >
