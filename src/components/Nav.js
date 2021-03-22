@@ -58,7 +58,7 @@ const AnimatedIconButton = animated(IconButton)
 
 const NavWrapper = styled.nav`
   [data-responsive] {
-    @media (min-width: 685px) {
+    @media (min-width: 803px) {
       display: none;
     }
   }
@@ -66,7 +66,7 @@ const NavWrapper = styled.nav`
   [data-desktop] {
     display: none;
 
-    @media (min-width: 685px) {
+    @media (min-width: 803px) {
       display: flex;
     }
 

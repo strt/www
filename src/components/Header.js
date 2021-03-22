@@ -39,6 +39,7 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
+  position: relative;
   padding: ${fluidRange({ min: 24, max: 32 })} 0;
 
   @media screen and ${breakpoints.small} {
@@ -50,14 +51,12 @@ const StyledHeader = styled.header`
   }
 
   .langColumn {
-    margin-left: 19%;
+    margin-left: auto;
 
-    @media (max-width: 975px) {
-      margin-left: auto;
-    }
-
-    @media (min-width: 685px) {
-      margin-top: 1rem;
+    @media (min-width: 1100px) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 `

@@ -3,7 +3,8 @@ import styled from 'styled-components'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Location } from '@reach/router'
 import Link from './Link'
-import { Text } from './Text'
+import { TextSmall } from './Text'
+import { breakpoints } from '../style'
 import { ThemeContext } from '../context/ThemeContext'
 
 let selectedLang = null
@@ -45,7 +46,11 @@ export function getUrl(location, country) {
 
 const Li = styled.li`
   padding: 0;
-  font-size: 0.75rem;
+  font-size: 1rem;
+
+  @media ${breakpoints.small} {
+    font-size: 1.125rem;
+  }
 
   a {
     opacity: 0.65;
@@ -55,6 +60,8 @@ const Li = styled.li`
     &[data-partially-current] {
       opacity: 1;
     }
+
+
 `
 
 function SelectLanguage({ location }) {
@@ -74,11 +81,11 @@ function SelectLanguage({ location }) {
            </Link>
           </Li>
           <Li style={{ padding: '0 5px' }}>
-            <Text style={{ lineHeight: 'inherit', fontSize: '0.75rem' }}
+            <TextSmall style={{ lineHeight: 'inherit' }}
               textColor={theme.color}
             >
               /
-           </Text>
+           </TextSmall>
           </Li>
           <Li>
             <Link

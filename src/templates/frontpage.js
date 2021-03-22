@@ -87,9 +87,8 @@ export default function Index({ data }) {
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
               <Link
-                to={`${getActiveLangPath()}/${
-                  routes.news.link
-                }/arets-byra-igen`}
+                to={`${getActiveLangPath()}/${routes.news.link
+                  }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
                   src={
