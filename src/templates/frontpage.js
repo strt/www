@@ -104,7 +104,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </StyledHero>
-      <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
+      <Section id="case-section" pt={[3, 4]} pb={[8, 10]}>
         <CaseGrid>
           {featuredCases.map((node, index) => (
             <Tile
