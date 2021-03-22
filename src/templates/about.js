@@ -6,7 +6,7 @@ import Hero from '../components/Hero'
 import Cover from '../components/Cover'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
-import { H1, H3, Excerpt, Text } from '../components/Text'
+import { H1, H2, Excerpt, Text } from '../components/Text'
 import Link from '../components/Link'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -50,10 +50,9 @@ export default function About({ data }) {
               {(() => {
                 return (
                   <>
-                    <Image fluid={item.image.fluid} alt="" />
-                    <H3 pt="30px" textColor={theme.color}>
+                    <H2 textColor={theme.color}>
                       {item.title}
-                    </H3>
+                    </H2>
                     <RichText pr={0} pl={0} md={12} document={item.text.json} />
                   </>
                 )

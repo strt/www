@@ -48,7 +48,6 @@ export const TextSmall = styled.p`
 `
 
 export const Excerpt = styled.p`
-  margin-bottom: 1.25em;
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1.2;
