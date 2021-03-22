@@ -28,11 +28,11 @@ export function getWidth(value) {
 }
 
 const gutter = {
-  default: '15px',
+  default: '16px',
 }
 
 const gridGutter = {
-  default: '30px',
+  default: '32px',
 }
 
 export const Grid = styled(CleanTag)(
@@ -44,9 +44,10 @@ export const Grid = styled(CleanTag)(
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
     width: '100%',
+    maxWidth: '1408px',
     [`@media ${breakpoints.small}`]: {
-      paddingRight: `${vw(40)}`,
-      paddingLeft: `${vw(40)}`,
+      paddingRight: `16px`,
+      paddingLeft: `16px`,
     },
   },
   space,
@@ -80,9 +81,6 @@ export const Column = styled(CleanTag)(
     [mediaQuery(breakpoints.large)]: {
       width: getWidth(props.lg),
     },
-    [mediaQuery(breakpoints.xlarge)]: {
-      width: getWidth(props.xl),
-    },
   }),
   getColumnMargin,
   space,
@@ -96,6 +94,8 @@ export const Column = styled(CleanTag)(
  */
 export const CssGrid = styled.div`
   display: grid;
+  max-width: 1408px;
+  margin: 0 auto;
   grid-row-gap: calc(${gutter.default});
   grid-template-columns:
     [full-start] ${gutter.default} [grid-start] repeat(

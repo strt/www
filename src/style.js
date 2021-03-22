@@ -25,16 +25,14 @@ export const colors = {
 export const breakpointNr = {
   small: 640,
   medium: 1024,
-  large: 1440,
-  xlarge: 1920,
+  large: 1408,
 }
 
 export const breakpoints = {
   small: '(min-width: 640px)',
   smallDown: '(max-width: 640px)',
   medium: '(min-width: 1024px)',
-  large: '(min-width: 1366px)',
-  xlarge: '(min-width: 1920px)',
+  large: '(min-width: 1408px)',
 }
 
 export const durations = {
@@ -383,12 +381,12 @@ export function space(props) {
       const style = (n, i) =>
         n != null
           ? cssProperties.reduce(
-            (a, prop) => ({
-              ...a,
-              [prop]: getSpaceValue(n, i),
-            }),
-            {},
-          )
+              (a, prop) => ({
+                ...a,
+                [prop]: getSpaceValue(n, i),
+              }),
+              {},
+            )
           : null
 
       if (!Array.isArray(value)) {
