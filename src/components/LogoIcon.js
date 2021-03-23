@@ -14,7 +14,7 @@ const LogoIconWrapper = styled.div`
   padding-bottom: 50px;
 
   @media ${breakpoints.medium} {
-    padding-bottom: 310px;
+    padding-bottom: 130px;
   }
 `
 

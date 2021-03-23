@@ -16,8 +16,6 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 const SmallText = styled(Text)`
   width: 100%;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   line-height: 1.4em;
   ${base}
   font-size: 0.75em;
@@ -109,7 +107,6 @@ export default function Contact({ data }) {
                   bg={colors.dark}
                   sizes="(min-width: 768px) 24vw, 46vw"
                   fluid={node.image.fluid}
-                  overlay={node.color}
                 />
               )}
               <Text textColor={theme.color} mt={[1, 1]} mb="0">

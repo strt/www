@@ -9,11 +9,14 @@ import Div from '../components/Div'
 import Section from '../components/Section'
 import Tile from '../components/Tile'
 import Link from '../components/Link'
-import { Excerpt } from '../components/Text'
+import { Excerpt, H1 } from '../components/Text'
 import { CssGrid } from '../components/Grid'
 import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
   return items.filter(
@@ -32,12 +35,13 @@ function getTagLink(tag) {
 const Filter = styled(Div)`
   display: flex;
   flex-wrap: wrap;
+  margin-top: 4.375rem;
 
   a {
     margin-bottom: 16px;
-    font-size: 1.25em;
+    font-size: 1.125rem;
     line-height: 1.2em;
-    opacity: 0.55;
+    opacity: 0.5;
 
     &:not(:last-child) {
       margin-right: 16px;
@@ -47,6 +51,7 @@ const Filter = styled(Div)`
     &[aria-current],
     &[data-partially-current] {
       color: ${colors.darkText};
+      text-decoration: underline;
       opacity: 1;
     }
 
@@ -109,8 +114,10 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1" textColor={theme.color}>
-          {title}
+        <H1 textColor={theme.color}>{title}</H1>
+        <Excerpt>
+          Tillfälligt hårdkodat ingress tills ingressfältet är ifyllt i
+          contenful.
         </Excerpt>
         {renderFilter === true && (
           <Filter>

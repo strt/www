@@ -55,10 +55,14 @@ const CompanyOfTheYearBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  a:hover {
+    opacity: 1;
+  }
 `
 
 const CompanyOfTheYear = styled.img`
-  max-height: 300px;
+  max-height: 216px;
 `
 
 export default function Index({ data }) {
@@ -75,7 +79,7 @@ export default function Index({ data }) {
   } = data.contentfulPage
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <StyledHero pt={8} pb={[2, 6]}>
+      <StyledHero pb={[2, 6]}>
         <Grid>
           <Column md={10} sm={10} smDown={9}>
             <FrontH1 heroContent={hero} />
@@ -83,9 +87,8 @@ export default function Index({ data }) {
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
               <Link
-                to={`${getActiveLangPath()}/${
-                  routes.news.link
-                }/arets-byra-igen`}
+                to={`${getActiveLangPath()}/${routes.news.link
+                  }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
                   src={
@@ -100,7 +103,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </StyledHero>
-      <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
+      <Section id="case-section" pt={[3, 4]} pb={[8, 10]}>
         <CaseGrid>
           {featuredCases.map((node, index) => (
             <Tile
@@ -123,7 +126,7 @@ export default function Index({ data }) {
             <Div mt={[3, 6]}>
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
-                textColor={theme.color}
+                textColor={theme.linkColor}
                 styleVariant={theme.theme}
                 variant="large"
               >
@@ -134,7 +137,7 @@ export default function Index({ data }) {
         </Grid>
       </Section>
       <Section bg={colors.lightGray} pt="0" pb={[5, 10]}>
-        <Div halfTopBg={theme.background} mb={[2, 4]}>
+        <Div halfTopBg={theme.background} mb={[2, 2]}>
           <Grid>
             <Column>
               <H2 textColor={theme.color}>{newsHeader}</H2>
@@ -157,7 +160,7 @@ export default function Index({ data }) {
               <Link
                 to={`${getActiveLangPath()}/${routes.news.link}`}
                 variant="large"
-                textColor={theme.color}
+                textColor={theme.linkColor}
                 styleVariant={theme.theme}
               >
                 {newsLinkText}

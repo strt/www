@@ -15,13 +15,13 @@ export const routes = {
     id: 'about',
     link: 'about/',
     title: 'About',
-    sv: { title: 'Om oss' },
+    sv: { title: 'Vad vi gör' },
   },
   career: {
     id: 'career',
     link: 'join-the-team/',
     title: 'Join',
-    sv: { title: 'Karriär' },
+    sv: { title: 'Bli en av oss' },
   },
   news: {
     id: 'news',

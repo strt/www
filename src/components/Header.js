@@ -4,7 +4,7 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Column } from './Grid'
 import Logo from './Logo'
 import { breakpoints, fluidRange, vw } from '../style'
-import { getActiveLangPath } from './SelectLanguage'
+import SelectLanguageWrapper, { getActiveLangPath } from './SelectLanguage'
 import Navigation from './Nav'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -19,6 +19,15 @@ export default function Header() {
                 <Logo />
               </LogoLink>
             </Column>
+            <Column width="auto" className="langColumn">
+              <ul
+                style={{
+                  display: 'flex',
+                }}
+              >
+                <SelectLanguageWrapper />
+              </ul>
+            </Column>
             <Column width="auto">
               <Navigation />
             </Column>
@@ -30,6 +39,7 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
+  position: relative;
   padding: ${fluidRange({ min: 24, max: 32 })} 0;
 
   @media screen and ${breakpoints.small} {
@@ -38,6 +48,16 @@ const StyledHeader = styled.header`
 
   @media screen and ${breakpoints.medium} {
     padding: ${vw(30)} 0 ${vw(56)} 0;
+  }
+
+  .langColumn {
+    margin-left: auto;
+
+    @media (min-width: 1100px) {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 `
 

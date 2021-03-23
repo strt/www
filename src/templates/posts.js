@@ -1,17 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Card from '../components/Card'
 import Section from '../components/Section'
-import { Excerpt } from '../components/Text'
+import { Excerpt, H1 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { getActiveLangPath } from '../components/SelectLanguage'
+import { colors, breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function News({ data }) {
-  const { title } = data.contentfulPage
+  const [limit, setLimit] = useState(8)
+
+  const loadMore = () => {
+    setLimit(prevLimit => prevLimit + 8)
+  }
+
+  const { name, excerpt } = data.contentfulPage
+
+  const LoadMoreDiv = styled.div`
+    cursor: pointer;
+    color: ${colors.linkDark};
+    font-size: 1.125rem;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      opacity: 0.85;
+    }
+
+    &:active,
+    &[aria-current],
+    &[data-partially-current] {
+      text-decoration: none;
+    }
+
+    @media ${breakpoints.medium} {
+      font-size: 1.5rem;
+    }
+  `
 
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'gray') theme.toggleTheme('gray')
@@ -19,13 +49,14 @@ export default function News({ data }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <Excerpt as="h1" textColor={theme.color}>
-          {title}
-        </Excerpt>
+        <H1 textColor={theme.color}>{name}</H1>
+        {excerpt && (
+          <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
+        )}
       </Hero>
-      <Section pt={[5, 8]} pb={[10, 20]}>
+      <Section pt={[1, 1]} pb={[2, 2]}>
         <Grid>
-          {data.articles.edges.map(({ node }) => (
+          {data.articles.edges.slice(0, limit).map(({ node }) => (
             <Column key={node.id} sm="6" bottomGap>
               <Card
                 date={node.oldDate || node.createdAt}
@@ -35,6 +66,21 @@ export default function News({ data }) {
               />
             </Column>
           ))}
+        </Grid>
+      </Section>
+      <Section pb={10}>
+        <Grid>
+          <Column pb={1}>
+            <LoadMoreDiv
+              style={{
+                display: limit >= data.articles.edges.length ? 'none' : '',
+              }}
+              onClick={loadMore}
+              textColor={theme.linkColor}
+            >
+              Visa fler
+            </LoadMoreDiv>
+          </Column>
         </Grid>
       </Section>
     </Layout>
@@ -48,6 +94,7 @@ export const pageQuery = graphql`
       node_locale: { eq: $locale }
     ) {
       title
+      name
       excerpt {
         excerpt
       }

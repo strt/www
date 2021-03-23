@@ -2,13 +2,12 @@ import React, { useMemo } from 'react'
 import { Link as GatsbyLink, graphql } from 'gatsby'
 import styled from 'styled-components'
 import dayjs from 'dayjs'
-import { H3, Text } from './Text'
+import { Text } from './Text'
 import Image from './Image'
 import {
   colors,
   ratio,
   breakpoints,
-  breakpointNr,
   cover,
   fluidRange,
   vw,
@@ -36,26 +35,8 @@ const Content = styled.div`
   width: ${getWidth(8)};
   background-color: ${colors.light};
 
-  h3 {
+  p {
     margin-bottom: 0;
-    font-size: 1em;
-
-    @media ${breakpoints.medium} {
-      font-size: 1.2em;
-    }
-
-    @media ${breakpoints.large} {
-      font-size: ${fluidRange({
-        min: 30,
-        max: 36,
-        viewportMin: breakpointNr.large,
-        viewportMax: breakpointNr.xlarge,
-      })};
-    }
-
-    @media ${breakpoints.xlarge} {
-      font-size: 3em;
-    }
 
     /* Copy/mimic Link component style */
     & span {
@@ -82,23 +63,12 @@ const Content = styled.div`
 `
 
 const DateTime = styled(Text)`
-  font-size: 0.8em;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.4;
 
   @media ${breakpoints.medium} {
-    font-size: 1em;
-  }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-      min: 20,
-      max: 30,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 1.875em;
+    font-size: 1.125rem;
   }
 `
 
@@ -130,15 +100,15 @@ export default function Card({ url, title, date, image }) {
             <DateTime
               as="time"
               dateTime={date}
-              textColor={colors.darkText}
+              textColor={colors.grey600}
               mb="2"
             >
               {formattedDate}
             </DateTime>
           )}
-          <H3>
+          <Text>
             <span>{title}</span>
-          </H3>
+          </Text>
         </Content>
         <ImageWrapper>
           {image && (

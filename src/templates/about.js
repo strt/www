@@ -6,7 +6,7 @@ import Hero from '../components/Hero'
 import Cover from '../components/Cover'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
-import { H1, H3, Excerpt, Text } from '../components/Text'
+import { H1, H2, Excerpt, Text } from '../components/Text'
 import Link from '../components/Link'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -14,7 +14,7 @@ import { formatPhone } from '../lib/format'
 
 export default function About({ data }) {
   const { title, excerpt, image } = data.contentfulPage.page
-  const { contact, subtitle, description, contentColumns } = data.contentfulPage
+  const { contact, description, contentColumns } = data.contentfulPage
 
   const hasCover = !!image
 
@@ -23,20 +23,10 @@ export default function About({ data }) {
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
-      <Hero md={8} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
-        {title && (
-          <Excerpt
-            as="h1"
-            textColor={theme.color}
-            style={{ margin: '0', display: 'inline' }}
-          >
-            {title}&nbsp;
-          </Excerpt>
-        )}
+      <Hero md={12} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
+        {title && <H1 textColor={theme.color}>{title}</H1>}
         {excerpt && (
-          <Excerpt textColor={theme.color} style={{ display: 'inline' }}>
-            {excerpt.excerpt}
-          </Excerpt>
+          <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
         )}
       </Hero>
       {hasCover && (
@@ -44,20 +34,12 @@ export default function About({ data }) {
           <Image fluid={image.childImageSharp.fluid} alt="" />
         </Cover>
       )}
-
       <Grid>
-        {subtitle && (
-          <Column md={10} pt={10}>
-            <H1 as="h2" mb="0" textColor={theme.color}>
-              {subtitle}
-            </H1>
-          </Column>
-        )}
         {description && (
-          <Column md={10}>
-            <Excerpt textColor={theme.color} style={{ display: 'inline' }}>
+          <Column md={8}>
+            <Text textColor={theme.color} style={{ display: 'inline' }}>
               {description.description}
-            </Excerpt>
+            </Text>
           </Column>
         )}
       </Grid>
@@ -68,10 +50,9 @@ export default function About({ data }) {
               {(() => {
                 return (
                   <>
-                    <Image fluid={item.image.fluid} alt="" />
-                    <H3 pt="30px" textColor={theme.color}>
+                    <H2 textColor={theme.color}>
                       {item.title}
-                    </H3>
+                    </H2>
                     <RichText pr={0} pl={0} md={12} document={item.text.json} />
                   </>
                 )

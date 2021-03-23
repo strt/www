@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
-import { fluidRange, breakpoints, breakpointNr, fontFamily } from '../style'
+import { breakpoints, fontFamily, colors } from '../style'
 
 const UNDERLINE_VARIANTS = {
   dark: 'waveLight.svg',
@@ -29,68 +29,38 @@ export const A = styled.a`
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
-  &::after {
-    position: absolute;
-    content: '';
-    bottom: -20%;
-    right: 0;
-    left: auto;
-    width: 0;
-    height: 8px;
-    background-size: 15px 11px;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-image: url('/${props => getUnderline(props)}');
-    animation: move 15s linear infinite;
-    transition: width 0.5s;
-    animation-play-state: running;
-  }
-
   &:hover {
-    &::after {
-      right: auto;
-      left: 0;
-      width: 100%;
-      animation-play-state: running !important;
-    }
+    text-decoration: underline;
   }
 
-  &:active,
+  &:focus {
+    background-color: ${colors.orange300};
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: ${colors.orange100};
+    text-decoration: none;
+  }
+
   &[aria-current],
   &[data-partially-current] {
-    &::after {
-      animation-play-state: paused;
-      width: 100%;
-    }
   }
 
   button& {
     user-select: none;
-    border:none;
-    background:none;
+    border: none;
+    background: none;
   }
 
   ${props =>
     props.variant === 'large' &&
     css`
-      font-weight: 400;
-      font-size: 1.1em;
-
+      font-size: 1.125rem;
+      line-height: 1.4;
+    
       @media ${breakpoints.medium} {
-        font-size: 1.25em;
-      }
-
-      @media ${breakpoints.large} {
-        font-size: ${fluidRange({
-          min: 20,
-          max: 30,
-          viewportMin: breakpointNr.large,
-          viewportMax: breakpointNr.xlarge,
-        })};
-      }
-
-      @media ${breakpoints.xlarge} {
-        font-size: 1.875em;
+        font-size: 1.5rem;
       }
     `}
 `

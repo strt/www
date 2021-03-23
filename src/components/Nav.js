@@ -12,21 +12,14 @@ import {
   interpolate,
 } from 'react-spring'
 import { IconButton } from './Button'
-import Link, { A } from './Link'
+import Link from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
 import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
-import {
-  colors,
-  fluidRange,
-  easings,
-  durations,
-  breakpoints,
-  vw,
-} from '../style'
+import { colors, fluidRange, easings, durations, vw } from '../style'
 import { mainNavigation } from '../routes'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -64,12 +57,8 @@ const NavLink = styled(GatsbyLink)`
 const AnimatedIconButton = animated(IconButton)
 
 const NavWrapper = styled.nav`
-  ${A} {
-    text-decoration: none;
-  }
-
   [data-responsive] {
-    @media ${breakpoints.small} {
+    @media (min-width: 803px) {
       display: none;
     }
   }
@@ -77,7 +66,7 @@ const NavWrapper = styled.nav`
   [data-desktop] {
     display: none;
 
-    @media ${breakpoints.small} {
+    @media (min-width: 803px) {
       display: flex;
     }
 
@@ -86,6 +75,12 @@ const NavWrapper = styled.nav`
 
       &:last-child {
         padding-right: 0;
+      }
+
+      a {
+        &:focus {
+          background-color: ${colors.orange300};
+        }
       }
     }
   }
@@ -226,9 +221,9 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    textColor={theme.color}
+                    textColor={theme.navColor}
                     styleVariant={theme.theme}
-                    variant="large"
+                    style={{ fontSize: '1.125rem' }}
                   >
                     {isDefaultLanguage() ? child.sv.title : child.title}
                   </Link>

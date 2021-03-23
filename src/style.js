@@ -5,31 +5,37 @@ export const fontFamily = 'Circular, Helvetica, sans-serif'
 
 export const colors = {
   dark: '#000000',
-  darkText: '#000000',
+  darkText: '#020202',
+  grey300: '#e1e1e1',
+  grey400: '#bebebe',
+  grey600: '#707070',
+  grey700: '#606060',
   light: '#ffffff',
   lightText: '#ffffff',
   lightGray: '#F5F6F6',
-  linkLight: '#b927e9',
-  linkDark: '#9800c9',
+  blue400: '#4062e9',
+  blue500: '#1d45e5',
+  orange100: '#ffeee6',
+  orange300: '#ffc5aa',
   purple: '#3E164C',
   lightPurple: '#F8ECFC',
   purple500: '#b927e9',
   purple600: '#9800c9',
+  linkLight: '#4062e9',
+  linkDark: '#1d45e5',
 }
 
 export const breakpointNr = {
   small: 640,
   medium: 1024,
-  large: 1440,
-  xlarge: 1920,
+  large: 1408,
 }
 
 export const breakpoints = {
   small: '(min-width: 640px)',
   smallDown: '(max-width: 640px)',
   medium: '(min-width: 1024px)',
-  large: '(min-width: 1366px)',
-  xlarge: '(min-width: 1920px)',
+  large: '(min-width: 1408px)',
 }
 
 export const durations = {
@@ -378,12 +384,12 @@ export function space(props) {
       const style = (n, i) =>
         n != null
           ? cssProperties.reduce(
-              (a, prop) => ({
-                ...a,
-                [prop]: getSpaceValue(n, i),
-              }),
-              {},
-            )
+            (a, prop) => ({
+              ...a,
+              [prop]: getSpaceValue(n, i),
+            }),
+            {},
+          )
           : null
 
       if (!Array.isArray(value)) {
