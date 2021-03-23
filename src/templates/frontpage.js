@@ -82,14 +82,20 @@ export default function Index({ data }) {
           </Column>
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
-              <CompanyOfTheYear
-                src={
-                  getActiveLang() === 'en'
-                    ? '/Vinnarknapp_ÅB_Eng.png'
-                    : '/Vinnarknapp_ÅB.png'
-                }
-                alt="Årets Byrå"
-              />
+              <Link
+                to={`${getActiveLangPath()}/${
+                  routes.news.link
+                }/arets-byra-igen`}
+              >
+                <CompanyOfTheYear
+                  src={
+                    getActiveLang() === 'en'
+                      ? '/Vinnarknapp_ÅB_Eng.png'
+                      : '/Vinnarknapp_ÅB.png'
+                  }
+                  alt="Årets Byrå"
+                />
+              </Link>
             </CompanyOfTheYearBlock>
           </Column>
         </Grid>
