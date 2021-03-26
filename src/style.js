@@ -7,6 +7,7 @@ export const colors = {
   dark: '#000000',
   darkText: '#020202',
   grey050: '#fafafa',
+  grey100: '#f6f6f6',
   grey300: '#e1e1e1',
   grey400: '#bebebe',
   grey600: '#707070',
@@ -385,12 +386,12 @@ export function space(props) {
       const style = (n, i) =>
         n != null
           ? cssProperties.reduce(
-            (a, prop) => ({
-              ...a,
-              [prop]: getSpaceValue(n, i),
-            }),
-            {},
-          )
+              (a, prop) => ({
+                ...a,
+                [prop]: getSpaceValue(n, i),
+              }),
+              {},
+            )
           : null
 
       if (!Array.isArray(value)) {

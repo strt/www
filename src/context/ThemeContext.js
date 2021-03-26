@@ -3,7 +3,7 @@ import { colors } from '../style'
 
 const defaultState = {
   color: 'white',
-  toggleTheme: () => { },
+  toggleTheme: () => {},
 }
 
 // DO A SWITCH DEPENDING ON THEME
@@ -47,7 +47,7 @@ class ThemeProvider extends React.Component {
       case 'gray':
         this.setState({
           theme: colorToggle,
-          background: colors.lightGray,
+          background: colors.grey100,
           color: colors.darkText,
           colorSecondary: colors.darkText,
           navColor: colors.grey600,

@@ -4,18 +4,25 @@ import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
+import Cover from '../components/Cover'
+import Image from '../components/Image'
 import Link from '../components/Link'
 import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
 import { H1, H2, H3, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { vw, breakpoints } from '../style'
+import { breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
-import Image from '../components/Image'
+import CardInfo from '../components/CardInfo'
 // eslint-disable-next-line import/no-named-as-default
+import joinImage from '../assets/join.png'
+
+const CardImageBlock = styled.div`
+  position: relative;
+`
 
 const ManifestoImageWrapper = styled.div`
   position: relative;
@@ -83,27 +90,6 @@ const ManifestoImage = styled.div`
   }
 `
 
-const ImageLogoItem = styled.div`
-  position: absolute;
-  right: 0;
-  width: 20%;
-  margin-right: 25px;
-  margin-top: 20%;
-
-  @media ${breakpoints.small} {
-    padding-right: 15px;
-    margin-right: ${vw(40)};
-  }
-
-  @media ${breakpoints.medium} {
-    width: 30%;
-    margin-top: 10%;
-  }
-
-  @media ${breakpoints.large} {
-    margin-top: 0;
-  }
-`
 export default function Career({ data }) {
   const {
     contact,
@@ -130,13 +116,11 @@ export default function Career({ data }) {
     >
       <Hero pb={8} keepContentMargin>
         <H1 textColor={theme.color}>{page.title}</H1>
-        <Excerpt textColor={theme.color}>
-          {page.excerpt.excerpt}
-        </Excerpt>
+        <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
       </Hero>
 
       {hasOpenPositions && (
-        <Section>
+        <Section pb={8}>
           <Grid>
             <Column>
               <H2 textColor={theme.color} mb={[3, 4]}>
@@ -149,7 +133,6 @@ export default function Career({ data }) {
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
                         textColor={theme.linkColor}
-                        styleVariant={theme.theme}
                       >
                         {node.role}
                       </Link>
@@ -162,26 +145,19 @@ export default function Career({ data }) {
         </Section>
       )}
 
-      {/* {hasOpenPositions && (
-        <Section>
-          <Grid>
-            <Column>
-              <H4 as="h2" textColor={theme.color}>
-                {spontaneousTitle}
-              </H4>
-              <Text>
-                <Link
-                  textColor={theme.linkColor}
-                  styleVariant={theme.theme}
-                  href={`mailto:${contact.email}`}
-                >
-                  {contact.email}
-                </Link>
-              </Text>
-            </Column>
-          </Grid>
-        </Section>
-      )} */}
+      <CardImageBlock>
+        <Cover style={{ paddingTop: '46%' }}>
+          <img src={joinImage} alt="" />
+        </Cover>
+
+        <CardInfo
+          title="Vi letar alltid efter nya talanger."
+          text={spontaneousTitle}
+          link={`mailto:${contact.email}`}
+          linkText={contact.email}
+          position="absolute"
+        />
+      </CardImageBlock>
 
       {manifesto && (
         <Section>
