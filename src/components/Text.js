@@ -116,9 +116,9 @@ export const H2 = styled.h2`
   }
 
   ${A}{
-    color: ${colors.purple500};
+    color: ${colors.linkColor};
     &:hover{
-      color: ${colors.purple600};
+      color: ${colors.linkColor};
 
       &::after{
         display:none;
@@ -142,9 +142,9 @@ export const H3 = styled.h3`
   }
 
   ${A}{
-    color: ${colors.purple500};
+    color: ${colors.linkColor};
     &:hover{
-      color: ${colors.purple600};
+      color: ${colors.linkColor};
 
       &::after{
         display:none;
@@ -154,10 +154,9 @@ export const H3 = styled.h3`
 `
 
 export const H4 = styled.h4`
-  margin-bottom: 0.4125em;
-  font-size: 1.3125em;
-  font-weight: 400;
-  line-height: 1.25em;
+  margin-bottom: 0.5125em;
+  font-size: 1.125rem;
+  font-weight: 500;
   ${base}
   ${props => ({
     fontFamily,
@@ -165,22 +164,8 @@ export const H4 = styled.h4`
   })}
 
   @media ${breakpoints.medium} {
-    font-size: 1.75em;
+    font-size: 1.5rem;
   }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-    min: 28,
-    max: 42,
-    viewportMin: breakpointNr.large,
-    viewportMax: breakpointNr.xlarge,
-  })};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 2.625em;
-  }
-
 
   ${A}{
     color: ${colors.purple500};

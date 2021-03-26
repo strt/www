@@ -6,6 +6,7 @@ export const fontFamily = 'Circular, Helvetica, sans-serif'
 export const colors = {
   dark: '#000000',
   darkText: '#020202',
+  grey050: '#fafafa',
   grey300: '#e1e1e1',
   grey400: '#bebebe',
   grey600: '#707070',

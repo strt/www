@@ -8,7 +8,7 @@ import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
-import { base, H1, Text } from '../components/Text'
+import { base, H1, H4, Text, Excerpt } from '../components/Text'
 import { formatPhone } from '../lib/format'
 import { breakpoints, breakpointNr, fluidRange, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -26,11 +26,11 @@ const SmallText = styled(Text)`
 
   @media ${breakpoints.large} {
     font-size: ${fluidRange({
-      min: 16,
-      max: 20,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
+  min: 16,
+  max: 20,
+  viewportMin: breakpointNr.large,
+  viewportMax: breakpointNr.xlarge,
+})};
   }
 
   @media ${breakpoints.xlarge} {
@@ -58,28 +58,22 @@ export default function Contact({ data }) {
     <Layout meta={getMetaFromPost(page)}>
       <Hero>
         <H1 textColor={theme.color}>{page.title}</H1>
-
-        {page.excerpt && (
-          <Column md={8} lg={6} p={0}>
-            <Text textColor={theme.color}>{page.excerpt.excerpt}</Text>
-          </Column>
-        )}
+        <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
       </Hero>
 
       <Section mb={[4, 7]}>
         <Grid>
           {contacts.map((contact, index) => (
             <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
-              <Text textColor={theme.color}>
-                <strong>{contact.city || contact.title}</strong>
-                <br />
+              <H4>{contact.city || contact.title}</H4>
+              <Text textColor={colors.grey600}>
                 {contact.address}
                 {contact.address && <br />}
                 {contact.postalCode} {contact.city}
                 {contact.city && <br />}
                 <Link
                   href={`mailto:${contact.email}`}
-                  textColor={theme.color}
+                  textColor={colors.grey600}
                   styleVariant={theme.theme}
                 >
                   {contact.email}
@@ -87,7 +81,7 @@ export default function Contact({ data }) {
                 <br />
                 <Link
                   href={`tel:${formatPhone(contact.phone)}`}
-                  textColor={theme.color}
+                  textColor={colors.grey600}
                   styleVariant={theme.theme}
                 >
                   {contact.phone}
@@ -143,7 +137,7 @@ export default function Contact({ data }) {
           ))}
         </Grid>
       </Section>
-    </Layout>
+    </Layout >
   )
 }
 

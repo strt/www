@@ -7,7 +7,7 @@ import Hero from '../components/Hero'
 import Link from '../components/Link'
 import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
-import { H1, H4, Excerpt, Text } from '../components/Text'
+import { H1, H2, H3, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { vw, breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -16,13 +16,6 @@ import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
 import Image from '../components/Image'
 // eslint-disable-next-line import/no-named-as-default
-import ImageLogo from '../components/ImageLogo'
-
-const LargeText = styled(Excerpt)`
-  @media ${breakpoints.medium} {
-    max-width: 100%;
-  }
-`
 
 const ManifestoImageWrapper = styled.div`
   position: relative;
@@ -128,52 +121,39 @@ export default function Career({ data }) {
   const hasOpenPositions = positions.length > 0
 
   const theme = useContext(ThemeContext)
-  if (theme.theme !== 'purple') theme.toggleTheme('purple')
+  if (theme.theme !== 'lightGray') theme.toggleTheme('lightGray')
 
   return (
     <Layout
       meta={getMetaFromPost(data.contentfulPage.page)}
       bg={theme.background}
     >
-      <Hero pb={0} keepContentMargin>
+      <Hero pb={8} keepContentMargin>
         <H1 textColor={theme.color}>{page.title}</H1>
+        <Excerpt textColor={theme.color}>
+          {page.excerpt.excerpt}
+        </Excerpt>
       </Hero>
-
-      <Section>
-        <ImageLogoItem>
-          <ImageLogo />
-        </ImageLogoItem>
-
-        {page.excerpt && (
-          <Grid>
-            <Column>
-              <LargeText textColor={theme.color}>
-                {page.excerpt.excerpt}
-              </LargeText>
-            </Column>
-          </Grid>
-        )}
-      </Section>
 
       {hasOpenPositions && (
         <Section>
           <Grid>
             <Column>
-              <H4 as="h2" textColor={theme.color} mb={[3, 4]}>
+              <H2 textColor={theme.color} mb={[3, 4]}>
                 {secondHeader}
-              </H4>
+              </H2>
               <ul>
                 {positions.map(({ node }) => (
                   <li key={node.id}>
-                    <Text mb={[2, 3]} textColor={theme.color}>
+                    <H3 mb={[2, 3]} textColor={theme.linkColor}>
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
-                        textColor={theme.color}
+                        textColor={theme.linkColor}
                         styleVariant={theme.theme}
                       >
                         {node.role}
                       </Link>
-                    </Text>
+                    </H3>
                   </li>
                 ))}
               </ul>
@@ -182,7 +162,7 @@ export default function Career({ data }) {
         </Section>
       )}
 
-      {hasOpenPositions && (
+      {/* {hasOpenPositions && (
         <Section>
           <Grid>
             <Column>
@@ -191,7 +171,7 @@ export default function Career({ data }) {
               </H4>
               <Text>
                 <Link
-                  textColor={theme.color}
+                  textColor={theme.linkColor}
                   styleVariant={theme.theme}
                   href={`mailto:${contact.email}`}
                 >
@@ -201,7 +181,9 @@ export default function Career({ data }) {
             </Column>
           </Grid>
         </Section>
-      )}
+      )} */}
+
+
 
       {manifesto && (
         <Section>
