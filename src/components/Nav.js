@@ -78,9 +78,6 @@ const NavWrapper = styled.nav`
       }
 
       a {
-        &:focus {
-          background-color: ${colors.orange300};
-        }
       }
     }
   }

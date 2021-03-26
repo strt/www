@@ -33,18 +33,19 @@ export const A = styled.a`
     text-decoration: underline;
   }
 
-  &:focus {
+  &:focus-visible {
     background-color: ${colors.orange300};
-    text-decoration: none;
-  }
-
-  &:active {
-    background-color: ${colors.orange100};
     text-decoration: none;
   }
 
   &[aria-current],
   &[data-partially-current] {
+    opacity: 1;
+  }
+  
+  &:active {
+    background-color: ${colors.orange100};
+    text-decoration: none;
   }
 
   button& {
