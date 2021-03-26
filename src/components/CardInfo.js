@@ -8,7 +8,7 @@ const CardWrapper = styled.div`
   bottom: -20%;
   right: 0;
   margin-left: auto;
-  max-width: 688px;
+  max-width: 50%;
   padding: 2rem;
   background-color: ${colors.orange100};
 
@@ -21,7 +21,7 @@ const CardWrapper = styled.div`
   }
 
   @media ${breakpoints.medium} {
-    padding: 4rem 7.5rem;
+    padding: 4rem 8.5rem;
   }
 `
 

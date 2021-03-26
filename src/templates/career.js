@@ -11,7 +11,7 @@ import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
 import { H1, H2, H3, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { breakpoints } from '../style'
+import { breakpoints, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
@@ -22,6 +22,18 @@ import joinImage from '../assets/join.png'
 
 const CardImageBlock = styled.div`
   position: relative;
+
+  .career-cover {
+    padding-top: 100%;
+
+    @media ${breakpoints.small} {
+      padding-top: 70%;
+    }
+
+    @media ${breakpoints.medium} {
+      padding-top: 46%;
+    }
+  }
 `
 
 const ManifestoImageWrapper = styled.div`
@@ -30,6 +42,7 @@ const ManifestoImageWrapper = styled.div`
   @media ${breakpoints.medium} {
     min-height: 450px;
   }
+
   @media ${breakpoints.large} {
     min-height: 650px;
   }
@@ -144,26 +157,26 @@ export default function Career({ data }) {
           </Grid>
         </Section>
       )}
-
-      <CardImageBlock>
-        <Cover style={{ paddingTop: '46%' }}>
-          <img src={joinImage} alt="" />
-        </Cover>
-
-        <CardInfo
-          title="Vi letar alltid efter nya talanger."
-          text={spontaneousTitle}
-          link={`mailto:${contact.email}`}
-          linkText={contact.email}
-          position="absolute"
-        />
-      </CardImageBlock>
+      <Section>
+        <CardImageBlock>
+          <Cover className="career-cover">
+            <img src={joinImage} alt="" />
+          </Cover>
+          <CardInfo
+            title="Vi letar alltid efter nya talanger."
+            text={spontaneousTitle}
+            link={`mailto:${contact.email}`}
+            linkText={contact.email}
+            position="absolute"
+          />
+        </CardImageBlock>
+      </Section>
 
       {manifesto && (
-        <Section>
-          <Grid pt={20}>
+        <Section bg={colors.grey800}>
+          <Grid mt={70}>
             <Column>
-              <H1
+              {/* <H1
                 as="h2"
                 textColor={theme.color}
                 dangerouslySetInnerHTML={{
@@ -172,7 +185,7 @@ export default function Career({ data }) {
                     '<br/>',
                   ),
                 }}
-              />
+              /> */}
               {manifestoImages && (
                 <ManifestoImageWrapper>
                   {manifestoImages.map(item => (
@@ -186,7 +199,7 @@ export default function Career({ data }) {
           </Grid>
           <ContentWrapper>
             <Grid>
-              <RichText document={manifesto.json} />
+              <RichText style={{ color: 'red' }} document={manifesto.json} />
             </Grid>
           </ContentWrapper>
         </Section>
