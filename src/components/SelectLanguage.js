@@ -53,12 +53,13 @@ const Li = styled.li`
   }
 
   a {
-    opacity: 0.65;
+    opacity: 0.56;
 
     &:active,
     &[aria-current],
     &[data-partially-current] {
       opacity: 1;
+      text-decoration: underline;
     }
 
 
