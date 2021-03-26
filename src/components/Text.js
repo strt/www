@@ -96,6 +96,7 @@ export const JumboH1 = styled.h1`
   })}
 
   @media ${breakpoints.medium} {
+    padding: 0;
     font-size: 8rem;
     line-height: 1.1;
   }
