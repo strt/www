@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -8,45 +7,10 @@ import Link from '../components/Link'
 import Section from '../components/Section'
 import Image from '../components/Image'
 import { Grid, Column } from '../components/Grid'
-import { base, H1, H4, Text, Excerpt } from '../components/Text'
+import { H1, H4, Text, TextSmall, Excerpt } from '../components/Text'
 import { formatPhone } from '../lib/format'
-import { breakpoints, breakpointNr, fluidRange, colors } from '../style'
+import { colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-
-const SmallText = styled(Text)`
-  width: 100%;
-  overflow: hidden;
-  line-height: 1.4em;
-  ${base}
-  font-size: 0.75em;
-
-  @media ${breakpoints.medium} {
-    font-size: 0.8em;
-  }
-
-  @media ${breakpoints.large} {
-    font-size: ${fluidRange({
-  min: 16,
-  max: 20,
-  viewportMin: breakpointNr.large,
-  viewportMax: breakpointNr.xlarge,
-})};
-  }
-
-  @media ${breakpoints.xlarge} {
-    font-size: 1.25em;
-  }
-
-  a::after {
-    bottom: -30%;
-    background-size: 9px 11px;
-
-    @media ${breakpoints.large} {
-      bottom: -20%;
-      background-size: 15px 11px;
-    }
-  }
-`
 
 export default function Contact({ data }) {
   const { page, contacts } = data.contentfulPage
@@ -107,31 +71,31 @@ export default function Contact({ data }) {
                 {node.firstName} {node.lastName}
               </Text>
               {node.role && (
-                <SmallText mb={0.5} textColor={theme.color}>
+                <TextSmall mb={0.5} textColor={theme.color}>
                   {node.role}
-                </SmallText>
+                </TextSmall>
               )}
               {node.email && (
-                <SmallText mb={0.5} textColor={theme.color}>
+                <TextSmall mb={0.5} textColor={colors.grey600}>
                   <Link
                     href={`mailto:${node.email}`}
-                    textColor={theme.color}
+                    textColor={colors.grey600}
                     styleVariant={theme.theme}
                   >
                     {node.email}
                   </Link>
-                </SmallText>
+                </TextSmall>
               )}
               {node.phone && (
-                <SmallText mb="0" textColor={theme.color}>
+                <TextSmall mb="0" textColor={colors.grey600}>
                   <Link
                     href={`tel:${formatPhone(node.phone)}`}
-                    textColor={theme.color}
+                    textColor={colors.grey600}
                     styleVariant={theme.theme}
                   >
                     {node.phone}
                   </Link>
-                </SmallText>
+                </TextSmall>
               )}
             </Column>
           ))}

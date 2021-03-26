@@ -183,8 +183,6 @@ export default function Career({ data }) {
         </Section>
       )} */}
 
-
-
       {manifesto && (
         <Section>
           <Grid pt={20}>
