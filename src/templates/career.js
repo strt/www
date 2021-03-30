@@ -4,23 +4,35 @@ import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
+import Cover from '../components/Cover'
+import Image from '../components/Image'
 import Link from '../components/Link'
 import Section from '../components/Section'
 import InstagramFeed from '../components/InstagramFeed'
-import { H1, H4, Excerpt, Text } from '../components/Text'
+import { H1, H2, H3, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { vw, breakpoints } from '../style'
+import { breakpoints, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { getActiveLangPath } from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
-import Image from '../components/Image'
+import CardInfo from '../components/CardInfo'
 // eslint-disable-next-line import/no-named-as-default
-import ImageLogo from '../components/ImageLogo'
+import joinImage from '../assets/join.png'
 
-const LargeText = styled(Excerpt)`
-  @media ${breakpoints.medium} {
-    max-width: 100%;
+const CardImageBlock = styled.div`
+  position: relative;
+
+  .career-cover {
+    padding-top: 100%;
+
+    @media ${breakpoints.small} {
+      padding-top: 70%;
+    }
+
+    @media ${breakpoints.medium} {
+      padding-top: 46%;
+    }
   }
 `
 
@@ -30,6 +42,7 @@ const ManifestoImageWrapper = styled.div`
   @media ${breakpoints.medium} {
     min-height: 450px;
   }
+
   @media ${breakpoints.large} {
     min-height: 650px;
   }
@@ -90,27 +103,6 @@ const ManifestoImage = styled.div`
   }
 `
 
-const ImageLogoItem = styled.div`
-  position: absolute;
-  right: 0;
-  width: 20%;
-  margin-right: 25px;
-  margin-top: 20%;
-
-  @media ${breakpoints.small} {
-    padding-right: 15px;
-    margin-right: ${vw(40)};
-  }
-
-  @media ${breakpoints.medium} {
-    width: 30%;
-    margin-top: 10%;
-  }
-
-  @media ${breakpoints.large} {
-    margin-top: 0;
-  }
-`
 export default function Career({ data }) {
   const {
     contact,
@@ -128,52 +120,36 @@ export default function Career({ data }) {
   const hasOpenPositions = positions.length > 0
 
   const theme = useContext(ThemeContext)
-  if (theme.theme !== 'purple') theme.toggleTheme('purple')
+  if (theme.theme !== 'lightGray') theme.toggleTheme('lightGray')
 
   return (
     <Layout
       meta={getMetaFromPost(data.contentfulPage.page)}
       bg={theme.background}
     >
-      <Hero pb={0} keepContentMargin>
+      <Hero pb={8} keepContentMargin>
         <H1 textColor={theme.color}>{page.title}</H1>
+        <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
       </Hero>
 
-      <Section>
-        <ImageLogoItem>
-          <ImageLogo />
-        </ImageLogoItem>
-
-        {page.excerpt && (
-          <Grid>
-            <Column>
-              <LargeText textColor={theme.color}>
-                {page.excerpt.excerpt}
-              </LargeText>
-            </Column>
-          </Grid>
-        )}
-      </Section>
-
       {hasOpenPositions && (
-        <Section>
+        <Section pb={8}>
           <Grid>
             <Column>
-              <H4 as="h2" textColor={theme.color} mb={[3, 4]}>
+              <H2 textColor={theme.color} mb={[3, 4]}>
                 {secondHeader}
-              </H4>
+              </H2>
               <ul>
                 {positions.map(({ node }) => (
                   <li key={node.id}>
-                    <Text mb={[2, 3]} textColor={theme.color}>
+                    <H3 mb={[2, 3]} textColor={theme.linkColor}>
                       <Link
                         to={`${getActiveLangPath()}/join-us/${node.slug}`}
-                        textColor={theme.color}
-                        styleVariant={theme.theme}
+                        textColor={theme.linkColor}
                       >
                         {node.role}
                       </Link>
-                    </Text>
+                    </H3>
                   </li>
                 ))}
               </ul>
@@ -181,33 +157,26 @@ export default function Career({ data }) {
           </Grid>
         </Section>
       )}
-
-      {hasOpenPositions && (
-        <Section>
-          <Grid>
-            <Column>
-              <H4 as="h2" textColor={theme.color}>
-                {spontaneousTitle}
-              </H4>
-              <Text>
-                <Link
-                  textColor={theme.color}
-                  styleVariant={theme.theme}
-                  href={`mailto:${contact.email}`}
-                >
-                  {contact.email}
-                </Link>
-              </Text>
-            </Column>
-          </Grid>
-        </Section>
-      )}
+      <Section>
+        <CardImageBlock>
+          <Cover className="career-cover">
+            <img src={joinImage} alt="" />
+          </Cover>
+          <CardInfo
+            title="Vi letar alltid efter nya talanger."
+            text={spontaneousTitle}
+            link={`mailto:${contact.email}`}
+            linkText={contact.email}
+            position="absolute"
+          />
+        </CardImageBlock>
+      </Section>
 
       {manifesto && (
-        <Section>
-          <Grid pt={20}>
+        <Section bg={colors.grey800}>
+          <Grid mt={70}>
             <Column>
-              <H1
+              {/* <H1
                 as="h2"
                 textColor={theme.color}
                 dangerouslySetInnerHTML={{
@@ -216,7 +185,7 @@ export default function Career({ data }) {
                     '<br/>',
                   ),
                 }}
-              />
+              /> */}
               {manifestoImages && (
                 <ManifestoImageWrapper>
                   {manifestoImages.map(item => (
@@ -230,7 +199,7 @@ export default function Career({ data }) {
           </Grid>
           <ContentWrapper>
             <Grid>
-              <RichText document={manifesto.json} />
+              <RichText style={{ color: 'red' }} document={manifesto.json} />
             </Grid>
           </ContentWrapper>
         </Section>

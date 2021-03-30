@@ -35,10 +35,6 @@ const gridGutter = {
   default: '32px',
 }
 
-const gridWidth = {
-  default: '1408px',
-}
-
 export const Grid = styled(CleanTag)(
   {
     display: 'flex',
@@ -48,7 +44,6 @@ export const Grid = styled(CleanTag)(
     paddingRight: fluidRange({ min: 8, max: 12 }),
     paddingLeft: fluidRange({ min: 8, max: 12 }),
     width: '100%',
-    maxWidth: gridWidth.default,
     [`@media ${breakpoints.small}`]: {
       paddingRight: `16px`,
       paddingLeft: `16px`,
@@ -98,7 +93,6 @@ export const Column = styled(CleanTag)(
  */
 export const CssGrid = styled.div`
   display: grid;
-  max-width: calc(${gridWidth.default} + (${gridGutter.default} * 2));
   margin: 0 auto;
   grid-row-gap: calc(${gutter.default});
   grid-template-columns:

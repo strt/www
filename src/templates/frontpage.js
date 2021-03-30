@@ -56,8 +56,15 @@ const CompanyOfTheYearBlock = styled.div`
   justify-content: center;
   align-items: center;
 
-  a:hover {
-    opacity: 1;
+  a {
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 1px dotted;
+      background-color: transparent;
+    }
   }
 `
 
@@ -87,8 +94,9 @@ export default function Index({ data }) {
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
               <Link
-                to={`${getActiveLangPath()}/${routes.news.link
-                  }/arets-byra-igen`}
+                to={`${getActiveLangPath()}/${
+                  routes.news.link
+                }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
                   src={

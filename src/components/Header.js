@@ -51,7 +51,12 @@ const StyledHeader = styled.header`
   }
 
   .langColumn {
-    margin-left: auto;
+    display: none;
+
+    @media (min-width: 803px) {
+      display: inherit;
+      margin-left: auto;
+    }
 
     @media (min-width: 1100px) {
       position: absolute;
