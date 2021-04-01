@@ -15,7 +15,10 @@ import { IconButton } from './Button'
 import Link from './Link'
 import Icon from './Icon'
 import { Grid, Column } from './Grid'
-import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
+import SelectLanguageWrapper, {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
@@ -76,9 +79,6 @@ const NavWrapper = styled.nav`
       &:last-child {
         padding-right: 0;
       }
-
-      a {
-      }
     }
   }
 
@@ -123,6 +123,12 @@ const NavWrapper = styled.nav`
       transform-origin: left center;
     }
   }
+`
+
+const LangWrapper = styled.div`
+  z-index: 1;
+  position: relative;
+  display: flex;
 `
 
 const NAV_ID = 'navigation'
@@ -291,7 +297,18 @@ function Navigation({ location }) {
                 }}
               />
               <Grid>
-                <Column>
+                <Column sm={6}>
+                  <LangWrapper>
+                    <ul
+                      style={{
+                        display: 'flex',
+                      }}
+                    >
+                      <SelectLanguageWrapper />
+                    </ul>
+                  </LangWrapper>
+                </Column>
+                <Column sm={6}>
                   <div
                     style={{
                       position: 'relative',
