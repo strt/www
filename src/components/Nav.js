@@ -22,7 +22,7 @@ import SelectLanguageWrapper, {
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
-import { colors, fluidRange, easings, durations, vw } from '../style'
+import { colors, fluidRange, easings, durations, vw, breakpoints } from '../style'
 import { mainNavigation } from '../routes'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -129,6 +129,14 @@ const LangWrapper = styled.div`
   z-index: 1;
   position: relative;
   display: flex;
+  justify-content: flex-end;
+  margin-top: 1.4rem;
+  margin-right: 1rem;
+
+  @media ${breakpoints.small} {
+    margin-top: 2.6rem;
+    margin-right: 0;
+  }
 `
 
 const NAV_ID = 'navigation'
@@ -297,18 +305,18 @@ function Navigation({ location }) {
                 }}
               />
               <Grid>
-                <Column sm={6}>
+                <Column smDown={8} sm={7}>
                   <LangWrapper>
                     <ul
                       style={{
                         display: 'flex',
                       }}
                     >
-                      <SelectLanguageWrapper />
+                      <SelectLanguageWrapper textColor="white" />
                     </ul>
                   </LangWrapper>
                 </Column>
-                <Column sm={6}>
+                <Column smDown={4} sm={5}>
                   <div
                     style={{
                       position: 'relative',

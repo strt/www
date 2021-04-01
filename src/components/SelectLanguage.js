@@ -65,7 +65,7 @@ const Li = styled.li`
 
 `
 
-function SelectLanguage({ location }) {
+function SelectLanguage({ location, ...props }) {
   return (
     <ThemeContext.Consumer>
       {theme => (
@@ -76,14 +76,14 @@ function SelectLanguage({ location }) {
                 setActiveLang('sv')
               }}
               to={getUrl(location, 'sv')}
-              textColor={theme.color}
+              textColor={props.textColor || theme.color}
             >
               Sv
            </Link>
           </Li>
           <Li style={{ padding: '0 5px' }}>
             <TextSmall style={{ lineHeight: 'inherit' }}
-              textColor={theme.color}
+              textColor={props.textColor || theme.color}
             >
               /
            </TextSmall>
@@ -94,22 +94,19 @@ function SelectLanguage({ location }) {
               onClick={() => {
                 setActiveLang('en')
               }}
-              textColor={theme.color}
+              textColor={props.textColor || theme.color}
             >
               En
            </Link>
           </Li>
         </>
       )}
-
-
     </ThemeContext.Consumer>
   )
 }
-
-export default function SelectLanguageWrapper() {
+export default function SelectLanguageWrapper({ textColor }) {
   const cb = useCallback(({ location }) => {
-    return <SelectLanguage location={location} />
+    return <SelectLanguage location={location} textColor={textColor} />
   }, [])
   return <Location>{cb}</Location>
 }
