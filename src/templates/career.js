@@ -208,8 +208,8 @@ export default function Career({ data }) {
         </Section>
       )}
 
-      <Section bg={theme.background} pt="0">
-        <InstagramFeed halfTopBg={theme.background} />
+      <Section bg={colors.dark}>
+        <InstagramFeed halfTopBg={colors.grey800} />
       </Section>
     </Layout>
   )
