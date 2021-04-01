@@ -15,12 +15,12 @@ import EmbedPlayer from '../components/EmbedPlayer'
 import { ScrollToTopButton } from '../components/Button'
 import Tags from '../components/Tags'
 import ContentWrapper from '../components/ContentWrapper'
-import { fluidRange, breakpoints, breakpointNr, colors } from '../style'
+import { breakpoints, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
 import Awards from '../components/Awards'
-import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
+import { isDefaultLanguage } from '../components/SelectLanguage'
 
 const ContactText = styled(Text)`
   font-size: 1rem;
@@ -55,11 +55,7 @@ export default function Case({ data, pageContext: { next } }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulCase)}>
       <article>
-        <Grid
-          justifyContent="space-between"
-          alignItems="flex-start"
-          pt={1}
-        >
+        <Grid justifyContent="space-between" alignItems="flex-start" pt={1}>
           <Column sm={12} md={8}>
             <Clientblock>
               {client && (
@@ -158,7 +154,7 @@ export default function Case({ data, pageContext: { next } }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    contentfulCase: contentfulCases(
+    contentfulCase: contentfulCase(
       slug: { eq: $slug }
       node_locale: { eq: $locale }
     ) {

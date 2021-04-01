@@ -45,7 +45,7 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
   const contentfulCases = await graphql(`
     {
-      allContentfulCases {
+      allContentfulCase {
         edges {
           node {
             slug
@@ -90,7 +90,7 @@ exports.createPages = async ({ actions, graphql }) => {
     // registerRedirectsFromNode(page.node)
   })
 
-  contentfulCases.data.allContentfulCases.edges.forEach(({ node }) => {
+  contentfulCases.data.allContentfulCase.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     createPage({
       path: `${localePath}/work${slug}`,
