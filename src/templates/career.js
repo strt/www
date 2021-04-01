@@ -73,9 +73,30 @@ const OurManifestText = styled.div`
   display: flex;
   align-items: center;
 
+  h2 {
+    font-size: 4rem;
+  }
+
+  @media ${breakpoints.small} {
+    h2 {
+      font-size: 9rem;
+    }
+  }
+
   @media ${breakpoints.medium} {
     width: 66.66%;
+
+    h2 {
+      font-size: 10rem;
+    }
   }
+
+  @media ${breakpoints.large} {
+    h2 {
+      font-size: 13rem;
+    }
+  }
+
 `
 
 export default function Career({ data }) {
@@ -170,7 +191,7 @@ export default function Career({ data }) {
           </Grid>
           <ContentWrapper>
             <ManifestTextWrapper>
-              <Grid>
+              <Grid mt={[7, 10]} mb={[7, 10]}>
                 <Column className="manifestHeadline">
                   <OurManifestText>
                     <H2 textColor={colors.grey700}>Vårt <br /> manifest</H2>
