@@ -3,7 +3,7 @@ import { colors } from '../style'
 
 const defaultState = {
   color: 'white',
-  toggleTheme: () => {},
+  toggleTheme: () => { },
 }
 
 // DO A SWITCH DEPENDING ON THEME
