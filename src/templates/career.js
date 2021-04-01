@@ -103,6 +103,12 @@ const ManifestoImage = styled.div`
   }
 `
 
+const CareerText = styled.div`
+  p {
+    color: white;
+  }
+`
+
 export default function Career({ data }) {
   const {
     contact,
@@ -199,7 +205,9 @@ export default function Career({ data }) {
           </Grid>
           <ContentWrapper>
             <Grid>
-              <RichText style={{ color: 'red' }} document={manifesto.json} />
+              <CareerText>
+                <RichText document={manifesto.json} />
+              </CareerText>
             </Grid>
           </ContentWrapper>
         </Section>

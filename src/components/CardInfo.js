@@ -21,7 +21,7 @@ const CardWrapper = styled.div`
   }
 
   @media ${breakpoints.medium} {
-    padding: 4rem 8.5rem;
+    padding: 5rem 8.5rem;
   }
 `
 
