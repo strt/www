@@ -5,10 +5,10 @@ import { TextSmall, H3 } from './Text'
 import { colors, breakpoints } from '../style'
 
 const CardWrapper = styled.div`
-  bottom: -20%;
+  bottom: -40%;
   right: 0;
   margin-left: auto;
-  max-width: 50%;
+  max-width: 75%;
   padding: 2rem;
   background-color: ${colors.orange100};
 
@@ -20,8 +20,23 @@ const CardWrapper = styled.div`
     margin-bottom: 0;
   }
 
+  @media ${breakpoints.small} {
+    bottom: -20%;
+    right: 0;
+    max-width: 50%;
+    padding: 4rem 4rem;
+  }
+
   @media ${breakpoints.medium} {
-    padding: 4rem 8.5rem;
+    bottom: -30%;
+    right: 0;
+    max-width: 50%;
+    padding: 4rem 5.5rem;
+  }
+
+  @media ${breakpoints.large} {
+    bottom: -20%;
+    padding: 5rem 6rem;
   }
 `
 

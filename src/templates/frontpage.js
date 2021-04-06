@@ -88,7 +88,7 @@ export default function Index({ data }) {
     <Layout meta={getMetaFromPost(page)}>
       <StyledHero pb={[2, 6]}>
         <Grid>
-          <Column md={10} sm={10} smDown={9}>
+          <Column md={10} sm={10} smDown={12}>
             <FrontH1 heroContent={hero} />
           </Column>
           <Column md={2} sm={2} smDown={3}>

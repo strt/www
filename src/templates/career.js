@@ -36,71 +36,67 @@ const CardImageBlock = styled.div`
   }
 `
 
-const ManifestoImageWrapper = styled.div`
-  position: relative;
+const ManifestoImage = styled.div`
+  margin-top: -5rem;
 
-  @media ${breakpoints.medium} {
-    min-height: 450px;
+  @media ${breakpoints.small} {
+    margin-top: -15rem;
   }
 
-  @media ${breakpoints.large} {
-    min-height: 650px;
+  @media ${breakpoints.medium} {
+    margin-top: -16rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width 80%;
   }
 `
 
-const ManifestoImage = styled.div`
-  position: relative;
-  max-width: 25%;
-  padding: 10px;
-  display: inline-block;
+const CareerTextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p, h2 {
+    color: white;
+  }
+`
+
+const ManifestTextWrapper = styled.div`
+  .manifestHeadline {
+    @media ${breakpoints.medium} {
+      align-items: center;
+    }
+  }
+`
+
+const OurManifestText = styled.div`
+  display: flex;
+  align-items: center;
+
+  h2 {
+    font-size: 4rem;
+  }
+
+  @media ${breakpoints.small} {
+    h2 {
+      font-size: 9rem;
+    }
+  }
 
   @media ${breakpoints.medium} {
-    position: absolute;
-    max-width: 200px;
+    width: 66.66%;
+
+    h2 {
+      font-size: 10rem;
+    }
   }
 
   @media ${breakpoints.large} {
-    max-width: 360px;
-  }
-
-  &:nth-of-type(1) {
-    @media ${breakpoints.medium} {
-      top: -125px;
-      right: 0;
+    h2 {
+      font-size: 13rem;
     }
   }
 
-  &:nth-of-type(2) {
-    @media ${breakpoints.medium} {
-      top: 200px;
-      right: 0;
-    }
-    @media ${breakpoints.large} {
-      top: 300px;
-    }
-  }
-
-  &:nth-of-type(3) {
-    @media ${breakpoints.medium} {
-      top: 30px;
-      right: 220px;
-    }
-    @media ${breakpoints.large} {
-      top: 100px;
-      right: 320px;
-    }
-  }
-
-  &:nth-of-type(4) {
-    @media ${breakpoints.medium} {
-      top: 200px;
-      right: 440px;
-    }
-    @media ${breakpoints.large} {
-      top: 300px;
-      right: 640px;
-    }
-  }
 `
 
 export default function Career({ data }) {
@@ -111,7 +107,7 @@ export default function Career({ data }) {
     secondHeader,
     manifestoHeader,
     manifesto,
-    manifestoImages,
+    manifestoCollection
   } = data.contentfulPage
 
   const positions = data.allContentfulPositions.edges.filter(
@@ -157,7 +153,7 @@ export default function Career({ data }) {
           </Grid>
         </Section>
       )}
-      <Section>
+      <Section pb={[15, 0]}>
         <CardImageBlock>
           <Cover className="career-cover">
             <img src={joinImage} alt="" />
@@ -174,7 +170,7 @@ export default function Career({ data }) {
 
       {manifesto && (
         <Section bg={colors.grey800}>
-          <Grid mt={70}>
+          <Grid mt={[20, 90]}>
             <Column>
               {/* <H1
                 as="h2"
@@ -186,27 +182,34 @@ export default function Career({ data }) {
                   ),
                 }}
               /> */}
-              {manifestoImages && (
-                <ManifestoImageWrapper>
-                  {manifestoImages.map(item => (
-                    <ManifestoImage key={`badge${item.contentful_id}`}>
-                      <Image src={item.fixed.src} alt={item.title} />
-                    </ManifestoImage>
-                  ))}
-                </ManifestoImageWrapper>
+              {manifestoCollection && (
+                <ManifestoImage>
+                  <Image src={manifestoCollection.fluid.src} alt={manifestoCollection.title} />
+                </ManifestoImage>
               )}
             </Column>
           </Grid>
           <ContentWrapper>
-            <Grid>
-              <RichText style={{ color: 'red' }} document={manifesto.json} />
-            </Grid>
+            <ManifestTextWrapper>
+              <Grid mt={[7, 10]} mb={[7, 10]}>
+                <Column className="manifestHeadline">
+                  <OurManifestText>
+                    <H2 textColor={colors.grey700}>Vårt <br /> manifest</H2>
+                  </OurManifestText>
+                </Column>
+              </Grid>
+              <Grid>
+                <CareerTextWrapper>
+                  <RichText document={manifesto.json} />
+                </CareerTextWrapper>
+              </Grid>
+            </ManifestTextWrapper>
           </ContentWrapper>
         </Section>
       )}
 
-      <Section bg={theme.background} pt="0">
-        <InstagramFeed halfTopBg={theme.background} />
+      <Section bg={colors.dark}>
+        <InstagramFeed halfTopBg={colors.grey800} />
       </Section>
     </Layout>
   )
@@ -228,10 +231,10 @@ export const pageQuery = graphql`
       manifesto {
         json
       }
-      manifestoImages {
+      manifestoCollection {
         contentful_id
         title
-        fixed: resize(width: 300, height: 300, quality: 80) {
+        fluid: fluid(quality: 100, maxWidth: 1060) {
           src
         }
       }

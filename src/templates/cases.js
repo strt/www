@@ -202,7 +202,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    cases: allContentfulCases(
+    cases: allContentfulCase(
       filter: { node_locale: { eq: $locale } }
       sort: { fields: [oldDate, createdAt], order: [DESC, DESC] }
     ) {
