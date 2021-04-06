@@ -47,7 +47,7 @@ const ManifestoImage = styled.div`
     margin-top: -16rem;
     margin-left: auto;
     margin-right: auto;
-    max-width 80%;
+    max-width 70%;
   }
 `
 
@@ -87,7 +87,7 @@ const OurManifestText = styled.div`
     width: 66.66%;
 
     h2 {
-      font-size: 10rem;
+      font-size: 11rem;
     }
   }
 
@@ -170,7 +170,7 @@ export default function Career({ data }) {
 
       {manifesto && (
         <Section bg={colors.grey800}>
-          <Grid mt={[20, 90]}>
+          <Grid mt={[20, 75]}>
             <Column>
               {/* <H1
                 as="h2"
@@ -191,7 +191,7 @@ export default function Career({ data }) {
           </Grid>
           <ContentWrapper>
             <ManifestTextWrapper>
-              <Grid mt={[7, 10]} mb={[7, 10]}>
+              <Grid mt={[7, 8]} mb={[7, 8]}>
                 <Column className="manifestHeadline">
                   <OurManifestText>
                     <H2 textColor={colors.grey700}>Vårt <br /> manifest</H2>
