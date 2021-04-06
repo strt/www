@@ -13,7 +13,7 @@ import { Excerpt } from '../components/Text'
 import { CssGrid } from '../components/Grid'
 import { breakpoints, colors, easings, animations, durations } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
 
 function filterCases(items, filter) {
   return items.filter(
@@ -195,7 +195,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    cases: allContentfulCases(
+    cases: allContentfulCase(
       filter: { node_locale: { eq: $locale } }
       sort: { fields: [oldDate, createdAt], order: [DESC, DESC] }
     ) {

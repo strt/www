@@ -20,7 +20,7 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
 import { formatPhone } from '../lib/format'
 import Awards from '../components/Awards'
-import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
 
 const StyledH1 = styled(H1)`
   margin-bottom: 0.175em;
@@ -37,11 +37,11 @@ const StyledH1 = styled(H1)`
 
   @media ${breakpoints.large} {
     font-size: ${fluidRange({
-      min: 99,
-      max: 148.5,
-      viewportMin: breakpointNr.large,
-      viewportMax: breakpointNr.xlarge,
-    })};
+  min: 99,
+  max: 148.5,
+  viewportMin: breakpointNr.large,
+  viewportMax: breakpointNr.xlarge,
+})};
   }
 
   @media ${breakpoints.xlarge} {
@@ -174,7 +174,7 @@ export default function Case({ data, pageContext: { next } }) {
 
 export const pageQuery = graphql`
   query($slug: String!, $locale: String!) {
-    contentfulCase: contentfulCases(
+    contentfulCase: contentfulCase(
       slug: { eq: $slug }
       node_locale: { eq: $locale }
     ) {
