@@ -11,7 +11,6 @@ import {
   breakpoints,
   mediaQuery,
   fluidRange,
-  vw,
 } from '../style'
 import { CleanTag } from './CleanTag'
 
@@ -105,11 +104,8 @@ export const CssGrid = styled.div`
   @media ${breakpoints.small} {
     grid-gap: calc(${gridGutter.default});
     grid-template-columns:
-      [full-start] calc(${vw(24)}) [grid-start] repeat(
-        12,
-        [col-start] 1fr [col-end]
-      )
-      [grid-end] calc(${vw(24)}) [full-end];
+      [full-start] 0 [grid-start] repeat(12, [col-start] 1fr [col-end])
+      [grid-end] 0 [full-end];
   }
 
   > * {
