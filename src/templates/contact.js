@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
@@ -18,6 +19,20 @@ export default function Contact({ data }) {
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
+  const ContactsSection = styled.div`
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:visited {
+        color: ${colors.grey600};
+      }
+    }
+  `
+
   return (
     <Layout meta={getMetaFromPost(page)}>
       <Hero>
@@ -25,43 +40,45 @@ export default function Contact({ data }) {
         <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
       </Hero>
 
-      <Section mb={[4, 7]}>
-        <Grid>
-          {contacts.map((contact, index) => (
-            <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
-              <H4>{contact.city || contact.title}</H4>
-              <Text textColor={colors.grey600}>
-                <a
-                  href={`http://maps.google.com/?q=${contact.address} ${contact.city}`}
-                  rel="noopener noreferrer"
-                  target="__blank"
-                >
-                  {contact.address}
-                  {contact.address && <br />}
-                  {contact.postalCode} {contact.city}
-                  {contact.city && <br />}
-                </a>
+      <ContactsSection>
+        <Section mb={[4, 7]}>
+          <Grid>
+            {contacts.map((contact, index) => (
+              <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
+                <H4>{contact.city || contact.title}</H4>
+                <Text textColor={colors.grey600}>
+                  <a
+                    href={`http://maps.google.com/?q=${contact.address} ${contact.city}`}
+                    rel="noopener noreferrer"
+                    target="__blank"
+                  >
+                    {contact.address}
+                    {contact.address && <br />}
+                    {contact.postalCode} {contact.city}
+                    {contact.city && <br />}
+                  </a>
 
-                <Link
-                  href={`mailto:${contact.email}`}
-                  textColor={colors.grey600}
-                  styleVariant={theme.theme}
-                >
-                  {contact.email}
-                </Link>
-                <br />
-                <Link
-                  href={`tel:${formatPhone(contact.phone)}`}
-                  textColor={colors.grey600}
-                  styleVariant={theme.theme}
-                >
-                  {contact.phone}
-                </Link>
-              </Text>
-            </Column>
-          ))}
-        </Grid>
-      </Section>
+                  <Link
+                    href={`mailto:${contact.email}`}
+                    textColor={colors.grey600}
+                    styleVariant={theme.theme}
+                  >
+                    {contact.email}
+                  </Link>
+                  <br />
+                  <Link
+                    href={`tel:${formatPhone(contact.phone)}`}
+                    textColor={colors.grey600}
+                    styleVariant={theme.theme}
+                  >
+                    {contact.phone}
+                  </Link>
+                </Text>
+              </Column>
+            ))}
+          </Grid>
+        </Section>
+      </ContactsSection>
       <Section pb={[10, 20]}>
         <Grid>
           {data.employees.edges.map(({ node }) => (
