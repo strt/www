@@ -64,6 +64,16 @@ export const A = styled.a`
         font-size: 1.5rem;
       }
     `}
+  ${props =>
+    props.variant === 'small' &&
+    css`
+      font-size: 1rem;
+      line-height: 1.4;
+    
+      @media ${breakpoints.small} {
+        font-size: 1.125rem;
+      }
+    `}
 `
 
 const RouterLink = props => {
@@ -81,7 +91,7 @@ const Link = React.forwardRef(({ to, ...props }, ref) => {
 
 Link.propTypes = {
   styleVariant: PropTypes.oneOf(Object.keys(UNDERLINE_VARIANTS)),
-  variant: PropTypes.oneOf(['large']),
+  variant: PropTypes.oneOf(['large', 'small']),
   to: PropTypes.string,
   textColor: PropTypes.string,
   href: PropTypes.string,
