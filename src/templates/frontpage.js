@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
-import { H2 } from '../components/Text'
+import { Excerpt, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -145,6 +145,17 @@ export default function Index({ data }) {
                 {casesLinkText}
               </Link>
             </Div>
+          </Column>
+        </Grid>
+      </Section>
+      <Section pt={[0, 5]} pb={[10, 25]}>
+        <Grid>
+          <Column>
+            <Excerpt>
+              Strateg är en kreativ byrå som utvecklar varumärken, kommunikation
+              och digitala upplevelser. Nyfikna och modiga gör vi det
+              tillsammans.
+            </Excerpt>
           </Column>
         </Grid>
       </Section>
