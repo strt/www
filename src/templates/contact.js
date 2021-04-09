@@ -31,10 +31,17 @@ export default function Contact({ data }) {
             <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
               <H4>{contact.city || contact.title}</H4>
               <Text textColor={colors.grey600}>
-                {contact.address}
-                {contact.address && <br />}
-                {contact.postalCode} {contact.city}
-                {contact.city && <br />}
+                <a
+                  href={`http://maps.google.com/?q=${contact.address} ${contact.city}`}
+                  rel="noopener noreferrer"
+                  target="__blank"
+                >
+                  {contact.address}
+                  {contact.address && <br />}
+                  {contact.postalCode} {contact.city}
+                  {contact.city && <br />}
+                </a>
+
                 <Link
                   href={`mailto:${contact.email}`}
                   textColor={colors.grey600}
@@ -101,7 +108,7 @@ export default function Contact({ data }) {
           ))}
         </Grid>
       </Section>
-    </Layout >
+    </Layout>
   )
 }
 
