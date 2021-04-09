@@ -12,7 +12,11 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import { StyledHero } from '../components/Hero'
 import FrontH1 from '../components/FrontH1'
-import { getActiveLangPath, getActiveLang } from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  getActiveLang,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -81,9 +85,9 @@ export default function Index({ data }) {
     featuredCases,
     casesLinkText,
     newsLinkText,
-    newsHeader,
     hero,
   } = data.contentfulPage
+
   return (
     <Layout meta={getMetaFromPost(page)}>
       <StyledHero pb={[2, 6]}>
@@ -148,7 +152,9 @@ export default function Index({ data }) {
         <Div halfTopBg={theme.background} mb={[2, 2]}>
           <Grid>
             <Column>
-              <H2 textColor={theme.color}>{newsHeader}</H2>
+              <H2 textColor={theme.color}>
+                {isDefaultLanguage() ? 'Aktuellt' : 'News'}
+              </H2>
             </Column>
           </Grid>
         </Div>
@@ -188,7 +194,6 @@ export const pageQuery = graphql`
     ) {
       casesLinkText
       newsLinkText
-      newsHeader
       featuredCases {
         id
         title
