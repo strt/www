@@ -151,11 +151,7 @@ export default function Index({ data }) {
       <Section pt={[0, 5]} pb={[10, 25]}>
         <Grid>
           <Column>
-            <Excerpt>
-              Strateg är en kreativ byrå som utvecklar varumärken, kommunikation
-              och digitala upplevelser. Nyfikna och modiga gör vi det
-              tillsammans.
-            </Excerpt>
+            <Excerpt>{page.excerpt.excerpt}</Excerpt>
           </Column>
         </Grid>
       </Section>
