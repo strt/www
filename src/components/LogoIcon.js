@@ -22,7 +22,7 @@ export default function LogoIcon({ ...props }) {
   return (
     <LogoIconWrapper {...props}>
       <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.42 74.42">
-        <title>Strateg Marknadsföring</title>
+        <title>Strateg Agency</title>
         <path
           className="a"
           d="M39.195,74.42H0V35.226H35.226V0H74.42V39.195H39.195ZM4.465,69.955h30.76V39.195H4.465ZM39.195,35.226h30.76V4.465H39.195Z"

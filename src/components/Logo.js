@@ -24,7 +24,7 @@ export default function Logo() {
           viewBox="0 0 186.896 25.367"
           style={{ color: theme.colorSecondary }}
         >
-          <title>Strateg Marknadsföring</title>
+          <title>Strateg Agency</title>
           <g transform="translate(0.1)">
             <path
               className="a"
