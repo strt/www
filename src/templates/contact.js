@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import Clipboard from 'clipboard'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -31,7 +32,22 @@ export default function Contact({ data }) {
         color: ${colors.grey600};
       }
     }
+
+    .textCopy {
+      cursor: pointer;
+      margin-bottom: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   `
+
+  const clip = new Clipboard('.textCopy')
+
+  clip.on('success', function(e) {
+    e.clearSelection()
+  })
 
   return (
     <Layout meta={getMetaFromPost(page)}>
@@ -57,15 +73,14 @@ export default function Contact({ data }) {
                     {contact.postalCode} {contact.city}
                     {contact.city && <br />}
                   </a>
-
-                  <Link
-                    href={`mailto:${contact.email}`}
+                  <Text
+                    className="textCopy"
+                    data-clipboard-text={contact.email}
                     textColor={colors.grey600}
                     styleVariant={theme.theme}
                   >
                     {contact.email}
-                  </Link>
-                  <br />
+                  </Text>
                   <Link
                     href={`tel:${formatPhone(contact.phone)}`}
                     textColor={colors.grey600}
