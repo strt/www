@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -11,6 +12,7 @@ import Link from '../components/Link'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { formatPhone } from '../lib/format'
+import { breakpoints, colors } from '../style'
 
 export default function About({ data }) {
   const { title, excerpt, image } = data.contentfulPage.page
@@ -20,6 +22,21 @@ export default function About({ data }) {
 
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'dark') theme.toggleTheme('dark')
+
+  const TextScroll = styled.div`
+    p {
+      margin-bottom: 0.275em;
+      font-size: 3rem;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -2px
+
+      @media ${breakpoints.medium} {
+        max-width: 75%;
+        font-size: 5.5rem;
+      }
+    }
+  `
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
@@ -43,8 +60,20 @@ export default function About({ data }) {
           </Column>
         )}
       </Grid>
+      <Grid pt={7}>
+        <Column>
+          <TextScroll>
+            <Text
+              textColor={colors.orange500}
+            >
+              Vi skapar förändring
+      </Text>
+          </TextScroll>
+        </Column>
+      </Grid>
+
       {contentColumns && (
-        <Grid pt={20}>
+        <Grid>
           {contentColumns.map(item => (
             <Column md={4} key={item.contentful_id}>
               {(() => {
