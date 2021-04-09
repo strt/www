@@ -182,7 +182,7 @@ export default function Career({ data }) {
           </Grid>
           <ContentWrapper>
             <ManifestTextWrapper>
-              <Grid mt={[7, 8]} mb={[7, 8]}>
+              <Grid mt={[4, 8]} mb={[4, 8]}>
                 <Column className="manifestHeadline">
                   <OurManifestText>
                     <H2 textColor={colors.grey700}>Vårt <br /> manifest</H2>
