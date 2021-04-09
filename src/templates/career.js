@@ -21,7 +21,8 @@ import CardInfo from '../components/CardInfo'
 
 const CardImageBlock = styled.div`
   position: relative;
-
+  width: 90%;
+  
   .career-cover {
     padding-top: 100%;
 
