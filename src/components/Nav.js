@@ -34,8 +34,8 @@ function getProps({ href, isPartiallyCurrent }) {
 const NavLink = styled(GatsbyLink)`
   display: inline-block;
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
-  font-size: ${fluidRange({ min: 36, max: 48 })};
-  line-height: 0.798611em;
+  font-size: 2.5rem;
+  line-height: 1.4;
   font-weight: 400;
   text-decoration: none;
   color: white;
