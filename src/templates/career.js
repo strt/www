@@ -18,7 +18,6 @@ import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
 import CardInfo from '../components/CardInfo'
 // eslint-disable-next-line import/no-named-as-default
-import joinImage from '../assets/join.png'
 
 const CardImageBlock = styled.div`
   position: relative;
@@ -103,6 +102,8 @@ export default function Career({ data }) {
   const {
     contact,
     spontaneousTitle,
+    spontaneousExcerpt,
+    heroImage,
     page,
     secondHeader,
     manifestoHeader,
@@ -156,10 +157,10 @@ export default function Career({ data }) {
       <Section pb={[15, 0]}>
         <CardImageBlock>
           <Cover className="career-cover">
-            <img src={joinImage} alt="" />
+            <Image fluid={heroImage.fluid} alt={heroImage.description} />
           </Cover>
           <CardInfo
-            title="Vi letar alltid efter nya talanger."
+            title={spontaneousExcerpt}
             text={spontaneousTitle}
             link={`mailto:${contact.email}`}
             linkText={contact.email}
@@ -172,16 +173,6 @@ export default function Career({ data }) {
         <Section bg={colors.grey800}>
           <Grid mt={[20, 75]}>
             <Column>
-              {/* <H1
-                as="h2"
-                textColor={theme.color}
-                dangerouslySetInnerHTML={{
-                  __html: manifestoHeader.manifestoHeader.replace(
-                    /\n/g,
-                    '<br/>',
-                  ),
-                }}
-              /> */}
               {manifestoCollection && (
                 <ManifestoImage>
                   <Image src={manifestoCollection.fluid.src} alt={manifestoCollection.title} />
@@ -223,7 +214,14 @@ export const pageQuery = graphql`
       contact {
         email
       }
+      heroImage {
+        fluid(quality: 80, maxWidth: 3000) {
+          ...GatsbyContentfulFluid
+        }
+        description
+      }
       spontaneousTitle
+      spontaneousExcerpt
       secondHeader
       manifestoHeader {
         manifestoHeader
