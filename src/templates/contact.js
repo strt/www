@@ -32,15 +32,6 @@ export default function Contact({ data }) {
         color: ${colors.grey600};
       }
     }
-
-    .textCopy {
-      cursor: pointer;
-      margin-bottom: 0;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   `
 
   const clip = new Clipboard('.textCopy')
@@ -63,7 +54,7 @@ export default function Contact({ data }) {
               <Column md={4} lg={index === 0 ? 6 : 3} key={contact.id}>
                 <H4>{contact.city || contact.title}</H4>
                 <Text textColor={colors.grey600}>
-                  <a
+                  <Link
                     href={`http://maps.google.com/?q=${contact.address} ${contact.city}`}
                     rel="noopener noreferrer"
                     target="__blank"
@@ -72,15 +63,17 @@ export default function Contact({ data }) {
                     {contact.address && <br />}
                     {contact.postalCode} {contact.city}
                     {contact.city && <br />}
-                  </a>
-                  <Text
-                    className="textCopy"
-                    data-clipboard-text={contact.email}
+                  </Link>
+                  <Link
+                    href={`mailto:${contact.email}`}
+                    // className="textCopy"
+                    // data-clipboard-text={contact.email}
                     textColor={colors.grey600}
                     styleVariant={theme.theme}
                   >
                     {contact.email}
-                  </Text>
+                  </Link>
+                  <br />
                   <Link
                     href={`tel:${formatPhone(contact.phone)}`}
                     textColor={colors.grey600}
