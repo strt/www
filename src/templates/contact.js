@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Clipboard from 'clipboard'
+// import Clipboard from 'clipboard'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -34,11 +34,11 @@ export default function Contact({ data }) {
     }
   `
 
-  const clip = new Clipboard('.textCopy')
+  // const clip = new Clipboard('.textCopy')
 
-  clip.on('success', function(e) {
-    e.clearSelection()
-  })
+  // clip.on('success', function(e) {
+  //   e.clearSelection()
+  // })
 
   return (
     <Layout meta={getMetaFromPost(page)}>
