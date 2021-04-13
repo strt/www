@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Svg as BaseSvg } from './Icon'
-import { colors, breakpoints, vw } from '../style'
+import { colors, breakpoints } from '../style'
 import { ThemeContext } from '../context/ThemeContext'
 
 const Svg = styled(BaseSvg)`
-  width: ${164 / 7.68}vw;
+  width: 8.125rem;
   min-width: 112px;
   height: auto;
   color: ${colors.dark};
 
   @media screen and ${breakpoints.medium} {
-    width: ${vw(188)};
+    width: 13rem;
   }
 `
 
@@ -24,7 +24,7 @@ export default function Logo() {
           viewBox="0 0 186.896 25.367"
           style={{ color: theme.colorSecondary }}
         >
-          <title>Strateg Marknadsföring</title>
+          <title>Strateg Agency</title>
           <g transform="translate(0.1)">
             <path
               className="a"

@@ -78,7 +78,9 @@ export default function Article({ data }) {
           <Div halfTopBg={theme.background} mb={[2, 4]}>
             <Grid>
               <Column>
-                <H2 textColor={theme.color}>News</H2>
+                <H2 textColor={theme.color}>
+                  {isDefaultLanguage() ? 'Aktuellt' : 'News'}
+                </H2>
               </Column>
             </Grid>
           </Div>
@@ -98,7 +100,7 @@ export default function Article({ data }) {
                 <Link
                   to={`${getActiveLangPath()}/${routes.news.link}`}
                   variant="large"
-                  textColor={colors.darkText}
+                  textColor={theme.linkColor}
                 >
                   {isDefaultLanguage() ? 'Fler nyheter' : 'More news'}
                 </Link>

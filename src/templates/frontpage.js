@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
-import { H2 } from '../components/Text'
+import { Excerpt, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -12,7 +12,11 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import { StyledHero } from '../components/Hero'
 import FrontH1 from '../components/FrontH1'
-import { getActiveLangPath, getActiveLang } from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  getActiveLang,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -81,9 +85,9 @@ export default function Index({ data }) {
     featuredCases,
     casesLinkText,
     newsLinkText,
-    newsHeader,
     hero,
   } = data.contentfulPage
+
   return (
     <Layout meta={getMetaFromPost(page)}>
       <StyledHero pb={[2, 6]}>
@@ -144,11 +148,20 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
+      <Section pt={[0, 5]} pb={[10, 25]}>
+        <Grid>
+          <Column>
+            <Excerpt>{page.excerpt.excerpt}</Excerpt>
+          </Column>
+        </Grid>
+      </Section>
       <Section bg={colors.lightGray} pt="0" pb={[5, 10]}>
         <Div halfTopBg={theme.background} mb={[2, 2]}>
           <Grid>
             <Column>
-              <H2 textColor={theme.color}>{newsHeader}</H2>
+              <H2 textColor={theme.color}>
+                {isDefaultLanguage() ? 'Aktuellt' : 'News'}
+              </H2>
             </Column>
           </Grid>
         </Div>
@@ -188,7 +201,6 @@ export const pageQuery = graphql`
     ) {
       casesLinkText
       newsLinkText
-      newsHeader
       featuredCases {
         id
         title

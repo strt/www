@@ -105,7 +105,7 @@ export default function Case({ data, location }) {
     window.history.replaceState({}, null, target.pathname + target.search)
   }
 
-  const { title } = data.contentfulPage
+  const { title, excerpt } = data.contentfulPage
   const cases = filterCases(data.cases.edges, filter)
   const tags = data.tags.edges
 
@@ -114,11 +114,10 @@ export default function Case({ data, location }) {
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage)}>
       <Hero>
-        <H1 textColor={theme.color}>{title}</H1>
-        <Excerpt>
-          Tillfälligt hårdkodat ingress tills ingressfältet är ifyllt i
-          contenful.
-        </Excerpt>
+        {title && <H1 textColor={theme.color}>{title}</H1>}
+        {excerpt && (
+          <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
+        )}
         {renderFilter === true && (
           <Filter>
             <Link
