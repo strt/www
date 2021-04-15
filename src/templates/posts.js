@@ -43,6 +43,15 @@ export default function News({ data }) {
     }
   `
 
+  const NewsGrid = styled.div`
+    .news-grid {
+      @media ${breakpoints.smallDown} {
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+    }
+  `
+
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'gray') theme.toggleTheme('gray')
 
@@ -55,18 +64,20 @@ export default function News({ data }) {
         )}
       </Hero>
       <Section pt={[1, 1]} pb={[2, 2]}>
-        <Grid>
-          {data.articles.edges.slice(0, limit).map(({ node }) => (
-            <Column key={node.id} sm="6" bottomGap>
-              <Card
-                date={node.oldDate || node.createdAt}
-                title={node.title}
-                url={`${getActiveLangPath()}/news/${node.slug}`}
-                image={node.featuredImage}
-              />
-            </Column>
-          ))}
-        </Grid>
+        <NewsGrid>
+          <Grid>
+            {data.articles.edges.slice(0, limit).map(({ node }) => (
+              <Column key={node.id} sm="6" bottomGap className="news-grid">
+                <Card
+                  date={node.oldDate || node.createdAt}
+                  title={node.title}
+                  url={`${getActiveLangPath()}/news/${node.slug}`}
+                  image={node.featuredImage}
+                />
+              </Column>
+            ))}
+          </Grid>
+        </NewsGrid>
       </Section>
       <Section pb={10}>
         <Grid>
