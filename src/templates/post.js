@@ -99,7 +99,7 @@ export default function Article({ data }) {
               <Div mt={[3, 2]}>
                 <Link
                   to={`${getActiveLangPath()}/${routes.news.link}`}
-                  variant="large"
+                  variant="blue"
                   textColor={theme.linkColor}
                 >
                   {isDefaultLanguage() ? 'Fler nyheter' : 'More news'}
