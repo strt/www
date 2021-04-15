@@ -98,8 +98,9 @@ export default function Index({ data }) {
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
               <Link
-                to={`${getActiveLangPath()}/${routes.news.link
-                  }/arets-byra-igen`}
+                to={`${getActiveLangPath()}/${
+                  routes.news.link
+                }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
                   src={
@@ -134,7 +135,7 @@ export default function Index({ data }) {
         </CaseGrid>
         <Grid>
           <Column>
-            <Div mt={[3, 6]}>
+            <Div>
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
                 textColor={theme.linkColor}
