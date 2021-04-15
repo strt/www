@@ -74,6 +74,20 @@ export const A = styled.a`
         font-size: 1.125rem;
       }
     `}
+  ${props =>
+    props.variant === 'blue' &&
+    css`
+      font-size: 1.125rem;
+      line-height: 1.4;
+
+      &:hover {
+        color: ${colors.blue400}
+      }
+    
+      @media ${breakpoints.medium} {
+        font-size: 1.5rem;
+      }
+    `}
 `
 
 const RouterLink = props => {
@@ -91,7 +105,7 @@ const Link = React.forwardRef(({ to, ...props }, ref) => {
 
 Link.propTypes = {
   styleVariant: PropTypes.oneOf(Object.keys(UNDERLINE_VARIANTS)),
-  variant: PropTypes.oneOf(['large', 'small']),
+  variant: PropTypes.oneOf(['large', 'small', 'blue']),
   to: PropTypes.string,
   textColor: PropTypes.string,
   href: PropTypes.string,

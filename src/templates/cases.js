@@ -47,7 +47,19 @@ const Filter = styled(Div)`
       margin-right: 16px;
     }
 
-    &:active,
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      opacity: 1;
+      color: ${colors.darkText};
+    }
+
+    &:active {
+      text-decoration: none;
+    }
+
     &[aria-current],
     &[data-partially-current] {
       color: ${colors.darkText};

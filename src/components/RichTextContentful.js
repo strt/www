@@ -118,6 +118,7 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
             href={node.data.uri}
             textColor={theme.linkColor}
             styleVariant={theme.theme}
+            variant="blue"
           >
             {children}
           </Link>

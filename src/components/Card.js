@@ -4,16 +4,7 @@ import styled from 'styled-components'
 import dayjs from 'dayjs'
 import { Text } from './Text'
 import Image from './Image'
-import {
-  colors,
-  ratio,
-  breakpoints,
-  cover,
-  fluidRange,
-  vw,
-  easings,
-  durations,
-} from '../style'
+import { colors, ratio, breakpoints, cover, fluidRange, vw } from '../style'
 import { getWidth } from './Grid'
 
 const Link = styled(GatsbyLink)`
@@ -40,18 +31,18 @@ const Content = styled.div`
 
     /* Copy/mimic Link component style */
     & span {
-      transition: background ${durations.fast} ${easings.easeInQuad};
-
       ${Link}:hover & {
         text-decoration: underline;
       }
 
       ${Link}.focus-visible & {
-        text-decoration: underline;
+        text-decoration: none;
+        background-color: ${colors.orange300};
       }
 
       ${Link}:active & {
         text-decoration: none;
+        background-color: ${colors.orange100};
       }
     }
   }
