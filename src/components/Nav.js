@@ -84,6 +84,28 @@ const NavWrapper = styled.nav`
         padding-right: 0;
       }
     }
+
+    .nav-dark {
+      &:hover {
+        color: ${colors.light};
+      }
+
+      &:active {
+        color: ${colors.dark};
+      }
+
+      &:focus-visible {
+        color: ${colors.dark};
+      }
+    }
+
+    .nav-light,
+    .nav-gray,
+    .nav-lightGray {
+      &:hover {
+        color: ${colors.dark};
+      }
+    }
   }
 
   [data-cover] {
@@ -221,6 +243,7 @@ function Navigation({ location }) {
                     textColor={theme.navColor}
                     styleVariant={theme.theme}
                     style={{ fontSize: '1.125rem' }}
+                    className={`nav-${theme.theme}`}
                   >
                     {isDefaultLanguage() ? child.sv.title : child.title}
                   </Link>
