@@ -55,7 +55,7 @@ export default function Contact({ data }) {
                 <H4>{contact.city || contact.title}</H4>
                 <Text textColor={colors.grey600}>
                   <Link
-                    href={`http://maps.google.com/?q=${contact.address} ${contact.city}`}
+                    href={`http://maps.google.com/?q=Strateg, ${contact.address} ${contact.city}`}
                     rel="noopener noreferrer"
                     target="__blank"
                   >
