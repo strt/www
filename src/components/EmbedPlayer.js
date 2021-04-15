@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { ratio, cover } from '../style'
 
 const PlayerWrapper = styled.div`
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   background-color: ${props => props.bg || 'transparent'};
   ${props =>
     ratio(
