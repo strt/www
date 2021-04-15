@@ -23,6 +23,8 @@ import Awards from '../components/Awards'
 import { isDefaultLanguage } from '../components/SelectLanguage'
 
 const ContactText = styled(Text)`
+  padding-right: 0.75rem;
+  border-right: 2px solid ${colors.grey300};
   font-size: 1rem;
   line-height: 1.4;
 
