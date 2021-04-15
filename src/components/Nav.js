@@ -84,6 +84,32 @@ const NavWrapper = styled.nav`
         padding-right: 0;
       }
     }
+
+    .nav-dark {
+      &:hover {
+        color: ${colors.light};
+      }
+
+      &:active {
+        color: ${colors.darkText};
+      }
+
+      &:focus-visible {
+        color: ${colors.darkText};
+      }
+    }
+
+    .nav-light,
+    .nav-gray,
+    .nav-lightGray {
+      &:hover {
+        color: ${colors.darkText};
+      }
+
+      &:focus-visible {
+        color: ${colors.darkText};
+      }
+    }
   }
 
   [data-cover] {
@@ -221,6 +247,7 @@ function Navigation({ location }) {
                     textColor={theme.navColor}
                     styleVariant={theme.theme}
                     style={{ fontSize: '1.125rem' }}
+                    className={`nav-${theme.theme}`}
                   >
                     {isDefaultLanguage() ? child.sv.title : child.title}
                   </Link>

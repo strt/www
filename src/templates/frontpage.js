@@ -98,9 +98,8 @@ export default function Index({ data }) {
           <Column md={2} sm={2} smDown={3}>
             <CompanyOfTheYearBlock>
               <Link
-                to={`${getActiveLangPath()}/${
-                  routes.news.link
-                }/arets-byra-igen`}
+                to={`${getActiveLangPath()}/${routes.news.link
+                  }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
                   src={
@@ -140,7 +139,7 @@ export default function Index({ data }) {
                 to={`${getActiveLangPath()}/${routes.work.link}`}
                 textColor={theme.linkColor}
                 styleVariant={theme.theme}
-                variant="large"
+                variant="blue"
               >
                 {casesLinkText}
               </Link>
@@ -180,7 +179,7 @@ export default function Index({ data }) {
             <Div mt={[3, 2]}>
               <Link
                 to={`${getActiveLangPath()}/${routes.news.link}`}
-                variant="large"
+                variant="blue"
                 textColor={theme.linkColor}
                 styleVariant={theme.theme}
               >
