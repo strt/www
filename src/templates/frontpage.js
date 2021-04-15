@@ -76,6 +76,15 @@ const CompanyOfTheYear = styled.img`
   max-height: 216px;
 `
 
+const NewsGrid = styled.div`
+  .news-grid {
+    @media ${breakpoints.smallDown} {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
+`
+
 export default function Index({ data }) {
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
@@ -135,7 +144,7 @@ export default function Index({ data }) {
         </CaseGrid>
         <Grid>
           <Column>
-            <Div>
+            <Div mt={[0, 3]}>
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
                 textColor={theme.linkColor}
@@ -165,30 +174,32 @@ export default function Index({ data }) {
             </Column>
           </Grid>
         </Div>
-        <Grid>
-          {data.posts.edges.map(({ node }) => (
-            <Column key={node.id} sm="6" bottomGap>
-              <Card
-                date={node.oldDate || node.createdAt}
-                title={node.title}
-                url={`${getActiveLangPath()}/news/${node.slug}`}
-                image={node.featuredImage}
-              />
+        <NewsGrid>
+          <Grid>
+            {data.posts.edges.map(({ node }) => (
+              <Column key={node.id} sm="6" bottomGap className="news-grid">
+                <Card
+                  date={node.oldDate || node.createdAt}
+                  title={node.title}
+                  url={`${getActiveLangPath()}/news/${node.slug}`}
+                  image={node.featuredImage}
+                />
+              </Column>
+            ))}
+            <Column>
+              <Div mt={[3, 2]}>
+                <Link
+                  to={`${getActiveLangPath()}/${routes.news.link}`}
+                  variant="blue"
+                  textColor={theme.linkColor}
+                  styleVariant={theme.theme}
+                >
+                  {newsLinkText}
+                </Link>
+              </Div>
             </Column>
-          ))}
-          <Column>
-            <Div mt={[3, 2]}>
-              <Link
-                to={`${getActiveLangPath()}/${routes.news.link}`}
-                variant="blue"
-                textColor={theme.linkColor}
-                styleVariant={theme.theme}
-              >
-                {newsLinkText}
-              </Link>
-            </Div>
-          </Column>
-        </Grid>
+          </Grid>
+        </NewsGrid>
       </Section>
     </Layout>
   )
