@@ -91,11 +91,11 @@ const NavWrapper = styled.nav`
       }
 
       &:active {
-        color: ${colors.dark};
+        color: ${colors.darkText};
       }
 
       &:focus-visible {
-        color: ${colors.dark};
+        color: ${colors.darkText};
       }
     }
 
@@ -103,7 +103,11 @@ const NavWrapper = styled.nav`
     .nav-gray,
     .nav-lightGray {
       &:hover {
-        color: ${colors.dark};
+        color: ${colors.darkText};
+      }
+
+      &:focus-visible {
+        color: ${colors.darkText};
       }
     }
   }
