@@ -11,7 +11,6 @@ import {
   breakpoints,
   mediaQuery,
   fluidRange,
-  vw,
 } from '../style'
 import { CleanTag } from './CleanTag'
 
@@ -28,7 +27,11 @@ export function getWidth(value) {
 }
 
 const gutter = {
-  default: '15px',
+  default: '16px',
+}
+
+const gridGutter = {
+  default: '32px',
 }
 
 export const Grid = styled(CleanTag)(
@@ -41,8 +44,8 @@ export const Grid = styled(CleanTag)(
     paddingLeft: fluidRange({ min: 8, max: 12 }),
     width: '100%',
     [`@media ${breakpoints.small}`]: {
-      paddingRight: `${vw(40)}`,
-      paddingLeft: `${vw(40)}`,
+      paddingRight: `16px`,
+      paddingLeft: `16px`,
     },
   },
   space,
@@ -76,9 +79,6 @@ export const Column = styled(CleanTag)(
     [mediaQuery(breakpoints.large)]: {
       width: getWidth(props.lg),
     },
-    [mediaQuery(breakpoints.xlarge)]: {
-      width: getWidth(props.xl),
-    },
   }),
   getColumnMargin,
   space,
@@ -92,7 +92,8 @@ export const Column = styled(CleanTag)(
  */
 export const CssGrid = styled.div`
   display: grid;
-  grid-gap: calc(${gutter.default});
+  margin: 0 auto;
+  grid-row-gap: calc(${gutter.default});
   grid-template-columns:
     [full-start] ${gutter.default} [grid-start] repeat(
       12,
@@ -101,13 +102,10 @@ export const CssGrid = styled.div`
     [grid-end] ${gutter.default} [full-end];
 
   @media ${breakpoints.small} {
-    grid-gap: calc(${gutter.default});
+    grid-gap: calc(${gridGutter.default});
     grid-template-columns:
-      [full-start] calc(${vw(24)} + ${gutter.default}) [grid-start] repeat(
-        12,
-        [col-start] 1fr [col-end]
-      )
-      [grid-end] calc(${vw(24)} + ${gutter.default}) [full-end];
+      [full-start] 0 [grid-start] repeat(12, [col-start] 1fr [col-end])
+      [grid-end] 0 [full-end];
   }
 
   > * {

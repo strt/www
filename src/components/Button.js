@@ -66,9 +66,25 @@ export const IconButton = styled.button`
   }
 `
 
+export const IconArrow = styled.button`
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-size: 3rem;
+  line-height: 0.625em;
+  color: ${props => props.textColor || colors.dark};
+  background: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+`
+
 export function ScrollToTopButton(props) {
   return (
-    <IconButton
+    <IconArrow
       aria-label="Skrolla till toppen"
       onClick={event => {
         event.preventDefault()
@@ -80,6 +96,6 @@ export function ScrollToTopButton(props) {
       {...props}
     >
       <Icon name={['fal', 'long-arrow-up']} />
-    </IconButton>
+    </IconArrow>
   )
 }

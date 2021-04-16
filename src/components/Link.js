@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { Link as GatsbyLink } from 'gatsby'
 import PropTypes from 'prop-types'
 import { CleanTag } from './CleanTag'
-import { fluidRange, breakpoints, breakpointNr, fontFamily } from '../style'
+import { breakpoints, fontFamily, colors } from '../style'
 
 const UNDERLINE_VARIANTS = {
   dark: 'waveLight.svg',
@@ -29,68 +29,63 @@ export const A = styled.a`
   -webkit-tap-highlight-color: transparent;
   text-decoration: none;
 
-  &::after {
-    position: absolute;
-    content: '';
-    bottom: -20%;
-    right: 0;
-    left: auto;
-    width: 0;
-    height: 8px;
-    background-size: 15px 11px;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-image: url('/${props => getUnderline(props)}');
-    animation: move 15s linear infinite;
-    transition: width 0.5s;
-    animation-play-state: running;
-  }
-
   &:hover {
-    &::after {
-      right: auto;
-      left: 0;
-      width: 100%;
-      animation-play-state: running !important;
-    }
+    text-decoration: underline;
   }
 
-  &:active,
+  &:focus-visible {
+    background-color: ${colors.orange300};
+    text-decoration: none;
+  }
+
   &[aria-current],
   &[data-partially-current] {
-    &::after {
-      animation-play-state: paused;
-      width: 100%;
-    }
+    opacity: 1;
+  }
+  
+  &:active {
+    background-color: ${colors.orange100};
+    text-decoration: none;
   }
 
   button& {
     user-select: none;
-    border:none;
-    background:none;
+    border: none;
+    background: none;
   }
 
   ${props =>
     props.variant === 'large' &&
     css`
-      font-weight: 400;
-      font-size: 1.1em;
-
+      font-size: 1.125rem;
+      line-height: 1.4;
+    
       @media ${breakpoints.medium} {
-        font-size: 1.25em;
+        font-size: 1.5rem;
       }
-
-      @media ${breakpoints.large} {
-        font-size: ${fluidRange({
-          min: 20,
-          max: 30,
-          viewportMin: breakpointNr.large,
-          viewportMax: breakpointNr.xlarge,
-        })};
+    `}
+  ${props =>
+    props.variant === 'small' &&
+    css`
+      font-size: 1rem;
+      line-height: 1.4;
+    
+      @media ${breakpoints.small} {
+        font-size: 1.125rem;
       }
+    `}
+  ${props =>
+    props.variant === 'blue' &&
+    css`
+      font-size: 1.125rem;
+      line-height: 1.4;
 
-      @media ${breakpoints.xlarge} {
-        font-size: 1.875em;
+      &:hover {
+        color: ${colors.blue400}
+      }
+    
+      @media ${breakpoints.medium} {
+        font-size: 1.5rem;
       }
     `}
 `
@@ -110,7 +105,7 @@ const Link = React.forwardRef(({ to, ...props }, ref) => {
 
 Link.propTypes = {
   styleVariant: PropTypes.oneOf(Object.keys(UNDERLINE_VARIANTS)),
-  variant: PropTypes.oneOf(['large']),
+  variant: PropTypes.oneOf(['large', 'small', 'blue']),
   to: PropTypes.string,
   textColor: PropTypes.string,
   href: PropTypes.string,

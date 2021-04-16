@@ -16,8 +16,8 @@ export const StyledHero = styled(Section)(
 
 export default function Hero({
   children,
-  pt = 8,
-  pb = [3, 7],
+  pt = 2,
+  pb = [3, 4],
   md = 12,
   scrollButtonElement,
   keepContentMargin,

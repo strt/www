@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
-import { H2 } from '../components/Text'
+import { Excerpt, H2 } from '../components/Text'
 import { Grid, CssGrid, Column } from '../components/Grid'
 import Section from '../components/Section'
 import Link from '../components/Link'
@@ -12,7 +12,11 @@ import Tile from '../components/Tile'
 import Div from '../components/Div'
 import { StyledHero } from '../components/Hero'
 import FrontH1 from '../components/FrontH1'
-import { getActiveLangPath, getActiveLang } from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  getActiveLang,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 import { colors, breakpoints, vw } from '../style'
 import { routes } from '../routes'
 import getMetaFromPost from '../lib/getMetaFromPost'
@@ -55,10 +59,30 @@ const CompanyOfTheYearBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  a {
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: 1px dotted;
+      background-color: transparent;
+    }
+  }
 `
 
 const CompanyOfTheYear = styled.img`
-  max-height: 300px;
+  max-height: 216px;
+`
+
+const NewsGrid = styled.div`
+  .news-grid {
+    @media ${breakpoints.smallDown} {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+  }
 `
 
 export default function Index({ data }) {
@@ -70,14 +94,14 @@ export default function Index({ data }) {
     featuredCases,
     casesLinkText,
     newsLinkText,
-    newsHeader,
     hero,
   } = data.contentfulPage
+
   return (
     <Layout meta={getMetaFromPost(page)}>
-      <StyledHero pt={8} pb={[2, 6]}>
+      <StyledHero pb={[2, 6]}>
         <Grid>
-          <Column md={10} sm={10} smDown={9}>
+          <Column md={10} sm={10} smDown={12}>
             <FrontH1 heroContent={hero} />
           </Column>
           <Column md={2} sm={2} smDown={3}>
@@ -100,7 +124,7 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </StyledHero>
-      <Section id="case-section" pt={[3, 4]} pb={[8, 16]}>
+      <Section id="case-section" pt={[3, 4]} pb={[8, 10]}>
         <CaseGrid>
           {featuredCases.map((node, index) => (
             <Tile
@@ -120,12 +144,12 @@ export default function Index({ data }) {
         </CaseGrid>
         <Grid>
           <Column>
-            <Div mt={[3, 6]}>
+            <Div mt={[0, 3]}>
               <Link
                 to={`${getActiveLangPath()}/${routes.work.link}`}
-                textColor={theme.color}
+                textColor={theme.linkColor}
                 styleVariant={theme.theme}
-                variant="large"
+                variant="blue"
               >
                 {casesLinkText}
               </Link>
@@ -133,38 +157,49 @@ export default function Index({ data }) {
           </Column>
         </Grid>
       </Section>
+      <Section pt={[0, 5]} pb={[10, 25]}>
+        <Grid>
+          <Column>
+            <Excerpt>{page.excerpt.excerpt}</Excerpt>
+          </Column>
+        </Grid>
+      </Section>
       <Section bg={colors.lightGray} pt="0" pb={[5, 10]}>
-        <Div halfTopBg={theme.background} mb={[2, 4]}>
+        <Div halfTopBg={theme.background} mb={[2, 2]}>
           <Grid>
             <Column>
-              <H2 textColor={theme.color}>{newsHeader}</H2>
+              <H2 textColor={theme.color}>
+                {isDefaultLanguage() ? 'Aktuellt' : 'News'}
+              </H2>
             </Column>
           </Grid>
         </Div>
-        <Grid>
-          {data.posts.edges.map(({ node }) => (
-            <Column key={node.id} sm="6" bottomGap>
-              <Card
-                date={node.oldDate || node.createdAt}
-                title={node.title}
-                url={`${getActiveLangPath()}/news/${node.slug}`}
-                image={node.featuredImage}
-              />
+        <NewsGrid>
+          <Grid>
+            {data.posts.edges.map(({ node }) => (
+              <Column key={node.id} sm="6" bottomGap className="news-grid">
+                <Card
+                  date={node.oldDate || node.createdAt}
+                  title={node.title}
+                  url={`${getActiveLangPath()}/news/${node.slug}`}
+                  image={node.featuredImage}
+                />
+              </Column>
+            ))}
+            <Column>
+              <Div mt={[3, 2]}>
+                <Link
+                  to={`${getActiveLangPath()}/${routes.news.link}`}
+                  variant="blue"
+                  textColor={theme.linkColor}
+                  styleVariant={theme.theme}
+                >
+                  {newsLinkText}
+                </Link>
+              </Div>
             </Column>
-          ))}
-          <Column>
-            <Div mt={[3, 2]}>
-              <Link
-                to={`${getActiveLangPath()}/${routes.news.link}`}
-                variant="large"
-                textColor={theme.color}
-                styleVariant={theme.theme}
-              >
-                {newsLinkText}
-              </Link>
-            </Div>
-          </Column>
-        </Grid>
+          </Grid>
+        </NewsGrid>
       </Section>
     </Layout>
   )
@@ -177,7 +212,6 @@ export const pageQuery = graphql`
     ) {
       casesLinkText
       newsLinkText
-      newsHeader
       featuredCases {
         id
         title

@@ -110,7 +110,7 @@ export default function Tile({
             items={tags}
             textColor={colors.light}
             linked={false}
-            variant="small"
+            style={{ paddingTop: '0.5rem' }}
           />
           {awards && <Awards items={awards} />}
         </Content>

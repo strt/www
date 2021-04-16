@@ -12,21 +12,16 @@ import {
   interpolate,
 } from 'react-spring'
 import { IconButton } from './Button'
-import Link, { A } from './Link'
-import Icon from './Icon'
+import Link from './Link'
 import { Grid, Column } from './Grid'
-import { getActiveLangPath, isDefaultLanguage } from './SelectLanguage'
+import SelectLanguageWrapper, {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from './SelectLanguage'
 import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
-import {
-  colors,
-  fluidRange,
-  easings,
-  durations,
-  breakpoints,
-  vw,
-} from '../style'
+import { colors, fluidRange, easings, durations, vw } from '../style'
 import { mainNavigation } from '../routes'
 import { ThemeContext } from '../context/ThemeContext'
 
@@ -39,8 +34,8 @@ function getProps({ href, isPartiallyCurrent }) {
 const NavLink = styled(GatsbyLink)`
   display: inline-block;
   margin-bottom: ${fluidRange({ min: 8, max: 12 })};
-  font-size: ${fluidRange({ min: 36, max: 48 })};
-  line-height: 0.798611em;
+  font-size: 2.5rem;
+  line-height: 1.4;
   font-weight: 400;
   text-decoration: none;
   color: white;
@@ -61,15 +56,16 @@ const NavLink = styled(GatsbyLink)`
   }
 `
 
-const AnimatedIconButton = animated(IconButton)
+const CloseButton = styled.div`
+  position: absolute;
+  top: ${fluidRange({ min: 18, max: 32 })};
+  right: ${fluidRange({ min: 4, max: 8 })};
+  color: ${colors.grey400};
+`
 
 const NavWrapper = styled.nav`
-  ${A} {
-    text-decoration: none;
-  }
-
   [data-responsive] {
-    @media ${breakpoints.small} {
+    @media (min-width: 803px) {
       display: none;
     }
   }
@@ -77,7 +73,7 @@ const NavWrapper = styled.nav`
   [data-desktop] {
     display: none;
 
-    @media ${breakpoints.small} {
+    @media (min-width: 803px) {
       display: flex;
     }
 
@@ -86,6 +82,32 @@ const NavWrapper = styled.nav`
 
       &:last-child {
         padding-right: 0;
+      }
+    }
+
+    .nav-dark {
+      &:hover {
+        color: ${colors.light};
+      }
+
+      &:active {
+        color: ${colors.darkText};
+      }
+
+      &:focus-visible {
+        color: ${colors.darkText};
+      }
+    }
+
+    .nav-light,
+    .nav-gray,
+    .nav-lightGray {
+      &:hover {
+        color: ${colors.darkText};
+      }
+
+      &:focus-visible {
+        color: ${colors.darkText};
       }
     }
   }
@@ -116,7 +138,7 @@ const NavWrapper = styled.nav`
 
     ${IconButton} {
       position: absolute;
-      top: ${fluidRange({ min: 16, max: 32 })};
+      top: ${fluidRange({ min: 16, max: 16 })};
       right: ${fluidRange({ min: 4, max: 8 })};
       font-size: ${fluidRange({ min: 32, max: 40 })};
       color: white;
@@ -131,6 +153,14 @@ const NavWrapper = styled.nav`
       transform-origin: left center;
     }
   }
+`
+
+const LangWrapper = styled.div`
+  z-index: 1;
+  position: absolute;
+  top: ${fluidRange({ min: 36, max: 46 })};
+  left: 50%;
+  margin-left: -50px;
 `
 
 const NAV_ID = 'navigation'
@@ -160,18 +190,6 @@ function Navigation({ location }) {
   }, [isOpen])
 
   const closeSpringRef = useRef(null)
-  const closeAnimStyle = useSpring({
-    ref: closeSpringRef,
-    from: {
-      opacity: 0,
-      scale: 0,
-    },
-    to: {
-      opacity: isOpen ? 1 : 0,
-      scale: isOpen ? 1 : 0,
-    },
-  })
-
   const coverSpringRef = useRef(null)
   const coverAnimStyle = useSpring({
     ref: coverSpringRef,
@@ -226,9 +244,10 @@ function Navigation({ location }) {
                   <Link
                     to={`${getActiveLangPath()}/${child.link}`}
                     getProps={getProps}
-                    textColor={theme.color}
+                    textColor={theme.navColor}
                     styleVariant={theme.theme}
-                    variant="large"
+                    style={{ fontSize: '1.125rem' }}
+                    className={`nav-${theme.theme}`}
                   >
                     {isDefaultLanguage() ? child.sv.title : child.title}
                   </Link>
@@ -247,8 +266,8 @@ function Navigation({ location }) {
                 as="button"
                 type="button"
                 styleVariant={theme.theme}
+                variant="small"
                 textColor={theme.colorSecondary}
-                variant="large"
                 onClick={() => {
                   toggle()
                 }}
@@ -299,29 +318,32 @@ function Navigation({ location }) {
                 }}
               />
               <Grid>
-                <Column>
+                <Column smDown={8} sm={7}>
+                  <LangWrapper>
+                    <ul
+                      style={{
+                        display: 'flex',
+                      }}
+                    >
+                      <SelectLanguageWrapper textColor="white" />
+                    </ul>
+                  </LangWrapper>
+                </Column>
+                <Column smDown={4} sm={5}>
                   <div
                     style={{
                       position: 'relative',
                       zIndex: '1',
                     }}
                   >
-                    <AnimatedIconButton
+                    <CloseButton
                       type="button"
                       onClick={() => {
                         toggle()
                       }}
-                      textColor={colors.light}
-                      aria-label="Close menu"
-                      style={{
-                        opacity: closeAnimStyle.opacity,
-                        transform: closeAnimStyle.scale.interpolate(
-                          s => `scale3d(${s}, ${s}, 1)`,
-                        ),
-                      }}
                     >
-                      <Icon name={['fal', 'times']} />
-                    </AnimatedIconButton>
+                      {isDefaultLanguage() ? 'stäng' : 'close'}
+                    </CloseButton>
                   </div>
                 </Column>
               </Grid>

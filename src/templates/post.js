@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
+import styled from 'styled-components'
 import dayjs from 'dayjs'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Image from '../components/Image'
 import Section from '../components/Section'
-import { H1, H2, H4, Excerpt } from '../components/Text'
+import { H1, H2, Excerpt, TextSmall } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import ContentWrapper from '../components/ContentWrapper'
 import Cover from '../components/Cover'
@@ -17,7 +18,10 @@ import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { colors } from '../style'
 import { routes } from '../routes'
-import {getActiveLangPath, isDefaultLanguage} from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 
 export default function Article({ data }) {
   const { createdAt, oldDate, title, excerpt, body, featuredImage } = data.post
@@ -29,15 +33,22 @@ export default function Article({ data }) {
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
+  const DateBlock = styled.div`
+    padding-left: 0.75rem;
+    border-left: 2px solid ${colors.grey300};
+  `
+
   return (
     <Layout meta={getMetaFromPost(data.post)}>
       <article>
         {(createdAt || oldDate) && (
           <Grid>
             <Column width="auto">
-              <H4 as="time" dateTime={oldDate || createdAt}>
-                {formattedDate}
-              </H4>
+              <DateBlock>
+                <TextSmall as="time" dateTime={oldDate || createdAt}>
+                  {formattedDate}
+                </TextSmall>
+              </DateBlock>
             </Column>
           </Grid>
         )}
@@ -67,7 +78,9 @@ export default function Article({ data }) {
           <Div halfTopBg={theme.background} mb={[2, 4]}>
             <Grid>
               <Column>
-                <H2 textColor={theme.color}>News</H2>
+                <H2 textColor={theme.color}>
+                  {isDefaultLanguage() ? 'Aktuellt' : 'News'}
+                </H2>
               </Column>
             </Grid>
           </Div>
@@ -86,8 +99,8 @@ export default function Article({ data }) {
               <Div mt={[3, 2]}>
                 <Link
                   to={`${getActiveLangPath()}/${routes.news.link}`}
-                  variant="large"
-                  textColor={colors.darkText}
+                  variant="blue"
+                  textColor={theme.linkColor}
                 >
                   {isDefaultLanguage() ? 'Fler nyheter' : 'More news'}
                 </Link>
