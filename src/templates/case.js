@@ -27,7 +27,6 @@ const ContactText = styled(Text)`
   border-left: 2px solid ${colors.grey300};
   font-size: 1rem;
   line-height: 1.4;
-
   @media ${breakpoints.medium} {
     padding-left: 0;
     border-left: none;
