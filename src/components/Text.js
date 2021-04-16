@@ -59,6 +59,10 @@ export const Excerpt = styled.p`
     font-size: 2.5rem;
   }
 
+  @media ${breakpoints.large} {
+    max-width: 58.333%;
+  }
+
   a::after {
     bottom: -10%;
     background-size: 9px 11px;
@@ -80,6 +84,10 @@ export const H1 = styled.h1`
   @media ${breakpoints.medium} {
     max-width: 75%;
     font-size: 5.5rem;
+  }
+
+  @media ${breakpoints.large} {
+    max-width: 58.333%;
   }
 `
 

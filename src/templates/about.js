@@ -36,7 +36,7 @@ export default function About({ data }) {
       )}
       <Grid>
         {description && (
-          <Column md={8}>
+          <Column md={8} lg={7}>
             <Text textColor={theme.color} style={{ display: 'inline' }}>
               {description.description}
             </Text>
