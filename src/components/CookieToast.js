@@ -5,11 +5,8 @@ import Cookie from 'js-cookie'
 import { Grid, Column } from './Grid'
 import { TextSmall, H4 } from './Text'
 import { colors, breakpoints } from '../style'
-import { isDefaultLanguage, getActiveLangPath } from './SelectLanguage'
-import { routes } from '../routes'
+import { isDefaultLanguage } from './SelectLanguage'
 import Button from './Button'
-import Link from './Link'
-
 
 const CookieToastWrapper = animated(styled.div`
   position: fixed;
@@ -36,7 +33,7 @@ const Toast = styled.div`
   }
 
   .cookie-button {
-    padding: 0.8rem 3rem;
+    padding: 0.8rem 0.8rem 0.9rem;
     width: 100%;
     font-size: 1rem;
     cursor: pointer;
@@ -123,8 +120,8 @@ export default function CookieToast() {
                       }}
                     >
                       {isDefaultLanguage()
-                        ? 'OK '
-                        : 'OK '}
+                        ? 'Acceptera cookies '
+                        : 'Accept cookies '}
                     </Button>
                     {/* <Button
                       as="button"
