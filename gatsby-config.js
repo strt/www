@@ -84,13 +84,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-hubspot',
-      options: {
-        trackingId: '2677897',
-        respectDNT: true,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Strateg Agency',
