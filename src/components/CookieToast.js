@@ -5,8 +5,11 @@ import Cookie from 'js-cookie'
 import { Grid, Column } from './Grid'
 import { TextSmall, H4 } from './Text'
 import { colors, breakpoints } from '../style'
-import { isDefaultLanguage } from './SelectLanguage'
+import { isDefaultLanguage, getActiveLangPath } from './SelectLanguage'
+import { routes } from '../routes'
 import Button from './Button'
+import Link from './Link'
+
 
 const CookieToastWrapper = animated(styled.div`
   position: fixed;
@@ -33,7 +36,7 @@ const Toast = styled.div`
   }
 
   .cookie-button {
-    padding: 0.8rem 0.8rem 0.9rem;
+    padding: 0.8rem 3rem;
     width: 100%;
     font-size: 1rem;
     cursor: pointer;
@@ -96,19 +99,18 @@ export default function CookieToast() {
                       {isDefaultLanguage()
                         ? 'Den här webbplatsen använder cookies. Mums. '
                         : 'This website uses cookies. Yum. '}
-                      {/* <Link
-                        to={`${getActiveLangPath()}/${routes.policy.link}`}
-                        textColor={colors.darkText}
-                        styleVariant="dark"
-                      >
-                        {isDefaultLanguage() ? 'Läs mer' : 'Read more'}
-                      </Link>
-                      . */}
                     </H4>
                     <TextSmall>
                       {isDefaultLanguage()
-                        ? 'Vi använder nödvändiga cookies för att vår webbplats ska fungera och analytiska cookies för trafikmätning som hjälper oss att förbättra upplevelsen.'
-                        : 'We use necessary cookies for our website to function and analytical cookies for measuring traffic which helps us with optimization of our content.'}
+                        ? 'Vi använder nödvändiga cookies för att vår webbplats ska fungera och analytiska cookies för trafikmätning som hjälper oss att förbättra upplevelsen. '
+                        : 'We use necessary cookies for our website to function and analytical cookies for measuring traffic which helps us with optimization of our content. '}
+                      {/* <Link
+                        to={`${getActiveLangPath()}/${routes.policy.link}`}
+                        textColor={colors.linkDark}
+                        styleVariant="dark"
+                      >
+                        {isDefaultLanguage() ? 'Läs mer' : 'Read more'}
+                      </Link> */}
                     </TextSmall>
                     <Button
                       as="button"
@@ -121,21 +123,20 @@ export default function CookieToast() {
                       }}
                     >
                       {isDefaultLanguage()
-                        ? 'Acceptera cookies '
-                        : 'Accept cookies '}
+                        ? 'OK '
+                        : 'OK '}
                     </Button>
-                    <Button
+                    {/* <Button
                       as="button"
                       type="button"
                       className="cookie-button cookie-button--light"
                       textColor={colors.darktext}
                       onClick={() => {
-                        setShowToast(false)
-                        Cookie.set('accept_cookies', true, { expires: 365 })
+                        setShowToast(true);
                       }}
                     >
                       {isDefaultLanguage() ? 'Inställningar' : 'Settings'}
-                    </Button>
+                    </Button> */}
                   </Column>
                 </Grid>
               </Toast>
