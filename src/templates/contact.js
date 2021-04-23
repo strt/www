@@ -58,6 +58,7 @@ export default function Contact({ data }) {
                     href={`http://maps.google.com/?q=Strateg, ${contact.address} ${contact.city}`}
                     rel="noopener noreferrer"
                     target="__blank"
+                    textColor={colors.grey600}
                   >
                     {contact.address}
                     {contact.address && <br />}

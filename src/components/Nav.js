@@ -342,7 +342,7 @@ function Navigation({ location }) {
                         toggle()
                       }}
                     >
-                      stäng
+                      {isDefaultLanguage() ? 'stäng' : 'close'}
                     </CloseButton>
                   </div>
                 </Column>

@@ -13,7 +13,7 @@ import { H1, H2, H3, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { breakpoints, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import { getActiveLangPath } from '../components/SelectLanguage'
+import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
 import CardInfo from '../components/CardInfo'
@@ -186,7 +186,11 @@ export default function Career({ data }) {
               <Grid mt={[4, 8]} mb={[4, 8]}>
                 <Column className="manifestHeadline">
                   <OurManifestText>
-                    <H2 textColor={colors.grey700}>Vårt <br /> manifest</H2>
+                    <H2 textColor={colors.grey700}>
+                      {isDefaultLanguage() ? 'Vårt' : 'Our'}
+                      <br />
+                      {isDefaultLanguage() ? 'manifest' : 'manifesto'}
+                    </H2>
                   </OurManifestText>
                 </Column>
               </Grid>

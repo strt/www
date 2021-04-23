@@ -39,7 +39,7 @@ export function getActiveLangPath() {
 
 export function getUrl(location, country) {
   const langPath = country !== 'sv' ? `/${country}` : ''
-  const url = location.pathname.replace(`/${selectedLang}`, '')
+  const url = location.pathname.replace(/^\/(en|sv)/, '')
 
   return langPath + url
 }

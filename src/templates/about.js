@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { graphql } from 'gatsby'
-import styled from 'styled-components'
 import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
@@ -12,7 +11,6 @@ import Link from '../components/Link'
 import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import { formatPhone } from '../lib/format'
-import { breakpoints, colors } from '../style'
 
 export default function About({ data }) {
   const { title, excerpt, image } = data.contentfulPage.page
@@ -22,21 +20,6 @@ export default function About({ data }) {
 
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'dark') theme.toggleTheme('dark')
-
-  const TextScroll = styled.div`
-    p {
-      margin-bottom: 0.275em;
-      font-size: 3rem;
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -2px
-
-      @media ${breakpoints.medium} {
-        max-width: 75%;
-        font-size: 5.5rem;
-      }
-    }
-  `
 
   return (
     <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
@@ -53,7 +36,7 @@ export default function About({ data }) {
       )}
       <Grid>
         {description && (
-          <Column md={8}>
+          <Column md={8} lg={7}>
             <Text textColor={theme.color} style={{ display: 'inline' }}>
               {description.description}
             </Text>
@@ -62,13 +45,13 @@ export default function About({ data }) {
       </Grid>
       <Grid pt={7}>
         <Column>
-          <TextScroll>
+          {/* <TextScroll>
             <Text
               textColor={colors.orange500}
             >
               Vi skapar förändring
       </Text>
-          </TextScroll>
+          </TextScroll> */}
         </Column>
       </Grid>
 
@@ -79,9 +62,7 @@ export default function About({ data }) {
               {(() => {
                 return (
                   <>
-                    <H2 textColor={theme.color}>
-                      {item.title}
-                    </H2>
+                    <H2 textColor={theme.color}>{item.title}</H2>
                     <RichText pr={0} pl={0} md={12} document={item.text.json} />
                   </>
                 )
