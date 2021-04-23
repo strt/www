@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Cookie from 'js-cookie'
 import { Grid, Column } from './Grid'
 import { TextSmall, H4 } from './Text'
-import { colors } from '../style'
+import { colors, breakpoints } from '../style'
 import { isDefaultLanguage } from './SelectLanguage'
 import Button from './Button'
 
@@ -34,18 +34,28 @@ const Toast = styled.div`
 
   .cookie-button {
     padding: 0.8rem 0.8rem 0.9rem;
+    width: 100%;
     font-size: 1rem;
     cursor: pointer;
+
+    @media ${breakpoints.small} {
+      width: initial;
+    }
 
     &--dark {
       border: 1px solid ${colors.darkText};
     }
 
     &--light {
-      margin-left: 0.5rem;
+      margin-top: 0.7rem;
       border: 1px solid ${colors.darkText};
       color: ${colors.darkText};
       background-color: ${colors.light};
+
+      @media ${breakpoints.small} {
+        margin-top: 0;
+        margin-left: 0.5rem;
+      }
     }
   }
 `
@@ -119,6 +129,10 @@ export default function CookieToast() {
                       type="button"
                       className="cookie-button cookie-button--light"
                       textColor={colors.darktext}
+                      onClick={() => {
+                        setShowToast(false)
+                        Cookie.set('accept_cookies', true, { expires: 365 })
+                      }}
                     >
                       {isDefaultLanguage() ? 'Inställningar' : 'Settings'}
                     </Button>
