@@ -28,12 +28,12 @@ const Toast = styled.div`
 
   p {
     margin-top: 0.8rem;
-    margin-bottom: 2.5rem;
     font-size: 1rem;
   }
 
   .cookie-button {
     padding: 0.8rem 0.8rem 0.9rem;
+    margin-top: 1.5rem;
     width: 100%;
     font-size: 1rem;
     cursor: pointer;
@@ -47,13 +47,11 @@ const Toast = styled.div`
     }
 
     &--light {
-      margin-top: 0.7rem;
       border: 1px solid ${colors.darkText};
       color: ${colors.darkText};
       background-color: ${colors.light};
 
       @media ${breakpoints.small} {
-        margin-top: 0;
         margin-left: 0.5rem;
       }
     }
@@ -61,12 +59,26 @@ const Toast = styled.div`
 `
 
 const Settings = styled.div`
+  h4 {
+    margin-bottom: 2rem;
+  }
 
+  p {
+    margin-bottom: 1.25em;
+    margin-left: 2.4rem;
+    line-height: 1.4;
+  }
+
+  span {
+    margin-left: 1rem;
+    font-size: 1.125rem;
+  }
 `
 
 export default function CookieToast() {
   const [showToast, setShowToast] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  const [checkbox, setCheckbox] = useState(true)
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -79,6 +91,9 @@ export default function CookieToast() {
       clearTimeout(timerId)
     }
   }, [showToast])
+
+
+  console.log(checkbox)
 
   const transitions = useTransition(showToast, null, {
     unique: true,
@@ -119,6 +134,9 @@ export default function CookieToast() {
                           onClick={() => {
                             setShowToast(false)
                             Cookie.set('accept_cookies', true, { expires: 365 })
+                            if (checkbox === false) {
+                              Cookie.set('deny_analytics', true, { expires: 365 })
+                            }
                           }}
                         >
                           {isDefaultLanguage()
@@ -154,6 +172,42 @@ export default function CookieToast() {
                               ? 'Cookie-inställningar '
                               : 'Cookie settings'}
                           </H4>
+
+
+                          <form>
+                            <label className='checkbox__wrapper'>
+                              <input
+                                type='checkbox'
+                                className='checkbox__input'
+                                disabled={true}
+                                checked={true}
+                              />
+                              <span className='checkbox'>
+                                Nödvändiga (alltid på)
+                                </span>
+                            </label>
+                            <p>Dessa cookies behövs för att grundläggande funktioner på webbplatsen
+                            ska fungera och behöver alltid vara aktiverade. Utan dem kan webbplatsen och våra
+                                tjänster sluta fungera.</p>
+
+                            <label className='checkbox__wrapper'>
+                              <input
+                                name="analytic"
+                                type='checkbox'
+                                className='checkbox__input'
+                                checked={checkbox}
+                                value={checkbox}
+                                onChange={(e) => setCheckbox(e.currentTarget.checked)}
+                              />
+                              <span className='checkbox'>
+                                Analytiska
+                                </span>
+                            </label>
+                            <p>Analytiska cookies används av webbanalystjänster (tredjepart) för trafikmätning och
+                            hjälper oss att utvärdera webbplatsens utformning och innehåll. Informationen används i
+                                syfte att förbättra upplevelsen för användaren.</p>
+                          </form>
+
 
                           <Button
                             as="button"
