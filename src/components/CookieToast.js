@@ -60,8 +60,14 @@ const Toast = styled.div`
   }
 `
 
+const Settings = styled.div`
+
+`
+
 export default function CookieToast() {
   const [showToast, setShowToast] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
+
   useEffect(() => {
     const timerId = setTimeout(() => {
       if (!showToast && !Cookie.get('accept_cookies')) {
@@ -73,6 +79,7 @@ export default function CookieToast() {
       clearTimeout(timerId)
     }
   }, [showToast])
+
   const transitions = useTransition(showToast, null, {
     unique: true,
     from: { opacity: 0, transform: 'translateY(100%)' },
@@ -87,55 +94,86 @@ export default function CookieToast() {
           <Grid>
             <Column>
               <Toast>
-                <Grid
-                  flexWrap="nowrap"
-                  alignItems={['flex-end', 'flex-end', 'center']}
-                >
-                  <Column>
-                    <H4 textColor={colors.darkText} m="0">
-                      {isDefaultLanguage()
-                        ? 'Den här webbplatsen använder cookies. Mums. '
-                        : 'This website uses cookies. Yum. '}
-                    </H4>
-                    <TextSmall>
-                      {isDefaultLanguage()
-                        ? 'Vi använder nödvändiga cookies för att vår webbplats ska fungera och analytiska cookies för trafikmätning som hjälper oss att förbättra upplevelsen. '
-                        : 'We use necessary cookies for our website to function and analytical cookies for measuring traffic which helps us with optimization of our content. '}
-                      {/* <Link
-                        to={`${getActiveLangPath()}/${routes.policy.link}`}
-                        textColor={colors.linkDark}
-                        styleVariant="dark"
+                {
+                  showSettings === false ?
+                    <Grid
+                      flexWrap="nowrap"
+                      alignItems={['flex-end', 'flex-end', 'center']}
+                    >
+                      <Column>
+                        <H4 textColor={colors.darkText} m="0">
+                          {isDefaultLanguage()
+                            ? 'Den här webbplatsen använder cookies. Mums. '
+                            : 'This website uses cookies. Yum. '}
+                        </H4>
+                        <TextSmall>
+                          {isDefaultLanguage()
+                            ? 'Vi använder nödvändiga cookies för att vår webbplats ska fungera och analytiska cookies för trafikmätning som hjälper oss att förbättra upplevelsen. '
+                            : 'We use necessary cookies for our website to function and analytical cookies for measuring traffic which helps us with optimization of our content. '}
+                        </TextSmall>
+                        <Button
+                          as="button"
+                          type="button"
+                          className="cookie-button cookie-button--dark"
+                          textColor={colors.darkText}
+                          onClick={() => {
+                            setShowToast(false)
+                            Cookie.set('accept_cookies', true, { expires: 365 })
+                          }}
+                        >
+                          {isDefaultLanguage()
+                            ? 'Acceptera cookies '
+                            : 'Accept cookies '}
+                        </Button>
+                        <Button
+                          as="button"
+                          type="button"
+                          className="cookie-button cookie-button--light"
+                          textColor={colors.darktext}
+                          onClick={() => {
+                            setShowSettings(true);
+                          }}
+                        >
+                          {isDefaultLanguage() ? 'Inställningar' : 'Settings'}
+                        </Button>
+                      </Column>
+                    </Grid>
+                    : ''
+                }
+
+                {
+                  showSettings === true ?
+                    <Settings>
+                      <Grid
+                        flexWrap="nowrap"
+                        alignItems={['flex-end', 'flex-end', 'center']}
                       >
-                        {isDefaultLanguage() ? 'Läs mer' : 'Read more'}
-                      </Link> */}
-                    </TextSmall>
-                    <Button
-                      as="button"
-                      type="button"
-                      className="cookie-button cookie-button--dark"
-                      textColor={colors.darkText}
-                      onClick={() => {
-                        setShowToast(false)
-                        Cookie.set('accept_cookies', true, { expires: 365 })
-                      }}
-                    >
-                      {isDefaultLanguage()
-                        ? 'Acceptera cookies '
-                        : 'Accept cookies '}
-                    </Button>
-                    {/* <Button
-                      as="button"
-                      type="button"
-                      className="cookie-button cookie-button--light"
-                      textColor={colors.darktext}
-                      onClick={() => {
-                        setShowToast(true);
-                      }}
-                    >
-                      {isDefaultLanguage() ? 'Inställningar' : 'Settings'}
-                    </Button> */}
-                  </Column>
-                </Grid>
+                        <Column>
+                          <H4 textColor={colors.darkText} m="0">
+                            {isDefaultLanguage()
+                              ? 'Cookie-inställningar '
+                              : 'Cookie settings'}
+                          </H4>
+
+                          <Button
+                            as="button"
+                            type="button"
+                            className="cookie-button cookie-button--dark"
+                            textColor={colors.darkText}
+                            onClick={() => {
+                              setShowSettings(false);
+                            }}
+                          >
+                            {isDefaultLanguage()
+                              ? 'Spara och fortsätt '
+                              : 'Save and continue '}
+                          </Button>
+                        </Column>
+                      </Grid>
+                    </Settings>
+                    : ''
+                }
+
               </Toast>
             </Column>
           </Grid>
