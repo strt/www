@@ -59,10 +59,6 @@ const Toast = styled.div`
 `
 
 const Settings = styled.div`
-  h4 {
-    margin-bottom: 2rem;
-  }
-
   p {
     margin-left: 2.5rem;
     line-height: 1.4;
@@ -95,7 +91,6 @@ const Settings = styled.div`
     display: inline-block;
   }
 
-  // Box.
   & + label::before {
     content: '';
     display: inline-block;
@@ -160,9 +155,6 @@ export default function CookieToast() {
     }
   }, [showToast])
 
-
-  console.log(checkbox)
-
   const transitions = useTransition(showToast, null, {
     unique: true,
     from: { opacity: 0, transform: 'translateY(100%)' },
@@ -226,7 +218,6 @@ export default function CookieToast() {
                     </Grid>
                     : ''
                 }
-
                 {
                   showSettings === true ?
                     <Settings>
@@ -237,16 +228,14 @@ export default function CookieToast() {
                         <Column>
                           <H4 textColor={colors.darkText} m="0">
                             {isDefaultLanguage()
-                              ? 'Cookie-inställningar '
+                              ? 'Cookie-inställningar'
                               : 'Cookie settings'}
                           </H4>
-
-
                           <form>
                             <div className='checkbox__wrapper'>
                               <input
-                                type='checkbox'
-                                className='checkbox'
+                                type="checkbox"
+                                className="checkbox"
                                 disabled={true}
                                 checked={true}
                                 id="checkbox-1"
@@ -264,12 +253,11 @@ export default function CookieToast() {
                                   : <p>These strictly required cookies are essential for this site to work properly and needs always to be activated. Without them, the site and our service might function incorrectly.</p>}
                               </label>
                             </div>
-
                             <div className='checkbox__wrapper'>
                               <input
                                 name="analytic"
                                 type='checkbox'
-                                className='checkbox'
+                                className="checkbox"
                                 checked={checkbox}
                                 value={checkbox}
                                 onChange={(e) => setCheckbox(e.currentTarget.checked)}
@@ -286,12 +274,9 @@ export default function CookieToast() {
                                   hjälper oss att utvärdera webbplatsens utformning och innehåll. Informationen används i
                                   syfte att förbättra upplevelsen för användaren.</p>
                                   : <p>Analytical cookies are used by third party web services to measure visitors traffic and helps us to evaluate the website's design and content. The collected data is used for the purpose to improve the user experience.</p>}
-
                               </label>
                             </div>
                           </form>
-
-
                           <Button
                             as="button"
                             type="button"
@@ -310,7 +295,6 @@ export default function CookieToast() {
                     </Settings>
                     : ''
                 }
-
               </Toast>
             </Column>
           </Grid>
