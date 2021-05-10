@@ -64,8 +64,7 @@ const Settings = styled.div`
   }
 
   p {
-    margin-bottom: 1.25em;
-    margin-left: 2.4rem;
+    margin-left: 2.5rem;
     line-height: 1.4;
   }
 
@@ -73,6 +72,75 @@ const Settings = styled.div`
     margin-left: 1rem;
     font-size: 1.125rem;
   }
+
+  .checkbox {
+  position: absolute;
+  opacity: 0;
+
+  &__title {
+    font-size: 1.125rem;
+  }
+
+  &__wrapper {
+    margin-top: 2rem;
+  }
+
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  & + label p {
+    display: inline-block;
+  }
+
+  // Box.
+  & + label::before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.3rem;
+    vertical-align: sub;
+    width: 20px;
+    height: 20px;
+    border: 2px solid ${colors.dark};
+    border-radius: 2px;
+  }
+
+  &:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    width: 2px;
+    height: 2px;
+    background: black;
+    box-shadow:
+      2px 0 0 black,
+      4px 0 0 black,
+      4px -2px 0 black,
+      4px -4px 0 black,
+      4px -6px 0 black,
+      4px -8px 0 black;
+    transform: rotate(45deg);
+  }
+
+  &:disabled + label::before {
+    background-color: ${colors.grey500};
+    border: 2px solid ${colors.grey500};
+  }
+
+  &:disabled + label::after {
+    background: white;
+    box-shadow:
+      2px 0 0 white,
+      4px 0 0 white,
+      4px -2px 0 white,
+      4px -4px 0 white,
+      4px -6px 0 white,
+      4px -8px 0 white;
+  }
+}
 `
 
 export default function CookieToast() {
@@ -175,37 +243,52 @@ export default function CookieToast() {
 
 
                           <form>
-                            <label className='checkbox__wrapper'>
+                            <div className='checkbox__wrapper'>
                               <input
                                 type='checkbox'
-                                className='checkbox__input'
+                                className='checkbox'
                                 disabled={true}
                                 checked={true}
+                                id="checkbox-1"
                               />
-                              <span className='checkbox'>
-                                Nödvändiga (alltid på)
+                              <label htmlFor="checkbox-1">
+                                <span className='checkbox__title'>
+                                  {isDefaultLanguage()
+                                    ? 'Nödvändiga (alltid på)'
+                                    : 'Necessary (always active)'}
                                 </span>
-                            </label>
-                            <p>Dessa cookies behövs för att grundläggande funktioner på webbplatsen
-                            ska fungera och behöver alltid vara aktiverade. Utan dem kan webbplatsen och våra
-                                tjänster sluta fungera.</p>
+                                {isDefaultLanguage()
+                                  ? <p>Dessa cookies behövs för att grundläggande funktioner på webbplatsen
+                                  ska fungera och behöver alltid vara aktiverade. Utan dem kan webbplatsen och våra
+                            tjänster sluta fungera.</p>
+                                  : <p>These strictly required cookies are essential for this site to work properly and needs always to be activated. Without them, the site and our service might function incorrectly.</p>}
+                              </label>
+                            </div>
 
-                            <label className='checkbox__wrapper'>
+                            <div className='checkbox__wrapper'>
                               <input
                                 name="analytic"
                                 type='checkbox'
-                                className='checkbox__input'
+                                className='checkbox'
                                 checked={checkbox}
                                 value={checkbox}
                                 onChange={(e) => setCheckbox(e.currentTarget.checked)}
+                                id="checkbox-2"
                               />
-                              <span className='checkbox'>
-                                Analytiska
-                                </span>
-                            </label>
-                            <p>Analytiska cookies används av webbanalystjänster (tredjepart) för trafikmätning och
-                            hjälper oss att utvärdera webbplatsens utformning och innehåll. Informationen används i
-                                syfte att förbättra upplevelsen för användaren.</p>
+                              <label htmlFor="checkbox-2">
+                                <span className='checkbox__title'>
+                                  {isDefaultLanguage()
+                                    ? 'Analytiska'
+                                    : 'Analytical'}
+                                </span><br />
+                                {isDefaultLanguage()
+                                  ? <p>Analytiska cookies används av webbanalystjänster (tredjepart) för trafikmätning och
+                                  hjälper oss att utvärdera webbplatsens utformning och innehåll. Informationen används i
+                                  syfte att förbättra upplevelsen för användaren.</p>
+                                  : <p>Analytical cookies are used by third party web services to measure visitors traffic and helps us to evaluate the website's design and content. The collected data is used for the purpose to improve the user experience.</p>}
+
+                              </label>
+                            </div>
                           </form>
 
 
