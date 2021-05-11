@@ -194,9 +194,10 @@ export default function CookieToast() {
                           onClick={() => {
                             setShowToast(false)
                             Cookie.set('accept_cookies', true, { expires: 365 })
-                            if (checkbox === false) {
+                            if (checkbox === true) {
+                              Cookie.set('deny_analytics', false, { expires: 365 })
+                            } else
                               Cookie.set('deny_analytics', true, { expires: 365 })
-                            }
                           }}
                         >
                           {isDefaultLanguage()
@@ -256,7 +257,7 @@ export default function CookieToast() {
                             <div className='checkbox__wrapper'>
                               <input
                                 name="analytic"
-                                type='checkbox'
+                                type="checkbox"
                                 className="checkbox"
                                 checked={checkbox}
                                 value={checkbox}
@@ -264,7 +265,7 @@ export default function CookieToast() {
                                 id="checkbox-2"
                               />
                               <label htmlFor="checkbox-2">
-                                <span className='checkbox__title'>
+                                <span className="checkbox__title">
                                   {isDefaultLanguage()
                                     ? 'Analytiska'
                                     : 'Analytical'}
