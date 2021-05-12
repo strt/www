@@ -47,7 +47,7 @@ const ManifestoImage = styled.div`
     margin-top: -16rem;
     margin-left: auto;
     margin-right: auto;
-    max-width 70%;
+    max-width: 70%;
   }
 `
 
