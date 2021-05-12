@@ -15,13 +15,16 @@ import getMetaFromPost from '../lib/getMetaFromPost'
 export default function News({ data }) {
   const [limit, setLimit] = useState(8)
 
-  const loadMore = () => {
-    setLimit(prevLimit => prevLimit + 8)
-  }
-
   const { name, excerpt } = data.contentfulPage
 
+  const handleKeyUp = e => {
+    if (e.keyCode === 13) {
+      setLimit(prevLimit => prevLimit + 8)
+    }
+  }
+
   const LoadMoreDiv = styled.div`
+    display: inline-block;
     cursor: pointer;
     color: ${colors.linkDark};
     font-size: 1.125rem;
@@ -30,6 +33,12 @@ export default function News({ data }) {
     &:focus {
       text-decoration: underline;
       opacity: 0.85;
+    }
+
+    &:focus-visible {
+      outline: none;
+      text-decoration: none;
+      background-color: ${colors.orange300};
     }
 
     &:active,
@@ -86,8 +95,12 @@ export default function News({ data }) {
               style={{
                 display: limit >= data.articles.edges.length ? 'none' : '',
               }}
-              onClick={loadMore}
+              onClick={() => {
+                setLimit(prevLimit => prevLimit + 8)
+              }}
+              onKeyUp={handleKeyUp}
               textColor={theme.linkColor}
+              tabIndex="0"
             >
               Visa fler
             </LoadMoreDiv>
