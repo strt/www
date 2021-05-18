@@ -11,7 +11,10 @@ export const wrapRootElement = ({ element }) => (
 export const onClientEntry = () => {
   window[`ga-disable-${process.env.GOOGLE_ANALYTICS_ID}`] = true
 
-  if (Cookie.get('accept_cookies') === 'true' && Cookie.get('accept_analytics') === 'false') {
+  if (
+    Cookie.get('accept_cookies') === 'true' &&
+    Cookie.get('accept_analytics') === 'true'
+  ) {
     window[`ga-disable-${process.env.GOOGLE_ANALYTICS_ID}`] = false
   }
 }
