@@ -194,9 +194,7 @@ export default function CookieToast() {
                           onClick={() => {
                             setShowToast(false)
                             Cookie.set('accept_cookies', true, { expires: 365 })
-                            checkbox === true
-                              ? Cookie.set('accept_analytics', true, { expires: 365 })
-                              : Cookie.set('accept_analytics', false, { expires: 365 })
+                            Cookie.set('accept_analytics', !!checkbox, { expires: 365 })
                           }}
                         >
                           {isDefaultLanguage()
