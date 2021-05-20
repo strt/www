@@ -95,11 +95,19 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
         })
 
         if (videoLink) {
-          return <Video src={videoLink} />
+          return (
+            <Column>
+              <Video src={videoLink} />
+            </Column>
+          )
         }
 
         if (vimeoLink) {
-          return <EmbedPlayer src={vimeoLink} bg="transparent" />
+          return (
+            <Column>
+              <EmbedPlayer src={vimeoLink} bg="transparent" />
+            </Column>
+          )
         }
 
         return (
