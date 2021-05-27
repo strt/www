@@ -28,6 +28,7 @@ export const AwardsGrid = styled.div`
   flex-flow: row nowrap;
   align-items: flex-end;
   justify-content: flex-end;
+  pointer-events: none;
 `
 
 export default function Awards({ ...props }) {
