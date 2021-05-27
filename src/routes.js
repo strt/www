@@ -19,7 +19,7 @@ export const routes = {
   },
   career: {
     id: 'career',
-    link: 'join-the-team/',
+    link: 'join-us/',
     title: 'Join us',
     sv: { title: 'Bli en av oss' },
   },
