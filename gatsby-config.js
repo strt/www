@@ -114,11 +114,11 @@ module.exports = {
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken:
           process.env.ACTIVE_ENV === 'staging'
-            ? process.env.CONTENTFUL_ACCESS_TOKEN_PREVIEW
+            ? process.env.CONTENTFUL_ACCESS_TOKEN
             : process.env.CONTENTFUL_ACCESS_TOKEN,
         host:
           process.env.ACTIVE_ENV === 'staging'
-            ? 'preview.contentful.com'
+            ? 'cdn.contentful.com'
             : 'cdn.contentful.com',
       },
     },
