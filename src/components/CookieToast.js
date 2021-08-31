@@ -281,6 +281,9 @@ export default function CookieToast() {
                             className="cookie-button cookie-button--dark"
                             textColor={colors.darkText}
                             onClick={() => {
+                              Cookie.set('accept_cookies', true, { expires: 365 })
+                              Cookie.set('accept_analytics', !!checkbox, { expires: 365 })
+                              setShowToast(false);
                               setShowSettings(false);
                             }}
                           >
