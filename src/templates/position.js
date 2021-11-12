@@ -4,7 +4,7 @@ import { ThemeContext } from '../context/ThemeContext'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Section from '../components/Section'
-import { Grid, Column } from '../components/Grid'
+import { Grid } from '../components/Grid'
 import { H1, Excerpt } from '../components/Text'
 import getMetaFromPost from '../lib/getMetaFromPost'
 import RichText from '../components/RichTextContentful'
@@ -26,9 +26,7 @@ export default function Standard({ data }) {
       <Section pt={hasCover ? [5, 7] : 0} pb={[5, 8]}>
         <ContentWrapper>
           <Grid>
-            <Column md="12" lg="10" xl="8">
-              <RichText document={body.json} />
-            </Column>
+            <RichText document={body.json} />
           </Grid>
         </ContentWrapper>
       </Section>
