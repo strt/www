@@ -9,6 +9,7 @@ export const defaultBlacklist = [
   'py',
   'width',
   'sm',
+  'smDown',
   'md',
   'lg',
   'justifyContent',
