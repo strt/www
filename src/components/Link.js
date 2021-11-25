@@ -10,10 +10,7 @@ const UNDERLINE_VARIANTS = {
   light: 'waveDark.svg',
   purple: 'waveDark.svg',
   gray: 'waveDark.svg',
-}
-
-function getUnderline(props) {
-  return UNDERLINE_VARIANTS[props.styleVariant] || UNDERLINE_VARIANTS.dark
+  lightGray: 'waveDark.svg',
 }
 
 export const A = styled.a`
@@ -34,8 +31,8 @@ export const A = styled.a`
   }
 
   &:focus-visible {
-    background-color: ${colors.orange300};
     text-decoration: none;
+    background-color: ${colors.orange300};
   }
 
   &[aria-current],
@@ -44,8 +41,8 @@ export const A = styled.a`
   }
   
   &:active {
-    background-color: ${colors.orange100};
     text-decoration: none;
+    background-color: ${colors.orange100};
   }
 
   button& {
@@ -59,7 +56,7 @@ export const A = styled.a`
     css`
       font-size: 1.125rem;
       line-height: 1.4;
-    
+
       @media ${breakpoints.medium} {
         font-size: 1.5rem;
       }
@@ -69,7 +66,7 @@ export const A = styled.a`
     css`
       font-size: 1rem;
       line-height: 1.4;
-    
+
       @media ${breakpoints.small} {
         font-size: 1.125rem;
       }
@@ -81,9 +78,9 @@ export const A = styled.a`
       line-height: 1.4;
 
       &:hover {
-        color: ${colors.blue400}
+        color: ${colors.blue400};
       }
-    
+
       @media ${breakpoints.medium} {
         font-size: 1.5rem;
       }
