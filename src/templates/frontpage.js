@@ -108,7 +108,9 @@ export default function Index({ data }) {
             <CompanyOfTheYearBlock>
               <Link
                 to={`${getActiveLangPath()}/${
-                  routes.news.link
+                  isDefaultLanguage() && routes.news.sv.link
+                    ? routes.news.sv.link
+                    : routes.news.link
                 }/arets-byra-igen`}
               >
                 <CompanyOfTheYear
@@ -129,7 +131,11 @@ export default function Index({ data }) {
           {featuredCases.map((node, index) => (
             <Tile
               key={node.id}
-              url={`${getActiveLangPath()}/work/${node.slug}`}
+              url={`${getActiveLangPath()}/${
+                isDefaultLanguage() && routes.work.sv.link
+                  ? routes.work.sv.link
+                  : routes.work.link
+              }/${node.slug}`}
               title={node.client.name}
               image={node.featuredImage}
               video={
@@ -146,7 +152,11 @@ export default function Index({ data }) {
           <Column>
             <Div mt={[0, 3]}>
               <Link
-                to={`${getActiveLangPath()}/${routes.work.link}`}
+                to={`${getActiveLangPath()}/${
+                  isDefaultLanguage() && routes.work.sv.link
+                    ? routes.work.sv.link
+                    : routes.work.link
+                }`}
                 textColor={theme.linkColor}
                 styleVariant={theme.theme}
                 variant="blue"
@@ -181,7 +191,11 @@ export default function Index({ data }) {
                 <Card
                   date={node.oldDate || node.createdAt}
                   title={node.title}
-                  url={`${getActiveLangPath()}/news/${node.slug}`}
+                  url={`${getActiveLangPath()}/${
+                    isDefaultLanguage() && routes.news.sv.link
+                      ? routes.news.sv.link
+                      : routes.news.link
+                  }/${node.slug}`}
                   image={node.featuredImage}
                 />
               </Column>
@@ -189,7 +203,11 @@ export default function Index({ data }) {
             <Column>
               <Div mt={[3, 2]}>
                 <Link
-                  to={`${getActiveLangPath()}/${routes.news.link}`}
+                  to={`${getActiveLangPath()}/${
+                    isDefaultLanguage() && routes.news.sv.link
+                      ? routes.news.sv.link
+                      : routes.news.link
+                  }`}
                   variant="blue"
                   textColor={theme.linkColor}
                   styleVariant={theme.theme}

@@ -22,7 +22,7 @@ import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
 import { colors, fluidRange, easings, durations, vw } from '../style'
-import { mainNavigation } from '../routes'
+import { routes } from '../routes'
 import { ThemeContext } from '../context/ThemeContext'
 
 function getProps({ href, isPartiallyCurrent }) {
@@ -166,6 +166,14 @@ const LangWrapper = styled.div`
 const NAV_ID = 'navigation'
 
 function Navigation({ location }) {
+  const mainNavigation = [
+    routes.work,
+    routes.about,
+    routes.news,
+    routes.career,
+    routes.contact,
+  ]
+
   const [isOpen, toggle] = useToggle(false)
   const navRef = useRef(null)
   useFocusTrap(navRef, { shouldTrap: isOpen })
@@ -242,7 +250,11 @@ function Navigation({ location }) {
               .map(child => (
                 <li key={child.id}>
                   <Link
-                    to={`${getActiveLangPath()}/${child.link}`}
+                    to={`${getActiveLangPath()}/${
+                      isDefaultLanguage() && child.sv.link
+                        ? child.sv.link
+                        : child.link
+                    }`}
                     getProps={getProps}
                     textColor={theme.navColor}
                     styleVariant={theme.theme}
@@ -361,8 +373,12 @@ function Navigation({ location }) {
                         }}
                       >
                         <NavLink
-                          key={item.link}
-                          to={`${getActiveLangPath()}/${item.link}`}
+                          key={item.id}
+                          to={`${getActiveLangPath()}/${
+                            isDefaultLanguage() && item.sv.link
+                              ? item.sv.link
+                              : item.link
+                          }`}
                           getProps={getProps}
                         >
                           {isDefaultLanguage() ? item.sv.title : item.title}

@@ -17,6 +17,7 @@ import {
   getActiveLangPath,
   isDefaultLanguage,
 } from '../components/SelectLanguage'
+import { routes } from '../routes'
 
 function filterCases(items, filter) {
   return items.filter(
@@ -52,8 +53,8 @@ const Filter = styled(Div)`
     }
 
     &:focus-visible {
-      opacity: 1;
       color: ${colors.darkText};
+      opacity: 1;
     }
 
     &:active {
@@ -168,7 +169,11 @@ export default function Case({ data, location }) {
             {cases.map(({ node }) => (
               <Tile
                 key={node.id}
-                url={`${getActiveLangPath()}/work/${node.slug}`}
+                url={`${getActiveLangPath()}/${
+                  isDefaultLanguage() && routes.work.sv.link
+                    ? routes.work.sv.link
+                    : routes.work.link
+                }/${node.slug}`}
                 image={node.featuredImage}
                 tags={node.tags}
                 title={node.client.name}

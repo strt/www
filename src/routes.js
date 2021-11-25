@@ -9,53 +9,36 @@ export const routes = {
     id: 'work',
     link: 'work/',
     title: 'Work',
-    sv: { title: 'Case' },
+    sv: { title: 'Case', link: 'case' },
   },
   about: {
     id: 'about',
     link: 'about/',
     title: 'What we do',
-    sv: { title: 'Vad vi gör' },
+    sv: { title: 'Vad vi gör', link: 'vad-vi-gor' },
   },
   career: {
     id: 'career',
     link: 'join-us/',
     title: 'Join us',
-    sv: { title: 'Bli en av oss' },
+    sv: { title: 'Bli en av oss', link: 'bli-en-av-oss' },
   },
   news: {
     id: 'news',
     link: 'news/',
     title: 'News',
-    sv: { title: 'Aktuellt' },
+    sv: { title: 'Aktuellt', link: 'aktuellt' },
   },
   contact: {
     id: 'contact',
     link: 'contact/',
     title: 'Contact',
-    sv: { title: 'Kontakt' },
+    sv: { title: 'Kontakt', link: 'kontakt' },
   },
   policy: {
     id: 'policy',
     link: 'integrity-policy/',
     title: 'Policy',
-    sv: { title: 'Policy' },
+    sv: { title: 'Policy', link: 'integritetspolicy' },
   },
 }
-
-export const mainNavigation = [
-  routes.work,
-  routes.about,
-  routes.news,
-  routes.career,
-  routes.contact,
-]
-
-export const footerNavigation = [
-  routes.work,
-  routes.about,
-  routes.news,
-  routes.contact,
-  routes.career,
-  routes.policy,
-]

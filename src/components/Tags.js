@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Link from './Link'
 import { breakpoints, breakpointNr, fluidRange } from '../style'
-import { getActiveLangPath } from './SelectLanguage'
+import { isDefaultLanguage, getActiveLangPath } from './SelectLanguage'
 import { ThemeContext } from '../context/ThemeContext'
+import { routes } from '../routes'
 
 function tagsWrapperModifiers(props) {
   if (props.variant === 'small') {
@@ -73,9 +74,11 @@ export default function Tags({ items, linked = true, textColor, ...rest }) {
           <Li key={item.name}>
             {linked ? (
               <Link
-                href={`${getActiveLangPath()}/work?filter=${encodeURIComponent(
-                  item.name.toLowerCase(),
-                )}`}
+                href={`${getActiveLangPath()}/${
+                  isDefaultLanguage() && routes.work.sv.link
+                    ? routes.work.sv.link
+                    : routes.work.link
+                }?filter=${encodeURIComponent(item.name.toLowerCase())}`}
                 textColor={textColor}
                 styleVariant={theme.theme}
               >

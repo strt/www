@@ -8,9 +8,13 @@ import Card from '../components/Card'
 import Section from '../components/Section'
 import { Excerpt, H1 } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
-import { getActiveLangPath } from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 import { colors, breakpoints } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
+import { routes } from '../routes'
 
 export default function News({ data }) {
   const [limit, setLimit] = useState(8)
@@ -80,7 +84,11 @@ export default function News({ data }) {
                 <Card
                   date={node.oldDate || node.createdAt}
                   title={node.title}
-                  url={`${getActiveLangPath()}/news/${node.slug}`}
+                  url={`${getActiveLangPath()}/${
+                    isDefaultLanguage() && routes.news.sv.link
+                      ? routes.news.sv.link
+                      : routes.news.link
+                  }/${node.slug}`}
                   image={node.featuredImage}
                 />
               </Column>

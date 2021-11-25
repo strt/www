@@ -6,7 +6,7 @@ import { Text } from './Text'
 import Section from './Section'
 import LogoIcon from './LogoIcon'
 import { ScrollToTopButton } from './Button'
-import { footerNavigation } from '../routes'
+import { routes } from '../routes'
 import { colors, breakpoints } from '../style'
 import { formatPhone } from '../lib/format'
 import useSiteSettings from '../lib/useSiteSettings'
@@ -25,6 +25,15 @@ const currentYear = new Date().getFullYear()
 export default function Footer() {
   const siteSettings = useSiteSettings()
   const footerTheme = 'dark'
+
+  const footerNavigation = [
+    routes.work,
+    routes.about,
+    routes.news,
+    routes.contact,
+    routes.career,
+    routes.policy,
+  ]
 
   /* eslint no-restricted-globals:0 */
   return (
@@ -97,7 +106,11 @@ export default function Footer() {
             {footerNavigation.map(route => (
               <li key={route.link}>
                 <Link
-                  to={`${getActiveLangPath()}/${route.link}`}
+                  to={`${getActiveLangPath()}/${
+                    isDefaultLanguage() && route.sv.link
+                      ? route.sv.link
+                      : route.link
+                  }`}
                   textColor={colors.light}
                   styleVariant={footerTheme}
                 >

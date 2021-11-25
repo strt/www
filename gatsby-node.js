@@ -14,7 +14,7 @@ function getLangOptions(node) {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const query = await graphql(`
+  const contentfulPages = await graphql(`
     {
       allContentfulPages {
         edges {
@@ -24,25 +24,28 @@ exports.createPages = async ({ actions, graphql }) => {
             template
             node_locale
             slug
-          }
-        }
-      }
-    }
-  `)
-  const contentfulPosts = await graphql(`
-    {
-      allContentfulPosts {
-        edges {
-          node {
-            slug
-            title
             alias
-            node_locale
           }
         }
       }
     }
   `)
+  contentfulPages.data.allContentfulPages.edges.forEach(({ node }) => {
+    const { slug, localePath } = getLangOptions(node)
+
+    const template = node.template ? node.template.toLowerCase() : 'standard'
+    const fullpath = `${localePath}${slug}`
+
+    createPage({
+      path: fullpath,
+      component: resolve(`./src/templates/${template}.js`),
+      context: {
+        locale: node.node_locale,
+        slug: node.slug,
+      },
+    })
+  })
+
   const contentfulCases = await graphql(`
     {
       allContentfulCase {
@@ -56,6 +59,19 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+  contentfulCases.data.allContentfulCase.edges.forEach(({ node }) => {
+    const { slug, localePath } = getLangOptions(node)
+    const path = localePath === '' ? 'case' : 'work'
+
+    createPage({
+      path: `${localePath}/${path}${slug}`,
+      component: resolve(`./src/templates/case.js`),
+      context: {
+        slug: node.slug,
+        locale: node.node_locale,
+      },
+    })
+  })
 
   const contentfulPositions = await graphql(`
     {
@@ -70,44 +86,13 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
-
-  const contentfulPages = query.data.allContentfulPages.edges
-  contentfulPages.forEach(page => {
-    const { slug, localePath } = getLangOptions(page.node)
-    const template = page.node.template
-      ? page.node.template.toLowerCase()
-      : 'standard'
-
-    createPage({
-      path: `${localePath}${slug}`,
-      component: resolve(`./src/templates/${template}.js`),
-      context: {
-        locale: page.node.node_locale,
-        slug: page.node.slug,
-      },
-    })
-
-    // registerRedirectsFromNode(page.node)
-  })
-
-  contentfulCases.data.allContentfulCase.edges.forEach(({ node }) => {
-    const { slug, localePath } = getLangOptions(node)
-    createPage({
-      path: `${localePath}/work${slug}`,
-      component: resolve(`./src/templates/case.js`),
-      context: {
-        slug: node.slug,
-        locale: node.node_locale,
-      },
-    })
-
-    // registerRedirectsFromNode(node)
-  })
   contentfulPositions.data.allContentfulPositions.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
+    const path = localePath === '' ? 'bli-en-av-oss' : 'join-us'
+
     if (node.slug !== 'dummy') {
       createPage({
-        path: `${localePath}/join-us${slug}`,
+        path: `${localePath}/${path}${slug}`,
         component: resolve(`./src/templates/position.js`),
         context: {
           slug: node.slug,
@@ -115,23 +100,35 @@ exports.createPages = async ({ actions, graphql }) => {
         },
       })
     }
-    // registerRedirectsFromNode(node)
   })
 
-  // Posts
+  const contentfulPosts = await graphql(`
+    {
+      allContentfulPosts {
+        edges {
+          node {
+            slug
+            title
+            alias
+            node_locale
+          }
+        }
+      }
+    }
+  `)
   const posts = contentfulPosts.data.allContentfulPosts.edges
   posts.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
+    const path = localePath === '' ? 'aktuellt' : 'news'
+
     createPage({
-      path: `${localePath}/news${slug}`,
+      path: `${localePath}/${path}${slug}`,
       component: resolve(`./src/templates/post.js`),
       context: {
         slug: node.slug,
         locale: node.node_locale,
       },
     })
-
-    // registerRedirectsFromNode(node)
   })
 }
 
