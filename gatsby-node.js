@@ -14,6 +14,8 @@ function getLangOptions(node) {
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions
 
+  // ============= PAGES =============
+
   const contentfulPages = await graphql(`
     {
       allContentfulPages {
@@ -30,6 +32,7 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+
   contentfulPages.data.allContentfulPages.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
 
@@ -56,6 +59,8 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   })
 
+  // ============= CASES =============
+
   const contentfulCases = await graphql(`
     {
       allContentfulCase {
@@ -64,24 +69,39 @@ exports.createPages = async ({ actions, graphql }) => {
             slug
             title
             node_locale
+            alias
           }
         }
       }
     }
   `)
+
   contentfulCases.data.allContentfulCase.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     const path = localePath === '' ? 'case' : 'work'
+    const fullpath = `${localePath}/${path}${slug}`
 
     createPage({
-      path: `${localePath}/${path}${slug}`,
+      path: fullpath,
       component: resolve(`./src/templates/case.js`),
       context: {
         slug: node.slug,
         locale: node.node_locale,
       },
     })
+
+    if (node.alias) {
+      node.alias.forEach(alias => {
+        createRedirect({
+          fromPath: `${localePath}/${alias}/`,
+          toPath: fullpath,
+          statusCode: 200,
+        })
+      })
+    }
   })
+
+  // ============= POSITIONS =============
 
   const contentfulPositions = await graphql(`
     {
@@ -91,18 +111,21 @@ exports.createPages = async ({ actions, graphql }) => {
             slug
             title
             node_locale
+            alias
           }
         }
       }
     }
   `)
+
   contentfulPositions.data.allContentfulPositions.edges.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     const path = localePath === '' ? 'bli-en-av-oss' : 'join-us'
+    const fullpath = `${localePath}/${path}${slug}`
 
     if (node.slug !== 'dummy') {
       createPage({
-        path: `${localePath}/${path}${slug}`,
+        path: fullpath,
         component: resolve(`./src/templates/position.js`),
         context: {
           slug: node.slug,
@@ -110,7 +133,19 @@ exports.createPages = async ({ actions, graphql }) => {
         },
       })
     }
+
+    if (node.alias) {
+      node.alias.forEach(alias => {
+        createRedirect({
+          fromPath: `${localePath}/${alias}/`,
+          toPath: fullpath,
+          statusCode: 200,
+        })
+      })
+    }
   })
+
+  // ============= POSTS =============
 
   const contentfulPosts = await graphql(`
     {
@@ -126,19 +161,31 @@ exports.createPages = async ({ actions, graphql }) => {
       }
     }
   `)
+
   const posts = contentfulPosts.data.allContentfulPosts.edges
   posts.forEach(({ node }) => {
     const { slug, localePath } = getLangOptions(node)
     const path = localePath === '' ? 'aktuellt' : 'news'
+    const fullpath = `${localePath}/${path}${slug}`
 
     createPage({
-      path: `${localePath}/${path}${slug}`,
+      path: fullpath,
       component: resolve(`./src/templates/post.js`),
       context: {
         slug: node.slug,
         locale: node.node_locale,
       },
     })
+
+    if (node.alias) {
+      node.alias.forEach(alias => {
+        createRedirect({
+          fromPath: `${localePath}/${alias}/`,
+          toPath: fullpath,
+          statusCode: 200,
+        })
+      })
+    }
   })
 }
 
