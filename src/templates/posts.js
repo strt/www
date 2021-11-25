@@ -69,7 +69,11 @@ export default function News({ data }) {
   if (theme.theme !== 'gray') theme.toggleTheme('gray')
 
   return (
-    <Layout meta={getMetaFromPost(data.contentfulPage)}>
+    <Layout
+      meta={getMetaFromPost(data.contentfulPage)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <Hero>
         <H1 textColor={theme.color}>{name}</H1>
         {excerpt && (
@@ -157,6 +161,28 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

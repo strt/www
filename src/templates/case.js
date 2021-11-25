@@ -58,7 +58,11 @@ export default function Case({ data, pageContext: { next } }) {
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-    <Layout meta={getMetaFromPost(data.contentfulCase)}>
+    <Layout
+      meta={getMetaFromPost(data.contentfulCase)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <article>
         <Grid justifyContent="space-between" alignItems="flex-start" pt={1}>
           <Column sm={12} md={8}>
@@ -210,6 +214,28 @@ export const pageQuery = graphql`
         og: resize(width: 1200, height: 630, quality: 80) {
           src
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

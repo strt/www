@@ -125,7 +125,11 @@ export default function Case({ data, location }) {
   const renderFilter = true // Set to true to enable filter on tags again when we have enough cases published to require a filter
 
   return (
-    <Layout meta={getMetaFromPost(data.contentfulPage)}>
+    <Layout
+      meta={getMetaFromPost(data.contentfulPage)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <Hero>
         {title && <H1 textColor={theme.color}>{title}</H1>}
         {excerpt && (
@@ -249,6 +253,28 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

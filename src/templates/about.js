@@ -22,7 +22,11 @@ export default function About({ data }) {
   if (theme.theme !== 'dark') theme.toggleTheme('dark')
 
   return (
-    <Layout meta={getMetaFromPost(data.contentfulPage.page)}>
+    <Layout
+      meta={getMetaFromPost(data.contentfulPage.page)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <Hero md={12} pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         {title && <H1 textColor={theme.color}>{title}</H1>}
         {excerpt && (
@@ -144,6 +148,28 @@ export const pageQuery = graphql`
             src
           }
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

@@ -39,7 +39,11 @@ export default function Article({ data }) {
   `
 
   return (
-    <Layout meta={getMetaFromPost(data.post)}>
+    <Layout
+      meta={getMetaFromPost(data.post)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <article>
         {(createdAt || oldDate) && (
           <Grid>
@@ -168,6 +172,28 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

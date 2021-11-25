@@ -8,7 +8,7 @@ import SelectLanguageWrapper, { getActiveLangPath } from './SelectLanguage'
 import Navigation from './Nav'
 import { ThemeContext } from '../context/ThemeContext'
 
-export default function Header() {
+export default function Header({ mainMenu }) {
   return (
     <ThemeContext.Consumer>
       {theme => (
@@ -29,7 +29,7 @@ export default function Header() {
               </ul>
             </Column>
             <Column width="auto">
-              <Navigation />
+              <Navigation menu={mainMenu} />
             </Column>
           </Grid>
         </StyledHeader>

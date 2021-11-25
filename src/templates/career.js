@@ -128,6 +128,8 @@ export default function Career({ data }) {
     <Layout
       meta={getMetaFromPost(data.contentfulPage.page)}
       bg={theme.background}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
     >
       <Hero pb={8} keepContentMargin>
         <H1 textColor={theme.color}>{page.title}</H1>
@@ -277,6 +279,28 @@ export const pageQuery = graphql`
           role
           slug
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

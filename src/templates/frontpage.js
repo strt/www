@@ -98,7 +98,11 @@ export default function Index({ data }) {
   } = data.contentfulPage
 
   return (
-    <Layout meta={getMetaFromPost(page)}>
+    <Layout
+      meta={getMetaFromPost(page)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <StyledHero pb={[2, 6]}>
         <Grid>
           <Column md={10} sm={10} smDown={12}>
@@ -296,6 +300,28 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

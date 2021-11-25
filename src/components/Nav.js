@@ -22,7 +22,6 @@ import useFocusTrap from '../lib/useFocusTrap'
 import useDisableScroll from '../lib/useDisableScroll'
 import useToggle from '../lib/useToggle'
 import { colors, fluidRange, easings, durations, vw } from '../style'
-import { routes } from '../routes'
 import { ThemeContext } from '../context/ThemeContext'
 
 function getProps({ href, isPartiallyCurrent }) {
@@ -165,15 +164,7 @@ const LangWrapper = styled.div`
 
 const NAV_ID = 'navigation'
 
-function Navigation({ location }) {
-  const mainNavigation = [
-    routes.work,
-    routes.about,
-    routes.news,
-    routes.career,
-    routes.contact,
-  ]
-
+function Navigation({ menu }) {
   const [isOpen, toggle] = useToggle(false)
   const navRef = useRef(null)
   useFocusTrap(navRef, { shouldTrap: isOpen })
@@ -182,7 +173,7 @@ function Navigation({ location }) {
   // Close nav on location change
   useEffect(() => {
     toggle(false)
-  }, [location, toggle])
+  }, [toggle])
 
   // Update nprogress color
   useEffect(() => {
@@ -218,20 +209,16 @@ function Navigation({ location }) {
   })
 
   const itemsTransitionRef = useRef(null)
-  const transitions = useTransition(
-    isOpen ? mainNavigation : [],
-    item => item.id,
-    {
-      ref: itemsTransitionRef,
-      unique: true,
-      config: { ...config.default, friction: 30 },
-      trail: 250 / mainNavigation.length,
-      reverse: !isOpen,
-      from: { opacity: 0, x: -40 },
-      enter: { opacity: 1, x: 0 },
-      leave: { opacity: 0, x: -12 },
-    },
-  )
+  const transitions = useTransition(menu.pages, item => item.id, {
+    ref: itemsTransitionRef,
+    unique: true,
+    config: { ...config.default, friction: 30 },
+    trail: 250 / menu.pages.length,
+    reverse: !isOpen,
+    from: { opacity: 0, x: -40 },
+    enter: { opacity: 1, x: 0 },
+    leave: { opacity: 0, x: -12 },
+  })
 
   useChain(
     isOpen
@@ -245,23 +232,20 @@ function Navigation({ location }) {
       {theme => (
         <NavWrapper>
           <ul data-desktop>
-            {mainNavigation
-              .filter(child => child.link !== '/')
-              .map(child => (
-                <li key={child.id}>
+            {menu.pages
+              .filter(item => item.slug !== '/')
+              .map(item => (
+                <li key={item.id}>
                   <Link
-                    to={`${getActiveLangPath()}/${
-                      isDefaultLanguage() && child.sv.link
-                        ? child.sv.link
-                        : child.link
-                    }`}
+                    to={`${getActiveLangPath()}/${item.slug}`}
                     getProps={getProps}
                     textColor={theme.navColor}
                     styleVariant={theme.theme}
                     style={{ fontSize: '1.125rem' }}
                     className={`nav-${theme.theme}`}
+                    key={item.id}
                   >
-                    {isDefaultLanguage() ? child.sv.title : child.title}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -374,14 +358,10 @@ function Navigation({ location }) {
                       >
                         <NavLink
                           key={item.id}
-                          to={`${getActiveLangPath()}/${
-                            isDefaultLanguage() && item.sv.link
-                              ? item.sv.link
-                              : item.link
-                          }`}
+                          to={`${getActiveLangPath()}/${item.slug}`}
                           getProps={getProps}
                         >
-                          {isDefaultLanguage() ? item.sv.title : item.title}
+                          {item.name}
                         </NavLink>
                       </animated.li>
                     ))}
@@ -396,9 +376,12 @@ function Navigation({ location }) {
   )
 }
 
-export default function NavigationWrapper() {
-  const cb = useCallback(({ location }) => {
-    return <Navigation location={location} />
-  }, [])
+export default function NavigationWrapper({ menu }) {
+  const cb = useCallback(
+    location => {
+      return <Navigation location={location} menu={menu} />
+    },
+    [menu],
+  )
   return <Location>{cb}</Location>
 }
