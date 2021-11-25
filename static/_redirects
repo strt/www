@@ -3,3 +3,5 @@
 # Redirect default Netlify subdomain to primary domain
 https://strateg.netlify.com/* https://www.strateg.se/:splat 301!
 https://dev-strateg.netlify.com/* https://www.strateg.dev/:splat 301!
+
+/join-the-team/              /join-us/

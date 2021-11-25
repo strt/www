@@ -55,14 +55,20 @@ const Li = styled.li`
   a {
     opacity: 0.56;
 
+    &.active,
     &:active,
     &[aria-current],
     &[data-partially-current] {
-      opacity: 1;
       text-decoration: underline;
+      opacity: 1;
     }
 
-
+    &.active,
+    &[aria-current],
+    &[data-partially-current] {
+      pointer-events: none;
+    }
+  }
 `
 
 function SelectLanguage({ location, ...props }) {
@@ -70,34 +76,37 @@ function SelectLanguage({ location, ...props }) {
     <ThemeContext.Consumer>
       {theme => (
         <>
-          <Li style={{}}>
+          <Li>
             <Link
               onClick={() => {
                 setActiveLang('sv')
               }}
-              to={getUrl(location, 'sv')}
+              to="/"
               textColor={props.textColor || theme.color}
+              className={isDefaultLanguage() ? 'active' : ''}
             >
               Sv
-           </Link>
+            </Link>
           </Li>
           <Li style={{ padding: '0 5px' }}>
-            <TextSmall style={{ lineHeight: 'inherit' }}
+            <TextSmall
+              style={{ lineHeight: 'inherit' }}
               textColor={props.textColor || theme.color}
             >
               /
-           </TextSmall>
+            </TextSmall>
           </Li>
           <Li>
             <Link
-              to={getUrl(location, 'en')}
+              to="/en/"
               onClick={() => {
                 setActiveLang('en')
               }}
               textColor={props.textColor || theme.color}
+              className={!isDefaultLanguage() ? 'active' : ''}
             >
               En
-           </Link>
+            </Link>
           </Li>
         </>
       )}
@@ -105,8 +114,11 @@ function SelectLanguage({ location, ...props }) {
   )
 }
 export default function SelectLanguageWrapper({ textColor }) {
-  const cb = useCallback(({ location }) => {
-    return <SelectLanguage location={location} textColor={textColor} />
-  }, [])
+  const cb = useCallback(
+    ({ location }) => {
+      return <SelectLanguage location={location} textColor={textColor} />
+    },
+    [textColor],
+  )
   return <Location>{cb}</Location>
 }

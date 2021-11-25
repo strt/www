@@ -13,16 +13,21 @@ import { H1, H2, H3, Excerpt } from '../components/Text'
 import { Grid, Column } from '../components/Grid'
 import { breakpoints, colors } from '../style'
 import getMetaFromPost from '../lib/getMetaFromPost'
-import { getActiveLangPath, isDefaultLanguage } from '../components/SelectLanguage'
+import {
+  getActiveLangPath,
+  isDefaultLanguage,
+} from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
 import CardInfo from '../components/CardInfo'
+import { routes } from '../routes'
+
 // eslint-disable-next-line import/no-named-as-default
 
 const CardImageBlock = styled.div`
   position: relative;
   width: 90%;
-  
+
   .career-cover {
     padding-top: 100%;
 
@@ -56,7 +61,8 @@ const CareerTextWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  p, h2 {
+  p,
+  h2 {
     color: white;
   }
 `
@@ -96,7 +102,6 @@ const OurManifestText = styled.div`
       font-size: 13rem;
     }
   }
-
 `
 
 export default function Career({ data }) {
@@ -107,9 +112,8 @@ export default function Career({ data }) {
     heroImage,
     page,
     secondHeader,
-    manifestoHeader,
     manifesto,
-    manifestoCollection
+    manifestoCollection,
   } = data.contentfulPage
 
   const positions = data.allContentfulPositions.edges.filter(
@@ -124,6 +128,8 @@ export default function Career({ data }) {
     <Layout
       meta={getMetaFromPost(data.contentfulPage.page)}
       bg={theme.background}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
     >
       <Hero pb={8} keepContentMargin>
         <H1 textColor={theme.color}>{page.title}</H1>
@@ -142,7 +148,11 @@ export default function Career({ data }) {
                   <li key={node.id}>
                     <H3 mb={[2, 3]} textColor={theme.linkColor}>
                       <Link
-                        to={`${getActiveLangPath()}/join-us/${node.slug}`}
+                        to={`${getActiveLangPath()}/${
+                          isDefaultLanguage() && routes.career.sv.link
+                            ? routes.career.sv.link
+                            : routes.career.link
+                        }/${node.slug}`}
                         textColor={theme.linkColor}
                       >
                         {node.role}
@@ -176,7 +186,10 @@ export default function Career({ data }) {
             <Column>
               {manifestoCollection && (
                 <ManifestoImage>
-                  <Image src={manifestoCollection.fluid.src} alt={manifestoCollection.title} />
+                  <Image
+                    src={manifestoCollection.fluid.src}
+                    alt={manifestoCollection.title}
+                  />
                 </ManifestoImage>
               )}
             </Column>
@@ -266,6 +279,28 @@ export const pageQuery = graphql`
           role
           slug
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

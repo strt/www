@@ -1,6 +1,5 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
-import Header from './Header'
 import SkipToContentLink from './SkipToContentLink'
 import { IdProvider } from './IdManager'
 import NoSSR from './NoSSR'
@@ -16,7 +15,6 @@ export default function App({ children }) {
       <IdProvider>
         <GlobalStyle />
         <SkipToContentLink />
-        <Header />
         {children}
         <NoSSR>
           <CookieToast />

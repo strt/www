@@ -14,6 +14,8 @@ import EmbedPlayer from './EmbedPlayer'
 import Video from './Video'
 import { ThemeContext } from '../context/ThemeContext'
 
+const uniqueId = require('lodash.uniqueid')
+
 function getImageData(data, name) {
   if (data.target.fields[name] && data.target.fields[name]['en-GB']) {
     const imageData = data.target.fields[name]['en-GB']
@@ -40,6 +42,7 @@ function getVideoData(data, name, aspect) {
             ? data.target.fields[aspect]['en-GB']
             : undefined
         }
+        key={uniqueId('video')}
         bg="transparent"
       />
     )
@@ -54,29 +57,61 @@ function isUrlAbsolute(url) {
 const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
   return {
     renderText: content =>
-      content.split('\n').flatMap((content, i) => [i > 0 && <br />, content]),
+      content
+        .split('\n')
+        .flatMap((content, i) => [i > 0 && <br key={i} />, content]),
     renderNode: {
       [BLOCKS.HEADING_1]: (node, children) => {
         const theme = useContext(ThemeContext)
         return (
-          <Column sm={sm} md={md} lg={lg} mb={[0, 0]} pr={pr} pl={pl}>
-            <H1 textColor={theme.color}>{children}</H1>
+          <Column
+            sm={sm}
+            md={md}
+            lg={lg}
+            mb={[0, 0]}
+            pr={pr}
+            pl={pl}
+            key={uniqueId('col')}
+          >
+            <H1 textColor={theme.color} key={uniqueId('h1')}>
+              {children}
+            </H1>
           </Column>
         )
       },
       [BLOCKS.HEADING_2]: (node, children) => {
         const theme = useContext(ThemeContext)
         return (
-          <Column sm={sm} md={md} lg={lg} mb={[0, 0]} pr={pr} pl={pl}>
-            <H2 textColor={theme.color}>{children}</H2>
+          <Column
+            sm={sm}
+            md={md}
+            lg={lg}
+            mb={[0, 0]}
+            pr={pr}
+            pl={pl}
+            key={uniqueId('col')}
+          >
+            <H2 textColor={theme.color} key={uniqueId('h2')}>
+              {children}
+            </H2>
           </Column>
         )
       },
       [BLOCKS.HEADING_3]: (node, children) => {
         const theme = useContext(ThemeContext)
         return (
-          <Column sm={sm} md={md} lg={lg} mb={[0, 0]} pr={pr} pl={pl}>
-            <H3 textColor={theme.color}>{children}</H3>
+          <Column
+            sm={sm}
+            md={md}
+            lg={lg}
+            mb={[0, 0]}
+            pr={pr}
+            pl={pl}
+            key={uniqueId('col')}
+          >
+            <H3 textColor={theme.color} key={uniqueId('h3')}>
+              {children}
+            </H3>
           </Column>
         )
       },
@@ -96,23 +131,25 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
 
         if (videoLink) {
           return (
-            <Column>
-              <Video src={videoLink} />
+            <Column key={uniqueId('col')}>
+              <Video src={videoLink} key={uniqueId('video')} />
             </Column>
           )
         }
 
         if (vimeoLink) {
           return (
-            <Column>
+            <Column key={uniqueId('col')}>
               <EmbedPlayer src={vimeoLink} bg="transparent" />
             </Column>
           )
         }
 
         return (
-          <Column sm={sm} md={md} lg={lg} pr={pr} pl={pl}>
-            <Text textColor={theme.color}>{children}</Text>
+          <Column sm={sm} md={md} lg={lg} pr={pr} pl={pl} key={uniqueId('col')}>
+            <Text textColor={theme.color} key={uniqueId('text')}>
+              {children}
+            </Text>
           </Column>
         )
       },
@@ -127,18 +164,29 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
             textColor={theme.linkColor}
             styleVariant={theme.theme}
             variant="blue"
+            key={uniqueId('link')}
           >
             {children}
           </Link>
         )
       },
       [BLOCKS.UL_LIST]: (node, children) => (
-        <Column sm={sm} md={md} lg={lg} mb={[0, 0]} pr={pr} pl={pl}>
-          <UnorderedList>{children}</UnorderedList>
+        <Column
+          sm={sm}
+          md={md}
+          lg={lg}
+          mb={[0, 0]}
+          pr={pr}
+          pl={pl}
+          key={uniqueId('col')}
+        >
+          <UnorderedList key={uniqueId('ul')}>{children}</UnorderedList>
         </Column>
       ),
       [BLOCKS.LIST_ITEM]: node => (
-        <ListItem>{node.content[0].content[0].value}</ListItem>
+        <ListItem key={uniqueId('li')}>
+          {node.content[0].content[0].value}
+        </ListItem>
       ),
       [BLOCKS.EMBEDDED_ASSET]: ({
         data: {
@@ -148,10 +196,11 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
         if (fields && fields.file && fields.file['en-GB']) {
           const file = fields.file['en-GB']
           return (
-            <Column md={12} pr={pr} pl={pl}>
+            <Column md={12} pr={pr} pl={pl} key={uniqueId('col')}>
               <Image
                 alt={fields.description && fields.description['en-GB']}
                 src={file.url}
+                key={uniqueId('image')}
               />
             </Column>
           )
@@ -168,9 +217,13 @@ const options = (pr, pl, sm = '12', md = '8', lg = '8') => {
           const video2 = getVideoData(data, 'videoLink2', 'videoAspectRatio2')
 
           return (
-            <Grid pl={[0, 0]} pr={[0, 0]}>
-              <Column sm={6}>{image1 || video1}</Column>
-              <Column sm={6}>{image2 || video2}</Column>
+            <Grid pl={[0, 0]} pr={[0, 0]} key={uniqueId('grid')}>
+              <Column sm={6} key={uniqueId('col')}>
+                {image1 || video1}
+              </Column>
+              <Column sm={6} key={uniqueId('col')}>
+                {image2 || video2}
+              </Column>
             </Grid>
           )
         }

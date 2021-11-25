@@ -13,14 +13,18 @@ import RichText from '../components/RichTextContentful'
 import getMetaFromPost from '../lib/getMetaFromPost'
 
 export default function Standard({ data }) {
-  const { title, excerpt, image, body, slug} = data.page
+  const { title, excerpt, image, body, slug } = data.page
 
   const hasCover = !!image
   const theme = useContext(ThemeContext)
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-      <Layout meta={getMetaFromPost(data.page)}>
+    <Layout
+      meta={getMetaFromPost(data.page)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
         {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
@@ -36,11 +40,13 @@ export default function Standard({ data }) {
           <Grid>
             <Column md="10" lg="8">
               {slug === 'srs-model' && (
-                <div dangerouslySetInnerHTML={{__html: body.json.content[0].content[0].value}}></div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: body.json.content[0].content[0].value,
+                  }}
+                />
               )}
-              {slug !== 'srs-model' && (
-                <RichText document={body.json} />
-              )}
+              {slug !== 'srs-model' && <RichText document={body.json} />}
             </Column>
           </Grid>
         </ContentWrapper>
@@ -69,6 +75,28 @@ export const pageQuery = graphql`
         og: resize(width: 1200, height: 630, quality: 80) {
           src
         }
+      }
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
       }
     }
   }

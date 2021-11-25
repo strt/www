@@ -13,7 +13,11 @@ export default function NotFound({ data }) {
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-    <Layout meta={getMetaFromPost(data.page)}>
+    <Layout
+      meta={getMetaFromPost(data.page)}
+      mainMenu={data.mainmenu}
+      footerMenu={data.footermenu}
+    >
       <Hero>
         <H1 textColor={theme.color}>{page.title}</H1>
         <Excerpt textColor={theme.color}>{page.excerpt.excerpt}</Excerpt>
@@ -38,6 +42,28 @@ export const pageQuery = graphql`
         }
       }
       linkText
+    }
+    mainmenu: contentfulMenus(
+      identifier: { eq: "main" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
+    }
+    footermenu: contentfulMenus(
+      identifier: { eq: "footer" }
+      node_locale: { eq: $locale }
+    ) {
+      identifier
+      pages {
+        name
+        slug
+        id
+      }
     }
   }
 `
