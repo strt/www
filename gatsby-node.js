@@ -12,7 +12,7 @@ function getLangOptions(node) {
 }
 
 exports.createPages = async ({ actions, graphql }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
 
   const contentfulPages = await graphql(`
     {
@@ -44,6 +44,16 @@ exports.createPages = async ({ actions, graphql }) => {
         slug: node.slug,
       },
     })
+
+    if (node.alias) {
+      node.alias.forEach(alias => {
+        createRedirect({
+          fromPath: `${localePath}/${alias}/`,
+          toPath: fullpath,
+          statusCode: 200,
+        })
+      })
+    }
   })
 
   const contentfulCases = await graphql(`
