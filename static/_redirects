@@ -4,4 +4,6 @@
 https://strateg.netlify.com/* https://www.strateg.se/:splat 301!
 https://dev-strateg.netlify.com/* https://www.strateg.dev/:splat 301!
 
-/join-the-team/              /join-us/
+/join-the-team/              /bli-en-av-oss/
+/join-the-team//              /bli-en-av-oss/
+/join-us/              /bli-en-av-oss/
