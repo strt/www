@@ -18,7 +18,7 @@ export default function Standard({ data }) {
   if (theme.theme !== 'light') theme.toggleTheme('light')
 
   return (
-    <Layout meta={getMetaFromPost()}>
+    <Layout meta={getMetaFromPost(data.contentfulPosition)}>
       <Hero pb={hasCover ? undefined : 0} keepContentMargin={!hasCover}>
         <H1>{title}</H1>
         {excerpt && <Excerpt>{excerpt.excerpt}</Excerpt>}
