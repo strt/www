@@ -19,7 +19,7 @@ import {
 } from '../components/SelectLanguage'
 import ContentWrapper from '../components/ContentWrapper'
 import RichText from '../components/RichTextContentful'
-import CardInfo from '../components/CardInfo'
+// import CardInfo from '../components/CardInfo'
 import { routes } from '../routes'
 
 // eslint-disable-next-line import/no-named-as-default
@@ -106,9 +106,9 @@ const OurManifestText = styled.div`
 
 export default function Career({ data }) {
   const {
-    contact,
-    spontaneousTitle,
-    spontaneousExcerpt,
+    // contact,
+    // spontaneousTitle,
+    // spontaneousExcerpt,
     heroImage,
     page,
     secondHeader,
@@ -170,13 +170,14 @@ export default function Career({ data }) {
           <Cover className="career-cover">
             <Image fluid={heroImage.fluid} alt={heroImage.description} />
           </Cover>
-          <CardInfo
+          {/* Removed for now. Might need later */}
+          {/* <CardInfo
             title={spontaneousExcerpt}
             text={spontaneousTitle}
             link={`mailto:${contact.email}`}
             linkText={contact.email}
             position="absolute"
-          />
+          /> */}
         </CardImageBlock>
       </Section>
 
