@@ -10,7 +10,7 @@ export const wrapRootElement = ({ element }) => (
 )
 
 Sentry.init({
-  dsn: process.env.GATSBY_SENTRY_KEY,
+  dsn: process.env.SENTRY_KEY,
 })
 
 export const onClientEntry = () => {
