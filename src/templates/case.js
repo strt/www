@@ -104,7 +104,9 @@ export default function Case({ data, pageContext: { next } }) {
           )}
         </Grid>
         <Hero pb={[5, 7]}>
-          <H1 textColor={theme.color}>{title}</H1>
+          <H1 style={{ wordBreak: 'break-word' }} textColor={theme.color}>
+            {title}
+          </H1>
           {excerpt && (
             <Excerpt textColor={theme.color}>{excerpt.excerpt}</Excerpt>
           )}
